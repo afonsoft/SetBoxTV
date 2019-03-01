@@ -33,21 +33,21 @@ namespace VideoPlayerProima
             base.OnAppearing();
             NavigationPage.SetHasNavigationBar(this, false);
 
-            log?.Info($"License: {PlayerSettings.License}");
-            log?.Info($"PathFiles: {PlayerSettings.PathFiles}");
-            log?.Info($"ShowVideo: {PlayerSettings.ShowVideo}");
-            log?.Info($"ShowPhoto: {PlayerSettings.ShowPhoto}");
-            log?.Info($"ShowWebImage: {PlayerSettings.ShowWebImage}");
-            log?.Info($"ShowWebVideo: {PlayerSettings.ShowWebVideo}");
-            log?.Info($"EnableTransactionTime: {PlayerSettings.EnableTransactionTime}");
-            log?.Info($"TransactionTime: {PlayerSettings.TransactionTime}");
+            log?.Debug($"License: {PlayerSettings.License}");
+            log?.Debug($"PathFiles: {PlayerSettings.PathFiles}");
+            log?.Debug($"ShowVideo: {PlayerSettings.ShowVideo}");
+            log?.Debug($"ShowPhoto: {PlayerSettings.ShowPhoto}");
+            log?.Debug($"ShowWebImage: {PlayerSettings.ShowWebImage}");
+            log?.Debug($"ShowWebVideo: {PlayerSettings.ShowWebVideo}");
+            log?.Debug($"EnableTransactionTime: {PlayerSettings.EnableTransactionTime}");
+            log?.Debug($"TransactionTime: {PlayerSettings.TransactionTime}");
 
             GoNextPlayer();
         }
 
         void OnTapped(object sender, EventArgs e)
         {
-            log?.Info("OnTapped to Settings");
+            log?.Debug("OnTapped to Settings");
             Application.Current.MainPage = new SettingsPage();
         }
 
@@ -117,8 +117,9 @@ namespace VideoPlayerProima
                 case EnumFileType.WebVideo:
                 {
                     videoPlayer.AutoPlay = true;
-                    videoPlayer.Source = fileToPlayer;
                     videoPlayer.OnCompletion += VideoPlayer_OnCompletion;
+                    videoPlayer.Source = fileToPlayer;
+                    videoPlayer.Play();
                     VideoFade();
                     log?.Info($"Duration: {videoPlayer.Duration.TotalSeconds} Segundos");
                     break;

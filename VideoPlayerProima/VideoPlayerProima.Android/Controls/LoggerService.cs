@@ -1,11 +1,12 @@
 ﻿using Android.Util;
 using Android.Widget;
 using Xamarin.Forms;
-using VideoPlayerProima.Interface;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Rollbar;
 using VideoPlayerProima.Helpers;
+using ILogger = VideoPlayerProima.Interface.ILogger;
 
 [assembly: Dependency(typeof(VideoPlayerProima.Droid.Controls.LoggerService))]
 namespace VideoPlayerProima.Droid.Controls
@@ -18,46 +19,38 @@ namespace VideoPlayerProima.Droid.Controls
         private static LoggerService _instance;
         public static LoggerService Instance => _instance ?? (_instance = new LoggerService());
 
-        public void Error(string text)
+        public void Debug(string text)
         {
-            Log.Error("VideoPlayerProima", text);
-            SaveFile(text, null);
-            Toast.MakeText(MainActivity.Instance, text, ToastLength.Long).Show();
+            Log.Debug("VideoPlayerProima", $"{text}");
+            RollbarLocator.RollbarInstance.Log(ErrorLevel.Debug, text);
+            SaveFile("DEBUG ", text, null);
         }
 
         public void Error(string text, Exception ex)
         {
             Log.Error("VideoPlayerProima", $"{text} - {ex.Message}");
-            SaveFile(text, ex);
+            RollbarLocator.RollbarInstance.Log(ErrorLevel.Error, ex);
+            SaveFile("ERRO  ", text, ex);
             Toast.MakeText(MainActivity.Instance, $"{text} - {ex.Message}", ToastLength.Long).Show();
         }
 
         public void Error(Exception ex)
         {
             Log.Error("VideoPlayerProima", $"{ex.Message}");
-            SaveFile(null, ex);
+            RollbarLocator.RollbarInstance.Log(ErrorLevel.Error, ex);
+            SaveFile("ERRO  ", null, ex);
             Toast.MakeText(MainActivity.Instance, $"{ex.Message}", ToastLength.Long).Show();
         }
 
         public void Info(string text)
         {
             Log.Info("VideoPlayerProima", $"{text}");
-            SaveFile(text, null);
+            RollbarLocator.RollbarInstance.Log(ErrorLevel.Info, text);
+            SaveFile("INFO  ", text, null);
         }
 
-        public void Info(string text, Exception ex)
-        {
-            SaveFile(text, ex);
-            Log.Info("VideoPlayerProima", $"{text} - {ex.Message}");
-        }
 
-        public void Info(Exception ex)
-        {
-            SaveFile(null, ex);
-            Log.Info("VideoPlayerProima", $"{ex.Message}");
-        }
-
-        private void SaveFile(string text, Exception ex)
+        private void SaveFile(string tipo,  string text, Exception ex)
         {
             Task.Run(() =>
             {
@@ -79,7 +72,7 @@ namespace VideoPlayerProima.Droid.Controls
                             : new StreamWriter(fileName, true))
                         {
                             if (!string.IsNullOrEmpty(text))
-                                streamWriter.WriteLine($"{DateTime.Now:HH:mm} | INFO   | {text}");
+                                streamWriter.WriteLine($"{DateTime.Now:HH:mm} | {tipo} | {text}");
 
                             if (ex != null)
                             {

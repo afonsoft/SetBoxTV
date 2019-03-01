@@ -14,16 +14,33 @@ using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
+using Rollbar;
 using VideoPlayerProima.Droid.Controls;
+using VideoPlayerProima.Helpers;
 
 namespace VideoPlayerProima.Droid
 {
     [Activity(Label = "VideoPlayerProima", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, HardwareAccelerated = true, Exported = true, NoHistory = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+  
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Instance = this;
+
+            // Rollbar notifier configuartion
+            RollbarHelper.ConfigureRollbarSingleton();
+
+            // Registers for global exception handling.
+            RollbarHelper.RegisterForGlobalExceptionHandling();
+
+            AndroidEnvironment.UnhandledExceptionRaiser += (sender, args) =>
+            {
+                var newExc = new ApplicationException("AndroidEnvironment_UnhandledExceptionRaiser", args.Exception);
+                RollbarLocator.RollbarInstance.AsBlockingLogger(TimeSpan.FromSeconds(10)).Critical(newExc);
+            };
+
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             RequestWindowFeature(WindowFeatures.NoTitle);
@@ -31,32 +48,10 @@ namespace VideoPlayerProima.Droid
             Forms.SetTitleBarVisibility(Instance, AndroidTitleBarVisibility.Never);
             base.OnCreate(savedInstanceState);
 
-            AppDomain.CurrentDomain.UnhandledException += CurrentDomainUnhandledException;
-            TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
-            AndroidEnvironment.UnhandledExceptionRaiser += AndroidEnvironmentOnUnhandledException;
-
             Forms.Init(this, savedInstanceState);
 
             LoadApplication(new App());
 
-        }
-
-        private void AndroidEnvironmentOnUnhandledException(object sender, RaiseThrowableEventArgs e)
-        {
-            LoggerService.Instance.Error($"AndroidEnvironmentOnUnhandledException: {e.Exception.Message}", e.Exception);
-        }
-
-        private void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
-        {
-            LoggerService.Instance.Error($"TaskSchedulerOnUnobservedTaskException: {e.Exception.Message}", e.Exception);
-        }
-
-        private void CurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
-        {
-            if (e.ExceptionObject is Exception exception)
-            {
-                LoggerService.Instance.Error($"TaskSchedulerOnUnobservedTaskException: {exception?.Message}", exception);
-            }
         }
 
         public async void CheckSelfPermission()
