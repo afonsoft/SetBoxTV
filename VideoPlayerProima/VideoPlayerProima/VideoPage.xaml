@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:VideoPlayerProima"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="DarkGray"
+             xmlns:controls="clr-namespace:VideoPlayerProima.Controls;assembly=VideoPlayerProima"
+             x:Class="VideoPlayerProima.VideoPage">
+    <StackLayout x:Name="PageStackLayout">
+        <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnTapped" NumberOfTapsRequired="2" />
+        </StackLayout.GestureRecognizers>
+        <controls:VideoPlayer x:Name="videoPlayer" VerticalOptions="FillAndExpand" IsVisible="False" AreTransportControlsEnabled="False" />
+        <Image x:Name="imagePlayer" BackgroundColor="Black" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+    </StackLayout>
+</ContentPage>

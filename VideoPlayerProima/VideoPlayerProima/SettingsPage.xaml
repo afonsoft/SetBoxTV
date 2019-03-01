@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VideoPlayerProima.SettingsPage"
+             Title="Configurações do Player">
+    <ContentPage.Content>
+        <!--<ScrollView>-->
+            <TableView Intent="Settings" x:Name="SwiCell" HasUnevenRows="True">
+                <TableRoot>
+                    <TableSection Title="Exibir">
+                        <SwitchCell x:Name="SwitchVideo" Text="Videos"/>
+                        <SwitchCell x:Name="SwitchPhoto" Text="Fotos"/>
+                        <SwitchCell x:Name="SwitchWebImage" Text="Web Image"/>
+                        <SwitchCell x:Name="SwitchWebVideo" Text="Web Video"/>
+                    </TableSection>
+                    <TableSection Title="Configuração">
+                        <EntryCell x:Name="SwitchTransactionTime" Label="Tempo de Exibição" Placeholder="20" Keyboard="Numeric" HorizontalTextAlignment="End" />
+                        <SwitchCell x:Name="SwitchTransaction" Text="Transição (Fade)"/>
+                    </TableSection>
+                    <TableSection Title="Pasta">
+                        <TextCell Text="Pasta Selecionada" Detail="" x:Name="FolderSeleted"/>
+                        <ViewCell>
+                            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
+                                <Button Text="Selecionar" Clicked="OnButtonSelectClicked" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Licença">
+                        <TextCell Text="Licença" x:Name="LicenseID" Detail="ID: "  Tapped="LicenseID_Tapped"/>
+                        <EntryCell Label="Key" x:Name="LabelKey" Placeholder="" Keyboard="Default" />
+                    </TableSection>
+                    <TableSection Title="">
+                        <ViewCell>
+                            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
+                                    <Button Text="Salvar" Clicked="OnButtonSalvarClicked" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        <!--</ScrollView>-->
+    </ContentPage.Content>
+</ContentPage>
