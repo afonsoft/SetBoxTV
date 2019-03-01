@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="8.0" package="br.com.proima.VideoPlayerProima.Android" android:installLocation="auto" android:versionCode="8">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="9.0" package="br.com.proima.VideoPlayerProima.Android" android:installLocation="auto" android:versionCode="9">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
 	<uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -14,7 +14,7 @@
 		<receiver android:name="br.com.proima.VideoPlayerProima.Android.Droid.BootReceiver">
 			<intent-filter>
 				<action android:name="android.intent.action.BOOT_COMPLETED" />
-			  <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+				<action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
 			</intent-filter>
 		</receiver>
 	</application>
