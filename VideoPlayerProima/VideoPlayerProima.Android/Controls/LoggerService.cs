@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using VideoPlayerProima.Interface;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using VideoPlayerProima.Helpers;
 
 [assembly: Dependency(typeof(VideoPlayerProima.Droid.Controls.LoggerService))]
@@ -11,6 +12,9 @@ namespace VideoPlayerProima.Droid.Controls
 {
     public class LoggerService : ILogger
     {
+
+        private static readonly object lockSync = new object();
+
         private static LoggerService _instance;
         public static LoggerService Instance => _instance ?? (_instance = new LoggerService());
 
@@ -55,39 +59,49 @@ namespace VideoPlayerProima.Droid.Controls
 
         private void SaveFile(string text, Exception ex)
         {
-            try
+            Task.Run(() =>
             {
-                //string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), $"LOG-{DateTime.Now:yyyyddmm}.txt");
-                string directory = Path.Combine(PlayerSettings.PathFiles, "LOGS");
-
-                if (!Directory.Exists(directory))
-                    Directory.CreateDirectory(directory);
-
-                string fileName = Path.Combine(directory, $"LOG-{DateTime.Now:yyyyddMM}.txt");
-
-
-                using (var streamWriter = !File.Exists(fileName) ? File.CreateText(fileName) : new StreamWriter(fileName, true))
+                try
                 {
-                    if (!string.IsNullOrEmpty(text))
-                        streamWriter.WriteLine($"{DateTime.Now:HHmm} | INFO  | {text}");
-
-                    if (ex != null)
+                    lock (lockSync)
                     {
-                        streamWriter.WriteLine($"{DateTime.Now:HHmm} | ERROR | {ex.Message}");
-                        streamWriter.WriteLine($"{DateTime.Now:HHmm} | STACK | {ex.StackTrace}");
+                        //string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), $"LOG-{DateTime.Now:yyyyddmm}.txt");
+                        string directory = Path.Combine(PlayerSettings.PathFiles, "LOGS");
 
-                        if (ex.InnerException != null)
+                        if (!Directory.Exists(directory))
+                            Directory.CreateDirectory(directory);
+
+                        string fileName = Path.Combine(directory, $"LOG-{DateTime.Now:yyyy-MM-dd}.txt");
+
+
+                        using (var streamWriter = !File.Exists(fileName)
+                            ? File.CreateText(fileName)
+                            : new StreamWriter(fileName, true))
                         {
-                            streamWriter.WriteLine($"{DateTime.Now:HHmm} | ERROR | {ex.InnerException.Message}");
-                            streamWriter.WriteLine($"{DateTime.Now:HHmm} | STACK | {ex.InnerException.StackTrace}");
+                            if (!string.IsNullOrEmpty(text))
+                                streamWriter.WriteLine($"{DateTime.Now:HH:mm} | INFO   | {text}");
+
+                            if (ex != null)
+                            {
+                                streamWriter.WriteLine($"{DateTime.Now:HH:mm} | ERROR  | {ex.Message}");
+                                streamWriter.WriteLine($"{DateTime.Now:HH:mm} | STACK  | {ex.StackTrace}");
+                                streamWriter.WriteLine($"{DateTime.Now:HH:mm} | SOURCE | {ex.Source}");
+
+                                if (ex.InnerException != null)
+                                {
+                                    streamWriter.WriteLine($"{DateTime.Now:HH:mm} | ERROR  | {ex.InnerException.Message}");
+                                    streamWriter.WriteLine($"{DateTime.Now:HH:mm} | STACK  | {ex.InnerException.StackTrace}");
+                                    streamWriter.WriteLine($"{DateTime.Now:HH:mm} | SOURCE | {ex.InnerException.Source}");
+                                }
+                            }
                         }
                     }
                 }
-            }
-            catch (Exception)
-            {
-                //Ignore
-            }
+                catch (Exception)
+                {
+                    //Ignore
+                }
+            });
         }
     }
 }

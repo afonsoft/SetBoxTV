@@ -116,6 +116,7 @@ namespace VideoPlayerProima
                 case EnumFileType.Video:
                 case EnumFileType.WebVideo:
                 {
+                    videoPlayer.AutoPlay = true;
                     videoPlayer.Source = fileToPlayer;
                     videoPlayer.OnCompletion += VideoPlayer_OnCompletion;
                     VideoFade();

@@ -30,10 +30,33 @@ namespace VideoPlayerProima.Droid
             Window.AddFlags(WindowManagerFlags.Fullscreen);
             Forms.SetTitleBarVisibility(Instance, AndroidTitleBarVisibility.Never);
             base.OnCreate(savedInstanceState);
+
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomainUnhandledException;
+            TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
+            AndroidEnvironment.UnhandledExceptionRaiser += AndroidEnvironmentOnUnhandledException;
+
             Forms.Init(this, savedInstanceState);
 
             LoadApplication(new App());
 
+        }
+
+        private void AndroidEnvironmentOnUnhandledException(object sender, RaiseThrowableEventArgs e)
+        {
+            LoggerService.Instance.Error($"AndroidEnvironmentOnUnhandledException: {e.Exception.Message}", e.Exception);
+        }
+
+        private void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
+        {
+            LoggerService.Instance.Error($"TaskSchedulerOnUnobservedTaskException: {e.Exception.Message}", e.Exception);
+        }
+
+        private void CurrentDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            if (e.ExceptionObject is Exception exception)
+            {
+                LoggerService.Instance.Error($"TaskSchedulerOnUnobservedTaskException: {exception?.Message}", exception);
+            }
         }
 
         public async void CheckSelfPermission()

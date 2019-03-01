@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,6 +12,9 @@ namespace VideoPlayerProima
         {
             InitializeComponent();
             //MainPage = new MainPage();
+
+            
+            
             MainPage = new Controls.TransitionNavigationPage(new MainPage());
         }
 
@@ -30,3 +34,4 @@ namespace VideoPlayerProima
         }
     }
 }
+
