@@ -58,7 +58,7 @@ namespace VideoPlayerProima.Helpers
             RollbarQueueController.Instance.InternalEvent += OnRollbarInternalEvent;
 
             // Optional info about reporting Rollbar user:
-            //SetRollbarReportingUser("007", "jbond@mi6.uk", "JBOND");
+            SetRollbarReportingUser("001", "afonsoft@gmail.com", "afonsoft");
         }
         /// <summary>
         /// Sets the rollbar reporting user.
