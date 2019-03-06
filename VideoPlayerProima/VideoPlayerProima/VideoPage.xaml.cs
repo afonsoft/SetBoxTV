@@ -88,6 +88,7 @@ namespace VideoPlayerProima
         private void Player(FileDetails fileOrUrl)
         {
             videoPlayer.IsVisible = false;
+            videoPlayer.Stop();
             imagePlayer.IsVisible = false;
 
             switch (fileOrUrl.FileType)
