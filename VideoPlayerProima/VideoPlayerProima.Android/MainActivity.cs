@@ -32,14 +32,30 @@ namespace VideoPlayerProima.Droid
             RollbarHelper.ConfigureRollbarSingleton();
 
             // Registers for global exception handling.
-            RollbarHelper.RegisterForGlobalExceptionHandling();
+            //RollbarHelper.RegisterForGlobalExceptionHandling();
+
+            AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
+            {
+                var newExc = new Exception("CurrentDomainOnUnhandledException", args.ExceptionObject as Exception);
+                LoggerService.Instance.Error(newExc);
+                RollbarLocator.RollbarInstance.AsBlockingLogger(TimeSpan.FromSeconds(10)).Critical(newExc);
+            };
+
+            TaskScheduler.UnobservedTaskException += (sender, args) =>
+            {
+                var newExc = new ApplicationException("TaskSchedulerOnUnobservedTaskException", args.Exception);
+                LoggerService.Instance.Error(args.Exception);
+                RollbarLocator.RollbarInstance.AsBlockingLogger(TimeSpan.FromSeconds(10)).Critical(newExc);
+            };
 
             AndroidEnvironment.UnhandledExceptionRaiser += (sender, args) =>
             {
                 var newExc = new ApplicationException("AndroidEnvironment_UnhandledExceptionRaiser", args.Exception);
+                LoggerService.Instance.Error(args.Exception);
                 RollbarLocator.RollbarInstance.AsBlockingLogger(TimeSpan.FromSeconds(10)).Critical(newExc);
             };
 
+            RollbarLocator.RollbarInstance.Info("Rollbar is configured properly.");
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;

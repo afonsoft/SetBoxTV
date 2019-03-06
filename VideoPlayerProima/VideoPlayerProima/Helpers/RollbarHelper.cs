@@ -13,7 +13,8 @@ namespace VideoPlayerProima.Helpers
     {
         public static readonly TimeSpan RollbarTimeout = TimeSpan.FromSeconds(10);
         public const string rollbarAccessToken = "a2b1e541b25947cab3b00c956ded3535";
-        public const string rollbarEnvironment = "Production";
+        public const string rollbarEnvironment = "production";
+        public const string endPoint = "https://api.rollbar.com/api/1/";
 
         /// <summary>
         /// Registers for global exception handling.
@@ -41,6 +42,8 @@ namespace VideoPlayerProima.Helpers
             var config = new RollbarConfig(rollbarAccessToken) // minimally required Rollbar configuration
             {
                 Environment = rollbarEnvironment,
+                EndPoint = endPoint,
+                Enabled = true,
                 ScrubFields = new[]
                 {
                     "access_token", // normally, you do not want scrub this specific field (it is operationally critical), but it just proves safety net built into the notifier... 
