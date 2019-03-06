@@ -119,7 +119,6 @@ namespace VideoPlayerProima
                     videoPlayer.AutoPlay = true;
                     videoPlayer.OnCompletion += VideoPlayer_OnCompletion;
                     videoPlayer.Source = fileToPlayer;
-                    videoPlayer.Play();
                     VideoFade();
                     log?.Info($"Duration: {videoPlayer.Duration.TotalSeconds} Segundos");
                     break;

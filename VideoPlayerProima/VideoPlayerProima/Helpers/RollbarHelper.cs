@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Rollbar;
 using Rollbar.DTOs;
+using Rollbar.Telemetry;
 
 namespace VideoPlayerProima.Helpers
 {
@@ -34,15 +35,32 @@ namespace VideoPlayerProima.Helpers
         }
 
         /// <summary>
+        /// Configures the rollbar telemetry.
+        /// </summary>
+        private static void ConfigureRollbarTelemetry()
+        {
+            TelemetryConfig telemetryConfig = new TelemetryConfig(
+                telemetryEnabled: true,
+                telemetryQueueDepth: 3
+            );
+            TelemetryCollector.Instance.Config.Reconfigure(telemetryConfig);
+        }
+
+        /// <summary>
         /// Configures the Rollbar singleton-like notifier.
         /// </summary>
         public static void ConfigureRollbarSingleton()
         {
             // minimally required Rollbar configuration
-            var config = new RollbarConfig(rollbarAccessToken) {Environment = rollbarEnvironment};
+            var config = new RollbarConfig(rollbarAccessToken)
+            {
+                Environment = rollbarEnvironment, ScrubFields = new [] {"access_token", "Username"}
+            };
 
             // minimally required Rollbar configuration:
             RollbarLocator.RollbarInstance.Configure(config);
+
+            ConfigureRollbarTelemetry();
 
             // Optional info about reporting Rollbar user:
             SetRollbarReportingUser("001", "afonsoft@gmail.com", "afonsoft");

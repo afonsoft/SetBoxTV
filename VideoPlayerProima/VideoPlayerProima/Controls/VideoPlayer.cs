@@ -10,7 +10,7 @@ namespace VideoPlayerProima.Controls
     {
         public event EventHandler OnCompletion;
         public event EventHandler UpdateStatus;
-        private int indexPlayList = 0;
+        private int indexPlayList;
 
         public VideoPlayer()
         {
@@ -126,7 +126,7 @@ namespace VideoPlayerProima.Controls
 
         private void OnVideoCompletion(object sender, EventArgs args)
         {
-            if (PlayList!= null && PlayList.Count > 0)
+            if (PlayList != null && PlayList.Count > 0)
             {
                 indexPlayList = (indexPlayList + 1) % PlayList.Count;
                 Source = PlayList[indexPlayList];

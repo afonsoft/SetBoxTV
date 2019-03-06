@@ -22,30 +22,28 @@ namespace VideoPlayerProima.Droid.Controls
         public void Debug(string text)
         {
             Log.Debug("VideoPlayerProima", $"{text}");
-            RollbarLocator.RollbarInstance.Log(ErrorLevel.Debug, text);
+            RollbarLocator.RollbarInstance.Debug(text);
             SaveFile("DEBUG ", text, null);
         }
 
         public void Error(string text, Exception ex)
         {
             Log.Error("VideoPlayerProima", $"{text} - {ex.Message}");
-            RollbarLocator.RollbarInstance.Log(ErrorLevel.Error, ex);
+            RollbarLocator.RollbarInstance.Error(ex);
             SaveFile("ERRO  ", text, ex);
-            Toast.MakeText(MainActivity.Instance, $"{text} - {ex.Message}", ToastLength.Long).Show();
         }
 
         public void Error(Exception ex)
         {
             Log.Error("VideoPlayerProima", $"{ex.Message}");
-            RollbarLocator.RollbarInstance.Log(ErrorLevel.Error, ex);
+            RollbarLocator.RollbarInstance.Error(ex);
             SaveFile("ERRO  ", null, ex);
-            Toast.MakeText(MainActivity.Instance, $"{ex.Message}", ToastLength.Long).Show();
         }
 
         public void Info(string text)
         {
             Log.Info("VideoPlayerProima", $"{text}");
-            RollbarLocator.RollbarInstance.Log(ErrorLevel.Info, text);
+            RollbarLocator.RollbarInstance.Info(text);
             SaveFile("INFO  ", text, null);
         }
 

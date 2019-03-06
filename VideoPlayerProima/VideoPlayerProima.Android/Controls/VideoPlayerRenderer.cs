@@ -9,6 +9,8 @@ using ARelativeLayout = Android.Widget.RelativeLayout;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using Math = System.Math;
+using String = System.String;
 
 [assembly: ExportRenderer(typeof(VideoPlayer),
     typeof(VideoPlayerProima.Droid.Controls.VideoPlayerRenderer))]
@@ -17,10 +19,11 @@ namespace VideoPlayerProima.Droid.Controls
 {
     public class VideoPlayerRenderer : ViewRenderer<VideoPlayer, ARelativeLayout>
     {
-        int indexPlayList = 0;
+        //private int indexPlayList = 0;
         VideoView videoView;
         MediaController mediaController;    // Used to display transport controls
-        bool isPrepared;
+        private bool isPrepared;
+        private bool hasSetSource;
 
         public VideoPlayerRenderer(Context context) : base(context)
         {
@@ -36,7 +39,6 @@ namespace VideoPlayerProima.Droid.Controls
                 {
                     // Save the VideoView for future reference
                     videoView = new VideoView(Context);
-
                     // Put the VideoView in a RelativeLayout
                     ARelativeLayout relativeLayout = new ARelativeLayout(Context);
                     relativeLayout.AddView(videoView);
@@ -44,9 +46,9 @@ namespace VideoPlayerProima.Droid.Controls
                     // Center the VideoView in the RelativeLayout
                     ARelativeLayout.LayoutParams layoutParams =
                         new ARelativeLayout.LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
+
                     layoutParams.AddRule(LayoutRules.CenterInParent);
                     videoView.LayoutParameters = layoutParams;
-                    
                     // Handle a VideoView event
                     videoView.Prepared += OnVideoViewPrepared;
 
@@ -88,7 +90,12 @@ namespace VideoPlayerProima.Droid.Controls
         void OnVideoViewPrepared(object sender, EventArgs args)
         {
             isPrepared = true;
-            ((IVideoPlayerController)Element).Duration = TimeSpan.FromMilliseconds(videoView.Duration);
+            ((IVideoPlayerController) Element).Duration = TimeSpan.FromMilliseconds(videoView.Duration);
+
+            if (Element.AutoPlay)
+            {
+                videoView.Start();
+            }
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs args)
@@ -134,7 +141,8 @@ namespace VideoPlayerProima.Droid.Controls
         void SetSource()
         {
             isPrepared = false;
-            bool hasSetSource = false;
+            hasSetSource = false;
+            videoView.StopPlayback();
 
             if (Element.Source is UriVideoSource)
             {
@@ -155,11 +163,6 @@ namespace VideoPlayerProima.Droid.Controls
                     videoView.SetVideoPath(filename);
                     hasSetSource = true;
                 }
-            }
-            
-            if (hasSetSource && Element.AutoPlay)
-            {
-                videoView.Start();
             }
         }
 
