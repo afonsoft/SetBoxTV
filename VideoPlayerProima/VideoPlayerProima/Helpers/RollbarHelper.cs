@@ -14,8 +14,7 @@ namespace VideoPlayerProima.Helpers
         public static readonly TimeSpan RollbarTimeout = TimeSpan.FromSeconds(10);
         public const string rollbarAccessToken = "a2b1e541b25947cab3b00c956ded3535";
         public const string rollbarEnvironment = "production";
-        public const string endPoint = "https://api.rollbar.com/api/1/";
-
+        
         /// <summary>
         /// Registers for global exception handling.
         /// </summary>
@@ -38,31 +37,17 @@ namespace VideoPlayerProima.Helpers
         /// Configures the Rollbar singleton-like notifier.
         /// </summary>
         public static void ConfigureRollbarSingleton()
-        {             
-            var config = new RollbarConfig(rollbarAccessToken) // minimally required Rollbar configuration
-            {
-                Environment = rollbarEnvironment,
-                EndPoint = endPoint,
-                Enabled = true,
-                ScrubFields = new[]
-                {
-                    "access_token", // normally, you do not want scrub this specific field (it is operationally critical), but it just proves safety net built into the notifier... 
-                    "username",
-                }
-            };
-            RollbarLocator.RollbarInstance
-                    // minimally required Rollbar configuration:
-                    .Configure(config)
-                    // optional step if you would like to monitor this Rollbar instance's internal events within your application:
-                    .InternalEvent += OnRollbarInternalEvent
-                ;
+        {
+            // minimally required Rollbar configuration
+            var config = new RollbarConfig(rollbarAccessToken) {Environment = rollbarEnvironment};
 
-            // optional step if you would like to monitor all Rollbar instances' internal events within your application:
-            RollbarQueueController.Instance.InternalEvent += OnRollbarInternalEvent;
+            // minimally required Rollbar configuration:
+            RollbarLocator.RollbarInstance.Configure(config);
 
             // Optional info about reporting Rollbar user:
             SetRollbarReportingUser("001", "afonsoft@gmail.com", "afonsoft");
         }
+
         /// <summary>
         /// Sets the rollbar reporting user.
         /// </summary>
@@ -75,37 +60,5 @@ namespace VideoPlayerProima.Helpers
             RollbarLocator.RollbarInstance.Config.Person = person;
         }
 
-        /// <summary>
-        /// Called when rollbar internal event is detected.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="RollbarEventArgs" /> instance containing the event data.</param>
-        private static void OnRollbarInternalEvent(object sender, RollbarEventArgs e)
-        {
-            Console.WriteLine(e.TraceAsString());
-
-            if (e is RollbarApiErrorEventArgs apiErrorEvent)
-            {
-                //TODO: handle/report Rollbar API communication error event...
-                return;
-            }
-
-            if (e is CommunicationEventArgs commEvent)
-            {
-                //TODO: handle/report Rollbar API communication event...
-                return;
-            }
-
-            if (e is CommunicationErrorEventArgs commErrorEvent)
-            {
-                //TODO: handle/report basic communication error while attempting to reach Rollbar API service... 
-                return;
-            }
-            if (e is InternalErrorEventArgs internalErrorEvent)
-            {
-                //TODO: handle/report basic internal error while using the Rollbar Notifier... 
-                return;
-            }
-        }
     }
 }
