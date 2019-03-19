@@ -42,10 +42,13 @@ namespace VideoPlayerProima
             log?.Debug($"EnableTransactionTime: {PlayerSettings.EnableTransactionTime}");
             log?.Debug($"TransactionTime: {PlayerSettings.TransactionTime}");
 
+            videoPlayer.OnCompletion += VideoPlayer_OnCompletion;
+            videoPlayer.AutoPlay = true;
+            videoPlayer.Source = null;
             GoNextPlayer();
         }
 
-        void OnTapped(object sender, EventArgs e)
+        private void OnTapped(object sender, EventArgs e)
         {
             log?.Debug("OnTapped to Settings");
             Application.Current.MainPage = new SettingsPage();
@@ -89,6 +92,7 @@ namespace VideoPlayerProima
         {
             videoPlayer.IsVisible = false;
             videoPlayer.Stop();
+            videoPlayer.Source = null;
             imagePlayer.IsVisible = false;
 
             switch (fileOrUrl.FileType)
@@ -117,8 +121,6 @@ namespace VideoPlayerProima
                 case EnumFileType.Video:
                 case EnumFileType.WebVideo:
                 {
-                    videoPlayer.AutoPlay = true;
-                    videoPlayer.OnCompletion += VideoPlayer_OnCompletion;
                     videoPlayer.Source = fileToPlayer;
                     VideoFade();
                     log?.Info($"Duration: {videoPlayer.Duration.TotalSeconds} Segundos");
@@ -158,7 +160,7 @@ namespace VideoPlayerProima
         {
             if (PlayerSettings.EnableTransactionTime)
                 await videoPlayer.FadeOut(600, Easing.BounceOut);
-
+            videoPlayer.Stop();
             GoNextPlayer();
         }
     }

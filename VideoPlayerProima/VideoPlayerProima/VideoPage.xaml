@@ -10,7 +10,7 @@
         <StackLayout.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnTapped" NumberOfTapsRequired="2" />
         </StackLayout.GestureRecognizers>
-        <controls:VideoPlayer x:Name="videoPlayer" VerticalOptions="FillAndExpand" IsVisible="False" AreTransportControlsEnabled="False" />
+        <controls:VideoPlayer x:Name="videoPlayer" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsVisible="False" AreTransportControlsEnabled="False"  />
         <Image x:Name="imagePlayer" BackgroundColor="Black" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
     </StackLayout>
 </ContentPage>

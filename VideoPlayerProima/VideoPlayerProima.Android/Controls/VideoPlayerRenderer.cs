@@ -92,7 +92,7 @@ namespace VideoPlayerProima.Droid.Controls
             isPrepared = true;
             ((IVideoPlayerController) Element).Duration = TimeSpan.FromMilliseconds(videoView.Duration);
 
-            if (Element.AutoPlay)
+            if (Element.AutoPlay && hasSetSource)
             {
                 videoView.Start();
             }
@@ -142,23 +142,24 @@ namespace VideoPlayerProima.Droid.Controls
         {
             isPrepared = false;
             hasSetSource = false;
+            videoView.Suspend();
             videoView.StopPlayback();
 
-            if (Element.Source is UriVideoSource)
+            if (Element.Source is UriVideoSource source)
             {
-                string uri = (Element.Source as UriVideoSource).Uri;
+                string uri = source.Uri;
 
-                if (!String.IsNullOrWhiteSpace(uri))
+                if (!string.IsNullOrWhiteSpace(uri))
                 {
                     videoView.SetVideoURI(Android.Net.Uri.Parse(uri));
                     hasSetSource = true;
                 }
             }
-            else if (Element.Source is FileVideoSource)
+            else if (Element.Source is FileVideoSource videoSource)
             {
-                string filename = (Element.Source as FileVideoSource).File;
+                string filename = videoSource.File;
 
-                if (!String.IsNullOrWhiteSpace(filename))
+                if (!string.IsNullOrWhiteSpace(filename))
                 {
                     videoView.SetVideoPath(filename);
                     hasSetSource = true;
