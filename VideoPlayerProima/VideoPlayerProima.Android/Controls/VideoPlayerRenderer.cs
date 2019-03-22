@@ -189,7 +189,7 @@ namespace VideoPlayerProima.Droid.Controls
         {
             videoView.Start();
         }
-
+         
         void OnPauseRequested(object sender, EventArgs args)
         {
             videoView.Pause();

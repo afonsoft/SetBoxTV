@@ -1,0 +1,20 @@
+language: csharp
+sudo: required  
+dist: trusty  
+mono:
+  - latest
+os:
+  - linux
+  - osx
+solution: VideoPlayerProima.sln
+env:
+  global:
+    - ResolveNuGetPackageAssets=true
+    - EnableNuGetPackageRestore=true
+install:
+  - nuget restore VideoPlayerProima.sln
+script:
+  - xbuild /p:Configuration=Release VideoPlayerProima.sln
+cache:
+  directories:
+    - bin
