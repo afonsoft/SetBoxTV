@@ -13,7 +13,7 @@ Aplicativo para colocar em TV com SetBox android, para passar videos e fotos de 
     <td>Windows Server 2012</td>
     <td>.NET Framework 4.7</td>
     <td style="text-align:center">
-	<a href="https://ci.appveyor.com/project/afonsoft/setbox-videoplayer/branch/master"><img src="https://ci.appveyor.com/api/projects/status/setbox-videoplayer/branch/master?svg=true" alt="AppVeyor build status" /></a>
+	<a href="https://ci.appveyor.com/project/afonsoft/setbox-videoplayer/branch/master"><img src="https://ci.appveyor.com/api/projects/status/ah18newgxyhoy9f8?svg=true" alt="AppVeyor build status" /></a>
 	</td>
   </tr>
   <tr>
