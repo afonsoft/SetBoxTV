@@ -32,7 +32,6 @@ before_install:
   - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.universal.pkg" -target /
   - wget "https://dl.xamarin.com/MonoforAndroid/Mac/xamarin.android-${MONO_ANDROID_VERSION}.pkg"
   - sudo installer -pkg "xamarin.android-${MONO_ANDROID_VERSION}.pkg" -target /
-  - sudo sdkmanager "platforms;android-27"
 install:
   - /Library/Frameworks/Mono.framework/Commands/nuget restore VideoPlayerProima.sln
 script:
