@@ -1,6 +1,6 @@
 language: csharp
 sudo: required  
-dist: trusty  
+dist: xenial 
 mono:
   mdk: latest
   android: 7.0.2-42
@@ -8,11 +8,8 @@ android:
   components:
     - tools
     - platform-tools
-    # The BuildTools version used by your project
     - build-tools-25.0.1
-    # The SDK version used to compile your project
     - android-26
-    # Additional components
     - extra-google-google_play_services
     - extra-google-m2repository
     - extra-android-m2repository

@@ -12,7 +12,7 @@ using VideoPlayerProima.Interface;
 namespace VideoPlayerProima
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class VideoPage : ContentPage
+    public partial class VideoPage : ContentPage 
     {
         private  VideoSource fileToPlayer;
         private  ImageSource imagaToPlayer;
