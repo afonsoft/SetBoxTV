@@ -2,7 +2,7 @@ language: csharp
 sudo: required  
 dist: trusty  
 mono:
-  mdk: 4.6.2
+  mdk: latest
   android: 7.0.2-42
 android:
   components:
@@ -17,6 +17,10 @@ android:
     - extra-google-m2repository
     - extra-android-m2repository
     - addon-google_apis-google-26
+    licenses:
+    - 'android-sdk-preview-license-52d11cd2'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
 os:
   - osx
 solution: VideoPlayerProima.sln
