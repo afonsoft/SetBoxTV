@@ -2,9 +2,22 @@ language: csharp
 sudo: required  
 dist: trusty  
 mono:
-  - latest
+  mdk: 4.6.2
+  android: 7.0.2-42
+android:
+  components:
+    - tools
+    - platform-tools
+    # The BuildTools version used by your project
+    - build-tools-$ANDROID_BUILD_TOOLS_VERSION
+    # The SDK version used to compile your project
+    - android-26
+    # Additional components
+    - extra-google-google_play_services
+    - extra-google-m2repository
+    - extra-android-m2repository
+    - addon-google_apis-google-26
 os:
-  - linux
   - osx
 solution: VideoPlayerProima.sln
 env:
@@ -16,17 +29,15 @@ env:
     - MONO_VERSION=4.6.2
     - MONO_ANDROID_VERSION=7.0.2-42
 before_install:
+  - yes | sdkmanager "platforms;android-27"
+install:
   - curl -L https://raw.github.com/embarkmobile/android-sdk-installer/version-2/android-sdk-installer | bash /dev/stdin --install=$ANDROID_COMPONENTS --accept=$ANDROID_LICENSES
   - source ~/.android-sdk-installer/env
   - wget "http://download.mono-project.com/archive/${MONO_VERSION}/macos-10-universal/MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.universal.pkg"
   - sudo installer -pkg "MonoFramework-MDK-${MONO_VERSION}.macos10.xamarin.universal.pkg" -target /
   - wget "https://dl.xamarin.com/MonoforAndroid/Mac/xamarin.android-${MONO_ANDROID_VERSION}.pkg"
   - sudo installer -pkg "xamarin.android-${MONO_ANDROID_VERSION}.pkg" -target /
-  - yes | sdkmanager "platforms;android-27"
-install:
   - /Library/Frameworks/Mono.framework/Commands/nuget restore VideoPlayerProima.sln
 script:
-  - /Library/Frameworks/Mono.framework/Commands/msbuild /t:SignAndroidPackage /p:Configuration=Release VideoPlayerProima.sln
-cache:
-  directories:
-    - bin
+  - /Library/Frameworks/Mono.framework/Commands/xbuild /t:SignAndroidPackage /p:Configuration=Release VideoPlayerProima.Android/VideoPlayerProima.Android.csproj
+
