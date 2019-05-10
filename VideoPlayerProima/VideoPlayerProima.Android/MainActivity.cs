@@ -55,7 +55,7 @@ namespace VideoPlayerProima.Droid
                 RollbarLocator.RollbarInstance.AsBlockingLogger(TimeSpan.FromSeconds(10)).Critical(newExc);
             };
 
-            RollbarLocator.RollbarInstance.Info("Rollbar is configured properly.");
+            //RollbarLocator.RollbarInstance.Info("Rollbar is configured properly.");
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;

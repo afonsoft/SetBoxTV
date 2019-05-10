@@ -10,7 +10,6 @@ namespace VideoPlayerProima
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsPage : ContentPage
     {
-        private DevicePicker devicePickerFroms;
         private IDevicePicker devicePicker;
         private IDirectoyPicker directoyPicker;
         public static bool isPostBack = false;
@@ -20,6 +19,13 @@ namespace VideoPlayerProima
         {
             InitializeComponent();
             log = DependencyService.Get<ILogger>();
+            if (log != null)
+            {
+                IDevicePicker device = DependencyService.Get<IDevicePicker>();
+                log.DeviceIdentifier = device?.GetIdentifier();
+                log.Platform = DevicePicker.GetPlatform().ToString();
+                log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
+            }
         }
 
         protected override void OnAppearing()
@@ -29,7 +35,7 @@ namespace VideoPlayerProima
             if (!isPostBack)
             {
                 isPostBack = true;
-                devicePickerFroms = new DevicePicker();
+                
                 directoyPicker = DependencyService.Get<IDirectoyPicker>();
                 devicePicker = DependencyService.Get<IDevicePicker>();
                 string deviceIdentifier = devicePicker?.GetIdentifier();

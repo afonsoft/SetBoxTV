@@ -6,6 +6,9 @@ namespace VideoPlayerProima.Interface
 {
     public interface ILogger
     {
+        string DeviceIdentifier { get; set; }
+        string Platform { get; set; }
+        string Version { get; set; }
         void Info(string text);
         void Debug(string text);
         void Error(string text, Exception ex);

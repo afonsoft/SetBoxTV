@@ -26,6 +26,13 @@ namespace VideoPlayerProima
             InitializeComponent();
             fileDetails = files;
             log = DependencyService.Get<ILogger>();
+            if (log != null)
+            {
+                IDevicePicker device = DependencyService.Get<IDevicePicker>();
+                log.DeviceIdentifier = device?.GetIdentifier();
+                log.Platform = DevicePicker.GetPlatform().ToString();
+                log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
+            }
         }
 
         protected override void OnAppearing()
@@ -45,6 +52,7 @@ namespace VideoPlayerProima
             videoPlayer.OnCompletion += VideoPlayer_OnCompletion;
             videoPlayer.AutoPlay = true;
             videoPlayer.Source = null;
+            videoPlayer.IsVisible = true;
             GoNextPlayer();
         }
 
@@ -121,6 +129,7 @@ namespace VideoPlayerProima
                 case EnumFileType.Video:
                 case EnumFileType.WebVideo:
                 {
+                    videoPlayer.IsVisible = true;
                     videoPlayer.Source = fileToPlayer;
                     VideoFade();
                     log?.Info($"Duration: {videoPlayer.Duration.TotalSeconds} Segundos");
@@ -129,6 +138,7 @@ namespace VideoPlayerProima
                 case EnumFileType.Image:
                 case EnumFileType.WebImage:
                 {
+                    imagePlayer.IsVisible = true;
                     imagePlayer.Source = imagaToPlayer;
                     ImageFade();
                     Delay();
@@ -137,9 +147,9 @@ namespace VideoPlayerProima
                 case EnumFileType.WebPage:
                 {
                     //Show WebPage
-                    WebPageFade();
-                    Delay();
-                    GoNextPlayer();
+                    //WebPageFade();
+                    //Delay();
+                    //GoNextPlayer();
                     break;
                 }
             }

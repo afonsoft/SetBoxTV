@@ -10,7 +10,6 @@ using ARelativeLayout = Android.Widget.RelativeLayout;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Math = System.Math;
-using String = System.String;
 
 [assembly: ExportRenderer(typeof(VideoPlayer),
     typeof(VideoPlayerProima.Droid.Controls.VideoPlayerRenderer))]
@@ -51,6 +50,7 @@ namespace VideoPlayerProima.Droid.Controls
                     videoView.LayoutParameters = layoutParams;
                     // Handle a VideoView event
                     videoView.Prepared += OnVideoViewPrepared;
+                    videoView.AccessibilityTraversalBefore = 0;
 
                     SetNativeControl(relativeLayout);
                 }
@@ -95,6 +95,7 @@ namespace VideoPlayerProima.Droid.Controls
             if (Element.AutoPlay && hasSetSource)
             {
                 videoView.Start();
+                videoView.SeekTo(0);
             }
         }
 
@@ -142,6 +143,7 @@ namespace VideoPlayerProima.Droid.Controls
         {
             isPrepared = false;
             hasSetSource = false;
+            videoView.Activated = true;
             videoView.Suspend();
             videoView.StopPlayback();
 

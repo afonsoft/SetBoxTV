@@ -18,6 +18,14 @@ namespace VideoPlayerProima
         {
             InitializeComponent();
             log = DependencyService.Get<ILogger>();
+            if (log != null)
+            {
+                IDevicePicker device = DependencyService.Get<IDevicePicker>();
+                log.DeviceIdentifier = device?.GetIdentifier();
+                log.Platform = DevicePicker.GetPlatform().ToString();
+                log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
+            }
+
         }
 
 
@@ -41,9 +49,11 @@ namespace VideoPlayerProima
 
                 IDevicePicker device = DependencyService.Get<IDevicePicker>();
                 string deviceIdentifier = device.GetIdentifier();
-
+                
                 log?.Info($"deviceIdentifier: {deviceIdentifier}");
                 log?.Info($"deviceIdentifier64: {CriptoHelpers.Base64Encode(deviceIdentifier)}");
+
+                
 
                 string deviceIdentifier64 = CriptoHelpers.Base64Encode(deviceIdentifier);
 

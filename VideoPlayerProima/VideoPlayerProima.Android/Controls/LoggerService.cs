@@ -1,5 +1,4 @@
 ﻿using Android.Util;
-using Android.Widget;
 using Xamarin.Forms;
 using System;
 using System.IO;
@@ -19,31 +18,56 @@ namespace VideoPlayerProima.Droid.Controls
         private static LoggerService _instance;
         public static LoggerService Instance => _instance ?? (_instance = new LoggerService());
 
+        public string DeviceIdentifier { get; set; } = "1111";
+        public string Platform { get; set; } = "Android";
+        public string Version { get; set; } = "1.0";
+
+        private Rollbar.DTOs.Data data(Exception ex, string text, ErrorLevel level)
+        {
+            return new Rollbar.DTOs.Data(new Rollbar.DTOs.Body(ex))
+            {
+                Client = new Rollbar.DTOs.Client { { "Proima", DeviceIdentifier } },
+                CodeVersion = Version,
+                Level = level,
+                Language = "pt-Br",
+                Platform = Platform,
+                Title = "SetBoxPlayer",
+                Framework = "Xamarin",
+                Context = text,
+                Environment = RollbarHelper.rollbarEnvironment
+            };
+
+        }
+
         public void Debug(string text)
         {
             Log.Debug("VideoPlayerProima", $"{text}");
-            RollbarLocator.RollbarInstance.Debug(text);
+            //RollbarLocator.RollbarInstance.Debug(text);
+            RollbarLocator.RollbarInstance.Log(data(new Exception(text), text, ErrorLevel.Debug));
             SaveFile("DEBUG ", text, null);
         }
 
         public void Error(string text, Exception ex)
         {
             Log.Error("VideoPlayerProima", $"{text} - {ex.Message}");
-            RollbarLocator.RollbarInstance.Error(ex);
+            //RollbarLocator.RollbarInstance.Error(new ApplicationException(text, ex));
+            RollbarLocator.RollbarInstance.Log(data(ex, text, ErrorLevel.Error));
             SaveFile("ERRO  ", text, ex);
         }
 
         public void Error(Exception ex)
         {
             Log.Error("VideoPlayerProima", $"{ex.Message}");
-            RollbarLocator.RollbarInstance.Error(ex);
+            //RollbarLocator.RollbarInstance.Error(ex);
+            RollbarLocator.RollbarInstance.Log(data(ex, ex.Message, ErrorLevel.Error));
             SaveFile("ERRO  ", null, ex);
         }
 
         public void Info(string text)
         {
             Log.Info("VideoPlayerProima", $"{text}");
-            RollbarLocator.RollbarInstance.Info(text);
+            //RollbarLocator.RollbarInstance.Info(text);
+            RollbarLocator.RollbarInstance.Log(data(new Exception(text), text, ErrorLevel.Info));
             SaveFile("INFO  ", text, null);
         }
 

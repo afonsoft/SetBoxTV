@@ -9,39 +9,39 @@ namespace VideoPlayerProima.Interface
         string GetIdentifier();
     }
 
-    public class DevicePicker
+    public static class DevicePicker
     {
-        public string GetModel()
+        public static string GetModel()
         {
             return DeviceInfo.Model;
         }
 
-        public string GetManufacturer()
+        public static string GetManufacturer()
         {
             return DeviceInfo.Manufacturer;
         }
 
-        public string GetName()
+        public static string GetName()
         {
             return DeviceInfo.Name;
         }
 
-        public Version GetVersion()
+        public static Version GetVersion()
         {
             return DeviceInfo.Version;
         }
 
-        public DevicePlatform GetPlatform()
+        public static DevicePlatform GetPlatform()
         {
             return DeviceInfo.Platform;
         }
 
-        public DeviceIdiom GetDeviceIdiom()
+        public static DeviceIdiom GetDeviceIdiom()
         {
             return DeviceInfo.Idiom;
         }
 
-        public DeviceType GetDeviceType()
+        public static DeviceType GetDeviceType()
         {
             return DeviceInfo.DeviceType;
         }
