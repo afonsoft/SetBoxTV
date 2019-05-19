@@ -11,6 +11,9 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Math = System.Math;
 using Android.Media;
+using Android.Views;
+using Android.Util;
+using Android.Runtime;
 
 [assembly: ExportRenderer(typeof(VideoPlayer),
     typeof(VideoPlayerProima.Droid.Controls.VideoPlayerRenderer))]
@@ -20,6 +23,7 @@ namespace VideoPlayerProima.Droid.Controls
     public class VideoPlayerRenderer : ViewRenderer<VideoPlayer, ARelativeLayout>
     {
         //private int indexPlayList = 0;
+        MediaPlayer mediaPlayer;
         VideoView videoView;
         MediaController mediaController;    // Used to display transport controls
         private bool isPrepared;
@@ -39,6 +43,7 @@ namespace VideoPlayerProima.Droid.Controls
                 {
                     // Save the VideoView for future reference
                     videoView = new VideoView(Context);
+                    
                     // Put the VideoView in a RelativeLayout
                     ARelativeLayout relativeLayout = new ARelativeLayout(Context);
                     relativeLayout.AddView(videoView);
@@ -55,8 +60,10 @@ namespace VideoPlayerProima.Droid.Controls
 
                     //Error Handle
                     videoView.Error += OnError;
-
+                    
                     SetNativeControl(relativeLayout);
+
+                   
                 }
 
                 SetAreTransportControlsEnabled();
@@ -102,15 +109,38 @@ namespace VideoPlayerProima.Droid.Controls
             isPrepared = true;
             ((IVideoPlayerController) Element).Duration = TimeSpan.FromMilliseconds(videoView.Duration);
 
+            //mediaPlayer = sender as MediaPlayer;
+
+            //int videoWidth = mediaPlayer.VideoWidth;
+            //int videoHeight = mediaPlayer.VideoHeight;
+
+            //DisplayMetrics displayMetrics = new DisplayMetrics();
+            //IWindowManager windowManager = Context.GetSystemService(Context.WindowService).JavaCast<IWindowManager>();
+
+            //windowManager.DefaultDisplay.GetMetrics(displayMetrics);
+            //int screenWidth = displayMetrics.WidthPixels;
+            //int screenHeight = displayMetrics.HeightPixels;
+
+            //float scaleY = 1.0f;
+            //float scaleX = (videoWidth * screenHeight / videoHeight) / screenWidth;
+
+            //int pivotPointX = (int)(screenWidth / 2);
+            //int pivotPointY = (int)(screenHeight / 2);
+
+            //surfaceView.setScaleX(scaleX);
+            //surfaceView.setScaleY(scaleY);
+            //surfaceView.setPivotX(pivotPointX);
+            //surfaceView.setPivotY(pivotPointY);
+
             if (Element.AutoPlay && hasSetSource)
             {
                 if(videoView.IsPlaying)
                     videoView.StopPlayback();
+                videoView.RequestFocus();
                 videoView.Start();
                 videoView.SeekTo(0);
             }
         }
-
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs args)
         {
             base.OnElementPropertyChanged(sender, args);
@@ -202,6 +232,7 @@ namespace VideoPlayerProima.Droid.Controls
         {
             if (videoView.IsPlaying)
                 videoView.StopPlayback();
+            videoView.RequestFocus();
             videoView.Start();
         }
          
