@@ -10,6 +10,7 @@ using ARelativeLayout = Android.Widget.RelativeLayout;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Math = System.Math;
+using Android.Media;
 
 [assembly: ExportRenderer(typeof(VideoPlayer),
     typeof(VideoPlayerProima.Droid.Controls.VideoPlayerRenderer))]
@@ -52,6 +53,9 @@ namespace VideoPlayerProima.Droid.Controls
                     videoView.Prepared += OnVideoViewPrepared;
                     videoView.AccessibilityTraversalBefore = 0;
 
+                    //Error Handle
+                    videoView.Error += OnError;
+
                     SetNativeControl(relativeLayout);
                 }
 
@@ -71,6 +75,12 @@ namespace VideoPlayerProima.Droid.Controls
                 args.OldElement.PauseRequested -= OnPauseRequested;
                 args.OldElement.StopRequested -= OnStopRequested;
             }
+        }
+
+        private void OnError(object sender, MediaPlayer.ErrorEventArgs e)
+        {
+            isPrepared = false;
+            videoView.StopPlayback();
         }
 
         protected override void Dispose(bool disposing)
@@ -94,6 +104,8 @@ namespace VideoPlayerProima.Droid.Controls
 
             if (Element.AutoPlay && hasSetSource)
             {
+                if(videoView.IsPlaying)
+                    videoView.StopPlayback();
                 videoView.Start();
                 videoView.SeekTo(0);
             }
@@ -144,7 +156,6 @@ namespace VideoPlayerProima.Droid.Controls
             isPrepared = false;
             hasSetSource = false;
             videoView.Activated = true;
-            videoView.Suspend();
             videoView.StopPlayback();
 
             if (Element.Source is UriVideoSource source)
@@ -189,6 +200,8 @@ namespace VideoPlayerProima.Droid.Controls
         // Event handlers to implement methods
         void OnPlayRequested(object sender, EventArgs args)
         {
+            if (videoView.IsPlaying)
+                videoView.StopPlayback();
             videoView.Start();
         }
          

@@ -98,9 +98,9 @@ namespace VideoPlayerProima
 
         private void Player(FileDetails fileOrUrl)
         {
-            videoPlayer.IsVisible = false;
             videoPlayer.Stop();
             videoPlayer.Source = null;
+            videoPlayer.IsVisible = false;
             imagePlayer.IsVisible = false;
 
             switch (fileOrUrl.FileType)
@@ -168,9 +168,9 @@ namespace VideoPlayerProima
 
         private async void VideoPlayer_OnCompletion(object sender, EventArgs e)
         {
+            videoPlayer.Stop();
             if (PlayerSettings.EnableTransactionTime)
                 await videoPlayer.FadeOut(600, Easing.BounceOut);
-            videoPlayer.Stop();
             GoNextPlayer();
         }
     }

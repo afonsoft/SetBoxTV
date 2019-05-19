@@ -131,7 +131,11 @@ namespace VideoPlayerProima.Controls
                 indexPlayList = (indexPlayList + 1) % PlayList.Count;
                 Source = PlayList[indexPlayList];
                 if (AutoPlay)
+                {
+                    Stop();
                     Play();
+                }
+                    
             }
 
             OnCompletion?.Invoke(sender, args);
