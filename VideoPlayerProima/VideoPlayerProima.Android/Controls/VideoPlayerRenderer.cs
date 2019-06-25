@@ -23,7 +23,7 @@ namespace VideoPlayerProima.Droid.Controls
     public class VideoPlayerRenderer : ViewRenderer<VideoPlayer, ARelativeLayout>
     {
         //private int indexPlayList = 0;
-        MediaPlayer mediaPlayer;
+        //MediaPlayer mediaPlayer;
         VideoView videoView;
         MediaController mediaController;    // Used to display transport controls
         private bool isPrepared;

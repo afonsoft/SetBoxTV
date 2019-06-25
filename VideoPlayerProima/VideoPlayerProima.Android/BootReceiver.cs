@@ -6,7 +6,7 @@ using VideoPlayerProima.Droid.Controls;
 
 namespace VideoPlayerProima.Droid
 {
-    [BroadcastReceiver(Enabled = true, Exported = true, DirectBootAware = true, Name = "br.com.proima.VideoPlayerProima.Android.Droid.BootReceiver")]
+    [BroadcastReceiver(Enabled = true, Exported = true, DirectBootAware = true)]
     [IntentFilter(new[] {Intent.ActionBootCompleted, Intent.ActionLockedBootCompleted})]
     public class BootReceiver : BroadcastReceiver
     {
