@@ -77,5 +77,11 @@ namespace VideoPlayerProima.Helpers
             set => AppSettings.AddOrUpdateValue(nameof(ShowWebVideo), value);
         }
 
+        public static string Url
+        {
+            get => AppSettings.GetValueOrDefault(nameof(Url), "https://setbox.afonsoft.com.br/api/");
+            set => AppSettings.AddOrUpdateValue(nameof(Url), value);
+        }
+
     }
 }

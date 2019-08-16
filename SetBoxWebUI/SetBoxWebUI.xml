@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SetBoxWebUI</name>
+    </assembly>
+    <members>
+        <member name="T:SetBoxWebUI.Controllers.SetBoxController">
+            <summary>
+            Api para controlar as SetBox
+            </summary>
+        </member>
+        <member name="M:SetBoxWebUI.Controllers.SetBoxController.#ctor(Microsoft.Extensions.Logging.ILogger{SetBoxWebUI.Controllers.SetBoxController},Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            SetBoxController
+            </summary>
+        </member>
+        <member name="M:SetBoxWebUI.Controllers.SetBoxController.Login(System.String,System.String)">
+            <summary>
+            DeviceLogin
+            </summary>
+            <param name="identifier">Device Id</param>
+            <param name="license">License</param>
+            <returns>SessionID</returns>
+        </member>
+        <member name="M:SetBoxWebUI.Controllers.SetBoxController.ValidSession(System.String)">
+            <summary>
+            Verifica se a session está valida
+            </summary>
+            <param name="session">returno do DeviceLogin</param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Controllers.SetBoxController.ListFilesCheckSum(System.String)">
+            <summary>
+            Listar os arquivos 
+            </summary>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SetBoxWebUI.Helpers.CriptoHelpers">
+            <summary>
+            Cripto
+            </summary>
+        </member>
+        <member name="M:SetBoxWebUI.Helpers.CriptoHelpers.Base64Encode(System.String)">
+            <summary>
+            Method using to Encode
+            </summary>
+            <param name="plainText"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Helpers.CriptoHelpers.Base64Decode(System.String)">
+            <summary>
+            Method using to Decode
+            </summary>
+            <param name="base64EncodedData"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SetBoxWebUI.Models.FileCheckSum">
+            <summary>
+            Files
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.FileCheckSum.Nome">
+            <summary>
+            Nome do Arquivo
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.FileCheckSum.Extensao">
+            <summary>
+            Tipo do Arquivo
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.FileCheckSum.Tamanho">
+            <summary>
+            Tamanho
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.FileCheckSum.Url">
+            <summary>
+            Url para download do arquivo
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.FileCheckSum.CheckSum">
+            <summary>
+            CheckSum para verificar se foi modificado o arquivo.
+            </summary>
+        </member>
+    </members>
+</doc>
