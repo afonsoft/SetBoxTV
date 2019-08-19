@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using VideoPlayerProima.Model;
 
 namespace VideoPlayerProima.API
 {
@@ -27,6 +29,12 @@ namespace VideoPlayerProima.API
             rest.AddParameter("identifier", deviceIdentifier);
             rest.AddParameter("license", license);
             session = rest.HttpGet("/Login");
+        }
+
+        public Task<IEnumerable<FileCheckSum>> GetFilesCheckSums()
+        {
+            rest.AddParameter("session", session);
+            return rest.HttpGetAsync<IEnumerable<FileCheckSum>>("/ListFilesCheckSum");
         }
     }
 }

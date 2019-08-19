@@ -8,6 +8,7 @@ namespace VideoPlayerProima.Model
     {
         public string Path { get; set; }
         public EnumFileType FileType { get; set; }
+        public string CheckSum { get; set; }
     }
 
     public enum EnumFileType

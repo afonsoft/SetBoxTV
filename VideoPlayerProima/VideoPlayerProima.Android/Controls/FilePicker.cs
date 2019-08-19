@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using VideoPlayerProima.Interface;
 using System.Linq;
 using VideoPlayerProima.Model;
+using VideoPlayerProima.Helpers;
 
 [assembly: Dependency(typeof(VideoPlayerProima.Droid.Controls.FilePicker))]
 
@@ -23,8 +24,14 @@ namespace VideoPlayerProima.Droid.Controls
             {
                 return Directory
                     .EnumerateFiles(searchPath, "*.*", SearchOption.AllDirectories)
+                    .AsParallel()
                     .Where(s => searchExt.Any(s.EndsWith))
-                    .Select(f => new FileDetails {FileType = type, Path = f});
+                    .Select(f => new FileDetails
+                    {
+                        FileType = type,
+                        Path = f,
+                        CheckSum = CheckSumHelpers.CalculateMD5(f)
+                    });
             }
 
             throw new DirectoryNotFoundException(searchPath);

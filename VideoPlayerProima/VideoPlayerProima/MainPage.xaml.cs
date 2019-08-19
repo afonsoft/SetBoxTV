@@ -79,6 +79,10 @@ namespace VideoPlayerProima
                 try
                 {
                     var api = new API.SetBoxAPI(deviceIdentifier, license, PlayerSettings.Url);
+                    var itens = await api.GetFilesCheckSums();
+
+                    log?.Info($"Total de arquivos no servidor: {itens.Count()}");
+
                 }
                 catch (Exception ex)
                 {

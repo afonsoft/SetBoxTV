@@ -47,6 +47,9 @@
     <AndroidLinkTool>proguard</AndroidLinkTool>
     <AndroidSupportedAbis>
     </AndroidSupportedAbis>
+	<UseShortFileNames>True</UseShortFileNames>
+	<IntermediateOutputPath>C:\Xamarin\Droid\SetBox\obj\Debug</IntermediateOutputPath>
+	<OutputPath>C:\Xamarin\Droid\SetBox\bin\Debug</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -67,6 +70,9 @@
     <AndroidDexTool>dx</AndroidDexTool>
     <AndroidLinkTool>proguard</AndroidLinkTool>
     <MandroidI18n>CJK;Mideast;Rare;West;Other</MandroidI18n>
+	<UseShortFileNames>True</UseShortFileNames>
+	<IntermediateOutputPath>C:\Xamarin\Droid\SetBox\obj\Release</IntermediateOutputPath>
+	<OutputPath>C:\Xamarin\Droid\SetBox\bin\Release</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Java.Interop" />

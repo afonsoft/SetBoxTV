@@ -9,8 +9,19 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
+    <UseShortFileNames>True</UseShortFileNames>
+    <IntermediateOutputPath>C:\Xamarin\SetBox\obj\Debug</IntermediateOutputPath>
+    <OutputPath>C:\Xamarin\SetBox\bin\Debug</OutputPath>
+    <DocumentationFile>C:\Xamarin\SetBox\bin\Debug\VideoPlayerProima.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <UseShortFileNames>True</UseShortFileNames>
+    <IntermediateOutputPath>C:\Xamarin\SetBox\obj\Release</IntermediateOutputPath>
+    <OutputPath>C:\Xamarin\SetBox\bin\Release</OutputPath>
+    <DocumentationFile>C:\Xamarin\SetBox\bin\Release\VideoPlayerProima.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
