@@ -22,6 +22,7 @@ namespace SetBoxWebUI
             .UseKestrel()
             .UseContentRoot(Directory.GetCurrentDirectory())
             .UseIISIntegration()
+            .UseIIS()
             .UseStartup<Startup>();
     }
 }
