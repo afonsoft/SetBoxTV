@@ -42,13 +42,14 @@ namespace VideoPlayerProima
 
 
             string license = PlayerSettings.License;
+            string deviceIdentifier = "";
             bool isLicensed = false;
 
             if (!string.IsNullOrEmpty(license))
             {
 
                 IDevicePicker device = DependencyService.Get<IDevicePicker>();
-                string deviceIdentifier = device.GetIdentifier();
+                deviceIdentifier = device.GetIdentifier();
                 
                 log?.Info($"deviceIdentifier: {deviceIdentifier}");
                 log?.Info($"deviceIdentifier64: {CriptoHelpers.Base64Encode(deviceIdentifier)}");
@@ -70,7 +71,20 @@ namespace VideoPlayerProima
             }
             else
             {
+
                 log?.Info("Licença: Válida");
+
+
+                log?.Info("Atualizar as informações pelo Serivdor");
+                try
+                {
+                    var api = new API.SetBoxAPI(deviceIdentifier, license, PlayerSettings.Url);
+                }
+                catch (Exception ex)
+                {
+                    log?.Error("Erro para Atualizar", ex);
+                }
+
                 IFilePicker filePicker = DependencyService.Get<IFilePicker>();
 
                 if (PlayerSettings.ShowVideo)

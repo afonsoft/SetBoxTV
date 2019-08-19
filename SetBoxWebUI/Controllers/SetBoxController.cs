@@ -30,6 +30,7 @@ namespace SetBoxWebUI.Controllers
         {
             _logger = logger;
             _environment = environment;
+            //https://exceptionnotfound.net/asp-net-core-demystified-action-results/
         }
         /// <summary>
         /// DeviceLogin
@@ -57,12 +58,12 @@ namespace SetBoxWebUI.Controllers
         /// <returns></returns>
         [HttpGet("ValidSession")]
         [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(bool), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(bool), StatusCodes.Status401Unauthorized)]
         public ActionResult<bool> ValidSession(string session)
         {
             if (ValidaSession(session))
                 return Ok(true);
-            return BadRequest(false);
+            return Unauthorized(false);
         }
 
         /// <summary>
@@ -72,6 +73,7 @@ namespace SetBoxWebUI.Controllers
         /// <returns></returns>
         [HttpGet("ListFilesCheckSum")]
         [ProducesResponseType(typeof(IEnumerable<FileCheckSum>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(bool), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
 
         public ActionResult<IEnumerable<FileCheckSum>> ListFilesCheckSum(string session)
@@ -79,7 +81,7 @@ namespace SetBoxWebUI.Controllers
             try
             {
                 if (!ValidaSession(session))
-                    return BadRequest("Session is invalid!");
+                    return Unauthorized("Session is invalid!");
 
                 DirectoryInfo di = new DirectoryInfo(Path.Combine(_environment.WebRootPath, "UploadedFiles"));
 
@@ -99,6 +101,7 @@ namespace SetBoxWebUI.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 return BadRequest(ex.Message);
             }
         }
