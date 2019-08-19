@@ -84,7 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Afonsoft.Http">
-      <Version>2019.8.18</Version>
+      <Version>2019.8.19</Version>
     </PackageReference>
     <PackageReference Include="FFmpeg.Nightly">
       <Version>20190805.0.0</Version>

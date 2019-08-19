@@ -39,8 +39,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Afonsoft.Http, Version=2019.8.18.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Afonsoft.Http.2019.8.18\lib\net47\Afonsoft.Http.dll</HintPath>
+    <Reference Include="Afonsoft.Http, Version=2019.8.19.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Afonsoft.Http.2019.8.19\lib\net47\Afonsoft.Http.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.4.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>

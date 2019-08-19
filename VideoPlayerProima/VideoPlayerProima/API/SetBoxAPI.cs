@@ -6,6 +6,15 @@ using VideoPlayerProima.Model;
 
 namespace VideoPlayerProima.API
 {
+    internal static class WithExtensions
+    {
+        internal static T With<T>(this T self, Action<T> @do)
+        {
+            @do(self);
+            return self;
+        }
+    }
+
     /// <summary>
     /// API
     /// </summary>
@@ -35,9 +44,7 @@ namespace VideoPlayerProima.API
 
         private void GetSessionLogin()
         {
-            rest.AddParameter("identifier", deviceIdentifier);
-            rest.AddParameter("license", license);
-            session = rest.HttpGet("/Login");
+            session = rest.HttpGet("/Login", Afonsoft.Http.Parameters.With("identifier", deviceIdentifier).And("license", license));
         }
 
         /// <summary>
@@ -46,8 +53,7 @@ namespace VideoPlayerProima.API
         /// <returns></returns>
         public Task<IEnumerable<FileCheckSum>> GetFilesCheckSums()
         {
-            rest.AddParameter("session", session);
-            return rest.HttpGetAsync<IEnumerable<FileCheckSum>>("/ListFilesCheckSum");
+            return rest.HttpGetAsync<IEnumerable<FileCheckSum>>("/ListFilesCheckSum", Afonsoft.Http.Parameters.With("session", session));
         }
     }
 }
