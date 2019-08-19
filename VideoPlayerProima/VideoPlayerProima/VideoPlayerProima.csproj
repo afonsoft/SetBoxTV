@@ -5,27 +5,28 @@
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>proima.pfx</AssemblyOriginatorKeyFile>
     <Version>2.0.0</Version>
-    <NeutralLanguage>pt-BR</NeutralLanguage>
+    <NeutralLanguage></NeutralLanguage>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <UseShortFileNames>True</UseShortFileNames>
-    <IntermediateOutputPath>C:\Xamarin\SetBox\obj\Debug</IntermediateOutputPath>
-    <OutputPath>C:\Xamarin\SetBox\bin\Debug</OutputPath>
-    <DocumentationFile>C:\Xamarin\SetBox\bin\Debug\VideoPlayerProima.xml</DocumentationFile>
+    <IntermediateOutputPath>C:\Xamarin\SetBox-VideoPlayer\VideoPlayerProima\VideoPlayerProima\obj\Debug</IntermediateOutputPath>
+    <OutputPath>C:\Xamarin\SetBox-VideoPlayer\VideoPlayerProima\VideoPlayerProima\bin\Debug</OutputPath>
+    <DocumentationFile>C:\Xamarin\SetBox-VideoPlayer\VideoPlayerProima\VideoPlayerProima\bin\Debug\VideoPlayerProima.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <UseShortFileNames>True</UseShortFileNames>
-    <IntermediateOutputPath>C:\Xamarin\SetBox\obj\Release</IntermediateOutputPath>
-    <OutputPath>C:\Xamarin\SetBox\bin\Release</OutputPath>
-    <DocumentationFile>C:\Xamarin\SetBox\bin\Release\VideoPlayerProima.xml</DocumentationFile>
+    <IntermediateOutputPath>C:\Xamarin\SetBox-VideoPlayer\VideoPlayerProima\VideoPlayerProima\obj\Release</IntermediateOutputPath>
+    <OutputPath>C:\Xamarin\SetBox-VideoPlayer\VideoPlayerProima\VideoPlayerProima\bin\Release</OutputPath>
+    <DocumentationFile>C:\Xamarin\SetBox-VideoPlayer\VideoPlayerProima\VideoPlayerProima\bin\Release\VideoPlayerProima.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Afonsoft.Http" Version="2019.5.8" />
+    <PackageReference Include="Afonsoft.Http" Version="2019.8.18" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
     <PackageReference Include="Rollbar" Version="3.3.0" />
     <PackageReference Include="System.Memory" Version="4.5.3" />

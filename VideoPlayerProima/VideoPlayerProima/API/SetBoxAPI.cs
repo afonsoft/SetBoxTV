@@ -6,6 +6,9 @@ using VideoPlayerProima.Model;
 
 namespace VideoPlayerProima.API
 {
+    /// <summary>
+    /// API
+    /// </summary>
     public class SetBoxAPI
     {
         private readonly string deviceIdentifier;
@@ -15,6 +18,12 @@ namespace VideoPlayerProima.API
 
         private string session;
 
+        /// <summary>
+        /// Contrutor
+        /// </summary>
+        /// <param name="identifier"></param>
+        /// <param name="license"></param>
+        /// <param name="endPoint"></param>
         public SetBoxAPI(string identifier, string license, string endPoint)
         {
             deviceIdentifier = identifier;
@@ -31,6 +40,10 @@ namespace VideoPlayerProima.API
             session = rest.HttpGet("/Login");
         }
 
+        /// <summary>
+        /// GetFilesCheckSums
+        /// </summary>
+        /// <returns></returns>
         public Task<IEnumerable<FileCheckSum>> GetFilesCheckSums()
         {
             rest.AddParameter("session", session);
