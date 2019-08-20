@@ -19,10 +19,11 @@ namespace SetBoxWebUI
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .UseKestrel()
+            .CaptureStartupErrors(true)
+            //.UseKestrel()
+            .UseIIS()
             .UseContentRoot(Directory.GetCurrentDirectory())
             .UseIISIntegration()
-            //.UseIIS()
             .UseStartup<Startup>();
     }
 }

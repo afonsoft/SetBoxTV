@@ -42,13 +42,22 @@ namespace SetBoxWebUI.Controllers
         [HttpGet("Login")]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(bool), StatusCodes.Status401Unauthorized)]
         public ActionResult<string> Login(string identifier, string license)
         {
             _logger.LogInformation($"identifier:{identifier} | license:{license}");
-            string deviceIdentifier64 = CriptoHelpers.Base64Encode(identifier);
-            if (license == deviceIdentifier64 || license == "1111")
-                return Ok(CriptoHelpers.Base64Encode($"{identifier}|{license}|{DateTime.Now.AddMinutes(30):yyyyMMddHHmmss}"));
-            return BadRequest("Unauthorized");
+            try
+            {
+                string deviceIdentifier64 = CriptoHelpers.Base64Encode(identifier);
+                if (license == deviceIdentifier64 || license == "1111")
+                    return Ok(CriptoHelpers.Base64Encode($"{identifier}|{license}|{DateTime.Now.AddMinutes(30):yyyyMMddHHmmss}"));
+                return Unauthorized($"Unauthorized Device {identifier} or license {license} is invalid!");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro no Login", identifier, license);
+                return BadRequest("identifier or license is null!");
+            }
         }
 
         /// <summary>
@@ -123,7 +132,7 @@ namespace SetBoxWebUI.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogInformation($"Erro na validação da session: {session} : {ex.Message}");
+                _logger.LogError(ex, $"Erro na validação da session: {session} : {ex.Message}");
                 return false;
             }
         }
