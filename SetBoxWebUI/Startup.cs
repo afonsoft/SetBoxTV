@@ -14,6 +14,8 @@ using Afonsoft.EFCore;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Reflection;
 using System.IO;
+using Microsoft.AspNetCore.ResponseCompression;
+using System.IO.Compression;
 
 namespace SetBoxWebUI
 {
@@ -42,7 +44,7 @@ namespace SetBoxWebUI
             });
             services.Configure<IISOptions>(o =>
             {
-                o.ForwardClientCertificate = false;
+                o.ForwardClientCertificate = true;
             });
             services.AddAfonsoftLogging(o =>
             {
@@ -54,6 +56,17 @@ namespace SetBoxWebUI
             //services.AddAfonsoftRepository();
 
             services.AddMemoryCache();
+            services.AddHealthChecks();
+
+            services.AddResponseCompression(options =>
+            {
+                options.Providers.Add<BrotliCompressionProvider>();
+            });
+
+            services.Configure<BrotliCompressionProviderOptions>(options =>
+            {
+                options.Level = CompressionLevel.Fastest;
+            });
 
             services.AddCors(options =>
             {
@@ -99,6 +112,8 @@ namespace SetBoxWebUI
             app.UseDeveloperExceptionPage();
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
+
+            app.UseHealthChecks("/health");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
