@@ -16,6 +16,8 @@ using System.Reflection;
 using System.IO;
 using Microsoft.AspNetCore.ResponseCompression;
 using System.IO.Compression;
+using Rollbar.NetCore.AspNet;
+using Rollbar;
 
 namespace SetBoxWebUI
 {
@@ -53,6 +55,11 @@ namespace SetBoxWebUI
                 o.LogLevel = Microsoft.Extensions.Logging.LogLevel.Trace;
             });
 
+            RollbarLocator.RollbarInstance.Configure(new RollbarConfig("5376a1d6d1504a068c6f633ae5cd4236"));
+
+            services.AddRollbarMiddleware();
+            services.AddRollbarLogger();
+
             //services.AddAfonsoftRepository();
 
             services.AddMemoryCache();
@@ -78,7 +85,7 @@ namespace SetBoxWebUI
             });
 
             services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_0)
                 .AddJsonOptions(
                 options =>
                 {
