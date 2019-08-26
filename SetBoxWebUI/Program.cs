@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IO;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 
 namespace SetBoxWebUI
 {
@@ -21,7 +15,7 @@ namespace SetBoxWebUI
             WebHost.CreateDefaultBuilder(args)
             .CaptureStartupErrors(true)
             .UseKestrel()
-            .UseIIS()
+            //.UseIIS()
             .UseContentRoot(Directory.GetCurrentDirectory())
             .UseIISIntegration()
             .UseStartup<Startup>();

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -18,9 +18,9 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Afonsoft.EFCore" Version="2019.8.16" />
-    <PackageReference Include="Afonsoft.Extensions" Version="2019.8.26" />
-    <PackageReference Include="Afonsoft.Logger" Version="2019.8.26" />
+    <!--<PackageReference Include="Afonsoft.EFCore" Version="2019.8.16" />-->
+    <!--<PackageReference Include="Afonsoft.Extensions" Version="2019.8.26" />
+    <PackageReference Include="Afonsoft.Logger" Version="2019.8.26" />-->
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Rollbar" Version="3.5.0" />
     <PackageReference Include="Rollbar.NetCore.AspNet" Version="3.5.0" />

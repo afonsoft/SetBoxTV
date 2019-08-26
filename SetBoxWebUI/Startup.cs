@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Afonsoft.Logger;
-using Afonsoft.EFCore;
 using Swashbuckle.AspNetCore.Swagger;
-using System.Reflection;
-using System.IO;
 using Microsoft.AspNetCore.ResponseCompression;
 using System.IO.Compression;
 using Rollbar.NetCore.AspNet;
@@ -40,20 +31,20 @@ namespace SetBoxWebUI
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.Configure<IISServerOptions>(options =>
-            {
-                options.AutomaticAuthentication = true;
-            });
+            //services.Configure<IISServerOptions>(options =>
+            //{
+            //    options.AutomaticAuthentication = true;
+            //});
             services.Configure<IISOptions>(o =>
             {
                 o.ForwardClientCertificate = true;
             });
-            services.AddAfonsoftLogging(o =>
-            {
-                o.IsEnabled = true;
-                o.Periodicity = Afonsoft.Logger.Rolling.PeriodicityOptions.Daily;
-                o.LogLevel = Microsoft.Extensions.Logging.LogLevel.Trace;
-            });
+            //services.AddAfonsoftLogging(o =>
+            //{
+            //    o.IsEnabled = true;
+            //    o.Periodicity = Afonsoft.Logger.Rolling.PeriodicityOptions.Daily;
+            //    o.LogLevel = Microsoft.Extensions.Logging.LogLevel.Trace;
+            //});
 
             RollbarLocator.RollbarInstance.Configure(new RollbarConfig("5376a1d6d1504a068c6f633ae5cd4236"));
 
@@ -63,17 +54,17 @@ namespace SetBoxWebUI
             //services.AddAfonsoftRepository();
 
             services.AddMemoryCache();
-            services.AddHealthChecks();
+            //services.AddHealthChecks();
 
-            services.AddResponseCompression(options =>
-            {
-                options.Providers.Add<BrotliCompressionProvider>();
-            });
+            //services.AddResponseCompression(options =>
+            //{
+            //    options.Providers.Add<BrotliCompressionProvider>();
+            //});
 
-            services.Configure<BrotliCompressionProviderOptions>(options =>
-            {
-                options.Level = CompressionLevel.Fastest;
-            });
+            //services.Configure<BrotliCompressionProviderOptions>(options =>
+            //{
+            //    options.Level = CompressionLevel.Fastest;
+            //});
 
             services.AddCors(options =>
             {
@@ -121,7 +112,7 @@ namespace SetBoxWebUI
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
 
-            app.UseHealthChecks("/health");
+            //app.UseHealthChecks("/health");
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

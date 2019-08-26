@@ -68,6 +68,11 @@ namespace SetBoxWebUI.Controllers
             }
         }
 
+        private ActionResult<Response<T>> Unauthorized<T>(Response<T> r)
+        {
+            return Unauthorized();
+        }
+
         /// <summary>
         /// Verifica se a session está valida
         /// </summary>
