@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.ResponseCompression;
 using System.IO.Compression;
 using Rollbar.NetCore.AspNet;
 using Rollbar;
+using System;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 
 namespace SetBoxWebUI
 {
@@ -75,6 +78,24 @@ namespace SetBoxWebUI
                         .AllowCredentials());
             });
 
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
+                options.Cookie.HttpOnly = true;
+                // Make the session cookie essential
+                options.Cookie.IsEssential = true;
+            });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
+                    options =>
+                    {
+                        options.LoginPath = new PathString("/auth/login");
+                        options.AccessDeniedPath = new PathString("/auth/denied");
+                    });
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddJsonOptions(
@@ -117,7 +138,8 @@ namespace SetBoxWebUI
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            app.UseSession();
+            //app.UseHttpContextItemsMiddleware();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
