@@ -85,5 +85,31 @@
             CheckSum para verificar se foi modificado o arquivo.
             </summary>
         </member>
+        <member name="T:SetBoxWebUI.Models.Response`1">
+            <summary>
+            Respose
+            </summary>
+            <typeparam name="T">Tipo do Retorno</typeparam>
+        </member>
+        <member name="P:SetBoxWebUI.Models.Response`1.Result">
+            <summary>
+            objeto de retorno
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.Response`1.Message">
+            <summary>
+            Mensagem de erro
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.Response`1.SessionExpired">
+            <summary>
+            Sessão invalida ou expirada
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.Response`1.Status">
+            <summary>
+            Teve erro?
+            </summary>
+        </member>
     </members>
 </doc>

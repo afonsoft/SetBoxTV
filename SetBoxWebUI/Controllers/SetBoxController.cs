@@ -40,23 +40,31 @@ namespace SetBoxWebUI.Controllers
         /// <returns>SessionID</returns>
         [HttpPost("Login")]
         [HttpGet("Login")]
-        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(bool), StatusCodes.Status401Unauthorized)]
-        public ActionResult<string> Login(string identifier, string license)
+        [ProducesResponseType(typeof(Response<string>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Response<string>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Response<string>), StatusCodes.Status401Unauthorized)]
+        public ActionResult<Response<string>> Login(string identifier, string license)
         {
             _logger.LogInformation($"identifier:{identifier} | license:{license}");
+            var r = new Models.Response<string>();
             try
             {
                 string deviceIdentifier64 = CriptoHelpers.Base64Encode(identifier);
-                if (license == deviceIdentifier64 || license == "1111")
-                    return Ok(CriptoHelpers.Base64Encode($"{identifier}|{license}|{DateTime.Now.AddMinutes(30):yyyyMMddHHmmss}"));
-                return Unauthorized($"Unauthorized Device {identifier} or license {license} is invalid!");
+                if (license == deviceIdentifier64 || license == "1111") {
+                    r.Result = CriptoHelpers.Base64Encode($"{identifier}|{license}|{DateTime.Now.AddMinutes(30):yyyyMMddHHmmss}");
+                    return Ok(r);
+                }
+                r.Message = $"Unauthorized Device {identifier} or license {license} is invalid!";
+                r.Status = false;
+
+                return Unauthorized(r);
             }
             catch (Exception ex)
             {
+                r.Status= false;
+                r.Message = "identifier or license is null!";
                 _logger.LogError(ex, "Erro no Login", identifier, license);
-                return BadRequest("identifier or license is null!");
+                return BadRequest(r);
             }
         }
 
@@ -66,13 +74,19 @@ namespace SetBoxWebUI.Controllers
         /// <param name="session">returno do DeviceLogin</param>
         /// <returns></returns>
         [HttpGet("ValidSession")]
-        [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(bool), StatusCodes.Status401Unauthorized)]
-        public ActionResult<bool> ValidSession(string session)
+        [ProducesResponseType(typeof(Response<bool>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Response<bool>), StatusCodes.Status401Unauthorized)]
+        public ActionResult<Response<bool>> ValidSession(string session)
         {
+            var r = new Response<bool>();
             if (ValidaSession(session))
-                return Ok(true);
-            return Unauthorized(false);
+            {
+                r.Result = true;
+                return Ok(r);
+            }
+            r.Result = false;
+            r.SessionExpired = true;
+            return Unauthorized(r);
         }
 
         /// <summary>
@@ -81,17 +95,21 @@ namespace SetBoxWebUI.Controllers
         /// <param name="session"></param>
         /// <returns></returns>
         [HttpGet("ListFilesCheckSum")]
-        [ProducesResponseType(typeof(IEnumerable<FileCheckSum>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(bool), StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Response<IEnumerable<FileCheckSum>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Response<IEnumerable<FileCheckSum>>), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(Response<IEnumerable<FileCheckSum>>), StatusCodes.Status400BadRequest)]
 
-        public ActionResult<IEnumerable<FileCheckSum>> ListFilesCheckSum(string session)
+        public ActionResult<Response<IEnumerable<FileCheckSum>>> ListFilesCheckSum(string session)
         {
+            var r = new Response<IEnumerable<FileCheckSum>>();
             try
             {
                 if (!ValidaSession(session))
-                    return Unauthorized("Session is invalid!");
-
+                {
+                    r.Message = "Session is invalid!";
+                    r.SessionExpired = true;
+                    return Unauthorized(r);
+                }
                 DirectoryInfo di = new DirectoryInfo(Path.Combine(_environment.WebRootPath, "UploadedFiles"));
 
                 var files = di.EnumerateFiles()
@@ -106,12 +124,15 @@ namespace SetBoxWebUI.Controllers
                     })
                     .ToArray();
 
-                return Ok(files);
+                r.Result = files;
+                return Ok(r);
             }
             catch (Exception ex)
             {
+                r.Status = false;
+                r.Message = ex.Message;
                 _logger.LogError(ex, ex.Message);
-                return BadRequest(ex.Message);
+                return BadRequest(r);
             }
         }
 
