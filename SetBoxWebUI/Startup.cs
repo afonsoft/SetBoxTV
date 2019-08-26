@@ -85,7 +85,7 @@ namespace SetBoxWebUI
             });
 
             services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_0)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddJsonOptions(
                 options =>
                 {
