@@ -96,6 +96,7 @@ namespace SetBoxWebUI
                         options.LoginPath = new PathString("/auth/login");
                         options.AccessDeniedPath = new PathString("/auth/denied");
                     });
+        
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddJsonOptions(
@@ -139,6 +140,7 @@ namespace SetBoxWebUI
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSession();
+            app.UseAuthentication();
             //app.UseHttpContextItemsMiddleware();
             app.UseMvc(routes =>
             {
