@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -70,7 +71,7 @@ namespace SetBoxWebUI.Controllers
 
         private ActionResult<Response<T>> Unauthorized<T>(Response<T> r)
         {
-            return Unauthorized();
+            return StatusCode(401, r);
         }
 
         /// <summary>
@@ -92,6 +93,33 @@ namespace SetBoxWebUI.Controllers
             r.Result = false;
             r.SessionExpired = true;
             return Unauthorized(r);
+        }
+
+        /// <summary>
+        /// Recuperar as configurações do SetBox
+        /// </summary>
+        /// <param name="session">returno do DeviceLogin</param>
+        /// <returns></returns>
+        [HttpGet("GetConfig")]
+        [ProducesResponseType(typeof(Response<SetBoxConfig>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Response<SetBoxConfig>), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(Response<SetBoxConfig>), StatusCodes.Status404NotFound)]
+        public ActionResult<Response<SetBoxConfig>> GetConfig(string session)
+        {
+            var r = new Response<SetBoxConfig>();
+
+            if (!ValidaSession(session))
+            {
+                r.Message = "Session is invalid!";
+                r.SessionExpired = true;
+                return Unauthorized(r);
+            }
+
+            //Recuperar as configurações especifica para o DeviceId
+            //return Ok(r);
+
+            r.Message = "Não localizado configuração especifica para esse Device";
+            return NotFound(r);
         }
 
         /// <summary>

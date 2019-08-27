@@ -36,20 +36,10 @@ namespace SetBoxWebUI
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            //services.Configure<IISServerOptions>(options =>
-            //{
-            //    options.AutomaticAuthentication = true;
-            //});
             services.Configure<IISOptions>(o =>
             {
                 o.ForwardClientCertificate = true;
             });
-            //services.AddAfonsoftLogging(o =>
-            //{
-            //    o.IsEnabled = true;
-            //    o.Periodicity = Afonsoft.Logger.Rolling.PeriodicityOptions.Daily;
-            //    o.LogLevel = Microsoft.Extensions.Logging.LogLevel.Trace;
-            //});
 
             RollbarLocator.RollbarInstance.Configure(new RollbarConfig("5376a1d6d1504a068c6f633ae5cd4236"));
 
@@ -59,17 +49,6 @@ namespace SetBoxWebUI
             //services.AddAfonsoftRepository();
 
             services.AddMemoryCache();
-            //services.AddHealthChecks();
-
-            //services.AddResponseCompression(options =>
-            //{
-            //    options.Providers.Add<BrotliCompressionProvider>();
-            //});
-
-            //services.Configure<BrotliCompressionProviderOptions>(options =>
-            //{
-            //    options.Level = CompressionLevel.Fastest;
-            //});
 
             services.AddCors(options =>
             {
@@ -143,14 +122,8 @@ namespace SetBoxWebUI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //app.UseExceptionHandler("/Home/Error");
             app.UseDeveloperExceptionPage();
-            //app.UseBrowserLink();
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
-
-            //app.UseHealthChecks("/health");
-
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

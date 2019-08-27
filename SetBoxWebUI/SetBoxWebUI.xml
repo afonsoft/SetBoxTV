@@ -29,6 +29,13 @@
             <param name="session">returno do DeviceLogin</param>
             <returns></returns>
         </member>
+        <member name="M:SetBoxWebUI.Controllers.SetBoxController.GetConfig(System.String)">
+            <summary>
+            Recuperar as configurações do SetBox
+            </summary>
+            <param name="session">returno do DeviceLogin</param>
+            <returns></returns>
+        </member>
         <member name="M:SetBoxWebUI.Controllers.SetBoxController.ListFilesCheckSum(System.String)">
             <summary>
             Listar os arquivos 
@@ -109,6 +116,41 @@
         <member name="P:SetBoxWebUI.Models.Response`1.Status">
             <summary>
             Teve erro?
+            </summary>
+        </member>
+        <member name="T:SetBoxWebUI.Models.SetBoxConfig">
+            <summary>
+            Configurações do SetBox
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.SetBoxConfig.EnableVideo">
+            <summary>
+            Ativar o Video
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.SetBoxConfig.EnablePhoto">
+            <summary>
+            Ativar o play de fotos
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.SetBoxConfig.EnableWebVideo">
+            <summary>
+            Ativar o WebVideo
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.SetBoxConfig.EnableWebImage">
+            <summary>
+            Ativar o WebPage
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.SetBoxConfig.EnableTransaction">
+            <summary>
+            Ativar as transações 
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.SetBoxConfig.TransactionTime">
+            <summary>
+            Tempo da transação
             </summary>
         </member>
     </members>
