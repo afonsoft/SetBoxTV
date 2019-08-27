@@ -12,6 +12,8 @@ using Rollbar;
 using System;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace SetBoxWebUI
 {
@@ -95,8 +97,21 @@ namespace SetBoxWebUI
                     {
                         options.LoginPath = new PathString("/auth/login");
                         options.AccessDeniedPath = new PathString("/auth/denied");
-                    });
-        
+                    })
+                 .AddJwtBearer(options => {
+                     options.Audience = "https://setbox.afonsoft.com.br/";
+                     options.Authority = "https://setbox.afonsoft.com.br/";
+                     options.RequireHttpsMetadata = false;
+                     options.SaveToken = true;
+                     options.TokenValidationParameters = new TokenValidationParameters
+                     {
+                         ValidateIssuerSigningKey = true,
+                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("Senha#2019")),
+                         ValidateIssuer = true,
+                         ValidateAudience = true
+                     };
+                 });
+
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddJsonOptions(
