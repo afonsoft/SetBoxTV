@@ -23,6 +23,7 @@
     <PackageReference Include="Afonsoft.EFCore" Version="2019.8.28" />
     <PackageReference Include="Afonsoft.Extensions" Version="2019.8.26" />
     <PackageReference Include="Afonsoft.Logger" Version="2019.8.26" />
+    <PackageReference Include="BundlerMinifier.Core" Version="2.9.406" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />

@@ -11,12 +11,12 @@ namespace SetBoxWebUI.Models
         public int Id { get; set; }
 
         [Display(Name = "E-Mail")]
-        [Required(ErrorMessage = "Informe o e-mail", AllowEmptyStrings = false)]
+        [Required(ErrorMessage = "*", AllowEmptyStrings = false)]
         [EmailAddress]
         public string Username { get; set; }
 
         [Display(Name = "Senha")]
-        [Required(ErrorMessage = "Informe a senha do usuário", AllowEmptyStrings = false)]
+        [Required(ErrorMessage = "*", AllowEmptyStrings = false)]
         [DataType(System.ComponentModel.DataAnnotations.DataType.Password)]
         public string Password { get; set; }
 

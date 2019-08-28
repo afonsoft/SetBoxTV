@@ -20,13 +20,15 @@ namespace SetBoxWebUI.Controllers
     public class AuthController : BaseController
     {
         private readonly ILogger<AuthController> _logger;
+        private readonly UserManager<ApplicationIdentityUser> _userManager;
         private readonly SignInManager<ApplicationIdentityUser> _signInManager;
         public const string SessionKeyId = "_UserId";
 
-        public AuthController(ILogger<AuthController> logger, SignInManager<ApplicationIdentityUser> signInManager)
+        public AuthController(ILogger<AuthController> logger, SignInManager<ApplicationIdentityUser> signInManager, UserManager<ApplicationIdentityUser> userManager)
         {
             _logger = logger;
             _signInManager = signInManager;
+            _userManager = userManager;
         }
 
         [AllowAnonymous]
@@ -56,7 +58,7 @@ namespace SetBoxWebUI.Controllers
             if (ModelState.IsValid) //verifica se é válido
             {
 
-                var result = await _signInManager.PasswordSignInAsync(u.Username, u.Password, true, true);
+                var result = await _signInManager.PasswordSignInAsync(u.Username, u.Password, u.RememberMe, true);
 
                 if (result.Succeeded)
                 {
@@ -67,7 +69,7 @@ namespace SetBoxWebUI.Controllers
                         IsPersistent = true,
                         ExpiresUtc = DateTime.UtcNow.AddMinutes(20)
                     };
-                    
+
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, User, authProperties);
 
                     if (!string.IsNullOrEmpty(u.ReturnUrl) && Url.IsLocalUrl(u.ReturnUrl))
@@ -81,7 +83,7 @@ namespace SetBoxWebUI.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("User", "Usuário ou Senha Inválidos!");
+                    ModelState.AddModelError("", "Usuário ou Senha Inválidos!");
                 }
             }
             return View(u);
