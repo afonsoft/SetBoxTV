@@ -5,12 +5,14 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Afonsoft.EFCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SetBoxWebUI.Helpers;
 using SetBoxWebUI.Models;
+using SetBoxWebUI.Repository;
 
 namespace SetBoxWebUI.Controllers
 {
@@ -24,13 +26,15 @@ namespace SetBoxWebUI.Controllers
 
         private readonly ILogger<SetBoxController> _logger;
         private readonly IHostingEnvironment _environment;
+        private readonly Repository<Device> _repository;
         /// <summary>
         /// SetBoxController
         /// </summary>
-        public SetBoxController(ILogger<SetBoxController> logger, IHostingEnvironment environment)
+        public SetBoxController(ILogger<SetBoxController> logger, IHostingEnvironment environment, SetBoxContext context)
         {
             _logger = logger;
             _environment = environment;
+            _repository = new Repository<Device>(context);
             //https://exceptionnotfound.net/asp-net-core-demystified-action-results/
         }
         /// <summary>
@@ -52,6 +56,8 @@ namespace SetBoxWebUI.Controllers
             {
                 string deviceIdentifier64 = CriptoHelpers.Base64Encode(identifier);
                 if (license == deviceIdentifier64 || license == "1111") {
+
+                    //TODO: Gravar o Device no SQL
                     r.Result = CriptoHelpers.Base64Encode($"{identifier}|{license}|{DateTime.Now.AddMinutes(30):yyyyMMddHHmmss}");
                     return Ok(r);
                 }
@@ -189,6 +195,13 @@ namespace SetBoxWebUI.Controllers
                 _logger.LogError(ex, $"Erro na validação da session: {session} : {ex.Message}");
                 return false;
             }
+        }
+
+        private string GetDeviceIdFromSession(string session)
+        {
+            if (!ValidaSession(session))
+                throw new ArgumentOutOfRangeException(nameof(session), "Session is invalid!");
+            return CriptoHelpers.Base64Decode(session).Split("|")[0];
         }
     }
 }

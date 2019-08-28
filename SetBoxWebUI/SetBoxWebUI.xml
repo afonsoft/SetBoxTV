@@ -9,7 +9,7 @@
             Api para controlar as SetBox
             </summary>
         </member>
-        <member name="M:SetBoxWebUI.Controllers.SetBoxController.#ctor(Microsoft.Extensions.Logging.ILogger{SetBoxWebUI.Controllers.SetBoxController},Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+        <member name="M:SetBoxWebUI.Controllers.SetBoxController.#ctor(Microsoft.Extensions.Logging.ILogger{SetBoxWebUI.Controllers.SetBoxController},Microsoft.AspNetCore.Hosting.IHostingEnvironment,SetBoxWebUI.Repository.SetBoxContext)">
             <summary>
             SetBoxController
             </summary>

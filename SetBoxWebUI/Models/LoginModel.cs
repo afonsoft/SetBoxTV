@@ -10,8 +10,9 @@ namespace SetBoxWebUI.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "Usuário")]
-        [Required(ErrorMessage = "Informe o nome do usuário", AllowEmptyStrings = false)]
+        [Display(Name = "E-Mail")]
+        [Required(ErrorMessage = "Informe o e-mail", AllowEmptyStrings = false)]
+        [EmailAddress]
         public string Username { get; set; }
 
         [Display(Name = "Senha")]

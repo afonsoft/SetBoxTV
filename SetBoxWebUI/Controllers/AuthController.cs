@@ -3,19 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Afonsoft.EFCore;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using SetBoxWebUI.Helpers;
 using SetBoxWebUI.Models;
+using SetBoxWebUI.Repository;
 
 namespace SetBoxWebUI.Controllers
 {
-    public class AuthController : Controller
+    public class AuthController : BaseController
     {
-
+        private readonly ILogger<AuthController> _logger;
+        private readonly SignInManager<ApplicationIdentityUser> _signInManager;
         public const string SessionKeyId = "_UserId";
+
+        public AuthController(ILogger<AuthController> logger, SignInManager<ApplicationIdentityUser> signInManager)
+        {
+            _logger = logger;
+            _signInManager = signInManager;
+        }
 
         [AllowAnonymous]
         public ActionResult Denied()
@@ -43,35 +55,33 @@ namespace SetBoxWebUI.Controllers
         {
             if (ModelState.IsValid) //verifica se é válido
             {
-                u.Id = 1;
-                HttpContext.Session.SetInt32(SessionKeyId, u.Id);
 
-                var claims = new List<Claim>()
+                var result = await _signInManager.PasswordSignInAsync(u.Username, u.Password, true, true);
+
+                if (result.Succeeded)
+                {
+
+                    var authProperties = new AuthenticationProperties
                     {
-                    new Claim(ClaimTypes.NameIdentifier, u.Id.ToString()),
-                    new Claim(ClaimTypes.Name, u.Username)
-                    //new Claim(ClaimTypes.GivenName, usuario.Login)
+                        AllowRefresh = true,
+                        IsPersistent = true,
+                        ExpiresUtc = DateTime.UtcNow.AddMinutes(20)
                     };
+                    
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, User, authProperties);
 
-                var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var principal = new ClaimsPrincipal(identity);
-                var authProperties = new AuthenticationProperties
-                {
-                    AllowRefresh = true,
-                    IsPersistent = true,
-                    ExpiresUtc = DateTime.UtcNow.AddMinutes(20)
-                };
-
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authProperties);
-
-
-                if (!string.IsNullOrEmpty(u.ReturnUrl) && Url.IsLocalUrl(u.ReturnUrl))
-                {
-                    return Redirect(u.ReturnUrl);
+                    if (!string.IsNullOrEmpty(u.ReturnUrl) && Url.IsLocalUrl(u.ReturnUrl))
+                    {
+                        return Redirect(u.ReturnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Home");
+                    ModelState.AddModelError("User", "Usuário ou Senha Inválidos!");
                 }
             }
             return View(u);
@@ -79,6 +89,7 @@ namespace SetBoxWebUI.Controllers
 
         public async Task<ActionResult> Logout()
         {
+            await _signInManager.SignOutAsync();
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return RedirectToAction("Login", "Auth");
         }

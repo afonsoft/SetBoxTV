@@ -14,6 +14,12 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using SetBoxWebUI.Repository;
+using Microsoft.EntityFrameworkCore;
+using Afonsoft.Logger;
+using Afonsoft.EFCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 
 namespace SetBoxWebUI
 {
@@ -42,11 +48,19 @@ namespace SetBoxWebUI
             });
 
             RollbarLocator.RollbarInstance.Configure(new RollbarConfig("5376a1d6d1504a068c6f633ae5cd4236"));
-
+            services.AddAfonsoftLogging();
             services.AddRollbarMiddleware();
             services.AddRollbarLogger();
 
-            //services.AddAfonsoftRepository();
+            //services.AddDbContext<SetBoxContext>(options => options.UseInMemoryDatabase("SetBoxContext"));
+            services.AddAfonsoftRepository<SetBoxContext>(o => o.Provider = EnumProvider.InMemory);
+
+            services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("ApplicationDbContext"));
+
+            services.AddIdentity<ApplicationIdentityUser, ApplicationIdentityRole>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                    // .AddDefaultUI(UIFramework.Bootstrap4)
+                    .AddDefaultTokenProviders();
 
             services.AddMemoryCache();
 
@@ -66,16 +80,26 @@ namespace SetBoxWebUI
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(20);
                 options.Cookie.HttpOnly = true;
-                // Make the session cookie essential
                 options.Cookie.IsEssential = true;
+            });
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+                options.LoginPath = new PathString("/Auth/Login");
+                options.AccessDeniedPath = new PathString("/Auth/Denied");
+                options.SlidingExpiration = true;
             });
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
                     options =>
                     {
-                        options.LoginPath = new PathString("/auth/login");
-                        options.AccessDeniedPath = new PathString("/auth/denied");
+                        options.LoginPath = new PathString("/Auth/Login");
+                        options.AccessDeniedPath = new PathString("/Auth/Denied");
+                        options.SlidingExpiration = true;
                     })
                  .AddJwtBearer(options => {
                      options.Audience = "https://setbox.afonsoft.com.br/";
@@ -91,8 +115,30 @@ namespace SetBoxWebUI
                      };
                  });
 
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // Password settings.
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 1;
+
+                // Lockout settings.
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 10;
+                options.Lockout.AllowedForNewUsers = true;
+
+                // User settings.
+                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+#";
+                options.User.RequireUniqueEmail = false;
+            });
+
+
             services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(
                 options =>
                 {
@@ -123,6 +169,7 @@ namespace SetBoxWebUI
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseDeveloperExceptionPage();
+            app.UseDatabaseErrorPage();
             app.UseHsts();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
