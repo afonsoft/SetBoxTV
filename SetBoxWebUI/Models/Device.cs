@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SetBoxWebUI.Models
 {
-    public class Device
+    public class Device 
     {
         public string DeviceIdentifier { get; set; }
         public string Platform { get; set; }
