@@ -14,7 +14,14 @@ namespace SetBoxWebUI.Repository
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            Database.Migrate();
+            try
+            {
+                Database.Migrate();
+            }
+            catch
+            {
+                //Ignore
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

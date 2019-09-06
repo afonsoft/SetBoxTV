@@ -1,32 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <PreserveCompilationContext>true</PreserveCompilationContext>
-     <OutputType>Exe</OutputType>
+    <OutputType>Exe</OutputType>
     <RuntimeFrameworkVersion>2.2.3</RuntimeFrameworkVersion>
     <RuntimeIdentifiers>win7-x64;win7-x86;win81-x64;win81-x86;win10-x64;win10-x86;win-x64;win-x86</RuntimeIdentifiers>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>C:\Xamarin\SetBox-VideoPlayer\SetBoxWebUI\SetBoxWebUI.xml</DocumentationFile>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Xamarin\SetBox-VideoPlayer\SetBoxWebUI\SetBoxWebUI.xml</DocumentationFile>
   </PropertyGroup>
-
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="appsettings.Release.json" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\UploadedFiles\psy_gangnam_style_360p.mp4" />
   </ItemGroup>
-
-
   <ItemGroup>
-  
     <PackageReference Include="Afonsoft.Extensions" Version="2019.8.26" />
     <PackageReference Include="Afonsoft.Logger" Version="2019.8.26" />
     <PackageReference Include="BundlerMinifier.Core" Version="2.9.406" />
@@ -42,7 +38,5 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="4.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="4.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
-  
   </ItemGroup>
-  
 </Project>
