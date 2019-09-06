@@ -5,21 +5,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
-using Microsoft.AspNetCore.ResponseCompression;
-using System.IO.Compression;
 using Rollbar.NetCore.AspNet;
 using Rollbar;
 using System;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using SetBoxWebUI.Repository;
 using Microsoft.EntityFrameworkCore;
 using Afonsoft.Logger;
-using Afonsoft.EFCore;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.Extensions.Logging;
+using SetBoxWebUI.Interfaces;
 
 namespace SetBoxWebUI
 {
@@ -47,22 +44,28 @@ namespace SetBoxWebUI
                 o.ForwardClientCertificate = true;
             });
 
-            RollbarLocator.RollbarInstance.Configure(new RollbarConfig("5376a1d6d1504a068c6f633ae5cd4236"));
+            ConfigureRollbarSingleton();
             services.AddAfonsoftLogging();
             services.AddRollbarMiddleware();
-            services.AddRollbarLogger();
+            services.AddRollbarLogger(loggerOptions =>
+            {
+                loggerOptions.Filter = (loggerName, loglevel) => loglevel >= LogLevel.Trace;
+            });
 
-            //services.AddDbContext<SetBoxContext>(options => options.UseInMemoryDatabase("SetBoxContext"));
-            services.AddAfonsoftRepository<SetBoxContext>(o => o.Provider = EnumProvider.InMemory);
+            services.AddMemoryCache();
+            services.AddDistributedMemoryCache();
+            services.AddEntityFrameworkSqlServer();
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("ApplicationDbContext"));
+            string connectionString = Configuration.GetConnectionString("Default"); 
+           
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
 
             services.AddIdentity<ApplicationIdentityUser, ApplicationIdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     // .AddDefaultUI(UIFramework.Bootstrap4)
                     .AddDefaultTokenProviders();
-
-            services.AddMemoryCache();
+          
 
             services.AddCors(options =>
             {
@@ -72,9 +75,6 @@ namespace SetBoxWebUI
                         .AllowAnyHeader()
                         .AllowCredentials());
             });
-
-
-            services.AddDistributedMemoryCache();
 
             services.AddSession(options =>
             {
@@ -109,7 +109,7 @@ namespace SetBoxWebUI
                      options.TokenValidationParameters = new TokenValidationParameters
                      {
                          ValidateIssuerSigningKey = true,
-                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("Senha#2019")),
+                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["JwtBearer:IssuerSigningKey"])),
                          ValidateIssuer = true,
                          ValidateAudience = true
                      };
@@ -191,6 +191,16 @@ namespace SetBoxWebUI
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "SetBox API");
+            });
+        }
+
+        private void ConfigureRollbarSingleton()
+        {
+            string rollbarAccessToken = Configuration["Rollbar:AccessToken"];
+            string rollbarEnvironment = Configuration["Rollbar:Environment"];
+            RollbarLocator.RollbarInstance.Configure(new RollbarConfig(rollbarAccessToken)
+            {
+                Environment = rollbarEnvironment
             });
         }
     }

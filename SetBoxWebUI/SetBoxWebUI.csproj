@@ -26,7 +26,7 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Afonsoft.EFCore" Version="2019.8.28" />
+  
     <PackageReference Include="Afonsoft.Extensions" Version="2019.8.26" />
     <PackageReference Include="Afonsoft.Logger" Version="2019.8.26" />
     <PackageReference Include="BundlerMinifier.Core" Version="2.9.406" />

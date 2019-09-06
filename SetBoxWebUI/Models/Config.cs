@@ -8,8 +8,9 @@ namespace SetBoxWebUI.Models
     /// <summary>
     /// Configurações do SetBox
     /// </summary>
-    public class SetBoxConfig
+    public class Config
     {
+        public Guid ConfigId { get; set; }
         /// <summary>
         /// Ativar o Video
         /// </summary>
@@ -39,5 +40,8 @@ namespace SetBoxWebUI.Models
         /// Tempo da transação
         /// </summary>
         public int TransactionTime { get; set; } = 0;
+
+        public DateTime CreationDateTime { get; set; }
+
     }
 }

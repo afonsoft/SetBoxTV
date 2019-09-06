@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
-using Afonsoft.EFCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SetBoxWebUI.Helpers;
+using SetBoxWebUI.Interfaces;
 using SetBoxWebUI.Models;
 using SetBoxWebUI.Repository;
 
@@ -26,17 +25,90 @@ namespace SetBoxWebUI.Controllers
 
         private readonly ILogger<SetBoxController> _logger;
         private readonly IHostingEnvironment _environment;
-        private readonly Repository<Device> _repository;
+        private readonly IRepository<Device> _repository;
         /// <summary>
         /// SetBoxController
         /// </summary>
-        public SetBoxController(ILogger<SetBoxController> logger, IHostingEnvironment environment, SetBoxContext context)
+        public SetBoxController(ILogger<SetBoxController> logger, IHostingEnvironment environment, ApplicationDbContext context)
         {
             _logger = logger;
             _environment = environment;
             _repository = new Repository<Device>(context);
-            //https://exceptionnotfound.net/asp-net-core-demystified-action-results/
         }
+
+        /// <summary>
+        /// Criar ou Atualizar as informações do SetBox
+        /// </summary>
+        /// <param name="deviceIdentifier"></param>
+        /// <param name="platform"></param>
+        /// <param name="version"></param>
+        /// <returns></returns>
+        [HttpPost("Update")]
+        [HttpGet("Update")]
+        [ProducesResponseType(typeof(Response<string>), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(Response<string>), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(Response<string>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<Response<string>>> Update(string deviceIdentifier, string platform, string version)
+        {
+            var r = new Models.Response<string>();
+            try
+            {
+                if (string.IsNullOrEmpty(deviceIdentifier))
+                    throw new ArgumentNullException(nameof(deviceIdentifier), "Device Identifier is invalid!");
+
+
+               var device = _repository.Get(x => x.DeviceIdentifier == deviceIdentifier).FirstOrDefault();
+
+                DeviceLogAccesses log = new DeviceLogAccesses();
+                log.CreationDateTime = DateTime.Now;
+                log.IpAcessed = HttpContext.GetClientIpAddress();
+                log.DeviceLogAccessesId = Guid.NewGuid();
+
+                if (device == null)
+                {
+                    device = new Device()
+                    {
+                        CreationDateTime = DateTime.Now,
+                        DeviceIdentifier = deviceIdentifier,
+                        Platform = platform,
+                        Version = version,
+                        DeviceId = Guid.NewGuid()
+                    };
+                    log.Message = "Created";
+                    device.LogAccesses = new List<DeviceLogAccesses>();
+                    device.LogAccesses.Add(log);
+                    await _repository.AddAsync(device);
+                    r.Status = true;
+                    r.Message = "Device successfully created.";
+                    return Created("", r);
+                }
+                else
+                {
+                    device.Platform = platform;
+
+                    if (device.Version != version)
+                    {
+                        device.Version = version;
+                        log.Message = "Updated";
+                        device.LogAccesses.Add(log);
+                        await _repository.UpdateAsync(device);
+                    }
+                   
+                    r.Status = true;
+                    r.Message = "Device updated successfully.";
+                    return Ok(r);
+                }
+            }
+            catch(Exception ex)
+            {
+                r.Status = false;
+                r.SessionExpired = false;
+                r.Message = ex.Message;
+                _logger.LogError(ex, "Erro no registro " + ex.Message);
+                return BadRequest(r);
+            }
+        }
+
         /// <summary>
         /// DeviceLogin
         /// </summary>
@@ -48,17 +120,47 @@ namespace SetBoxWebUI.Controllers
         [ProducesResponseType(typeof(Response<string>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Response<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(Response<string>), StatusCodes.Status401Unauthorized)]
-        public ActionResult<Response<string>> Login(string identifier, string license)
+        public async Task<ActionResult<Response<string>>> Login(string identifier, string license)
         {
             _logger.LogInformation($"identifier:{identifier} | license:{license}");
             var r = new Models.Response<string>();
             try
             {
                 string deviceIdentifier64 = CriptoHelpers.Base64Encode(identifier);
-                if (license == deviceIdentifier64 || license == "1111") {
+                if (license == deviceIdentifier64 || license == "1111")
+                {
 
-                    //TODO: Gravar o Device no SQL
-                    r.Result = CriptoHelpers.Base64Encode($"{identifier}|{license}|{DateTime.Now.AddMinutes(30):yyyyMMddHHmmss}");
+                    var device = _repository.Get(x => x.DeviceIdentifier == identifier).FirstOrDefault();
+                    if (device == null)
+                    {
+                        device = new Device()
+                        {
+                            CreationDateTime = DateTime.Now,
+                            DeviceIdentifier = identifier,
+                            Platform = "",
+                            Version = "",
+                            DeviceId = Guid.NewGuid()
+                        };
+                        device.LogAccesses = new List<DeviceLogAccesses>();
+                        device.LogAccesses.Add(new DeviceLogAccesses()
+                        {
+                            CreationDateTime = DateTime.Now,
+                            DeviceLogAccessesId = Guid.NewGuid(),
+                            IpAcessed = HttpContext.GetClientIpAddress(),
+                            Message = "Created"
+                        });
+                        await _repository.AddAsync(device);
+                    }
+
+                    device.LogAccesses.Add(new DeviceLogAccesses()
+                    {
+                        CreationDateTime = DateTime.Now,
+                        DeviceLogAccessesId = Guid.NewGuid(),
+                        IpAcessed = HttpContext.GetClientIpAddress(),
+                        Message = "Logged"
+                    });
+                    await _repository.UpdateAsync(device);
+                    r.Result = CriptoHelpers.Base64Encode($"{identifier}|{license}|{HttpContext.GetClientIpAddress()}|{DateTime.Now.AddMinutes(30):yyyyMMddHHmmss}");
                     return Ok(r);
                 }
                 r.Message = $"Unauthorized Device {identifier} or license {license} is invalid!";
@@ -68,9 +170,9 @@ namespace SetBoxWebUI.Controllers
             }
             catch (Exception ex)
             {
-                r.Status= false;
-                r.Message = "identifier or license is null!";
-                _logger.LogError(ex, "Erro no Login", identifier, license);
+                r.Status = false;
+                r.Message = ex.Message;
+                _logger.LogError(ex, ex.Message, identifier, license);
                 return BadRequest(r);
             }
         }
@@ -107,12 +209,12 @@ namespace SetBoxWebUI.Controllers
         /// <param name="session">returno do DeviceLogin</param>
         /// <returns></returns>
         [HttpGet("GetConfig")]
-        [ProducesResponseType(typeof(Response<SetBoxConfig>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Response<SetBoxConfig>), StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(typeof(Response<SetBoxConfig>), StatusCodes.Status404NotFound)]
-        public ActionResult<Response<SetBoxConfig>> GetConfig(string session)
+        [ProducesResponseType(typeof(Response<Config>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Response<Config>), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(Response<Config>), StatusCodes.Status404NotFound)]
+        public ActionResult<Response<Config>> GetConfig(string session)
         {
-            var r = new Response<SetBoxConfig>();
+            var r = new Response<Config>();
 
             if (!ValidaSession(session))
             {
@@ -182,11 +284,12 @@ namespace SetBoxWebUI.Controllers
             {
                 string[] sessions = CriptoHelpers.Base64Decode(session).Split("|");
                 string deviceIdentifier64 = CriptoHelpers.Base64Encode(sessions[0]);
+                string ip = sessions[2];
 
                 DateTime dt = DateTime.ParseExact(sessions[2], "yyyyMMddHHmmss", CultureInfo.InvariantCulture);
 
                 if (sessions[1] == deviceIdentifier64 || sessions[1] == "1111")
-                    if (dt >= DateTime.Now)
+                    if (dt >= DateTime.Now && ip == HttpContext.GetClientIpAddress())
                         return true;
                 return false;
             }
@@ -199,9 +302,16 @@ namespace SetBoxWebUI.Controllers
 
         private string GetDeviceIdFromSession(string session)
         {
-            if (!ValidaSession(session))
+            try
+            {
+                if (!ValidaSession(session))
+                    throw new ArgumentOutOfRangeException(nameof(session), "Session is invalid!");
+                return CriptoHelpers.Base64Decode(session).Split("|")[0];
+            }
+            catch (Exception)
+            {
                 throw new ArgumentOutOfRangeException(nameof(session), "Session is invalid!");
-            return CriptoHelpers.Base64Decode(session).Split("|")[0];
+            }
         }
     }
 }

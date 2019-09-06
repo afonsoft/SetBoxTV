@@ -9,10 +9,19 @@
             Api para controlar as SetBox
             </summary>
         </member>
-        <member name="M:SetBoxWebUI.Controllers.SetBoxController.#ctor(Microsoft.Extensions.Logging.ILogger{SetBoxWebUI.Controllers.SetBoxController},Microsoft.AspNetCore.Hosting.IHostingEnvironment,SetBoxWebUI.Repository.SetBoxContext)">
+        <member name="M:SetBoxWebUI.Controllers.SetBoxController.#ctor(Microsoft.Extensions.Logging.ILogger{SetBoxWebUI.Controllers.SetBoxController},Microsoft.AspNetCore.Hosting.IHostingEnvironment,SetBoxWebUI.Repository.ApplicationDbContext)">
             <summary>
             SetBoxController
             </summary>
+        </member>
+        <member name="M:SetBoxWebUI.Controllers.SetBoxController.Update(System.String,System.String,System.String)">
+            <summary>
+            Criar ou Atualizar as informações do SetBox
+            </summary>
+            <param name="deviceIdentifier"></param>
+            <param name="platform"></param>
+            <param name="version"></param>
+            <returns></returns>
         </member>
         <member name="M:SetBoxWebUI.Controllers.SetBoxController.Login(System.String,System.String)">
             <summary>
@@ -61,6 +70,41 @@
             </summary>
             <param name="base64EncodedData"></param>
             <returns></returns>
+        </member>
+        <member name="T:SetBoxWebUI.Models.Config">
+            <summary>
+            Configurações do SetBox
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.Config.EnableVideo">
+            <summary>
+            Ativar o Video
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.Config.EnablePhoto">
+            <summary>
+            Ativar o play de fotos
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.Config.EnableWebVideo">
+            <summary>
+            Ativar o WebVideo
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.Config.EnableWebImage">
+            <summary>
+            Ativar o WebPage
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.Config.EnableTransaction">
+            <summary>
+            Ativar as transações 
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.Config.TransactionTime">
+            <summary>
+            Tempo da transação
+            </summary>
         </member>
         <member name="T:SetBoxWebUI.Models.FileCheckSum">
             <summary>
@@ -118,40 +162,201 @@
             Teve erro?
             </summary>
         </member>
-        <member name="T:SetBoxWebUI.Models.SetBoxConfig">
+        <member name="T:SetBoxWebUI.Repository.Repository`1">
             <summary>
-            Configurações do SetBox
+            Base para um DbSet
+            </summary>
+            <typeparam name="TEntity">TEntity</typeparam>
+        </member>
+        <member name="P:SetBoxWebUI.Repository.Repository`1.Context">
+            <summary>
+            DbContext
             </summary>
         </member>
-        <member name="P:SetBoxWebUI.Models.SetBoxConfig.EnableVideo">
+        <member name="P:SetBoxWebUI.Repository.Repository`1.Table">
             <summary>
-            Ativar o Video
+            DbSet of the Table
             </summary>
         </member>
-        <member name="P:SetBoxWebUI.Models.SetBoxConfig.EnablePhoto">
+        <member name="P:SetBoxWebUI.Repository.Repository`1.PrimaryKeyName">
             <summary>
-            Ativar o play de fotos
+            Primary Key Name
             </summary>
         </member>
-        <member name="P:SetBoxWebUI.Models.SetBoxConfig.EnableWebVideo">
+        <member name="M:SetBoxWebUI.Repository.Repository`1.#ctor(SetBoxWebUI.Repository.ApplicationDbContext)">
             <summary>
-            Ativar o WebVideo
+            Construtor com o RepositoryDbContext
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.Add(`0)">
+            <summary>
+            Add Element
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Add Many Element
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.Get">
+            <summary>
+            Get All Element
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.GetById(System.Int32)">
+            <summary>
+            Get Element by primaryKey
+            </summary>
+            <param name="id">key</param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.Delete(`0)">
+            <summary>
+            Método que deleta um objeto no banco de dados. 
+            </summary>
+            <param name="entity">item que será deletado</param>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.DeleteById(System.Int32)">
+            <summary>
+            Método que deleta um objeto no banco de dados. 
+            </summary>
+            <param name="id">Id da primary key</param>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.DeleteRange(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary> 
+            Método que deleta um ou varios objetos no banco de dados, mediante uma expressão LINQ. 
+            </summary> 
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.DeleteRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Delete Elements
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.Update(`0)">
+            <summary>
+            Update Element
+            </summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.UpdateById(`0,System.Int32)">
+            <summary>
+            Update Element By primaryKey
+            </summary>
+            <param name="entity">Element</param>
+            <param name="id">primaryKey</param>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.Get(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <summary>
+            Find Element
+            </summary>
+            <param name="filter">Filter</param>
+            <param name="orderBy">OrderBy</param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.Dispose">
+            <summary>
+            Dispose
             </summary>
         </member>
-        <member name="P:SetBoxWebUI.Models.SetBoxConfig.EnableWebImage">
+        <member name="M:SetBoxWebUI.Repository.Repository`1.AddAsync(`0)">
             <summary>
-            Ativar o WebPage
+            Add
             </summary>
         </member>
-        <member name="P:SetBoxWebUI.Models.SetBoxConfig.EnableTransaction">
+        <member name="M:SetBoxWebUI.Repository.Repository`1.AddRangeAsync(System.Collections.Generic.IEnumerable{`0})">
             <summary>
-            Ativar as transações 
+            add
             </summary>
+            <param name="entity"></param>
+            <returns></returns>
         </member>
-        <member name="P:SetBoxWebUI.Models.SetBoxConfig.TransactionTime">
+        <member name="M:SetBoxWebUI.Repository.Repository`1.GetAsync">
             <summary>
-            Tempo da transação
+            get
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.GetByIdAsync(System.Int32)">
+            <summary>
+            Get
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.DeleteAsync(`0)">
+            <summary>
+            delete
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.DeleteByIdAsync(System.Int32)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.DeleteRangeAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Delete
+            </summary>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.DeleteRangeAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Delete
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.UpdateAsync(`0)">
+            <summary>
+            Udapte
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.UpdateByIdAsync(`0,System.Int32)">
+            <summary>
+            Update
+            </summary>
+            <param name="entity"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.GetAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <summary>
+            GetAsync
+            </summary>
+            <param name="filter"></param>
+            <param name="orderBy"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.GetPagination(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Int32,System.Int32)">
+            <summary>
+            GetPagination
+            </summary>
+            <param name="filter"></param>
+            <param name="page"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`1.GetPagination(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Int32,System.Int32)">
+            <summary>
+            GetPagination
+            </summary>
+            <param name="filter"></param>
+            <param name="orderBy"></param>
+            <param name="page"></param>
+            <param name="count"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>
