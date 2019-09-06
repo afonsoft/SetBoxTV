@@ -64,57 +64,47 @@ namespace SetBoxWebUI.Controllers
 
                 string deviceIdentifier = GetDeviceIdFromSession(session);
                 string deviceLicense = GetLocenseFromSession(session);
-             
 
-               var device = _devices.Get(x => x.DeviceIdentifier == deviceIdentifier).FirstOrDefault();
-
-                DeviceLogAccesses log = new DeviceLogAccesses();
-                log.CreationDateTime = DateTime.Now;
-                log.IpAcessed = HttpContext.GetClientIpAddress();
-                log.DeviceLogAccessesId = Guid.NewGuid();
+                var device = _devices.Get(x => x.DeviceIdentifier == deviceIdentifier).FirstOrDefault();
 
                 if (device == null)
                 {
-                    device = new Device()
-                    {
-                        CreationDateTime = DateTime.Now,
-                        DeviceIdentifier = deviceIdentifier,
-                        Platform = platform,
-                        Version = version,
-                        License = deviceLicense,
-                        DeviceId = Guid.NewGuid()
-                    };
-                    log.Message = "Created";
-                    device.LogAccesses = new List<DeviceLogAccesses>();
-                    device.LogAccesses.Add(log);
-                    await _devices.AddAsync(device);
-                    r.Status = true;
-                    r.Message = "Device successfully created.";
-                    return Created("", r);
+                    r.Status = false;
+                    r.SessionExpired = false;
+                    r.Message = $"Device '{deviceIdentifier}' not found";
+                    _logger.LogError($"Device '{deviceIdentifier}' not found");
+                    return NotFound(r);
                 }
-                else
+
+                if (device.Version != version || device.License != deviceLicense || device.Platform != platform)
                 {
-                    if (device.Version != version || device.License != deviceLicense || device.Platform != platform)
-                    {
-                        device.Platform = platform;
-                        device.Version = version;
-                        device.License = deviceLicense;
-                        log.Message = "Updated";
-                        device.LogAccesses.Add(log);
-                        await _devices.UpdateAsync(device);
-                    }
-                   
+                    DeviceLogAccesses log = new DeviceLogAccesses();
+                    log.CreationDateTime = DateTime.Now;
+                    log.IpAcessed = HttpContext.GetClientIpAddress();
+                    log.DeviceLogAccessesId = Guid.NewGuid();
+
+                    device.Platform = platform;
+                    device.Version = version;
+                    device.License = deviceLicense;
+                    log.Message = "Updated";
+                    device.LogAccesses.Add(log);
+                    await _devices.UpdateAsync(device);
                     r.Status = true;
                     r.Message = "Device updated successfully.";
                     return Ok(r);
                 }
+
+                r.Status = true;
+                r.Message = "Device not need update.";
+                return Ok(r);
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 r.Status = false;
                 r.SessionExpired = false;
                 r.Message = ex.Message;
-                _logger.LogError(ex, "Erro no registro " + ex.Message);
+                _logger.LogError(ex, ex.Message);
                 return BadRequest(r);
             }
         }
