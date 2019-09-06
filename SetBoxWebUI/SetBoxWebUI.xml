@@ -18,7 +18,7 @@
             <summary>
             Criar ou Atualizar as informações do SetBox
             </summary>
-            <param name="deviceIdentifier"></param>
+            <param name="session"></param>
             <param name="platform"></param>
             <param name="version"></param>
             <returns></returns>
@@ -36,6 +36,14 @@
             Verifica se a session está valida
             </summary>
             <param name="session">returno do DeviceLogin</param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Controllers.SetBoxController.SetConfig(System.String,SetBoxWebUI.Models.Config)">
+            <summary>
+            Salvar as configurações no Banco de Dados
+            </summary>
+            <param name="session"></param>
+            <param name="config"></param>
             <returns></returns>
         </member>
         <member name="M:SetBoxWebUI.Controllers.SetBoxController.GetConfig(System.String)">
@@ -111,17 +119,17 @@
             Files
             </summary>
         </member>
-        <member name="P:SetBoxWebUI.Models.FileCheckSum.Nome">
+        <member name="P:SetBoxWebUI.Models.FileCheckSum.Name">
             <summary>
             Nome do Arquivo
             </summary>
         </member>
-        <member name="P:SetBoxWebUI.Models.FileCheckSum.Extensao">
+        <member name="P:SetBoxWebUI.Models.FileCheckSum.Extension">
             <summary>
             Tipo do Arquivo
             </summary>
         </member>
-        <member name="P:SetBoxWebUI.Models.FileCheckSum.Tamanho">
+        <member name="P:SetBoxWebUI.Models.FileCheckSum.Size">
             <summary>
             Tamanho
             </summary>

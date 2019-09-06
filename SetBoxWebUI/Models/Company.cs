@@ -11,6 +11,7 @@ namespace SetBoxWebUI.Models
         public string FullName { get; set; }
         public string CNPJ { get; set; }
         public List<Address> Address { get; set; }
+        public List<Device> Devices { get; set; }
     }
 
     public class Address

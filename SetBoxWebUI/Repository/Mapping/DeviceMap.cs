@@ -18,6 +18,7 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.Property(c => c.DeviceIdentifier).IsRequired();
             builder.Property(c => c.Platform).HasColumnName("Platform").HasMaxLength(255);
             builder.Property(c => c.Version).HasColumnName("Version").HasMaxLength(255);
+            builder.Property(c => c.License).HasColumnName("License").HasMaxLength(255);
             builder.Property(c => c.CreationDateTime).HasColumnName("CreationDateTime").HasDefaultValue(DateTime.Now);
         }
     }

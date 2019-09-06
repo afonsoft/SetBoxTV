@@ -11,10 +11,10 @@ namespace SetBoxWebUI.Models
         public string DeviceIdentifier { get; set; }
         public string Platform { get; set; }
         public string Version { get; set; }
+        public string License { get; set; }
         public DateTime CreationDateTime { get; set; }
         public Config Configuration { get; set; }
         public List<DeviceLogAccesses> LogAccesses { get; set; } = new List<DeviceLogAccesses>();
-
     }
 
     public class DeviceLogAccesses

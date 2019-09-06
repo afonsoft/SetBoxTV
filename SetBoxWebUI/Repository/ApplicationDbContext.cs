@@ -19,13 +19,28 @@ namespace SetBoxWebUI.Repository
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new DeviceMap());
             builder.ApplyConfiguration(new ConfigMap());
+            builder.ApplyConfiguration(new DeviceLogAccessesMap());
+            builder.ApplyConfiguration(new DeviceMap());
+            builder.ApplyConfiguration(new AddressMap());
+            builder.ApplyConfiguration(new CompanyMap());
+
+            builder.ApplyConfiguration(new FileCheckSumMap());
+            builder.ApplyConfiguration(new DeviceFilesMap());
+            builder.ApplyConfiguration(new FileDevicesMap());
+
             base.OnModelCreating(builder);
         }
 
         public DbSet<Device> Devices { get; set; }
         public DbSet<Config> Configs { get; set; }
+        public DbSet<DeviceLogAccesses> DeviceLogAccesses { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Address> Address { get; set; }
+
+        public DbSet<FileDevices> FileDevices { get; set; }
+        public DbSet<DeviceFiles> DeviceFiles { get; set; }
+        public DbSet<FileCheckSum> Files { get; set; }
     }
     public class ApplicationIdentityUser : IdentityUser<Guid>
     {

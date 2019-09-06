@@ -11,19 +11,19 @@ namespace SetBoxWebUI.Models
     /// </summary>
     public class FileCheckSum
     {
-
+        public Guid FileId { get; set; }
         /// <summary>
         /// Nome do Arquivo
         /// </summary>
-        public string Nome { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// Tipo do Arquivo
         /// </summary>
-        public string Extensao { get; set; }
+        public string Extension { get; set; }
         /// <summary>
         /// Tamanho
         /// </summary>
-        public long Tamanho { get; set; }
+        public long Size { get; set; }
         /// <summary>
         /// Url para download do arquivo
         /// </summary>
@@ -32,5 +32,19 @@ namespace SetBoxWebUI.Models
         /// CheckSum para verificar se foi modificado o arquivo.
         /// </summary>
         public string CheckSum { get; set; }
+    }
+
+    public class FileDevices
+    {
+        public Guid FileDevicesId { get; set; }
+        public FileCheckSum File { get; set; }
+        public List<Device> Devices { get; set; }
+    }
+
+    public class DeviceFiles
+    {
+        public Guid DeviceFilesId { get; set; }
+        public List<FileCheckSum> Files { get; set; }
+        public Device Device { get; set; }
     }
 }

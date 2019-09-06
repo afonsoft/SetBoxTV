@@ -22,24 +22,26 @@ namespace SetBoxWebUI.Controllers
     [ApiController]
     public class SetBoxController : ControllerBase
     {
-
+        private const string DefaultLicense = "1111";
         private readonly ILogger<SetBoxController> _logger;
-        private readonly IHostingEnvironment _environment;
-        private readonly IRepository<Device> _repository;
+        private readonly IRepository<Device> _devices;
+        private readonly IRepository<DeviceFiles> _deviceFiles;
+
         /// <summary>
         /// SetBoxController
         /// </summary>
-        public SetBoxController(ILogger<SetBoxController> logger, IHostingEnvironment environment, ApplicationDbContext context)
+        public SetBoxController(ILogger<SetBoxController> logger, ApplicationDbContext context)
         {
             _logger = logger;
-            _environment = environment;
-            _repository = new Repository<Device>(context);
+            _devices = new Repository<Device>(context);
+            _deviceFiles = new Repository<DeviceFiles>(context);
         }
+
 
         /// <summary>
         /// Criar ou Atualizar as informações do SetBox
         /// </summary>
-        /// <param name="deviceIdentifier"></param>
+        /// <param name="session"></param>
         /// <param name="platform"></param>
         /// <param name="version"></param>
         /// <returns></returns>
@@ -48,16 +50,23 @@ namespace SetBoxWebUI.Controllers
         [ProducesResponseType(typeof(Response<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(Response<string>), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(Response<string>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<Response<string>>> Update(string deviceIdentifier, string platform, string version)
+        public async Task<ActionResult<Response<string>>> Update(string session, string platform, string version)
         {
             var r = new Models.Response<string>();
             try
             {
-                if (string.IsNullOrEmpty(deviceIdentifier))
-                    throw new ArgumentNullException(nameof(deviceIdentifier), "Device Identifier is invalid!");
+                if (!ValidaSession(session))
+                {
+                    r.Message = "Session is invalid!";
+                    r.SessionExpired = true;
+                    return Unauthorized(r);
+                }
 
+                string deviceIdentifier = GetDeviceIdFromSession(session);
+                string deviceLicense = GetLocenseFromSession(session);
+             
 
-               var device = _repository.Get(x => x.DeviceIdentifier == deviceIdentifier).FirstOrDefault();
+               var device = _devices.Get(x => x.DeviceIdentifier == deviceIdentifier).FirstOrDefault();
 
                 DeviceLogAccesses log = new DeviceLogAccesses();
                 log.CreationDateTime = DateTime.Now;
@@ -72,26 +81,27 @@ namespace SetBoxWebUI.Controllers
                         DeviceIdentifier = deviceIdentifier,
                         Platform = platform,
                         Version = version,
+                        License = deviceLicense,
                         DeviceId = Guid.NewGuid()
                     };
                     log.Message = "Created";
                     device.LogAccesses = new List<DeviceLogAccesses>();
                     device.LogAccesses.Add(log);
-                    await _repository.AddAsync(device);
+                    await _devices.AddAsync(device);
                     r.Status = true;
                     r.Message = "Device successfully created.";
                     return Created("", r);
                 }
                 else
                 {
-                    device.Platform = platform;
-
-                    if (device.Version != version)
+                    if (device.Version != version || device.License != deviceLicense || device.Platform != platform)
                     {
+                        device.Platform = platform;
                         device.Version = version;
+                        device.License = deviceLicense;
                         log.Message = "Updated";
                         device.LogAccesses.Add(log);
-                        await _repository.UpdateAsync(device);
+                        await _devices.UpdateAsync(device);
                     }
                    
                     r.Status = true;
@@ -127,10 +137,10 @@ namespace SetBoxWebUI.Controllers
             try
             {
                 string deviceIdentifier64 = CriptoHelpers.Base64Encode(identifier);
-                if (license == deviceIdentifier64 || license == "1111")
+                if (license == deviceIdentifier64 || license == DefaultLicense)
                 {
 
-                    var device = _repository.Get(x => x.DeviceIdentifier == identifier).FirstOrDefault();
+                    var device = _devices.Get(x => x.DeviceIdentifier == identifier).FirstOrDefault();
                     if (device == null)
                     {
                         device = new Device()
@@ -149,7 +159,7 @@ namespace SetBoxWebUI.Controllers
                             IpAcessed = HttpContext.GetClientIpAddress(),
                             Message = "Created"
                         });
-                        await _repository.AddAsync(device);
+                        await _devices.AddAsync(device);
                     }
 
                     device.LogAccesses.Add(new DeviceLogAccesses()
@@ -159,7 +169,7 @@ namespace SetBoxWebUI.Controllers
                         IpAcessed = HttpContext.GetClientIpAddress(),
                         Message = "Logged"
                     });
-                    await _repository.UpdateAsync(device);
+                    await _devices.UpdateAsync(device);
                     r.Result = CriptoHelpers.Base64Encode($"{identifier}|{license}|{HttpContext.GetClientIpAddress()}|{DateTime.Now.AddMinutes(30):yyyyMMddHHmmss}");
                     return Ok(r);
                 }
@@ -175,11 +185,6 @@ namespace SetBoxWebUI.Controllers
                 _logger.LogError(ex, ex.Message, identifier, license);
                 return BadRequest(r);
             }
-        }
-
-        private ActionResult<Response<T>> Unauthorized<T>(Response<T> r)
-        {
-            return StatusCode(401, r);
         }
 
         /// <summary>
@@ -204,45 +209,18 @@ namespace SetBoxWebUI.Controllers
         }
 
         /// <summary>
-        /// Recuperar as configurações do SetBox
+        /// Salvar as configurações no Banco de Dados
         /// </summary>
-        /// <param name="session">returno do DeviceLogin</param>
+        /// <param name="session"></param>
+        /// <param name="config"></param>
         /// <returns></returns>
-        [HttpGet("GetConfig")]
+        [HttpGet("SetConfig")]
         [ProducesResponseType(typeof(Response<Config>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Response<Config>), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(Response<Config>), StatusCodes.Status404NotFound)]
-        public ActionResult<Response<Config>> GetConfig(string session)
+        public async Task<ActionResult<Response<Config>>> SetConfig(string session, Config config)
         {
             var r = new Response<Config>();
-
-            if (!ValidaSession(session))
-            {
-                r.Message = "Session is invalid!";
-                r.SessionExpired = true;
-                return Unauthorized(r);
-            }
-
-            //Recuperar as configurações especifica para o DeviceId
-            //return Ok(r);
-
-            r.Message = "Não localizado configuração especifica para esse Device";
-            return NotFound(r);
-        }
-
-        /// <summary>
-        /// Listar os arquivos 
-        /// </summary>
-        /// <param name="session"></param>
-        /// <returns></returns>
-        [HttpGet("ListFilesCheckSum")]
-        [ProducesResponseType(typeof(Response<IEnumerable<FileCheckSum>>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(Response<IEnumerable<FileCheckSum>>), StatusCodes.Status401Unauthorized)]
-        [ProducesResponseType(typeof(Response<IEnumerable<FileCheckSum>>), StatusCodes.Status400BadRequest)]
-
-        public ActionResult<Response<IEnumerable<FileCheckSum>>> ListFilesCheckSum(string session)
-        {
-            var r = new Response<IEnumerable<FileCheckSum>>();
             try
             {
                 if (!ValidaSession(session))
@@ -251,21 +229,30 @@ namespace SetBoxWebUI.Controllers
                     r.SessionExpired = true;
                     return Unauthorized(r);
                 }
-                DirectoryInfo di = new DirectoryInfo(Path.Combine(_environment.WebRootPath, "UploadedFiles"));
+                string identifier = GetDeviceIdFromSession(session);
+                //Recuperar as configurações especifica para o DeviceId
+                var device = _devices.Get(x => x.DeviceIdentifier == identifier).FirstOrDefault();
 
-                var files = di.EnumerateFiles()
-                    .AsParallel()
-                    .Select(x => new FileCheckSum()
-                    {
-                        Nome = x.Name,
-                        Extensao = x.Extension,
-                        Tamanho = x.Length,
-                        CheckSum = CheckSumHelpers.CalculateMD5(x.FullName),
-                        Url = "https://setbox.afonsoft.com.br/UploadedFiles/" + x.Name
-                    })
-                    .ToArray();
+                if (device == null)
+                {
+                    r.Status = false;
+                    r.Message = "Not Found Configuration Specifies for this Device.";
+                    return NotFound(r);
+                }
 
-                r.Result = files;
+                device.Configuration = config;
+                device.LogAccesses.Add(new DeviceLogAccesses()
+                {
+                    CreationDateTime = DateTime.Now,
+                    DeviceLogAccessesId = Guid.NewGuid(),
+                    IpAcessed = HttpContext.GetClientIpAddress(),
+                    Message = "Update Config"
+                });
+
+                await _devices.UpdateAsync(device);
+
+                r.Result = device.Configuration;
+                r.Status = true;
                 return Ok(r);
             }
             catch (Exception ex)
@@ -278,6 +265,109 @@ namespace SetBoxWebUI.Controllers
         }
 
 
+        /// <summary>
+        /// Recuperar as configurações do SetBox
+        /// </summary>
+        /// <param name="session">returno do DeviceLogin</param>
+        /// <returns></returns>
+        [HttpGet("GetConfig")]
+        [ProducesResponseType(typeof(Response<Config>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Response<Config>), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(Response<Config>), StatusCodes.Status404NotFound)]
+        public ActionResult<Response<Config>> GetConfig(string session)
+        {
+            var r = new Response<Config>();
+            try
+            {
+                if (!ValidaSession(session))
+                {
+                    r.Message = "Session is invalid!";
+                    r.SessionExpired = true;
+                    return Unauthorized(r);
+                }
+                string identifier = GetDeviceIdFromSession(session);
+                //Recuperar as configurações especifica para o DeviceId
+                var device = _devices.Get(x => x.DeviceIdentifier == identifier).FirstOrDefault();
+
+                if (device == null || device.Configuration == null)
+                {
+                    r.Status = false;
+                    r.Message = "Not Found Configuration Specifies for this Device.";
+                    return NotFound(r);
+                }
+
+                r.Result = device.Configuration;
+                r.Status = true;
+                return Ok(r);
+            }
+            catch (Exception ex)
+            {
+                r.Status = false;
+                r.Message = ex.Message;
+                _logger.LogError(ex, ex.Message);
+                return BadRequest(r);
+            }
+        }
+
+        /// <summary>
+        /// Listar os arquivos 
+        /// </summary>
+        /// <param name="session"></param>
+        /// <returns></returns>
+        [HttpGet("ListFilesCheckSum")]
+        [ProducesResponseType(typeof(Response<IEnumerable<FileCheckSum>>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Response<IEnumerable<FileCheckSum>>), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(Response<IEnumerable<FileCheckSum>>), StatusCodes.Status400BadRequest)]
+
+        public async Task<ActionResult<Response<IEnumerable<FileCheckSum>>>> ListFilesCheckSum(string session)
+        {
+            var r = new Response<IEnumerable<FileCheckSum>>();
+            try
+            {
+                if (!ValidaSession(session))
+                {
+                    r.Message = "Session is invalid!";
+                    r.SessionExpired = true;
+                    return Unauthorized(r);
+                }
+
+                string identifier = GetDeviceIdFromSession(session);
+
+               var files = await _deviceFiles.GetAsync(x => x.Device.DeviceIdentifier == identifier);
+                
+                List<FileCheckSum> itens = new List<FileCheckSum>();
+                foreach (var item in files)
+                {
+                    foreach (var file in item.Files)
+                    {
+                        itens.Add(new FileCheckSum()
+                        {
+                            Name = file.Name,
+                            Extension = file.Extension,
+                            Size = file.Size,
+                            CheckSum = file.CheckSum,
+                            Url = "https://setbox.afonsoft.com.br/UploadedFiles/" + file.Name
+                        });
+                    }
+                }
+
+                r.Result = itens;
+                return Ok(r);
+            }
+            catch (Exception ex)
+            {
+                r.Status = false;
+                r.Message = ex.Message;
+                _logger.LogError(ex, ex.Message);
+                return BadRequest(r);
+            }
+        }
+
+
+        private ActionResult<Response<T>> Unauthorized<T>(Response<T> r)
+        {
+            return StatusCode(401, r);
+        }
         private bool ValidaSession(string session)
         {
             try
@@ -288,7 +378,7 @@ namespace SetBoxWebUI.Controllers
 
                 DateTime dt = DateTime.ParseExact(sessions[2], "yyyyMMddHHmmss", CultureInfo.InvariantCulture);
 
-                if (sessions[1] == deviceIdentifier64 || sessions[1] == "1111")
+                if (sessions[1] == deviceIdentifier64 || sessions[1] == DefaultLicense)
                     if (dt >= DateTime.Now && ip == HttpContext.GetClientIpAddress())
                         return true;
                 return false;
@@ -299,7 +389,6 @@ namespace SetBoxWebUI.Controllers
                 return false;
             }
         }
-
         private string GetDeviceIdFromSession(string session)
         {
             try
@@ -307,6 +396,19 @@ namespace SetBoxWebUI.Controllers
                 if (!ValidaSession(session))
                     throw new ArgumentOutOfRangeException(nameof(session), "Session is invalid!");
                 return CriptoHelpers.Base64Decode(session).Split("|")[0];
+            }
+            catch (Exception)
+            {
+                throw new ArgumentOutOfRangeException(nameof(session), "Session is invalid!");
+            }
+        }
+        private string GetLocenseFromSession(string session)
+        {
+            try
+            {
+                if (!ValidaSession(session))
+                    throw new ArgumentOutOfRangeException(nameof(session), "Session is invalid!");
+                return CriptoHelpers.Base64Decode(session).Split("|")[1];
             }
             catch (Exception)
             {
