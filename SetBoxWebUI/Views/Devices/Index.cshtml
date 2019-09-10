@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Devices</h1>
+<br />
+
+<!-- http://www.jquery-bootgrid.com/Examples -->
+
+<table id="grid-data-device" class="table table-condensed table-hover table-striped" >
+    <thead>
+        <tr>
+            <th data-column-id="deviceId" data-identifier="true">ID</th>
+            <th data-column-id="deviceIdentifier" data-order="asc">Identifier</th>
+            <th data-column-id="platform">Platform</th>
+            <th data-column-id="version">Version</th>
+            <th data-column-id="license">License</th>
+            <th data-column-id="creationDateTime" data-converter="datetime">CreationDateTime</th>
+            <th data-formatter="actions" data-sortable="false">Commands</th>
+        </tr>
+    </thead>
+</table>
+
+@section scripts{
+    <script type="text/javascript">
+
+        function FormatJsonDateToJavaScriptDate(value) {
+            var dt = new Date(value);
+            return (dt.getMonth() + 1) + "/" + dt.getDate() + "/" + dt.getFullYear();
+        }
+
+        var translate = {
+                infos: "Exibindo {{ctx.start}} Até {{ctx.end}} de {{ctx.total}} registros",
+                loading: "Carregando, isso pode levar alguns segundos...",
+                noResults: "Não há dados para exibir",
+                refresh: "Atualizar",
+                search: "Pesquisar"
+        };
+
+        $(document).ready(function () {
+
+            var grid = $("#grid-data-device").bootgrid(
+                {
+                    ajax: true,
+                    url: '/Devices/List',
+                    labels: translate,
+                    searchSettings: {
+                        delay: 100,
+                        characters: 3
+                    },
+
+                    formatters: {
+                        "actions": function (column, row) {
+                            return "<a href='#' class='btn btn-info btn-sm' data-command='Details' data-row-id = '" + row.deviceId + "'>" +
+                                "<span class='glyphicon glyphicon-list'></span>" + "</a>" +
+                                "<a href='#' class='btn btn-warning btn-sm' data-command='Edit' data-row-id = '" + row.deviceId + "'>" +
+                                "<span class='glyphicon glyphicon-edit'></span>" + "</a>" +
+                                "<a href='#' class='btn btn-danger btn-sm' data-command='Delete' data-row-id = '" + row.deviceId + "'>" +
+                                "<span class='glyphicon glyphicon-trash'></span>" + "</a>";
+
+                        }
+                    },
+                    converters: {
+                        datetime: {  // Tratar os campos data que vem no formato incorreto
+                            from: function (value) { return moment(value); },
+                            to: function (value) { return moment(FormatJsonDateToJavaScriptDate(value)).format("DD/MM/YYYY"); }
+                        }
+                    }
+                });
+
+            grid.on("loaded.rs.jquery.bootgrid", function () {
+                grid.find("a.btn").each(function (index, element) {
+                    var buttonAction = $(element);
+                    var command = buttonAction.data("command");
+                    var id = buttonAction.data("row-id");
+
+                    buttonAction.on("click", function () {
+                        //abrirModal(acao, idEntidade);
+                        alert(command + ' ' + id);
+                    });
+                });
+            });
+        });
+
+    </script>
+}

@@ -139,6 +139,7 @@ namespace SetBoxWebUI
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddControllersAsServices()
                 .AddJsonOptions(
                 options =>
                 {
@@ -176,7 +177,6 @@ namespace SetBoxWebUI
             app.UseCookiePolicy();
             app.UseSession();
             app.UseAuthentication();
-            //app.UseHttpContextItemsMiddleware();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

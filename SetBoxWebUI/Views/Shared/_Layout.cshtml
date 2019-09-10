@@ -27,9 +27,11 @@
     <link rel="stylesheet" type="text/css" href="~/lib/animsition/css/animsition.min.css">
     <link rel="stylesheet" type="text/css" href="~/lib/select2/select2.min.css">
     <link rel="stylesheet" type="text/css" href="~/lib/daterangepicker/daterangepicker.css">
-    <link rel="stylesheet" href="~/css/util.css" />
-    <link rel="stylesheet" href="~/css/main.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" type="text/css" href="~/lib/jquery-bootgrid/jquery.bootgrid.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/glyphicons.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/util.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/site.css" />
 </head>
 <body>
     @if (SignInManager.IsSignedIn(User))
@@ -48,13 +50,13 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Devices">Devices</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Devices" asp-action="Index">Devices</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Files">Files</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Files" asp-action="Index">Files</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Companies">Companies</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Companies" asp-action="Index">Companies</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" href="/swagger">API</a>
@@ -106,6 +108,8 @@
     <script src="~/lib/countdowntime/countdowntime.js"></script>
     <script src="~/lib/bootbox/bootbox.all.min.js"></script>
     <script src="~/lib/bootbox/bootbox.locales.min.js"></script>
+    <script src="~/lib/jquery-bootgrid/jquery.bootgrid.min.js"></script>
+    <script src="~/lib/jquery-bootgrid/jquery.bootgrid.fa.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
