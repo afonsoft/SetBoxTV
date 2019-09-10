@@ -4,6 +4,10 @@
     ViewData["Title"] = "Login";
 }
 
+@section header {
+    <link rel="stylesheet" type="text/css" href="~/css/util.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/main.css" />
+}
 
 <div class="limiter">
     <div class="container-login100">
@@ -29,7 +33,7 @@
                     <span class="focus-input100"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input m-b-18" data-validate = "Senha Obrigatório">
+                <div class="wrap-input100 validate-input m-b-18" data-validate="Senha Obrigatório">
                     <span class="label-input100" asp-for="Password">Senha</span>
                     <input class="input100" asp-for="Password" placeholder="Senha">
                     <span class="focus-input100"></span>
@@ -58,7 +62,7 @@
 
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");} 
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="~/js/main.js"></script>
 }
 

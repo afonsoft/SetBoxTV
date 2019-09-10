@@ -52,13 +52,13 @@
 
                     formatters: {
                         "actions": function (column, row) {
-                            return "<a href='#' class='btn btn-info btn-sm' data-command='Details' data-row-id = '" + row.deviceId + "'>" +
+                            return "<div class='btn-group btn-group-sm' role='group'>" +
+                                "<a href='#' class='btn btn-info btn-sm' data-command='Details' data-row-id = '" + row.deviceId + "'>" +
                                 "<span class='glyphicon glyphicon-list'></span>" + "</a>" +
                                 "<a href='#' class='btn btn-warning btn-sm' data-command='Edit' data-row-id = '" + row.deviceId + "'>" +
                                 "<span class='glyphicon glyphicon-edit'></span>" + "</a>" +
                                 "<a href='#' class='btn btn-danger btn-sm' data-command='Delete' data-row-id = '" + row.deviceId + "'>" +
-                                "<span class='glyphicon glyphicon-trash'></span>" + "</a>";
-
+                                "<span class='glyphicon glyphicon-trash'></span>" + "</a></div>";
                         }
                     },
                     converters: {
