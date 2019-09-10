@@ -6,9 +6,7 @@
 <h1>Devices</h1>
 <br />
 
-<!-- http://www.jquery-bootgrid.com/Examples -->
-
-<table id="grid-data-device" class="table table-condensed table-hover table-striped" >
+<table id="grid-data-device" class="table table-condensed table-hover table-striped" style="font-size:8pt;" >
     <thead>
         <tr>
             <th data-column-id="deviceId" data-identifier="true">ID</th>
@@ -38,6 +36,10 @@
                 search: "Pesquisar"
         };
 
+        function openModal(action, id) {
+
+        }
+
         $(document).ready(function () {
 
             var grid = $("#grid-data-device").bootgrid(
@@ -53,11 +55,11 @@
                     formatters: {
                         "actions": function (column, row) {
                             return "<div class='btn-group btn-group-sm' role='group'>" +
-                                "<a href='#' class='btn btn-info btn-sm' data-command='Details' data-row-id = '" + row.deviceId + "'>" +
+                                "<a href='#' alt='Details' class='btn btn-info btn-sm' data-command='Details' data-row-id = '" + row.deviceId + "'>" +
                                 "<span class='glyphicon glyphicon-list'></span>" + "</a>" +
-                                "<a href='#' class='btn btn-warning btn-sm' data-command='Edit' data-row-id = '" + row.deviceId + "'>" +
+                                "<a href='#' alt='Edit' class='btn btn-warning btn-sm' data-command='Edit' data-row-id = '" + row.deviceId + "'>" +
                                 "<span class='glyphicon glyphicon-edit'></span>" + "</a>" +
-                                "<a href='#' class='btn btn-danger btn-sm' data-command='Delete' data-row-id = '" + row.deviceId + "'>" +
+                                "<a href='#' alt='Delete' class='btn btn-danger btn-sm' data-command='Delete' data-row-id = '" + row.deviceId + "'>" +
                                 "<span class='glyphicon glyphicon-trash'></span>" + "</a></div>";
                         }
                     },
@@ -76,8 +78,21 @@
                     var id = buttonAction.data("row-id");
 
                     buttonAction.on("click", function () {
-                        //abrirModal(acao, idEntidade);
-                        alert(command + ' ' + id);
+
+                        if (command == 'Delete') {
+                            if (confirm('Deseja excluir esse device?')) {
+                                $.ajax({
+                                    url: '/Devices/Delete?id=' + id,
+                                    cache: false
+                                }).done(function (result) {
+                                    if (result) {
+                                        grid.refresh(true);
+                                    }
+                                });
+                            }
+                        } else {
+                            openModal(command, id);
+                        }
                     });
                 });
             });

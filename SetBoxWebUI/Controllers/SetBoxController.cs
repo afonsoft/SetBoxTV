@@ -368,9 +368,8 @@ namespace SetBoxWebUI.Controllers
 
                 DateTime dt = DateTime.ParseExact(sessions[2], "yyyyMMddHHmmss", CultureInfo.InvariantCulture);
 
-                if (sessions[1] == deviceIdentifier64 || sessions[1] == DefaultLicense)
-                    if (dt >= DateTime.Now )
-                        return true;
+                if ((sessions[1] == deviceIdentifier64 || sessions[1] == DefaultLicense) && dt >= DateTime.Now)
+                    return true;
                 return false;
             }
             catch (Exception ex)

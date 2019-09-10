@@ -4,6 +4,11 @@
         <name>SetBoxWebUI</name>
     </assembly>
     <members>
+        <member name="M:SetBoxWebUI.Controllers.DevicesController.#ctor(Microsoft.Extensions.Logging.ILogger{SetBoxWebUI.Controllers.DevicesController},SetBoxWebUI.Repository.ApplicationDbContext)">
+            <summary>
+            SetBoxController
+            </summary>
+        </member>
         <member name="T:SetBoxWebUI.Controllers.SetBoxController">
             <summary>
             Api para controlar as SetBox

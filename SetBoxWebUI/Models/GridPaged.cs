@@ -41,6 +41,9 @@ namespace SetBoxWebUI.Models
         [JsonProperty("id")]
         public string Id { get; set; } = "";
 
+        [JsonProperty("searchPhrase")]
+        public string SearchPhrase { get; set; } = "";
+
         [JsonProperty("sort")]
         public Dictionary<string, string> Sort { get; set; }
     }

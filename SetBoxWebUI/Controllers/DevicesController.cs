@@ -4,29 +4,74 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using SetBoxWebUI.Interfaces;
 using SetBoxWebUI.Models;
+using SetBoxWebUI.Repository;
 
 namespace SetBoxWebUI.Controllers
 {
     [Authorize]
     public class DevicesController : Controller
     {
+        private readonly ILogger<DevicesController> _logger;
+        private readonly IRepository<Device> _devices;
+
+        /// <summary>
+        /// SetBoxController
+        /// </summary>
+        public DevicesController(ILogger<DevicesController> logger, ApplicationDbContext context)
+        {
+            _logger = logger;
+            _devices = new Repository<Device>(context);
+        }
+
+
         public IActionResult Index()
         {
             return View();
         }
 
 
-        public GridPagedOutput<Device> List(GridPagedInput input)
+        public async Task<GridPagedOutput<Device>> List(GridPagedInput input)
         {
-            var itens = new List<Device>();
-            itens.Add(new Device() { CreationDateTime = DateTime.Now, DeviceIdentifier = "ABCD", License = "1111", Platform = "Android", Version = "6", DeviceId= Guid.NewGuid() });
-            itens.Add(new Device() { CreationDateTime = DateTime.Now, DeviceIdentifier = "QWEADS", License = "1111", Platform = "Android", Version = "6.1", DeviceId = Guid.NewGuid() });
-            itens.Add(new Device() { CreationDateTime = DateTime.Now, DeviceIdentifier = "34234", License = "1111", Platform = "Android", Version = "7.1", DeviceId = Guid.NewGuid() });
+            if (string.IsNullOrEmpty(input.SearchPhrase))
+                input.SearchPhrase = "";
 
-            var item = new GridPagedOutput<Device>(itens) {Current = input.Current, RowCount = input.RowCount, Total = 3 };
-    
+            var itens = new List<Device>();
+            var devices = await _devices.GetPagination(f => f.DeviceId.ToString() == input.Id
+                                       || f.DeviceIdentifier.Contains(input.SearchPhrase)
+                                       || f.License.Contains(input.SearchPhrase)
+                                       || f.Platform.Contains(input.SearchPhrase)
+                                       || f.Version.Contains(input.SearchPhrase),
+                                     input.Current,
+                                     input.RowCount);
+
+            itens.AddRange(devices.Value);
+            var item = new GridPagedOutput<Device>(itens) {Current = input.Current, RowCount = input.RowCount, Total = devices.Key };
             return item;
+        }
+
+        public Device Edit(string id)
+        {
+            return _devices.Get(x => x.DeviceId.ToString() == id).FirstOrDefault();
+        }
+
+        public Config Config(string id)
+        {
+            return _devices.Get(x => x.DeviceId.ToString() == id).FirstOrDefault()?.Configuration;
+        }
+
+        public bool Delete(string id)
+        {
+            var del = _devices.Get(x => x.DeviceId.ToString() == id).FirstOrDefault();
+
+            if (del != null)
+            {
+                _devices.Delete(del);
+                return true;
+            }
+            return false;
         }
     }
 }

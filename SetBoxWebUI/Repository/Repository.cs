@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using SetBoxWebUI.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -361,13 +362,18 @@ namespace SetBoxWebUI.Repository
         /// <param name="page"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public IEnumerable<TEntity> GetPagination(Expression<Func<TEntity, bool>> filter,
+        public async Task<KeyValuePair<int, List<TEntity>>> GetPagination(Expression<Func<TEntity, bool>> filter,
             int page = 1,
-            int count = 10) => Table.AsNoTracking()
-            .Where(filter)
-            .Skip((page - 1) * count)
-            .Take(count)
-            .AsEnumerable();
+            int count = 10)
+        {
+            KeyValuePair<int, List<TEntity>> keys = new KeyValuePair<int, List<TEntity>>(Table.Count(),await Table.AsNoTracking()
+                                                                                                                    .Where(filter)
+                                                                                                                    .Skip((page - 1) * count)
+                                                                                                                    .Take(count)
+                                                                                                                    .ToListAsync());
+         
+            return keys;
+        }
 
         /// <summary>
         /// GetPagination
@@ -377,16 +383,19 @@ namespace SetBoxWebUI.Repository
         /// <param name="page"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public IEnumerable<TEntity> GetPagination(Expression<Func<TEntity, bool>> filter,
+        public async Task<KeyValuePair<int, List<TEntity>>> GetPagination(Expression<Func<TEntity, bool>> filter,
              Expression<Func<TEntity, object>> orderBy,
             int page = 1,
-            int count = 10) =>
-            Table.AsNoTracking()
-            .OrderBy(orderBy)
-            .Where(filter)
-            .Skip((page - 1) * count)
-            .Take(count)
-            .AsEnumerable();
+            int count = 10)
+        {
+            KeyValuePair<int, List<TEntity>> keys = new KeyValuePair<int, List<TEntity>>(Table.Count(), await Table.AsNoTracking()
+                                                                                                                .Where(filter)
+                                                                                                                .OrderBy(orderBy)
+                                                                                                                .Skip((page - 1) * count)
+                                                                                                                .Take(count)
+                                                                                                                .ToListAsync());
+            return keys;
+        }
 
 
     }
