@@ -5,8 +5,23 @@ using System.Threading.Tasks;
 
 namespace SetBoxWebUI.Models
 {
-    public class DeviceViewModel
+    public class DeviceViewModel : BaseViewModel
     {
+        public DeviceViewModel(string messageError) : base(messageError)
+        {
+
+        }
+        public DeviceViewModel(Exception exception) : base(exception)
+        {
+
+        }
+
+        public DeviceViewModel() : base("")
+        {
+            
+        }
+
+        public bool isEdited { get; set; }
         public Guid DeviceId { get; set; }
         public string DeviceIdentifier { get; set; }
         public string Platform { get; set; }

@@ -6,6 +6,13 @@
 <h1>Devices</h1>
 <br />
 
+@if (!string.IsNullOrEmpty(Model.Mensage))
+{
+    <script>
+        bootbox.alert({ title: "Error", message: "@Model.Mensage" });
+    </script>
+}
+
 <form asp-controller="Devices" asp-action="Edit" method="post" id="FormEdit">
     <input type="hidden" name="id" value="" id="id" />
     <input type="hidden" name="command" value="" id="command" />
@@ -36,7 +43,7 @@
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-6 ml-auto">
+                            <div class="col-md-7 ml-auto">
                                 <div class="row">
                                     <div class="col-12">
                                         <h5>Device</h5>
@@ -44,54 +51,54 @@
                                 </div>
                                 <div class="form-group row">
 
-                                    <label asp-for="DeviceId" class="col-sm-2 col-form-label"></label>
-                                    <div class="col-sm-10">
+                                    <label asp-for="DeviceId" class="col-sm-3 col-form-label"></label>
+                                    <div class="col-sm-9">
                                         <input asp-for="DeviceId" class="form-control input-sm" readonly />
                                     </div>
 
                                 </div>
                                 <div class="form-group row">
 
-                                    <label asp-for="DeviceIdentifier" class="col-sm-2 col-form-label"></label>
-                                    <div class="col-sm-10">
+                                    <label asp-for="DeviceIdentifier" class="col-sm-3 col-form-label"></label>
+                                    <div class="col-sm-9">
                                         <input asp-for="DeviceIdentifier" class="form-control input-sm" readonly />
                                     </div>
 
                                 </div>
                                 <div class="form-group row">
 
-                                    <label asp-for="Platform" class="col-sm-2 col-form-label"></label>
-                                    <div class="col-sm-10">
+                                    <label asp-for="Platform" class="col-sm-3 col-form-label"></label>
+                                    <div class="col-sm-9">
                                         <input asp-for="Platform" class="form-control input-sm" readonly />
                                     </div>
 
                                 </div>
                                 <div class="form-group row">
 
-                                    <label asp-for="Version" class="col-sm-2 col-form-label"></label>
-                                    <div class="col-sm-10">
+                                    <label asp-for="Version" class="col-sm-3 col-form-label"></label>
+                                    <div class="col-sm-9">
                                         <input asp-for="Version" class="form-control input-sm" readonly />
                                     </div>
 
                                 </div>
                                 <div class="form-group row">
 
-                                    <label asp-for="License" class="col-sm-2 col-form-label"></label>
-                                    <div class="col-sm-10">
+                                    <label asp-for="License" class="col-sm-3 col-form-label"></label>
+                                    <div class="col-sm-9">
                                         <input asp-for="License" class="form-control input-sm" />
                                     </div>
 
                                 </div>
                                 <div class="form-group row">
 
-                                    <label asp-for="CreationDateTime" class="col-sm-2 col-form-label"></label>
-                                    <div class="col-sm-10">
+                                    <label asp-for="CreationDateTime" class="col-sm-3 col-form-label"></label>
+                                    <div class="col-sm-9">
                                         <input asp-for="CreationDateTime" class="form-control input-sm" />
                                     </div>
 
                                 </div>
                             </div>
-                            <div class="col-md-6 ml-auto">
+                            <div class="col-md-5 ml-auto">
                                 <div class="row">
                                     <div class="col-12">
                                         <h5>Configurations</h5>
@@ -101,49 +108,49 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="custom-control custom-checkbox">
-                                            <input asp-for="EnablePhoto" type="checkbox" class="custom-control-input" />
-                                            <label asp-for="EnablePhoto" class="custom-control-label"></label>
+                                            <input asp-for="EnablePhoto" type="checkbox" class="custom-control-input" />&nbsp;
+                                            <label class="custom-control-label">Active Photo Show</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="custom-control custom-checkbox">
-                                            <input asp-for="EnableVideo" type="checkbox" class="custom-control-input" />
-                                            <label asp-for="EnableVideo" class="custom-control-label"></label>
+                                            <input asp-for="EnableVideo" type="checkbox" class="custom-control-input" />&nbsp;
+                                            <label class="custom-control-label">Active Video Show</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="custom-control custom-checkbox">
-                                            <input asp-for="EnableWebImage" type="checkbox" class="custom-control-input" />
-                                            <label asp-for="EnableWebImage" class="custom-control-label"></label>
+                                            <input asp-for="EnableWebImage" type="checkbox" class="custom-control-input" />&nbsp;
+                                            <label class="custom-control-label">Active Web Photo Show</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="custom-control custom-checkbox">
-                                            <input asp-for="EnableWebVideo" type="checkbox" class="custom-control-input" />
-                                            <label asp-for="EnableWebVideo" class="custom-control-label"></label>
+                                            <input asp-for="EnableWebVideo" type="checkbox" class="custom-control-input" />&nbsp;
+                                            <label class="custom-control-label">Active Web Video Show</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="custom-control custom-checkbox">
-                                            <input asp-for="EnableTransaction" type="checkbox" class="custom-control-input" />
-                                            <label asp-for="EnableTransaction" class="custom-control-label"></label>
+                                            <input asp-for="EnableTransaction" type="checkbox" class="custom-control-input" />&nbsp;
+                                            <label class="custom-control-label">Enable Transaction Between Show</label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="custom-control custom-checkbox">
-                                            <label asp-for="TransactionTime"></label>
-                                            <input asp-for="TransactionTime" id="SliderTransactionTime" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="@Model.TransactionTime" />
-                                        </div>
+                                <div class="form-group row">      
+                                    <div class="col-sm-9">
+                                        <input asp-for="TransactionTime" id="SliderTransactionTime" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="@Model.TransactionTime" />
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <span id="TransactionTimeVal">@Model.TransactionTime</span>&nbsp;<span>Segunds</span>
                                     </div>
                                 </div>
                             </div>
@@ -152,7 +159,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Fechar</button>
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i>Salvar mudanças</button>
+                    <button type="submit" id="buttonSave" class="btn btn-primary"><i class="fa fa-check"></i>Salvar mudanças</button>
                 </div>
             </div>
         </div>
@@ -196,8 +203,12 @@
 
             $('#SliderTransactionTime').slider({
                 formatter: function (value) {
-                    return 'Tempo: ' + value + ' segundos';
+                    return 'Time: ' + value + ' Segunds';
                 }
+            });
+
+            $("#SliderTransactionTime").on("slide", function (slideEvt) {
+                $("#TransactionTimeVal").text(slideEvt.value);
             });
 
             var grid = $("#grid-data-device").bootgrid(
