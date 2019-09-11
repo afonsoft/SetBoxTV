@@ -9,7 +9,7 @@ namespace SetBoxWebUI.Models
 {
     public class GridPagedOutput<T>  where T : class
     {
-        public GridPagedOutput(List<T> value) 
+        public GridPagedOutput(IEnumerable<T> value) 
         {
             this.Rows = value;
         }
@@ -24,7 +24,7 @@ namespace SetBoxWebUI.Models
         public int Total { get; set; }
 
         [JsonProperty("rows")]
-        public List<T> Rows { get; set; }
+        public IEnumerable<T> Rows { get; set; }
 
         //[JsonIgnore]
         //public JsonResult Output { get { return new JsonResult(this); } }
@@ -45,6 +45,6 @@ namespace SetBoxWebUI.Models
         public string SearchPhrase { get; set; } = "";
 
         [JsonProperty("sort")]
-        public Dictionary<string, string> Sort { get; set; }
+        public Dictionary<string, string> Sort { get; set; } 
     }
 }

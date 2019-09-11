@@ -5,11 +5,15 @@ using System.Threading.Tasks;
 
 namespace SetBoxWebUI.Models
 {
-    /// <summary>
-    /// Configurações do SetBox
-    /// </summary>
-    public class Config
+    public class DeviceViewModel
     {
+        public Guid DeviceId { get; set; }
+        public string DeviceIdentifier { get; set; }
+        public string Platform { get; set; }
+        public string Version { get; set; }
+        public string License { get; set; }
+        public DateTime CreationDateTime { get; set; }
+
         public Guid ConfigId { get; set; }
         /// <summary>
         /// Ativar o Video
@@ -40,11 +44,5 @@ namespace SetBoxWebUI.Models
         /// Tempo da transação
         /// </summary>
         public int TransactionTime { get; set; } = 0;
-
-        /// <summary>
-        /// CreationDateTime
-        /// </summary>
-        public DateTime CreationDateTime { get; set; }
-
     }
 }

@@ -1,4 +1,4 @@
-﻿
+﻿@model DeviceViewModel
 @{
     ViewData["Title"] = "Index";
 }
@@ -6,19 +6,158 @@
 <h1>Devices</h1>
 <br />
 
-<table id="grid-data-device" class="table table-condensed table-hover table-striped" style="font-size:8pt;" >
-    <thead>
-        <tr>
-            <th data-column-id="deviceId" data-identifier="true">ID</th>
-            <th data-column-id="deviceIdentifier" data-order="asc">Identifier</th>
-            <th data-column-id="platform">Platform</th>
-            <th data-column-id="version">Version</th>
-            <th data-column-id="license">License</th>
-            <th data-column-id="creationDateTime" data-converter="datetime">CreationDateTime</th>
-            <th data-formatter="actions" data-sortable="false">Commands</th>
-        </tr>
-    </thead>
-</table>
+<form asp-controller="Devices" asp-action="Edit" method="post" id="FormEdit">
+    <input type="hidden" name="id" value="" id="id" />
+    <input type="hidden" name="command" value="" id="command" />
+    <table id="grid-data-device" class="table table-condensed table-hover table-striped" style="font-size:8pt;">
+        <thead>
+            <tr>
+                <th data-column-id="deviceId" data-identifier="true">ID</th>
+                <th data-column-id="deviceIdentifier" data-order="asc">Identifier</th>
+                <th data-column-id="platform">Platform</th>
+                <th data-column-id="version">Version</th>
+                <th data-column-id="license">License</th>
+                <th data-column-id="creationDateTime" data-converter="datetime">CreationDateTime</th>
+                <th data-formatter="actions" data-sortable="false">Commands</th>
+            </tr>
+        </thead>
+    </table>
+</form>
+<form asp-controller="Devices" asp-action="Save" method="post" id="FormSave">
+    <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 ml-auto">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5>Device</h5>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+
+                                    <label asp-for="DeviceId" class="col-sm-2 col-form-label"></label>
+                                    <div class="col-sm-10">
+                                        <input asp-for="DeviceId" class="form-control input-sm" readonly />
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+
+                                    <label asp-for="DeviceIdentifier" class="col-sm-2 col-form-label"></label>
+                                    <div class="col-sm-10">
+                                        <input asp-for="DeviceIdentifier" class="form-control input-sm" readonly />
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+
+                                    <label asp-for="Platform" class="col-sm-2 col-form-label"></label>
+                                    <div class="col-sm-10">
+                                        <input asp-for="Platform" class="form-control input-sm" readonly />
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+
+                                    <label asp-for="Version" class="col-sm-2 col-form-label"></label>
+                                    <div class="col-sm-10">
+                                        <input asp-for="Version" class="form-control input-sm" readonly />
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+
+                                    <label asp-for="License" class="col-sm-2 col-form-label"></label>
+                                    <div class="col-sm-10">
+                                        <input asp-for="License" class="form-control input-sm" />
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+
+                                    <label asp-for="CreationDateTime" class="col-sm-2 col-form-label"></label>
+                                    <div class="col-sm-10">
+                                        <input asp-for="CreationDateTime" class="form-control input-sm" />
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6 ml-auto">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h5>Configurations</h5>
+                                        <input type="hidden" asp-for="ConfigId" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="custom-control custom-checkbox">
+                                            <input asp-for="EnablePhoto" type="checkbox" class="custom-control-input" />
+                                            <label asp-for="EnablePhoto" class="custom-control-label"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="custom-control custom-checkbox">
+                                            <input asp-for="EnableVideo" type="checkbox" class="custom-control-input" />
+                                            <label asp-for="EnableVideo" class="custom-control-label"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="custom-control custom-checkbox">
+                                            <input asp-for="EnableWebImage" type="checkbox" class="custom-control-input" />
+                                            <label asp-for="EnableWebImage" class="custom-control-label"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="custom-control custom-checkbox">
+                                            <input asp-for="EnableWebVideo" type="checkbox" class="custom-control-input" />
+                                            <label asp-for="EnableWebVideo" class="custom-control-label"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="custom-control custom-checkbox">
+                                            <input asp-for="EnableTransaction" type="checkbox" class="custom-control-input" />
+                                            <label asp-for="EnableTransaction" class="custom-control-label"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="custom-control custom-checkbox">
+                                            <label asp-for="TransactionTime"></label>
+                                            <input asp-for="TransactionTime" id="SliderTransactionTime" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="@Model.TransactionTime" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Fechar</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i>Salvar mudanças</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 
 @section scripts{
     <script type="text/javascript">
@@ -38,9 +177,28 @@
 
         function openModal(action, id) {
 
+            $("#ModalTitle").val(action + " - DeviceId: " + id);
+            //pegar as informações do Device
+
+            if (action == "Details") {
+                //Desabilitar para ediçao os campos e ocultar o botão salvar
+                $("#buttonSave").hide();
+            } else {
+                $("#buttonSave").show();
+            }
+
+            $('#ModalEdit').modal('show');
         }
 
+
+
         $(document).ready(function () {
+
+            $('#SliderTransactionTime').slider({
+                formatter: function (value) {
+                    return 'Tempo: ' + value + ' segundos';
+                }
+            });
 
             var grid = $("#grid-data-device").bootgrid(
                 {
@@ -76,27 +234,49 @@
                     var buttonAction = $(element);
                     var command = buttonAction.data("command");
                     var id = buttonAction.data("row-id");
-
                     buttonAction.on("click", function () {
-
                         if (command == 'Delete') {
-                            if (confirm('Deseja excluir esse device?')) {
-                                $.ajax({
-                                    url: '/Devices/Delete?id=' + id,
-                                    cache: false
-                                }).done(function (result) {
-                                    if (result) {
-                                        grid.refresh(true);
+                            bootbox.confirm({
+                                title: "Excluir",
+                                message: "Deseja excluir esse device?",
+                                buttons: {
+                                    cancel: {
+                                        label: '<i class="fa fa-times"></i> Cancelar'
+                                    },
+                                    confirm: {
+                                        label: '<i class="fa fa-check"></i> Confirmar'
                                     }
-                                });
-                            }
+                                },
+                                callback: function (result) {
+                                    if (result) {
+                                        $.ajax({
+                                            url: '/Devices/Delete?id=' + id,
+                                            cache: false
+                                        }).done(function (result) {
+                                            if (result) {
+                                                grid.refresh(true);
+                                            }
+                                        });
+                                    }
+                                }
+                            });
                         } else {
-                            openModal(command, id);
+                            $("#id").val(id);
+                            $("#command").val(command);
+                            $("#FormEdit").submit();
                         }
                     });
                 });
             });
         });
 
+    </script>
+}
+
+
+@if (Convert.ToBoolean(ViewData["Edit"]) == true && Model != null)
+{
+    <script>
+         openModal('@ViewData["Command"]', '@Model.DeviceId');
     </script>
 }

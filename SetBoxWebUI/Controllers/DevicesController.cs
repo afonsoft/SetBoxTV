@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,8 +30,56 @@ namespace SetBoxWebUI.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            ViewData["Edit"] = false;
+            return View(new DeviceViewModel());
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(string id, string command)
+        {
+            ViewData["Edit"] = true;
+            ViewData["Command"] = command;
+            var itens = await _devices.GetAsync(x => x.DeviceId.ToString() == id);
+
+            var item = itens.FirstOrDefault();
+            if(item == null)
+            {
+                return RedirectToAction("Index");
+            }
+            DeviceViewModel model = new DeviceViewModel();
+            model.DeviceId = item.DeviceId;
+            model.DeviceIdentifier = item.DeviceIdentifier;
+            model.CreationDateTime = item.CreationDateTime;
+            model.License = item.License;
+            model.Platform = item.Platform;
+            model.Version = item.Version;
+            if (item.Configuration != null) {
+                model.TransactionTime = item.Configuration.TransactionTime;
+                model.EnablePhoto = item.Configuration.EnablePhoto;
+                model.EnableTransaction = item.Configuration.EnableTransaction;
+                model.EnableVideo = item.Configuration.EnableVideo;
+                model.EnableWebImage = item.Configuration.EnableWebImage;
+                model.EnableWebVideo = item.Configuration.EnableWebVideo;
+                model.ConfigId = item.Configuration.ConfigId;
+            }
+            return View("Index", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Save(DeviceViewModel model)
+        {
+            if (model != null)
+            {
+                var itens = await _devices.GetAsync(x => x.DeviceId == model.DeviceId);
+
+                //Salvar as informações
+            }
+            ViewData["Edit"] = false;
+            return RedirectToAction("Index", new DeviceViewModel());
+        }
+        //Device
 
 
         public async Task<GridPagedOutput<Device>> List(GridPagedInput input)
@@ -38,12 +87,33 @@ namespace SetBoxWebUI.Controllers
             if (string.IsNullOrEmpty(input.SearchPhrase))
                 input.SearchPhrase = "";
 
+            Expression<Func<Device, object>> orderby = o => o.DeviceIdentifier;
+            var keys = input.Sort.OrderBy(kvp => kvp.Key).First();
+
+            switch (keys.Key)
+            {
+                case "deviceIdentifier":
+                    orderby = o => o.DeviceIdentifier;
+                    break;
+                case "license":
+                    orderby = o => o.License;
+                    break;
+                case "platform":
+                    orderby = o => o.Platform;
+                    break;
+                case "version":
+                    orderby = o => o.Version;
+                    break;
+            }
+
             var itens = new List<Device>();
             var devices = await _devices.GetPagination(f => f.DeviceId.ToString() == input.Id
                                        || f.DeviceIdentifier.Contains(input.SearchPhrase)
                                        || f.License.Contains(input.SearchPhrase)
                                        || f.Platform.Contains(input.SearchPhrase)
                                        || f.Version.Contains(input.SearchPhrase),
+                                        keys.Value == "asc" ? orderby : null,
+                                        keys.Value == "desc" ? orderby : null,
                                      input.Current,
                                      input.RowCount);
 
@@ -52,20 +122,11 @@ namespace SetBoxWebUI.Controllers
             return item;
         }
 
-        public Device Edit(string id)
+        public async Task<bool> Delete(string id)
         {
-            return _devices.Get(x => x.DeviceId.ToString() == id).FirstOrDefault();
-        }
+            var dels = await _devices.GetAsync(x => x.DeviceId.ToString() == id);
 
-        public Config Config(string id)
-        {
-            return _devices.Get(x => x.DeviceId.ToString() == id).FirstOrDefault()?.Configuration;
-        }
-
-        public bool Delete(string id)
-        {
-            var del = _devices.Get(x => x.DeviceId.ToString() == id).FirstOrDefault();
-
+            var del = dels.FirstOrDefault();
             if (del != null)
             {
                 _devices.Delete(del);

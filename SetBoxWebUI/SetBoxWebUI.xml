@@ -119,6 +119,41 @@
             Tempo da transação
             </summary>
         </member>
+        <member name="P:SetBoxWebUI.Models.Config.CreationDateTime">
+            <summary>
+            CreationDateTime
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.DeviceViewModel.EnableVideo">
+            <summary>
+            Ativar o Video
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.DeviceViewModel.EnablePhoto">
+            <summary>
+            Ativar o play de fotos
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.DeviceViewModel.EnableWebVideo">
+            <summary>
+            Ativar o WebVideo
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.DeviceViewModel.EnableWebImage">
+            <summary>
+            Ativar o WebPage
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.DeviceViewModel.EnableTransaction">
+            <summary>
+            Ativar as transações 
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.DeviceViewModel.TransactionTime">
+            <summary>
+            Tempo da transação
+            </summary>
+        </member>
         <member name="T:SetBoxWebUI.Models.FileCheckSum">
             <summary>
             Files
@@ -361,12 +396,13 @@
             <param name="count"></param>
             <returns></returns>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.GetPagination(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Int32,System.Int32)">
+        <member name="M:SetBoxWebUI.Repository.Repository`1.GetPagination(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Int32,System.Int32)">
             <summary>
             GetPagination
             </summary>
             <param name="filter"></param>
             <param name="orderBy"></param>
+            <param name="orderByDescending"></param>
             <param name="page"></param>
             <param name="count"></param>
             <returns></returns>

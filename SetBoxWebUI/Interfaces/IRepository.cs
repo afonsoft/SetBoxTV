@@ -27,7 +27,7 @@ namespace SetBoxWebUI.Interfaces
         TEntity GetById(int id);
         Task<TEntity> GetByIdAsync(int id);
         Task<KeyValuePair<int, List<TEntity>>> GetPagination(Expression<Func<TEntity, bool>> filter, int page = 1, int count = 10);
-        Task<KeyValuePair<int, List<TEntity>>> GetPagination(Expression<Func<TEntity, bool>> filter, Expression<Func<TEntity, object>> orderBy, int page = 1, int count = 10);
+        Task<KeyValuePair<int, List<TEntity>>> GetPagination(Expression<Func<TEntity, bool>> filter, Expression<Func<TEntity, object>> orderBy, Expression<Func<TEntity, object>> orderByDescending, int page = 1, int count = 10);
         void Update(TEntity entity);
         Task<int> UpdateAsync(TEntity entity);
         void UpdateById(TEntity entity, int id);

@@ -380,20 +380,45 @@ namespace SetBoxWebUI.Repository
         /// </summary>
         /// <param name="filter"></param>
         /// <param name="orderBy"></param>
+        /// <param name="orderByDescending"></param>
         /// <param name="page"></param>
         /// <param name="count"></param>
         /// <returns></returns>
         public async Task<KeyValuePair<int, List<TEntity>>> GetPagination(Expression<Func<TEntity, bool>> filter,
-             Expression<Func<TEntity, object>> orderBy,
+             Expression<Func<TEntity, object>> orderBy ,
+            Expression<Func<TEntity, object>> orderByDescending,
             int page = 1,
             int count = 10)
         {
-            KeyValuePair<int, List<TEntity>> keys = new KeyValuePair<int, List<TEntity>>(Table.Count(), await Table.AsNoTracking()
-                                                                                                                .Where(filter)
-                                                                                                                .OrderBy(orderBy)
-                                                                                                                .Skip((page - 1) * count)
-                                                                                                                .Take(count)
-                                                                                                                .ToListAsync());
+            List<TEntity> itens;
+            if (orderBy != null)
+            {
+                itens = await Table.AsNoTracking()
+                          .Where(filter)
+                          .OrderBy(orderBy)
+                          .Skip((page - 1) * count)
+                          .Take(count)
+                          .ToListAsync();
+            }
+            else if (orderByDescending != null)
+            {
+                itens = await Table.AsNoTracking()
+                          .Where(filter)
+                          .OrderByDescending(orderByDescending)
+                          .Skip((page - 1) * count)
+                          .Take(count)
+                          .ToListAsync();
+            }
+            else
+            {
+                itens = await Table.AsNoTracking()
+                         .Where(filter)
+                         .Skip((page - 1) * count)
+                         .Take(count)
+                         .ToListAsync();
+            }
+
+            KeyValuePair<int, List<TEntity>> keys = new KeyValuePair<int, List<TEntity>>(Table.Count(), itens);
             return keys;
         }
 
