@@ -15,7 +15,7 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.HasKey(c => c.CompanyId);
 
             builder.ToTable("SetBoxCompany");
-            builder.Property(c => c.CompanyId).HasColumnName("AddressId").HasDefaultValue(Guid.NewGuid()).IsRequired();
+            builder.Property(c => c.CompanyId).HasColumnName("CompanyId").HasDefaultValue(Guid.NewGuid()).IsRequired();
             builder.Property(c => c.CNPJ).HasColumnName("CNPJ").HasMaxLength(255);
             builder.Property(c => c.FullName).HasColumnName("FullName").HasMaxLength(500);
         }

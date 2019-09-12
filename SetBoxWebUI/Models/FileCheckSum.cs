@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -32,19 +33,16 @@ namespace SetBoxWebUI.Models
         /// CheckSum para verificar se foi modificado o arquivo.
         /// </summary>
         public string CheckSum { get; set; }
+
+        public List<FilesDevices> Devices { get; set; }
     }
 
-    public class FileDevices
+    public class FilesDevices
     {
-        public Guid FileDevicesId { get; set; }
+        public Guid FileId { get; set; }
         public FileCheckSum File { get; set; }
-        public List<Device> Devices { get; set; }
-    }
-
-    public class DeviceFiles
-    {
-        public Guid DeviceFilesId { get; set; }
-        public List<FileCheckSum> Files { get; set; }
+        public Guid DeviceId { get; set; }
         public Device Device { get; set; }
     }
+
 }

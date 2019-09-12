@@ -48,21 +48,32 @@ namespace SetBoxWebUI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SetBoxConfigs",
+                name: "SetBoxCompany",
                 columns: table => new
                 {
-                    ConfigId = table.Column<Guid>(nullable: false),
-                    EnableVideo = table.Column<bool>(nullable: false),
-                    EnablePhoto = table.Column<bool>(nullable: false),
-                    EnableWebVideo = table.Column<bool>(nullable: false),
-                    EnableWebImage = table.Column<bool>(nullable: false),
-                    EnableTransaction = table.Column<bool>(nullable: false),
-                    TransactionTime = table.Column<int>(nullable: false),
-                    CreationDateTime = table.Column<DateTime>(nullable: false)
+                    CompanyId = table.Column<Guid>(nullable: false, defaultValue: new Guid("1cded759-c3ce-41de-a10b-eba9659bb93e")),
+                    FullName = table.Column<string>(maxLength: 500, nullable: true),
+                    CNPJ = table.Column<string>(maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SetBoxConfigs", x => x.ConfigId);
+                    table.PrimaryKey("PK_SetBoxCompany", x => x.CompanyId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SetBoxFileCheckSum",
+                columns: table => new
+                {
+                    FileId = table.Column<Guid>(nullable: false, defaultValue: new Guid("1a47514e-55fb-4033-9b95-0b1c38eb6a23")),
+                    Name = table.Column<string>(maxLength: 255, nullable: true),
+                    Extension = table.Column<string>(maxLength: 10, nullable: true),
+                    Size = table.Column<long>(nullable: false),
+                    Url = table.Column<string>(maxLength: 4000, nullable: true),
+                    CheckSum = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SetBoxFileCheckSum", x => x.FileId);
                 });
 
             migrationBuilder.CreateTable(
@@ -172,26 +183,116 @@ namespace SetBoxWebUI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SetBoxAddress",
+                columns: table => new
+                {
+                    AddressId = table.Column<Guid>(nullable: false, defaultValue: new Guid("6f9c8c80-aa96-4447-ab24-182c34b2c370")),
+                    CompanyId = table.Column<Guid>(nullable: true),
+                    City = table.Column<string>(maxLength: 255, nullable: true),
+                    State = table.Column<string>(maxLength: 2, nullable: true),
+                    Street = table.Column<string>(maxLength: 1000, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SetBoxAddress", x => x.AddressId);
+                    table.ForeignKey(
+                        name: "FK_SetBoxAddress_SetBoxCompany_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "SetBoxCompany",
+                        principalColumn: "CompanyId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SetBoxDevices",
                 columns: table => new
                 {
-                    DeviceId = table.Column<Guid>(nullable: false),
-                    DeviceIdentifier = table.Column<string>(nullable: false),
-                    Platform = table.Column<string>(nullable: true),
-                    Version = table.Column<string>(nullable: true),
-                    LastIpAcessed = table.Column<string>(nullable: true),
-                    CreationDateTime = table.Column<DateTime>(nullable: false),
-                    LastAccessedDate = table.Column<DateTime>(nullable: true),
-                    ConfigurationConfigId = table.Column<Guid>(nullable: true)
+                    DeviceId = table.Column<Guid>(nullable: false, defaultValue: new Guid("19986d8c-aba0-48b9-b7f9-30ed3646ff9c")),
+                    DeviceIdentifier = table.Column<string>(maxLength: 255, nullable: false),
+                    Platform = table.Column<string>(maxLength: 255, nullable: true),
+                    Version = table.Column<string>(maxLength: 255, nullable: true),
+                    License = table.Column<string>(maxLength: 255, nullable: true),
+                    CreationDateTime = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 9, 12, 15, 7, 2, 183, DateTimeKind.Local).AddTicks(333)),
+                    CompanyId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SetBoxDevices", x => x.DeviceId);
                     table.ForeignKey(
-                        name: "FK_SetBoxDevices_SetBoxConfigs_ConfigurationConfigId",
-                        column: x => x.ConfigurationConfigId,
-                        principalTable: "SetBoxConfigs",
-                        principalColumn: "ConfigId",
+                        name: "FK_SetBoxDevices_SetBoxCompany_CompanyId",
+                        column: x => x.CompanyId,
+                        principalTable: "SetBoxCompany",
+                        principalColumn: "CompanyId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FilesDevices",
+                columns: table => new
+                {
+                    FileId = table.Column<Guid>(nullable: false),
+                    DeviceId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FilesDevices", x => new { x.DeviceId, x.FileId });
+                    table.ForeignKey(
+                        name: "FK_FilesDevices_SetBoxDevices_DeviceId",
+                        column: x => x.DeviceId,
+                        principalTable: "SetBoxDevices",
+                        principalColumn: "DeviceId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_FilesDevices_SetBoxFileCheckSum_FileId",
+                        column: x => x.FileId,
+                        principalTable: "SetBoxFileCheckSum",
+                        principalColumn: "FileId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SetBoxConfigs",
+                columns: table => new
+                {
+                    ConfigId = table.Column<Guid>(nullable: false, defaultValue: new Guid("e9c43e6c-abbb-4f5d-acbb-1bb0bd4702a2")),
+                    DeviceId = table.Column<Guid>(nullable: false),
+                    EnableVideo = table.Column<bool>(nullable: false),
+                    EnablePhoto = table.Column<bool>(nullable: false),
+                    EnableWebVideo = table.Column<bool>(nullable: false),
+                    EnableWebImage = table.Column<bool>(nullable: false),
+                    EnableTransaction = table.Column<bool>(nullable: false),
+                    TransactionTime = table.Column<int>(nullable: false),
+                    CreationDateTime = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 9, 12, 15, 7, 2, 174, DateTimeKind.Local).AddTicks(4892))
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SetBoxConfigs", x => x.ConfigId);
+                    table.ForeignKey(
+                        name: "FK_SetBoxConfigs_SetBoxDevices_DeviceId",
+                        column: x => x.DeviceId,
+                        principalTable: "SetBoxDevices",
+                        principalColumn: "DeviceId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SetBoxDeviceLogAccesses",
+                columns: table => new
+                {
+                    DeviceLogAccessesId = table.Column<Guid>(nullable: false, defaultValue: new Guid("de494b93-8c7f-472e-93fd-caeaee6f93e4")),
+                    DeviceId = table.Column<Guid>(nullable: true),
+                    CreationDateTime = table.Column<DateTime>(nullable: false, defaultValue: new DateTime(2019, 9, 12, 15, 7, 2, 178, DateTimeKind.Local).AddTicks(3569)),
+                    IpAcessed = table.Column<string>(nullable: true),
+                    Message = table.Column<string>(maxLength: 2000, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SetBoxDeviceLogAccesses", x => x.DeviceLogAccessesId);
+                    table.ForeignKey(
+                        name: "FK_SetBoxDeviceLogAccesses_SetBoxDevices_DeviceId",
+                        column: x => x.DeviceId,
+                        principalTable: "SetBoxDevices",
+                        principalColumn: "DeviceId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -235,9 +336,30 @@ namespace SetBoxWebUI.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SetBoxDevices_ConfigurationConfigId",
+                name: "IX_FilesDevices_FileId",
+                table: "FilesDevices",
+                column: "FileId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SetBoxAddress_CompanyId",
+                table: "SetBoxAddress",
+                column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SetBoxConfigs_DeviceId",
+                table: "SetBoxConfigs",
+                column: "DeviceId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SetBoxDeviceLogAccesses_DeviceId",
+                table: "SetBoxDeviceLogAccesses",
+                column: "DeviceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SetBoxDevices_CompanyId",
                 table: "SetBoxDevices",
-                column: "ConfigurationConfigId");
+                column: "CompanyId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -258,7 +380,16 @@ namespace SetBoxWebUI.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "SetBoxDevices");
+                name: "FilesDevices");
+
+            migrationBuilder.DropTable(
+                name: "SetBoxAddress");
+
+            migrationBuilder.DropTable(
+                name: "SetBoxConfigs");
+
+            migrationBuilder.DropTable(
+                name: "SetBoxDeviceLogAccesses");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -267,7 +398,13 @@ namespace SetBoxWebUI.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "SetBoxConfigs");
+                name: "SetBoxFileCheckSum");
+
+            migrationBuilder.DropTable(
+                name: "SetBoxDevices");
+
+            migrationBuilder.DropTable(
+                name: "SetBoxCompany");
         }
     }
 }

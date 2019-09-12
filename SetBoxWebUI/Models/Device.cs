@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,12 +21,17 @@ namespace SetBoxWebUI.Models
 
         [JsonIgnore]
         public List<DeviceLogAccesses> LogAccesses { get; set; } = new List<DeviceLogAccesses>();
+
+        public Company Company { get; set; }
+
+        public List<FilesDevices> Files { get; set; }
     }
 
     public class DeviceLogAccesses
     {
+        public Device Device { get; set; }
         public Guid DeviceLogAccessesId { get; set; }
-        public DateTime? CreationDateTime { get; set; }
+        public DateTime CreationDateTime { get; set; }
         public string IpAcessed { get; set; }
         public string Message { get; set; }
     }

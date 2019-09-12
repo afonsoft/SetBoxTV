@@ -20,6 +20,7 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.Property(c => c.CreationDateTime).HasColumnName("CreationDateTime").HasDefaultValue(DateTime.Now);
             builder.Property(c => c.IpAcessed).HasColumnName("IpAcessed");
             builder.Property(c => c.Message).HasColumnName("Message").HasMaxLength(2000);
+            builder.HasOne(d => d.Device).WithMany(l => l.LogAccesses);
         }
     }
 }

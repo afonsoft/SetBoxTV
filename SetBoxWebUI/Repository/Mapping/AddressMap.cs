@@ -19,6 +19,7 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.Property(c => c.City).HasColumnName("City").HasMaxLength(255);
             builder.Property(c => c.State).HasColumnName("State").HasMaxLength(2);
             builder.Property(c => c.Street).HasColumnName("Street").HasMaxLength(1000);
+            builder.HasOne(c => c.Company).WithMany(c => c.Address);
         }
     }
 }

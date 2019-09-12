@@ -43,7 +43,7 @@
             <param name="session">returno do DeviceLogin</param>
             <returns></returns>
         </member>
-        <member name="M:SetBoxWebUI.Controllers.SetBoxController.SetConfig(System.String,SetBoxWebUI.Models.Config)">
+        <member name="M:SetBoxWebUI.Controllers.SetBoxController.SetConfig(SetBoxWebUI.Models.ConfigApi)">
             <summary>
             Salvar as configurações no Banco de Dados
             </summary>

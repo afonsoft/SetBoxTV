@@ -20,6 +20,7 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.Property(c => c.Version).HasColumnName("Version").HasMaxLength(255);
             builder.Property(c => c.License).HasColumnName("License").HasMaxLength(255);
             builder.Property(c => c.CreationDateTime).HasColumnName("CreationDateTime").HasDefaultValue(DateTime.Now);
+            builder.HasOne(c => c.Configuration).WithOne(d => d.Device).HasForeignKey<Config>(c=>c.DeviceId);
         }
     }
 }

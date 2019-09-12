@@ -105,7 +105,7 @@ namespace SetBoxWebUI.Controllers
                         await _devices.UpdateAsync(updItem);
 
                         ViewData["Edit"] = false;
-                        return View("Index", new DeviceViewModel("Device update was successful."));
+                        return RedirectToAction("Index", new DeviceViewModel("Device update was successful."));
                     }
                     else
                     {
@@ -126,6 +126,39 @@ namespace SetBoxWebUI.Controllers
         }
         //Device
 
+
+        public async Task<GridPagedOutput<DeviceLogAccesses>> ListLog(GridPagedInput input)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(input.SearchPhrase))
+                    input.SearchPhrase = "";
+
+                if (string.IsNullOrEmpty(input.Id))
+                    throw new KeyNotFoundException($"DeviceId: {input.Id} not found.");
+
+                var devices = await _devices.GetAsync(f => f.DeviceId.ToString() == input.Id);
+
+                if (devices.Count <= 0)
+                    throw new KeyNotFoundException($"DeviceId: {input.Id} not found.");
+
+                var logs = devices[0].LogAccesses.Where(l => l.DeviceLogAccessesId.ToString() == input.Id
+                                                        || l.CreationDateTime.ToString("dd/MM/yyyy").Contains(input.SearchPhrase)
+                                                        || l.IpAcessed.Contains(input.SearchPhrase)
+                                                        || l.Message.Contains(input.SearchPhrase))
+                                                 .Skip((input.Current - 1) * input.RowCount)
+                                                 .Take(input.RowCount)
+                                                 .ToList();
+
+                var item = new GridPagedOutput<DeviceLogAccesses>(logs) { Current = input.Current, RowCount = input.RowCount, Total = devices[0].LogAccesses.Count };
+                return item;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return null;
+            }
+        }
 
         public async Task<GridPagedOutput<Device>> List(GridPagedInput input)
         {
@@ -159,7 +192,8 @@ namespace SetBoxWebUI.Controllers
                                            || f.DeviceIdentifier.Contains(input.SearchPhrase)
                                            || f.License.Contains(input.SearchPhrase)
                                            || f.Platform.Contains(input.SearchPhrase)
-                                           || f.Version.Contains(input.SearchPhrase),
+                                           || f.Version.Contains(input.SearchPhrase)
+                                           || f.CreationDateTime.ToString("dd/MM/yyyy").Contains(input.SearchPhrase),
                                             keys.Value == "asc" ? orderby : null,
                                             keys.Value == "desc" ? orderby : null,
                                          input.Current,

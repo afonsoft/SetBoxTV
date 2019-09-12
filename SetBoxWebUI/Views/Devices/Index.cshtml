@@ -43,7 +43,7 @@
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-7 ml-auto">
+                            <div class="col-md-5 ml-auto">
                                 <div class="row">
                                     <div class="col-12">
                                         <h5>Device</h5>
@@ -98,59 +98,81 @@
 
                                 </div>
                             </div>
-                            <div class="col-md-5 ml-auto">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h5>Configurations</h5>
-                                        <input type="hidden" asp-for="ConfigId" />
+                            <div class="col-md-7 ml-auto">
+                                <div id="DivPainelConfig">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5>Configurations</h5>
+                                            <input type="hidden" asp-for="ConfigId" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="custom-control custom-checkbox">
-                                            <input asp-for="EnablePhoto" type="checkbox" class="custom-control-input" />&nbsp;
-                                            <label class="custom-control-label">Active Photo Show</label>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="custom-control custom-switch">
+                                                <input id="IdEnablePhoto" asp-for="EnablePhoto" type="checkbox" class="custom-control-input" />&nbsp;
+                                                <label class="custom-control-label">Active Photo Show</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="custom-control custom-switch">
+                                                <input id="IdEnableVideo" asp-for="EnableVideo" type="checkbox" class="custom-control-input" />&nbsp;
+                                                <label class="custom-control-label">Active Video Show</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="custom-control custom-switch">
+                                                <input id="IdEnableWebImage" asp-for="EnableWebImage" type="checkbox" class="custom-control-input" />&nbsp;
+                                                <label class="custom-control-label">Active Web Photo Show</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="custom-control custom-switch">
+                                                <input id="IdEnableWebVideo" asp-for="EnableWebVideo" type="checkbox" class="custom-control-input" />&nbsp;
+                                                <label class="custom-control-label">Active Web Video Show</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="custom-control custom-switch">
+                                                <input id="IdEnableTransaction" asp-for="EnableTransaction" type="checkbox" class="custom-control-input" />&nbsp;
+                                                <label class="custom-control-label">Enable Transaction Between Show</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-9">
+                                            <input asp-for="TransactionTime" id="SliderTransactionTime" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="@Model.TransactionTime" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <span id="TransactionTimeVal">@Model.TransactionTime</span>&nbsp;<span>Segunds</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="custom-control custom-checkbox">
-                                            <input asp-for="EnableVideo" type="checkbox" class="custom-control-input" />&nbsp;
-                                            <label class="custom-control-label">Active Video Show</label>
+                                <div id="DivPainelLog">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h5>Logs</h5>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="custom-control custom-checkbox">
-                                            <input asp-for="EnableWebImage" type="checkbox" class="custom-control-input" />&nbsp;
-                                            <label class="custom-control-label">Active Web Photo Show</label>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <table id="grid-data-device-log" class="table table-condensed table-hover table-striped" style="font-size:8pt;" data-navigation="2">
+                                                <thead>
+                                                    <tr>
+                                                        <th data-column-id="creationDateTime" data-order="asc" data-converter="datetime">Creation Date</th>
+                                                        <th data-column-id="ipAcessed">IP</th>
+                                                        <th data-column-id="message">Message</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="custom-control custom-checkbox">
-                                            <input asp-for="EnableWebVideo" type="checkbox" class="custom-control-input" />&nbsp;
-                                            <label class="custom-control-label">Active Web Video Show</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="custom-control custom-checkbox">
-                                            <input asp-for="EnableTransaction" type="checkbox" class="custom-control-input" />&nbsp;
-                                            <label class="custom-control-label">Enable Transaction Between Show</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group row">      
-                                    <div class="col-sm-9">
-                                        <input asp-for="TransactionTime" id="SliderTransactionTime" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="@Model.TransactionTime" />
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <span id="TransactionTimeVal">@Model.TransactionTime</span>&nbsp;<span>Segunds</span>
                                     </div>
                                 </div>
                             </div>
@@ -190,14 +212,39 @@
             if (action == "Details") {
                 //Desabilitar para ediçao os campos e ocultar o botão salvar
                 $("#buttonSave").hide();
-            } else {
-                $("#buttonSave").show();
-            }
+                $("#DivPainelConfig").hide();
+                $("#DivPainelLog").show();
 
+                $("#grid-data-device-log").bootgrid(
+                    {
+                        ajax: true,
+                        post: function () {
+                            return {
+                                id: id
+                            };
+                        },
+                        url: '/Devices/ListLog',
+                        labels: translate,
+                        searchSettings: {
+                            delay: 100,
+                            characters: 3
+                        },
+
+                        converters: {
+                            datetime: {  // Tratar os campos data que vem no formato incorreto
+                                from: function (value) { return moment(value); },
+                                to: function (value) { return moment(FormatJsonDateToJavaScriptDate(value)).format("DD/MM/YYYY"); }
+                            }
+                        }
+                    });
+
+            } else {
+                $("#DivPainelConfig").show();
+                $("#buttonSave").show();
+                $("#DivPainelLog").hide();
+            }
             $('#ModalEdit').modal('show');
         }
-
-
 
         $(document).ready(function () {
 

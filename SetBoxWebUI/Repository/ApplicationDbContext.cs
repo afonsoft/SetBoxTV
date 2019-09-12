@@ -33,8 +33,7 @@ namespace SetBoxWebUI.Repository
             builder.ApplyConfiguration(new CompanyMap());
 
             builder.ApplyConfiguration(new FileCheckSumMap());
-            builder.ApplyConfiguration(new DeviceFilesMap());
-            builder.ApplyConfiguration(new FileDevicesMap());
+            builder.ApplyConfiguration(new FilesDevicesMap());
 
             base.OnModelCreating(builder);
         }
@@ -45,8 +44,7 @@ namespace SetBoxWebUI.Repository
         public DbSet<Company> Companies { get; set; }
         public DbSet<Address> Address { get; set; }
 
-        public DbSet<FileDevices> FileDevices { get; set; }
-        public DbSet<DeviceFiles> DeviceFiles { get; set; }
+        public DbSet<FilesDevices> FilesDevices { get; set; }
         public DbSet<FileCheckSum> Files { get; set; }
     }
     public class ApplicationIdentityUser : IdentityUser<Guid>

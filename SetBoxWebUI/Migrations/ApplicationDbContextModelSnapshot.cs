@@ -107,7 +107,7 @@ namespace SetBoxWebUI.Migrations
                     b.Property<Guid>("AddressId")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("AddressId")
-                        .HasDefaultValue(new Guid("68017fa0-6b11-4f84-95a3-1cef43122d66"));
+                        .HasDefaultValue(new Guid("6f9c8c80-aa96-4447-ab24-182c34b2c370"));
 
                     b.Property<string>("City")
                         .HasColumnName("City")
@@ -134,8 +134,8 @@ namespace SetBoxWebUI.Migrations
                 {
                     b.Property<Guid>("CompanyId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("AddressId")
-                        .HasDefaultValue(new Guid("1e403c33-c36e-4294-babb-d770f718956c"));
+                        .HasColumnName("CompanyId")
+                        .HasDefaultValue(new Guid("1cded759-c3ce-41de-a10b-eba9659bb93e"));
 
                     b.Property<string>("CNPJ")
                         .HasColumnName("CNPJ")
@@ -155,12 +155,14 @@ namespace SetBoxWebUI.Migrations
                     b.Property<Guid>("ConfigId")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("ConfigId")
-                        .HasDefaultValue(new Guid("fd4547a7-4ed9-4bf1-8423-e428adb5f89f"));
+                        .HasDefaultValue(new Guid("e9c43e6c-abbb-4f5d-acbb-1bb0bd4702a2"));
 
                     b.Property<DateTime>("CreationDateTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("CreationDateTime")
-                        .HasDefaultValue(new DateTime(2019, 9, 6, 16, 47, 23, 218, DateTimeKind.Local).AddTicks(1769));
+                        .HasDefaultValue(new DateTime(2019, 9, 12, 15, 7, 2, 174, DateTimeKind.Local).AddTicks(4892));
+
+                    b.Property<Guid>("DeviceId");
 
                     b.Property<bool>("EnablePhoto")
                         .HasColumnName("EnablePhoto");
@@ -181,6 +183,9 @@ namespace SetBoxWebUI.Migrations
 
                     b.HasKey("ConfigId");
 
+                    b.HasIndex("DeviceId")
+                        .IsUnique();
+
                     b.ToTable("SetBoxConfigs");
                 });
 
@@ -189,23 +194,19 @@ namespace SetBoxWebUI.Migrations
                     b.Property<Guid>("DeviceId")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("DeviceId")
-                        .HasDefaultValue(new Guid("326da4b4-9242-4c22-88db-4ed51bb6b754"));
+                        .HasDefaultValue(new Guid("19986d8c-aba0-48b9-b7f9-30ed3646ff9c"));
 
                     b.Property<Guid?>("CompanyId");
-
-                    b.Property<Guid?>("ConfigurationConfigId");
 
                     b.Property<DateTime>("CreationDateTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("CreationDateTime")
-                        .HasDefaultValue(new DateTime(2019, 9, 6, 16, 47, 23, 223, DateTimeKind.Local).AddTicks(9860));
+                        .HasDefaultValue(new DateTime(2019, 9, 12, 15, 7, 2, 183, DateTimeKind.Local).AddTicks(333));
 
                     b.Property<string>("DeviceIdentifier")
                         .IsRequired()
                         .HasColumnName("DeviceIdentifier")
                         .HasMaxLength(255);
-
-                    b.Property<Guid?>("FileDevicesId");
 
                     b.Property<string>("License")
                         .HasColumnName("License")
@@ -223,27 +224,7 @@ namespace SetBoxWebUI.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.HasIndex("ConfigurationConfigId");
-
-                    b.HasIndex("FileDevicesId");
-
                     b.ToTable("SetBoxDevices");
-                });
-
-            modelBuilder.Entity("SetBoxWebUI.Models.DeviceFiles", b =>
-                {
-                    b.Property<Guid>("DeviceFilesId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("DeviceFilesId")
-                        .HasDefaultValue(new Guid("b8f08b6a-4518-4d15-bf2e-4dd39a3052b5"));
-
-                    b.Property<Guid?>("DeviceId");
-
-                    b.HasKey("DeviceFilesId");
-
-                    b.HasIndex("DeviceId");
-
-                    b.ToTable("SetBoxDeviceFiles");
                 });
 
             modelBuilder.Entity("SetBoxWebUI.Models.DeviceLogAccesses", b =>
@@ -251,12 +232,12 @@ namespace SetBoxWebUI.Migrations
                     b.Property<Guid>("DeviceLogAccessesId")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("DeviceLogAccessesId")
-                        .HasDefaultValue(new Guid("d9934de6-5db7-40be-96c0-1141644ae0fd"));
+                        .HasDefaultValue(new Guid("de494b93-8c7f-472e-93fd-caeaee6f93e4"));
 
-                    b.Property<DateTime?>("CreationDateTime")
+                    b.Property<DateTime>("CreationDateTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("CreationDateTime")
-                        .HasDefaultValue(new DateTime(2019, 9, 6, 16, 47, 23, 221, DateTimeKind.Local).AddTicks(1517));
+                        .HasDefaultValue(new DateTime(2019, 9, 12, 15, 7, 2, 178, DateTimeKind.Local).AddTicks(3569));
 
                     b.Property<Guid?>("DeviceId");
 
@@ -279,11 +260,9 @@ namespace SetBoxWebUI.Migrations
                     b.Property<Guid>("FileId")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("FileId")
-                        .HasDefaultValue(new Guid("e31301a4-6259-4db0-9ec1-5ea298592e47"));
+                        .HasDefaultValue(new Guid("1a47514e-55fb-4033-9b95-0b1c38eb6a23"));
 
                     b.Property<string>("CheckSum");
-
-                    b.Property<Guid?>("DeviceFilesId");
 
                     b.Property<string>("Extension")
                         .HasColumnName("Extension")
@@ -302,25 +281,20 @@ namespace SetBoxWebUI.Migrations
 
                     b.HasKey("FileId");
 
-                    b.HasIndex("DeviceFilesId");
-
                     b.ToTable("SetBoxFileCheckSum");
                 });
 
-            modelBuilder.Entity("SetBoxWebUI.Models.FileDevices", b =>
+            modelBuilder.Entity("SetBoxWebUI.Models.FilesDevices", b =>
                 {
-                    b.Property<Guid>("FileDevicesId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("FileDevicesId")
-                        .HasDefaultValue(new Guid("2389091b-7326-4700-beba-13bfc2f2d2a7"));
+                    b.Property<Guid>("DeviceId");
 
-                    b.Property<Guid?>("FileId");
+                    b.Property<Guid>("FileId");
 
-                    b.HasKey("FileDevicesId");
+                    b.HasKey("DeviceId", "FileId");
 
                     b.HasIndex("FileId");
 
-                    b.ToTable("SetBoxFileDevices");
+                    b.ToTable("FilesDevices");
                 });
 
             modelBuilder.Entity("SetBoxWebUI.Repository.ApplicationIdentityRole", b =>
@@ -445,52 +419,44 @@ namespace SetBoxWebUI.Migrations
 
             modelBuilder.Entity("SetBoxWebUI.Models.Address", b =>
                 {
-                    b.HasOne("SetBoxWebUI.Models.Company")
+                    b.HasOne("SetBoxWebUI.Models.Company", "Company")
                         .WithMany("Address")
                         .HasForeignKey("CompanyId");
                 });
 
-            modelBuilder.Entity("SetBoxWebUI.Models.Device", b =>
-                {
-                    b.HasOne("SetBoxWebUI.Models.Company")
-                        .WithMany("Devices")
-                        .HasForeignKey("CompanyId");
-
-                    b.HasOne("SetBoxWebUI.Models.Config", "Configuration")
-                        .WithMany()
-                        .HasForeignKey("ConfigurationConfigId");
-
-                    b.HasOne("SetBoxWebUI.Models.FileDevices")
-                        .WithMany("Devices")
-                        .HasForeignKey("FileDevicesId");
-                });
-
-            modelBuilder.Entity("SetBoxWebUI.Models.DeviceFiles", b =>
+            modelBuilder.Entity("SetBoxWebUI.Models.Config", b =>
                 {
                     b.HasOne("SetBoxWebUI.Models.Device", "Device")
-                        .WithMany()
-                        .HasForeignKey("DeviceId");
+                        .WithOne("Configuration")
+                        .HasForeignKey("SetBoxWebUI.Models.Config", "DeviceId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SetBoxWebUI.Models.Device", b =>
+                {
+                    b.HasOne("SetBoxWebUI.Models.Company", "Company")
+                        .WithMany("Devices")
+                        .HasForeignKey("CompanyId");
                 });
 
             modelBuilder.Entity("SetBoxWebUI.Models.DeviceLogAccesses", b =>
                 {
-                    b.HasOne("SetBoxWebUI.Models.Device")
+                    b.HasOne("SetBoxWebUI.Models.Device", "Device")
                         .WithMany("LogAccesses")
                         .HasForeignKey("DeviceId");
                 });
 
-            modelBuilder.Entity("SetBoxWebUI.Models.FileCheckSum", b =>
+            modelBuilder.Entity("SetBoxWebUI.Models.FilesDevices", b =>
                 {
-                    b.HasOne("SetBoxWebUI.Models.DeviceFiles")
+                    b.HasOne("SetBoxWebUI.Models.Device", "Device")
                         .WithMany("Files")
-                        .HasForeignKey("DeviceFilesId");
-                });
+                        .HasForeignKey("DeviceId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity("SetBoxWebUI.Models.FileDevices", b =>
-                {
                     b.HasOne("SetBoxWebUI.Models.FileCheckSum", "File")
-                        .WithMany()
-                        .HasForeignKey("FileId");
+                        .WithMany("Devices")
+                        .HasForeignKey("FileId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
