@@ -34,7 +34,7 @@ namespace SetBoxWebUI.Models
         /// </summary>
         public string CheckSum { get; set; }
 
-        public List<FilesDevices> Devices { get; set; }
+        public virtual ICollection<FilesDevices> Devices { get; set; }
     }
 
     public class FilesDevices

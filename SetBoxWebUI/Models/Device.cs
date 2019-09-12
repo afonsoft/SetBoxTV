@@ -20,11 +20,11 @@ namespace SetBoxWebUI.Models
         public Config Configuration { get; set; }
 
         [JsonIgnore]
-        public List<DeviceLogAccesses> LogAccesses { get; set; } = new List<DeviceLogAccesses>();
+        public virtual ICollection<DeviceLogAccesses> LogAccesses { get; set; } = new List<DeviceLogAccesses>();
 
         public Company Company { get; set; }
 
-        public List<FilesDevices> Files { get; set; }
+        public virtual ICollection<FilesDevices> Files { get; set; }
     }
 
     public class DeviceLogAccesses

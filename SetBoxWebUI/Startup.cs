@@ -58,7 +58,7 @@ namespace SetBoxWebUI
 
             string connectionString = Configuration.GetConnectionString("Default"); 
            
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseLazyLoadingProxies().UseSqlServer(connectionString));
             services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
 
             services.AddIdentity<ApplicationIdentityUser, ApplicationIdentityRole>()
@@ -167,7 +167,7 @@ namespace SetBoxWebUI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
             app.UseDeveloperExceptionPage();
             app.UseDatabaseErrorPage();

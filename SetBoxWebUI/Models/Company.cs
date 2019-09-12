@@ -11,8 +11,8 @@ namespace SetBoxWebUI.Models
         public Guid CompanyId { get; set; }
         public string FullName { get; set; }
         public string CNPJ { get; set; }
-        public List<Address> Address { get; set; }
-        public List<Device> Devices { get; set; }
+        public virtual ICollection<Address> Address { get; set; }
+        public virtual ICollection<Device> Devices { get; set; }
     }
 
     public class Address
