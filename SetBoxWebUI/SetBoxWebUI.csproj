@@ -5,7 +5,7 @@
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <OutputType>Exe</OutputType>
-    <RuntimeFrameworkVersion>2.2.4</RuntimeFrameworkVersion>
+    <RuntimeFrameworkVersion>2.2.3</RuntimeFrameworkVersion>
     <RuntimeIdentifiers>win7-x64;win7-x86;win81-x64;win81-x86;win10-x64;win10-x86;win-x64;win-x86</RuntimeIdentifiers>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
