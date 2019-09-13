@@ -17,7 +17,7 @@ namespace SetBoxWebUI.Models
         public virtual Config Configuration { get; set; }
 
         [JsonIgnore]
-        public virtual ICollection<DeviceLogAccesses> LogAccesses { get; set; } = new List<DeviceLogAccesses>();
+        public virtual ICollection<DeviceLogAccesses> LogAccesses { get; set; }
 
         [JsonIgnore]
         public virtual Company Company { get; set; }

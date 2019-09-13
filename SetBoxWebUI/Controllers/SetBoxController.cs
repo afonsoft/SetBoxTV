@@ -176,7 +176,9 @@ namespace SetBoxWebUI.Controllers
                         Message = "Logged"
                     });
                     await _devices.UpdateAsync(device);
-                    r.Result = CriptoHelpers.Base64Encode($"{identifier}|{license}|{HttpContext.GetClientIpAddress()}|{DateTime.Now.AddMinutes(30):yyyyMMddHHmmss}|{Guid.NewGuid().ToString()}");
+
+                    r.Result = CriptoHelpers.Base64Encode($"{identifier}|{CriptoHelpers.Base64Encode(license)}|{HttpContext.GetClientIpAddress()}|{DateTime.Now.AddMinutes(30):yyyyMMddHHmmss}|{device.DeviceId}");
+
                     return Ok(r);
                 }
                 r.Message = $"Unauthorized Device {identifier} or license {license} is invalid!";
@@ -359,7 +361,6 @@ namespace SetBoxWebUI.Controllers
         [ProducesResponseType(typeof(Response<IEnumerable<FileCheckSum>>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Response<IEnumerable<FileCheckSum>>), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(Response<IEnumerable<FileCheckSum>>), StatusCodes.Status400BadRequest)]
-
         public async Task<ActionResult<Response<IEnumerable<FileCheckSum>>>> ListFilesCheckSum(string session)
         {
             var r = new Response<IEnumerable<FileCheckSum>>();
@@ -418,6 +419,7 @@ namespace SetBoxWebUI.Controllers
         {
             return StatusCode(401, r);
         }
+
         private void ValidaSession(string session)
         {
             try
@@ -425,11 +427,13 @@ namespace SetBoxWebUI.Controllers
                 string[] sessions;
                 string deviceIdentifier64;
                 string ip;
+                string license;
                 DateTime dt;
                 try
                 {
                     sessions = CriptoHelpers.Base64Decode(session).Split("|");
                     deviceIdentifier64 = CriptoHelpers.Base64Encode(sessions[0]);
+                    license = CriptoHelpers.Base64Decode(sessions[1]);
                     ip = sessions[2];
                     dt = DateTime.ParseExact(sessions[3], "yyyyMMddHHmmss", CultureInfo.InvariantCulture);
                 }
@@ -439,7 +443,7 @@ namespace SetBoxWebUI.Controllers
                 }
 
 
-                if (sessions[1] == deviceIdentifier64 || sessions[1] == DefaultLicense)
+                if (license == deviceIdentifier64 || license == DefaultLicense)
                 {
                     if (dt >= DateTime.Now)
                     {
@@ -468,6 +472,7 @@ namespace SetBoxWebUI.Controllers
                 throw;
             }
         }
+
         private string GetDeviceIdFromSession(string session)
         {
             return CriptoHelpers.Base64Decode(session).Split("|")[0];

@@ -108,6 +108,42 @@
             <param name="base64EncodedData"></param>
             <returns></returns>
         </member>
+        <member name="M:SetBoxWebUI.Helpers.CriptoHelpers.MD5HashFile(System.String)">
+            <summary>
+            MD5 CheckSum File
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Helpers.CriptoHelpers.MD5HashStream(System.IO.Stream)">
+            <summary>
+            MD5HashStream
+            </summary>
+            <param name="input">Stream</param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Helpers.CriptoHelpers.MD5HashBytes(System.Byte[])">
+            <summary>
+            MD5HashBytes
+            </summary>
+            <param name="input">byte[]</param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Helpers.CriptoHelpers.MD5HashString(System.String)">
+            <summary>
+            MD5 Hash String
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Helpers.CriptoHelpers.CheckMD5Hash(System.String,System.String)">
+            <summary>
+            CheckMD5Hash
+            </summary>
+            <param name="input1">MD5 String</param>
+            <param name="input2">MD5 String</param>
+            <returns></returns>
+        </member>
         <member name="T:SetBoxWebUI.Models.Config">
             <summary>
             Configurações do SetBox
