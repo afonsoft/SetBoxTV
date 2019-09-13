@@ -210,95 +210,107 @@
             Teve erro?
             </summary>
         </member>
-        <member name="T:SetBoxWebUI.Repository.Repository`1">
+        <member name="T:SetBoxWebUI.Repository.Repository`2">
             <summary>
             Base para um DbSet
             </summary>
             <typeparam name="TEntity">TEntity</typeparam>
+            <typeparam name="TKey">TKey</typeparam>
         </member>
-        <member name="P:SetBoxWebUI.Repository.Repository`1.Context">
+        <member name="P:SetBoxWebUI.Repository.Repository`2.Context">
             <summary>
             DbContext
             </summary>
         </member>
-        <member name="P:SetBoxWebUI.Repository.Repository`1.Table">
+        <member name="P:SetBoxWebUI.Repository.Repository`2.Table">
             <summary>
             DbSet of the Table
             </summary>
         </member>
-        <member name="P:SetBoxWebUI.Repository.Repository`1.PrimaryKeyName">
+        <member name="P:SetBoxWebUI.Repository.Repository`2.PrimaryKeyName">
             <summary>
             Primary Key Name
             </summary>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.#ctor(SetBoxWebUI.Repository.ApplicationDbContext)">
+        <member name="P:SetBoxWebUI.Repository.Repository`2.EntityType">
+            <summary>
+            IEntityType
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:SetBoxWebUI.Repository.Repository`2.Properties" -->
+        <member name="P:SetBoxWebUI.Repository.Repository`2.Model">
+            <summary>
+            IModel
+            </summary>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`2.#ctor(SetBoxWebUI.Repository.ApplicationDbContext)">
             <summary>
             Construtor com o RepositoryDbContext
             </summary>
             <param name="context"></param>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.Add(`0)">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.Add(`0)">
             <summary>
             Add Element
             </summary>
             <param name="entity"></param>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.AddRange(System.Collections.Generic.IEnumerable{`0})">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.AddRange(System.Collections.Generic.IEnumerable{`0})">
             <summary>
             Add Many Element
             </summary>
             <param name="entity"></param>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.Get">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.Get">
             <summary>
             Get All Element
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.GetById(System.Int32)">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.GetById(`1)">
             <summary>
             Get Element by primaryKey
             </summary>
             <param name="id">key</param>
             <returns></returns>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.Delete(`0)">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.Delete(`0)">
             <summary>
             Método que deleta um objeto no banco de dados. 
             </summary>
             <param name="entity">item que será deletado</param>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.DeleteById(System.Int32)">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.DeleteById(`1)">
             <summary>
             Método que deleta um objeto no banco de dados. 
             </summary>
             <param name="id">Id da primary key</param>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.DeleteRange(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.DeleteRange(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
             <summary> 
             Método que deleta um ou varios objetos no banco de dados, mediante uma expressão LINQ. 
             </summary> 
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.DeleteRange(System.Collections.Generic.IEnumerable{`0})">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.DeleteRange(System.Collections.Generic.IEnumerable{`0})">
             <summary>
             Delete Elements
             </summary>
             <param name="entity"></param>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.Update(`0)">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.Update(`0)">
             <summary>
             Update Element
             </summary>
             <param name="entity"></param>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.UpdateById(`0,System.Int32)">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.UpdateById(`0,`1)">
             <summary>
             Update Element By primaryKey
             </summary>
             <param name="entity">Element</param>
             <param name="id">primaryKey</param>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.Get(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.Get(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
             <summary>
             Find Element
             </summary>
@@ -306,72 +318,72 @@
             <param name="orderBy">OrderBy</param>
             <returns></returns>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.Dispose">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.Dispose">
             <summary>
             Dispose
             </summary>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.AddAsync(`0)">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.AddAsync(`0)">
             <summary>
             Add
             </summary>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.AddRangeAsync(System.Collections.Generic.IEnumerable{`0})">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.AddRangeAsync(System.Collections.Generic.IEnumerable{`0})">
             <summary>
             add
             </summary>
             <param name="entity"></param>
             <returns></returns>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.GetAsync">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.GetAsync">
             <summary>
             get
             </summary>
             <returns></returns>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.GetByIdAsync(System.Int32)">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.GetByIdAsync(`1)">
             <summary>
             Get
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.DeleteAsync(`0)">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.DeleteAsync(`0)">
             <summary>
             delete
             </summary>
             <param name="entity"></param>
             <returns></returns>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.DeleteByIdAsync(System.Int32)">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.DeleteByIdAsync(`1)">
             <summary>
             Delete
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.DeleteRangeAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.DeleteRangeAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
             <summary>
             Delete
             </summary>
             <param name="filter"></param>
             <returns></returns>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.DeleteRangeAsync(System.Collections.Generic.IEnumerable{`0})">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.DeleteRangeAsync(System.Collections.Generic.IEnumerable{`0})">
             <summary>
             Delete
             </summary>
             <param name="entity"></param>
             <returns></returns>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.UpdateAsync(`0)">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.UpdateAsync(`0)">
             <summary>
             Udapte
             </summary>
             <param name="entity"></param>
             <returns></returns>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.UpdateByIdAsync(`0,System.Int32)">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.UpdateByIdAsync(`0,`1)">
             <summary>
             Update
             </summary>
@@ -379,7 +391,7 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.GetAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.GetAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
             <summary>
             GetAsync
             </summary>
@@ -387,7 +399,7 @@
             <param name="orderBy"></param>
             <returns></returns>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.GetPagination(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Int32,System.Int32)">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.GetPagination(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Int32,System.Int32)">
             <summary>
             GetPagination
             </summary>
@@ -396,7 +408,7 @@
             <param name="count"></param>
             <returns></returns>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`1.GetPagination(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Int32,System.Int32)">
+        <member name="M:SetBoxWebUI.Repository.Repository`2.GetPagination(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Int32,System.Int32)">
             <summary>
             GetPagination
             </summary>

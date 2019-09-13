@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SetBoxWebUI.Models
 {
@@ -17,19 +14,19 @@ namespace SetBoxWebUI.Models
         public DateTime CreationDateTime { get; set; }
 
         [JsonIgnore]
-        public Config Configuration { get; set; }
+        public virtual Config Configuration { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<DeviceLogAccesses> LogAccesses { get; set; } = new List<DeviceLogAccesses>();
 
-        public Company Company { get; set; }
+        public virtual Company Company { get; set; }
 
         public virtual ICollection<FilesDevices> Files { get; set; }
     }
 
     public class DeviceLogAccesses
     {
-        public Device Device { get; set; }
+        public virtual Device Device { get; set; }
         public Guid DeviceLogAccessesId { get; set; }
         public DateTime CreationDateTime { get; set; }
         public string IpAcessed { get; set; }

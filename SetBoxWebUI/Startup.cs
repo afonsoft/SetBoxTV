@@ -34,7 +34,6 @@ namespace SetBoxWebUI
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
@@ -58,12 +57,13 @@ namespace SetBoxWebUI
 
             string connectionString = Configuration.GetConnectionString("Default"); 
            
-            services.AddDbContext<ApplicationDbContext>(options => options.UseLazyLoadingProxies().UseSqlServer(connectionString));
-            services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseLazyLoadingProxies(true)
+                                                                    .UseSqlServer(connectionString));
+
+            services.AddSingleton(typeof(IRepository<,>), typeof(Repository<,>));
 
             services.AddIdentity<ApplicationIdentityUser, ApplicationIdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
-                    // .AddDefaultUI(UIFramework.Bootstrap4)
                     .AddDefaultTokenProviders();
           
 
@@ -78,7 +78,7 @@ namespace SetBoxWebUI
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(20);
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
@@ -87,7 +87,7 @@ namespace SetBoxWebUI
             {
                 // Cookie settings
                 options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
                 options.LoginPath = new PathString("/Auth/Login");
                 options.AccessDeniedPath = new PathString("/Auth/Denied");
                 options.SlidingExpiration = true;
@@ -133,7 +133,7 @@ namespace SetBoxWebUI
 
                 // User settings.
                 options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+#";
-                options.User.RequireUniqueEmail = false;
+                options.User.RequireUniqueEmail = true;
             });
 
 
@@ -146,7 +146,6 @@ namespace SetBoxWebUI
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
 
-            // Configurando o serviço de documentação do Swagger
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1",
@@ -185,9 +184,7 @@ namespace SetBoxWebUI
 
             });
 
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "SetBox API");

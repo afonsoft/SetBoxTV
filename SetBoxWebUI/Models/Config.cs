@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SetBoxWebUI.Models
 {
@@ -24,7 +20,7 @@ namespace SetBoxWebUI.Models
     public class Config
     {
         public Guid DeviceId { get; set; }
-        public Device Device { get; set; }
+        public virtual Device Device { get; set; }
         public Guid ConfigId { get; set; }
         /// <summary>
         /// Ativar o Video

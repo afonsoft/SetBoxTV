@@ -24,7 +24,7 @@ namespace SetBoxWebUI.Controllers
     {
         private const string DefaultLicense = "1111";
         private readonly ILogger<SetBoxController> _logger;
-        private readonly IRepository<Device> _devices;
+        private readonly IRepository<Device, Guid> _devices;
        
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace SetBoxWebUI.Controllers
         public SetBoxController(ILogger<SetBoxController> logger, ApplicationDbContext context)
         {
             _logger = logger;
-            _devices = new Repository<Device>(context);
+            _devices = new Repository<Device, Guid>(context);
             
         }
 
@@ -137,6 +137,7 @@ namespace SetBoxWebUI.Controllers
                         {
                             CreationDateTime = DateTime.Now,
                             DeviceIdentifier = identifier,
+                            License = license,
                             Platform = "",
                             Version = "",
                             DeviceId = Guid.NewGuid()

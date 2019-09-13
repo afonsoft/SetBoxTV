@@ -14,7 +14,8 @@ namespace SetBoxWebUI.Repository
     /// Base para um DbSet
     /// </summary>
     /// <typeparam name="TEntity">TEntity</typeparam>
-    public class Repository<TEntity> : IDisposable, IRepository<TEntity> where TEntity : class
+    /// <typeparam name="TKey">TKey</typeparam>
+    public class Repository<TEntity, TKey> : IDisposable, IRepository<TEntity, TKey> where TEntity : class
     {
         /// <summary>
         /// DbContext
@@ -30,9 +31,21 @@ namespace SetBoxWebUI.Repository
         /// Primary Key Name
         /// </summary>
         public string PrimaryKeyName { get; }
-        internal IEntityType _entityType;
-        internal IEnumerable<IProperty> _properties;
-        internal IModel _model;
+        
+        /// <summary>
+        /// IEntityType
+        /// </summary>
+        public IEntityType EntityType { get; private set; }
+
+        /// <summary>
+        /// IEnumerable<IProperty>
+        /// </summary>
+        public IEnumerable<IProperty> Properties { get; private set; }
+
+        /// <summary>
+        /// IModel
+        /// </summary>
+        public IModel Model { get; private set; }
 
         /// <summary>
         /// Construtor com o RepositoryDbContext
@@ -43,10 +56,10 @@ namespace SetBoxWebUI.Repository
             Context = context;
             Table = Context.Set<TEntity>();
 
-            _model = Context.Model;
-            _entityType = _model.FindEntityType(typeof(TEntity));
-            _properties = _entityType.GetProperties();
-            PrimaryKeyName = _entityType.FindPrimaryKey().Properties.First().Name;
+            Model = Context.Model;
+            EntityType = Model.FindEntityType(typeof(TEntity));
+            Properties = EntityType.GetProperties();
+            PrimaryKeyName = EntityType.FindPrimaryKey().Properties.First().Name;
         }
 
         private Repository()
@@ -78,14 +91,14 @@ namespace SetBoxWebUI.Repository
         /// Get All Element
         /// </summary>
         /// <returns></returns>
-        public virtual IEnumerable<TEntity> Get() => Table.AsNoTracking().AsEnumerable();
+        public virtual IEnumerable<TEntity> Get() => Table.AsEnumerable();
 
         /// <summary>
         /// Get Element by primaryKey
         /// </summary>
         /// <param name="id">key</param>
         /// <returns></returns>
-        public virtual TEntity GetById(int id) => Table.FirstOrDefault(e => id.Equals((int)e.GetType().GetProperty(PrimaryKeyName).GetValue(e)));
+        public virtual TEntity GetById(TKey id) => Table.FirstOrDefault(e => id.Equals((TKey)e.GetType().GetProperty(PrimaryKeyName).GetValue(e)));
 
 
         /// <summary>
@@ -107,7 +120,7 @@ namespace SetBoxWebUI.Repository
         /// Método que deleta um objeto no banco de dados. 
         /// </summary>
         /// <param name="id">Id da primary key</param>
-        public virtual async void DeleteById(int id)
+        public virtual async void DeleteById(TKey id)
         {
 
             var entity = GetById(id);
@@ -173,7 +186,7 @@ namespace SetBoxWebUI.Repository
         /// </summary>
         /// <param name="entity">Element</param>
         /// <param name="id">primaryKey</param>
-        public virtual async void UpdateById(TEntity entity, int id)
+        public virtual async void UpdateById(TEntity entity, TKey id)
         {
 
             TEntity attachedEntity = GetById(id); // access the key 
@@ -229,14 +242,14 @@ namespace SetBoxWebUI.Repository
         /// get
         /// </summary>
         /// <returns></returns>
-        public virtual Task<List<TEntity>> GetAsync() => Table.AsNoTracking().ToListAsync();
+        public virtual Task<List<TEntity>> GetAsync() => Table.ToListAsync();
 
         /// <summary>
         /// Get
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public virtual Task<TEntity> GetByIdAsync(int id) => Table.FirstOrDefaultAsync(e => id.Equals((int)e.GetType().GetProperty(PrimaryKeyName).GetValue(e)));
+        public virtual Task<TEntity> GetByIdAsync(TKey id) => Table.FirstOrDefaultAsync(e => id.Equals((TKey)e.GetType().GetProperty(PrimaryKeyName).GetValue(e)));
 
         /// <summary>
         /// delete
@@ -259,7 +272,7 @@ namespace SetBoxWebUI.Repository
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public virtual Task<int> DeleteByIdAsync(int id)
+        public virtual Task<int> DeleteByIdAsync(TKey id)
         {
 
             var entity = GetById(id);
@@ -329,12 +342,12 @@ namespace SetBoxWebUI.Repository
         /// <param name="entity"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public virtual Task<int> UpdateByIdAsync(TEntity entity, int id)
+        public virtual Task<int> UpdateByIdAsync(TEntity entity, TKey id)
         {
 
             TEntity attachedEntity = GetById(id) ?? entity;
 
-            if (entity == null || attachedEntity == null)
+            if (entity == null)
                 throw new KeyNotFoundException($"Id: {id} not found");
 
             var attachedEntry = Context.Entry(attachedEntity);
@@ -366,7 +379,7 @@ namespace SetBoxWebUI.Repository
             int page = 1,
             int count = 10)
         {
-            KeyValuePair<int, List<TEntity>> keys = new KeyValuePair<int, List<TEntity>>(Table.Count(),await Table.AsNoTracking()
+            KeyValuePair<int, List<TEntity>> keys = new KeyValuePair<int, List<TEntity>>(Table.Count(),await Table
                                                                                                                     .Where(filter)
                                                                                                                     .Skip((page - 1) * count)
                                                                                                                     .Take(count)
@@ -393,7 +406,7 @@ namespace SetBoxWebUI.Repository
             List<TEntity> itens;
             if (orderBy != null)
             {
-                itens = await Table.AsNoTracking()
+                itens = await Table
                           .Where(filter)
                           .OrderBy(orderBy)
                           .Skip((page - 1) * count)
@@ -402,7 +415,7 @@ namespace SetBoxWebUI.Repository
             }
             else if (orderByDescending != null)
             {
-                itens = await Table.AsNoTracking()
+                itens = await Table
                           .Where(filter)
                           .OrderByDescending(orderByDescending)
                           .Skip((page - 1) * count)
@@ -411,7 +424,7 @@ namespace SetBoxWebUI.Repository
             }
             else
             {
-                itens = await Table.AsNoTracking()
+                itens = await Table
                          .Where(filter)
                          .Skip((page - 1) * count)
                          .Take(count)

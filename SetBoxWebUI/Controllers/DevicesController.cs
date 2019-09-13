@@ -16,7 +16,7 @@ namespace SetBoxWebUI.Controllers
     public class DevicesController : Controller
     {
         private readonly ILogger<DevicesController> _logger;
-        private readonly IRepository<Device> _devices;
+        private readonly IRepository<Device, Guid> _devices;
 
         /// <summary>
         /// SetBoxController
@@ -24,7 +24,7 @@ namespace SetBoxWebUI.Controllers
         public DevicesController(ILogger<DevicesController> logger, ApplicationDbContext context)
         {
             _logger = logger;
-            _devices = new Repository<Device>(context);
+            _devices = new Repository<Device, Guid>(context);
         }
        
         public IActionResult Index(DeviceViewModel model)

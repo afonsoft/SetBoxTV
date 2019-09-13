@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SetBoxWebUI.Models
 {
@@ -40,9 +37,9 @@ namespace SetBoxWebUI.Models
     public class FilesDevices
     {
         public Guid FileId { get; set; }
-        public FileCheckSum File { get; set; }
+        public virtual FileCheckSum File { get; set; }
         public Guid DeviceId { get; set; }
-        public Device Device { get; set; }
+        public virtual Device Device { get; set; }
     }
 
 }

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SetBoxWebUI.Models
 {
@@ -17,7 +14,7 @@ namespace SetBoxWebUI.Models
 
     public class Address
     {
-        public Company Company { get; set; }
+        public virtual Company Company { get; set; }
         public Guid AddressId { get; set; }
         public string City { get; set; }
         public string State { get; set; }
