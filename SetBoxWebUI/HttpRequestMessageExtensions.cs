@@ -3,11 +3,19 @@ using System.Net.Http;
 
 namespace SetBoxWebUI
 {
+    /// <summary>
+    /// HttpRequestMessageExtensions
+    /// </summary>
     public static class HttpRequestMessageExtensions
     {
         private const string HttpContext = "MS_HttpContext";
         private const string RemoteEndpointMessage = "System.ServiceModel.Channels.RemoteEndpointMessageProperty";
 
+        /// <summary>
+        /// GetClientIpAddress
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public static string GetClientIpAddress(this HttpRequestMessage request)
         {
             if (request.Properties.ContainsKey(HttpContext))
@@ -28,9 +36,14 @@ namespace SetBoxWebUI
                 }
             }
 
-            return null;
+            return "127.0.0.1"; 
         }
 
+        /// <summary>
+        /// GetClientIpAddress
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public static string GetClientIpAddress(this HttpContext request)
         {
             if (request.Request.Headers.ContainsKey(HttpContext))
@@ -51,15 +64,12 @@ namespace SetBoxWebUI
                 }
             }
 
-            if(request.Connection != null)
+            if (request.Connection != null && request.Connection.RemoteIpAddress != null)
             {
-                if(request.Connection.RemoteIpAddress != null)
-                {
-                    return request.Connection.RemoteIpAddress.ToString();
-                }
+                return request.Connection.RemoteIpAddress.ToString();
             }
 
-            return null;
+            return "127.0.0.1";
         }
     }
 }

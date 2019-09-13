@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SetBoxWebUI.Controllers
 {
-    public class FilesController : Controller
+    public class FilesController : BaseController
     {
         // GET: Files
         public ActionResult Index()

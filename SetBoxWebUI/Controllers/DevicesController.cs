@@ -13,7 +13,7 @@ using SetBoxWebUI.Repository;
 namespace SetBoxWebUI.Controllers
 {
     [Authorize]
-    public class DevicesController : Controller
+    public class DevicesController : BaseController
     {
         private readonly ILogger<DevicesController> _logger;
         private readonly IRepository<Device, Guid> _devices;
@@ -219,7 +219,7 @@ namespace SetBoxWebUI.Controllers
                 var del = dels.FirstOrDefault();
                 if (del != null)
                 {
-                    _devices.Delete(del);
+                   await _devices.DeleteAsync(del);
                     return true;
                 }
                 return false;

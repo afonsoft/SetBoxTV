@@ -61,7 +61,7 @@ namespace SetBoxWebUI.Controllers
                 string deviceIdentifier = GetDeviceIdFromSession(session);
                 string deviceLicense = GetLocenseFromSession(session);
 
-                var device = _devices.Get(x => x.DeviceIdentifier == deviceIdentifier).FirstOrDefault();
+                var device = await _devices.FirstOrDefaultAsync(x => x.DeviceIdentifier == deviceIdentifier);
 
                 if (device == null)
                 {
@@ -80,7 +80,7 @@ namespace SetBoxWebUI.Controllers
                     log.DeviceLogAccessesId = Guid.NewGuid();
                     log.Message = "Device Updated";
 
-                    if(device.Platform != platform)
+                    if (device.Platform != platform)
                         log.Message += $"Platform: {platform} ({device.Platform}) ";
 
                     if (device.License != deviceLicense)
@@ -92,7 +92,7 @@ namespace SetBoxWebUI.Controllers
                     device.Platform = platform;
                     device.Version = version;
                     device.License = deviceLicense;
-                    
+
                     device.LogAccesses.Add(log);
 
                     await _devices.UpdateAsync(device);
@@ -145,7 +145,7 @@ namespace SetBoxWebUI.Controllers
                 if (license == deviceIdentifier64 || license == DefaultLicense)
                 {
 
-                    var device = _devices.Get(x => x.DeviceIdentifier == identifier).FirstOrDefault();
+                    var device = await _devices.FirstOrDefaultAsync(x => x.DeviceIdentifier == identifier);
                     if (device == null)
                     {
                         device = new Device()
@@ -249,7 +249,7 @@ namespace SetBoxWebUI.Controllers
 
                 string identifier = GetDeviceIdFromSession(config.session);
                 //Recuperar as configurações especifica para o DeviceId
-                var device = _devices.Get(x => x.DeviceIdentifier == identifier).FirstOrDefault();
+                var device = await _devices.FirstOrDefaultAsync(x => x.DeviceIdentifier == identifier);
 
                 if (device == null)
                 {
@@ -314,7 +314,7 @@ namespace SetBoxWebUI.Controllers
         [ProducesResponseType(typeof(Response<Config>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Response<Config>), StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(typeof(Response<Config>), StatusCodes.Status404NotFound)]
-        public ActionResult<Response<Config>> GetConfig(string session)
+        public async Task<ActionResult<Response<Config>>> GetConfig(string session)
         {
             var r = new Response<Config>();
             try
@@ -323,7 +323,7 @@ namespace SetBoxWebUI.Controllers
 
                 string identifier = GetDeviceIdFromSession(session);
                 //Recuperar as configurações especifica para o DeviceId
-                var device = _devices.Get(x => x.DeviceIdentifier == identifier).FirstOrDefault();
+                var device = await _devices.FirstOrDefaultAsync(x => x.DeviceIdentifier == identifier);
 
                 if (device == null || device.Configuration == null)
                 {
@@ -443,29 +443,15 @@ namespace SetBoxWebUI.Controllers
                     throw new SessionException($"Erro para descriptografar a session {session} Erro : {ex.Message}");
                 }
 
+                if (license != deviceIdentifier64 && license != DefaultLicense)
+                    throw new SessionException($"A Licença não confere com o Device!");
 
-                if (license == deviceIdentifier64 || license == DefaultLicense)
-                {
-                    if (dt >= DateTime.Now)
-                    {
-                        if (ip == HttpContext.GetClientIpAddress())
-                        {
-                            return;
-                        }
-                        else
-                        {
-                            throw new SessionException($"O Ip da Session {ip} é diferente do Ip da Request {HttpContext.GetClientIpAddress()}!");
-                        }
-                    }
-                    else
-                    {
-                        throw new SessionException($"A data da session expirou! data: {dt.ToString("yyyyMMddHHmmss")}");
-                    }
-                }
-                else
-                {
-                    throw new SessionException($"A Session {session[1]} é inválida!");
-                }
+                if (dt <= DateTime.Now)
+                    throw new SessionException($"A data da session expirou! data: {dt.ToString("yyyyMMddHHmmss")}");
+
+                if (ip != HttpContext.GetClientIpAddress())
+                    throw new SessionException($"O Ip da Session {ip} é diferente do Ip da Request {HttpContext.GetClientIpAddress()}!");
+
             }
             catch (Exception ex)
             {

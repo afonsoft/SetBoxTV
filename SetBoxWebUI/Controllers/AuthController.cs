@@ -17,8 +17,13 @@ namespace SetBoxWebUI.Controllers
         private readonly ILogger<AuthController> _logger;
         private readonly UserManager<ApplicationIdentityUser> _userManager;
         private readonly SignInManager<ApplicationIdentityUser> _signInManager;
-        public const string SessionKeyId = "_UserId";
 
+        /// <summary>
+        /// AuthController
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="signInManager"></param>
+        /// <param name="userManager"></param>
         public AuthController(ILogger<AuthController> logger, SignInManager<ApplicationIdentityUser> signInManager, UserManager<ApplicationIdentityUser> userManager)
         {
             _logger = logger;
@@ -26,18 +31,31 @@ namespace SetBoxWebUI.Controllers
             _userManager = userManager;
         }
 
+        /// <summary>
+        /// Denied
+        /// </summary>
+        /// <returns></returns>
         [AllowAnonymous]
         public ActionResult Denied()
         {
             return View();
         }
 
+        /// <summary>
+        /// Index
+        /// </summary>
+        /// <returns></returns>
         [AllowAnonymous]
         public ActionResult Index()
         {
             return RedirectToAction("Login", "Auth");
         }
 
+        /// <summary>
+        /// Login
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         public ActionResult Login(string returnUrl = "")
         {
@@ -45,6 +63,11 @@ namespace SetBoxWebUI.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// Login
+        /// </summary>
+        /// <param name="u"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -52,20 +75,24 @@ namespace SetBoxWebUI.Controllers
         {
             if (ModelState.IsValid) //verifica se é válido
             {
-
-                var result = await _signInManager.PasswordSignInAsync(u.Username, u.Password, u.RememberMe, true);
+                var result = await _signInManager.PasswordSignInAsync(u.Username, u.Password, u.RememberMe, false);
 
                 if (result.Succeeded)
                 {
-
                     var authProperties = new AuthenticationProperties
                     {
                         AllowRefresh = true,
-                        IsPersistent = true,
-                        ExpiresUtc = DateTime.UtcNow.AddMinutes(20)
+                        IsPersistent = u.RememberMe,
+                        IssuedUtc = DateTime.UtcNow,
+                        ExpiresUtc =  (u.RememberMe ? DateTime.UtcNow.AddDays(30) : DateTime.UtcNow.AddMinutes(30))
                     };
 
+                    authProperties.Items.Add("Username", u.Username);
+                    authProperties.Items.Add("RememberMe", u.RememberMe.ToString());
+                 
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, User, authProperties);
+
+                    _logger.LogInformation($"Usuário {u.Username} efetuou o login com sucesso.");
 
                     if (!string.IsNullOrEmpty(u.ReturnUrl) && Url.IsLocalUrl(u.ReturnUrl))
                     {
@@ -78,12 +105,17 @@ namespace SetBoxWebUI.Controllers
                 }
                 else
                 {
+                    _logger.LogInformation($"Usuário {u.Username} Usuário ou Senha Inválidos.");
                     ModelState.AddModelError("", "Usuário ou Senha Inválidos!");
                 }
             }
             return View(u);
         }
 
+        /// <summary>
+        /// Logout
+        /// </summary>
+        /// <returns></returns>
         public async Task<ActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

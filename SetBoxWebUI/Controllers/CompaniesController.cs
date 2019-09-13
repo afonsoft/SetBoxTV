@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SetBoxWebUI.Controllers
 {
-    public class CompaniesController : Controller
+    public class CompaniesController : BaseController
     {
         // GET: Companies
         public ActionResult Index()

@@ -4,6 +4,51 @@
         <name>SetBoxWebUI</name>
     </assembly>
     <members>
+        <member name="T:SetBoxWebUI.BaseController">
+            <summary>
+            BaseController
+            </summary>
+        </member>
+        <member name="M:SetBoxWebUI.Controllers.AuthController.#ctor(Microsoft.Extensions.Logging.ILogger{SetBoxWebUI.Controllers.AuthController},Microsoft.AspNetCore.Identity.SignInManager{SetBoxWebUI.Repository.ApplicationIdentityUser},Microsoft.AspNetCore.Identity.UserManager{SetBoxWebUI.Repository.ApplicationIdentityUser})">
+            <summary>
+            AuthController
+            </summary>
+            <param name="logger"></param>
+            <param name="signInManager"></param>
+            <param name="userManager"></param>
+        </member>
+        <member name="M:SetBoxWebUI.Controllers.AuthController.Denied">
+            <summary>
+            Denied
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Controllers.AuthController.Index">
+            <summary>
+            Index
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Controllers.AuthController.Login(System.String)">
+            <summary>
+            Login
+            </summary>
+            <param name="returnUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Controllers.AuthController.Login(SetBoxWebUI.Models.LoginModel)">
+            <summary>
+            Login
+            </summary>
+            <param name="u"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Controllers.AuthController.Logout">
+            <summary>
+            Logout
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:SetBoxWebUI.Controllers.DevicesController.#ctor(Microsoft.Extensions.Logging.ILogger{SetBoxWebUI.Controllers.DevicesController},SetBoxWebUI.Repository.ApplicationDbContext)">
             <summary>
             SetBoxController
@@ -142,6 +187,25 @@
             </summary>
             <param name="input1">MD5 String</param>
             <param name="input2">MD5 String</param>
+            <returns></returns>
+        </member>
+        <member name="T:SetBoxWebUI.HttpRequestMessageExtensions">
+            <summary>
+            HttpRequestMessageExtensions
+            </summary>
+        </member>
+        <member name="M:SetBoxWebUI.HttpRequestMessageExtensions.GetClientIpAddress(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            GetClientIpAddress
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.HttpRequestMessageExtensions.GetClientIpAddress(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            GetClientIpAddress
+            </summary>
+            <param name="request"></param>
             <returns></returns>
         </member>
         <member name="T:SetBoxWebUI.Models.Config">
@@ -285,6 +349,25 @@
             Teve erro?
             </summary>
         </member>
+        <member name="T:SetBoxWebUI.Program">
+            <summary>
+            Program
+            </summary>
+        </member>
+        <member name="M:SetBoxWebUI.Program.Main(System.String[])">
+            <summary>
+            Main
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            CreateWebHostBuilder
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
         <member name="T:SetBoxWebUI.Repository.Repository`2">
             <summary>
             Base para um DbSet
@@ -324,75 +407,6 @@
             </summary>
             <param name="context"></param>
         </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`2.Add(`0)">
-            <summary>
-            Add Element
-            </summary>
-            <param name="entity"></param>
-        </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`2.AddRange(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            Add Many Element
-            </summary>
-            <param name="entity"></param>
-        </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`2.Get">
-            <summary>
-            Get All Element
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`2.GetById(`1)">
-            <summary>
-            Get Element by primaryKey
-            </summary>
-            <param name="id">key</param>
-            <returns></returns>
-        </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`2.Delete(`0)">
-            <summary>
-            Método que deleta um objeto no banco de dados. 
-            </summary>
-            <param name="entity">item que será deletado</param>
-        </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`2.DeleteById(`1)">
-            <summary>
-            Método que deleta um objeto no banco de dados. 
-            </summary>
-            <param name="id">Id da primary key</param>
-        </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`2.DeleteRange(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
-            <summary> 
-            Método que deleta um ou varios objetos no banco de dados, mediante uma expressão LINQ. 
-            </summary> 
-        </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`2.DeleteRange(System.Collections.Generic.IEnumerable{`0})">
-            <summary>
-            Delete Elements
-            </summary>
-            <param name="entity"></param>
-        </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`2.Update(`0)">
-            <summary>
-            Update Element
-            </summary>
-            <param name="entity"></param>
-        </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`2.UpdateById(`0,`1)">
-            <summary>
-            Update Element By primaryKey
-            </summary>
-            <param name="entity">Element</param>
-            <param name="id">primaryKey</param>
-        </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`2.Get(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
-            <summary>
-            Find Element
-            </summary>
-            <param name="filter">Filter</param>
-            <param name="orderBy">OrderBy</param>
-            <returns></returns>
-        </member>
         <member name="M:SetBoxWebUI.Repository.Repository`2.Dispose">
             <summary>
             Dispose
@@ -421,6 +435,13 @@
             Get
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`2.FirstOrDefaultAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Delete
+            </summary>
+            <param name="filter"></param>
             <returns></returns>
         </member>
         <member name="M:SetBoxWebUI.Repository.Repository`2.DeleteAsync(`0)">
@@ -493,6 +514,57 @@
             <param name="page"></param>
             <param name="count"></param>
             <returns></returns>
+        </member>
+        <member name="T:SetBoxWebUI.SessionExtensions">
+            <summary>
+            SessionExtensions
+            </summary>
+        </member>
+        <member name="M:SetBoxWebUI.SessionExtensions.Set``1(Microsoft.AspNetCore.Http.ISession,System.String,``0)">
+            <summary>
+            Set
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="session"></param>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:SetBoxWebUI.SessionExtensions.Get``1(Microsoft.AspNetCore.Http.ISession,System.String)">
+            <summary>
+            Get
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="session"></param>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SetBoxWebUI.Startup">
+            <summary>
+            Startup
+            </summary>
+        </member>
+        <member name="M:SetBoxWebUI.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Startup
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:SetBoxWebUI.Startup.Configuration">
+            <summary>
+            Configuration
+            </summary>
+        </member>
+        <member name="M:SetBoxWebUI.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:SetBoxWebUI.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
         </member>
     </members>
 </doc>
