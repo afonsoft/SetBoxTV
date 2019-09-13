@@ -376,7 +376,7 @@ namespace SetBoxWebUI.Controllers
                 if (device == null)
                 {
                     r.Status = false;
-                    r.Message = "Not Found Configuration Specifies for this Device.";
+                    r.Message = "Not Found specifies for this Device.";
                     return NotFound(r);
                 }
 
@@ -391,7 +391,8 @@ namespace SetBoxWebUI.Controllers
                         Extension = item.File.Extension,
                         Size = item.File.Size,
                         CheckSum = item.File.CheckSum,
-                        Url = "https://setbox.afonsoft.com.br/UploadedFiles/" + item.File.Name
+                        Path = item.File.Path,
+                        Url = "https://setbox.afonsoft.com.br/UploadedFiles/" + item.File.Path + item.File.Name
                     });
                 }
 

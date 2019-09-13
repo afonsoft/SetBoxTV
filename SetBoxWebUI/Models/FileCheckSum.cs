@@ -10,6 +10,9 @@ namespace SetBoxWebUI.Models
     /// </summary>
     public class FileCheckSum
     {
+        /// <summary>
+        /// ID
+        /// </summary>
         public Guid FileId { get; set; }
         /// <summary>
         /// Nome do Arquivo
@@ -27,11 +30,20 @@ namespace SetBoxWebUI.Models
         /// Url para download do arquivo
         /// </summary>
         public string Url { get; set; }
+
+        /// <summary>
+        /// Path
+        /// </summary>
+        public string Path { get; set; }
         /// <summary>
         /// CheckSum para verificar se foi modificado o arquivo.
         /// </summary>
         public string CheckSum { get; set; }
 
+
+        /// <summary>
+        /// Devices
+        /// </summary>
         [JsonIgnore]
         public virtual ICollection<FilesDevices> Devices { get; set; }
     }
