@@ -219,6 +219,11 @@
             Files
             </summary>
         </member>
+        <member name="P:SetBoxWebUI.Models.FileCheckSum.FileId">
+            <summary>
+            ID
+            </summary>
+        </member>
         <member name="P:SetBoxWebUI.Models.FileCheckSum.Name">
             <summary>
             Nome do Arquivo
@@ -239,9 +244,19 @@
             Url para download do arquivo
             </summary>
         </member>
+        <member name="P:SetBoxWebUI.Models.FileCheckSum.Path">
+            <summary>
+            Path
+            </summary>
+        </member>
         <member name="P:SetBoxWebUI.Models.FileCheckSum.CheckSum">
             <summary>
             CheckSum para verificar se foi modificado o arquivo.
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.FileCheckSum.Devices">
+            <summary>
+            Devices
             </summary>
         </member>
         <member name="T:SetBoxWebUI.Models.Response`1">
