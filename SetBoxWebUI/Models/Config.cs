@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace SetBoxWebUI.Models
 {
@@ -19,7 +20,10 @@ namespace SetBoxWebUI.Models
     /// </summary>
     public class Config
     {
+        [JsonIgnore]
         public Guid DeviceId { get; set; }
+
+        [JsonIgnore]
         public virtual Device Device { get; set; }
         public Guid ConfigId { get; set; }
         /// <summary>

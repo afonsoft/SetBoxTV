@@ -19,13 +19,16 @@ namespace SetBoxWebUI.Models
         [JsonIgnore]
         public virtual ICollection<DeviceLogAccesses> LogAccesses { get; set; } = new List<DeviceLogAccesses>();
 
+        [JsonIgnore]
         public virtual Company Company { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<FilesDevices> Files { get; set; }
     }
 
     public class DeviceLogAccesses
     {
+        [JsonIgnore]
         public virtual Device Device { get; set; }
         public Guid DeviceLogAccessesId { get; set; }
         public DateTime CreationDateTime { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace SetBoxWebUI.Models
@@ -31,6 +32,7 @@ namespace SetBoxWebUI.Models
         /// </summary>
         public string CheckSum { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<FilesDevices> Devices { get; set; }
     }
 

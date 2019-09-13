@@ -47,7 +47,6 @@
             <summary>
             Salvar as configurações no Banco de Dados
             </summary>
-            <param name="session"></param>
             <param name="config"></param>
             <returns></returns>
         </member>
@@ -64,6 +63,31 @@
             </summary>
             <param name="session"></param>
             <returns></returns>
+        </member>
+        <member name="T:SetBoxWebUI.Controllers.SessionException">
+            <summary>
+            SessionException
+            </summary>
+        </member>
+        <member name="M:SetBoxWebUI.Controllers.SessionException.#ctor(System.String)">
+            <summary>
+            SessionException
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:SetBoxWebUI.Controllers.SessionException.#ctor(System.String,System.Exception)">
+            <summary>
+            SessionException
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="M:SetBoxWebUI.Controllers.SessionException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            SessionException
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
         </member>
         <member name="T:SetBoxWebUI.Helpers.CriptoHelpers">
             <summary>

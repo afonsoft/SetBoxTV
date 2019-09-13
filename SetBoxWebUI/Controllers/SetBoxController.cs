@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -25,7 +26,7 @@ namespace SetBoxWebUI.Controllers
         private const string DefaultLicense = "1111";
         private readonly ILogger<SetBoxController> _logger;
         private readonly IRepository<Device, Guid> _devices;
-       
+
 
         /// <summary>
         /// SetBoxController
@@ -34,7 +35,7 @@ namespace SetBoxWebUI.Controllers
         {
             _logger = logger;
             _devices = new Repository<Device, Guid>(context);
-            
+
         }
 
 
@@ -55,12 +56,7 @@ namespace SetBoxWebUI.Controllers
             var r = new Models.Response<string>();
             try
             {
-                if (!ValidaSession(session))
-                {
-                    r.Message = "Session is invalid!";
-                    r.SessionExpired = true;
-                    return Unauthorized(r);
-                }
+                ValidaSession(session);
 
                 string deviceIdentifier = GetDeviceIdFromSession(session);
                 string deviceLicense = GetLocenseFromSession(session);
@@ -82,13 +78,25 @@ namespace SetBoxWebUI.Controllers
                     log.CreationDateTime = DateTime.Now;
                     log.IpAcessed = HttpContext.GetClientIpAddress();
                     log.DeviceLogAccessesId = Guid.NewGuid();
+                    log.Message = "Device Updated";
+
+                    if(device.Platform != platform)
+                        log.Message += $"Platform: {platform} ({device.Platform}) ";
+
+                    if (device.License != deviceLicense)
+                        log.Message += $"License: {deviceLicense} ({device.License}) ";
+
+                    if (device.Version != version)
+                        log.Message += $"Version: {version} ({device.Version}) ";
 
                     device.Platform = platform;
                     device.Version = version;
                     device.License = deviceLicense;
-                    log.Message = "Updated";
+                    
                     device.LogAccesses.Add(log);
+
                     await _devices.UpdateAsync(device);
+
                     r.Status = true;
                     r.Message = "Device updated successfully.";
                     return Ok(r);
@@ -98,6 +106,13 @@ namespace SetBoxWebUI.Controllers
                 r.Message = "Device not need update.";
                 return Ok(r);
 
+            }
+            catch (SessionException e)
+            {
+                r.Status = false;
+                r.SessionExpired = true;
+                r.Message = e.Message;
+                return Unauthorized(r);
             }
             catch (Exception ex)
             {
@@ -189,20 +204,25 @@ namespace SetBoxWebUI.Controllers
         public ActionResult<Response<bool>> ValidSession(string session)
         {
             var r = new Response<bool>();
-            if (ValidaSession(session))
+            try
             {
+                ValidaSession(session);
+
                 r.Result = true;
                 return Ok(r);
             }
-            r.Result = false;
-            r.SessionExpired = true;
-            return Unauthorized(r);
+            catch (SessionException e)
+            {
+                r.Status = false;
+                r.SessionExpired = true;
+                r.Message = e.Message;
+                return Unauthorized(r);
+            }
         }
 
         /// <summary>
         /// Salvar as configurações no Banco de Dados
         /// </summary>
-        /// <param name="session"></param>
         /// <param name="config"></param>
         /// <returns></returns>
         [HttpPost("SetConfig")]
@@ -215,12 +235,15 @@ namespace SetBoxWebUI.Controllers
             var r = new Response<Config>();
             try
             {
-                if (config == null || !ValidaSession(config.session))
+                if (config == null)
                 {
-                    r.Message = "Session is invalid!";
-                    r.SessionExpired = true;
-                    return Unauthorized(r);
+                    r.Message = "Config is invalid!";
+                    r.SessionExpired = false;
+                    r.Status = false;
+                    return BadRequest(r);
                 }
+
+                ValidaSession(config.session);
 
                 string identifier = GetDeviceIdFromSession(config.session);
                 //Recuperar as configurações especifica para o DeviceId
@@ -233,17 +256,21 @@ namespace SetBoxWebUI.Controllers
                     return NotFound(r);
                 }
 
-                device.Configuration = new Config()
+                if (device.Configuration == null)
                 {
-                    ConfigId = Guid.NewGuid(),
-                    CreationDateTime = DateTime.Now,
-                    EnablePhoto = config.EnablePhoto,
-                    EnableTransaction = config.EnableTransaction,
-                    EnableVideo = config.EnableVideo,
-                    EnableWebImage = config.EnableWebImage,
-                    EnableWebVideo = config.EnableWebVideo,
-                    TransactionTime = config.TransactionTime
-                };
+                    device.Configuration = new Config()
+                    {
+                        ConfigId = Guid.NewGuid(),
+                        CreationDateTime = DateTime.Now
+                    };
+                }
+
+                device.Configuration.EnablePhoto = config.EnablePhoto;
+                device.Configuration.EnableTransaction = config.EnableTransaction;
+                device.Configuration.EnableVideo = config.EnableVideo;
+                device.Configuration.EnableWebImage = config.EnableWebImage;
+                device.Configuration.EnableWebVideo = config.EnableWebVideo;
+                device.Configuration.TransactionTime = config.TransactionTime;
 
                 device.LogAccesses.Add(new DeviceLogAccesses()
                 {
@@ -258,6 +285,13 @@ namespace SetBoxWebUI.Controllers
                 r.Result = device.Configuration;
                 r.Status = true;
                 return Ok(r);
+            }
+            catch (SessionException e)
+            {
+                r.Status = false;
+                r.SessionExpired = true;
+                r.Message = e.Message;
+                return Unauthorized(r);
             }
             catch (Exception ex)
             {
@@ -283,12 +317,8 @@ namespace SetBoxWebUI.Controllers
             var r = new Response<Config>();
             try
             {
-                if (!ValidaSession(session))
-                {
-                    r.Message = "Session is invalid!";
-                    r.SessionExpired = true;
-                    return Unauthorized(r);
-                }
+                ValidaSession(session);
+
                 string identifier = GetDeviceIdFromSession(session);
                 //Recuperar as configurações especifica para o DeviceId
                 var device = _devices.Get(x => x.DeviceIdentifier == identifier).FirstOrDefault();
@@ -303,6 +333,13 @@ namespace SetBoxWebUI.Controllers
                 r.Result = device.Configuration;
                 r.Status = true;
                 return Ok(r);
+            }
+            catch (SessionException e)
+            {
+                r.Status = false;
+                r.SessionExpired = true;
+                r.Message = e.Message;
+                return Unauthorized(r);
             }
             catch (Exception ex)
             {
@@ -328,19 +365,14 @@ namespace SetBoxWebUI.Controllers
             var r = new Response<IEnumerable<FileCheckSum>>();
             try
             {
-                if (!ValidaSession(session))
-                {
-                    r.Message = "Session is invalid!";
-                    r.SessionExpired = true;
-                    return Unauthorized(r);
-                }
+                ValidaSession(session);
 
                 string identifier = GetDeviceIdFromSession(session);
 
-               var devices = await _devices.GetAsync(x => x.DeviceIdentifier == identifier);
+                var devices = await _devices.GetAsync(x => x.DeviceIdentifier == identifier);
                 var device = devices.FirstOrDefault();
 
-                if(device == null)
+                if (device == null)
                 {
                     r.Status = false;
                     r.Message = "Not Found Configuration Specifies for this Device.";
@@ -365,6 +397,13 @@ namespace SetBoxWebUI.Controllers
                 r.Result = itens;
                 return Ok(r);
             }
+            catch (SessionException e)
+            {
+                r.Status = false;
+                r.SessionExpired = true;
+                r.Message = e.Message;
+                return Unauthorized(r);
+            }
             catch (Exception ex)
             {
                 r.Status = false;
@@ -379,51 +418,98 @@ namespace SetBoxWebUI.Controllers
         {
             return StatusCode(401, r);
         }
-        private bool ValidaSession(string session)
+        private void ValidaSession(string session)
         {
             try
             {
-                string[] sessions = CriptoHelpers.Base64Decode(session).Split("|");
-                string deviceIdentifier64 = CriptoHelpers.Base64Encode(sessions[0]);
-                string ip = sessions[2];
+                string[] sessions;
+                string deviceIdentifier64;
+                string ip;
+                DateTime dt;
+                try
+                {
+                    sessions = CriptoHelpers.Base64Decode(session).Split("|");
+                    deviceIdentifier64 = CriptoHelpers.Base64Encode(sessions[0]);
+                    ip = sessions[2];
+                    dt = DateTime.ParseExact(sessions[3], "yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+                }
+                catch (Exception ex)
+                {
+                    throw new SessionException($"Erro para descriptografar a session {session} Erro : {ex.Message}");
+                }
 
-                DateTime dt = DateTime.ParseExact(sessions[3], "yyyyMMddHHmmss", CultureInfo.InvariantCulture);
 
-                if ((sessions[1] == deviceIdentifier64 || sessions[1] == DefaultLicense) && dt >= DateTime.Now && ip == HttpContext.GetClientIpAddress())
-                    return true;
-                return false;
+                if (sessions[1] == deviceIdentifier64 || sessions[1] == DefaultLicense)
+                {
+                    if (dt >= DateTime.Now)
+                    {
+                        if (ip == HttpContext.GetClientIpAddress())
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            throw new SessionException($"O Ip da Session {ip} é diferente do Ip da Request {HttpContext.GetClientIpAddress()}!");
+                        }
+                    }
+                    else
+                    {
+                        throw new SessionException($"A data da session expirou! data: {dt.ToString("yyyyMMddHHmmss")}");
+                    }
+                }
+                else
+                {
+                    throw new SessionException($"A Session {session[1]} é inválida!");
+                }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Erro na validação da session: {session} : {ex.Message}");
-                return false;
+                _logger.LogError(ex, $"Session: {session} : {ex.Message}");
+                throw;
             }
         }
         private string GetDeviceIdFromSession(string session)
         {
-            try
-            {
-                if (!ValidaSession(session))
-                    throw new ArgumentOutOfRangeException(nameof(session), "Session is invalid!");
-                return CriptoHelpers.Base64Decode(session).Split("|")[0];
-            }
-            catch (Exception)
-            {
-                throw new ArgumentOutOfRangeException(nameof(session), "Session is invalid!");
-            }
+            return CriptoHelpers.Base64Decode(session).Split("|")[0];
         }
         private string GetLocenseFromSession(string session)
         {
-            try
-            {
-                if (!ValidaSession(session))
-                    throw new ArgumentOutOfRangeException(nameof(session), "Session is invalid!");
-                return CriptoHelpers.Base64Decode(session).Split("|")[1];
-            }
-            catch (Exception)
-            {
-                throw new ArgumentOutOfRangeException(nameof(session), "Session is invalid!");
-            }
+            return CriptoHelpers.Base64Decode(session).Split("|")[1];
+        }
+    }
+
+    /// <summary>
+    /// SessionException
+    /// </summary>
+    public class SessionException : ArgumentException, ISerializable
+    {
+
+        /// <summary>
+        /// SessionException
+        /// </summary>
+        /// <param name="message"></param>
+        public SessionException(string message) : base(message)
+        {
+
+        }
+
+        /// <summary>
+        /// SessionException
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="innerException"></param>
+        public SessionException(string message, Exception innerException) : base(message, innerException)
+        {
+
+        }
+
+        /// <summary>
+        /// SessionException
+        /// </summary>
+        /// <param name="info"></param>
+        /// <param name="context"></param>
+        protected SessionException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
         }
     }
 }
