@@ -15,11 +15,12 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.HasKey(c => c.SupportId);
 
             builder.ToTable("SetBoxSupport");
-            builder.Property(c => c.SupportId).HasColumnName("SupportId").HasDefaultValue(Guid.NewGuid());
+            builder.Property(c => c.SupportId).HasColumnName("SupportId");
             builder.Property(c => c.Email).HasColumnName("Email").HasMaxLength(255); 
             builder.Property(c => c.Telephone).HasColumnName("Telephone").HasMaxLength(50);
             builder.Property(c => c.Company).HasColumnName("Company").HasMaxLength(200);
             builder.Property(c => c.Name).HasColumnName("Name").HasMaxLength(200);
+            builder.Property(c => c.CreationDateTime).HasColumnName("CreationDateTime").HasDefaultValueSql("getdate()");
         }
     }
 }

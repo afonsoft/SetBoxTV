@@ -48,6 +48,9 @@ namespace SetBoxWebUI.Repository
 
         public DbSet<FilesDevices> FilesDevices { get; set; }
         public DbSet<FileCheckSum> Files { get; set; }
+
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Support> Supports { get; set; }
     }
     public class ApplicationIdentityUser : IdentityUser<Guid>
     {

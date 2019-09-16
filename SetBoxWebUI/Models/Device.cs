@@ -1,11 +1,15 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SetBoxWebUI.Models
 {
     public class Device 
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public Guid DeviceId { get; set; }
         public string DeviceIdentifier { get; set; }
         public string Platform { get; set; }
@@ -33,6 +37,9 @@ namespace SetBoxWebUI.Models
     {
         [JsonIgnore]
         public virtual Device Device { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public Guid DeviceLogAccessesId { get; set; }
         public DateTime CreationDateTime { get; set; }
         public string IpAcessed { get; set; }

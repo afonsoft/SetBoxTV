@@ -130,7 +130,41 @@ namespace SetBoxWebUI.Controllers
         }
         //Device
 
+        public async Task<GridPagedOutput<FileCheckSum>> ListFiles(GridPagedInput input)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(input.SearchPhrase))
+                    input.SearchPhrase = "";
 
+                if (string.IsNullOrEmpty(input.Id))
+                    throw new KeyNotFoundException($"DeviceId: {input.Id} not found.");
+
+                var devices = await _devices.GetAsync(f => f.DeviceId.ToString() == input.Id);
+
+                if (devices.Count <= 0)
+                    throw new KeyNotFoundException($"DeviceId: {input.Id} not found.");
+
+                var files = devices[0].Files.Where(l => (l.FileId.ToString() == input.Id
+                                                        || l.DeviceId.ToString() == input.Id)
+                                                    && (l.CreationDateTime.ToString("dd/MM/yyyy").Contains(input.SearchPhrase)
+                                                        || l.File.Name.Contains(input.SearchPhrase)
+                                                        || l.File.Path.Contains(input.SearchPhrase)
+                                                        || l.File.Extension.Contains(input.SearchPhrase)))
+                                            .Select(x => x.File)
+                                            .Skip((input.Current - 1) * input.RowCount)
+                                            .Take(input.RowCount)
+                                            .ToList();
+
+                var item = new GridPagedOutput<FileCheckSum>(files) { Current = input.Current, RowCount = input.RowCount, Total = devices[0].Files.Count };
+                return item;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                return null;
+            }
+        }
         public async Task<GridPagedOutput<DeviceLogAccesses>> ListLog(GridPagedInput input)
         {
             try

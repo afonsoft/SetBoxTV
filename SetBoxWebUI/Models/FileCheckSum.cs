@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SetBoxWebUI.Models
 {
@@ -13,6 +15,8 @@ namespace SetBoxWebUI.Models
         /// <summary>
         /// ID
         /// </summary>
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public Guid FileId { get; set; }
         /// <summary>
         /// Nome do Arquivo
@@ -39,6 +43,7 @@ namespace SetBoxWebUI.Models
         /// CheckSum para verificar se foi modificado o arquivo.
         /// </summary>
         public string CheckSum { get; set; }
+        public DateTime CreationDateTime { get; set; }
 
 
         /// <summary>
@@ -54,6 +59,7 @@ namespace SetBoxWebUI.Models
         public virtual FileCheckSum File { get; set; }
         public Guid DeviceId { get; set; }
         public virtual Device Device { get; set; }
+        public DateTime CreationDateTime { get; set; }
     }
 
 }

@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SetBoxWebUI.Models
 {
@@ -25,6 +27,9 @@ namespace SetBoxWebUI.Models
 
         [JsonIgnore]
         public virtual Device Device { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public Guid ConfigId { get; set; }
         /// <summary>
         /// Ativar o Video

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SetBoxWebUI.Repository;
 
 namespace SetBoxWebUI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190916150839_AddSupportCreateDateTime")]
+    partial class AddSupportCreateDateTime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -106,18 +108,14 @@ namespace SetBoxWebUI.Migrations
                 {
                     b.Property<Guid>("AddressId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("AddressId");
+                        .HasColumnName("AddressId")
+                        .HasDefaultValue(new Guid("fdb66ff9-2d7d-4dd7-838e-40767364102f"));
 
                     b.Property<string>("City")
                         .HasColumnName("City")
                         .HasMaxLength(255);
 
                     b.Property<Guid?>("CompanyId");
-
-                    b.Property<DateTime>("CreationDateTime")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("CreationDateTime")
-                        .HasDefaultValueSql("getdate()");
 
                     b.Property<string>("State")
                         .HasColumnName("State")
@@ -138,12 +136,8 @@ namespace SetBoxWebUI.Migrations
                 {
                     b.Property<Guid>("CompanyId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("CompanyId");
-
-                    b.Property<DateTime>("CreationDateTime")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("CreationDateTime")
-                        .HasDefaultValueSql("getdate()");
+                        .HasColumnName("CompanyId")
+                        .HasDefaultValue(new Guid("1552a667-9fcb-41f3-87eb-84bbd4278354"));
 
                     b.Property<string>("Document")
                         .HasColumnName("Document")
@@ -166,12 +160,13 @@ namespace SetBoxWebUI.Migrations
                 {
                     b.Property<Guid>("ConfigId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("ConfigId");
+                        .HasColumnName("ConfigId")
+                        .HasDefaultValue(new Guid("611b1365-c408-4f53-a99e-9a404ceeb3dd"));
 
                     b.Property<DateTime>("CreationDateTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("CreationDateTime")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValue(new DateTime(2019, 9, 16, 12, 8, 38, 522, DateTimeKind.Local).AddTicks(4830));
 
                     b.Property<Guid>("DeviceId");
 
@@ -204,14 +199,10 @@ namespace SetBoxWebUI.Migrations
                 {
                     b.Property<Guid>("ContactId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("ContactId");
+                        .HasColumnName("ContactId")
+                        .HasDefaultValue(new Guid("18b12cba-bf35-4efc-a7ee-b03a1a9b59f6"));
 
                     b.Property<Guid?>("CompanyId");
-
-                    b.Property<DateTime>("CreationDateTime")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("CreationDateTime")
-                        .HasDefaultValueSql("getdate()");
 
                     b.Property<string>("Document")
                         .HasColumnName("Document")
@@ -248,14 +239,15 @@ namespace SetBoxWebUI.Migrations
                 {
                     b.Property<Guid>("DeviceId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("DeviceId");
+                        .HasColumnName("DeviceId")
+                        .HasDefaultValue(new Guid("ac24f993-12b1-4217-920c-2405690ce3ac"));
 
                     b.Property<Guid?>("CompanyId");
 
                     b.Property<DateTime>("CreationDateTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("CreationDateTime")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValue(new DateTime(2019, 9, 16, 12, 8, 38, 533, DateTimeKind.Local).AddTicks(6269));
 
                     b.Property<string>("DeviceIdentifier")
                         .IsRequired()
@@ -270,15 +262,13 @@ namespace SetBoxWebUI.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnName("Platform")
                         .HasMaxLength(255)
-                        .HasDefaultValue("unknown");
+                        .HasDefaultValue("Android");
 
                     b.Property<Guid?>("SupportId");
 
                     b.Property<string>("Version")
-                        .ValueGeneratedOnAdd()
                         .HasColumnName("Version")
-                        .HasMaxLength(255)
-                        .HasDefaultValue("unknown");
+                        .HasMaxLength(255);
 
                     b.HasKey("DeviceId");
 
@@ -293,12 +283,13 @@ namespace SetBoxWebUI.Migrations
                 {
                     b.Property<Guid>("DeviceLogAccessesId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("DeviceLogAccessesId");
+                        .HasColumnName("DeviceLogAccessesId")
+                        .HasDefaultValue(new Guid("ba7b8c97-d75d-4216-b313-f92de47d315e"));
 
                     b.Property<DateTime>("CreationDateTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("CreationDateTime")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValue(new DateTime(2019, 9, 16, 12, 8, 38, 527, DateTimeKind.Local).AddTicks(442));
 
                     b.Property<Guid?>("DeviceId");
 
@@ -320,14 +311,10 @@ namespace SetBoxWebUI.Migrations
                 {
                     b.Property<Guid>("FileId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("FileId");
+                        .HasColumnName("FileId")
+                        .HasDefaultValue(new Guid("61826a4a-d824-4ba8-8981-a6dc2c459fe4"));
 
                     b.Property<string>("CheckSum");
-
-                    b.Property<DateTime>("CreationDateTime")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("CreationDateTime")
-                        .HasDefaultValueSql("getdate()");
 
                     b.Property<string>("Extension")
                         .HasColumnName("Extension")
@@ -359,11 +346,6 @@ namespace SetBoxWebUI.Migrations
 
                     b.Property<Guid>("FileId");
 
-                    b.Property<DateTime>("CreationDateTime")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("CreationDateTime")
-                        .HasDefaultValueSql("getdate()");
-
                     b.HasKey("DeviceId", "FileId");
 
                     b.HasIndex("FileId");
@@ -375,7 +357,8 @@ namespace SetBoxWebUI.Migrations
                 {
                     b.Property<Guid>("SupportId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("SupportId");
+                        .HasColumnName("SupportId")
+                        .HasDefaultValue(new Guid("f46db707-3254-45ca-af6e-7d9623dc5f07"));
 
                     b.Property<string>("Company")
                         .HasColumnName("Company")
@@ -384,7 +367,7 @@ namespace SetBoxWebUI.Migrations
                     b.Property<DateTime>("CreationDateTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("CreationDateTime")
-                        .HasDefaultValueSql("getdate()");
+                        .HasDefaultValue(new DateTime(2019, 9, 16, 12, 8, 38, 550, DateTimeKind.Local).AddTicks(1153));
 
                     b.Property<string>("Email")
                         .HasColumnName("Email")

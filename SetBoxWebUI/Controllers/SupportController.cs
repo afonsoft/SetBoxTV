@@ -74,6 +74,7 @@ namespace SetBoxWebUI.Controllers
                     support.Email = s.Email;
                     support.Name = s.Name;
                     support.Telephone = s.Telephone;
+                    support.CreationDateTime = DateTime.Now;
 
                     if (isNew)
                         await _support.AddAsync(support);
@@ -87,6 +88,7 @@ namespace SetBoxWebUI.Controllers
                 }
                 catch (Exception ex)
                 {
+                    _logger.LogError(ex, ex.Message);
                     ModelState.AddModelError("", ex.Message);
                 }
             }

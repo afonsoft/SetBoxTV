@@ -12,14 +12,13 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.HasKey(c => c.DeviceId);
 
             builder.ToTable("SetBoxDevices");
-            builder.Property(c => c.DeviceId).HasColumnName("DeviceId").HasDefaultValue(Guid.NewGuid());
-            builder.Property(c => c.DeviceId).IsRequired();
+            builder.Property(c => c.DeviceId).HasColumnName("DeviceId");
             builder.Property(c => c.DeviceIdentifier).HasColumnName("DeviceIdentifier").HasMaxLength(255);
             builder.Property(c => c.DeviceIdentifier).IsRequired();
-            builder.Property(c => c.Platform).HasColumnName("Platform").HasMaxLength(255).HasDefaultValue("Android");
-            builder.Property(c => c.Version).HasColumnName("Version").HasMaxLength(255);
+            builder.Property(c => c.Platform).HasColumnName("Platform").HasMaxLength(255).HasDefaultValue("unknown");
+            builder.Property(c => c.Version).HasColumnName("Version").HasMaxLength(255).HasDefaultValue("unknown");
             builder.Property(c => c.License).HasColumnName("License").HasMaxLength(255);
-            builder.Property(c => c.CreationDateTime).HasColumnName("CreationDateTime").HasDefaultValue(DateTime.Now);
+            builder.Property(c => c.CreationDateTime).HasColumnName("CreationDateTime").HasDefaultValueSql("getdate()");
             builder.HasOne(c => c.Configuration).WithOne(d => d.Device).HasForeignKey<Config>(c=>c.DeviceId);
             builder.HasOne(c => c.Support).WithMany(s => s.Devices);
         }

@@ -26,20 +26,20 @@
             </div>
             <input type="hidden" asp-for="SupportId" />
             <div class="form-group">
-                <label for="exampleInputCompany">Company Name</label>
-                <input type="text" asp-for="Company" class="form-control" id="exampleInputCompany" placeholder="Compamy Name">
+                <label for="InputCompany">Company Name</label>
+                <input type="text" asp-for="Company" class="form-control" id="InputCompany" placeholder="Compamy Name">
             </div>
             <div class="form-group">
-                <label for="exampleInputTelephone">Company Telephone</label>
-                <input type="tel" asp-for="Telephone" class="form-control" id="exampleInputTelephone" placeholder="Compamy Telephone">
+                <label for="InputTelephone">Company Telephone</label>
+                <input type="tel" asp-for="Telephone" class="form-control" id="InputTelephone" placeholder="(00) 0000-0000">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail">Email address</label>
-                <input type="email" asp-for="Email" class="form-control" id="exampleInputEmail" placeholder="Company email">
+                <label for="InputEmail">Email address</label>
+                <input type="email" asp-for="Email" class="form-control" id="InputEmail" placeholder="Company email">
             </div>
             <div class="form-group">
-                <label for="exampleInputName">Contact Name</label>
-                <input type="text" asp-for="Name" class="form-control" id="exampleInputName" placeholder="Contact Name">
+                <label for="InputName">Contact Name</label>
+                <input type="text" asp-for="Name" class="form-control" id="InputName" placeholder="Contact Name">
             </div>
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
@@ -47,3 +47,19 @@
     <div class="col-2"></div>
 </div>
 
+@section scripts{
+    <script type="text/javascript">
+
+        var options = {
+            onKeyPress: function (tel, e, field, options) {
+                var masks = ['(00) 00000-0000', '(00) 0000-00009'];
+                var mask = (tel.length > 14) ? masks[0] : masks[1];
+                $('#InputTelephone').mask(mask, options);
+            }
+        };
+
+        $(document).ready(function () {
+            $('#InputTelephone').mask('(00) 0000-00009', options);
+        });
+    </script>
+}

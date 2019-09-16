@@ -15,12 +15,13 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.HasKey(c => c.FileId);
 
             builder.ToTable("SetBoxFileCheckSum");
-            builder.Property(c => c.FileId).HasColumnName("FileId").HasDefaultValue(Guid.NewGuid()).IsRequired();
+            builder.Property(c => c.FileId).HasColumnName("FileId").IsRequired();
             builder.Property(c => c.Name).HasColumnName("Name").HasMaxLength(255);
             builder.Property(c => c.Extension).HasColumnName("Extension").HasMaxLength(10);
             builder.Property(c => c.Url).HasColumnName("Url").HasMaxLength(4000);
             builder.Property(c => c.Path).HasColumnName("Path").HasMaxLength(500);
             builder.Property(c => c.Size).HasColumnName("Size");
+            builder.Property(c => c.CreationDateTime).HasColumnName("CreationDateTime").HasDefaultValueSql("getdate()");
         }
     }
 }
