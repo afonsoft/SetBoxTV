@@ -14,6 +14,9 @@ namespace SetBoxWebUI.Models
         public DateTime CreationDateTime { get; set; }
 
         [JsonIgnore]
+        public virtual Support Support { get; set; }
+
+        [JsonIgnore]
         public virtual Config Configuration { get; set; }
 
         [JsonIgnore]

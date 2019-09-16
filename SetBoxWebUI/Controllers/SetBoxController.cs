@@ -281,12 +281,13 @@ namespace SetBoxWebUI.Controllers
                     CreationDateTime = DateTime.Now,
                     DeviceLogAccessesId = Guid.NewGuid(),
                     IpAcessed = HttpContext.GetClientIpAddress(),
-                    Message = "Update Config"
+                    Message = "Configuration updated."
                 });
 
                 await _devices.UpdateAsync(device);
 
                 r.Result = device.Configuration;
+                r.Message = "Configuration updated successfully.";
                 r.Status = true;
                 return Ok(r);
             }
@@ -336,6 +337,50 @@ namespace SetBoxWebUI.Controllers
 
                 r.Result = device.Configuration;
                 r.Status = true;
+                r.Message = "Configuration Specifies for this Device";
+                return Ok(r);
+            }
+            catch (SessionException e)
+            {
+                r.Status = false;
+                r.SessionExpired = true;
+                r.Message = e.Message;
+                return Unauthorized(r);
+            }
+            catch (Exception ex)
+            {
+                r.Status = false;
+                r.Message = ex.Message;
+                _logger.LogError(ex, ex.Message);
+                return BadRequest(r);
+            }
+        }
+
+        [HttpGet("GetSupport")]
+        [ProducesResponseType(typeof(Response<Support>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Response<Support>), StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(typeof(Response<Support>), StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Response<Support>>> GetSupport(string session)
+        {
+            var r = new Response<Support>();
+            try
+            {
+                ValidaSession(session);
+
+                string identifier = GetDeviceIdFromSession(session);
+                //Recuperar as configurações especifica para o DeviceId
+                var device = await _devices.FirstOrDefaultAsync(x => x.DeviceIdentifier == identifier);
+
+                if (device == null || device.Support == null)
+                {
+                    r.Status = false;
+                    r.Message = "Not Found Support Specifies for this Device.";
+                    return NotFound(r);
+                }
+
+                r.Result = device.Support;
+                r.Status = true;
+                r.Message = "Support for this Device";
                 return Ok(r);
             }
             catch (SessionException e)
@@ -399,6 +444,8 @@ namespace SetBoxWebUI.Controllers
                 }
 
                 r.Result = itens;
+                r.Status = true;
+                r.Message = $"Found {itens.Count} File(s) for this Device.";
                 return Ok(r);
             }
             catch (SessionException e)

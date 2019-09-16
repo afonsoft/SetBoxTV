@@ -30,11 +30,13 @@ namespace SetBoxWebUI.Repository
             builder.ApplyConfiguration(new DeviceLogAccessesMap());
             builder.ApplyConfiguration(new DeviceMap());
             builder.ApplyConfiguration(new AddressMap());
+            builder.ApplyConfiguration(new ContactMap());
             builder.ApplyConfiguration(new CompanyMap());
+            builder.ApplyConfiguration(new SupportMap());
 
             builder.ApplyConfiguration(new FileCheckSumMap());
             builder.ApplyConfiguration(new FilesDevicesMap());
-
+            
             base.OnModelCreating(builder);
         }
 
