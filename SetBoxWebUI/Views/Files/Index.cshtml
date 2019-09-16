@@ -1,7 +1,15 @@
-﻿@model  FilesViewModel
+﻿@model FilesViewModel
 @{
     ViewData["Title"] = "Files";
 }
+@if (!string.IsNullOrEmpty(Model.Mensage))
+{
+    <script>
+        bootbox.alert({ title: "@Model.Title", message: "@Model.Mensage" });
+    </script>
+}
+<h1>Files</h1>
+<h4>Informações dos arquivos e dos SetBox</h4>
 
-    <h1>Files</h1>
+
 
