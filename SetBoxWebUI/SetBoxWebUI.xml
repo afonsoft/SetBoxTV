@@ -9,7 +9,7 @@
             BaseController
             </summary>
         </member>
-        <member name="M:SetBoxWebUI.Controllers.AuthController.#ctor(Microsoft.Extensions.Logging.ILogger{SetBoxWebUI.Controllers.AuthController},Microsoft.AspNetCore.Identity.SignInManager{SetBoxWebUI.Repository.ApplicationIdentityUser},Microsoft.AspNetCore.Identity.UserManager{SetBoxWebUI.Repository.ApplicationIdentityUser})">
+        <member name="M:SetBoxWebUI.Controllers.AuthController.#ctor(Microsoft.Extensions.Logging.ILogger{SetBoxWebUI.Controllers.AuthController},Microsoft.AspNetCore.Identity.SignInManager{SetBoxWebUI.Repository.ApplicationIdentityUser})">
             <summary>
             AuthController
             </summary>

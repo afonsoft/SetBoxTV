@@ -42,20 +42,21 @@ namespace SetBoxWebUI.Controllers
             {
                 ViewData["Edit"] = true;
                 ViewData["Command"] = command;
-                var itens = await _devices.GetAsync(x => x.DeviceId.ToString() == id);
+                var item = await _devices.FirstOrDefaultAsync(x => x.DeviceId.ToString() == id);
 
-                var item = itens.FirstOrDefault();
                 if (item == null)
                     throw new KeyNotFoundException($"DeviceId: {id} not found.");
 
-                DeviceViewModel model = new DeviceViewModel();
-                model.isEdited = command == "Edit";
-                model.DeviceId = item.DeviceId;
-                model.DeviceIdentifier = item.DeviceIdentifier;
-                model.CreationDateTime = item.CreationDateTime;
-                model.License = item.License;
-                model.Platform = item.Platform;
-                model.Version = item.Version;
+                DeviceViewModel model = new DeviceViewModel
+                {
+                    isEdited = command == "Edit",
+                    DeviceId = item.DeviceId,
+                    DeviceIdentifier = item.DeviceIdentifier,
+                    CreationDateTime = item.CreationDateTime,
+                    License = item.License,
+                    Platform = item.Platform,
+                    Version = item.Version
+                };
                 if (item.Configuration != null)
                 {
                     model.TransactionTime = item.Configuration.TransactionTime;
@@ -92,8 +93,10 @@ namespace SetBoxWebUI.Controllers
 
                         if (updItem.Configuration == null)
                         {
-                            updItem.Configuration = new Config();
-                            updItem.Configuration.CreationDateTime = DateTime.Now;
+                            updItem.Configuration = new Config
+                            {
+                                CreationDateTime = DateTime.Now
+                            };
                         }
                         updItem.Configuration.EnablePhoto = model.EnablePhoto;
                         updItem.Configuration.EnableTransaction = model.EnableTransaction;

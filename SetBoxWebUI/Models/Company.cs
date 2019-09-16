@@ -10,16 +10,28 @@ namespace SetBoxWebUI.Models
         public string Name { get; set; }
         public string Fatansy { get; set; }
         public string Document { get; set; }
-        public string Responsible1 { get; set; }
-        public string Responsible2 { get; set; }
-        public string Telephone1 { get; set; }
-        public string Telephone2 { get; set; }
+
+        public virtual ICollection<Contact> Contacts { get; set; }
 
         public virtual ICollection<Address> Address { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<Device> Devices { get; set; }
     }
+
+    public class Contact
+    {
+        [JsonIgnore]
+        public virtual Company Company { get; set; }
+        public Guid ContactId { get; set; }
+        public string Name { get; set; }
+        public string Telephone1 { get; set; }
+        public string Telephone2 { get; set; }
+        public string Email1 { get; set; }
+        public string Email2 { get; set; }
+        public string Document { get; set; }
+    }
+
 
     public class Address
     {

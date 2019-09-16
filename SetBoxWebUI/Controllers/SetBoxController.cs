@@ -74,11 +74,13 @@ namespace SetBoxWebUI.Controllers
 
                 if (device.Version != version || device.License != deviceLicense || device.Platform != platform)
                 {
-                    DeviceLogAccesses log = new DeviceLogAccesses();
-                    log.CreationDateTime = DateTime.Now;
-                    log.IpAcessed = HttpContext.GetClientIpAddress();
-                    log.DeviceLogAccessesId = Guid.NewGuid();
-                    log.Message = "Device Updated";
+                    DeviceLogAccesses log = new DeviceLogAccesses
+                    {
+                        CreationDateTime = DateTime.Now,
+                        IpAcessed = HttpContext.GetClientIpAddress(),
+                        DeviceLogAccessesId = Guid.NewGuid(),
+                        Message = "Device Updated"
+                    };
 
                     if (device.Platform != platform)
                         log.Message += $"Platform: {platform} ({device.Platform}) ";

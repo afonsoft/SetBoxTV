@@ -15,7 +15,7 @@ namespace SetBoxWebUI.Controllers
     public class AuthController : BaseController
     {
         private readonly ILogger<AuthController> _logger;
-        private readonly UserManager<ApplicationIdentityUser> _userManager;
+        //private readonly UserManager<ApplicationIdentityUser> _userManager;
         private readonly SignInManager<ApplicationIdentityUser> _signInManager;
 
         /// <summary>
@@ -24,11 +24,11 @@ namespace SetBoxWebUI.Controllers
         /// <param name="logger"></param>
         /// <param name="signInManager"></param>
         /// <param name="userManager"></param>
-        public AuthController(ILogger<AuthController> logger, SignInManager<ApplicationIdentityUser> signInManager, UserManager<ApplicationIdentityUser> userManager)
+        public AuthController(ILogger<AuthController> logger, SignInManager<ApplicationIdentityUser> signInManager)
         {
             _logger = logger;
             _signInManager = signInManager;
-            _userManager = userManager;
+            // _userManager = userManager; UserManager<ApplicationIdentityUser> userManager
         }
 
         /// <summary>

@@ -19,10 +19,7 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.Property(c => c.Document).HasColumnName("Document").HasMaxLength(255);
             builder.Property(c => c.Name).HasColumnName("Name").HasMaxLength(500);
             builder.Property(c => c.Fatansy).HasColumnName("Fatansy").HasMaxLength(500);
-            builder.Property(c => c.Responsible1).HasColumnName("Responsible1").HasMaxLength(400);
-            builder.Property(c => c.Responsible2).HasColumnName("Responsible2").HasMaxLength(400);
-            builder.Property(c => c.Telephone1).HasColumnName("Telephone1").HasMaxLength(100);
-            builder.Property(c => c.Telephone2).HasColumnName("Telephone2").HasMaxLength(100);
+
         }
     }
 }
