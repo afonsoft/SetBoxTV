@@ -3,19 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SetBoxWebUI.Models
+namespace SetBoxWebUI.Models.Views
+
 {
     public abstract class BaseViewModel
     {
         public string Mensage { get; set; }
+        public string Title { get; set; }
 
         public BaseViewModel( string messageError)
         {
             Mensage = messageError;
+            Title = "";
         }
         public BaseViewModel(Exception execption)
         {
             Mensage = execption.Message;
+            Title = "Error";
         }
+
     }
 }

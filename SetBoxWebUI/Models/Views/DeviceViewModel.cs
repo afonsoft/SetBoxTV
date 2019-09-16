@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SetBoxWebUI.Models
+namespace SetBoxWebUI.Models.Views
+
 {
     public class DeviceViewModel : BaseViewModel
     {
@@ -21,7 +22,7 @@ namespace SetBoxWebUI.Models
             
         }
 
-        public bool isEdited { get; set; }
+        public bool IsEdited { get; set; }
         public Guid DeviceId { get; set; }
         public string DeviceIdentifier { get; set; }
         public string Platform { get; set; }

@@ -155,8 +155,8 @@ namespace SetBoxWebUI.Controllers
                             CreationDateTime = DateTime.Now,
                             DeviceIdentifier = identifier,
                             License = license,
-                            Platform = "",
-                            Version = "",
+                            Platform = "unknown",
+                            Version = "unknown",
                             DeviceId = Guid.NewGuid()
                         };
                         device.LogAccesses = new List<DeviceLogAccesses>();

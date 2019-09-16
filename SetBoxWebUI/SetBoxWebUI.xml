@@ -134,6 +134,11 @@
             <param name="info"></param>
             <param name="context"></param>
         </member>
+        <member name="M:SetBoxWebUI.Controllers.SupportController.#ctor(Microsoft.Extensions.Logging.ILogger{SetBoxWebUI.Controllers.SupportController},SetBoxWebUI.Repository.ApplicationDbContext)">
+            <summary>
+            SetBoxController
+            </summary>
+        </member>
         <member name="T:SetBoxWebUI.Helpers.CriptoHelpers">
             <summary>
             Cripto
@@ -248,36 +253,6 @@
             CreationDateTime
             </summary>
         </member>
-        <member name="P:SetBoxWebUI.Models.DeviceViewModel.EnableVideo">
-            <summary>
-            Ativar o Video
-            </summary>
-        </member>
-        <member name="P:SetBoxWebUI.Models.DeviceViewModel.EnablePhoto">
-            <summary>
-            Ativar o play de fotos
-            </summary>
-        </member>
-        <member name="P:SetBoxWebUI.Models.DeviceViewModel.EnableWebVideo">
-            <summary>
-            Ativar o WebVideo
-            </summary>
-        </member>
-        <member name="P:SetBoxWebUI.Models.DeviceViewModel.EnableWebImage">
-            <summary>
-            Ativar o WebPage
-            </summary>
-        </member>
-        <member name="P:SetBoxWebUI.Models.DeviceViewModel.EnableTransaction">
-            <summary>
-            Ativar as transações 
-            </summary>
-        </member>
-        <member name="P:SetBoxWebUI.Models.DeviceViewModel.TransactionTime">
-            <summary>
-            Tempo da transação
-            </summary>
-        </member>
         <member name="T:SetBoxWebUI.Models.FileCheckSum">
             <summary>
             Files
@@ -347,6 +322,36 @@
         <member name="P:SetBoxWebUI.Models.Response`1.Status">
             <summary>
             Teve erro?
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.Views.DeviceViewModel.EnableVideo">
+            <summary>
+            Ativar o Video
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.Views.DeviceViewModel.EnablePhoto">
+            <summary>
+            Ativar o play de fotos
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.Views.DeviceViewModel.EnableWebVideo">
+            <summary>
+            Ativar o WebVideo
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.Views.DeviceViewModel.EnableWebImage">
+            <summary>
+            Ativar o WebPage
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.Views.DeviceViewModel.EnableTransaction">
+            <summary>
+            Ativar as transações 
+            </summary>
+        </member>
+        <member name="P:SetBoxWebUI.Models.Views.DeviceViewModel.TransactionTime">
+            <summary>
+            Tempo da transação
             </summary>
         </member>
         <member name="T:SetBoxWebUI.Program">

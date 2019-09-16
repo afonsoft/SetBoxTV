@@ -1,6 +1,7 @@
 using System;
 
-namespace SetBoxWebUI.Models
+namespace SetBoxWebUI.Models.Views
+
 {
     public class ErrorViewModel
     {

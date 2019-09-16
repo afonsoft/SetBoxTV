@@ -115,7 +115,7 @@ namespace SetBoxWebUI.Repository
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public async virtual Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> filter) => await Table.FirstOrDefaultAsync(filter);
+        public async virtual Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> filter = null) => (filter != null ? await Table.FirstOrDefaultAsync(filter) : await Table.FirstOrDefaultAsync());
      
         /// <summary>
         /// delete

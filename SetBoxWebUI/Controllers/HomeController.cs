@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SetBoxWebUI.Models;
+using SetBoxWebUI.Models.Views;
 using SetBoxWebUI.Repository;
 
 namespace SetBoxWebUI.Controllers
@@ -27,24 +28,6 @@ namespace SetBoxWebUI.Controllers
             var u = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name);
             return View();
         }
-        [Authorize]
-        public IActionResult Devices()
-        {
-            var u = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name);
-            return View();
-        }
-        [Authorize]
-        public IActionResult Files()
-        {
-            var u = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name);
-            return View();
-        }
-        public IActionResult Companies()
-        {
-            var u = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name);
-            return View();
-        }
-
 
         [AllowAnonymous]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

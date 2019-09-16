@@ -88,7 +88,7 @@ namespace SetBoxWebUI.Controllers
                     };
 
                     authProperties.Items.Add("Username", u.Username);
-                    authProperties.Items.Add("RememberMe", u.RememberMe.ToString());
+                    authProperties.SetString(".persistent", u.RememberMe.ToString());
                  
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, User, authProperties);
 

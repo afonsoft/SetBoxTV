@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SetBoxWebUI.Interfaces;
 using SetBoxWebUI.Models;
+using SetBoxWebUI.Models.Views;
 using SetBoxWebUI.Repository;
 
 namespace SetBoxWebUI.Controllers
@@ -49,7 +50,7 @@ namespace SetBoxWebUI.Controllers
 
                 DeviceViewModel model = new DeviceViewModel
                 {
-                    isEdited = command == "Edit",
+                    IsEdited = command == "Edit",
                     DeviceId = item.DeviceId,
                     DeviceIdentifier = item.DeviceIdentifier,
                     CreationDateTime = item.CreationDateTime,

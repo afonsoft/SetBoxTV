@@ -1,6 +1,6 @@
 ﻿@model DeviceViewModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Device";
 }
 
 <h1>Devices</h1>
@@ -9,7 +9,7 @@
 @if (!string.IsNullOrEmpty(Model.Mensage))
 {
     <script>
-        bootbox.alert({ title: "Error", message: "@Model.Mensage" });
+        bootbox.alert({ title: "@Model.Title", message: "@Model.Mensage" });
     </script>
 }
 
