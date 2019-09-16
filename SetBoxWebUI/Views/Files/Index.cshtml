@@ -10,6 +10,66 @@
 }
 <h1>Files</h1>
 <h4>Informações dos arquivos e dos SetBox</h4>
+<form id="formUpload" name="formUpload" asp-controller="Files" asp-action="Uploader" enctype="multipart/form-data" method="post">
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" id="filesToUploads"  onchange="uploadFiles();">
+        <label class="custom-file-label" for="customFile">Choose file</label>
+    </div>
+</form>
+<div class="progress" style="display:none;">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" id="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+</div>
 
+@section scripts {
 
+    <script>
+        function uploadFiles() {
+            var formData = new FormData();
+            formData.append("files", $('#filesToUploads')[0].files[0]);
+            startUpdatingProgressIndicator();
+            $.ajax(
+                {
+                    url: "/Files/Uploader",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    async: true,
+                    cache: false,
+                    type: "POST",
+                    success: function (data) {
+                        stopUpdatingProgressIndicator();
+                        alert("Files Uploaded!");
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        stopUpdatingProgressIndicator();
+                        alert(xhr.status);
+                        alert(thrownError);
+                    }
+                }
+            );
+        }
 
+        var intervalId;
+
+        function startUpdatingProgressIndicator() {
+            $("#progress").show();
+
+            intervalId = setInterval(
+                function () {
+                    $.post("/Files/Progress",
+                        function (progress) {
+                            $("#progressbar").css({ width: progress + "%" });
+                            $("#progressbar").html(progress + "%");
+                        }
+                    );
+                },
+                10
+            );
+        }
+
+        function stopUpdatingProgressIndicator() {
+            clearInterval(intervalId);
+        }
+    </script>
+
+}

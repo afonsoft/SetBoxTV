@@ -21,5 +21,7 @@ namespace SetBoxWebUI.Models.Views
         {
 
         }
+
+       public FileCheckSum File { get; set; }
     }
 }

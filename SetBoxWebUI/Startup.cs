@@ -25,6 +25,7 @@ namespace SetBoxWebUI
     /// </summary>
     public class Startup
     {
+
         /// <summary>
         /// Startup
         /// </summary>

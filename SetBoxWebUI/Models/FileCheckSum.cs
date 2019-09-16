@@ -45,7 +45,6 @@ namespace SetBoxWebUI.Models
         public string CheckSum { get; set; }
         public DateTime CreationDateTime { get; set; }
 
-
         /// <summary>
         /// Devices
         /// </summary>

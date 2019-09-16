@@ -54,6 +54,11 @@
             SetBoxController
             </summary>
         </member>
+        <member name="M:SetBoxWebUI.Controllers.FilesController.#ctor(Microsoft.Extensions.Logging.ILogger{SetBoxWebUI.Controllers.FilesController},SetBoxWebUI.Repository.ApplicationDbContext,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            FilesController
+            </summary>
+        </member>
         <member name="T:SetBoxWebUI.Controllers.SetBoxController">
             <summary>
             Api para controlar as SetBox
