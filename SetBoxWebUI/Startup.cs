@@ -192,6 +192,8 @@ namespace SetBoxWebUI
             app.UseCookiePolicy();
             app.UseSession();
             app.UseAuthentication();
+            app.UseCors("CorsPolicy");
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

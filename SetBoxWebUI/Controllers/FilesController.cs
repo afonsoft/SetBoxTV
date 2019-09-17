@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SetBoxWebUI.Helpers;
 using SetBoxWebUI.Interfaces;
 using SetBoxWebUI.Models;
 using SetBoxWebUI.Models.Views;
@@ -19,7 +20,6 @@ namespace SetBoxWebUI.Controllers
     [Authorize]
     public class FilesController : BaseController
     {
-        public static int progress;
         private readonly ILogger<FilesController> _logger;
         private readonly IRepository<FileCheckSum, Guid> _files;
         private readonly IRepository<Device, Guid> _devices;
@@ -39,22 +39,23 @@ namespace SetBoxWebUI.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
-
         [HttpPost]
-        public async Task<IActionResult> Uploader([FromForm]IFormFile files)
+        public async Task<IActionResult> Uploader(IFormFile files = null)
         {
-            progress = 0;
+
+            if(files == null)
+                files = Request.Form.Files.FirstOrDefault();
+
+            if (files == null)
+                return this.Content("File Not Found!");
 
             long totalBytes = files.Length;
-
-
             string filename = ContentDispositionHeaderValue.Parse(files.ContentDisposition).FileName.ToString().Trim('"');
-
-            filename = this.EnsureCorrectFilename(filename);
+            filename = EnsureCorrectFilename(filename);
 
             byte[] buffer = new byte[16 * 1024];
 
-            using (FileStream output = System.IO.File.Create(this.GetPathAndFilename(filename)))
+            using (FileStream output = System.IO.File.Create(GetPathAndFilename(filename)))
             {
                 using (Stream input = files.OpenReadStream())
                 {
@@ -65,19 +66,23 @@ namespace SetBoxWebUI.Controllers
                     {
                         await output.WriteAsync(buffer, 0, readBytes);
                         totalReadBytes += readBytes;
-                        progress = (int)((float)totalReadBytes / (float)totalBytes * 100.0);
                     }
                 }
 
             }
 
-            return this.Content("success");
-        }
+            await _files.AddAsync(new FileCheckSum()
+            {
+                Name = filename,
+                CreationDateTime = DateTime.Now,
+                Size = totalBytes,
+                Extension = files.ContentType,
+                Path = GetPathAndFilename(filename),
+                CheckSum = CriptoHelpers.MD5HashFile(GetPathAndFilename(filename))
+            });
 
-        [HttpPost]
-        public ActionResult Progress()
-        {
-            return this.Content(progress.ToString());
+
+            return this.Content("Files Uploaded");
         }
 
         private string EnsureCorrectFilename(string filename)

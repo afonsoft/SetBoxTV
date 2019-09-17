@@ -1,4 +1,29 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿
+//Show Load Page
+function PleaseWaitShow() {
+    $("#pleaseWait").css("display", "block");
+    $('#pleaseWait').show();
+}
+//Hide Load Page
+function PleaseWaitHide() {
+    $("#pleaseWait").css("display", "none");
+    $('#pleaseWait').hide();
+}
 
-// Write your JavaScript code.
+//Load page in ajax
+$(document).ajaxStart(function (event, request, settings) {
+    PleaseWaitShow();
+});
+$(document).ajaxSend(function (event, request, settings) {
+    PleaseWaitShow();
+});
+$(document).ajaxComplete(function (event, request, settings) {
+    PleaseWaitHide();
+});
+$(document).ajaxError(function (event, request, settings) {
+    PleaseWaitHide();
+});
+
+$(document).ready(function () {
+    PleaseWaitHide();
+});
