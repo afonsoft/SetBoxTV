@@ -22,6 +22,11 @@ namespace SetBoxWebUI.Models.Views
 
         }
 
-       public FileCheckSum File { get; set; }
+        public FileCheckSum File { get; set; }
+
+        public bool IsEdited { get; set; }
+
+        public IList<Guid> Devices { get; set; }
+        public IList<Guid> AllDevices { get; set; }
     }
 }

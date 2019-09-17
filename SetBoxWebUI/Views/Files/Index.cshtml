@@ -10,6 +10,27 @@
 }
 <h1>Files</h1>
 <h4>Informações dos arquivos e dos SetBox</h4>
+
+<form asp-controller="Files" asp-action="Edit" method="post" id="FormEdit">
+    <input type="hidden" name="id" value="" id="id" />
+    <input type="hidden" name="command" value="" id="command" />
+    <table id="grid-data-device-files" class="table table-condensed table-hover table-striped" style="font-size:8pt;" data-navigation="2">
+        <thead>
+            <tr>
+                <th data-column-id="fileId">Id</th>
+                <th data-column-id="name" data-order="asc">Name</th>
+                <th data-column-id="extension">Extension</th>
+                <th data-column-id="size" data-converter="size">Size</th>
+                <th data-column-id="creationDateTime" data-converter="datetime">CreationDateTime</th>
+                <th data-formatter="actions" data-sortable="false">Commands</th>
+            </tr>
+        </thead>
+    </table>
+</form>
+
+
+<br />
+
 <form id="formUpload" name="formUpload" asp-controller="Files" asp-action="Uploader" enctype="multipart/form-data" method="post">
     <div class="input-group">
         <div class="input-group-prepend">
@@ -22,13 +43,14 @@
     </div>
 </form>
 
+<br />
+
+
 @section scripts {
 
     <script>
 
         function uploadFiles() {
-
-            $("#progress").hide();
 
             var files = $('#files')[0].files[0];
             var formData = new FormData();
@@ -55,6 +77,77 @@
                 }
             );
         }
-    </script>
+        $(document).ready(function () {
+            $("#grid-data-device-files").bootgrid(
+                {
+                    ajax: true,
+                    url: '/Files/List',
+                    labels: translate,
+                    searchSettings: {
+                        delay: 100,
+                        characters: 3
+                    },
+                    formatters: {
+                        "actions": function (column, row) {
+                            return "<div class='btn-group btn-group-sm' role='group'>" +
+                                "<a href='#' alt='Details' class='btn btn-info btn-sm' data-command='Details' data-row-id = '" + row.FileId + "'>" +
+                                "<span class='glyphicon glyphicon-list'></span>" + "</a>" +
+                                "<a href='#' alt='Delete' class='btn btn-danger btn-sm' data-command='Delete' data-row-id = '" + row.FileId + "'>" +
+                                "<span class='glyphicon glyphicon-trash'></span>" + "</a></div>";
+                        }
+                    },
+                    converters: {
+                        size: {
+                            from: function (value) { return value; },
+                            to: function (value) { return FormatsonSize(value); }
+                        },
+                        datetime: {
+                            from: function (value) { return moment(value); },
+                            to: function (value) { return moment(FormatJsonDateToJavaScriptDate(value)).format("DD/MM/YYYY"); }
+                        }
+                    }
+                });
 
+            grid.on("loaded.rs.jquery.bootgrid", function () {
+                grid.find("a.btn").each(function (index, element) {
+                    var buttonAction = $(element);
+                    var command = buttonAction.data("command");
+                    var id = buttonAction.data("row-id");
+                    buttonAction.on("click", function () {
+                        if (command == 'Delete') {
+                            bootbox.confirm({
+                                title: "Excluir",
+                                message: "Deseja excluir esse Arquivo<br>Ao excluir será removido de todos os Devices?",
+                                buttons: {
+                                    cancel: {
+                                        label: '<i class="fa fa-times"></i> Cancelar'
+                                    },
+                                    confirm: {
+                                        label: '<i class="fa fa-check"></i> Excluir'
+                                    }
+                                },
+                                callback: function (result) {
+                                    if (result) {
+                                        $.ajax({
+                                            url: '/Files/Delete?id=' + id,
+                                            cache: false
+                                        }).done(function (result) {
+                                            if (result) {
+                                                grid.refresh(true);
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+                        } else {
+                            $("#id").val(id);
+                            $("#command").val(command);
+                            $("#FormEdit").submit();
+                        }
+                    });
+                });
+            });
+        });
+
+    </script>
 }
