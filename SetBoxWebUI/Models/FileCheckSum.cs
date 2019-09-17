@@ -22,6 +22,8 @@ namespace SetBoxWebUI.Models
         /// Nome do Arquivo
         /// </summary>
         public string Name { get; set; }
+
+        public string Description { get; set; }
         /// <summary>
         /// Tipo do Arquivo
         /// </summary>
@@ -45,11 +47,14 @@ namespace SetBoxWebUI.Models
         public string CheckSum { get; set; }
         public DateTime CreationDateTime { get; set; }
 
+        [NotMapped]
+        public int TotalDevice { get { return Devices.Count; } }
+
         /// <summary>
         /// Devices
         /// </summary>
         [JsonIgnore]
-        public virtual ICollection<FilesDevices> Devices { get; set; }
+        public virtual ICollection<FilesDevices> Devices { get; set; } = new List<FilesDevices>();
     }
 
     public class FilesDevices

@@ -15,6 +15,7 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.Property(c => c.DeviceId).HasColumnName("DeviceId");
             builder.Property(c => c.DeviceIdentifier).HasColumnName("DeviceIdentifier").HasMaxLength(255);
             builder.Property(c => c.DeviceIdentifier).IsRequired();
+            builder.Property(c => c.Name).HasColumnName("Name").HasMaxLength(500).HasDefaultValue("");
             builder.Property(c => c.Platform).HasColumnName("Platform").HasMaxLength(255).HasDefaultValue("unknown");
             builder.Property(c => c.Version).HasColumnName("Version").HasMaxLength(255).HasDefaultValue("unknown");
             builder.Property(c => c.License).HasColumnName("License").HasMaxLength(255);

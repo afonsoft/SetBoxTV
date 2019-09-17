@@ -41,24 +41,24 @@ namespace SetBoxWebUI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Uploader(IFormFile files = null)
+        public async Task<IActionResult> Uploader(IFormFile fileToUpload = null)
         {
 
-            if (files == null)
-                files = Request.Form.Files.FirstOrDefault();
+            if (fileToUpload == null)
+                fileToUpload = Request.Form.Files.FirstOrDefault();
 
-            if (files == null)
+            if (fileToUpload == null)
                 return this.Content("File Not Found!");
 
-            long totalBytes = files.Length;
-            string filename = ContentDispositionHeaderValue.Parse(files.ContentDisposition).FileName.ToString().Trim('"');
+            long totalBytes = fileToUpload.Length;
+            string filename = ContentDispositionHeaderValue.Parse(fileToUpload.ContentDisposition).FileName.ToString().Trim('"');
             filename = EnsureCorrectFilename(filename);
 
             byte[] buffer = new byte[16 * 1024];
 
             using (FileStream output = System.IO.File.Create(GetPathAndFilename(filename)))
             {
-                using (Stream input = files.OpenReadStream())
+                using (Stream input = fileToUpload.OpenReadStream())
                 {
                     long totalReadBytes = 0;
                     int readBytes;
@@ -77,7 +77,7 @@ namespace SetBoxWebUI.Controllers
                 Name = filename,
                 CreationDateTime = DateTime.Now,
                 Size = totalBytes,
-                Extension = files.ContentType,
+                Extension = fileToUpload.ContentType,
                 Path = GetPathAndFilename(filename),
                 CheckSum = CriptoHelpers.MD5HashFile(GetPathAndFilename(filename))
             });
@@ -121,6 +121,9 @@ namespace SetBoxWebUI.Controllers
                     case "name":
                         orderby = o => o.Name;
                         break;
+                    case "description":
+                        orderby = o => o.Description;
+                        break;
                     case "extension":
                         orderby = o => o.Extension;
                         break;
@@ -155,25 +158,62 @@ namespace SetBoxWebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, string command)
+        public async Task<IActionResult> EditOrNew(string id, string command)
         {
             try
             {
-                ViewData["Edit"] = true;
                 ViewData["Command"] = command;
+                var devices = await _devices.GetAsync();
+
+                if (string.IsNullOrEmpty(id))
+                {
+                    ViewData["New"] = true;
+                    return View("Index", new FilesViewModel()
+                    {
+                        AllDevices = devices.Select(x => new FileDeviceViewModel()
+                        {
+                            CompanyName = x.Company?.Name,
+                            Id = x.DeviceId,
+                            DeviceIdentifier = x.DeviceIdentifier,
+                            DeviceName = x.Name
+                        }).ToList(),
+                        AllDeviceIds = string.Join(",", devices.Select(x => x.DeviceId.ToString()).ToList()),
+                        IsNew = true,
+                    });
+                }
                 var item = await _files.FirstOrDefaultAsync(x => x.FileId.ToString() == id);
 
                 if (item == null)
                     throw new KeyNotFoundException($"DeviceId: {id} not found.");
 
-                var devices = await _devices.GetAsync();
+                ViewData["Edit"] = true;
+               
+                var devicesFile = item.Devices.Select(x => x.Device);
+                var idsRemove = devicesFile.Select(x => x.DeviceId);
 
                 FilesViewModel model = new FilesViewModel
                 {
                     IsEdited = command == "Edit",
+                    IsNew = command == "New",
                     File = item,
-                    Devices = item.Devices.Select(x => x.Device.DeviceId).ToList(),
-                    AllDevices = devices.Select(x => x.DeviceId).ToList(),
+                    Devices = devicesFile.Select(x => new FileDeviceViewModel()
+                    {
+                        CompanyName = x.Company?.Name,
+                        Id = x.DeviceId,
+                        DeviceIdentifier = x.DeviceIdentifier,
+                        DeviceName = x.Name
+                    }).ToList(),
+                    DeviceIds = string.Join(",", devicesFile.Select(x => x.DeviceId.ToString()).ToList()),
+                    AllDeviceIds = string.Join(",", devices.Where(x => !idsRemove.Contains(x.DeviceId))
+                                            .Select(x => x.DeviceId.ToString()).ToList()),
+                    AllDevices = devices.Where(x => !idsRemove.Contains(x.DeviceId))
+                                        .Select(x => new FileDeviceViewModel()
+                                        {
+                                            CompanyName = x.Company?.Name,
+                                            Id = x.DeviceId,
+                                            DeviceIdentifier = x.DeviceIdentifier,
+                                            DeviceName = x.Name
+                                        }).ToList()
                 };
 
                 return View("Index", model);
@@ -182,6 +222,7 @@ namespace SetBoxWebUI.Controllers
             {
                 _logger.LogError(ex, ex.Message);
                 ViewData["Edit"] = false;
+                ViewData["New"] = false;
                 return View("Index", new FilesViewModel(ex));
             }
         }
@@ -192,8 +233,15 @@ namespace SetBoxWebUI.Controllers
         {
             try
             {
+                var ids = u.Devices.Select(x => x.Id);
                 var file = await _files.FirstOrDefaultAsync(x => x.FileId == u.File.FileId);
-                var devices = await _devices.GetAsync(x => u.Devices.Contains(x.DeviceId));
+                var devices = await _devices.GetAsync(x => ids.Contains(x.DeviceId));
+
+                if (file.Description != u.File.Description)
+                {
+                    file.Description = u.File.Description;
+                    await _files.UpdateAsync(file);
+                }
 
                 var delsOld1 = await _fileDevice.GetAsync(x => x.FileId == u.File.FileId);
                 await _fileDevice.DeleteRangeAsync(delsOld1);
@@ -216,7 +264,7 @@ namespace SetBoxWebUI.Controllers
                     await _fileDevice.AddRangeAsync(DevicesInFile);
                 }
 
-                return View("Index", new FilesViewModel("Dados Atualizado com sucesso."));
+                return View("Index", new FilesViewModel("Data Updated successfully."));
             }
             catch(Exception ex)
             {

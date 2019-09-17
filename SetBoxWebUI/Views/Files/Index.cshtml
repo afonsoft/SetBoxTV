@@ -11,16 +11,23 @@
 <h1>Files</h1>
 <h4>Informações dos arquivos e dos SetBox</h4>
 
-<form asp-controller="Files" asp-action="Edit" method="post" id="FormEdit">
+<form asp-controller="Files" asp-action="EditOrNew" method="post" id="FormEdit">
     <input type="hidden" name="id" value="" id="id" />
     <input type="hidden" name="command" value="" id="command" />
-    <table id="grid-data-device-files" class="table table-condensed table-hover table-striped" style="font-size:8pt;" data-navigation="2">
+    <div class="row">
+        <div class="col-12" style="text-align:right;">
+            <button type="button" class="btn btn-info btn-sm" onclick="NewFile()">Add</button>
+        </div>
+    </div>
+    <table id="grid-data-device-files" class="table table-condensed table-hover table-striped" style="font-size:8pt;">
         <thead>
             <tr>
                 <th data-column-id="fileId">Id</th>
                 <th data-column-id="name" data-order="asc">Name</th>
+                <th data-column-id="description">Description</th>
                 <th data-column-id="extension">Extension</th>
                 <th data-column-id="size" data-converter="size">Size</th>
+                <th data-column-id="totalDevice">Devices</th>
                 <th data-column-id="creationDateTime" data-converter="datetime">CreationDateTime</th>
                 <th data-formatter="actions" data-sortable="false">Commands</th>
             </tr>
@@ -31,14 +38,95 @@
 
 <br />
 
-<form id="formUpload" name="formUpload" asp-controller="Files" asp-action="Uploader" enctype="multipart/form-data" method="post">
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-        </div>
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="files" onchange="uploadFiles()">
-            <label class="custom-file-label" for="customFile">Choose file</label>
+<form id="formUpload" name="formUpload" asp-controller="Files" asp-action="Save" enctype="multipart/form-data" method="post">
+    <div class="modal fade" id="ModalEdit" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" asp-for="DeviceIds" id="DeviceIds">
+                    <input type="hidden" asp-for="AllDeviceIds" id="AllDeviceIds" />
+                    <input type="hidden" asp-for="File.FileId" />
+                    <input type="hidden" asp-for="IsEdited" />
+                    <input type="hidden" asp-for="IsNew" />
+                    <input type="hidden" asp-for="File.CheckSum" />
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12 ml-auto" style="font-size:8pt;">
+                                <div id="panelUpload">
+
+                                    <div class="custom-file">
+                                        <input type="file" asp-for="fileToUpload" class="custom-file-input" id="fileToUpload">
+                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                    </div>
+
+                                </div>
+                                <div id="panelEdit">
+                                    <div class="col">
+                                        <label asp-for="File.Name" class="col-sm-3 col-form-label"></label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="File.Name" class="form-control form-control-sm" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <label asp-for="File.Description" class="col-sm-3 col-form-label"></label>
+                                        <div class="col-sm-9">
+                                            <input asp-for="File.Description" class="form-control form-control-sm" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 ml-auto" style="font-size:8pt;">
+                                <h6>All available devices</h6>
+                                <div class="list-group" id="source">
+                                    @foreach (var item in Model.AllDevices)
+                                    {
+                                        <a href="#" id="@item.Id" class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">@item.CompanyName @item.DeviceName</h5>
+                                            </div>
+                                            <p class="mb-1">
+                                                @item.DeviceIdentifier<br />
+                                                @item.DeviceName<br />
+                                                @item.CompanyName
+                                            </p>
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                            <div class="col-md-6 ml-auto" style="font-size:8pt;">
+                                <h6>All Selected Devices</h6>
+                                <div class="list-group" id="destination">
+                                    @foreach (var item in Model.Devices)
+                                    {
+                                        <a href="#" id="@item.Id" class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">@item.CompanyName @item.DeviceName</h5>
+                                            </div>
+                                            <p class="mb-1">
+                                                @item.DeviceIdentifier<br />
+                                                @item.DeviceName<br />
+                                                @item.CompanyName
+                                            </p>
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-times"></i>Fechar</button>
+                    <button type="submit" id="buttonSave" class="btn btn-primary"><i class="fa fa-check"></i>Salvar Mudanças</button>
+                </div>
+            </div>
         </div>
     </div>
 </form>
@@ -48,37 +136,36 @@
 
 @section scripts {
 
-    <script>
+    <script type="text/javascript">
 
-        function uploadFiles() {
+        var arraySource = [];
+        var arraydestination = [];
 
-            var files = $('#files')[0].files[0];
-            var formData = new FormData();
-            formData.append("files", files);
+        function openModal(action, id) {
 
-            PleaseWaitShow();
-            $.ajax(
-                {
-                    url: "/Files/Uploader",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    async: true,
-                    cache: false,
-                    type: "POST",
-                    success: function (data) {
-                        PleaseWaitHide();
-                        bootbox.alert({ title: "Upload", message: data });
-                    },
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        PleaseWaitHide();
-                        bootbox.alert({ title: "Error", message: "Status: " + xhr.status + " Error : " + thrownError });
-                    }
-                }
-            );
+            if (action == 'Edit') {
+                $("#panelEdit").show();
+                $("#panelUpload").hide();
+                $("#ModalTitle").val("Edit File: " + id);
+                $('#ModalEdit').modal('show');
+            }
+
+            if (action == 'New') {
+                $("#panelEdit").hide();
+                $("#panelUpload").show();
+                $("#ModalTitle").val("New File");
+                $('#ModalEdit').modal('show');
+            }
         }
+
+        function NewFile() {
+            $("#id").val("");
+            $("#command").val("New");
+            $("#FormEdit").submit();
+        }
+
         $(document).ready(function () {
-            $("#grid-data-device-files").bootgrid(
+            grid = $("#grid-data-device-files").bootgrid(
                 {
                     ajax: true,
                     url: '/Files/List',
@@ -90,9 +177,9 @@
                     formatters: {
                         "actions": function (column, row) {
                             return "<div class='btn-group btn-group-sm' role='group'>" +
-                                "<a href='#' alt='Details' class='btn btn-info btn-sm' data-command='Details' data-row-id = '" + row.FileId + "'>" +
+                                "<a href='#' alt='Details' class='btn btn-info btn-sm' data-command='Edit' data-row-id = '" + row.fileId + "'>" +
                                 "<span class='glyphicon glyphicon-list'></span>" + "</a>" +
-                                "<a href='#' alt='Delete' class='btn btn-danger btn-sm' data-command='Delete' data-row-id = '" + row.FileId + "'>" +
+                                "<a href='#' alt='Delete' class='btn btn-danger btn-sm' data-command='Delete' data-row-id = '" + row.fileId + "'>" +
                                 "<span class='glyphicon glyphicon-trash'></span>" + "</a></div>";
                         }
                     },
@@ -147,7 +234,61 @@
                     });
                 });
             });
+
+            //List
+            $("#source").on("click", "a", function (e) {
+                arraySource = $("#AllDeviceIds").val().split(',');
+                arraydestination = $("#DeviceIds").val().split(',');
+                var listItem = $(this);
+                var id = listItem.attr("id");
+                var cloneItem = listItem.clone();
+                cloneItem.appendTo("#destination");
+                arraydestination.push(id);
+                arraySource = jQuery.grep(arraySource, function (value) { return value != id && value != ""; });
+                arraydestination = jQuery.grep(arraydestination, function (value) { value != ""; });
+                listItem.remove();
+                SaveArrayInHidden(arraySource, arraydestination);
+            });
+
+            $("#destination").on("click", "a", function (e) {
+                arraySource = $("#AllDeviceIds").val().split(',');
+                arraydestination = $("#DeviceIds").val().split(',');
+                var listItem = $(this);
+                var id = listItem.attr("id");
+                var cloneItem = listItem.clone();
+                cloneItem.appendTo("#source");
+                arraySource.push(id);
+                arraydestination = jQuery.grep(arraydestination, function (value) { return value != id && value != ""; });
+                arraySource = jQuery.grep(arraySource, function (value) { value != ""; });
+                listItem.remove()
+                SaveArrayInHidden(arraySource, arraydestination);
+            });
+
         });
 
+        function SaveArrayInHidden(arrSource, arrDestination) {
+            console.log(arrSource);
+            console.log(arrDestination);
+            console.log('arrSource: ' + arrSource.join(','));
+            console.log('arrDestination: ' + arrDestination.join(','));
+            $("#AllDeviceIds").val(arrSource.join(','));
+            $("#DeviceIds").val(arrDestination.join(','));
+        }
+
+    </script>
+}
+
+
+@if (Convert.ToBoolean(ViewData["Edit"]) == true && Model != null)
+{
+    <script>
+         openModal('@ViewData["Command"]', '@Model.File.FileId');
+    </script>
+}
+
+@if (Convert.ToBoolean(ViewData["New"]) == true && Model != null)
+{
+    <script>
+         openModal('@ViewData["Command"]', '');
     </script>
 }

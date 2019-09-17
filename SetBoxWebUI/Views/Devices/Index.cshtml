@@ -21,6 +21,7 @@
             <tr>
                 <th data-column-id="deviceId" data-identifier="true">ID</th>
                 <th data-column-id="deviceIdentifier" data-order="asc">Identifier</th>
+                <th data-column-id="name">Name</th>
                 <th data-column-id="platform">Platform</th>
                 <th data-column-id="version">Version</th>
                 <th data-column-id="license">License</th>
@@ -85,7 +86,15 @@
 
                                     <label asp-for="License" class="col-sm-3 col-form-label"></label>
                                     <div class="col-sm-9">
-                                        <input asp-for="License" class="form-control form-control-sm" />
+                                        <input asp-for="License" class="form-control form-control-sm" readonly/>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+
+                                    <label asp-for="Name" class="col-sm-3 col-form-label"></label>
+                                    <div class="col-sm-9">
+                                        <input asp-for="Name" class="form-control form-control-sm" />
                                     </div>
 
                                 </div>
@@ -93,7 +102,7 @@
 
                                     <label class="col-sm-3 col-form-label">CreationDate</label>
                                     <div class="col-sm-9">
-                                        <input asp-for="CreationDateTime" class="form-control form-control-sm" />
+                                        <input asp-for="CreationDateTime" class="form-control form-control-sm" readonly/>
                                     </div>
 
                                 </div>

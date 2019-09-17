@@ -15,6 +15,7 @@ namespace SetBoxWebUI.Models
         public string Platform { get; set; }
         public string Version { get; set; }
         public string License { get; set; }
+        public string Name { get; set; }
         public DateTime CreationDateTime { get; set; }
 
         [JsonIgnore]

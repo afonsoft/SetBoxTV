@@ -90,7 +90,8 @@ namespace SetBoxWebUI.Controllers
                     if (itens.Count > 0)
                     {
                         var updItem = itens.First();
-                        updItem.License = model.License;
+
+                        updItem.Name = model.Name;
 
                         if (updItem.Configuration == null)
                         {
@@ -223,6 +224,9 @@ namespace SetBoxWebUI.Controllers
                     case "version":
                         orderby = o => o.Version;
                         break;
+                    case "name":
+                        orderby = o => o.Name;
+                        break;
                 }
 
                 var itens = new List<Device>();
@@ -231,6 +235,7 @@ namespace SetBoxWebUI.Controllers
                                            || f.License.Contains(input.SearchPhrase)
                                            || f.Platform.Contains(input.SearchPhrase)
                                            || f.Version.Contains(input.SearchPhrase)
+                                           || f.Name.Contains(input.SearchPhrase)
                                            || f.CreationDateTime.ToString("dd/MM/yyyy").Contains(input.SearchPhrase),
                                             keys.Value == "asc" ? orderby : null,
                                             keys.Value == "desc" ? orderby : null,

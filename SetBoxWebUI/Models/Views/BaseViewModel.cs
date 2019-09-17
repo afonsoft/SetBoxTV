@@ -14,8 +14,15 @@ namespace SetBoxWebUI.Models.Views
         public BaseViewModel( string messageError)
         {
             Mensage = messageError;
-            Title = "";
+            Title = "Alert";
         }
+
+        public BaseViewModel(string messageError, string title)
+        {
+            Mensage = messageError;
+            Title = title;
+        }
+
         public BaseViewModel(Exception execption)
         {
             Mensage = execption.Message;
