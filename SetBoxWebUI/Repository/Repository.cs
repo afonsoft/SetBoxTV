@@ -15,7 +15,7 @@ namespace SetBoxWebUI.Repository
     /// </summary>
     /// <typeparam name="TEntity">TEntity</typeparam>
     /// <typeparam name="TKey">TKey</typeparam>
-    public class Repository<TEntity, TKey> : IDisposable, IRepository<TEntity, TKey> where TEntity : class
+    public class Repository<TEntity, TKey> : IRepository<TEntity, TKey> where TEntity : class
     {
         /// <summary>
         /// DbContext
@@ -68,22 +68,12 @@ namespace SetBoxWebUI.Repository
         }
 
         /// <summary>
-        /// Dispose
-        /// </summary>
-        public void Dispose()
-        {
-            Table = null;
-            Context?.Dispose();
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
         /// Add
         /// </summary>
-        public virtual Task<int> AddAsync(TEntity entity)
+        public async virtual Task<int> AddAsync(TEntity entity)
         {
-            Table.AddAsync(entity).Wait();
-            return Context.SaveChangesAsync();
+            await Table.AddAsync(entity);
+            return await Context.SaveChangesAsync();
         }
 
         /// <summary>
@@ -91,10 +81,10 @@ namespace SetBoxWebUI.Repository
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public virtual Task<int> AddRangeAsync(IEnumerable<TEntity> entity)
+        public async virtual Task<int> AddRangeAsync(IEnumerable<TEntity> entity)
         {
-            Table.AddRangeAsync(entity).Wait();
-            return Context.SaveChangesAsync();
+            await Table.AddRangeAsync(entity);
+            return await Context.SaveChangesAsync();
         }
 
         /// <summary>
@@ -182,7 +172,7 @@ namespace SetBoxWebUI.Repository
             if (entry.State == EntityState.Detached)
             {
                 var set = Context.Set<TEntity>();
-                TEntity attachedEntity = set.Find(pkey); // access the key 
+                TEntity attachedEntity = await set.FindAsync(pkey); // access the key 
                 if (attachedEntity != null)
                 {
                     var attachedEntry = Context.Entry(attachedEntity);
@@ -197,6 +187,36 @@ namespace SetBoxWebUI.Repository
             {
                 entry.State = EntityState.Modified;
             }
+
+            return await Context.SaveChangesAsync();
+        }
+
+        public async virtual Task<int> UpdateRangeAsync(IEnumerable<TEntity> entity)
+        {
+            Parallel.ForEach(entity, async (ent) =>
+            {
+                var entry = Context.Entry(ent);
+                var pkey = ent.GetType().GetProperty(PrimaryKeyName)?.GetValue(ent);
+
+                if (entry.State == EntityState.Detached)
+                {
+                    var set = Context.Set<TEntity>();
+                    TEntity attachedEntity = await set.FindAsync(pkey); // access the key 
+                    if (attachedEntity != null)
+                    {
+                        var attachedEntry = Context.Entry(attachedEntity);
+                        attachedEntry.CurrentValues.SetValues(ent);
+                    }
+                    else
+                    {
+                        entry.State = EntityState.Modified; // attach the entity 
+                    }
+                }
+                else
+                {
+                    entry.State = EntityState.Modified;
+                }
+            });
 
             return await Context.SaveChangesAsync();
         }

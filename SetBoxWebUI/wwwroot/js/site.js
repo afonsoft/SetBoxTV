@@ -11,18 +11,25 @@ function PleaseWaitHide() {
 }
 
 //Load page in ajax
-$(document).ajaxStart(function (event, request, settings) {
+$(document).ajaxStart(function () {
     PleaseWaitShow();
 });
-$(document).ajaxSend(function (event, request, settings) {
+$(document).ajaxSend(function () {
     PleaseWaitShow();
 });
-$(document).ajaxComplete(function (event, request, settings) {
+$(document).ajaxComplete(function () {
     PleaseWaitHide();
 });
-$(document).ajaxError(function (event, request, settings) {
+$(document).ajaxError(function () {
     PleaseWaitHide();
 });
+$(document).ajaxStop(function () {
+    PleaseWaitHide();
+})
+$(document).ajaxSuccess(function () {
+    PleaseWaitHide();
+})
+
 
 $(document).ready(function () {
     PleaseWaitHide();

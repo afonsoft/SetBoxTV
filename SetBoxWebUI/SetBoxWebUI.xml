@@ -54,7 +54,7 @@
             SetBoxController
             </summary>
         </member>
-        <member name="M:SetBoxWebUI.Controllers.FilesController.#ctor(Microsoft.Extensions.Logging.ILogger{SetBoxWebUI.Controllers.FilesController},SetBoxWebUI.Repository.ApplicationDbContext,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+        <member name="M:SetBoxWebUI.Controllers.FilesController.#ctor(Microsoft.Extensions.Logging.ILogger{SetBoxWebUI.Controllers.FilesController},SetBoxWebUI.Repository.ApplicationDbContext,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.DependencyInjection.IServiceScopeFactory)">
             <summary>
             FilesController
             </summary>
@@ -416,11 +416,6 @@
             Construtor com o RepositoryDbContext
             </summary>
             <param name="context"></param>
-        </member>
-        <member name="M:SetBoxWebUI.Repository.Repository`2.Dispose">
-            <summary>
-            Dispose
-            </summary>
         </member>
         <member name="M:SetBoxWebUI.Repository.Repository`2.AddAsync(`0)">
             <summary>

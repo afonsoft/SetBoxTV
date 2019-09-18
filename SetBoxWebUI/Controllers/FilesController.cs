@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SetBoxWebUI.Helpers;
 using SetBoxWebUI.Interfaces;
@@ -26,85 +27,22 @@ namespace SetBoxWebUI.Controllers
         private readonly IRepository<Device, Guid> _devices;
         private readonly IRepository<FilesDevices, Guid> _fileDevice;
         private readonly IHostingEnvironment _hostingEnvironment;
-
+        private readonly IServiceScopeFactory _serviceScopeFactory;
 
         /// <summary>
         /// FilesController
         /// </summary>
-        public FilesController(ILogger<FilesController> logger, ApplicationDbContext context, IHostingEnvironment hostingEnvironment)
+        public FilesController(ILogger<FilesController> logger, ApplicationDbContext context, IHostingEnvironment hostingEnvironment, IServiceScopeFactory serviceScopeFactory)
         {
             _logger = logger;
             _files = new Repository<FileCheckSum, Guid>(context);
             _devices = new Repository<Device, Guid>(context);
             _fileDevice = new Repository<FilesDevices, Guid>(context);
             _hostingEnvironment = hostingEnvironment;
+            _serviceScopeFactory = serviceScopeFactory;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Uploader(IFormFile fileToUpload = null)
-        {
-
-            if (fileToUpload == null)
-                fileToUpload = Request.Form.Files.FirstOrDefault();
-
-            if (fileToUpload == null)
-                return this.Content("File Not Found!");
-
-            long totalBytes = fileToUpload.Length;
-            string filename = ContentDispositionHeaderValue.Parse(fileToUpload.ContentDisposition).FileName.ToString().Trim('"');
-            filename = EnsureCorrectFilename(filename);
-
-            byte[] buffer = new byte[16 * 1024];
-
-            using (FileStream output = System.IO.File.Create(GetPathAndFilename(filename)))
-            {
-                using (Stream input = fileToUpload.OpenReadStream())
-                {
-                    long totalReadBytes = 0;
-                    int readBytes;
-
-                    while ((readBytes = input.Read(buffer, 0, buffer.Length)) > 0)
-                    {
-                        await output.WriteAsync(buffer, 0, readBytes);
-                        totalReadBytes += readBytes;
-                    }
-                }
-
-            }
-
-            await _files.AddAsync(new FileCheckSum()
-            {
-                Name = filename,
-                CreationDateTime = DateTime.Now,
-                Size = totalBytes,
-                Extension = fileToUpload.ContentType,
-                Path = GetPathAndFilename(filename),
-                CheckSum = CriptoHelpers.MD5HashFile(GetPathAndFilename(filename))
-            });
-
-
-            return this.Content("Files Uploaded");
-        }
-
-        private string EnsureCorrectFilename(string filename)
-        {
-            if (filename.Contains("\\"))
-                filename = filename.Substring(filename.LastIndexOf("\\") + 1);
-
-            return filename;
-        }
-
-        private string GetPathAndFilename(string filename)
-        {
-            string path = _hostingEnvironment.WebRootPath + "\\UploadedFiles\\";
-
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
-
-            return path + filename;
-        }
-
-
+      
         public async Task<GridPagedOutput<FileCheckSum>> List(GridPagedInput input)
         {
             try
@@ -187,7 +125,7 @@ namespace SetBoxWebUI.Controllers
                     throw new KeyNotFoundException($"DeviceId: {id} not found.");
 
                 ViewData["Edit"] = true;
-               
+
                 var devicesFile = item.Devices.Select(x => x.Device);
                 var idsRemove = devicesFile.Select(x => x.DeviceId);
 
@@ -233,9 +171,22 @@ namespace SetBoxWebUI.Controllers
         {
             try
             {
-                var ids = u.Devices.Select(x => x.Id);
+
+                if (u.IsNew)
+                {
+                    if (u.fileToUpload == null)
+                        u.fileToUpload = Request.Form.Files.FirstOrDefault();
+
+                    if (u.fileToUpload == null)
+                        throw new Exception("Favor selecionar um arquivo para upload.");
+
+                    u.File.FileId = await Uploader(u.fileToUpload);
+                }
+
+                var ids = u.DeviceIds.Split(',');
+
                 var file = await _files.FirstOrDefaultAsync(x => x.FileId == u.File.FileId);
-                var devices = await _devices.GetAsync(x => ids.Contains(x.DeviceId));
+                var devices = await _devices.GetAsync(x => ids.Contains(x.DeviceId.ToString()));
 
                 if (file.Description != u.File.Description)
                 {
@@ -248,7 +199,7 @@ namespace SetBoxWebUI.Controllers
 
                 IList<FilesDevices> DevicesInFile = new List<FilesDevices>();
 
-                foreach(var device in devices)
+                foreach (var device in devices)
                 {
                     DevicesInFile.Add(new FilesDevices()
                     {
@@ -257,16 +208,24 @@ namespace SetBoxWebUI.Controllers
                         Device = device,
                         DeviceId = device.DeviceId
                     });
+
+                    device.LogAccesses.Add(new DeviceLogAccesses()
+                    {
+                        CreationDateTime = DateTime.Now,
+                        Message = $"File {file.Name} Added",
+                        IpAcessed = HttpContext.GetClientIpAddress()
+                    });
+                    await _devices.UpdateAsync(device);
                 }
 
-                if(DevicesInFile.Count > 0)
+                if (DevicesInFile.Count > 0)
                 {
                     await _fileDevice.AddRangeAsync(DevicesInFile);
                 }
 
                 return View("Index", new FilesViewModel("Data Updated successfully."));
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
                 return View("Index", new FilesViewModel(ex));
@@ -274,28 +233,53 @@ namespace SetBoxWebUI.Controllers
         }
 
 
-        public async Task<bool> Delete(string id)
+        public async Task<string> Delete(string id)
         {
             try
             {
-                var dels1 = await _fileDevice.GetAsync(x => x.FileId.ToString() == id);
-                var dels2 = await _files.GetAsync(x => x.FileId.ToString() == id);
+                var delsDevicesFile = await _fileDevice.GetAsync(x => x.FileId.ToString() == id);
+                var delsFile = await _files.FirstOrDefaultAsync(x => x.FileId.ToString() == id);
 
-                await _fileDevice.DeleteRangeAsync(dels1);
-                await _files.DeleteRangeAsync(dels2);
+                if (delsFile == null)
+                    return "File Not Found!";
 
-                return true;
+                var deviceIds = delsDevicesFile.Select(x => x.DeviceId).ToList();
+                string infoDel = $"File {delsFile.Name} deleted.";
+
+                await _fileDevice.DeleteRangeAsync(delsDevicesFile);
+                await _files.DeleteAsync(delsFile);
+
+                var devices = await _devices.GetAsync(x => deviceIds.Contains(x.DeviceId));
+
+                foreach (var device in devices)
+                {
+                    device.LogAccesses.Add(new DeviceLogAccesses()
+                    {
+                        CreationDateTime = DateTime.Now,
+                        Message = infoDel,
+                        IpAcessed = HttpContext.GetClientIpAddress()
+                    });
+                    await _devices.UpdateAsync(device);
+                }
+
+                return infoDel;
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
-                return false;
+                return ex.Message;
             }
         }
 
         public ActionResult Index()
-        {
+        {  
             return View(new FilesViewModel(""));
+        }
+
+        public async Task<ActionResult> UpdateFilesFolder(FilesViewModel u = null)
+        {
+            await ProcessFilesInDirectory(_serviceScopeFactory);
+            return View("Index", u ?? new FilesViewModel());
         }
 
         [HttpPost]
@@ -303,6 +287,112 @@ namespace SetBoxWebUI.Controllers
         public ActionResult Index(FilesViewModel u)
         {
             return View(u);
+        }
+
+        public async Task<Guid> Uploader(IFormFile fileToUpload)
+        {
+
+            long totalBytes = fileToUpload.Length;
+            string filename = fileToUpload.FileName;
+            filename = EnsureCorrectFilename(filename);
+
+            byte[] buffer = new byte[16 * 1024];
+
+            using (FileStream output = System.IO.File.Create(GetPathAndFilename(filename)))
+            {
+                using (Stream input = fileToUpload.OpenReadStream())
+                {
+                    long totalReadBytes = 0;
+                    int readBytes;
+
+                    while ((readBytes = input.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        await output.WriteAsync(buffer, 0, readBytes);
+                        totalReadBytes += readBytes;
+                    }
+                }
+
+            }
+            var add = new FileCheckSum()
+            {
+                Name = filename,
+                CreationDateTime = DateTime.Now,
+                Size = totalBytes,
+                Extension = fileToUpload.ContentType,
+                Path = GetPathAndFilename(filename),
+                CheckSum = CriptoHelpers.MD5HashFile(GetPathAndFilename(filename)),
+                Url = "https://setbox.afonsoft.com.br/UploadedFiles/" + filename,
+                FileId = Guid.NewGuid()
+            };
+
+            await _files.AddAsync(add);
+            return add.FileId;
+        }
+
+        private string EnsureCorrectFilename(string filename)
+        {
+            if (filename.Contains("\\"))
+                filename = filename.Substring(filename.LastIndexOf("\\") + 1);
+
+            return filename;
+        }
+
+        private string GetPathAndFilename(string filename)
+        {
+            string path = _hostingEnvironment.WebRootPath + "\\UploadedFiles\\";
+
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
+            return path + filename;
+        }
+
+        public async Task ProcessFilesInDirectory(IServiceScopeFactory serviceScopeFactory)
+        {
+
+            try
+            {
+                string path = _hostingEnvironment.WebRootPath + "\\UploadedFiles\\";
+
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+
+                using (var scope = serviceScopeFactory.CreateScope())
+                {
+                    var dbContext = scope.ServiceProvider.GetService<ApplicationDbContext>();
+
+                    IRepository<FileCheckSum, Guid> _fileDb = new Repository<FileCheckSum, Guid>(dbContext);
+
+                    var files = await _fileDb.GetAsync();
+                    string[] names = files.Select(x => x.Name).ToArray();
+
+                    DirectoryInfo di = new DirectoryInfo(path);
+
+                    var filesInDir = di.EnumerateFiles()
+                       .AsParallel()
+                       .Where(x => !names.Contains(x.Name))
+                       .Select(x => new FileCheckSum()
+                       {
+                           Description = "",
+                           FileId = Guid.NewGuid(),
+                           Name = x.Name,
+                           CreationDateTime = DateTime.Now,
+                           Size = x.Length,
+                           Extension = x.Extension,
+                           Path = GetPathAndFilename(x.Name),
+                           CheckSum = CriptoHelpers.MD5HashFile(GetPathAndFilename(x.Name)),
+                           Url = "https://setbox.afonsoft.com.br/UploadedFiles/" + x.Name
+                       })
+                       .ToArray();
+
+                    if (filesInDir.Length > 0)
+                        await _fileDb.AddRangeAsync(filesInDir);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+            }
         }
     }
 }

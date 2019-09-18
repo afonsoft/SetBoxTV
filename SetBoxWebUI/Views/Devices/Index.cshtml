@@ -352,9 +352,13 @@
                                             url: '/Devices/Delete?id=' + id,
                                             cache: false
                                         }).done(function (result) {
-                                            if (result) {
-                                                grid.refresh(true);
-                                            }
+                                            PleaseWaitHide();
+                                            grid.reload();
+                                            bootbox.alert({ title: "Info", message: result });
+                                        }).fail(function (result) {
+                                            PleaseWaitHide();
+                                            grid.reload();
+                                            bootbox.alert({ title: "Error", message: result });
                                         });
                                     }
                                 }

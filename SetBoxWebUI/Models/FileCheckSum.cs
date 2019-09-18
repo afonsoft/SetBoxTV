@@ -45,6 +45,7 @@ namespace SetBoxWebUI.Models
         /// CheckSum para verificar se foi modificado o arquivo.
         /// </summary>
         public string CheckSum { get; set; }
+
         public DateTime CreationDateTime { get; set; }
 
         [NotMapped]
@@ -54,7 +55,7 @@ namespace SetBoxWebUI.Models
         /// Devices
         /// </summary>
         [JsonIgnore]
-        public virtual ICollection<FilesDevices> Devices { get; set; } = new List<FilesDevices>();
+        public virtual ICollection<FilesDevices> Devices { get; set; } 
     }
 
     public class FilesDevices

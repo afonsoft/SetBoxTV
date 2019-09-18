@@ -69,12 +69,12 @@ namespace SetBoxWebUI
             services.AddDistributedMemoryCache();
             services.AddEntityFrameworkSqlServer();
 
-            string connectionString = Configuration.GetConnectionString("Default"); 
-           
-            services.AddDbContext<ApplicationDbContext>(options => options.UseLazyLoadingProxies(true)
-                                                                    .UseSqlServer(connectionString));
+            string connectionString = Configuration.GetConnectionString("Default");
 
             services.AddSingleton(typeof(IRepository<,>), typeof(Repository<,>));
+
+            services.AddDbContext<ApplicationDbContext>(options => options.UseLazyLoadingProxies(true)
+                                                                    .UseSqlServer(connectionString));
 
             services.AddIdentity<ApplicationIdentityUser, ApplicationIdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()

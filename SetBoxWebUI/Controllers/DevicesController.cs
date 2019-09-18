@@ -253,24 +253,23 @@ namespace SetBoxWebUI.Controllers
             }
         }
 
-        public async Task<bool> Delete(string id)
+        public async Task<string> Delete(string id)
         {
             try
             {
                 var dels = await _devices.GetAsync(x => x.DeviceId.ToString() == id);
-
                 var del = dels.FirstOrDefault();
                 if (del != null)
                 {
                    await _devices.DeleteAsync(del);
-                    return true;
+                    return "Device Deleted!";
                 }
-                return false;
+                return "Device Not Found!";
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
-                return false;
+                return ex.Message;
             }
         }
     }

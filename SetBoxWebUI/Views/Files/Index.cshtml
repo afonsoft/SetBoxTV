@@ -16,7 +16,14 @@
     <input type="hidden" name="command" value="" id="command" />
     <div class="row">
         <div class="col-12" style="text-align:right;">
-            <button type="button" class="btn btn-info btn-sm" onclick="NewFile()">Add</button>
+            <div class="btn-group" role="group" aria-label="">
+                <button type="button" class="btn btn-success btn-sm" asp-action="UpdateFilesFolder" asp-controller="Files">
+                    <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>Update
+                </button>
+                <button type="button" class="btn btn-info btn-sm" onclick="NewFile()">
+                    <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>Add File
+                </button>
+            </div>
         </div>
     </div>
     <table id="grid-data-device-files" class="table table-condensed table-hover table-striped" style="font-size:8pt;">
@@ -58,19 +65,17 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12 ml-auto" style="font-size:8pt;">
-                                <div id="panelUpload">
-
+                                <div id="panelUpload" style="padding-bottom:5px;">
                                     <div class="custom-file">
-                                        <input type="file" asp-for="fileToUpload" class="custom-file-input" id="fileToUpload">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
+                                        <input type="file" asp-for="fileToUpload" class="custom-file-input" id="fileToUpload" onchange="ShowName()">
+                                        <label class="custom-file-label" for="customFile" id="FileSelected">Choose file</label>
                                     </div>
 
                                 </div>
-                                <div id="panelEdit">
                                     <div class="col">
                                         <label asp-for="File.Name" class="col-sm-3 col-form-label"></label>
                                         <div class="col-sm-9">
-                                            <input asp-for="File.Name" class="form-control form-control-sm" readonly />
+                                            <input asp-for="File.Name" id="File_Name" class="form-control form-control-sm" readonly />
                                         </div>
                                     </div>
                                     <div class="col">
@@ -79,10 +84,9 @@
                                             <input asp-for="File.Description" class="form-control form-control-sm" />
                                         </div>
                                     </div>
-                                </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="padding-top: 10px;">
                             <div class="col-md-6 ml-auto" style="font-size:8pt;">
                                 <h6>All available devices</h6>
                                 <div class="list-group" id="source">
@@ -93,9 +97,9 @@
                                                 <h5 class="mb-1">@item.CompanyName @item.DeviceName</h5>
                                             </div>
                                             <p class="mb-1">
-                                                @item.DeviceIdentifier<br />
-                                                @item.DeviceName<br />
-                                                @item.CompanyName
+                                                DeviceIdentifier: @item.DeviceIdentifier<br />
+                                                DeviceName: @item.DeviceName<br />
+                                                CompanyName: @item.CompanyName
                                             </p>
                                         </a>
                                     }
@@ -111,9 +115,9 @@
                                                 <h5 class="mb-1">@item.CompanyName @item.DeviceName</h5>
                                             </div>
                                             <p class="mb-1">
-                                                @item.DeviceIdentifier<br />
-                                                @item.DeviceName<br />
-                                                @item.CompanyName
+                                                DeviceIdentifier: @item.DeviceIdentifier<br />
+                                                DeviceName: @item.DeviceName<br />
+                                                CompanyName: @item.CompanyName
                                             </p>
                                         </a>
                                     }
@@ -144,14 +148,12 @@
         function openModal(action, id) {
 
             if (action == 'Edit') {
-                $("#panelEdit").show();
                 $("#panelUpload").hide();
                 $("#ModalTitle").val("Edit File: " + id);
                 $('#ModalEdit').modal('show');
             }
 
             if (action == 'New') {
-                $("#panelEdit").hide();
                 $("#panelUpload").show();
                 $("#ModalTitle").val("New File");
                 $('#ModalEdit').modal('show');
@@ -162,6 +164,11 @@
             $("#id").val("");
             $("#command").val("New");
             $("#FormEdit").submit();
+        }
+
+        function ShowName() {
+            $("#File_Name").val($("#fileToUpload").val());
+            $("#FileSelected").val($("#fileToUpload").val());
         }
 
         $(document).ready(function () {
@@ -219,9 +226,13 @@
                                             url: '/Files/Delete?id=' + id,
                                             cache: false
                                         }).done(function (result) {
-                                            if (result) {
-                                                grid.refresh(true);
-                                            }
+                                            PleaseWaitHide();
+                                            grid.reload();
+                                            bootbox.alert({ title: "Info", message: result });
+                                        }).fail(function (result) {
+                                            PleaseWaitHide();
+                                            grid.reload();
+                                            bootbox.alert({ title: "Error", message: result });
                                         });
                                     }
                                 }
@@ -245,7 +256,6 @@
                 cloneItem.appendTo("#destination");
                 arraydestination.push(id);
                 arraySource = jQuery.grep(arraySource, function (value) { return value != id && value != ""; });
-                arraydestination = jQuery.grep(arraydestination, function (value) { value != ""; });
                 listItem.remove();
                 SaveArrayInHidden(arraySource, arraydestination);
             });
@@ -259,7 +269,6 @@
                 cloneItem.appendTo("#source");
                 arraySource.push(id);
                 arraydestination = jQuery.grep(arraydestination, function (value) { return value != id && value != ""; });
-                arraySource = jQuery.grep(arraySource, function (value) { value != ""; });
                 listItem.remove()
                 SaveArrayInHidden(arraySource, arraydestination);
             });
@@ -267,12 +276,8 @@
         });
 
         function SaveArrayInHidden(arrSource, arrDestination) {
-            console.log(arrSource);
-            console.log(arrDestination);
-            console.log('arrSource: ' + arrSource.join(','));
-            console.log('arrDestination: ' + arrDestination.join(','));
-            $("#AllDeviceIds").val(arrSource.join(','));
-            $("#DeviceIds").val(arrDestination.join(','));
+            $("#AllDeviceIds").val(arrSource);
+            $("#DeviceIds").val(arrDestination);
         }
 
     </script>
