@@ -32,6 +32,9 @@ namespace SetBoxWebUI.Models
 
         [JsonIgnore]
         public virtual ICollection<FilesDevices> Files { get; set; }
+
+        [NotMapped]
+        public int TotalFiles { get { return Files!= null ? Files.Count : 0; } }
     }
 
     public class DeviceLogAccesses

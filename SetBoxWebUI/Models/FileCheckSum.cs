@@ -49,7 +49,7 @@ namespace SetBoxWebUI.Models
         public DateTime CreationDateTime { get; set; }
 
         [NotMapped]
-        public int TotalDevice { get { return Devices.Count; } }
+        public int TotalDevice { get { return Devices != null ? Devices.Count : 0; } }
 
         /// <summary>
         /// Devices
