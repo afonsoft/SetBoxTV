@@ -56,7 +56,8 @@ namespace SetBoxWebUI.Controllers
                     CreationDateTime = item.CreationDateTime,
                     License = item.License,
                     Platform = item.Platform,
-                    Version = item.Version
+                    Version = item.Version,
+                    Name = item.Name
                 };
                 if (item.Configuration != null)
                 {
@@ -86,11 +87,10 @@ namespace SetBoxWebUI.Controllers
             {
                 if (model != null)
                 {
-                    var itens = await _devices.GetAsync(x => x.DeviceId == model.DeviceId);
-                    if (itens.Count > 0)
-                    {
-                        var updItem = itens.First();
+                    var updItem = await _devices.FirstOrDefaultAsync(x => x.DeviceId == model.DeviceId);
 
+                    if (updItem != null)
+                    {
                         updItem.Name = model.Name;
 
                         if (updItem.Configuration == null)
@@ -257,8 +257,7 @@ namespace SetBoxWebUI.Controllers
         {
             try
             {
-                var dels = await _devices.GetAsync(x => x.DeviceId.ToString() == id);
-                var del = dels.FirstOrDefault();
+                var del = await _devices.FirstOrDefaultAsync(x => x.DeviceId.ToString() == id);
                 if (del != null)
                 {
                    await _devices.DeleteAsync(del);

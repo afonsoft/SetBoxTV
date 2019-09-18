@@ -26,6 +26,7 @@ namespace SetBoxWebUI.Controllers
         private const string DefaultLicense = "1111";
         private readonly ILogger<SetBoxController> _logger;
         private readonly IRepository<Device, Guid> _devices;
+        private readonly IRepository<Support, Guid> _support;
 
 
         /// <summary>
@@ -59,7 +60,7 @@ namespace SetBoxWebUI.Controllers
                 ValidaSession(session);
 
                 string deviceIdentifier = GetDeviceIdFromSession(session);
-                string deviceLicense = GetLocenseFromSession(session);
+                string deviceLicense = GetLicenseFromSession(session);
 
                 var device = await _devices.FirstOrDefaultAsync(x => x.DeviceIdentifier == deviceIdentifier);
 
@@ -356,6 +357,11 @@ namespace SetBoxWebUI.Controllers
             }
         }
 
+        /// <summary>
+        /// Recuperar as informações do Suporte para Exibir no SetBox
+        /// </summary>
+        /// <param name="session"></param>
+        /// <returns></returns>
         [HttpGet("GetSupport")]
         [ProducesResponseType(typeof(Response<Support>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(Response<Support>), StatusCodes.Status401Unauthorized)]
@@ -371,11 +377,24 @@ namespace SetBoxWebUI.Controllers
                 //Recuperar as configurações especifica para o DeviceId
                 var device = await _devices.FirstOrDefaultAsync(x => x.DeviceIdentifier == identifier);
 
-                if (device == null || device.Support == null)
+                if (device == null )
                 {
                     r.Status = false;
                     r.Message = "Not Found Support Specifies for this Device.";
                     return NotFound(r);
+                }
+
+                if (device.Support == null)
+                {
+                    device.Support = await _support.FirstOrDefaultAsync();
+                    device.LogAccesses.Add(new DeviceLogAccesses()
+                    {
+                        CreationDateTime = DateTime.Now,
+                        DeviceLogAccessesId = Guid.NewGuid(),
+                        IpAcessed = HttpContext.GetClientIpAddress(),
+                        Message = "Device Support Update!"
+                    });
+                    await _devices.UpdateAsync(device);
                 }
 
                 r.Result = device.Support;
@@ -400,7 +419,7 @@ namespace SetBoxWebUI.Controllers
         }
 
         /// <summary>
-        /// Listar os arquivos 
+        /// Atualizar a lista de arquivos novos do servidor.
         /// </summary>
         /// <param name="session"></param>
         /// <returns></returns>
@@ -417,9 +436,8 @@ namespace SetBoxWebUI.Controllers
 
                 string identifier = GetDeviceIdFromSession(session);
 
-                var devices = await _devices.GetAsync(x => x.DeviceIdentifier == identifier);
-                var device = devices.FirstOrDefault();
-
+                var device = await _devices.FirstOrDefaultAsync(x => x.DeviceIdentifier == identifier);
+                
                 if (device == null)
                 {
                     r.Status = false;
@@ -439,7 +457,10 @@ namespace SetBoxWebUI.Controllers
                         Size = item.File.Size,
                         CheckSum = item.File.CheckSum,
                         Path = item.File.Path,
-                        Url = "https://setbox.afonsoft.com.br/UploadedFiles/" + item.File.Path + item.File.Name
+                        Url = item.File.Url,
+                        CreationDateTime = item.File.CreationDateTime,
+                        Description = item.File.Description,
+                        FileId = item.FileId
                     });
                 }
 
@@ -513,9 +534,9 @@ namespace SetBoxWebUI.Controllers
         {
             return CriptoHelpers.Base64Decode(session).Split("|")[0];
         }
-        private string GetLocenseFromSession(string session)
+        private string GetLicenseFromSession(string session)
         {
-            return CriptoHelpers.Base64Decode(session).Split("|")[1];
+            return CriptoHelpers.Base64Decode(CriptoHelpers.Base64Decode(session).Split("|")[1]);
         }
     }
 

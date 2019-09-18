@@ -107,9 +107,16 @@
             <param name="session">returno do DeviceLogin</param>
             <returns></returns>
         </member>
+        <member name="M:SetBoxWebUI.Controllers.SetBoxController.GetSupport(System.String)">
+            <summary>
+            Recuperar as informações do Suporte para Exibir no SetBox
+            </summary>
+            <param name="session"></param>
+            <returns></returns>
+        </member>
         <member name="M:SetBoxWebUI.Controllers.SetBoxController.ListFilesCheckSum(System.String)">
             <summary>
-            Listar os arquivos 
+            Atualizar a lista de arquivos novos do servidor.
             </summary>
             <param name="session"></param>
             <returns></returns>
@@ -480,6 +487,13 @@
         <member name="M:SetBoxWebUI.Repository.Repository`2.UpdateAsync(`0)">
             <summary>
             Udapte
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SetBoxWebUI.Repository.Repository`2.UpdateRangeAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Update Range Async
             </summary>
             <param name="entity"></param>
             <returns></returns>

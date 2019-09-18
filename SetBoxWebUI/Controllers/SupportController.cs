@@ -17,6 +17,7 @@ namespace SetBoxWebUI.Controllers
     {
         private readonly ILogger<SupportController> _logger;
         private readonly IRepository<Support, Guid> _support;
+        private readonly IRepository<Device, Guid> _devices;
 
         /// <summary>
         /// SetBoxController
@@ -25,7 +26,7 @@ namespace SetBoxWebUI.Controllers
         {
             _logger = logger;
             _support = new Repository<Support, Guid>(context);
-
+            _devices = new Repository<Device, Guid>(context);
         }
 
         public async Task<IActionResult> Index()
@@ -82,6 +83,29 @@ namespace SetBoxWebUI.Controllers
                         await _support.UpdateAsync(support);
 
                     s.SupportId = support.SupportId;
+
+
+                    var devices = await _devices.GetAsync();
+
+                    foreach (var device in devices)
+                    {
+
+                        device.Support = await _support.FirstOrDefaultAsync();
+
+                        if (device.LogAccesses == null)
+                            device.LogAccesses = new List<DeviceLogAccesses>();
+
+                        device.LogAccesses.Add(new DeviceLogAccesses()
+                        {
+                            CreationDateTime = DateTime.Now,
+                            DeviceLogAccessesId = Guid.NewGuid(),
+                            IpAcessed = HttpContext.GetClientIpAddress(),
+                            Message = "Device Support Update!"
+                        });
+
+                    }
+
+                    await _devices.UpdateRangeAsync(devices);
 
                     s.Title = "Success";
                     s.Mensage = "Update was successful.";

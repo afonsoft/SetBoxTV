@@ -191,6 +191,11 @@ namespace SetBoxWebUI.Repository
             return await Context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// Update Range Async
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public async virtual Task<int> UpdateRangeAsync(IEnumerable<TEntity> entity)
         {
             Parallel.ForEach(entity, async (ent) =>
