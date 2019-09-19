@@ -78,7 +78,9 @@ namespace VideoPlayerProima
                 log?.Info("Atualizar as informações pelo Serivdor");
                 try
                 {
-                    var api = new API.SetBoxAPI(deviceIdentifier, license, PlayerSettings.Url);
+                    var api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
+
+                    await api.Update(DevicePicker.GetPlatform().ToString(), $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}");
                     var itens = await api.GetFilesCheckSums();
 
                     log?.Info($"Total de arquivos no servidor: {itens.Count()}");

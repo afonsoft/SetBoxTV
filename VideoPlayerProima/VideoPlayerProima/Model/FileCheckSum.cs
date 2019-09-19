@@ -10,26 +10,37 @@ namespace VideoPlayerProima.Model
     /// </summary>
     public class FileCheckSum
     {
-
+        /// <summary>
+        /// Id do Arquivo
+        /// </summary>
+        public Guid fileId { get; set; }
         /// <summary>
         /// Nome do Arquivo
         /// </summary>
-        public string Nome { get; set; }
+        public string name { get; set; }
         /// <summary>
         /// Tipo do Arquivo
         /// </summary>
-        public string Extensao { get; set; }
+        public string extension { get; set; }
         /// <summary>
         /// Tamanho
         /// </summary>
-        public long Tamanho { get; set; }
+        public long size { get; set; }
         /// <summary>
         /// Url para download do arquivo
         /// </summary>
-        public string Url { get; set; }
+        public string url { get; set; }
         /// <summary>
         /// CheckSum para verificar se foi modificado o arquivo.
         /// </summary>
-        public string CheckSum { get; set; }
+        public string checkSum { get; set; }
+        /// <summary>
+        /// Descrição do Arquivo
+        /// </summary>
+        public string description { get; set; }
+        /// <summary>
+        /// Data de Criação do Arquivo no Servidor
+        /// </summary>
+        public DateTime creationDateTime { get; set; }
     }
 }
