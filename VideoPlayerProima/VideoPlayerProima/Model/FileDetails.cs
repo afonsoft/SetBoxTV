@@ -4,11 +4,11 @@ using System.Text;
 
 namespace VideoPlayerProima.Model
 {
-    public class FileDetails
+    public class FileDetails : FileCheckSum
     {
-        public string Path { get; set; }
-        public EnumFileType FileType { get; set; }
-        public string CheckSum { get; set; }
+        public string path { get; set; }
+     
+        public EnumFileType fileType { get; set; }
     }
 
     public enum EnumFileType

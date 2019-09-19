@@ -69,13 +69,17 @@
             SetBoxController
             </summary>
         </member>
-        <member name="M:SetBoxWebUI.Controllers.SetBoxController.Update(System.String,System.String,System.String)">
+        <member name="M:SetBoxWebUI.Controllers.SetBoxController.Update(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Criar ou Atualizar as informações do SetBox
             </summary>
             <param name="session"></param>
             <param name="platform"></param>
             <param name="version"></param>
+            <param name="apkVersion"></param>
+            <param name="model"></param>
+            <param name="manufacturer"></param>
+            <param name="deviceName"></param>
             <returns></returns>
         </member>
         <member name="M:SetBoxWebUI.Controllers.SetBoxController.Login(System.String,System.String)">

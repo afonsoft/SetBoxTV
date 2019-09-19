@@ -103,28 +103,28 @@ namespace VideoPlayerProima
             videoPlayer.IsVisible = false;
             imagePlayer.IsVisible = false;
 
-            switch (fileOrUrl.FileType)
+            switch (fileOrUrl.fileType)
             {
                 case EnumFileType.Video:
-                    fileToPlayer = new FileVideoSource {File = fileOrUrl.Path};
+                    fileToPlayer = new FileVideoSource {File = fileOrUrl.path};
                     break;
                 case EnumFileType.WebVideo:
-                    fileToPlayer = new UriVideoSource {Uri = fileOrUrl.Path};
+                    fileToPlayer = new UriVideoSource {Uri = fileOrUrl.path};
                     break;
                 case EnumFileType.Image:
-                    imagaToPlayer = ImageSource.FromFile(fileOrUrl.Path);
+                    imagaToPlayer = ImageSource.FromFile(fileOrUrl.path);
                     break;
                 case EnumFileType.WebImage:
-                    imagaToPlayer = ImageSource.FromUri(new Uri(fileOrUrl.Path));
+                    imagaToPlayer = ImageSource.FromUri(new Uri(fileOrUrl.path));
                     break;
                 case EnumFileType.WebPage:
-                    urlToPlayer = new Uri(fileOrUrl.Path);
+                    urlToPlayer = new Uri(fileOrUrl.path);
                     break;
             }
 
-            log?.Info($"File: {fileOrUrl.Path}");
+            log?.Info($"File: {fileOrUrl.path}");
 
-            switch (fileOrUrl.FileType)
+            switch (fileOrUrl.fileType)
             {
                 case EnumFileType.Video:
                 case EnumFileType.WebVideo:

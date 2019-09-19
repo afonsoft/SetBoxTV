@@ -29,7 +29,12 @@
                         <TextCell Text="Licença" x:Name="LicenseID" Detail="ID: "  Tapped="LicenseID_Tapped"/>
                         <EntryCell Label="Key" x:Name="LabelKey" Placeholder="" Keyboard="Default" />
                     </TableSection>
-                    <TableSection Title="">
+                <TableSection Title="Suporte">
+                    <TextCell Text="Empresa" Detail="Art Vision Indoor" x:Name="Company"/>
+                    <TextCell Text="Telefone" Detail="(13) 9817-76786" x:Name="Telephone"/>
+                    <TextCell Text="E-Mail" Detail="artvisionindoor@gmail.com" x:Name="Email"/>
+                </TableSection>
+                <TableSection Title="">
                         <ViewCell>
                             <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
                                     <Button Text="Salvar" Clicked="OnButtonSalvarClicked" />

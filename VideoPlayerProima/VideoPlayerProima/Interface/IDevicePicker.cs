@@ -7,6 +7,8 @@ namespace VideoPlayerProima.Interface
     public interface IDevicePicker
     {
         string GetIdentifier();
+        string GetApkVersion();
+        int GetApkBuild();
     }
 
     public static class DevicePicker

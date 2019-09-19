@@ -6,6 +6,8 @@ using VideoPlayerProima.Interface;
 using System.Linq;
 using VideoPlayerProima.Model;
 using VideoPlayerProima.Helpers;
+using System.Net;
+using System;
 
 [assembly: Dependency(typeof(VideoPlayerProima.Droid.Controls.FilePicker))]
 
@@ -22,19 +24,45 @@ namespace VideoPlayerProima.Droid.Controls
         {
             if (Directory.Exists(searchPath))
             {
-                return Directory
-                    .EnumerateFiles(searchPath, "*.*", SearchOption.AllDirectories)
-                    .AsParallel()
-                    .Where(s => searchExt.Any(s.EndsWith))
-                    .Select(f => new FileDetails
-                    {
-                        FileType = type,
-                        Path = f,
-                        CheckSum = CheckSumHelpers.CalculateMD5(f)
-                    });
+                DirectoryInfo di = new DirectoryInfo(searchPath);
+
+                return di.EnumerateFiles("*.*", SearchOption.AllDirectories)
+                     .AsParallel()
+                     .Where(s => searchExt.Any(s.Name.EndsWith))
+                     .Select(f => new FileDetails
+                     {
+                         fileType = type,
+                         path = f.FullName,
+                         creationDateTime = f.CreationTime,
+                         extension = f.Extension,
+                         name = f.Name,
+                         size = f.Length,
+                         description = "",
+                         url = f.FullName,
+                         checkSum = CheckSumHelpers.CalculateMD5(f.FullName)
+                     });
             }
 
             throw new DirectoryNotFoundException(searchPath);
+        }
+
+        public Task DownloadFileAsync(string path, string url, string filename)
+        {
+            return Task.Run(() =>
+            {
+                using (WebClient myWebClient = new WebClient())
+                {
+                    myWebClient.DownloadFile(new Uri(url), Path.Combine(path, filename));
+                }
+            });
+        }
+
+        public Task DeleteFileAsync(string fullPath)
+        {
+            return Task.Run(() =>
+            {
+                File.Delete(fullPath);
+            });
         }
     }
 }

@@ -137,14 +137,18 @@ namespace VideoPlayerProima.API
         /// Update information from SetBox
         /// </summary>
         /// <returns></returns>
-        public async Task<string> Update(string platform, string version)
+        public async Task<string> Update(string platform, string version, string apkVersion, string model, string manufacturer, string deviceName)
         {
             try
             {
                 var resp = await rest.HttpPostAsync<Response<string>>("/Update",
                     Afonsoft.Http.Parameters.With("session", session)
                                             .And("platform", platform)
-                                            .And("version", version));
+                                            .And("version", version)
+                                            .And("apkVersion", apkVersion)
+                                            .And("model", model)
+                                            .And("manufacturer", manufacturer)
+                                            .And("deviceName", deviceName));
 
                 if (!resp.sessionExpired && resp.status)
                     return resp.result;

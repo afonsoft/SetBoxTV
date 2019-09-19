@@ -46,13 +46,17 @@ namespace SetBoxWebUI.Controllers
         /// <param name="session"></param>
         /// <param name="platform"></param>
         /// <param name="version"></param>
+        /// <param name="apkVersion"></param>
+        /// <param name="model"></param>
+        /// <param name="manufacturer"></param>
+        /// <param name="deviceName"></param>
         /// <returns></returns>
         [HttpPost("Update")]
         [HttpGet("Update")]
         [ProducesResponseType(typeof(Response<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(Response<string>), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(Response<string>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<Response<string>>> Update(string session, string platform, string version)
+        public async Task<ActionResult<Response<string>>> Update(string session, string platform, string version, string apkVersion, string model, string manufacturer, string deviceName)
         {
             var r = new Models.Response<string>();
             try
@@ -73,7 +77,13 @@ namespace SetBoxWebUI.Controllers
                     return NotFound(r);
                 }
 
-                if (device.Version != version || device.License != deviceLicense || device.Platform != platform)
+                if (device.Version != version 
+                    || device.License != deviceLicense 
+                    || device.Platform != platform
+                    || device.Model != model
+                    || device.Manufacturer != manufacturer
+                    || device.DeviceName != deviceName
+                    || device.ApkVersion != apkVersion)
                 {
                     DeviceLogAccesses log = new DeviceLogAccesses
                     {
@@ -92,9 +102,25 @@ namespace SetBoxWebUI.Controllers
                     if (device.Version != version)
                         log.Message += $"Version: {version} ({device.Version}) ";
 
+                    if(device.ApkVersion != apkVersion)
+                        log.Message += $"ApkVersion: {apkVersion} ({device.ApkVersion}) ";
+
+                    if (device.Model != model)
+                        log.Message += $"ApkVersion: {model} ({device.Model}) ";
+
+                    if (device.Manufacturer != manufacturer)
+                        log.Message += $"ApkVersion: {manufacturer} ({device.Manufacturer}) ";
+
+                    if (device.DeviceName != deviceName)
+                        log.Message += $"ApkVersion: {deviceName} ({device.DeviceName}) ";
+
                     device.Platform = platform;
                     device.Version = version;
                     device.License = deviceLicense;
+                    device.ApkVersion = apkVersion;
+                    device.Model = model;
+                    device.Manufacturer = manufacturer;
+                    device.DeviceName = deviceName;
 
                     device.LogAccesses.Add(log);
 

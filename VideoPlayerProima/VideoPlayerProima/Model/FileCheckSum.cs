@@ -11,10 +11,6 @@ namespace VideoPlayerProima.Model
     public class FileCheckSum
     {
         /// <summary>
-        /// Id do Arquivo
-        /// </summary>
-        public Guid fileId { get; set; }
-        /// <summary>
         /// Nome do Arquivo
         /// </summary>
         public string name { get; set; }

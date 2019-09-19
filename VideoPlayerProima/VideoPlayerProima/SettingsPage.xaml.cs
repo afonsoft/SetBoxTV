@@ -28,7 +28,7 @@ namespace VideoPlayerProima
             }
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
 
@@ -50,6 +50,20 @@ namespace VideoPlayerProima
                 SwitchTransaction.On = PlayerSettings.EnableTransactionTime;
                 SwitchTransactionTime.Text =  PlayerSettings.TransactionTime.ToString();
 
+                try
+                {
+                    var api = new API.SetBoxApi(deviceIdentifier, PlayerSettings.License, PlayerSettings.Url);
+                    var config = await api.GetSupport();
+                    if(config!= null)
+                    {
+                        Company.Detail = config.company;
+                        Telephone.Detail = config.telephone;
+                        Email.Detail = config.email;
+                    }
+                }catch(Exception ex)
+                {
+                    log?.Error("Erro para atualizar o suporte", ex);
+                }
             }
         }
 
