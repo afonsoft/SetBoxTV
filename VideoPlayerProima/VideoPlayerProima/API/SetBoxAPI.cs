@@ -38,14 +38,19 @@ namespace VideoPlayerProima.API
             deviceIdentifier = identifier;
             this.license = license;
             rest = new Afonsoft.Http.Rest(endPoint);
-            GetSessionLogin();
+            GetSessionLogin().Wait();
         }
 
-        private void GetSessionLogin()
+        private async Task GetSessionLogin()
         {
             try
             {
-                session = rest.HttpGet("/Login", Afonsoft.Http.Parameters.With("identifier", deviceIdentifier).And("license", license));
+                var resp = await rest.HttpGetAsync<Response<string>>("/Login", Afonsoft.Http.Parameters.With("identifier", deviceIdentifier).And("license", license));
+
+                if (!resp.sessionExpired && resp.status)
+                    session = resp.result;
+                else
+                    throw new ApiException(resp.message);
             }
             catch (Exception e)
             {
