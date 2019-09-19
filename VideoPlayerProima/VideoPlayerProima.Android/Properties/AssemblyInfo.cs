@@ -38,3 +38,5 @@ using Android.App;
 [assembly: UsesPermission(Android.Manifest.Permission.Internet)]
 [assembly: UsesPermission(Android.Manifest.Permission.WakeLock)]
 [assembly: UsesPermission(Android.Manifest.Permission.ReceiveBootCompleted)]
+[assembly: UsesPermission(Android.Manifest.Permission.MediaContentControl)]
+[assembly: UsesPermission(Android.Manifest.Permission.AccessNetworkState)]

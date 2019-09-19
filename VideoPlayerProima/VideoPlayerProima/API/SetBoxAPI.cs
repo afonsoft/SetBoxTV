@@ -38,14 +38,14 @@ namespace VideoPlayerProima.API
             deviceIdentifier = identifier;
             this.license = license;
             rest = new Afonsoft.Http.Rest(endPoint);
-            GetSessionLogin().Wait();
+            GetSessionLogin();
         }
 
-        private async Task GetSessionLogin()
+        private void GetSessionLogin()
         {
             try
             {
-                var resp = await rest.HttpGetAsync<Response<string>>("/Login", Afonsoft.Http.Parameters.With("identifier", deviceIdentifier).And("license", license));
+                var resp = rest.HttpGet<Response<string>>("/Login", Afonsoft.Http.Parameters.With("identifier", deviceIdentifier).And("license", license));
 
                 if (!resp.sessionExpired && resp.status)
                     session = resp.result;
@@ -188,8 +188,13 @@ namespace VideoPlayerProima.API
     /// Response
     /// </summary>
     /// <typeparam name="T"></typeparam>
+    [Android.Runtime.Preserve(AllMembers = true)]
     public class Response<T>
     {
+        [Newtonsoft.Json.JsonConstructor]
+        public Response()
+        {
+        }
         /// <summary>
         /// objeto de retorno
         /// </summary>

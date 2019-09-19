@@ -46,6 +46,7 @@ namespace VideoPlayerProima.Droid.Controls
             throw new DirectoryNotFoundException(searchPath);
         }
 
+        //https://damienaicheh.github.io/xamarin/xamarin.forms/2018/07/10/download-a-file-with-progress-bar-in-xamarin-forms-en.html
         public Task DownloadFileAsync(string path, string url, string filename)
         {
             return Task.Run(() =>
@@ -63,6 +64,13 @@ namespace VideoPlayerProima.Droid.Controls
             {
                 File.Delete(fullPath);
             });
+        }
+
+        public string GetStorageFolderPath()
+        {
+            string docFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            string libFolder = Path.Combine(docFolder, "..", "Library");
+            return libFolder;
         }
     }
 }

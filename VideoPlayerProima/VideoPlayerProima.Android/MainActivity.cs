@@ -31,9 +31,6 @@ namespace VideoPlayerProima.Droid
             // Rollbar notifier configuartion
             RollbarHelper.ConfigureRollbarSingleton();
 
-            // Registers for global exception handling.
-            //RollbarHelper.RegisterForGlobalExceptionHandling();
-
             AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
             {
                 var newExc = new Exception("CurrentDomainOnUnhandledException", args.ExceptionObject as Exception);
@@ -55,15 +52,14 @@ namespace VideoPlayerProima.Droid
                 RollbarLocator.RollbarInstance.AsBlockingLogger(TimeSpan.FromSeconds(10)).Critical(newExc);
             };
 
-            //RollbarLocator.RollbarInstance.Info("Rollbar is configured properly.");
-
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             RequestWindowFeature(WindowFeatures.NoTitle);
             Window.AddFlags(WindowManagerFlags.Fullscreen);
             Forms.SetTitleBarVisibility(Instance, AndroidTitleBarVisibility.Never);
-            base.OnCreate(savedInstanceState);
 
+            base.OnCreate(savedInstanceState);
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Forms.Init(this, savedInstanceState);
 
             //====================================
@@ -93,8 +89,9 @@ namespace VideoPlayerProima.Droid
 	            <uses-permission android:name="android.permission.WAKE_LOCK" />
 	            <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
              */
-        string[] PERMISSIONS_CONTACT =
-        {
+
+            string[] PERMISSIONS_CONTACT =
+            {
             Manifest.Permission.ReadExternalStorage,
             Manifest.Permission.WriteExternalStorage,
             Manifest.Permission.AccessCoarseLocation,
@@ -104,15 +101,24 @@ namespace VideoPlayerProima.Droid
             Manifest.Permission.WakeLock,
             Manifest.Permission.ReceiveBootCompleted
         };
+
             int requestCode = 100;
             foreach (string permission in PERMISSIONS_CONTACT)
             {
                 requestCode++;
-                if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(this, permission) != (int) Permission.Granted)
+                try
                 {
-                  await RequestPermission(requestCode, permission);
+                    if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(this, permission) != (int)Permission.Granted)
+                    {
+                        await RequestPermission(requestCode, permission);
+                    }
+                }
+                catch
+                {
+                    //Igore
                 }
             }
+
         }
 
         private TaskCompletionSource<bool> taskGrantPermission { get; set; }
@@ -120,31 +126,37 @@ namespace VideoPlayerProima.Droid
         public Task<bool> RequestPermission(int requestCode, string permission)
         {
             taskGrantPermission = new TaskCompletionSource<bool>();
-            if (ActivityCompat.ShouldShowRequestPermissionRationale(this, permission))
+            try
             {
+                ActivityCompat.ShouldShowRequestPermissionRationale(this, permission);
                 ActivityCompat.RequestPermissions(this, new[] { permission }, requestCode);
             }
-            else
+            catch
             {
-                ActivityCompat.RequestPermissions(this, new[] { permission }, requestCode);
+                //Ignore
             }
-
             return taskGrantPermission.Task;
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
-
-            if (grantResults[0] == Permission.Denied)
+            try
             {
-                taskGrantPermission.SetResult(false);
-                Toast.MakeText(this, $" {permissions[0]} Negado", ToastLength.Long).Show();
+                if (grantResults[0] == Permission.Denied)
+                {
+                    taskGrantPermission.SetResult(false);
+                    Toast.MakeText(this, $" {permissions[0]} Negado", ToastLength.Long).Show();
+                }
+                else
+                {
+                    taskGrantPermission.SetResult(true);
+                }
             }
-            else
+            catch
             {
-                taskGrantPermission.SetResult(true);
+                //Ignore
             }
-
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 

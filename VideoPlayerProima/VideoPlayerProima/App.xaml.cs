@@ -11,16 +11,13 @@ namespace VideoPlayerProima
         public App()
         {
             InitializeComponent();
-            //MainPage = new MainPage();
-
-            
-            
-            MainPage = new Controls.TransitionNavigationPage(new MainPage());
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
         {
             // Handle when your app starts
+            MainPage = new MainPage();
         }
 
         protected override void OnSleep()
@@ -30,7 +27,7 @@ namespace VideoPlayerProima
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
+            
         }
     }
 }

@@ -77,11 +77,11 @@ namespace VideoPlayerProima
                 {
                     var api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
 
-                    await api.Update(DevicePicker.GetPlatform().ToString(), 
-                        $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}", 
-                        $"{device.GetApkVersion()}.{device.GetApkBuild()}", 
-                        DevicePicker.GetModel(), 
-                        DevicePicker.GetManufacturer(), 
+                    await api.Update(DevicePicker.GetPlatform().ToString(),
+                        $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}",
+                        $"{device.GetApkVersion()}.{device.GetApkBuild()}",
+                        DevicePicker.GetModel(),
+                        DevicePicker.GetManufacturer(),
                         DevicePicker.GetName());
 
                     serverFiles = await api.GetFilesCheckSums();
@@ -98,7 +98,7 @@ namespace VideoPlayerProima
                 IFilePicker filePicker = DependencyService.Get<IFilePicker>();
                 log?.Info($"Directory: {PlayerSettings.PathFiles}");
 
-                GetFilesInFolder(filePicker);
+                await GetFilesInFolder(filePicker);
 
                 if (!arquivos.Any())
                 {
@@ -114,7 +114,7 @@ namespace VideoPlayerProima
                             log?.Error($"Erro no download do arquivo {fi.name}", ex);
                         }
                     }
-                    GetFilesInFolder(filePicker);
+                    await GetFilesInFolder(filePicker);
                 }
 
 
@@ -162,28 +162,30 @@ namespace VideoPlayerProima
             }
         }
 
-        private async void GetFilesInFolder(IFilePicker filePicker)
+        private Task GetFilesInFolder(IFilePicker filePicker)
         {
-            if (PlayerSettings.ShowVideo)
+            return Task.Run(async () =>
             {
+                if (PlayerSettings.ShowVideo)
+                {
+                    arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.Video, ".MP4", ".mp4", ".avi", ".AVI"));
+                }
 
-                arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.Video, ".MP4", ".mp4", ".avi", ".AVI"));
-            }
+                if (PlayerSettings.ShowPhoto)
+                {
+                    arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.Image, ".JPG", ".jpg", ".png", ".PNG", ".bmp", ".BMP"));
+                }
 
-            if (PlayerSettings.ShowPhoto)
-            {
-                arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.Image, ".JPG", ".jpg", ".png", ".PNG", ".bmp", ".BMP"));
-            }
+                if (PlayerSettings.ShowWebImage)
+                {
+                    arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.WebImage, ".webimage", ".WEBIMAGE"));
+                }
 
-            if (PlayerSettings.ShowWebImage)
-            {
-                arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.WebImage, ".webimage", ".WEBIMAGE"));
-            }
-
-            if (PlayerSettings.ShowWebVideo)
-            {
-                arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.WebVideo, ".WEBVIDEO", ".webvideo"));
-            }
+                if (PlayerSettings.ShowWebVideo)
+                {
+                    arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.WebVideo, ".WEBVIDEO", ".webvideo"));
+                }
+            });
         }
 
         public async Task ShowMessage(string message,
