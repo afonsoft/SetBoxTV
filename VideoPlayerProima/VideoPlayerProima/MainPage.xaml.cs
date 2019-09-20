@@ -105,7 +105,7 @@ namespace VideoPlayerProima
             InitializeComponent();
             BindingContext = this;
             IsLoading = true;
-            
+            LoadingText = "Loading";
             log = DependencyService.Get<ILogger>();
             if (log != null)
             {
@@ -145,14 +145,12 @@ namespace VideoPlayerProima
                 await Task.Delay(500);
             }
             await Task.Yield();
-            Loading();
-            IsLoading = false;
 
-            //MainThread.BeginInvokeOnMainThread(() =>
-            //{
-            //    Loading();
-            //    IsLoading = false;
-            //});
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                Loading();
+                IsLoading = false;
+            });
         }
         public async void Loading()
         {
@@ -272,7 +270,7 @@ namespace VideoPlayerProima
                             if (fiServier != null && fiServier.checkSum != fi.checkSum)
                             {
                                 log?.Info($"Deletando o arquivo {fi.name} CheckSum {fi.checkSum} != {fiServier.checkSum} Diferentes");
-                                await filePicker.DeleteFileAsync(fi.path);
+                                filePicker.DeleteFile(fi.path);
                                 try
                                 {
                                     log?.Info($"Download do arquivo: {fiServier.url}");
@@ -287,7 +285,7 @@ namespace VideoPlayerProima
                             else
                             {
                                 log?.Info($"Deletando o arquivo {fi.name} pois não tem no servidor");
-                                await filePicker.DeleteFileAsync(fi.path);
+                                filePicker.DeleteFile(fi.path);
                             }
                         }
                     }
@@ -299,27 +297,27 @@ namespace VideoPlayerProima
             IsLoading = false;
         }
 
-        private async void GetFilesInFolder(IFilePicker filePicker)
+        private void GetFilesInFolder(IFilePicker filePicker)
         {
 
             if (PlayerSettings.ShowVideo)
             {
-                arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.Video, ".MP4", ".mp4", ".avi", ".AVI"));
+                arquivos.AddRange(filePicker.GetFiles(PlayerSettings.PathFiles, EnumFileType.Video, ".MP4", ".mp4", ".avi", ".AVI"));
             }
 
             if (PlayerSettings.ShowPhoto)
             {
-                arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.Image, ".JPG", ".jpg", ".png", ".PNG", ".bmp", ".BMP"));
+                arquivos.AddRange(filePicker.GetFiles(PlayerSettings.PathFiles, EnumFileType.Image, ".JPG", ".jpg", ".png", ".PNG", ".bmp", ".BMP"));
             }
 
             if (PlayerSettings.ShowWebImage)
             {
-                arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.WebImage, ".webimage", ".WEBIMAGE"));
+                arquivos.AddRange(filePicker.GetFiles(PlayerSettings.PathFiles, EnumFileType.WebImage, ".webimage", ".WEBIMAGE"));
             }
 
             if (PlayerSettings.ShowWebVideo)
             {
-                arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.WebVideo, ".WEBVIDEO", ".webvideo"));
+                arquivos.AddRange(filePicker.GetFiles(PlayerSettings.PathFiles, EnumFileType.WebVideo, ".WEBVIDEO", ".webvideo"));
             }
 
         }

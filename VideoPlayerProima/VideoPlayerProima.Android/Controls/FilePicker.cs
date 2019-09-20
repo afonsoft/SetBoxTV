@@ -15,11 +15,6 @@ namespace VideoPlayerProima.Droid.Controls
 {
     public class FilePicker : IFilePicker
     {
-        public Task<IEnumerable<FileDetails>> GetFilesAsync(string searchPath, EnumFileType type, params string[] searchExt)
-        {
-            return Task.Run(() => GetFiles(searchPath, type, searchExt));
-        }
-
         public IEnumerable<FileDetails> GetFiles(string searchPath, EnumFileType type, params string[] searchExt)
         {
             if (Directory.Exists(searchPath))
@@ -42,16 +37,12 @@ namespace VideoPlayerProima.Droid.Controls
                          checkSum = CheckSumHelpers.MD5HashFile(f.FullName)
                      });
             }
-
-            throw new DirectoryNotFoundException(searchPath);
+            return new List<FileDetails>();
         }
 
-        public Task DeleteFileAsync(string fullPath)
+        public void DeleteFile(string fullPath)
         {
-            return Task.Run(() =>
-            {
-                File.Delete(fullPath);
-            });
+            File.Delete(fullPath);
         }
     }
 }
