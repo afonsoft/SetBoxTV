@@ -4,7 +4,10 @@
              BackgroundColor="Black"
              x:Class="VideoPlayerProima.MainPage"
              NavigationPage.HasNavigationBar="False">
-    <StackLayout x:Name="PageStackLayout">
+    <StackLayout x:Name="PageStackLayout"
+                 HorizontalOptions="Center" 
+                 VerticalOptions="Center">
+        
         <ActivityIndicator x:Name="actInd"
                         IsRunning="{Binding IsLoading}"
                         IsVisible="{Binding IsLoading}" Color="Red"

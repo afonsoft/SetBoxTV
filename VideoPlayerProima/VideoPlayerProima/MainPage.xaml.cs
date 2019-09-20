@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using VideoPlayerProima.Helpers;
 using VideoPlayerProima.Interface;
 using VideoPlayerProima.Model;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace VideoPlayerProima
@@ -71,7 +72,7 @@ namespace VideoPlayerProima
         {
             InitializeComponent();
             BindingContext = this;
-            IsLoading = false;
+            IsLoading = true;
             
             log = DependencyService.Get<ILogger>();
             if (log != null)
@@ -88,13 +89,22 @@ namespace VideoPlayerProima
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            IsLoading = true;
             NavigationPage.SetHasNavigationBar(this, false);
-            Loading();
-            IsLoading = false;
+            OnPpearingAsync();
+        }
+
+        public Task OnPpearingAsync()
+        {
+            return Task.Run(() =>
+            {
+                Task.Delay(1000);
+                MainThread.BeginInvokeOnMainThread(() => Loading());
+            });
         }
         public async void Loading()
         {
+
+            IsLoading = true;
             log?.Info("CheckSelfPermission");
             DependencyService.Get<ICheckPermission>()?.CheckSelfPermission();
             IDevicePicker device = DependencyService.Get<IDevicePicker>();
@@ -229,9 +239,11 @@ namespace VideoPlayerProima
                         }
                     }
                     LoadingText = "Iniciando o Player";
+                    IsLoading = false;
                     Application.Current.MainPage = new VideoPage(arquivos);
                 }
             }
+            IsLoading = false;
         }
 
         private Task GetFilesInFolder(IFilePicker filePicker)

@@ -8,8 +8,14 @@ namespace VideoPlayerProima.Model
     /// <summary>
     /// Files
     /// </summary>
+    [Android.Runtime.Preserve(AllMembers = true)]
     public class FileCheckSum
     {
+        [Newtonsoft.Json.JsonConstructor]
+        public FileCheckSum()
+        {
+        }
+
         /// <summary>
         /// Nome do Arquivo
         /// </summary>

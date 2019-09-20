@@ -4,6 +4,7 @@ using System.Text;
 
 namespace VideoPlayerProima.Model
 {
+    [Android.Runtime.Preserve(AllMembers = true)]
     public class SupportModel
     {
         /*
@@ -14,7 +15,10 @@ namespace VideoPlayerProima.Model
             name	string
             creationDateTime	string($date-time)
          */
-
+        [Newtonsoft.Json.JsonConstructor]
+        public SupportModel()
+        {
+        }
         public Guid supportId { get; set; }
         public string company { get; set; }
         public string telephone { get; set; }

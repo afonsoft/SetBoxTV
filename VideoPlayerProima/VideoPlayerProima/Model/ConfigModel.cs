@@ -4,6 +4,7 @@ using System.Text;
 
 namespace VideoPlayerProima.Model
 {
+    [Android.Runtime.Preserve(AllMembers = true)]
     public class ConfigModel
     {
         /*
@@ -17,6 +18,10 @@ namespace VideoPlayerProima.Model
             creationDateTime	string($date-time)
         */
 
+        [Newtonsoft.Json.JsonConstructor]
+        public ConfigModel()
+        {
+        }
         public Guid configId { get; set; }
         public bool enableVideo { get; set; }
         public bool enablePhoto { get; set; }
