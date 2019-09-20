@@ -1,15 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:VideoPlayerProima"
              BackgroundColor="Black"
              x:Class="VideoPlayerProima.MainPage"
              NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ValueProgressBarConverter x:Key="ValueProgressBarConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
     <StackLayout x:Name="PageStackLayout"
                  HorizontalOptions="Center" 
-                 VerticalOptions="Center">
+                 VerticalOptions="Center" Spacing="20">
         
         <ActivityIndicator x:Name="actInd"
-                        IsRunning="{Binding IsLoading}"
+                        IsRunning="True"
                         IsVisible="{Binding IsLoading}" Color="Red"
                         AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
                         VerticalOptions="CenterAndExpand"
@@ -23,6 +31,9 @@
             VerticalTextAlignment="Center"
             VerticalOptions="CenterAndExpand"
             Text="{Binding LoadingText}"
-            IsVisible="{Binding IsLoading}"/>
+            IsVisible="True"/>
+
+        <ProgressBar x:Name="progressBarId" Progress="{Binding ProgressValue, Converter={StaticResource ValueProgressBarConverter}}" IsVisible="{Binding IsDownloading}" Margin="10,0"/>
+        <Label Text="{Binding ProgressValue, StringFormat='{0:F2}%'}" HorizontalOptions="Center" IsVisible="{Binding IsDownloading}"/>
     </StackLayout>
 </ContentPage>

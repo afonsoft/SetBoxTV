@@ -35,7 +35,7 @@ namespace VideoPlayerProima
             if (!isPostBack)
             {
                 isPostBack = true;
-                
+
                 directoyPicker = DependencyService.Get<IDirectoyPicker>();
                 devicePicker = DependencyService.Get<IDevicePicker>();
                 string deviceIdentifier = devicePicker?.GetIdentifier();
@@ -48,19 +48,20 @@ namespace VideoPlayerProima
                 SwitchWebImage.On = PlayerSettings.ShowWebImage;
                 SwitchWebVideo.On = PlayerSettings.ShowWebVideo;
                 SwitchTransaction.On = PlayerSettings.EnableTransactionTime;
-                SwitchTransactionTime.Text =  PlayerSettings.TransactionTime.ToString();
+                SwitchTransactionTime.Text = PlayerSettings.TransactionTime.ToString();
 
                 try
                 {
                     var api = new API.SetBoxApi(deviceIdentifier, PlayerSettings.License, PlayerSettings.Url);
                     var config = await api.GetSupport();
-                    if(config!= null)
+                    if (config != null)
                     {
                         Company.Detail = config.company;
                         Telephone.Detail = config.telephone;
                         Email.Detail = config.email;
                     }
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     log?.Error("Erro para atualizar o suporte", ex);
                 }

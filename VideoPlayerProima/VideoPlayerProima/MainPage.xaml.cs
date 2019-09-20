@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using VideoPlayerProima.Helpers;
@@ -15,7 +16,7 @@ namespace VideoPlayerProima
     {
         private readonly List<FileDetails> arquivos = new List<FileDetails>();
         private readonly ILogger log;
-
+        private bool HasAppearing = false;
         /// <summary>
         /// PropertyChanged
         /// </summary>
@@ -47,7 +48,7 @@ namespace VideoPlayerProima
             set
             {
                 this.loadingText = value;
-                RaisePropertyChanged("IsLoading");
+                RaisePropertyChanged("LoadingText");
             }
         }
 
@@ -65,6 +66,37 @@ namespace VideoPlayerProima
             {
                 this.isLoading = value;
                 RaisePropertyChanged("IsLoading");
+            }
+        }
+
+        private bool isDownloading;
+        /// <summary>
+        /// Show Loading
+        /// </summary>
+        public bool IsDownloading
+        {
+            get
+            {
+                return this.isDownloading;
+            }
+            set
+            {
+                this.isDownloading = value;
+                RaisePropertyChanged("IsDownloading");
+            }
+        }
+
+        private double _progressValue;
+        /// <summary>
+        /// ProgressValue
+        /// </summary>
+        public double ProgressValue
+        {
+            get { return _progressValue; }
+            set
+            {
+                this._progressValue = value;
+                RaisePropertyChanged("ProgressValue");
             }
         }
 
@@ -86,20 +118,41 @@ namespace VideoPlayerProima
         }
 
 
-        protected override void OnAppearing()
+        private async void ShowText(string t)
         {
-            base.OnAppearing();
-            NavigationPage.SetHasNavigationBar(this, false);
-            OnPpearingAsync();
+            LoadingText = t;
+            IsLoading = true;
+            await Task.Yield();
         }
 
-        public Task OnPpearingAsync()
+        protected override async void OnAppearing()
         {
-            return Task.Run(() =>
+            
+            base.OnAppearing();
+            HasAppearing = false;
+            NavigationPage.SetHasNavigationBar(this, false);
+            IsLoading = true;
+            await Task.Delay(500);
+            OnPpearingAsync();
+            HasAppearing = true;
+        }
+
+        public async void OnPpearingAsync()
+        {
+
+            while (IsBusy || !HasAppearing)
             {
-                Task.Delay(1000);
-                MainThread.BeginInvokeOnMainThread(() => Loading());
-            });
+                await Task.Delay(500);
+            }
+            await Task.Yield();
+            Loading();
+            IsLoading = false;
+
+            //MainThread.BeginInvokeOnMainThread(() =>
+            //{
+            //    Loading();
+            //    IsLoading = false;
+            //});
         }
         public async void Loading()
         {
@@ -120,7 +173,7 @@ namespace VideoPlayerProima
                     PlayerSettings.PathFiles = "/storage/emulated/0/Movies";
             }
 
-            LoadingText = "Verificando a Licença de uso da SetBox";
+            ShowText("Verificando a Licença de uso da SetBox");
 
             if (!string.IsNullOrEmpty(license))
             {
@@ -151,7 +204,7 @@ namespace VideoPlayerProima
                 IEnumerable<FileCheckSum> serverFiles = new List<FileCheckSum>();
                 try
                 {
-                    LoadingText = "Conectando no servidor";
+                    ShowText("Conectando no servidor");
 
                     var api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
 
@@ -162,7 +215,7 @@ namespace VideoPlayerProima
                         DevicePicker.GetManufacturer(),
                         DevicePicker.GetName());
 
-                    LoadingText = "Recuperando a lista de arquivos";
+                    ShowText("Recuperando a lista de arquivos");
                     serverFiles = await api.GetFilesCheckSums();
                     serverFiles = serverFiles.ToList();
 
@@ -177,7 +230,7 @@ namespace VideoPlayerProima
                 IFilePicker filePicker = DependencyService.Get<IFilePicker>();
                 log?.Info($"Directory: {PlayerSettings.PathFiles}");
 
-                await GetFilesInFolder(filePicker);
+                GetFilesInFolder(filePicker);
 
                 if (!arquivos.Any())
                 {
@@ -186,15 +239,15 @@ namespace VideoPlayerProima
                         try
                         {
                             log?.Info($"Download do arquivo: {fi.url}");
-                            LoadingText = $"Download da midia {fi.name}";
-                            await filePicker.DownloadFileAsync(PlayerSettings.PathFiles, fi.url, fi.name);
+                            ShowText($"Download da midia {fi.name}");
+                            StartDownloadHandler(fi.url, Path.Combine(PlayerSettings.PathFiles, fi.name));
                         }
                         catch (Exception ex)
                         {
                             log?.Error($"Erro no download do arquivo {fi.name}", ex);
                         }
                     }
-                    await GetFilesInFolder(filePicker);
+                    GetFilesInFolder(filePicker);
                 }
 
 
@@ -223,8 +276,8 @@ namespace VideoPlayerProima
                                 try
                                 {
                                     log?.Info($"Download do arquivo: {fiServier.url}");
-                                    LoadingText = $"Download da midia {fiServier.name}";
-                                    await filePicker.DownloadFileAsync(PlayerSettings.PathFiles, fiServier.url, fiServier.name);
+                                    ShowText($"Download da midia {fiServier.name}");
+                                    StartDownloadHandler(fiServier.url, Path.Combine(PlayerSettings.PathFiles, fiServier.name));
                                 }
                                 catch (Exception ex)
                                 {
@@ -238,7 +291,7 @@ namespace VideoPlayerProima
                             }
                         }
                     }
-                    LoadingText = "Iniciando o Player";
+                    ShowText("Iniciando o Player");
                     IsLoading = false;
                     Application.Current.MainPage = new VideoPage(arquivos);
                 }
@@ -246,30 +299,29 @@ namespace VideoPlayerProima
             IsLoading = false;
         }
 
-        private Task GetFilesInFolder(IFilePicker filePicker)
+        private async void GetFilesInFolder(IFilePicker filePicker)
         {
-            return Task.Run(async () =>
+
+            if (PlayerSettings.ShowVideo)
             {
-                if (PlayerSettings.ShowVideo)
-                {
-                    arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.Video, ".MP4", ".mp4", ".avi", ".AVI"));
-                }
+                arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.Video, ".MP4", ".mp4", ".avi", ".AVI"));
+            }
 
-                if (PlayerSettings.ShowPhoto)
-                {
-                    arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.Image, ".JPG", ".jpg", ".png", ".PNG", ".bmp", ".BMP"));
-                }
+            if (PlayerSettings.ShowPhoto)
+            {
+                arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.Image, ".JPG", ".jpg", ".png", ".PNG", ".bmp", ".BMP"));
+            }
 
-                if (PlayerSettings.ShowWebImage)
-                {
-                    arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.WebImage, ".webimage", ".WEBIMAGE"));
-                }
+            if (PlayerSettings.ShowWebImage)
+            {
+                arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.WebImage, ".webimage", ".WEBIMAGE"));
+            }
 
-                if (PlayerSettings.ShowWebVideo)
-                {
-                    arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.WebVideo, ".WEBVIDEO", ".webvideo"));
-                }
-            });
+            if (PlayerSettings.ShowWebVideo)
+            {
+                arquivos.AddRange(await filePicker.GetFilesAsync(PlayerSettings.PathFiles, EnumFileType.WebVideo, ".WEBVIDEO", ".webvideo"));
+            }
+
         }
 
         public async Task ShowMessage(string message,
@@ -277,13 +329,27 @@ namespace VideoPlayerProima
             string buttonText,
             Action afterHideCallback)
         {
-            await DisplayAlert(
-                title,
-                message,
-                buttonText);
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await DisplayAlert(
+                    title,
+                    message,
+                    buttonText);
 
-            afterHideCallback?.Invoke();
+                afterHideCallback?.Invoke();
+            });
         }
 
+        private async void StartDownloadHandler(string urlToDownload, string pathToSave)
+        {
+            ProgressValue = 0;
+            IsDownloading = true;
+            Progress<DownloadBytesProgress> progressReporter = new Progress<DownloadBytesProgress>();
+            progressReporter.ProgressChanged += (s, args) => ProgressValue = (int)(100 * args.PercentComplete);
+
+            await Task.Yield();
+            int downloadTask = await DownloadHelper.CreateDownloadTask(urlToDownload, pathToSave, progressReporter);
+            IsDownloading = false;
+        }
     }
 }
