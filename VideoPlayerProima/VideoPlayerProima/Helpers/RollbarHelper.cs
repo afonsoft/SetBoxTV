@@ -46,23 +46,17 @@ namespace VideoPlayerProima.Helpers
             TelemetryCollector.Instance.Config.Reconfigure(telemetryConfig);
         }
 
-        public static RollbarConfig Config => new RollbarConfig(rollbarAccessToken)
-        {
-            Environment = rollbarEnvironment,
-            ScrubFields = new[] { "access_token", "Username" }
-        };
-
         /// <summary>
         /// Configures the Rollbar singleton-like notifier.
         /// </summary>
         public static void ConfigureRollbarSingleton()
         {
-            // minimally required Rollbar configuration
-            //var config = new RollbarConfig(rollbarAccessToken)
-            //{
-            //    Environment = rollbarEnvironment,
-            //    ScrubFields = new [] {"access_token", "Username"}
-            //};
+
+            var Config = new RollbarConfig(rollbarAccessToken)
+            {
+                Environment = rollbarEnvironment,
+                ScrubFields = new[] { "access_token", "Username" }
+            };
 
             // minimally required Rollbar configuration:
             RollbarLocator.RollbarInstance.Configure(Config);
