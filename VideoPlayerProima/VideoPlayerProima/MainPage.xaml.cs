@@ -32,6 +32,24 @@ namespace VideoPlayerProima
             }
         }
 
+        private string loadingText;
+
+        /// <summary>
+        /// Texto no Loading
+        /// </summary>
+        public string LoadingText
+        {
+            get
+            {
+                return this.loadingText;
+            }
+            set
+            {
+                this.loadingText = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
         private bool isLoading;
         /// <summary>
         /// Show Loading
@@ -91,7 +109,9 @@ namespace VideoPlayerProima
                 if (string.IsNullOrEmpty(PlayerSettings.PathFiles))
                     PlayerSettings.PathFiles = "/storage/emulated/0/Movies";
             }
-            
+
+            LoadingText = "Verificando a Licença de uso da SetBox";
+
             if (!string.IsNullOrEmpty(license))
             {
                 deviceIdentifier = device.GetIdentifier();
@@ -117,12 +137,12 @@ namespace VideoPlayerProima
             {
 
                 log?.Info("Licença: Válida");
-
-
                 log?.Info("Atualizar as informações pelo Serivdor");
                 IEnumerable<FileCheckSum> serverFiles = new List<FileCheckSum>();
                 try
                 {
+                    LoadingText = "Conectando no servidor";
+
                     var api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
 
                     await api.Update(DevicePicker.GetPlatform().ToString(),
@@ -132,6 +152,7 @@ namespace VideoPlayerProima
                         DevicePicker.GetManufacturer(),
                         DevicePicker.GetName());
 
+                    LoadingText = "Recuperando a lista de arquivos";
                     serverFiles = await api.GetFilesCheckSums();
                     serverFiles = serverFiles.ToList();
 
@@ -155,6 +176,7 @@ namespace VideoPlayerProima
                         try
                         {
                             log?.Info($"Download do arquivo: {fi.url}");
+                            LoadingText = $"Download da midia {fi.name}";
                             await filePicker.DownloadFileAsync(PlayerSettings.PathFiles, fi.url, fi.name);
                         }
                         catch (Exception ex)
@@ -191,6 +213,7 @@ namespace VideoPlayerProima
                                 try
                                 {
                                     log?.Info($"Download do arquivo: {fiServier.url}");
+                                    LoadingText = $"Download da midia {fiServier.name}";
                                     await filePicker.DownloadFileAsync(PlayerSettings.PathFiles, fiServier.url, fiServier.name);
                                 }
                                 catch (Exception ex)
@@ -205,7 +228,7 @@ namespace VideoPlayerProima
                             }
                         }
                     }
-
+                    LoadingText = "Iniciando o Player";
                     Application.Current.MainPage = new VideoPage(arquivos);
                 }
             }

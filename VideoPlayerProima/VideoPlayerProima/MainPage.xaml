@@ -6,7 +6,20 @@
              NavigationPage.HasNavigationBar="False">
     <StackLayout x:Name="PageStackLayout">
         <ActivityIndicator x:Name="actInd"
-                             IsRunning="{Binding IsLoading}"
-                             IsVisible="{Binding IsLoading}" Color="Red"/>
+                        IsRunning="{Binding IsLoading}"
+                        IsVisible="{Binding IsLoading}" Color="Red"
+                        AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="CenterAndExpand"/>
+
+        <Label
+            FontSize="14"
+            TextColor="White"
+            HorizontalOptions="StartAndExpand"
+            HorizontalTextAlignment="Center"
+            VerticalTextAlignment="Center"
+            VerticalOptions="CenterAndExpand"
+            Text="{Binding LoadingText}"
+            IsVisible="{Binding IsLoading}"/>
     </StackLayout>
 </ContentPage>
