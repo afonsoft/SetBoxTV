@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using VideoPlayerProima.Helpers;
@@ -9,14 +10,51 @@ using Xamarin.Forms;
 
 namespace VideoPlayerProima
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
         private readonly List<FileDetails> arquivos = new List<FileDetails>();
         private readonly ILogger log;
 
+        /// <summary>
+        /// PropertyChanged
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// RaisePropertyChanged
+        /// </summary>
+        /// <param name="name"></param>
+        public void RaisePropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+        private bool isLoading;
+        /// <summary>
+        /// Show Loading
+        /// </summary>
+        public bool IsLoading
+        {
+            get
+            {
+                return this.isLoading;
+            }
+            set
+            {
+                this.isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = this;
+            IsLoading = false;
+            
             log = DependencyService.Get<ILogger>();
             if (log != null)
             {
@@ -32,8 +70,10 @@ namespace VideoPlayerProima
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            IsLoading = true;
             NavigationPage.SetHasNavigationBar(this, false);
             Loading();
+            IsLoading = false;
         }
         public async void Loading()
         {
@@ -45,6 +85,13 @@ namespace VideoPlayerProima
             string deviceIdentifier = "";
             bool isLicensed = false;
 
+            if (string.IsNullOrEmpty(PlayerSettings.PathFiles))
+            {
+                PlayerSettings.PathFiles = DependencyService.Get<IDirectoyPicker>().GetStorageFolderPath();
+                if (string.IsNullOrEmpty(PlayerSettings.PathFiles))
+                    PlayerSettings.PathFiles = "/storage/emulated/0/Movies";
+            }
+            
             if (!string.IsNullOrEmpty(license))
             {
                 deviceIdentifier = device.GetIdentifier();
@@ -62,6 +109,7 @@ namespace VideoPlayerProima
             {
                 log?.Info("Licença: Licença inválida");
                 SettingsPage.isPostBack = false;
+                IsLoading = false;
                 await ShowMessage("Licença inválida!", "Licença", "OK",
                 () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); });
             }
@@ -121,6 +169,7 @@ namespace VideoPlayerProima
                 if (!arquivos.Any())
                 {
                     log?.Info("Directory: Nenhum arquivo localizado na pasta especifica.");
+                    IsLoading = false;
                     await ShowMessage("Nenhum arquivo localizado na pasta especifica", "Arquivo", "OK",
                         () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); });
                 }

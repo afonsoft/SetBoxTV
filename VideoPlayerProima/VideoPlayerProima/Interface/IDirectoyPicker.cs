@@ -21,5 +21,7 @@ namespace VideoPlayerProima.Interface
         //intent.AddCategory(Intent.CategoryOpenable);
         //StartActivityForResult(intent, 1);
         Task<string> OpenSelectFolderAsync();
+
+        string GetStorageFolderPath();
     }
 }

@@ -69,7 +69,7 @@ namespace SetBoxWebUITest
                         myWebClient.DownloadFile(new Uri(item.url), "C:\\Xamarin\\" + item.name);
                     }
 
-                    string CheckMD5Sum = CheckSumHelpers.CalculateMD5("C:\\Xamarin\\" + item.name);
+                    string CheckMD5Sum = CheckSumHelpers.MD5HashFile("C:\\Xamarin\\" + item.name);
 
                     if(CheckMD5Sum != item.checkSum)
                     {

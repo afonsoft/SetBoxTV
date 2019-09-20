@@ -5,7 +5,7 @@ using Android.App;
 using Android.Net;
 using Android.OS;
 using VideoPlayerProima.Interface;
-
+using System.IO;
 
 [assembly: Dependency(typeof(VideoPlayerProima.Droid.Controls.DirectoyPicker))]
 
@@ -13,6 +13,14 @@ namespace VideoPlayerProima.Droid.Controls
 {
     public class DirectoyPicker : IDirectoyPicker
     {
+
+        public string GetStorageFolderPath()
+        {
+            string docFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+            string libFolder = Path.Combine(docFolder, "..", "Library");
+            return libFolder;
+        }
+
         public Task<string> OpenSelectFolderAsync()
         {
             LoggerService.Instance.Info("OpenSelectFolderAsync");
@@ -45,7 +53,6 @@ namespace VideoPlayerProima.Droid.Controls
                                     //  >4.4
                                     string path = MainActivity.Instance.getPath(MainActivity.Instance, uri);
                                     // this will show the uri not file's path
-                                    //string path = uri.ToString();
                                     PickFolderTaskCompletionSource.SetResult(path);
                                 }
                                 else

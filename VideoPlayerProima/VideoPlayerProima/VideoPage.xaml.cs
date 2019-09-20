@@ -8,11 +8,12 @@ using VideoPlayerProima.Helpers;
 using VideoPlayerProima.Model;
 using System.Collections.Generic;
 using VideoPlayerProima.Interface;
+using System.ComponentModel;
 
 namespace VideoPlayerProima
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class VideoPage : ContentPage 
+    public partial class VideoPage : ContentPage, INotifyPropertyChanged
     {
         private  VideoSource fileToPlayer;
         private  ImageSource imagaToPlayer;
@@ -21,9 +22,46 @@ namespace VideoPlayerProima
         private readonly ILogger log;
         private int index = 0;
 
+        /// <summary>
+        /// PropertyChanged
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// RaisePropertyChanged
+        /// </summary>
+        /// <param name="name"></param>
+        public void RaisePropertyChanged(string name)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+        private bool isLoading;
+        /// <summary>
+        /// Show Loading
+        /// </summary>
+        public bool IsLoading
+        {
+            get
+            {
+                return this.isLoading;
+            }
+            set
+            {
+                this.isLoading = value;
+                RaisePropertyChanged("IsLoading");
+            }
+        }
+
         public VideoPage(IList<FileDetails> files)
         {
             InitializeComponent();
+            BindingContext = this;
+            IsLoading = false;
+
             fileDetails = files;
             log = DependencyService.Get<ILogger>();
             if (log != null)
@@ -81,6 +119,7 @@ namespace VideoPlayerProima
 
         private void GoNextPlayer()
         {
+            IsLoading = true;
             try
             {
                 Player(fileDetails[index]);
@@ -94,6 +133,7 @@ namespace VideoPlayerProima
                 log?.Error(ex);
                 Application.Current.MainPage = new MainPage();
             }
+            IsLoading = false;
         }
 
         private void Player(FileDetails fileOrUrl)

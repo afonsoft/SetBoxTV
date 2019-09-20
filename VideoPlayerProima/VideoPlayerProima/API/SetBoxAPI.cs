@@ -191,6 +191,9 @@ namespace VideoPlayerProima.API
     [Android.Runtime.Preserve(AllMembers = true)]
     public class Response<T>
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         [Newtonsoft.Json.JsonConstructor]
         public Response()
         {

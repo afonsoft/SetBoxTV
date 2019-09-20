@@ -12,5 +12,8 @@
         </StackLayout.GestureRecognizers>
         <controls:VideoPlayer x:Name="videoPlayer" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsVisible="False" AreTransportControlsEnabled="False"  />
         <Image x:Name="imagePlayer" BackgroundColor="Black" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+        <ActivityIndicator x:Name="actInd"
+                             IsRunning="{Binding IsLoading}"
+                             IsVisible="{Binding IsLoading}" Color="Red"/>
     </StackLayout>
 </ContentPage>

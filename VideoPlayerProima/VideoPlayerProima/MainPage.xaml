@@ -4,11 +4,9 @@
              BackgroundColor="Black"
              x:Class="VideoPlayerProima.MainPage"
              NavigationPage.HasNavigationBar="False">
-    <ContentPage.Content>
-        <StackLayout x:Name="PageStackLayout">
-            <Label Text="Loading..."
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+    <StackLayout x:Name="PageStackLayout">
+        <ActivityIndicator x:Name="actInd"
+                             IsRunning="{Binding IsLoading}"
+                             IsVisible="{Binding IsLoading}" Color="Red"/>
+    </StackLayout>
 </ContentPage>

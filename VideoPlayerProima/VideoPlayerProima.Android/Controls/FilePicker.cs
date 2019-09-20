@@ -39,7 +39,7 @@ namespace VideoPlayerProima.Droid.Controls
                          size = f.Length,
                          description = "",
                          url = f.FullName,
-                         checkSum = CheckSumHelpers.CalculateMD5(f.FullName)
+                         checkSum = CheckSumHelpers.MD5HashFile(f.FullName)
                      });
             }
 
@@ -64,13 +64,6 @@ namespace VideoPlayerProima.Droid.Controls
             {
                 File.Delete(fullPath);
             });
-        }
-
-        public string GetStorageFolderPath()
-        {
-            string docFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            string libFolder = Path.Combine(docFolder, "..", "Library");
-            return libFolder;
         }
     }
 }
