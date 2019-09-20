@@ -57,7 +57,11 @@ namespace SetBoxWebUI.Controllers
                     License = item.License,
                     Platform = item.Platform,
                     Version = item.Version,
-                    Name = item.Name
+                    Name = item.Name,
+                    ApkVersion = item.ApkVersion,
+                    DeviceName = item.DeviceName,
+                    Manufacturer = item.Manufacturer,
+                    Model = item.Model
                 };
                 if (item.Configuration != null)
                 {
@@ -226,6 +230,18 @@ namespace SetBoxWebUI.Controllers
                         break;
                     case "name":
                         orderby = o => o.Name;
+                        break;
+                    case "deviceName":
+                        orderby = o => o.DeviceName;
+                        break;
+                    case "model":
+                        orderby = o => o.Model;
+                        break;
+                    case "manufacturer":
+                        orderby = o => o.Manufacturer;
+                        break;
+                    case "apkVersion":
+                        orderby = o => o.ApkVersion;
                         break;
                 }
 
