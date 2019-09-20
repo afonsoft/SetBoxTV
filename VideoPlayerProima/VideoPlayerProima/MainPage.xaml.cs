@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using VideoPlayerProima.Helpers;
 using VideoPlayerProima.Interface;
@@ -12,100 +13,22 @@ using Xamarin.Forms;
 
 namespace VideoPlayerProima
 {
-    public partial class MainPage : ContentPage, INotifyPropertyChanged
+    public partial class MainPage : ContentPage
     {
         private readonly List<FileDetails> arquivos = new List<FileDetails>();
         private readonly ILogger log;
-        private bool HasAppearing = false;
-        /// <summary>
-        /// PropertyChanged
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
+        private MainViewModel model;
+        public static bool isInProcess = false;
 
-        /// <summary>
-        /// RaisePropertyChanged
-        /// </summary>
-        /// <param name="name"></param>
-        public void RaisePropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
-
-        private string loadingText;
-
-        /// <summary>
-        /// Texto no Loading
-        /// </summary>
-        public string LoadingText
-        {
-            get
-            {
-                return this.loadingText;
-            }
-            set
-            {
-                this.loadingText = value;
-                RaisePropertyChanged("LoadingText");
-            }
-        }
-
-        private bool isLoading;
-        /// <summary>
-        /// Show Loading
-        /// </summary>
-        public bool IsLoading
-        {
-            get
-            {
-                return this.isLoading;
-            }
-            set
-            {
-                this.isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
-
-        private bool isDownloading;
-        /// <summary>
-        /// Show Loading
-        /// </summary>
-        public bool IsDownloading
-        {
-            get
-            {
-                return this.isDownloading;
-            }
-            set
-            {
-                this.isDownloading = value;
-                RaisePropertyChanged("IsDownloading");
-            }
-        }
-
-        private double _progressValue;
-        /// <summary>
-        /// ProgressValue
-        /// </summary>
-        public double ProgressValue
-        {
-            get { return _progressValue; }
-            set
-            {
-                this._progressValue = value;
-                RaisePropertyChanged("ProgressValue");
-            }
-        }
 
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = this;
-            IsLoading = true;
-            LoadingText = "Loading";
+            model = new MainViewModel();
+            model.IsLoading = true;
+            model.LoadingText = "Loading";
+            BindingContext = model;
+
             log = DependencyService.Get<ILogger>();
             if (log != null)
             {
@@ -114,48 +37,32 @@ namespace VideoPlayerProima
                 log.Platform = DevicePicker.GetPlatform().ToString();
                 log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
             }
-
         }
 
-
-        private async void ShowText(string t)
+        private void ShowText(string t)
         {
-            LoadingText = t;
-            IsLoading = true;
-            await Task.Yield();
+            model.LoadingText = t;
+            model.IsLoading = true;
         }
 
         protected override async void OnAppearing()
         {
-            
             base.OnAppearing();
-            HasAppearing = false;
             NavigationPage.SetHasNavigationBar(this, false);
-            IsLoading = true;
-            await Task.Delay(500);
-            OnPpearingAsync();
-            HasAppearing = true;
-        }
-
-        public async void OnPpearingAsync()
-        {
-
-            while (IsBusy || !HasAppearing)
-            {
-                await Task.Delay(500);
-            }
+            model.IsLoading = true;
             await Task.Yield();
-
-            MainThread.BeginInvokeOnMainThread(() =>
-            {
-                Loading();
-                IsLoading = false;
-            });
+            Loading();
+            model.IsLoading = false;
         }
+
         public async void Loading()
         {
+            if (isInProcess)
+                return;
 
-            IsLoading = true;
+            isInProcess = true;
+
+            model.IsLoading = true;
             log?.Info("CheckSelfPermission");
             DependencyService.Get<ICheckPermission>()?.CheckSelfPermission();
             IDevicePicker device = DependencyService.Get<IDevicePicker>();
@@ -189,8 +96,7 @@ namespace VideoPlayerProima
             if (!isLicensed)
             {
                 log?.Info("Licença: Licença inválida");
-                SettingsPage.isPostBack = false;
-                IsLoading = false;
+                model.IsLoading = false;
                 await ShowMessage("Licença inválida!", "Licença", "OK",
                 () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); });
             }
@@ -252,7 +158,8 @@ namespace VideoPlayerProima
                 if (!arquivos.Any())
                 {
                     log?.Info("Directory: Nenhum arquivo localizado na pasta especifica.");
-                    IsLoading = false;
+                    model.IsLoading = false;
+                    isInProcess = false;
                     await ShowMessage("Nenhum arquivo localizado na pasta especifica", "Arquivo", "OK",
                         () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); });
                 }
@@ -290,11 +197,12 @@ namespace VideoPlayerProima
                         }
                     }
                     ShowText("Iniciando o Player");
-                    IsLoading = false;
+                    model.IsLoading = false;
+                    isInProcess = false;
                     Application.Current.MainPage = new VideoPage(arquivos);
                 }
             }
-            IsLoading = false;
+            model.IsLoading = false;
         }
 
         private void GetFilesInFolder(IFilePicker filePicker)
@@ -327,27 +235,22 @@ namespace VideoPlayerProima
             string buttonText,
             Action afterHideCallback)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await DisplayAlert(
-                    title,
-                    message,
-                    buttonText);
+            await DisplayAlert(
+                title,
+                message,
+                buttonText);
 
-                afterHideCallback?.Invoke();
-            });
+            afterHideCallback?.Invoke();
         }
 
         private async void StartDownloadHandler(string urlToDownload, string pathToSave)
         {
-            ProgressValue = 0;
-            IsDownloading = true;
+            model.ProgressValue = 0;
+            model.IsDownloading = true;
             Progress<DownloadBytesProgress> progressReporter = new Progress<DownloadBytesProgress>();
-            progressReporter.ProgressChanged += (s, args) => ProgressValue = (int)(100 * args.PercentComplete);
-
-            await Task.Yield();
+            progressReporter.ProgressChanged += (s, args) => model.ProgressValue = (int)(100 * args.PercentComplete);
             int downloadTask = await DownloadHelper.CreateDownloadTask(urlToDownload, pathToSave, progressReporter);
-            IsDownloading = false;
+            model.IsDownloading = false;
         }
     }
 }

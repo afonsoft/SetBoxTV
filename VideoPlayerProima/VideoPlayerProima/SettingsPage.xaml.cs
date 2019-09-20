@@ -12,7 +12,6 @@ namespace VideoPlayerProima
     {
         private IDevicePicker devicePicker;
         private IDirectoyPicker directoyPicker;
-        public static bool isPostBack = false;
         private readonly ILogger log;
 
         public SettingsPage()
@@ -32,41 +31,37 @@ namespace VideoPlayerProima
         {
             base.OnAppearing();
 
-            if (!isPostBack)
+            directoyPicker = DependencyService.Get<IDirectoyPicker>();
+            devicePicker = DependencyService.Get<IDevicePicker>();
+            string deviceIdentifier = devicePicker?.GetIdentifier();
+            LicenseID.Detail = "ID: " + deviceIdentifier;
+
+            LabelKey.Text = PlayerSettings.License;
+            FolderSeleted.Detail = PlayerSettings.PathFiles;
+            SwitchVideo.On = PlayerSettings.ShowVideo;
+            SwitchPhoto.On = PlayerSettings.ShowPhoto;
+            SwitchWebImage.On = PlayerSettings.ShowWebImage;
+            SwitchWebVideo.On = PlayerSettings.ShowWebVideo;
+            SwitchTransaction.On = PlayerSettings.EnableTransactionTime;
+            SwitchTransactionTime.Text = PlayerSettings.TransactionTime.ToString();
+
+            try
             {
-                isPostBack = true;
-
-                directoyPicker = DependencyService.Get<IDirectoyPicker>();
-                devicePicker = DependencyService.Get<IDevicePicker>();
-                string deviceIdentifier = devicePicker?.GetIdentifier();
-                LicenseID.Detail = "ID: " + deviceIdentifier;
-
-                LabelKey.Text = PlayerSettings.License;
-                FolderSeleted.Detail = PlayerSettings.PathFiles;
-                SwitchVideo.On = PlayerSettings.ShowVideo;
-                SwitchPhoto.On = PlayerSettings.ShowPhoto;
-                SwitchWebImage.On = PlayerSettings.ShowWebImage;
-                SwitchWebVideo.On = PlayerSettings.ShowWebVideo;
-                SwitchTransaction.On = PlayerSettings.EnableTransactionTime;
-                SwitchTransactionTime.Text = PlayerSettings.TransactionTime.ToString();
-
-                try
+                var api = new API.SetBoxApi(deviceIdentifier, PlayerSettings.License, PlayerSettings.Url);
+                var config = await api.GetSupport();
+                if (config != null)
                 {
-                    var api = new API.SetBoxApi(deviceIdentifier, PlayerSettings.License, PlayerSettings.Url);
-                    var config = await api.GetSupport();
-                    if (config != null)
-                    {
-                        Company.Detail = config.company;
-                        Telephone.Detail = config.telephone;
-                        Email.Detail = config.email;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    log?.Error("Erro para atualizar o suporte", ex);
+                    Company.Detail = config.company;
+                    Telephone.Detail = config.telephone;
+                    Email.Detail = config.email;
                 }
             }
+            catch (Exception ex)
+            {
+                log?.Error("Erro para atualizar o suporte", ex);
+            }
         }
+        
 
 
         public async void OnButtonSelectClicked(object sender, EventArgs e)
@@ -116,8 +111,6 @@ namespace VideoPlayerProima
                     time = 1;
                 PlayerSettings.TransactionTime = time;
             }
-
-            isPostBack = false;
 
             await ShowMessage("Dados Salvos com sucesso!", "Salvar", "OK",
                 () => { Application.Current.MainPage = new MainPage(); });
