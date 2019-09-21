@@ -16,13 +16,14 @@
     <ContentPage.Content>
         <StackLayout x:Name="PageStackLayout" Spacing="10" BackgroundColor="Black">
 
-            
             <ProgressBar x:Name="progressBarId" 
                          Progress="{Binding ProgressValue, Converter={StaticResource ValueProgressBarConverter}}" 
                          IsVisible="{Binding IsDownloading}" 
                          Margin="10,0" 
                          HorizontalOptions="Center" 
-                         VerticalOptions="Center"/>
+                         VerticalOptions="Center"
+                         WidthRequest="300" 
+                         HeightRequest="20" />
             
             <Label x:Name="labelLoadingId" 
                    TextColor="White" 
@@ -30,8 +31,6 @@
                    HorizontalOptions="Center" 
                    IsVisible="{Binding IsDownloading}" 
                    VerticalOptions="Center"/>
-
-            
 
             <ActivityIndicator x:Name="actInd"
                         IsRunning="True"
