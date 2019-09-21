@@ -144,7 +144,7 @@ namespace VideoPlayerProima
                         {
                             log?.Info($"Download do arquivo: {fi.url}");
                             ShowText($"Download da midia {fi.name}");
-                            StartDownloadHandler(fi.url, Path.Combine(PlayerSettings.PathFiles, fi.name));
+                            await StartDownloadHandler(fi.url, Path.Combine(PlayerSettings.PathFiles, fi.name));
                         }
                         catch (Exception ex)
                         {
@@ -182,7 +182,7 @@ namespace VideoPlayerProima
                                 {
                                     log?.Info($"Download do arquivo: {fiServier.url}");
                                     ShowText($"Download da midia {fiServier.name}");
-                                    StartDownloadHandler(fiServier.url, Path.Combine(PlayerSettings.PathFiles, fiServier.name));
+                                    await StartDownloadHandler(fiServier.url, Path.Combine(PlayerSettings.PathFiles, fiServier.name));
                                 }
                                 catch (Exception ex)
                                 {
@@ -243,7 +243,7 @@ namespace VideoPlayerProima
             afterHideCallback?.Invoke();
         }
 
-        private async void StartDownloadHandler(string urlToDownload, string pathToSave)
+        private async Task<int> StartDownloadHandler(string urlToDownload, string pathToSave)
         {
             model.ProgressValue = 0;
             model.IsDownloading = true;
@@ -251,6 +251,7 @@ namespace VideoPlayerProima
             progressReporter.ProgressChanged += (s, args) => model.ProgressValue = (int)(100 * args.PercentComplete);
             int downloadTask = await DownloadHelper.CreateDownloadTask(urlToDownload, pathToSave, progressReporter);
             model.IsDownloading = false;
+            return downloadTask;
         }
     }
 }
