@@ -20,7 +20,6 @@ namespace VideoPlayerProima.Model
             }
             set
             {
-                this._loadingText = value;
                 SetProperty(ref _loadingText, value);
             }
         }
@@ -37,7 +36,6 @@ namespace VideoPlayerProima.Model
             }
             set
             {
-                this._isLoading = value;
                 SetProperty(ref _isLoading, value);
             }
         }
@@ -54,7 +52,6 @@ namespace VideoPlayerProima.Model
             }
             set
             {
-                this._isDownloading = value;
                 SetProperty(ref _isDownloading, value);
             }
         }
@@ -68,7 +65,6 @@ namespace VideoPlayerProima.Model
             get { return _progressValue; }
             set
             {
-                this._progressValue = value;
                 SetProperty(ref _progressValue, value);
             }
         }

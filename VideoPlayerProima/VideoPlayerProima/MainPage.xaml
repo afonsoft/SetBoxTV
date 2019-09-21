@@ -14,9 +14,30 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout x:Name="PageStackLayout"
-                 Spacing="10"
-                     BackgroundColor="Black">
+        <StackLayout x:Name="PageStackLayout" Spacing="10" BackgroundColor="Black">
+
+            
+            <ProgressBar x:Name="progressBarId" 
+                         Progress="{Binding ProgressValue, Converter={StaticResource ValueProgressBarConverter}}" 
+                         IsVisible="{Binding IsDownloading}" 
+                         Margin="10,0" 
+                         HorizontalOptions="Center" 
+                         VerticalOptions="Center"/>
+            
+            <Label x:Name="labelLoadingId" 
+                   TextColor="White" 
+                   Text="{Binding ProgressValue, StringFormat='{0:F2}%'}" 
+                   HorizontalOptions="Center" 
+                   IsVisible="{Binding IsDownloading}" 
+                   VerticalOptions="Center"/>
+
+            
+
+            <ActivityIndicator x:Name="actInd"
+                        IsRunning="True"
+                        IsVisible="{Binding IsLoading}" Color="Red"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"/>
 
             <Label
             x:Name="labelId"
@@ -29,14 +50,6 @@
             Text="{Binding LoadingText}"
             IsVisible="True"/>
 
-            <ActivityIndicator x:Name="actInd"
-                        IsRunning="True"
-                        IsVisible="{Binding IsLoading}" Color="Red"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"/>
-
-            <ProgressBar x:Name="progressBarId" Progress="{Binding ProgressValue, Converter={StaticResource ValueProgressBarConverter}}" IsVisible="{Binding IsDownloading}" Margin="10,0" HorizontalOptions="Center" VerticalOptions="Center"/>
-            <Label x:Name="labelLoadingId" TextColor="White" Text="{Binding ProgressValue, StringFormat='{0:F2}%'}" HorizontalOptions="Center" IsVisible="{Binding IsDownloading}" VerticalOptions="Center"/>
-    </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
