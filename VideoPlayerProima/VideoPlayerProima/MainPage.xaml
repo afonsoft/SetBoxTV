@@ -13,42 +13,32 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.Content>
-        <StackLayout x:Name="PageStackLayout" Spacing="10" BackgroundColor="Black">
+        <FlexLayout Direction="Column"
+                AlignItems="Center"
+                JustifyContent="SpaceEvenly" 
+                BackgroundColor="Black">
 
             <ProgressBar x:Name="progressBarId" 
                          Progress="{Binding ProgressValue, Converter={StaticResource ValueProgressBarConverter}}" 
                          IsVisible="{Binding IsDownloading}" 
-                         Margin="10,0" 
-                         HorizontalOptions="Center" 
-                         VerticalOptions="Center"
-                         WidthRequest="300" 
-                         HeightRequest="20" />
-            
+                         Margin="10,0" />
+
             <Label x:Name="labelLoadingId" 
                    TextColor="White" 
                    Text="{Binding ProgressValue, StringFormat='{0:F2}%'}" 
-                   HorizontalOptions="Center" 
-                   IsVisible="{Binding IsDownloading}" 
-                   VerticalOptions="Center"/>
+                   IsVisible="{Binding IsDownloading}" />
 
             <ActivityIndicator x:Name="actInd"
                         IsRunning="True"
-                        IsVisible="{Binding IsLoading}" Color="Red"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"/>
+                        IsVisible="{Binding IsLoading}" 
+                        Color="Red"/>
 
             <Label
             x:Name="labelId"
             FontSize="14"
             TextColor="White"
-            HorizontalOptions="Center"
-            HorizontalTextAlignment="Center"
-            VerticalTextAlignment="Center"
-            VerticalOptions="Center"
             Text="{Binding LoadingText}"
             IsVisible="True"/>
 
-        </StackLayout>
-    </ContentPage.Content>
+        </FlexLayout>
 </ContentPage>
