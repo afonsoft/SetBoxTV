@@ -15,6 +15,7 @@ namespace VideoPlayerProima
         private IDirectoyPicker directoyPicker;
         private readonly ILogger log;
         private SettingsViewModel model;
+        string deviceIdentifier;
 
         public SettingsPage()
         {
@@ -38,7 +39,7 @@ namespace VideoPlayerProima
 
             directoyPicker = DependencyService.Get<IDirectoyPicker>();
             devicePicker = DependencyService.Get<IDevicePicker>();
-            string deviceIdentifier = devicePicker?.GetIdentifier();
+            deviceIdentifier = devicePicker?.GetIdentifier();
             LicenseID.Detail = "ID: " + deviceIdentifier;
 
             try
@@ -57,8 +58,6 @@ namespace VideoPlayerProima
                 log?.Error("Erro para atualizar o suporte", ex);
             }
         }
-        
-
 
         public async void OnButtonSelectClicked(object sender, EventArgs e)
         {
@@ -101,6 +100,24 @@ namespace VideoPlayerProima
             PlayerSettings.ShowWebVideo = model.ShowWebVideo;
             PlayerSettings.EnableTransactionTime = model.EnableTransactionTime;
             PlayerSettings.TransactionTime = model.TransactionTime;
+
+            try
+            {
+                var api = new API.SetBoxApi(deviceIdentifier, model.License, PlayerSettings.Url);
+                log?.Info("Salvando as Configurações no Servidor");
+                await api.SetConfig(new ConfigModel()
+                {
+                    enablePhoto = model.ShowPhoto,
+                    enableVideo = model.ShowVideo,
+                    enableTransaction = model.EnableTransactionTime,
+                    enableWebVideo = model.ShowWebVideo,
+                    transactionTime = model.TransactionTime
+                });
+            }
+            catch (Exception ex)
+            {
+                log?.Error(ex);
+            }
 
             await ShowMessage("Dados Salvos com sucesso!", "Salvar", "OK",
                 () => { Application.Current.MainPage = new MainPage(); });
