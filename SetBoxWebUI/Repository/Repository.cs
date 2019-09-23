@@ -38,7 +38,7 @@ namespace SetBoxWebUI.Repository
         public IEntityType EntityType { get; private set; }
 
         /// <summary>
-        /// IEnumerable<IProperty>
+        /// Properties
         /// </summary>
         public IEnumerable<IProperty> Properties { get; private set; }
 

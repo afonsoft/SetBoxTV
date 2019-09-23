@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SetBoxWebUI.Interfaces;
 using SetBoxWebUI.Models;
 using SetBoxWebUI.Models.Views;
 using SetBoxWebUI.Repository;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace SetBoxWebUI.Controllers
 {
@@ -28,11 +28,11 @@ namespace SetBoxWebUI.Controllers
             _devices = new Repository<Device, Guid>(context);
         }
        
-        public IActionResult Index(DeviceViewModel model)
+        public IActionResult Index(DeviceViewModel m)
         {
             ViewData["Edit"] = false;
-            if (model == null) model = new DeviceViewModel();
-            return View(model);
+            if (m == null) m = new DeviceViewModel();
+            return View(m);
         }
 
         [HttpPost]
@@ -85,17 +85,17 @@ namespace SetBoxWebUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Save(DeviceViewModel model)
+        public async Task<IActionResult> Save(DeviceViewModel m)
         {
             try
             {
-                if (model != null)
+                if (m != null)
                 {
-                    var updItem = await _devices.FirstOrDefaultAsync(x => x.DeviceId == model.DeviceId);
+                    var updItem = await _devices.FirstOrDefaultAsync(x => x.DeviceId == m.DeviceId);
 
                     if (updItem != null)
                     {
-                        updItem.Name = model.Name;
+                        updItem.Name = m.Name;
 
                         if (updItem.Configuration == null)
                         {
@@ -104,12 +104,12 @@ namespace SetBoxWebUI.Controllers
                                 CreationDateTime = DateTime.Now
                             };
                         }
-                        updItem.Configuration.EnablePhoto = model.EnablePhoto;
-                        updItem.Configuration.EnableTransaction = model.EnableTransaction;
-                        updItem.Configuration.EnableVideo = model.EnableVideo;
-                        updItem.Configuration.EnableWebImage = model.EnableWebImage;
-                        updItem.Configuration.EnableWebVideo = model.EnableWebVideo;
-                        updItem.Configuration.TransactionTime = model.TransactionTime;
+                        updItem.Configuration.EnablePhoto = m.EnablePhoto;
+                        updItem.Configuration.EnableTransaction = m.EnableTransaction;
+                        updItem.Configuration.EnableVideo = m.EnableVideo;
+                        updItem.Configuration.EnableWebImage = m.EnableWebImage;
+                        updItem.Configuration.EnableWebVideo = m.EnableWebVideo;
+                        updItem.Configuration.TransactionTime = m.TransactionTime;
 
                         await _devices.UpdateAsync(updItem);
 
@@ -119,7 +119,7 @@ namespace SetBoxWebUI.Controllers
                     else
                     {
                         ViewData["Edit"] = false;
-                        throw new KeyNotFoundException($"DeviceId: {model.DeviceId} not found.");
+                        throw new KeyNotFoundException($"DeviceId: {m.DeviceId} not found.");
                     }
                 }
                 ViewData["Edit"] = false;
