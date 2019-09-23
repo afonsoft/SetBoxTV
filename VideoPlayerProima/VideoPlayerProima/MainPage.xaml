@@ -13,32 +13,39 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-        <FlexLayout Direction="Column"
+    <FlexLayout Direction="Column"
                 AlignItems="Center"
                 JustifyContent="SpaceEvenly" 
                 BackgroundColor="Black">
+		<FlexLayout.BindingContext>
+			<local:MainViewModel/>
+		</FlexLayout.BindingContext>
 
-            <ProgressBar x:Name="progressBarId" 
-                         Progress="{Binding ProgressValue, Converter={StaticResource ValueProgressBarConverter}}" 
-                         IsVisible="{Binding IsDownloading}" 
-                         Margin="10,0" />
+        <Image Source="LOGO.jpg" />
 
-            <Label x:Name="labelLoadingId" 
-                   TextColor="White" 
-                   Text="{Binding ProgressValue, StringFormat='{0:F2}%'}" 
-                   IsVisible="{Binding IsDownloading}" />
+        <ProgressBar x:Name="progressBarId" 
+                    Progress="{Binding ProgressValue, Converter={StaticResource ValueProgressBarConverter}}" 
+                    IsVisible="{Binding IsDownloading}" 
+                    Margin="10,0"
+                    BackgroundColor="Gray"
+                    HorizontalOptions="FillAndExpand"
+                    ProgressColor="Red"/>
 
-            <ActivityIndicator x:Name="actInd"
-                        IsRunning="True"
-                        IsVisible="{Binding IsLoading}" 
-                        Color="Red"/>
+        <Label x:Name="labelLoadingId" 
+                TextColor="White" 
+                BackgroundColor="Black"
+                FontSize="Medium"
+                Text="{Binding ProgressValue, StringFormat='{0:F2}%'}" 
+                IsVisible="{Binding IsDownloading}" />
 
-            <Label
+
+        <Label
             x:Name="labelId"
-            FontSize="14"
-            TextColor="White"
+            FontSize="Medium"
+            TextColor="White" 
+            BackgroundColor="Black"
             Text="{Binding LoadingText}"
             IsVisible="True"/>
 
-        </FlexLayout>
+    </FlexLayout>
 </ContentPage>
