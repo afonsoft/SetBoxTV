@@ -13,39 +13,51 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <FlexLayout Direction="Column"
-                AlignItems="Center"
-                JustifyContent="SpaceEvenly" 
+    <StackLayout Spacing="10"
+                x:Name="layout"
+                Margin="20,35,20,25"
+                Orientation="Horizontal"
                 BackgroundColor="Black">
-		<FlexLayout.BindingContext>
+        
+        <StackLayout.BindingContext>
 			<local:MainViewModel/>
-		</FlexLayout.BindingContext>
+		</StackLayout.BindingContext>
 
-        <Image Source="LOGO.jpg" />
+        <Image Source="https://setbox.afonsoft.com.br/logos/LOGO.jpg" 
+               HeightRequest="375"
+               VerticalOptions="Fill"
+               HorizontalOptions="Center"/>
 
-        <ProgressBar x:Name="progressBarId" 
-                    Progress="{Binding ProgressValue, Converter={StaticResource ValueProgressBarConverter}}" 
-                    IsVisible="{Binding IsDownloading}" 
-                    Margin="10,0"
-                    BackgroundColor="Gray"
-                    HorizontalOptions="FillAndExpand"
-                    ProgressColor="Red"/>
+        <ActivityIndicator IsRunning="{Binding IsLoading}"
+                            IsVisible="{Binding IsLoading}"
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="CenterAndExpand"/>
+
+        <Label x:Name="labelId"
+                FontSize="Medium"
+                TextColor="White" 
+                BackgroundColor="Black"
+                Text="{Binding LoadingText}"
+                IsVisible="True"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"/>
 
         <Label x:Name="labelLoadingId" 
                 TextColor="White" 
                 BackgroundColor="Black"
                 FontSize="Medium"
                 Text="{Binding ProgressValue, StringFormat='{0:F2}%'}" 
-                IsVisible="{Binding IsDownloading}" />
+                IsVisible="{Binding IsDownloading}" 
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="CenterAndExpand"/>
 
-
-        <Label
-            x:Name="labelId"
-            FontSize="Medium"
-            TextColor="White" 
-            BackgroundColor="Black"
-            Text="{Binding LoadingText}"
-            IsVisible="True"/>
-
-    </FlexLayout>
+        <ProgressBar x:Name="progressBarId" 
+                    Progress="{Binding ProgressValue, Converter={StaticResource ValueProgressBarConverter}}" 
+                    IsVisible="{Binding IsDownloading}" 
+                    BackgroundColor="Gray"
+                    VerticalOptions="EndAndExpand"
+                    ProgressColor="Red"
+                    HeightRequest="30"
+                    HorizontalOptions="CenterAndExpand"/>
+    </StackLayout>
 </ContentPage>
