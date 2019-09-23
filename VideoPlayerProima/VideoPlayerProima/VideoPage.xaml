@@ -1,16 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:VideoPlayerProima"
+             xmlns:local="clr-namespace:VideoPlayerProima.Model"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="DarkGray"
-             xmlns:controls="clr-namespace:VideoPlayerProima.Controls;assembly=VideoPlayerProima"
+             xmlns:vlc="clr-namespace:LibVLCSharp.Forms.Shared;assembly=LibVLCSharp.Forms"
              x:Class="VideoPlayerProima.VideoPage">
+    <ContentPage.BindingContext>
+        <local:VideoViewModel />
+    </ContentPage.BindingContext>
+
     <StackLayout x:Name="PageStackLayout">
         <StackLayout.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnTapped" NumberOfTapsRequired="2" />
         </StackLayout.GestureRecognizers>
-        <controls:VideoPlayer x:Name="videoPlayer" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsVisible="False" AreTransportControlsEnabled="False"  />
+        <!--<controls:VideoPlayer x:Name="videoPlayer" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsVisible="False" AreTransportControlsEnabled="False"  />-->
+        <vlc:MediaPlayerElement x:Name="videoPlayer" MediaPlayer="{Binding MediaPlayer}" LibVLC="{Binding LibVLC}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
         <Image x:Name="imagePlayer" BackgroundColor="Black" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
         <ActivityIndicator x:Name="actInd"
                              IsRunning="{Binding IsLoading}"

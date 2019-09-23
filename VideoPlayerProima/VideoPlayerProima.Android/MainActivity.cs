@@ -23,7 +23,11 @@ namespace VideoPlayerProima.Droid
     [Activity(Label = "VideoPlayerProima", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, HardwareAccelerated = true, Exported = true, NoHistory = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-  
+        protected override void OnResume()
+        {
+            base.OnResume();
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Instance = this;

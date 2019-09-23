@@ -7764,6 +7764,9 @@ namespace VideoPlayerProima.Droid
 			// aapt resource value: 0x7f0c0032
 			public const int abc_toolbar_collapse_description = 2131492914;
 			
+			// aapt resource value: 0x7f0c004e
+			public const int app_name = 2131492942;
+			
 			// aapt resource value: 0x7f0c0040
 			public const int appbar_scrolling_view_behavior = 2131492928;
 			

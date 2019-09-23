@@ -9,58 +9,28 @@ using VideoPlayerProima.Model;
 using System.Collections.Generic;
 using VideoPlayerProima.Interface;
 using System.ComponentModel;
+using Android.Media;
+using LibVLCSharp.Shared;
 
 namespace VideoPlayerProima
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class VideoPage : ContentPage, INotifyPropertyChanged
+    public partial class VideoPage : ContentPage
     {
-        private  VideoSource fileToPlayer;
-        private  ImageSource imagaToPlayer;
-        private  Uri urlToPlayer;
+        private VideoPlayerProima.Library.VideoSource fileToPlayer;
+        private ImageSource imagaToPlayer;
+        private Uri urlToPlayer;
         private readonly IList<FileDetails> fileDetails;
         private readonly ILogger log;
         private int index = 0;
-
-        /// <summary>
-        /// PropertyChanged
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// RaisePropertyChanged
-        /// </summary>
-        /// <param name="name"></param>
-        public void RaisePropertyChanged(string name)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(name));
-            }
-        }
-
-        private bool isLoading;
-        /// <summary>
-        /// Show Loading
-        /// </summary>
-        public bool IsLoading
-        {
-            get
-            {
-                return this.isLoading;
-            }
-            set
-            {
-                this.isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
+        private VideoViewModel model;
 
         public VideoPage(IList<FileDetails> files)
         {
+            model = new VideoViewModel();
             InitializeComponent();
-            BindingContext = this;
-            IsLoading = false;
+            BindingContext = model;
+            model.IsLoading = true;
 
             fileDetails = files;
             log = DependencyService.Get<ILogger>();
@@ -77,7 +47,7 @@ namespace VideoPlayerProima
         {
             base.OnAppearing();
             NavigationPage.SetHasNavigationBar(this, false);
-
+            model.OnAppearing();
             log?.Debug($"License: {PlayerSettings.License}");
             log?.Debug($"PathFiles: {PlayerSettings.PathFiles}");
             log?.Debug($"ShowVideo: {PlayerSettings.ShowVideo}");
@@ -87,10 +57,7 @@ namespace VideoPlayerProima
             log?.Debug($"EnableTransactionTime: {PlayerSettings.EnableTransactionTime}");
             log?.Debug($"TransactionTime: {PlayerSettings.TransactionTime}");
 
-            videoPlayer.OnCompletion += VideoPlayer_OnCompletion;
-            videoPlayer.AutoPlay = true;
-            videoPlayer.Source = null;
-            videoPlayer.IsVisible = true;
+            videoPlayer.IsVisible = false;
             GoNextPlayer();
         }
 
@@ -119,7 +86,7 @@ namespace VideoPlayerProima
 
         private void GoNextPlayer()
         {
-            IsLoading = true;
+            model.IsLoading = true;
             try
             {
                 Player(fileDetails[index]);
@@ -133,23 +100,22 @@ namespace VideoPlayerProima
                 log?.Error(ex);
                 Application.Current.MainPage = new MainPage();
             }
-            IsLoading = false;
+            model.IsLoading = false;
         }
 
         private void Player(FileDetails fileOrUrl)
         {
-            videoPlayer.Stop();
-            videoPlayer.Source = null;
             videoPlayer.IsVisible = false;
             imagePlayer.IsVisible = false;
+            model.MediaPlayer.Stop();
 
             switch (fileOrUrl.fileType)
             {
                 case EnumFileType.Video:
-                    fileToPlayer = new FileVideoSource {File = fileOrUrl.path};
+                    fileToPlayer = new FileVideoSource { File = fileOrUrl.path };
                     break;
                 case EnumFileType.WebVideo:
-                    fileToPlayer = new UriVideoSource {Uri = fileOrUrl.path};
+                    fileToPlayer = new UriVideoSource { Uri = fileOrUrl.path };
                     break;
                 case EnumFileType.Image:
                     imagaToPlayer = ImageSource.FromFile(fileOrUrl.path);
@@ -168,31 +134,49 @@ namespace VideoPlayerProima
             {
                 case EnumFileType.Video:
                 case EnumFileType.WebVideo:
-                {
-                    videoPlayer.IsVisible = true;
-                    videoPlayer.Source = fileToPlayer;
-                    VideoFade();
-                    log?.Info($"Duration: {videoPlayer.Duration.TotalSeconds} Segundos");
-                    break;
-                }
+                    {
+                        model.MediaPlayer = new LibVLCSharp.Shared.MediaPlayer(new Media(model.LibVLC, fileOrUrl.path, FromType.FromLocation))
+                        {
+                            EnableHardwareDecoding = true,
+                            Fullscreen = true,
+                            Mute = false,
+                            Volume = 100
+                        };
+                        videoPlayer.IsVisible = true;
+
+                        model.MediaPlayer.Stopped += MediaPlayer_Stopped;
+                        model.MediaPlayer.Play();
+                        videoPlayer.ControlTemplate = null;
+
+                        VideoFade();
+                        log?.Info($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
+                        break;
+                    }
                 case EnumFileType.Image:
                 case EnumFileType.WebImage:
-                {
-                    imagePlayer.IsVisible = true;
-                    imagePlayer.Source = imagaToPlayer;
-                    ImageFade();
-                    Delay();
-                    break;
-                }
+                    {
+                        imagePlayer.IsVisible = true;
+                        imagePlayer.Source = imagaToPlayer;
+                        ImageFade();
+                        Delay();
+                        break;
+                    }
                 case EnumFileType.WebPage:
-                {
-                    //Show WebPage
-                    //WebPageFade();
-                    //Delay();
-                    //GoNextPlayer();
-                    break;
-                }
+                    {
+                        //Show WebPage
+                        //WebPageFade();
+                        //Delay();
+                        //GoNextPlayer();
+                        break;
+                    }
             }
+        }
+
+        private async void MediaPlayer_Stopped(object sender, EventArgs e)
+        {
+            if (PlayerSettings.EnableTransactionTime)
+                await videoPlayer.FadeOut(600, Easing.BounceOut);
+            GoNextPlayer();
         }
 
         private async void Delay()
@@ -200,17 +184,9 @@ namespace VideoPlayerProima
             log?.Info($"Duration: {PlayerSettings.TransactionTime} Segundos");
             await Task.Delay(PlayerSettings.TransactionTime * 1000);
 
-            if(PlayerSettings.EnableTransactionTime)
+            if (PlayerSettings.EnableTransactionTime)
                 await imagePlayer.FadeOut(600, Easing.BounceOut);
 
-            GoNextPlayer();
-        }
-
-        private async void VideoPlayer_OnCompletion(object sender, EventArgs e)
-        {
-            videoPlayer.Stop();
-            if (PlayerSettings.EnableTransactionTime)
-                await videoPlayer.FadeOut(600, Easing.BounceOut);
             GoNextPlayer();
         }
     }

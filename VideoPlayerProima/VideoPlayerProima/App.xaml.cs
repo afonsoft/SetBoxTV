@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using LibVLCSharp.Forms.Shared;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace VideoPlayerProima
@@ -17,17 +18,24 @@ namespace VideoPlayerProima
         protected override void OnStart()
         {
             // Handle when your app starts
+            base.OnStart();
+            MessagingCenter.Send(new LifecycleMessage(), nameof(OnStart));
             MainPage = new MainPage();
         }
 
         protected override void OnSleep()
         {
             // Handle when your app sleeps
+            base.OnSleep();
+            MessagingCenter.Send(new LifecycleMessage(), nameof(OnSleep));
+
         }
 
         protected override void OnResume()
         {
-            
+            base.OnResume();
+            MessagingCenter.Send(new LifecycleMessage(), nameof(OnResume));
+
         }
     }
 }
