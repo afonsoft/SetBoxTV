@@ -19,7 +19,7 @@
                         <SwitchCell x:Name="SwitchTransaction" Text="Transição (Fade)" On="{Binding EnableTransactionTime}"/>
                     </TableSection>
                     <TableSection Title="Pasta">
-                        <TextCell Text="Pasta Selecionada" Detail="" x:Name="FolderSeleted"/>
+                    <TextCell Text="Pasta Selecionada" Detail="{Binding PathFiles}" x:Name="FolderSeleted" />
                         <ViewCell>
                             <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
                                 <Button Text="Selecionar" Clicked="OnButtonSelectClicked" />
@@ -28,7 +28,7 @@
                     </TableSection>
                     <TableSection Title="Licença">
                         <TextCell Text="Licença" x:Name="LicenseID" Detail="ID: "  Tapped="LicenseID_Tapped"/>
-                        <EntryCell Label="Key" x:Name="LabelKey" Placeholder="" Keyboard="Default" />
+                    <EntryCell Label="Key" x:Name="LabelKey" Placeholder="" Keyboard="Default" Text="{Binding License}"/>
                     </TableSection>
                 <TableSection Title="Suporte">
                     <TextCell Text="Empresa" Detail="{Binding Company}" x:Name="Company"/>
