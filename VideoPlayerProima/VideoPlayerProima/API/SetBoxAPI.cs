@@ -43,6 +43,9 @@ namespace VideoPlayerProima.API
 
         private void GetSessionLogin()
         {
+            if (string.IsNullOrEmpty(license))
+                return;
+
             try
             {
                 var resp = rest.HttpGet<Response<string>>("/Login", Afonsoft.Http.Parameters.With("identifier", deviceIdentifier).And("license", license));
@@ -69,6 +72,9 @@ namespace VideoPlayerProima.API
         /// <returns></returns>
         public async Task<IEnumerable<FileCheckSum>> GetFilesCheckSums()
         {
+            if (string.IsNullOrEmpty(session))
+                return null;
+
             try
             {
                 var resp = await GetResponse<IEnumerable<FileCheckSum>>("/ListFilesCheckSum");
@@ -90,6 +96,9 @@ namespace VideoPlayerProima.API
         /// <returns></returns>
         public async Task<ConfigModel> GetConfig()
         {
+            if (string.IsNullOrEmpty(session))
+                return null;
+
             try
             {
                 var resp = await GetResponse<ConfigModel>("/GetConfig");
@@ -111,6 +120,9 @@ namespace VideoPlayerProima.API
         /// <returns></returns>
         public async Task<ConfigModel> SetConfig(ConfigModel config)
         {
+            if (string.IsNullOrEmpty(session))
+                return null;
+
             try
             {
                 var resp = await rest.HttpPostAsync<Response<ConfigModel>>("/SetConfig",
@@ -139,6 +151,9 @@ namespace VideoPlayerProima.API
         /// <returns></returns>
         public async Task<string> Update(string platform, string version, string apkVersion, string model, string manufacturer, string deviceName)
         {
+            if (string.IsNullOrEmpty(session))
+                return null;
+
             try
             {
                 var resp = await rest.HttpPostAsync<Response<string>>("/Update",
@@ -168,6 +183,9 @@ namespace VideoPlayerProima.API
         /// <returns></returns>
         public async Task<SupportModel> GetSupport()
         {
+            if (string.IsNullOrEmpty(session))
+                return null;
+
             try
             {
                 var resp = await GetResponse<SupportModel>("/GetSupport");

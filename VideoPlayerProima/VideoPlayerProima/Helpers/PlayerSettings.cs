@@ -13,13 +13,13 @@ namespace VideoPlayerProima.Helpers
 
         public static string PathFiles
         {
-            get => AppSettings.GetValueOrDefault(nameof(PathFiles), "");
+            get => AppSettings.GetValueOrDefault(nameof(PathFiles), "/storage/emulated/0/Movies");
             set => AppSettings.AddOrUpdateValue(nameof(PathFiles), value);
         }
 
         public static bool FindNewFiles
         {
-            get => AppSettings.GetValueOrDefault(nameof(FindNewFiles), false);
+            get => AppSettings.GetValueOrDefault(nameof(FindNewFiles), true);
             set => AppSettings.AddOrUpdateValue(nameof(FindNewFiles), value);
         }
 
@@ -61,7 +61,7 @@ namespace VideoPlayerProima.Helpers
 
         public static bool ShowPhoto
         {
-            get => AppSettings.GetValueOrDefault(nameof(ShowPhoto), true);
+            get => AppSettings.GetValueOrDefault(nameof(ShowPhoto), false);
             set => AppSettings.AddOrUpdateValue(nameof(ShowPhoto), value);
         }
 

@@ -9,16 +9,16 @@ namespace VideoPlayerProima.Model
     {
         private string _License ;
         private string _PathFiles;
-        private bool _ShowVideo ;
+        private bool _ShowVideo;
         private bool _ShowPhoto = false;
         private bool _ShowWebImage = false;
         private bool _ShowWebVideo = false;
         private bool _EnableTransactionTime = false;
         private int _TransactionTime;
 
-        private string _Company = "Art Vision Indoor";
-        private string _Telephone = "(13) 9817-76786";
-        private string _Email = "artvisionindoor@gmail.com";
+        private string _Company;
+        private string _Telephone;
+        private string _Email;
 
         public string Email
         {
@@ -67,6 +67,11 @@ namespace VideoPlayerProima.Model
             _ShowWebVideo = PlayerSettings.ShowWebVideo;
             _EnableTransactionTime = PlayerSettings.EnableTransactionTime;
             _TransactionTime = PlayerSettings.TransactionTime;
+
+            _Company = "Art Vision Indoor";
+            _Telephone = "(13) 9817-76786";
+            _Email = "artvisionindoor@gmail.com";
+            _PathFiles = "/storage/emulated/0/Movies";
 
         }
 
