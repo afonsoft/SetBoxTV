@@ -43,8 +43,8 @@
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <MandroidI18n>CJK;Mideast;Rare;West;Other</MandroidI18n>
-    <AndroidDexTool>dx</AndroidDexTool>
-    <AndroidLinkTool>proguard</AndroidLinkTool>
+    <AndroidDexTool>d8</AndroidDexTool>
+    <AndroidLinkTool>r8</AndroidLinkTool>
     <AndroidSupportedAbis>
     </AndroidSupportedAbis>
     <UseShortFileNames>True</UseShortFileNames>
@@ -68,8 +68,8 @@
     <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
     <AndroidLinkMode>Full</AndroidLinkMode>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
-    <AndroidDexTool>dx</AndroidDexTool>
-    <AndroidLinkTool>proguard</AndroidLinkTool>
+    <AndroidDexTool>d8</AndroidDexTool>
+    <AndroidLinkTool>r8</AndroidLinkTool>
     <MandroidI18n>CJK;Mideast;Rare;West;Other</MandroidI18n>
     <UseShortFileNames>True</UseShortFileNames>
     <IntermediateOutputPath>C:\Xamarin\SetBox-VideoPlayer\VideoPlayerProima\VideoPlayerProima\obj\Release</IntermediateOutputPath>
@@ -89,13 +89,16 @@
       <Version>2019.8.19</Version>
     </PackageReference>
     <PackageReference Include="FFmpeg.Nightly">
-      <Version>20190918.0.0</Version>
+      <Version>20190921.0.0</Version>
     </PackageReference>
     <PackageReference Include="FFmpeg.x86.GZCR">
       <Version>3.4.2</Version>
     </PackageReference>
     <PackageReference Include="LibVLCSharp">
-      <Version>3.2.2</Version>
+      <Version>3.2.3</Version>
+    </PackageReference>
+    <PackageReference Include="LibVLCSharp.Forms">
+      <Version>3.2.3</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.2</Version>
@@ -108,6 +111,9 @@
     </PackageReference>
     <PackageReference Include="System.Memory">
       <Version>4.5.3</Version>
+    </PackageReference>
+    <PackageReference Include="VideoLAN.LibVLC.Android">
+      <Version>3.1.2</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Core.Utils">
       <Version>28.0.0.3</Version>
