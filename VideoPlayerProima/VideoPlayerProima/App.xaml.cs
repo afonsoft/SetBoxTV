@@ -9,6 +9,11 @@ namespace SetBoxTV.VideoPlayer
 {
     public partial class App : Application
     {
+
+        static public int ScreenWidth { get; set; }
+        static public int ScreenHeight { get; set; }
+        static public float ScreenDensity { get; set; } = 1;
+
         public App()
         {
             InitializeComponent();

@@ -21,7 +21,7 @@ using LibVLCSharp.Forms.Shared;
 
 namespace SetBoxTV.VideoPlayer.Droid
 {
-    [Activity(Label = "VideoPlayerProima", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, HardwareAccelerated = true, Exported = true, NoHistory = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "VideoPlayerProima", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, HardwareAccelerated = true, Exported = true, NoHistory = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Landscape)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnResume()
@@ -60,8 +60,12 @@ namespace SetBoxTV.VideoPlayer.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             RequestWindowFeature(WindowFeatures.NoTitle);
-            Window.AddFlags(WindowManagerFlags.Fullscreen);
+            Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
             Forms.SetTitleBarVisibility(Instance, AndroidTitleBarVisibility.Never);
+
+            App.ScreenDensity = Resources.DisplayMetrics.Density;
+            App.ScreenWidth = Resources.DisplayMetrics.WidthPixels;
+            App.ScreenHeight = Resources.DisplayMetrics.HeightPixels;
 
             base.OnCreate(savedInstanceState);
             LibVLCSharpFormsRenderer.Init();

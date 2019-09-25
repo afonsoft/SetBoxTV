@@ -13,25 +13,30 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <StackLayout Spacing="10"
-                x:Name="layout"
-                Margin="20,35,20,25"
-                Orientation="Horizontal"
-                BackgroundColor="Black">
-        
-        <StackLayout.BindingContext>
+    <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1" BackgroundColor="Black" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="380" />
+            <RowDefinition Height="150" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.BindingContext>
 			<local:MainViewModel/>
-		</StackLayout.BindingContext>
+		</Grid.BindingContext>
 
         <Image Source="https://setbox.afonsoft.com.br/logos/LOGO.jpg" 
                HeightRequest="375"
-               VerticalOptions="Fill"
-               HorizontalOptions="Center"/>
+               Grid.Row="0"
+               Grid.Column="0"/>
 
         <ActivityIndicator IsRunning="{Binding IsLoading}"
                             IsVisible="{Binding IsLoading}"
-                            VerticalOptions="CenterAndExpand"
-                            HorizontalOptions="CenterAndExpand"/>
+                            Grid.Row="1"
+                            Grid.Column="0"/>
 
         <Label x:Name="labelId"
                 FontSize="Medium"
@@ -39,8 +44,22 @@
                 BackgroundColor="Black"
                 Text="{Binding LoadingText}"
                 IsVisible="True"
-                VerticalOptions="CenterAndExpand"
-                HorizontalOptions="CenterAndExpand"/>
+                HorizontalTextAlignment="Center"
+                Grid.Row="2"
+                Grid.Column="0" 
+               HeightRequest="20"/>
+
+       
+        <ProgressBar x:Name="progressBarId" 
+                    Progress="{Binding ProgressValue, Converter={StaticResource ValueProgressBarConverter}}" 
+                    IsVisible="{Binding IsDownloading}" 
+                    BackgroundColor="Gray"
+                    VerticalOptions="End"
+                    ProgressColor="Red"
+                    HeightRequest="10"
+                    HorizontalOptions="FillAndExpand"
+                    Grid.Row="3"
+                    Grid.Column="0"/>
 
         <Label x:Name="labelLoadingId" 
                 TextColor="White" 
@@ -48,16 +67,9 @@
                 FontSize="Medium"
                 Text="{Binding ProgressValue, StringFormat='{0:F2}%'}" 
                 IsVisible="{Binding IsDownloading}" 
-                VerticalOptions="EndAndExpand"
-                HorizontalOptions="CenterAndExpand"/>
-
-        <ProgressBar x:Name="progressBarId" 
-                    Progress="{Binding ProgressValue, Converter={StaticResource ValueProgressBarConverter}}" 
-                    IsVisible="{Binding IsDownloading}" 
-                    BackgroundColor="Gray"
-                    VerticalOptions="EndAndExpand"
-                    ProgressColor="Red"
-                    HeightRequest="30"
-                    HorizontalOptions="CenterAndExpand"/>
-    </StackLayout>
+                HorizontalTextAlignment="Center"
+                Grid.Row="4"
+                Grid.Column="0"
+               HeightRequest="20"/>
+    </Grid>
 </ContentPage>
