@@ -16,7 +16,7 @@
     <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1" BackgroundColor="Black" >
         <Grid.RowDefinitions>
             <RowDefinition Height="380" />
-            <RowDefinition Height="150" />
+            <RowDefinition Height="100" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="100" />
             <RowDefinition Height="100" />
@@ -33,7 +33,7 @@
                Grid.Row="0"
                Grid.Column="0"/>
 
-        <ActivityIndicator IsRunning="{Binding IsLoading}"
+        <ActivityIndicator  IsRunning="True"
                             IsVisible="{Binding IsLoading}"
                             Grid.Row="1"
                             Grid.Column="0"/>
