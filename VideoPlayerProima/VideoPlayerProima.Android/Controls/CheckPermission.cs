@@ -6,9 +6,9 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 {
     public class CheckPermission : ICheckPermission
     {
-        public void CheckSelfPermission()
+        public async void CheckSelfPermission()
         {
-            MainActivity.Instance.CheckSelfPermission();
+            await MainActivity.Instance.CheckSelfPermission();
         }
     }
 }

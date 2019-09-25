@@ -6,16 +6,16 @@ namespace SetBoxTV.VideoPlayer.Model
 {
     public class DownloadBytesProgress
     {
-        public DownloadBytesProgress(string fileName, int bytesReceived, int totalBytes)
+        public DownloadBytesProgress(string fileName, long bytesReceived, long totalBytes)
         {
             Filename = fileName;
             BytesReceived = bytesReceived;
             TotalBytes = totalBytes;
         }
 
-        public int TotalBytes { get; private set; }
+        public long TotalBytes { get; private set; }
 
-        public int BytesReceived { get; private set; }
+        public long BytesReceived { get; private set; }
 
         public float PercentComplete { get { return (float)BytesReceived / TotalBytes; } }
 

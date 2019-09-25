@@ -87,7 +87,7 @@ namespace SetBoxTV.VideoPlayer.Droid
 
         }
 
-        public async void CheckSelfPermission()
+        public async Task CheckSelfPermission()
         {
             /*
                 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -125,7 +125,7 @@ namespace SetBoxTV.VideoPlayer.Droid
                 requestCode++;
                 try
                 {
-                    if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(this, permission) != (int)Permission.Granted)
+                    if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(Instance, permission) != (int)Permission.Granted)
                     {
                         await RequestPermission(requestCode, permission);
                     }

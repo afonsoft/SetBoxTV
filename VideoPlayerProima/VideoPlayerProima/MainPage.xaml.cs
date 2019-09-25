@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using SetBoxTV.VideoPlayer.Helpers;
 using SetBoxTV.VideoPlayer.Interface;
@@ -144,7 +145,7 @@ namespace SetBoxTV.VideoPlayer
                         {
                             log?.Info($"Download do arquivo: {fi.url}");
                             ShowText($"Download da midia {fi.name}");
-                            await StartDownloadHandler(fi.url, Path.Combine(PlayerSettings.PathFiles, fi.name)).ConfigureAwait(true);
+                            await StartDownloadHandler(fi.url, PlayerSettings.PathFiles, fi.name);
                         }
                         catch (Exception ex)
                         {
@@ -182,7 +183,7 @@ namespace SetBoxTV.VideoPlayer
                                 {
                                     log?.Info($"Download do arquivo: {fiServier.url}");
                                     ShowText($"Download da midia {fiServier.name}");
-                                    await StartDownloadHandler(fiServier.url, Path.Combine(PlayerSettings.PathFiles, fiServier.name)).ConfigureAwait(true);
+                                    await StartDownloadHandler(fiServier.url, PlayerSettings.PathFiles, fiServier.name);
                                 }
                                 catch (Exception ex)
                                 {
@@ -243,15 +244,31 @@ namespace SetBoxTV.VideoPlayer
             afterHideCallback?.Invoke();
         }
 
-        private async Task<int> StartDownloadHandler(string urlToDownload, string pathToSave)
+        private async Task StartDownloadHandler(string urlToDownload, string pathToSave, string fileName)
         {
             model.ProgressValue = 0;
             model.IsDownloading = true;
-            Progress<DownloadBytesProgress> progressReporter = new Progress<DownloadBytesProgress>();
-            progressReporter.ProgressChanged += (s, args) => model.ProgressValue = (int)(100 * args.PercentComplete);
-            int downloadTask = await DownloadHelper.CreateDownloadTask(urlToDownload, pathToSave, progressReporter).ConfigureAwait(true);
-            model.IsDownloading = false;
-            return downloadTask;
+            var cts = new CancellationTokenSource();
+            try
+            {
+                Progress<DownloadBytesProgress> progressReporter = new Progress<DownloadBytesProgress>();
+                progressReporter.ProgressChanged += ProgressReporter_ProgressChanged;
+
+                await DownloadHelper.CreateDownloadTask(urlToDownload, pathToSave, fileName, progressReporter, cts.Token);
+            }
+            catch (OperationCanceledException ex)
+            {
+                log?.Error(ex);
+            }
+            finally
+            {
+                model.IsDownloading = false;
+            }
+        }
+
+        private void ProgressReporter_ProgressChanged(object sender, DownloadBytesProgress e)
+        {
+            model.ProgressValue = (int)(100 * e.PercentComplete);
         }
     }
 }

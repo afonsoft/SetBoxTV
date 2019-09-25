@@ -2,6 +2,8 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using SetBoxTV.VideoPlayer.Model;
 
@@ -15,53 +17,72 @@ namespace SetBoxTV.VideoPlayer.Helpers
         /// <summary>
         /// BufferSize
         /// </summary>
-        public static readonly int BufferSize = 2048;
+        public static readonly int BufferSize = 4095;
 
         /// <summary>
         /// DownloadTask
         /// </summary>
-        /// <param name="urlToDownload"></param>
+        /// <param name="url"></param>
         /// <param name="pathToSave"></param>
         /// <param name="progessReporter"></param>
         /// <returns></returns>
-        public static Task<int> CreateDownloadTask(string urlToDownload, string pathToSave, IProgress<DownloadBytesProgress> progessReporter)
+        public static async Task CreateDownloadTask(string url, string pathToSave, string name, IProgress<DownloadBytesProgress> progessReporter, CancellationToken token)
         {
-            return Task.Run<int>(async () =>
-              {
-                  int receivedBytes = 0;
-                  int totalBytes = 0;
-                  using (WebClient client = new WebClient())
-                  {
-                      using (var stream = await client.OpenReadTaskAsync(urlToDownload))
-                      {
-                          byte[] buffer = new byte[BufferSize];
-                          totalBytes = Int32.Parse(client.ResponseHeaders[HttpResponseHeader.ContentLength]);
-                          using (MemoryStream ms = new MemoryStream())
-                          {
-                              while (true)
-                              {
-                                  int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
-                                  ms.Write(buffer, 0, bytesRead);
-                                  if (bytesRead == 0)
-                                  {
-                                      await Task.Yield();
-                                      break;
-                                  }
+            using (HttpClient _client = new HttpClient())
+            {
+                // Step 1 : Get call
+                var response = await _client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, token);
 
-                                  receivedBytes += bytesRead;
-                                  if (progessReporter != null)
-                                  {
-                                      progessReporter.Report(new DownloadBytesProgress(urlToDownload, receivedBytes, totalBytes));
-                                  }
-                              }
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception(string.Format("The request returned with HTTP status code {0}", response.StatusCode));
+                }
 
-                              using (FileStream file = new FileStream(pathToSave, FileMode.Create, System.IO.FileAccess.Write))
-                                  ms.CopyTo(file);
-                          }
-                      }
-                  }
-                  return receivedBytes;
-              });
+                // Step 2 : Filename
+                var fileName = response.Content.Headers?.ContentDisposition?.FileName ?? name;
+
+                // Step 3 : Get total of data
+                var totalBytes = response.Content.Headers.ContentLength.GetValueOrDefault(-1L);
+                var canSendProgress = totalBytes != -1L && progessReporter != null;
+
+                // Step 4 : Get total of data
+                var filePath = Path.Combine(pathToSave, fileName);
+
+                // Step 5 : Download data
+                using (var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.None, BufferSize))
+                {
+                    using (var stream = await response.Content.ReadAsStreamAsync())
+                    {
+                        var receivedBytes = 0L;
+                        var buffer = new byte[BufferSize];
+                        var isMoreDataToRead = true;
+
+                        do
+                        {
+                            token.ThrowIfCancellationRequested();
+
+                            var read = await stream.ReadAsync(buffer, 0, buffer.Length, token);
+
+                            if (read == 0)
+                            {
+                                isMoreDataToRead = false;
+                            }
+                            else
+                            {
+                                // Write data on disk.
+                                await fileStream.WriteAsync(buffer, 0, read);
+
+                                receivedBytes += read;
+
+                                if (canSendProgress)
+                                {
+                                    progessReporter.Report(new DownloadBytesProgress(fileName, receivedBytes, totalBytes));
+                                }
+                            }
+                        } while (isMoreDataToRead);
+                    }
+                }
+            }
         }
     }
 }

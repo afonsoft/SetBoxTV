@@ -47,7 +47,7 @@
                 TextColor="White" 
                 BackgroundColor="Black"
                 Text="{Binding LoadingText}"
-                IsVisible="True"
+                IsVisible="{Binding IsLoading}"
                 HorizontalTextAlignment="Center"
                 Grid.Row="2"
                 Grid.Column="0" 
