@@ -50,15 +50,12 @@ namespace SetBoxTV.VideoPlayer.Model
             private set => SetProperty(ref _libVLC, value);
         }
 
-        private MediaPlayer _mediaPlayer;
+
         /// <summary>
         /// Gets the <see cref="LibVLCSharp.Shared.MediaPlayer"/> instance.
         /// </summary>
-        public MediaPlayer MediaPlayer
-        {
-            get => _mediaPlayer;
-            set => SetProperty(ref _mediaPlayer, value);
-        }
+        public MediaPlayer mediaPlayer;
+       
 
 
         /// <summary>
@@ -81,7 +78,7 @@ namespace SetBoxTV.VideoPlayer.Model
                 if (!string.IsNullOrEmpty(_file))
                 {
                     Media = new Media(LibVLC, _file, FromType.FromPath);
-                    MediaPlayer = new MediaPlayer(Media)
+                    mediaPlayer = new MediaPlayer(Media)
                     {
                         EnableHardwareDecoding = true,
                         Fullscreen = true,
@@ -91,7 +88,7 @@ namespace SetBoxTV.VideoPlayer.Model
                 }
                 else
                 {
-                    MediaPlayer = new MediaPlayer(LibVLC);
+                    mediaPlayer = new MediaPlayer(LibVLC);
                 }
 
             }
@@ -125,7 +122,7 @@ namespace SetBoxTV.VideoPlayer.Model
             LibVLC = new LibVLC();
 
             // instanciate the main MediaPlayer object
-            MediaPlayer = new MediaPlayer(LibVLC);
+            mediaPlayer = new MediaPlayer(LibVLC);
 
         }
     }

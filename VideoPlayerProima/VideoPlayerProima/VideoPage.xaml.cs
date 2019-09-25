@@ -138,12 +138,11 @@ namespace SetBoxTV.VideoPlayer
                         model.VideoFile = fileOrUrl.path;
                         videoPlayer.IsVisible = true;
 
-                        model.MediaPlayer.Stopped += MediaPlayer_Stopped;
-                        model.MediaPlayer.Play();
-                        videoPlayer.ControlTemplate = null;
+                        model.mediaPlayer.Stopped += MediaPlayer_Stopped;
+                        model.mediaPlayer.Play();
 
                         VideoFade();
-                        log?.Info($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
+                        log?.Info($"Duration: {model.mediaPlayer.Length / 1000} Segundos");
                         break;
                     }
                 case EnumFileType.Image:
