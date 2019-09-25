@@ -105,7 +105,14 @@ namespace SetBoxTV.VideoPlayer.Droid
             Manifest.Permission.AccessNotificationPolicy,
             Manifest.Permission.Internet,
             Manifest.Permission.WakeLock,
-            Manifest.Permission.ReceiveBootCompleted
+            Manifest.Permission.ReceiveBootCompleted,
+            Manifest.Permission.MediaContentControl,
+            Manifest.Permission.AccessNetworkState,
+            Manifest.Permission.RequestInstallPackages,
+            Manifest.Permission.ReadLogs,
+            Manifest.Permission.InstallPackages,
+            Manifest.Permission.GetPackageSize,
+            Manifest.Permission.DeletePackages,
         };
 
             int requestCode = 100;
@@ -148,6 +155,9 @@ namespace SetBoxTV.VideoPlayer.Droid
         {
             try
             {
+                Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
                 if (grantResults[0] == Permission.Denied)
                 {
                     taskGrantPermission.SetResult(false);
@@ -162,8 +172,6 @@ namespace SetBoxTV.VideoPlayer.Droid
             {
                 //Ignore
             }
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
         public static MainActivity Instance { private set; get; }
