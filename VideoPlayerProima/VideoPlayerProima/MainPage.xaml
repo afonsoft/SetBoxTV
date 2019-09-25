@@ -33,6 +33,7 @@
 
         <ActivityIndicator  IsRunning="True"
                             IsVisible="{Binding IsLoading}"
+                            Color="Red"
                             Grid.Row="1"
                             Grid.Column="0"/>
 

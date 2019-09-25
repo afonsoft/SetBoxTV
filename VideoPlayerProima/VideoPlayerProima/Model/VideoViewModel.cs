@@ -54,8 +54,14 @@ namespace SetBoxTV.VideoPlayer.Model
         /// <summary>
         /// Gets the <see cref="LibVLCSharp.Shared.MediaPlayer"/> instance.
         /// </summary>
-        public MediaPlayer mediaPlayer;
-       
+        public MediaPlayer _mediaPlayer;
+
+        public MediaPlayer MediaPlayer
+        {
+            get => _mediaPlayer;
+            private set => SetProperty(ref _mediaPlayer, value);
+        }
+
 
 
         /// <summary>

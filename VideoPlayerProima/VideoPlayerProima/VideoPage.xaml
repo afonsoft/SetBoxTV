@@ -14,9 +14,15 @@
         <StackLayout.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnTapped" NumberOfTapsRequired="2" />
         </StackLayout.GestureRecognizers>
-        <!--<controls:VideoPlayer x:Name="videoPlayer" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsVisible="False" AreTransportControlsEnabled="False"  />-->
-        <vlc:MediaPlayerElement x:Name="videoPlayer" MediaPlayer="{Binding MediaPlayer}" LibVLC="{Binding LibVLC}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
-        <Image x:Name="imagePlayer" BackgroundColor="Black" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False"/>
+
+        <vlc:MediaPlayerElement x:Name="videoPlayer" MediaPlayer="{Binding MediaPlayer}" LibVLC="{Binding LibVLC}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsVisible="False"/>
+
+        <Image x:Name="imagePlayer" BackgroundColor="Black" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="False">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnTapped" NumberOfTapsRequired="2" />
+            </Image.GestureRecognizers>
+        </Image>
+        
         <ActivityIndicator x:Name="actInd"
                              IsRunning="{Binding IsLoading}"
                              IsVisible="{Binding IsLoading}" Color="Red"

@@ -17,8 +17,8 @@ namespace SetBoxTV.VideoPlayer
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VideoPage : ContentPage
     {
-        private SetBoxTV.VideoPlayer.Library.VideoSource fileToPlayer;
-        private ImageSource imagaToPlayer;
+        private SetBoxTV.VideoPlayer.Library.VideoSource fileToPlay;
+        private ImageSource imagaToPlay;
         private Uri urlToPlayer;
         private readonly IList<FileDetails> fileDetails;
         private readonly ILogger log;
@@ -112,16 +112,16 @@ namespace SetBoxTV.VideoPlayer
             switch (fileOrUrl.fileType)
             {
                 case EnumFileType.Video:
-                    fileToPlayer = new FileVideoSource { File = fileOrUrl.path };
+                    fileToPlay = new FileVideoSource { File = fileOrUrl.path };
                     break;
                 case EnumFileType.WebVideo:
-                    fileToPlayer = new UriVideoSource { Uri = fileOrUrl.path };
+                    fileToPlay = new UriVideoSource { Uri = fileOrUrl.path };
                     break;
                 case EnumFileType.Image:
-                    imagaToPlayer = ImageSource.FromFile(fileOrUrl.path);
+                    imagaToPlay = ImageSource.FromFile(fileOrUrl.path);
                     break;
                 case EnumFileType.WebImage:
-                    imagaToPlayer = ImageSource.FromUri(new Uri(fileOrUrl.path));
+                    imagaToPlay = ImageSource.FromUri(new Uri(fileOrUrl.path));
                     break;
                 case EnumFileType.WebPage:
                     urlToPlayer = new Uri(fileOrUrl.path);
@@ -135,21 +135,22 @@ namespace SetBoxTV.VideoPlayer
                 case EnumFileType.Video:
                 case EnumFileType.WebVideo:
                     {
-                        model.VideoFile = fileOrUrl.path;
                         videoPlayer.IsVisible = true;
-
-                        model.mediaPlayer.Stopped += MediaPlayer_Stopped;
-                        model.mediaPlayer.Play();
+                        videoPlayer.LibVLC = model.LibVLC;
+                        model.VideoFile = ((FileVideoSource)fileToPlay).File;
+                        model.MediaPlayer.Stopped += MediaPlayer_Stopped;
+                        videoPlayer.MediaPlayer = model.MediaPlayer;
+                        videoPlayer.MediaPlayer.Play();
 
                         VideoFade();
-                        log?.Info($"Duration: {model.mediaPlayer.Length / 1000} Segundos");
+                        log?.Info($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
                         break;
                     }
                 case EnumFileType.Image:
                 case EnumFileType.WebImage:
                     {
                         imagePlayer.IsVisible = true;
-                        imagePlayer.Source = imagaToPlayer;
+                        imagePlayer.Source = imagaToPlay;
                         ImageFade();
                         Delay();
                         break;
