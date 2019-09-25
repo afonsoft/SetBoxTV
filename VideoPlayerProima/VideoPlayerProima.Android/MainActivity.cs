@@ -17,6 +17,7 @@ using Android.Widget;
 using Rollbar;
 using VideoPlayerProima.Droid.Controls;
 using VideoPlayerProima.Helpers;
+using LibVLCSharp.Forms.Shared;
 
 namespace VideoPlayerProima.Droid
 {
@@ -63,6 +64,7 @@ namespace VideoPlayerProima.Droid
             Forms.SetTitleBarVisibility(Instance, AndroidTitleBarVisibility.Never);
 
             base.OnCreate(savedInstanceState);
+            LibVLCSharpFormsRenderer.Init();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Forms.Init(this, savedInstanceState);
 

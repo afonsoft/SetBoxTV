@@ -27,9 +27,9 @@ namespace VideoPlayerProima
 
         public VideoPage(IList<FileDetails> files)
         {
-            model = new VideoViewModel();
+            
             InitializeComponent();
-            BindingContext = model;
+            BindingContext = model = new VideoViewModel(); 
             model.IsLoading = true;
 
             fileDetails = files;

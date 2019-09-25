@@ -20,8 +20,7 @@ namespace VideoPlayerProima
         public SettingsPage()
         {
             InitializeComponent();
-            model = new SettingsViewModel();
-            BindingContext = model;
+            BindingContext = model = new SettingsViewModel();
 
             log = DependencyService.Get<ILogger>();
             if (log != null)

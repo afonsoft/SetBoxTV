@@ -24,10 +24,9 @@ namespace VideoPlayerProima
         public MainPage()
         {
             InitializeComponent();
-            model = new MainViewModel();
             model.IsLoading = true;
             model.LoadingText = "Loading";
-            BindingContext = model;
+            BindingContext = model = new MainViewModel(); 
 
             log = DependencyService.Get<ILogger>();
             if (log != null)

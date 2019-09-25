@@ -71,20 +71,17 @@ namespace VideoPlayerProima.Model
             _Company = "Art Vision Indoor";
             _Telephone = "(13) 9817-76786";
             _Email = "artvisionindoor@gmail.com";
-            _PathFiles = "/storage/emulated/0/Movies";
+
+            if (string.IsNullOrEmpty(_PathFiles))
+                _PathFiles = "/storage/emulated/0/Movies";
 
         }
 
         public string License
         {
-            get
-            {
-                return this._License;
-            }
-            set
-            {
-                SetProperty(ref _License, value);
-            }
+            get => this._License;
+            set => SetProperty(ref _License, value);
+            
         }
         public string PathFiles
         {
