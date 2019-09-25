@@ -15,27 +15,29 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 {
     public class FilePicker : IFilePicker
     {
-        public IEnumerable<FileDetails> GetFiles(string searchPath, EnumFileType type, params string[] searchExt)
+        public IList<FileDetails> GetFiles(string searchPath, EnumFileType type, params string[] searchExt)
         {
             if (Directory.Exists(searchPath))
             {
                 DirectoryInfo di = new DirectoryInfo(searchPath);
 
-                return di.EnumerateFiles("*.*", SearchOption.AllDirectories)
-                     .AsParallel()
-                     .Where(s => searchExt.Any(s.Name.EndsWith))
-                     .Select(f => new FileDetails
-                     {
-                         fileType = type,
-                         path = f.FullName,
-                         creationDateTime = f.CreationTime,
-                         extension = f.Extension,
-                         name = f.Name,
-                         size = f.Length,
-                         description = "",
-                         url = f.FullName,
-                         checkSum = CheckSumHelpers.MD5HashFile(f.FullName)
-                     });
+                var files = di.EnumerateFiles("*.*", SearchOption.AllDirectories)
+                         .AsParallel()
+                         .Where(s => searchExt.Any(s.Name.EndsWith))
+                         .Select(f => new FileDetails
+                         {
+                             fileType = type,
+                             path = f.FullName,
+                             creationDateTime = f.CreationTime,
+                             extension = f.Extension,
+                             name = f.Name,
+                             size = f.Length,
+                             description = "",
+                             url = f.FullName,
+                             checkSum = CheckSumHelpers.MD5HashFile(f.FullName)
+                         }).ToList();
+
+                return files;
             }
             return new List<FileDetails>();
         }

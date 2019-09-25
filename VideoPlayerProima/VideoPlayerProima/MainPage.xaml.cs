@@ -175,7 +175,7 @@ namespace SetBoxTV.VideoPlayer
                         {
                             var fiServier = serverFiles.FirstOrDefault(x => x.name == fi.name);
                             //verificar o checksum
-                            if (fiServier != null && fiServier.checkSum != fi.checkSum)
+                            if (fiServier != null && !CheckSumHelpers.CheckMD5Hash(fiServier.checkSum, fi.checkSum))
                             {
                                 log?.Info($"Deletando o arquivo {fi.name} CheckSum {fi.checkSum} != {fiServier.checkSum} Diferentes");
                                 filePicker.DeleteFile(fi.path);
@@ -237,7 +237,7 @@ namespace SetBoxTV.VideoPlayer
             Action afterHideCallback)
         {
             await DisplayAlert(
-                title, 
+                title,
                 message,
                 buttonText).ConfigureAwait(true);
 
@@ -253,8 +253,7 @@ namespace SetBoxTV.VideoPlayer
             {
                 Progress<DownloadBytesProgress> progressReporter = new Progress<DownloadBytesProgress>();
                 progressReporter.ProgressChanged += ProgressReporter_ProgressChanged;
-
-                await DownloadHelper.CreateDownloadTask(urlToDownload, pathToSave, fileName, progressReporter, cts.Token);
+                await Task.Run(async () => await DownloadHelper.CreateDownloadTask(urlToDownload, pathToSave, fileName, progressReporter, cts.Token));
             }
             catch (OperationCanceledException ex)
             {
@@ -268,7 +267,11 @@ namespace SetBoxTV.VideoPlayer
 
         private void ProgressReporter_ProgressChanged(object sender, DownloadBytesProgress e)
         {
-            model.ProgressValue = (int)(100 * e.PercentComplete);
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                model.LoadingText = e.Filename;
+                model.ProgressValue = (int)(100 * e.PercentComplete);
+            });
         }
     }
 }

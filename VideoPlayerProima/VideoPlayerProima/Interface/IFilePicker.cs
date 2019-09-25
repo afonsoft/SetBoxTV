@@ -6,7 +6,7 @@ namespace SetBoxTV.VideoPlayer.Interface
 {
     public interface IFilePicker
     {
-        IEnumerable<FileDetails> GetFiles(string searchPath, EnumFileType type, params string[] searchExt);
+        IList<FileDetails> GetFiles(string searchPath, EnumFileType type, params string[] searchExt);
         void DeleteFile(string fullPath);
     }
 }

@@ -1,17 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:converters="clr-namespace:SetBoxTV.VideoPlayer"
              xmlns:local="clr-namespace:SetBoxTV.VideoPlayer.Model"
              BackgroundColor="Black"
              x:Class="SetBoxTV.VideoPlayer.MainPage"
              NavigationPage.HasNavigationBar="False"
              x:Name="Root">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <converters:ValueProgressBarConverter x:Key="ValueProgressBarConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
 
     <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1" BackgroundColor="Black" >
         <Grid.RowDefinitions>
@@ -55,11 +49,11 @@
 
        
         <ProgressBar x:Name="progressBarId" 
-                    Progress="{Binding ProgressValue, Converter={StaticResource ValueProgressBarConverter}}" 
+                    Progress="{Binding ProgressValue}" 
                     IsVisible="{Binding IsDownloading}" 
                     BackgroundColor="Gray"
                     VerticalOptions="End"
-                    ProgressColor="Red"
+                    ProgressColor="Orange"
                     HeightRequest="10"
                     HorizontalOptions="FillAndExpand"
                     Grid.Row="3"
