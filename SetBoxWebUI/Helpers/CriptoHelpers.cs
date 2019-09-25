@@ -44,7 +44,7 @@ namespace SetBoxWebUI.Helpers
         /// <returns></returns>
         public static string MD5HashFile(string input)
         {
-            using (var md5 = SHA256.Create())
+            using (var md5 = MD5.Create())
             {
                 using (var stream = File.OpenRead(input))
                 {
@@ -61,7 +61,7 @@ namespace SetBoxWebUI.Helpers
         /// <returns></returns>
         public static string MD5HashStream(Stream input)
         {
-            using (var md5 = SHA256.Create())
+            using (var md5 = MD5.Create())
             {
                 var hash = md5.ComputeHash(input);
                 return BitConverter.ToString(hash).Replace("-", "").ToUpperInvariant();
@@ -75,7 +75,7 @@ namespace SetBoxWebUI.Helpers
         /// <returns></returns>
         public static string MD5HashBytes(byte[] input)
         {
-            using (var md5 = SHA256.Create())
+            using (var md5 = MD5.Create())
             {
                 var hash = md5.ComputeHash(input);
                 return BitConverter.ToString(hash).Replace("-", "").ToUpperInvariant();
@@ -89,7 +89,7 @@ namespace SetBoxWebUI.Helpers
         /// <returns></returns>
         public static string MD5HashString(string input)
         {
-            using (var md5 = SHA256.Create())
+            using (var md5 = MD5.Create())
             {
                 var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
                 return BitConverter.ToString(hash).Replace("-", "").ToUpperInvariant();
