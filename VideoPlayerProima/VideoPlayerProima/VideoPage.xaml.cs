@@ -136,7 +136,7 @@ namespace SetBoxTV.VideoPlayer
                 case EnumFileType.Video:
                 case EnumFileType.WebVideo:
                     {
-                        model.MediaPlayer = new LibVLCSharp.Shared.MediaPlayer(new Media(model.LibVLC, fileOrUrl.path, FromType.FromLocation))
+                        model.MediaPlayer = new LibVLCSharp.Shared.MediaPlayer(new Media(model.LibVLC, fileOrUrl.path, FromType.FromPath))
                         {
                             EnableHardwareDecoding = true,
                             Fullscreen = true,

@@ -17,7 +17,7 @@ namespace SetBoxWebUITest
         {
             try
             {
-                api = new VideoPlayerProima.API.SetBoxApi("ABCD", "1111", "https://setbox.afonsoft.com.br/Api/SetBox/");
+                api = new SetBoxApi("ABCD", "1111", "https://setbox.afonsoft.com.br/Api/SetBox/");
                 Assert.IsNotNull(api);
             }
             catch (Exception ex)

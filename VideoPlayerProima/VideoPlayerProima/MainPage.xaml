@@ -15,11 +15,11 @@
 
     <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1" BackgroundColor="Black" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="380" />
-            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
-            <RowDefinition Height="100" />
-            <RowDefinition Height="100" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -28,9 +28,13 @@
 			<local:MainViewModel/>
 		</Grid.BindingContext>
 
+        
         <Image Source="https://setbox.afonsoft.com.br/logos/LOGO.jpg" 
-               HeightRequest="375"
                Grid.Row="0"
+               Aspect="AspectFit"
+               HeightRequest ="188"
+               WidthRequest="344"
+               HorizontalOptions="Center"
                Grid.Column="0"/>
 
         <ActivityIndicator  IsRunning="True"
@@ -47,7 +51,7 @@
                 HorizontalTextAlignment="Center"
                 Grid.Row="2"
                 Grid.Column="0" 
-               HeightRequest="20"/>
+                HeightRequest="20"/>
 
        
         <ProgressBar x:Name="progressBarId" 
@@ -70,6 +74,6 @@
                 HorizontalTextAlignment="Center"
                 Grid.Row="4"
                 Grid.Column="0"
-               HeightRequest="20"/>
+                HeightRequest="20"/>
     </Grid>
 </ContentPage>
