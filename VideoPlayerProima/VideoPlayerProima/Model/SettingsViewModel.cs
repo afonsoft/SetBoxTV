@@ -16,47 +16,6 @@ namespace SetBoxTV.VideoPlayer.Model
         private bool _EnableTransactionTime = false;
         private int _TransactionTime;
 
-        private string _Company;
-        private string _Telephone;
-        private string _Email;
-
-        public string Email
-        {
-            get
-            {
-                return this._Email;
-            }
-            set
-            {
-                SetProperty(ref _Email, value);
-            }
-        }
-
-        public string Company
-        {
-            get
-            {
-                return this._Company;
-            }
-            set
-            {
-                SetProperty(ref _Company, value);
-            }
-        }
-
-        public string Telephone
-        {
-            get
-            {
-                return this._Telephone;
-            }
-            set
-            {
-                SetProperty(ref _Telephone, value);
-            }
-        }
-
-
         public SettingsViewModel()
         {
             _License = PlayerSettings.License;
@@ -67,10 +26,6 @@ namespace SetBoxTV.VideoPlayer.Model
             _ShowWebVideo = PlayerSettings.ShowWebVideo;
             _EnableTransactionTime = PlayerSettings.EnableTransactionTime;
             _TransactionTime = PlayerSettings.TransactionTime;
-
-            _Company = "Art Vision Indoor";
-            _Telephone = "(13) 9817-76786";
-            _Email = "artvisionindoor@gmail.com";
 
             if (string.IsNullOrEmpty(_PathFiles))
                 _PathFiles = "/storage/emulated/0/Movies";

@@ -9,7 +9,7 @@ using SetBoxTV.VideoPlayer.Helpers;
 using System.Net;
 using System;
 
-[assembly: Dependency(typeof(VideoPlayerProima.Droid.Controls.FilePicker))]
+[assembly: Dependency(typeof(SetBoxTV.VideoPlayer.Droid.Controls.FilePicker))]
 
 namespace SetBoxTV.VideoPlayer.Droid.Controls
 {

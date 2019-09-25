@@ -30,6 +30,7 @@ namespace SetBoxTV.VideoPlayer
             
             InitializeComponent();
             BindingContext = model = new VideoViewModel(); 
+
             model.IsLoading = true;
 
             fileDetails = files;

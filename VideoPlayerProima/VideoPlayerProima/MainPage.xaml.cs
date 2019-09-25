@@ -24,9 +24,10 @@ namespace SetBoxTV.VideoPlayer
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = model = new MainViewModel();
+
             model.IsLoading = true;
             model.LoadingText = "Loading";
-            BindingContext = model = new MainViewModel(); 
 
             log = DependencyService.Get<ILogger>();
             if (log != null)

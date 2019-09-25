@@ -5,7 +5,7 @@ using SetBoxTV.VideoPlayer.Interface;
 using Xamarin.Essentials;
 using Android.Content.PM;
 
-[assembly: Dependency(typeof(VideoPlayerProima.Droid.Controls.DevicePicker))]
+[assembly: Dependency(typeof(SetBoxTV.VideoPlayer.Droid.Controls.DevicePicker))]
 namespace SetBoxTV.VideoPlayer.Droid.Controls
 {
     public class DevicePicker : IDevicePicker

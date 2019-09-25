@@ -7,7 +7,7 @@ using Android.OS;
 using SetBoxTV.VideoPlayer.Interface;
 using System.IO;
 
-[assembly: Dependency(typeof(VideoPlayerProima.Droid.Controls.DirectoyPicker))]
+[assembly: Dependency(typeof(SetBoxTV.VideoPlayer.Droid.Controls.DirectoyPicker))]
 
 namespace SetBoxTV.VideoPlayer.Droid.Controls
 {

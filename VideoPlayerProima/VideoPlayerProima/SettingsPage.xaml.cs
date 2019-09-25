@@ -40,16 +40,19 @@ namespace SetBoxTV.VideoPlayer
             devicePicker = DependencyService.Get<IDevicePicker>();
             deviceIdentifier = devicePicker?.GetIdentifier();
             LicenseID.Detail = "ID: " + deviceIdentifier;
+            Company.Detail = "Art Vision Indoor";
+            Telephone.Detail = "(13) 9817-76786";
+            Email.Detail = "artvisionindoor@gmail.com";
 
             try
             {
                 var api = new API.SetBoxApi(deviceIdentifier, PlayerSettings.License, PlayerSettings.Url);
-                var config = await api.GetSupport();
+                var config = await api.GetSupport().ConfigureAwait(true);
                 if (config != null)
                 {
-                    model.Company = config.company;
-                    model.Telephone = config.telephone;
-                    model.Email = config.email;
+                    Company.Detail = config.company;
+                    Telephone.Detail = config.telephone;
+                    Email.Detail = config.email;
                 }
             }
             catch (Exception ex)
@@ -84,13 +87,29 @@ namespace SetBoxTV.VideoPlayer
             await DisplayAlert(
                 title,
                 message,
-                buttonText);
+                buttonText).ConfigureAwait(true);
 
             afterHideCallback?.Invoke();
         }
 
         public async void OnButtonSalvarClicked(object sender, EventArgs e)
         {
+            model.License = LabelKey.Text;
+            model.PathFiles = FolderSeleted.Detail;
+            model.ShowVideo = SwitchVideo.On;
+            model.ShowPhoto = SwitchPhoto.On;
+            model.ShowWebImage = SwitchWebImage.On;
+            model.ShowWebVideo = SwitchWebVideo.On;
+            model.EnableTransactionTime = SwitchTransaction.On;
+
+            if (int.TryParse(SwitchTransactionTime.Text, out int time))
+            {
+                if (time <= 1)
+                    time = 1;
+                model.TransactionTime = time;
+            }
+
+
             PlayerSettings.License = model.License;
             PlayerSettings.PathFiles = model.PathFiles;
             PlayerSettings.ShowVideo = model.ShowVideo;
@@ -104,6 +123,7 @@ namespace SetBoxTV.VideoPlayer
             {
                 var api = new API.SetBoxApi(deviceIdentifier, model.License, PlayerSettings.Url);
                 log?.Info("Salvando as Configurações no Servidor");
+                
                 await api.SetConfig(new ConfigModel()
                 {
                     enablePhoto = model.ShowPhoto,
@@ -111,7 +131,7 @@ namespace SetBoxTV.VideoPlayer
                     enableTransaction = model.EnableTransactionTime,
                     enableWebVideo = model.ShowWebVideo,
                     transactionTime = model.TransactionTime
-                });
+                }).ConfigureAwait(true);
             }
             catch (Exception ex)
             {
@@ -119,7 +139,7 @@ namespace SetBoxTV.VideoPlayer
             }
 
             await ShowMessage("Dados Salvos com sucesso!", "Salvar", "OK",
-                () => { Application.Current.MainPage = new MainPage(); });
+                () => { Application.Current.MainPage = new MainPage(); }).ConfigureAwait(true);
         }
 
         private void LicenseID_Tapped(object sender, EventArgs e)

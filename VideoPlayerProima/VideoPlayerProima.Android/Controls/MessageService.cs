@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using SetBoxTV.VideoPlayer.Interface;
 
-[assembly: Dependency(typeof(VideoPlayerProima.Droid.Controls.MessageService))]
+[assembly: Dependency(typeof(SetBoxTV.VideoPlayer.Droid.Controls.MessageService))]
 namespace SetBoxTV.VideoPlayer.Droid.Controls
 {
     class MessageService : IMessage
