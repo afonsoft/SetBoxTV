@@ -236,7 +236,7 @@ namespace SetBoxTV.VideoPlayer
             Action afterHideCallback)
         {
             await DisplayAlert(
-                title,
+                title, 
                 message,
                 buttonText).ConfigureAwait(true);
 
