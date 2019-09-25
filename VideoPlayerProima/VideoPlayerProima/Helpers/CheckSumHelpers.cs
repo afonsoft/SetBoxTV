@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SetBoxTV.VideoPlayer.Helpers
 {
-    public class CheckSumHelpers
+    public static class CheckSumHelpers
     {
         /// <summary>
         /// MD5 CheckSum File
