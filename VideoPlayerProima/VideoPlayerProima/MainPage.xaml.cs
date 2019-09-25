@@ -18,6 +18,7 @@ namespace SetBoxTV.VideoPlayer
     {
         private readonly List<FileDetails> arquivos = new List<FileDetails>();
         private readonly ILogger log;
+        private readonly IMessage message;
         private MainViewModel model;
         public static bool isInProcess = false;
 
@@ -31,6 +32,7 @@ namespace SetBoxTV.VideoPlayer
             model.LoadingText = "Loading";
 
             log = DependencyService.Get<ILogger>();
+            message = DependencyService.Get<IMessage>();
             if (log != null)
             {
                 IDevicePicker device = DependencyService.Get<IDevicePicker>();
@@ -44,14 +46,15 @@ namespace SetBoxTV.VideoPlayer
         {
             model.LoadingText = t;
             model.IsLoading = true;
+            message?.Alert(t);
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             NavigationPage.SetHasNavigationBar(this, false);
             model.IsLoading = true;
-            await Task.Yield();
+            //await Task.Yield();
             Loading();
             model.IsLoading = false;
         }
@@ -98,6 +101,7 @@ namespace SetBoxTV.VideoPlayer
             {
                 log?.Info("Licença: Licença inválida");
                 model.IsLoading = false;
+                isInProcess = false;
                 await ShowMessage("Licença inválida!", "Licença", "OK",
                 () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
             }
@@ -162,7 +166,7 @@ namespace SetBoxTV.VideoPlayer
                     model.IsLoading = false;
                     isInProcess = false;
                     await ShowMessage("Nenhum arquivo localizado na pasta especifica", "Arquivo", "OK",
-                        () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
+                        () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); });
                 }
                 else
                 {
@@ -192,8 +196,11 @@ namespace SetBoxTV.VideoPlayer
                             }
                             else
                             {
-                                log?.Info($"Deletando o arquivo {fi.name} pois não tem no servidor");
-                                filePicker.DeleteFile(fi.path);
+                                if (fiServier == null)
+                                {
+                                    log?.Info($"Deletando o arquivo {fi.name} pois não tem no servidor");
+                                    filePicker.DeleteFile(fi.path);
+                                }
                             }
                         }
                     }

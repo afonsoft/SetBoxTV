@@ -108,7 +108,6 @@ namespace SetBoxTV.VideoPlayer
         {
             videoPlayer.IsVisible = false;
             imagePlayer.IsVisible = false;
-            model.MediaPlayer.Stop();
 
             switch (fileOrUrl.fileType)
             {
@@ -136,13 +135,7 @@ namespace SetBoxTV.VideoPlayer
                 case EnumFileType.Video:
                 case EnumFileType.WebVideo:
                     {
-                        model.MediaPlayer = new LibVLCSharp.Shared.MediaPlayer(new Media(model.LibVLC, fileOrUrl.path, FromType.FromPath))
-                        {
-                            EnableHardwareDecoding = true,
-                            Fullscreen = true,
-                            Mute = false,
-                            Volume = 100
-                        };
+                        model.VideoFile = fileOrUrl.path;
                         videoPlayer.IsVisible = true;
 
                         model.MediaPlayer.Stopped += MediaPlayer_Stopped;
