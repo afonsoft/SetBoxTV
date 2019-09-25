@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using VideoPlayerProima.API;
-using VideoPlayerProima.Helpers;
+using SetBoxTV.VideoPlayer.API;
+using SetBoxTV.VideoPlayer.Helpers;
 
 namespace SetBoxWebUITest
 {

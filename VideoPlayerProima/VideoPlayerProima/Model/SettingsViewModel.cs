@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using VideoPlayerProima.Helpers;
+using SetBoxTV.VideoPlayer.Helpers;
 
-namespace VideoPlayerProima.Model
+namespace SetBoxTV.VideoPlayer.Model
 {
     public class SettingsViewModel :  BaseViewModel
     {

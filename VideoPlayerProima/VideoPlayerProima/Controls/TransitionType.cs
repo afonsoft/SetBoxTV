@@ -1,4 +1,4 @@
-﻿namespace VideoPlayerProima.Controls
+﻿namespace SetBoxTV.VideoPlayer.Controls
 {
     public class AppSettings
     {

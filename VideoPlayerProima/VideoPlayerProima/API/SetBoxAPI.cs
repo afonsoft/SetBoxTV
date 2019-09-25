@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
-using VideoPlayerProima.Model;
+using SetBoxTV.VideoPlayer.Model;
 
-namespace VideoPlayerProima.API
+namespace SetBoxTV.VideoPlayer.API
 {
     internal static class WithExtensions
     {

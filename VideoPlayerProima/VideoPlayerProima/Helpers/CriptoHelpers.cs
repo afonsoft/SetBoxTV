@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VideoPlayerProima.Helpers
+namespace SetBoxTV.VideoPlayer.Helpers
 {
     public class CriptoHelpers
     {

@@ -1,8 +1,8 @@
-﻿using VideoPlayerProima.Interface;
+﻿using SetBoxTV.VideoPlayer.Interface;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(VideoPlayerProima.Droid.Controls.CheckPermission))]
-namespace VideoPlayerProima.Droid.Controls
+namespace SetBoxTV.VideoPlayer.Droid.Controls
 {
     public class CheckPermission : ICheckPermission
     {

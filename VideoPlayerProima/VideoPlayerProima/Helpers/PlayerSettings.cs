@@ -1,7 +1,7 @@
 ﻿using Plugin.Settings;
 using Plugin.Settings.Abstractions;
 
-namespace VideoPlayerProima.Helpers
+namespace SetBoxTV.VideoPlayer.Helpers
 {
     public static class PlayerSettings
     {

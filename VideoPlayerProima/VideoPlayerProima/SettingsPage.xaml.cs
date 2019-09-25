@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using VideoPlayerProima.Helpers;
-using VideoPlayerProima.Interface;
-using VideoPlayerProima.Model;
+using SetBoxTV.VideoPlayer.Helpers;
+using SetBoxTV.VideoPlayer.Interface;
+using SetBoxTV.VideoPlayer.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace VideoPlayerProima
+namespace SetBoxTV.VideoPlayer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SettingsPage : ContentPage

@@ -5,13 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using VideoPlayerProima.Helpers;
-using VideoPlayerProima.Interface;
-using VideoPlayerProima.Model;
+using SetBoxTV.VideoPlayer.Helpers;
+using SetBoxTV.VideoPlayer.Interface;
+using SetBoxTV.VideoPlayer.Model;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace VideoPlayerProima
+namespace SetBoxTV.VideoPlayer
 {
     public partial class MainPage : ContentPage
     {

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="15.0" package="br.com.proima.VideoPlayerProima.Android" android:installLocation="auto" android:versionCode="15">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="15.0" package="br.com.Afonsoft.SetBoxTV.VideoPlayer.Android" android:installLocation="auto" android:versionCode="15">
 	<uses-sdk android:minSdkVersion="22" android:targetSdkVersion="28" />
 	<uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -12,7 +12,7 @@
 	<uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
 	<uses-permission android:name="android.permission.WAKE_LOCK" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-	<application android:label="VideoPlayerProima.Android" android:icon="@mipmap/icon">
+	<application android:label="SetBoxTV.VideoPlayer.Android" android:icon="@mipmap/icon">
 		<receiver android:name="br.com.proima.VideoPlayerProima.Android.Droid.BootReceiver">
 			<intent-filter>
 				<action android:name="android.intent.action.BOOT_COMPLETED" />

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="VideoPlayerProima.SettingsPage"
-             xmlns:local="clr-namespace:VideoPlayerProima.Model"
+             x:Class="SetBoxTV.VideoPlayer.SettingsPage"
+             xmlns:local="clr-namespace:SetBoxTV.VideoPlayer.Model"
              Title="Configurações do Player">
     <ContentPage.Content>
         <!--<ScrollView>-->

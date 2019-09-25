@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
-namespace VideoPlayerProima.Model
+namespace SetBoxTV.VideoPlayer.Model
 {
     /// <summary>
     /// BaseViewModel

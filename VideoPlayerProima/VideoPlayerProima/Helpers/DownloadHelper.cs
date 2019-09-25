@@ -3,9 +3,9 @@ using System;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
-using VideoPlayerProima.Model;
+using SetBoxTV.VideoPlayer.Model;
 
-namespace VideoPlayerProima.Helpers
+namespace SetBoxTV.VideoPlayer.Helpers
 {
     /// <summary>
     /// DownloadHelper

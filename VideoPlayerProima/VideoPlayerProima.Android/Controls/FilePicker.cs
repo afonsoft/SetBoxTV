@@ -2,16 +2,16 @@
 using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using VideoPlayerProima.Interface;
+using SetBoxTV.VideoPlayer.Interface;
 using System.Linq;
-using VideoPlayerProima.Model;
-using VideoPlayerProima.Helpers;
+using SetBoxTV.VideoPlayer.Model;
+using SetBoxTV.VideoPlayer.Helpers;
 using System.Net;
 using System;
 
 [assembly: Dependency(typeof(VideoPlayerProima.Droid.Controls.FilePicker))]
 
-namespace VideoPlayerProima.Droid.Controls
+namespace SetBoxTV.VideoPlayer.Droid.Controls
 {
     public class FilePicker : IFilePicker
     {

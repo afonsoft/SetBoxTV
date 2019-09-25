@@ -4,12 +4,12 @@ using Xamarin.Forms;
 using Android.App;
 using Android.Net;
 using Android.OS;
-using VideoPlayerProima.Interface;
+using SetBoxTV.VideoPlayer.Interface;
 using System.IO;
 
 [assembly: Dependency(typeof(VideoPlayerProima.Droid.Controls.DirectoyPicker))]
 
-namespace VideoPlayerProima.Droid.Controls
+namespace SetBoxTV.VideoPlayer.Droid.Controls
 {
     public class DirectoyPicker : IDirectoyPicker
     {

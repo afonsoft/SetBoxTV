@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace VideoPlayerProima.Extensions
+namespace SetBoxTV.VideoPlayer.Extensions
 {
     public static class VisualElementExtensions
     {

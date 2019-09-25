@@ -5,7 +5,7 @@ using Xamarin.Forms.Xaml;
 using LibVLCSharp.Forms.Shared;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-namespace VideoPlayerProima
+namespace SetBoxTV.VideoPlayer
 {
     public partial class App : Application
     {

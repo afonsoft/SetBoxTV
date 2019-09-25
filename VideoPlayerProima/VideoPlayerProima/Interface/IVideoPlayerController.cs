@@ -1,7 +1,7 @@
 ﻿using System;
-using VideoPlayerProima.Library;
+using SetBoxTV.VideoPlayer.Library;
 
-namespace VideoPlayerProima.Interface
+namespace SetBoxTV.VideoPlayer.Interface
 {
     public interface IVideoPlayerController
     {

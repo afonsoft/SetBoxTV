@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoPlayerProima.Android", "VideoPlayerProima\VideoPlayerProima.Android\VideoPlayerProima.Android.csproj", "{8E153896-71E1-4A54-AEC8-5191111D098B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetBoxTV.VideoPlayer.Android", "VideoPlayerProima\VideoPlayerProima.Android\SetBoxTV.VideoPlayer.Android.csproj", "{8E153896-71E1-4A54-AEC8-5191111D098B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoPlayerProima", "VideoPlayerProima\VideoPlayerProima\VideoPlayerProima.csproj", "{C5154F6E-4A4A-4E4D-8034-F9D90E7F4137}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SetBoxTV.VideoPlayer", "VideoPlayerProima\VideoPlayerProima\SetBoxTV.VideoPlayer.csproj", "{C5154F6E-4A4A-4E4D-8034-F9D90E7F4137}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SetBoxWebUI", "SetBoxWebUI\SetBoxWebUI.csproj", "{392636A8-3C6F-4F1F-8CE6-EDEE36181E22}"
 EndProject

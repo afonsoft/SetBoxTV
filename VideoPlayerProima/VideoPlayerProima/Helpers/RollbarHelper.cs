@@ -4,7 +4,7 @@ using Rollbar;
 using Rollbar.DTOs;
 using Rollbar.Telemetry;
 
-namespace VideoPlayerProima.Helpers
+namespace SetBoxTV.VideoPlayer.Helpers
 {
     /// <summary>
     /// Class RollbarHelper.

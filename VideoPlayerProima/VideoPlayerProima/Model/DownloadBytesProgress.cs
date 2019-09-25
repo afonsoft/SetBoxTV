@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VideoPlayerProima.Model
+namespace SetBoxTV.VideoPlayer.Model
 {
     public class DownloadBytesProgress
     {

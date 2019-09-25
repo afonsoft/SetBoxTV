@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace VideoPlayerProima.Interface
+namespace SetBoxTV.VideoPlayer.Interface
 {
     public interface IDirectoyPicker
     {

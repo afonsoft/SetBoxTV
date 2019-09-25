@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Essentials;
 
-namespace VideoPlayerProima.Interface
+namespace SetBoxTV.VideoPlayer.Interface
 {
     //http://codeworks.it/blog/?p=260
     public interface IDevicePicker

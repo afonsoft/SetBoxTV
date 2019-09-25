@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VideoPlayerProima.Library
+namespace SetBoxTV.VideoPlayer.Library
 {
     public enum VideoStatus
     {

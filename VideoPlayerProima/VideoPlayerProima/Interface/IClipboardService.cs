@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VideoPlayerProima.Interface
+namespace SetBoxTV.VideoPlayer.Interface
 {
     public interface IClipboardService
     {

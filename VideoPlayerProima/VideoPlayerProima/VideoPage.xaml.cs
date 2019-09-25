@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Threading.Tasks;
-using VideoPlayerProima.Library;
+using SetBoxTV.VideoPlayer.Library;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using VideoPlayerProima.Extensions;
-using VideoPlayerProima.Helpers;
-using VideoPlayerProima.Model;
+using SetBoxTV.VideoPlayer.Extensions;
+using SetBoxTV.VideoPlayer.Helpers;
+using SetBoxTV.VideoPlayer.Model;
 using System.Collections.Generic;
-using VideoPlayerProima.Interface;
+using SetBoxTV.VideoPlayer.Interface;
 using System.ComponentModel;
 using Android.Media;
 using LibVLCSharp.Shared;
 
-namespace VideoPlayerProima
+namespace SetBoxTV.VideoPlayer
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VideoPage : ContentPage
     {
-        private VideoPlayerProima.Library.VideoSource fileToPlayer;
+        private SetBoxTV.VideoPlayer.Library.VideoSource fileToPlayer;
         private ImageSource imagaToPlayer;
         private Uri urlToPlayer;
         private readonly IList<FileDetails> fileDetails;

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using VideoPlayerProima.Model;
+using SetBoxTV.VideoPlayer.Model;
 
-namespace VideoPlayerProima.Interface
+namespace SetBoxTV.VideoPlayer.Interface
 {
     public interface IFilePicker
     {

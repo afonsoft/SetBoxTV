@@ -15,11 +15,11 @@ using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
 using Rollbar;
-using VideoPlayerProima.Droid.Controls;
-using VideoPlayerProima.Helpers;
+using SetBoxTV.VideoPlayer.Droid.Controls;
+using SetBoxTV.VideoPlayer.Helpers;
 using LibVLCSharp.Forms.Shared;
 
-namespace VideoPlayerProima.Droid
+namespace SetBoxTV.VideoPlayer.Droid
 {
     [Activity(Label = "VideoPlayerProima", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, HardwareAccelerated = true, Exported = true, NoHistory = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity

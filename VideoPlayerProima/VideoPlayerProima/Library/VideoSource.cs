@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace VideoPlayerProima.Library
+namespace SetBoxTV.VideoPlayer.Library
 {
     [TypeConverter(typeof(VideoSourceConverter))]
     public abstract class VideoSource : Element

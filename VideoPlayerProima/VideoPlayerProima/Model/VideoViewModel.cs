@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 
-namespace VideoPlayerProima.Model
+namespace SetBoxTV.VideoPlayer.Model
 {
     public class VideoViewModel : BaseViewModel
     {

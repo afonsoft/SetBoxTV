@@ -4,11 +4,11 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using Rollbar;
-using VideoPlayerProima.Helpers;
+using SetBoxTV.VideoPlayer.Helpers;
 using ILogger = VideoPlayerProima.Interface.ILogger;
 
 [assembly: Dependency(typeof(VideoPlayerProima.Droid.Controls.LoggerService))]
-namespace VideoPlayerProima.Droid.Controls
+namespace SetBoxTV.VideoPlayer.Droid.Controls
 {
     public class LoggerService : ILogger
     {

@@ -2,9 +2,9 @@
 using Android.App;
 using Android.Content;
 using Android.OS;
-using VideoPlayerProima.Droid.Controls;
+using SetBoxTV.VideoPlayer.Droid.Controls;
 
-namespace VideoPlayerProima.Droid
+namespace SetBoxTV.VideoPlayer.Droid
 {
     [BroadcastReceiver(Enabled = true, Exported = true, DirectBootAware = true)]
     [IntentFilter(new[] {Intent.ActionBootCompleted, Intent.ActionLockedBootCompleted})]

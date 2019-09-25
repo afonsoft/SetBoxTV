@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace VideoPlayerProima.Extensions
+namespace SetBoxTV.VideoPlayer.Extensions
 {
     public static class LinqExtensions
     {

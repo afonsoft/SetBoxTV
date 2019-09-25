@@ -1,9 +1,9 @@
 ﻿using Android.Content;
 using Xamarin.Forms;
-using VideoPlayerProima.Interface;
+using SetBoxTV.VideoPlayer.Interface;
 
 [assembly: Dependency(typeof(VideoPlayerProima.Droid.Controls.ClipboardService))]
-namespace VideoPlayerProima.Droid.Controls
+namespace SetBoxTV.VideoPlayer.Droid.Controls
 {
     public class ClipboardService : IClipboardService
     {
