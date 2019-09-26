@@ -13,11 +13,12 @@ namespace SetBoxTV.VideoPlayer.Model
 
         public VideoViewModel()
         {
-            Task.Run((Action)Initialize);
+            
         }
 
         private bool IsLoaded { get; set; }
         private bool IsVideoViewInitialized { get; set; }
+        private bool IsInitialized { get; set; }
 
 
         readonly HashSet<RendererItem> _rendererItems = new HashSet<RendererItem>();
@@ -101,9 +102,11 @@ namespace SetBoxTV.VideoPlayer.Model
                         Mute = false,
                         Volume = 100
                     };
+                    IsVideoViewInitialized = true;
                 }
                 else
                 {
+                    IsVideoViewInitialized = false;
                     MediaPlayer = new MediaPlayer(LibVLC);
                 }
 
@@ -140,10 +143,13 @@ namespace SetBoxTV.VideoPlayer.Model
             // instanciate the main MediaPlayer object
             MediaPlayer = new MediaPlayer(LibVLC);
 
+            IsInitialized = true;
+
         }
 
         public void OnAppearing()
         {
+            Initialize();
             IsLoaded = true;
         }
 
@@ -154,7 +160,7 @@ namespace SetBoxTV.VideoPlayer.Model
 
         public void Play()
         {
-            if (IsLoaded && IsVideoViewInitialized)
+            if (IsLoaded && IsVideoViewInitialized && IsInitialized)
             {
                 MediaPlayer.Play();
             }
@@ -162,7 +168,7 @@ namespace SetBoxTV.VideoPlayer.Model
 
         public void PlayInChromecast()
         {
-            if (IsLoaded && IsVideoViewInitialized)
+            if (IsLoaded && IsVideoViewInitialized && IsInitialized)
             {
                 DiscoverChromecasts();
                 if (_rendererItems.Any())

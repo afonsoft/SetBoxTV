@@ -29,12 +29,9 @@ namespace SetBoxTV.VideoPlayer
         {
             
             InitializeComponent();
-
-            MainPage.isInProcess = false;
-
-            BindingContext = model = new VideoViewModel(); 
+            BindingContext = model = new VideoViewModel();
+            MainPage.isInProcess = false;            
             model.IsLoading = true;
-            
 
             fileDetails = files;
             log = DependencyService.Get<ILogger>();
@@ -45,36 +42,34 @@ namespace SetBoxTV.VideoPlayer
                 log.Platform = DevicePicker.GetPlatform().ToString();
                 log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
             }
-
-            log?.Info($"VideoPage : files {files.Count}");
         }
 
         protected override void OnAppearing()
         {
+            base.OnAppearing();
+
+            log?.Debug($"VideoPage : License: {PlayerSettings.License}");
+            log?.Debug($"VideoPage : PathFiles: {PlayerSettings.PathFiles}");
+            log?.Debug($"VideoPage : ShowVideo: {PlayerSettings.ShowVideo}");
+            log?.Debug($"VideoPage : ShowPhoto: {PlayerSettings.ShowPhoto}");
+            log?.Debug($"VideoPage : ShowWebImage: {PlayerSettings.ShowWebImage}");
+            log?.Debug($"VideoPage : ShowWebVideo: {PlayerSettings.ShowWebVideo}");
+            log?.Debug($"VideoPage : EnableTransactionTime: {PlayerSettings.EnableTransactionTime}");
+            log?.Debug($"VideoPage : TransactionTime: {PlayerSettings.TransactionTime}");
 
             NavigationPage.SetHasNavigationBar(this, false);
             model.OnAppearing();
-            log?.Debug($"License: {PlayerSettings.License}");
-            log?.Debug($"PathFiles: {PlayerSettings.PathFiles}");
-            log?.Debug($"ShowVideo: {PlayerSettings.ShowVideo}");
-            log?.Debug($"ShowPhoto: {PlayerSettings.ShowPhoto}");
-            log?.Debug($"ShowWebImage: {PlayerSettings.ShowWebImage}");
-            log?.Debug($"ShowWebVideo: {PlayerSettings.ShowWebVideo}");
-            log?.Debug($"EnableTransactionTime: {PlayerSettings.EnableTransactionTime}");
-            log?.Debug($"TransactionTime: {PlayerSettings.TransactionTime}");
-
             videoPlayer.IsVisible = false;
-
-            base.OnAppearing();
-
             GoNextPlayer();
         }
 
         private void VideoView_MediaPlayerChanged(object sender, MediaPlayerChangedEventArgs e)
         {
-            model.OnVideoViewInitialized();
-            if (videoPlayer.IsVisible)
+            if (model != null && videoPlayer.IsVisible)
+            {
+                model.OnVideoViewInitialized();
                 model.Play();
+            }
         }
 
         private void OnTapped(object sender, EventArgs e)
