@@ -29,8 +29,12 @@ namespace SetBoxTV.VideoPlayer
         {
             
             InitializeComponent();
+
+            MainPage.isInProcess = false;
+
             BindingContext = model = new VideoViewModel(); 
             model.IsLoading = true;
+            
 
             fileDetails = files;
             log = DependencyService.Get<ILogger>();
@@ -41,11 +45,13 @@ namespace SetBoxTV.VideoPlayer
                 log.Platform = DevicePicker.GetPlatform().ToString();
                 log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
             }
+
+            log?.Info($"VideoPage : files {files.Count}");
         }
 
         protected override void OnAppearing()
         {
-            base.OnAppearing();
+
             NavigationPage.SetHasNavigationBar(this, false);
             model.OnAppearing();
             log?.Debug($"License: {PlayerSettings.License}");
@@ -58,6 +64,9 @@ namespace SetBoxTV.VideoPlayer
             log?.Debug($"TransactionTime: {PlayerSettings.TransactionTime}");
 
             videoPlayer.IsVisible = false;
+
+            base.OnAppearing();
+
             GoNextPlayer();
         }
 
@@ -104,7 +113,8 @@ namespace SetBoxTV.VideoPlayer
             }
             catch (Exception ex)
             {
-                log?.Error(ex);
+                log?.Error("GoNextPlayer", ex);
+                MainPage.isInProcess = false;
                 Application.Current.MainPage = new MainPage();
             }
             model.IsLoading = false;
