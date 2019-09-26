@@ -30,7 +30,6 @@ namespace SetBoxTV.VideoPlayer
             
             InitializeComponent();
             BindingContext = model = new VideoViewModel(); 
-
             model.IsLoading = true;
 
             fileDetails = files;
@@ -60,6 +59,13 @@ namespace SetBoxTV.VideoPlayer
 
             videoPlayer.IsVisible = false;
             GoNextPlayer();
+        }
+
+        private void VideoView_MediaPlayerChanged(object sender, MediaPlayerChangedEventArgs e)
+        {
+            model.OnVideoViewInitialized();
+            if (videoPlayer.IsVisible)
+                model.Play();
         }
 
         private void OnTapped(object sender, EventArgs e)
@@ -136,11 +142,9 @@ namespace SetBoxTV.VideoPlayer
                 case EnumFileType.WebVideo:
                     {
                         videoPlayer.IsVisible = true;
-                        videoPlayer.LibVLC = model.LibVLC;
                         model.VideoFile = ((FileVideoSource)fileToPlay).File;
                         model.MediaPlayer.Stopped += MediaPlayer_Stopped;
                         videoPlayer.MediaPlayer = model.MediaPlayer;
-                        videoPlayer.MediaPlayer.Play();
 
                         VideoFade();
                         log?.Info($"Duration: {model.MediaPlayer.Length / 1000} Segundos");

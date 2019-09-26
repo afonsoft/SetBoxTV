@@ -137,7 +137,7 @@ namespace SetBoxTV.VideoPlayer
             {
                 log?.Error(ex);
             }
-
+            MainPage.isInProcess = false;
             await ShowMessage("Dados Salvos com sucesso!", "Salvar", "OK",
                 () => { Application.Current.MainPage = new MainPage(); }).ConfigureAwait(true);
         }

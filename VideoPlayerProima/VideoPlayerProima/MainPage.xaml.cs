@@ -54,17 +54,16 @@ namespace SetBoxTV.VideoPlayer
             base.OnAppearing();
             NavigationPage.SetHasNavigationBar(this, false);
             model.IsLoading = true;
-            //await Task.Yield();
             Loading();
             model.IsLoading = false;
         }
 
         public async void Loading()
         {
-            if (isInProcess)
+            if (MainPage.isInProcess)
                 return;
 
-            isInProcess = true;
+            MainPage.isInProcess = true;
 
             model.IsLoading = true;
             log?.Info("CheckSelfPermission");
@@ -101,7 +100,7 @@ namespace SetBoxTV.VideoPlayer
             {
                 log?.Info("Licença: Licença inválida");
                 model.IsLoading = false;
-                isInProcess = false;
+                MainPage.isInProcess = false;
                 await ShowMessage("Licença inválida!", "Licença", "OK",
                 () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
             }
@@ -149,7 +148,7 @@ namespace SetBoxTV.VideoPlayer
                         {
                             log?.Info($"Download do arquivo: {fi.url}");
                             ShowText($"Download da midia {fi.name}");
-                            await StartDownloadHandler(fi.url, PlayerSettings.PathFiles, fi.name);
+                            await StartDownloadHandler(fi.url, PlayerSettings.PathFiles, fi.name).ConfigureAwait(false);
                         }
                         catch (Exception ex)
                         {
@@ -164,9 +163,9 @@ namespace SetBoxTV.VideoPlayer
                 {
                     log?.Info("Directory: Nenhum arquivo localizado na pasta especifica.");
                     model.IsLoading = false;
-                    isInProcess = false;
+                    MainPage.isInProcess = false;
                     await ShowMessage("Nenhum arquivo localizado na pasta especifica", "Arquivo", "OK",
-                        () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); });
+                        () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
                 }
                 else
                 {
@@ -187,7 +186,7 @@ namespace SetBoxTV.VideoPlayer
                                 {
                                     log?.Info($"Download do arquivo: {fiServier.url}");
                                     ShowText($"Download da midia {fiServier.name}");
-                                    await StartDownloadHandler(fiServier.url, PlayerSettings.PathFiles, fiServier.name);
+                                    await StartDownloadHandler(fiServier.url, PlayerSettings.PathFiles, fiServier.name).ConfigureAwait(false);
                                 }
                                 catch (Exception ex)
                                 {
@@ -206,7 +205,7 @@ namespace SetBoxTV.VideoPlayer
                     }
                     ShowText("Iniciando o Player");
                     model.IsLoading = false;
-                    isInProcess = false;
+                    MainPage.isInProcess = false;
                     Application.Current.MainPage = new VideoPage(arquivos);
                 }
             }
@@ -260,7 +259,7 @@ namespace SetBoxTV.VideoPlayer
             {
                 Progress<DownloadBytesProgress> progressReporter = new Progress<DownloadBytesProgress>();
                 progressReporter.ProgressChanged += ProgressReporter_ProgressChanged;
-                await Task.Run(async () => await DownloadHelper.CreateDownloadTask(urlToDownload, pathToSave, fileName, progressReporter, cts.Token));
+                await Task.Run(async () => await DownloadHelper.CreateDownloadTask(urlToDownload, pathToSave, fileName, progressReporter, cts.Token).ConfigureAwait(false)).ConfigureAwait(false);
             }
             catch (OperationCanceledException ex)
             {

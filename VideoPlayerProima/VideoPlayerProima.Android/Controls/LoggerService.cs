@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Rollbar;
 using SetBoxTV.VideoPlayer.Helpers;
 using ILogger = SetBoxTV.VideoPlayer.Interface.ILogger;
+using Java.Lang;
 
 [assembly: Dependency(typeof(SetBoxTV.VideoPlayer.Droid.Controls.LoggerService))]
 namespace SetBoxTV.VideoPlayer.Droid.Controls
@@ -24,34 +25,34 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
          public void Debug(string text)
         {
-            Log.Debug("VideoPlayerProima", $"{text}");
+            Log.Debug("SetBoxTV", $"{text}");
             RollbarLocator.RollbarInstance.Debug(text);
             SaveFile("DEBUG ", text, null);
         }
 
-        public void Error(string text, Exception ex)
+        public void Error(string text, System.Exception ex)
         {
-            Log.Error("VideoPlayerProima", $"{text} - {ex.Message}");
+            Log.Error("SetBoxTV", Throwable.FromException(ex), $"{text} - {ex.Message}");
             RollbarLocator.RollbarInstance.Error(ex);
             SaveFile("ERRO  ", text, ex);
         }
 
-        public void Error(Exception ex)
+        public void Error(System.Exception ex)
         {
-            Log.Error("VideoPlayerProima", $"{ex.Message}");
+            Log.Error("SetBoxTV", Throwable.FromException(ex), $"{ex.Message}");
             RollbarLocator.RollbarInstance.Error(ex);
             SaveFile("ERRO  ", null, ex);
         }
 
         public void Info(string text)
         {
-            Log.Info("VideoPlayerProima", $"{text}");
+            Log.Info("SetBoxTV", $"{text}");
             RollbarLocator.RollbarInstance.Info(text);
             SaveFile("INFO  ", text, null);
         }
 
 
-        private void SaveFile(string tipo,  string text, Exception ex)
+        private void SaveFile(string tipo,  string text, System.Exception ex)
         {
             Task.Run(() =>
             {
@@ -90,7 +91,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
                         }
                     }
                 }
-                catch (Exception)
+                catch (System.Exception)
                 {
                     //Ignore
                 }

@@ -3,12 +3,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace SetBoxTV.VideoPlayer.Model
 {
     public class VideoViewModel : BaseViewModel
     {
+
+        public VideoViewModel()
+        {
+            Task.Run((Action)Initialize);
+        }
+
+        private bool IsLoaded { get; set; }
+        private bool IsVideoViewInitialized { get; set; }
+
 
         readonly HashSet<RendererItem> _rendererItems = new HashSet<RendererItem>();
 
@@ -21,7 +31,7 @@ namespace SetBoxTV.VideoPlayer.Model
                 renderer = _libVLC.RendererList.FirstOrDefault(r => r.Name.Equals("Bonjour_renderer"));
             else if (Device.RuntimePlatform == Device.Android)
                 renderer = _libVLC.RendererList.FirstOrDefault(r => r.Name.Equals("microdns_renderer"));
-            else throw new PlatformNotSupportedException("Only Android and iOS are currently supported in this sample");
+            else return false;
 
             // create a renderer discoverer
             using (RendererDiscoverer _rendererDiscoverer = new RendererDiscoverer(_libVLC, renderer.Name))
@@ -51,11 +61,11 @@ namespace SetBoxTV.VideoPlayer.Model
         }
 
 
+
+        private MediaPlayer _mediaPlayer;
         /// <summary>
         /// Gets the <see cref="LibVLCSharp.Shared.MediaPlayer"/> instance.
         /// </summary>
-        public MediaPlayer _mediaPlayer;
-
         public MediaPlayer MediaPlayer
         {
             get => _mediaPlayer;
@@ -84,7 +94,7 @@ namespace SetBoxTV.VideoPlayer.Model
                 if (!string.IsNullOrEmpty(_file))
                 {
                     Media = new Media(LibVLC, _file, FromType.FromPath);
-                    mediaPlayer = new MediaPlayer(Media)
+                    MediaPlayer = new MediaPlayer(Media)
                     {
                         EnableHardwareDecoding = true,
                         Fullscreen = true,
@@ -94,7 +104,7 @@ namespace SetBoxTV.VideoPlayer.Model
                 }
                 else
                 {
-                    mediaPlayer = new MediaPlayer(LibVLC);
+                    MediaPlayer = new MediaPlayer(LibVLC);
                 }
 
             }
@@ -119,7 +129,7 @@ namespace SetBoxTV.VideoPlayer.Model
         /// <summary>
         /// Initialize LibVLC and playback when page appears
         /// </summary>
-        public void OnAppearing()
+        public void Initialize()
         {
             // this will load the native libvlc library (if needed, depending on the platform). 
             Core.Initialize();
@@ -128,8 +138,39 @@ namespace SetBoxTV.VideoPlayer.Model
             LibVLC = new LibVLC();
 
             // instanciate the main MediaPlayer object
-            mediaPlayer = new MediaPlayer(LibVLC);
+            MediaPlayer = new MediaPlayer(LibVLC);
 
+        }
+
+        public void OnAppearing()
+        {
+            IsLoaded = true;
+        }
+
+        public void OnVideoViewInitialized()
+        {
+            IsVideoViewInitialized = true;
+        }
+
+        public void Play()
+        {
+            if (IsLoaded && IsVideoViewInitialized)
+            {
+                MediaPlayer.Play();
+            }
+        }
+
+        public void PlayInChromecast()
+        {
+            if (IsLoaded && IsVideoViewInitialized)
+            {
+                DiscoverChromecasts();
+                if (_rendererItems.Any())
+                {
+                    MediaPlayer.SetRenderer(_rendererItems.First());
+                }
+                MediaPlayer.Play();
+            }
         }
     }
 }

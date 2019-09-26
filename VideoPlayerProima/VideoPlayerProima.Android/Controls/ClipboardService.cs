@@ -20,7 +20,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             // Get the Clipboard Manager
             var clipboardManager = (ClipboardManager) MainActivity.Instance.GetSystemService(Context.ClipboardService);
             // Create a new Clip
-            var clip = ClipData.NewPlainText("VideoPlayerProima", text);
+            var clip = ClipData.NewPlainText("SetBoxTV", text);
             // Copy the text
             clipboardManager.PrimaryClip = clip;
         }
