@@ -18,6 +18,11 @@ using Rollbar;
 using SetBoxTV.VideoPlayer.Droid.Controls;
 using SetBoxTV.VideoPlayer.Helpers;
 using LibVLCSharp.Forms.Shared;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Distribute;
+using Microsoft.AppCenter.Push;
 
 namespace SetBoxTV.VideoPlayer.Droid
 {
@@ -33,6 +38,10 @@ namespace SetBoxTV.VideoPlayer.Droid
         {
             Instance = this;
 
+            AppCenter.Start("35661827-5555-4b62-b333-145f0456c75d", typeof(Analytics), typeof(Crashes), typeof(Distribute), typeof(Push));
+            Crashes.SetEnabledAsync(true);
+            Distribute.SetEnabledAsync(true);
+
             // Rollbar notifier configuartion
             RollbarHelper.ConfigureRollbarSingleton();
 
@@ -40,6 +49,7 @@ namespace SetBoxTV.VideoPlayer.Droid
             {
                 var newExc = new Exception("CurrentDomainOnUnhandledException", args.ExceptionObject as Exception);
                 LoggerService.Instance.Error(newExc);
+                Crashes.TrackError(newExc);
                 RollbarLocator.RollbarInstance.AsBlockingLogger(TimeSpan.FromSeconds(10)).Critical(newExc);
             };
 
@@ -47,6 +57,7 @@ namespace SetBoxTV.VideoPlayer.Droid
             {
                 var newExc = new ApplicationException("TaskSchedulerOnUnobservedTaskException", args.Exception);
                 LoggerService.Instance.Error(args.Exception);
+                Crashes.TrackError(args.Exception);
                 RollbarLocator.RollbarInstance.AsBlockingLogger(TimeSpan.FromSeconds(10)).Critical(newExc);
             };
 
@@ -54,6 +65,7 @@ namespace SetBoxTV.VideoPlayer.Droid
             {
                 var newExc = new ApplicationException("AndroidEnvironment_UnhandledExceptionRaiser", args.Exception);
                 LoggerService.Instance.Error(args.Exception);
+                Crashes.TrackError(args.Exception);
                 RollbarLocator.RollbarInstance.AsBlockingLogger(TimeSpan.FromSeconds(10)).Critical(newExc);
             };
 

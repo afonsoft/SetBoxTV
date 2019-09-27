@@ -7,6 +7,8 @@ using Rollbar;
 using SetBoxTV.VideoPlayer.Helpers;
 using ILogger = SetBoxTV.VideoPlayer.Interface.ILogger;
 using Java.Lang;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Analytics;
 
 [assembly: Dependency(typeof(SetBoxTV.VideoPlayer.Droid.Controls.LoggerService))]
 namespace SetBoxTV.VideoPlayer.Droid.Controls
@@ -33,6 +35,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
         public void Error(string text, System.Exception ex)
         {
             Log.Error("SetBoxTV", Throwable.FromException(ex), $"{text} - {ex.Message}");
+            Crashes.TrackError(ex);
             RollbarLocator.RollbarInstance.Error(ex);
             SaveFile("ERRO  ", text, ex);
         }
@@ -40,6 +43,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
         public void Error(System.Exception ex)
         {
             Log.Error("SetBoxTV", Throwable.FromException(ex), $"{ex.Message}");
+            Crashes.TrackError(ex);
             RollbarLocator.RollbarInstance.Error(ex);
             SaveFile("ERRO  ", null, ex);
         }
@@ -47,6 +51,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
         public void Info(string text)
         {
             Log.Info("SetBoxTV", $"{text}");
+            Analytics.TrackEvent(text);
             RollbarLocator.RollbarInstance.Info(text);
             SaveFile("INFO  ", text, null);
         }

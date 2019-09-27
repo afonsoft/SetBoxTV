@@ -3,6 +3,11 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using LibVLCSharp.Forms.Shared;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Microsoft.AppCenter.Distribute;
+using Microsoft.AppCenter.Push;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace SetBoxTV.VideoPlayer
@@ -25,6 +30,10 @@ namespace SetBoxTV.VideoPlayer
             // Handle when your app starts
             base.OnStart();
             MessagingCenter.Send(new LifecycleMessage(), nameof(OnStart));
+            AppCenter.Start("android=35661827-5555-4b62-b333-145f0456c75d", typeof(Analytics), typeof(Crashes), typeof(Distribute), typeof(Push));
+            Crashes.SetEnabledAsync(true);
+            Distribute.SetEnabledAsync(true);
+
             MainPage = new MainPage();
         }
 

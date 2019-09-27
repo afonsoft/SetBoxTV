@@ -6,6 +6,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
 using SetBoxTV.VideoPlayer.Helpers;
 using SetBoxTV.VideoPlayer.Interface;
 using SetBoxTV.VideoPlayer.Model;
@@ -73,6 +75,9 @@ namespace SetBoxTV.VideoPlayer
             string license = PlayerSettings.License;
             string deviceIdentifier = "";
             bool isLicensed = false;
+
+            Analytics.TrackEvent(device.GetIdentifier());
+            AppCenter.SetUserId(device.GetIdentifier());
 
             if (string.IsNullOrEmpty(PlayerSettings.PathFiles))
             {
@@ -273,7 +278,7 @@ namespace SetBoxTV.VideoPlayer
 
         private void ProgressReporter_ProgressChanged(object sender, DownloadBytesProgress e)
         {
-            Device.BeginInvokeOnMainThread(() =>
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
                 model.LoadingText = e.Filename;
                 model.ProgressValue = (int)(100 * e.PercentComplete);
