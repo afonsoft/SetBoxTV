@@ -16,7 +16,6 @@
         </StackLayout.GestureRecognizers>
 
         <vlc:VideoView x:Name="videoPlayer" 
-                       MediaPlayer="{Binding MediaPlayer}"
                        HorizontalOptions="FillAndExpand" 
                        VerticalOptions="FillAndExpand" 
                        MediaPlayerChanged="VideoView_MediaPlayerChanged"

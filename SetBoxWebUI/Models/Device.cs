@@ -39,6 +39,10 @@ namespace SetBoxWebUI.Models
 
         [NotMapped]
         public int TotalFiles { get { return Files!= null ? Files.Count : 0; } }
+
+
+        [JsonIgnore]
+        public virtual ICollection<DeviceLogError> Logs { get; set; }
     }
 
     public class DeviceLogAccesses
@@ -52,5 +56,20 @@ namespace SetBoxWebUI.Models
         public DateTime CreationDateTime { get; set; }
         public string IpAcessed { get; set; }
         public string Message { get; set; }
+    }
+
+    public class DeviceLogError
+    {
+        [JsonIgnore]
+        public virtual Device Device { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+        public Guid DeviceLogId { get; set; }
+        public DateTime CreationDateTime { get; set; }
+        public string IpAcessed { get; set; }
+        public string Message { get; set; }
+        public string Level { get; set; }
+
     }
 }

@@ -39,6 +39,67 @@ namespace SetBoxWebUI.Controllers
 
         }
 
+         /// <summary>
+         /// 
+         /// </summary>
+         /// <param name="session">Session</param>
+         /// <param name="level">Log level</param>
+         /// <param name="mensage">mensage</param>
+         /// <returns></returns>
+        [HttpPost("Log")]
+        [HttpGet("Log")]
+        public async Task<ActionResult<Response<string>>> Log(string session, string mensage, LogLevel level = LogLevel.ERROR)
+        {
+            var r = new Models.Response<string>();
+            try
+            {
+                ValidaSession(session);
+
+                string deviceIdentifier = GetDeviceIdFromSession(session);
+
+                var device = await _devices.FirstOrDefaultAsync(x => x.DeviceIdentifier == deviceIdentifier);
+
+                if (device == null)
+                {
+                    r.Status = false;
+                    r.SessionExpired = false;
+                    r.Message = $"Device '{deviceIdentifier}' not found";
+                    _logger.LogError($"Device '{deviceIdentifier}' not found");
+                    return NotFound(r);
+                }
+
+                var log = new DeviceLogError()
+                {
+                    CreationDateTime = DateTime.Now,
+                    IpAcessed = HttpContext.GetClientIpAddress(),
+                    DeviceLogId = Guid.NewGuid(),
+                    Message = mensage,
+                    Level = level.ToString().ToUpper()
+                };
+
+                device.Logs.Add(log);
+                await _devices.UpdateAsync(device);
+
+                r.Status = true;
+                r.Message = "OK";
+                return Ok(r);
+            }
+            catch (SessionException e)
+            {
+                r.Status = false;
+                r.SessionExpired = true;
+                r.Message = e.Message;
+                return Unauthorized(r);
+            }
+            catch (Exception ex)
+            {
+                r.Status = false;
+                r.SessionExpired = false;
+                r.Message = ex.Message;
+                _logger.LogError(ex, ex.Message);
+                return BadRequest(r);
+            }
+        }
 
         /// <summary>
         /// Criar ou Atualizar as informações do SetBox
@@ -51,12 +112,12 @@ namespace SetBoxWebUI.Controllers
         /// <param name="manufacturer"></param>
         /// <param name="deviceName"></param>
         /// <returns></returns>
-        [HttpPost("Update")]
-        [HttpGet("Update")]
+        [HttpPost("UpdateInfo")]
+        [HttpGet("UpdateInfo")]
         [ProducesResponseType(typeof(Response<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(Response<string>), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(Response<string>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<Response<string>>> Update(string session, string platform, string version, string apkVersion, string model, string manufacturer, string deviceName)
+        public async Task<ActionResult<Response<string>>> UpdateInfo(string session, string platform, string version, string apkVersion, string model, string manufacturer, string deviceName)
         {
             var r = new Models.Response<string>();
             try
@@ -564,6 +625,12 @@ namespace SetBoxWebUI.Controllers
         {
             return CriptoHelpers.Base64Decode(CriptoHelpers.Base64Decode(session).Split("|")[1]);
         }
+    }
+
+    public enum LogLevel
+    {
+        INFO,
+        ERROR
     }
 
     /// <summary>

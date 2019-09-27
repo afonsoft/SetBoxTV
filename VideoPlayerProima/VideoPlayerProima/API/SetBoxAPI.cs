@@ -16,6 +16,12 @@ namespace SetBoxTV.VideoPlayer.API
         }
     }
 
+
+    public enum LogLevel
+    {
+        INFO,
+        ERROR
+    }
     /// <summary>
     /// API
     /// </summary>
@@ -145,18 +151,41 @@ namespace SetBoxTV.VideoPlayer.API
             }
         }
 
-        /// <summary>
-        /// Update information from SetBox
-        /// </summary>
-        /// <returns></returns>
-        public async Task<string> Update(string platform, string version, string apkVersion, string model, string manufacturer, string deviceName)
+        public async Task<string> Log(string mensage, LogLevel level = LogLevel.ERROR)
         {
             if (string.IsNullOrEmpty(session))
                 return null;
 
             try
             {
-                var resp = await rest.HttpPostAsync<Response<string>>("/Update",
+                var resp = await rest.HttpPostAsync<Response<string>>("/Log",
+                    Afonsoft.Http.Parameters.With("session", session)
+                                            .And("mensage", mensage)
+                                            .And("level", level.ToString().ToUpper()));
+
+                if (!resp.sessionExpired && resp.status)
+                    return resp.result;
+
+                return resp.message;
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+
+        /// <summary>
+        /// Update information from SetBox
+        /// </summary>
+        /// <returns></returns>
+        public async Task<string> UpdateInfo(string platform, string version, string apkVersion, string model, string manufacturer, string deviceName)
+        {
+            if (string.IsNullOrEmpty(session))
+                return null;
+
+            try
+            {
+                var resp = await rest.HttpPostAsync<Response<string>>("/UpdateInfo",
                     Afonsoft.Http.Parameters.With("session", session)
                                             .And("platform", platform)
                                             .And("version", version)

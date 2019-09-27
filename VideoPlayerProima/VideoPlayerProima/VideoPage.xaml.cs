@@ -60,6 +60,7 @@ namespace SetBoxTV.VideoPlayer
             NavigationPage.SetHasNavigationBar(this, false);
             model.OnAppearing();
             videoPlayer.IsVisible = false;
+
             GoNextPlayer();
         }
 

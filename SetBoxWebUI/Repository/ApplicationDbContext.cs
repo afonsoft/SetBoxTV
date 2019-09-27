@@ -28,6 +28,7 @@ namespace SetBoxWebUI.Repository
         {
             builder.ApplyConfiguration(new ConfigMap());
             builder.ApplyConfiguration(new DeviceLogAccessesMap());
+            builder.ApplyConfiguration(new DeviceLogErrorMap());
             builder.ApplyConfiguration(new DeviceMap());
             builder.ApplyConfiguration(new AddressMap());
             builder.ApplyConfiguration(new ContactMap());
@@ -43,6 +44,8 @@ namespace SetBoxWebUI.Repository
         public DbSet<Device> Devices { get; set; }
         public DbSet<Config> Configs { get; set; }
         public DbSet<DeviceLogAccesses> DeviceLogAccesses { get; set; }
+        public DbSet<DeviceLogError> DeviceLogs { get; set; }
+
         public DbSet<Company> Companies { get; set; }
         public DbSet<Address> Address { get; set; }
 

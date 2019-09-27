@@ -112,11 +112,7 @@ namespace SetBoxTV.VideoPlayer.Droid
             Manifest.Permission.ReceiveBootCompleted,
             Manifest.Permission.MediaContentControl,
             Manifest.Permission.AccessNetworkState,
-            Manifest.Permission.RequestInstallPackages,
             Manifest.Permission.ReadLogs,
-            Manifest.Permission.InstallPackages,
-            Manifest.Permission.GetPackageSize,
-            Manifest.Permission.DeletePackages,
         };
 
             int requestCode = 100;

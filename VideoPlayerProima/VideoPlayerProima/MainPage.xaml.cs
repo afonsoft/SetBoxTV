@@ -116,7 +116,7 @@ namespace SetBoxTV.VideoPlayer
 
                     var api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
 
-                    await api.Update(DevicePicker.GetPlatform().ToString(),
+                    await api.UpdateInfo(DevicePicker.GetPlatform().ToString(),
                         $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}",
                         $"{device.GetApkVersion()}.{device.GetApkBuild()}",
                         DevicePicker.GetModel(),
