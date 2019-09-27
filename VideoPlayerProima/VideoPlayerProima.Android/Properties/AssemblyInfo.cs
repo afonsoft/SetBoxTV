@@ -40,8 +40,4 @@ using Android.App;
 [assembly: UsesPermission(Android.Manifest.Permission.ReceiveBootCompleted)]
 [assembly: UsesPermission(Android.Manifest.Permission.MediaContentControl)]
 [assembly: UsesPermission(Android.Manifest.Permission.AccessNetworkState)]
-[assembly: UsesPermission(Android.Manifest.Permission.RequestInstallPackages)]
 [assembly: UsesPermission(Android.Manifest.Permission.ReadLogs)]
-[assembly: UsesPermission(Android.Manifest.Permission.InstallPackages)]
-[assembly: UsesPermission(Android.Manifest.Permission.GetPackageSize)]
-[assembly: UsesPermission(Android.Manifest.Permission.DeletePackages)]
