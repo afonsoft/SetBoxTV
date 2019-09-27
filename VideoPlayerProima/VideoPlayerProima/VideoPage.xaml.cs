@@ -76,8 +76,7 @@ namespace SetBoxTV.VideoPlayer
 
         private void OnTapped(object sender, EventArgs e)
         {
-            log?.Debug("OnTapped to Settings");
-            Analytics.TrackEvent("OnTapped to Settings");
+            log?.Info("OnTapped to Settings");
             Application.Current.MainPage = new SettingsPage();
         }
 
@@ -123,8 +122,6 @@ namespace SetBoxTV.VideoPlayer
             videoPlayer.IsVisible = false;
             imagePlayer.IsVisible = false;
 
-            Analytics.TrackEvent($"File to play: {fileOrUrl.path}");
-
             switch (fileOrUrl.fileType)
             {
                 case EnumFileType.Video:
@@ -161,7 +158,6 @@ namespace SetBoxTV.VideoPlayer
 
                         VideoFade();
                         log?.Info($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
-                        Analytics.TrackEvent($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
                         break;
                     }
                 case EnumFileType.Image:

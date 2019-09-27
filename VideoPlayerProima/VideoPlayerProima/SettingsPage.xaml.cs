@@ -147,7 +147,7 @@ namespace SetBoxTV.VideoPlayer
         {
             DependencyService.Get<IClipboardService>().SendTextToClipboard(LicenseID.Detail.Replace("ID: ", ""));
             DependencyService.Get<IMessage>().Alert("Licença Copiada para o Clipboard");
-            Analytics.TrackEvent($"Licença Copiada para o Clipboard: {LicenseID.Detail.Replace("ID: ", "")}");
+            log?.Info($"Licença Copiada para o Clipboard: {LicenseID.Detail.Replace("ID: ", "")}");
         }
     }
 }

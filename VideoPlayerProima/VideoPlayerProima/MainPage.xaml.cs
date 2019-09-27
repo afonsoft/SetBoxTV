@@ -46,7 +46,6 @@ namespace SetBoxTV.VideoPlayer
 
         private void ShowText(string t)
         {
-            Analytics.TrackEvent(t);
             model.LoadingText = t;
             model.IsLoading = true;
 
@@ -54,6 +53,8 @@ namespace SetBoxTV.VideoPlayer
             {
                 message?.Alert(t);
             });
+
+            log?.Info(t);
         }
 
         protected override void OnAppearing()
@@ -81,7 +82,6 @@ namespace SetBoxTV.VideoPlayer
             string deviceIdentifier = "";
             bool isLicensed = false;
 
-            Analytics.TrackEvent(device.GetIdentifier());
             AppCenter.SetUserId(device.GetIdentifier());
 
             if (string.IsNullOrEmpty(PlayerSettings.PathFiles))

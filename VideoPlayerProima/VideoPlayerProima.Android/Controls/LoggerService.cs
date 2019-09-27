@@ -19,7 +19,20 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
         private static readonly object lockSync = new object();
 
         private static LoggerService _instance;
-        public static LoggerService Instance => _instance ?? (_instance = new LoggerService());
+        public static LoggerService Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new LoggerService();
+                    _instance.DeviceIdentifier = new DevicePicker().GetIdentifier();
+                    _instance.Platform = Interface.DevicePicker.GetPlatform().ToString();
+                    _instance.Version = $"{Interface.DevicePicker.GetVersion().Major}.{Interface.DevicePicker.GetVersion().Minor}.{Interface.DevicePicker.GetVersion().Revision}.{Interface.DevicePicker.GetVersion().Build}"; ;
+                }
+                return _instance;
+            }
+        }
 
         public string DeviceIdentifier { get; set; } = "ABCD";
         public string Platform { get; set; } = "Android";
@@ -51,7 +64,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
         public void Info(string text)
         {
             Log.Info("SetBoxTV", $"{text}");
-            Analytics.TrackEvent(text);
+            Analytics.TrackEvent($"Identifier: {DeviceIdentifier} - {text}");
             RollbarLocator.RollbarInstance.Info(text);
             SaveFile("INFO  ", text, null);
         }
