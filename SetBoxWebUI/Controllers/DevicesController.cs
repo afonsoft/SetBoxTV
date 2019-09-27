@@ -194,7 +194,7 @@ namespace SetBoxWebUI.Controllers
                                                  .Take(input.RowCount)
                                                  .ToList();
 
-                var item = new GridPagedOutput<DeviceLogError>(logs) { Current = input.Current, RowCount = input.RowCount, Total = devices[0].LogAccesses.Count };
+                var item = new GridPagedOutput<DeviceLogError>(logs) { Current = input.Current, RowCount = input.RowCount, Total = devices[0].Logs.Count };
                 return item;
             }
             catch (Exception ex)
@@ -227,7 +227,7 @@ namespace SetBoxWebUI.Controllers
                                                  .Take(input.RowCount)
                                                  .ToList();
 
-                var item = new GridPagedOutput<DeviceLogAccesses>(logs) { Current = input.Current, RowCount = input.RowCount, Total = devices[0].Logs.Count };
+                var item = new GridPagedOutput<DeviceLogAccesses>(logs) { Current = input.Current, RowCount = input.RowCount, Total = devices[0].LogAccesses.Count };
                 return item;
             }
             catch (Exception ex)
