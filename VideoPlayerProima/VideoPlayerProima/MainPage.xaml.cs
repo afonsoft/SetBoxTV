@@ -46,9 +46,14 @@ namespace SetBoxTV.VideoPlayer
 
         private void ShowText(string t)
         {
+            Analytics.TrackEvent(t);
             model.LoadingText = t;
             model.IsLoading = true;
-            message?.Alert(t);
+
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                message?.Alert(t);
+            });
         }
 
         protected override void OnAppearing()

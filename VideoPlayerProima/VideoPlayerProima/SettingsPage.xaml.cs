@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AppCenter.Analytics;
 using SetBoxTV.VideoPlayer.Helpers;
 using SetBoxTV.VideoPlayer.Interface;
 using SetBoxTV.VideoPlayer.Model;
@@ -146,6 +147,7 @@ namespace SetBoxTV.VideoPlayer
         {
             DependencyService.Get<IClipboardService>().SendTextToClipboard(LicenseID.Detail.Replace("ID: ", ""));
             DependencyService.Get<IMessage>().Alert("Licença Copiada para o Clipboard");
+            Analytics.TrackEvent($"Licença Copiada para o Clipboard: {LicenseID.Detail.Replace("ID: ", "")}");
         }
     }
 }

@@ -11,6 +11,7 @@ using SetBoxTV.VideoPlayer.Interface;
 using System.ComponentModel;
 using Android.Media;
 using LibVLCSharp.Shared;
+using Microsoft.AppCenter.Analytics;
 
 namespace SetBoxTV.VideoPlayer
 {
@@ -76,6 +77,7 @@ namespace SetBoxTV.VideoPlayer
         private void OnTapped(object sender, EventArgs e)
         {
             log?.Debug("OnTapped to Settings");
+            Analytics.TrackEvent("OnTapped to Settings");
             Application.Current.MainPage = new SettingsPage();
         }
 
@@ -121,6 +123,8 @@ namespace SetBoxTV.VideoPlayer
             videoPlayer.IsVisible = false;
             imagePlayer.IsVisible = false;
 
+            Analytics.TrackEvent($"File to play: {fileOrUrl.path}");
+
             switch (fileOrUrl.fileType)
             {
                 case EnumFileType.Video:
@@ -147,13 +151,17 @@ namespace SetBoxTV.VideoPlayer
                 case EnumFileType.Video:
                 case EnumFileType.WebVideo:
                     {
+                        
                         videoPlayer.IsVisible = true;
+                        videoPlayer.LibVLC = model.LibVLC;
                         model.VideoFile = ((FileVideoSource)fileToPlay).File;
                         model.MediaPlayer.Stopped += MediaPlayer_Stopped;
                         videoPlayer.MediaPlayer = model.MediaPlayer;
+                        model.Play();
 
                         VideoFade();
                         log?.Info($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
+                        Analytics.TrackEvent($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
                         break;
                     }
                 case EnumFileType.Image:

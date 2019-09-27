@@ -32,6 +32,14 @@ namespace SetBoxTV.VideoPlayer.Droid
         protected override void OnResume()
         {
             base.OnResume();
+            HideSystemUI();
+        }
+
+        private void HideSystemUI()
+        {
+            Window.DecorView.SystemUiVisibility = Window.DecorView.SystemUiVisibility |
+                (StatusBarVisibility)(SystemUiFlags.ImmersiveSticky | SystemUiFlags.Fullscreen | SystemUiFlags.HideNavigation |
+                SystemUiFlags.LayoutStable | SystemUiFlags.LayoutFullscreen | SystemUiFlags.LayoutHideNavigation);
         }
 
         protected override void OnCreate(Bundle savedInstanceState)

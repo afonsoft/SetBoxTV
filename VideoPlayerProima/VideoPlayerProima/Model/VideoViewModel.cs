@@ -100,8 +100,10 @@ namespace SetBoxTV.VideoPlayer.Model
                         EnableHardwareDecoding = true,
                         Fullscreen = true,
                         Mute = false,
-                        Volume = 100
+                        Volume = 100,
+                        AspectRatio = "Fit screen"
                     };
+
                     IsVideoViewInitialized = true;
                 }
                 else
