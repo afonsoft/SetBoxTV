@@ -14,6 +14,7 @@
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 	<uses-permission android:name="android.permission.RESTART_PACKAGES" />
 	<uses-permission android:name="android.permission.READ_LOGS" />
+  <uses-permission android:name="android.permission.C2D_MESSAGE" />
 	<application android:label="SetBoxTV.VideoPlayer.Android" android:icon="@mipmap/icon">
 		<receiver android:name="br.com.Afonsoft.SetBoxTV.VideoPlayer.Android.Droid.BootReceiver">
 			<intent-filter>
