@@ -151,6 +151,12 @@ namespace SetBoxTV.VideoPlayer.API
             }
         }
 
+        /// <summary>
+        /// Log de Erros
+        /// </summary>
+        /// <param name="mensage"></param>
+        /// <param name="level"></param>
+        /// <returns></returns>
         public async Task<string> Log(string mensage, LogLevel level = LogLevel.ERROR)
         {
             if (string.IsNullOrEmpty(session))

@@ -206,7 +206,10 @@
                                             <a class="nav-link active" id="files-tab" data-toggle="tab" href="#files" role="tab" aria-controls="files" aria-selected="true">Files</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="logs-tab" data-toggle="tab" href="#logs" role="tab" aria-controls="logs" aria-selected="false">Logs</a>
+                                            <a class="nav-link" id="logs-tab" data-toggle="tab" href="#logs" role="tab" aria-controls="logs" aria-selected="false">Logs Acesses</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="logsError-tab" data-toggle="tab" href="#logsError" role="tab" aria-controls="logsError" aria-selected="false">Logs Error</a>
                                         </li>
                                     </ul>
                                     <div class="tab-content" id="myTabContent">
@@ -217,8 +220,8 @@
                                                         <thead>
                                                             <tr>
                                                                 <th data-column-id="name" data-order="asc">Name</th>
-                                                                <th data-column-id="extension" data-width="15%">Extension</th>
-                                                                <th data-column-id="size" data-converter="size" data-width="15%">Size</th>
+                                                                <th data-column-id="extension" data-width="18%">Extension</th>
+                                                                <th data-column-id="size" data-converter="size" data-width="18%">Size</th>
                                                             </tr>
                                                         </thead>
                                                     </table>
@@ -232,7 +235,21 @@
                                                         <thead>
                                                             <tr>
                                                                 <th data-column-id="creationDateTime" data-order="asc" data-converter="datetime" data-width="18%">Creation Date</th>
-                                                                <th data-column-id="ipAcessed" data-width="15%">IP</th>
+                                                                <th data-column-id="ipAcessed" data-width="18%">IP</th>
+                                                                <th data-column-id="message">Message</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="logsError" role="tabpanel" aria-labelledby="logs-tabError">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <table id="grid-data-device-logError" class="table table-condensed table-hover table-striped" style="font-size:8pt;" data-navigation="2">
+                                                        <thead>
+                                                            <tr>
+                                                                <th data-column-id="creationDateTime" data-order="asc" data-converter="datetime" data-width="18%">Creation Date</th>
                                                                 <th data-column-id="message">Message</th>
                                                             </tr>
                                                         </thead>
@@ -268,6 +285,29 @@
                 $("#buttonSave").hide();
                 $("#DivPainelConfig").hide();
                 $("#DivPainelLog").show();
+
+                $("#grid-data-device-logError").bootgrid(
+                    {
+                        ajax: true,
+                        post: function () {
+                            return {
+                                id: id
+                            };
+                        },
+                        url: '/Devices/ListLogError',
+                        labels: translate,
+                        searchSettings: {
+                            delay: 100,
+                            characters: 3
+                        },
+
+                        converters: {
+                            datetime: {  // Tratar os campos data que vem no formato incorreto
+                                from: function (value) { return moment(value); },
+                                to: function (value) { return moment(FormatJsonDateToJavaScriptDate(value)).format("DD/MM/YYYY"); }
+                            }
+                        }
+                    });
 
                 $("#grid-data-device-log").bootgrid(
                     {
