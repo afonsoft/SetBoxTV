@@ -65,15 +65,6 @@ namespace SetBoxTV.VideoPlayer
             GoNextPlayer();
         }
 
-        private void VideoView_MediaPlayerChanged(object sender, MediaPlayerChangedEventArgs e)
-        {
-            if (model != null && videoPlayer.IsVisible)
-            {
-                model.OnVideoViewInitialized();
-                model.Play();
-            }
-        }
-
         private void OnTapped(object sender, EventArgs e)
         {
             log?.Info("OnTapped to Settings");
