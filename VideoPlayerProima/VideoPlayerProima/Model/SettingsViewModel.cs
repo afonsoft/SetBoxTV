@@ -16,6 +16,8 @@ namespace SetBoxTV.VideoPlayer.Model
         private bool _EnableTransactionTime = false;
         private int _TransactionTime;
 
+        private bool _DebugMode;
+
         public SettingsViewModel()
         {
             _License = PlayerSettings.License;
@@ -26,6 +28,7 @@ namespace SetBoxTV.VideoPlayer.Model
             _ShowWebVideo = PlayerSettings.ShowWebVideo;
             _EnableTransactionTime = PlayerSettings.EnableTransactionTime;
             _TransactionTime = PlayerSettings.TransactionTime;
+            _DebugMode = PlayerSettings.DebugEnabled;
 
             if (string.IsNullOrEmpty(_PathFiles))
                 _PathFiles = "/storage/emulated/0/Movies";
@@ -37,6 +40,13 @@ namespace SetBoxTV.VideoPlayer.Model
             get => this._License;
             set => SetProperty(ref _License, value);
             
+        }
+
+        public bool DebugMode
+        {
+            get => this._DebugMode;
+            set => SetProperty(ref _DebugMode, value);
+
         }
         public string PathFiles
         {

@@ -42,6 +42,7 @@ namespace SetBoxTV.VideoPlayer
                 log.DeviceIdentifier = device?.GetIdentifier();
                 log.Platform = DevicePicker.GetPlatform().ToString();
                 log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
+                log.IsDebugEnabled = PlayerSettings.DebugEnabled;
             }
         }
 
@@ -67,7 +68,7 @@ namespace SetBoxTV.VideoPlayer
 
         private void OnTapped(object sender, EventArgs e)
         {
-            log?.Info("OnTapped to Settings");
+            log?.Debug("OnTapped to Settings");
             Application.Current.MainPage = new SettingsPage();
         }
 
@@ -132,7 +133,7 @@ namespace SetBoxTV.VideoPlayer
                     break;
             }
 
-            log?.Info($"File: {fileOrUrl.path}");
+            log?.Debug($"File: {fileOrUrl.path}");
 
             switch (fileOrUrl.fileType)
             {
@@ -145,7 +146,7 @@ namespace SetBoxTV.VideoPlayer
                         videoPlayer.MediaPlayer = model.MediaPlayer;
                         videoPlayer.MediaPlayer.Stopped += MediaPlayerStopped;
                         VideoFade();
-                        log?.Info($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
+                        log?.Debug($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
                         break;
                     }
                 case EnumFileType.Image:
@@ -184,7 +185,7 @@ namespace SetBoxTV.VideoPlayer
 
         private async void Delay()
         {
-            log?.Info($"Duration: {PlayerSettings.TransactionTime} Segundos");
+            log?.Debug($"Duration: {PlayerSettings.TransactionTime} Segundos");
             await Task.Delay(PlayerSettings.TransactionTime * 1000);
 
             if (PlayerSettings.EnableTransactionTime)

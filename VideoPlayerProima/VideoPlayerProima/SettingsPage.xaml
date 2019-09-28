@@ -30,6 +30,9 @@
                         <TextCell Text="Licença" x:Name="LicenseID" Detail="ID: "  Tapped="LicenseID_Tapped"/>
                     <EntryCell Label="Key" x:Name="LabelKey" Placeholder="" Keyboard="Default" Text="{Binding License, Mode=TwoWay}" />
                     </TableSection>
+                <TableSection Title="Debug Mode">
+                    <SwitchCell x:Name="SwitchDebugMode" Text="Enable Debug Mode" On="{Binding DebugMode, Mode=TwoWay}"/>
+                </TableSection>
                 <TableSection Title="Suporte">
                     <TextCell Text="Empresa" Detail="{Binding Company}" x:Name="Company" DetailColor="Black"/>
                     <TextCell Text="Telefone" Detail="{Binding Telephone}" x:Name="Telephone" DetailColor="Black"/>

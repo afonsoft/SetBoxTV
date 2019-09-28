@@ -630,7 +630,8 @@ namespace SetBoxWebUI.Controllers
     public enum LogLevel
     {
         INFO,
-        ERROR
+        ERROR,
+        DEBUG
     }
 
     /// <summary>

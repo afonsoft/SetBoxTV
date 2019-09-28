@@ -41,6 +41,7 @@ namespace SetBoxTV.VideoPlayer
                 log.DeviceIdentifier = device?.GetIdentifier();
                 log.Platform = DevicePicker.GetPlatform().ToString();
                 log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
+                log.IsDebugEnabled = PlayerSettings.DebugEnabled;
             }
         }
 
@@ -54,7 +55,7 @@ namespace SetBoxTV.VideoPlayer
                 message?.Alert(t);
             });
 
-            log?.Info(t);
+            log?.Debug(t);
         }
 
         protected override void OnAppearing()
@@ -74,7 +75,7 @@ namespace SetBoxTV.VideoPlayer
             MainPage.isInProcess = true;
 
             model.IsLoading = true;
-            log?.Info("CheckSelfPermission");
+            log?.Debug("CheckSelfPermission");
             DependencyService.Get<ICheckPermission>()?.CheckSelfPermission();
             IDevicePicker device = DependencyService.Get<IDevicePicker>();
 
@@ -97,8 +98,8 @@ namespace SetBoxTV.VideoPlayer
             {
                 deviceIdentifier = device.GetIdentifier();
 
-                log?.Info($"deviceIdentifier: {deviceIdentifier}");
-                log?.Info($"deviceIdentifier64: {CriptoHelpers.Base64Encode(deviceIdentifier)}");
+                log?.Debug($"deviceIdentifier: {deviceIdentifier}");
+                log?.Debug($"deviceIdentifier64: {CriptoHelpers.Base64Encode(deviceIdentifier)}");
 
                 string deviceIdentifier64 = CriptoHelpers.Base64Encode(deviceIdentifier);
 
@@ -108,7 +109,7 @@ namespace SetBoxTV.VideoPlayer
 
             if (!isLicensed)
             {
-                log?.Info("Licença: Licença inválida");
+                log?.Debug("Licença: Licença inválida");
                 model.IsLoading = false;
                 MainPage.isInProcess = false;
                 await ShowMessage("Licença inválida!", "Licença", "OK",
@@ -117,8 +118,8 @@ namespace SetBoxTV.VideoPlayer
             else
             {
 
-                log?.Info("Licença: Válida");
-                log?.Info("Atualizar as informações pelo Serivdor");
+                log?.Debug("Licença: Válida");
+                log?.Debug("Atualizar as informações pelo Serivdor");
                 IEnumerable<FileCheckSum> serverFiles = new List<FileCheckSum>();
                 try
                 {
@@ -137,7 +138,7 @@ namespace SetBoxTV.VideoPlayer
                     serverFiles = await api.GetFilesCheckSums().ConfigureAwait(true);
                     serverFiles = serverFiles.ToList();
 
-                    log?.Info($"Total de arquivos no servidor: {serverFiles.Count()}");
+                    log?.Debug($"Total de arquivos no servidor: {serverFiles.Count()}");
 
                 }
                 catch (Exception ex)
@@ -146,7 +147,7 @@ namespace SetBoxTV.VideoPlayer
                 }
 
                 IFilePicker filePicker = DependencyService.Get<IFilePicker>();
-                log?.Info($"Directory: {PlayerSettings.PathFiles}");
+                log?.Debug($"Directory: {PlayerSettings.PathFiles}");
 
                 GetFilesInFolder(filePicker);
 
@@ -156,7 +157,7 @@ namespace SetBoxTV.VideoPlayer
                     {
                         try
                         {
-                            log?.Info($"Download do arquivo: {fi.url}");
+                            log?.Debug($"Download do arquivo: {fi.url}");
                             ShowText($"Download da midia {fi.name}");
                             await StartDownloadHandler(fi.url, PlayerSettings.PathFiles, fi.name).ConfigureAwait(false);
                         }
@@ -171,7 +172,7 @@ namespace SetBoxTV.VideoPlayer
 
                 if (!arquivos.Any())
                 {
-                    log?.Info("Directory: Nenhum arquivo localizado na pasta especifica.");
+                    log?.Debug("Directory: Nenhum arquivo localizado na pasta especifica.");
                     model.IsLoading = false;
                     MainPage.isInProcess = false;
                     await ShowMessage("Nenhum arquivo localizado na pasta especifica", "Arquivo", "OK",
@@ -179,22 +180,22 @@ namespace SetBoxTV.VideoPlayer
                 }
                 else
                 {
-                    log?.Info($"Directory: Arquivos localizados {arquivos.Count}");
+                    log?.Debug($"Directory: Arquivos localizados {arquivos.Count}");
 
                     if (serverFiles.Any())
                     {
-                        log?.Info($"Validar os arquivos com o do servidor");
+                        log?.Debug($"Validar os arquivos com o do servidor");
                         foreach (var fi in arquivos)
                         {
                             var fiServier = serverFiles.FirstOrDefault(x => x.name == fi.name);
                             //verificar o checksum
                             if (fiServier != null && !CheckSumHelpers.CheckMD5Hash(fiServier.checkSum, fi.checkSum))
                             {
-                                log?.Info($"Deletando o arquivo {fi.name} CheckSum {fi.checkSum} != {fiServier.checkSum} Diferentes");
+                                log?.Debug($"Deletando o arquivo {fi.name} CheckSum {fi.checkSum} != {fiServier.checkSum} Diferentes");
                                 filePicker.DeleteFile(fi.path);
                                 try
                                 {
-                                    log?.Info($"Download do arquivo: {fiServier.url}");
+                                    log?.Debug($"Download do arquivo: {fiServier.url}");
                                     ShowText($"Download da midia {fiServier.name}");
                                     await StartDownloadHandler(fiServier.url, PlayerSettings.PathFiles, fiServier.name).ConfigureAwait(false);
                                 }
@@ -207,7 +208,7 @@ namespace SetBoxTV.VideoPlayer
                             {
                                 if (fiServier == null)
                                 {
-                                    log?.Info($"Deletando o arquivo {fi.name} pois não tem no servidor");
+                                    log?.Debug($"Deletando o arquivo {fi.name} pois não tem no servidor");
                                     filePicker.DeleteFile(fi.path);
                                 }
                             }

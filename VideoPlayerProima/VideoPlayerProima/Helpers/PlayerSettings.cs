@@ -23,6 +23,12 @@ namespace SetBoxTV.VideoPlayer.Helpers
             set => AppSettings.AddOrUpdateValue(nameof(FindNewFiles), value);
         }
 
+        public static bool DebugEnabled
+        {
+            get => AppSettings.GetValueOrDefault(nameof(DebugEnabled), true);
+            set => AppSettings.AddOrUpdateValue(nameof(DebugEnabled), value);
+        }
+
         public static string Password
         {
             get => AppSettings.GetValueOrDefault(nameof(Password), null);

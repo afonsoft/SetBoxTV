@@ -20,7 +20,8 @@ namespace SetBoxTV.VideoPlayer.API
     public enum LogLevel
     {
         INFO,
-        ERROR
+        ERROR,
+        DEBUG
     }
     /// <summary>
     /// API

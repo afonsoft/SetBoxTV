@@ -23,7 +23,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
         public Task<string> OpenSelectFolderAsync()
         {
-            LoggerService.Instance.Info("OpenSelectFolderAsync");
+            LoggerService.Instance.Debug("OpenSelectFolderAsync");
 
             TaskCompletionSource<string> PickFolderTaskCompletionSource = new TaskCompletionSource<string>();
             Intent intent = new Intent(Intent.ActionGetContent);
@@ -33,7 +33,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
                 MainActivity.PickFolderId,
                 (requestCode, result, data) =>
                 {
-                LoggerService.Instance.Info($"OpenSelectFolderAsync {requestCode.ToString()}");
+                LoggerService.Instance.Debug($"OpenSelectFolderAsync {requestCode.ToString()}");
                     
                     if (result == Result.Ok)
                     {

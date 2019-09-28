@@ -17,15 +17,15 @@ namespace SetBoxTV.VideoPlayer.Droid
                 bool bootCompleted;
                 string action = intent.Action;
 
-                LoggerService.Instance.Info("BootReceiver: OnReceive");
-                LoggerService.Instance.Info($"BootReceiver: Action: {intent.Action}");
+                LoggerService.Instance.Debug("BootReceiver: OnReceive");
+                LoggerService.Instance.Debug($"BootReceiver: Action: {intent.Action}");
 
                 if (Build.VERSION.SdkInt > BuildVersionCodes.M)
                     bootCompleted = Intent.ActionLockedBootCompleted == action;
                 else
                     bootCompleted = Intent.ActionBootCompleted == action;
 
-                LoggerService.Instance.Info($"BootReceiver: bootCompleted: {bootCompleted}");
+                LoggerService.Instance.Debug($"BootReceiver: bootCompleted: {bootCompleted}");
 
                 Intent serviceStart = new Intent(context, typeof(MainActivity));
                 serviceStart.AddFlags(ActivityFlags.NewTask);

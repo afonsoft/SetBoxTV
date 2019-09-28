@@ -5,8 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
-using Rollbar.NetCore.AspNet;
-using Rollbar;
 using System;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.IdentityModel.Tokens;
@@ -57,14 +55,7 @@ namespace SetBoxWebUI
                 o.ForwardClientCertificate = true;
             });
 
-            ConfigureRollbarSingleton();
             services.AddAfonsoftLogging();
-            services.AddRollbarMiddleware();
-            services.AddRollbarLogger(loggerOptions =>
-            {
-                loggerOptions.Filter = (loggerName, loglevel) => loglevel >= LogLevel.Trace;
-            });
-
             services.AddMemoryCache();
             services.AddDistributedMemoryCache();
             services.AddEntityFrameworkSqlServer();
@@ -206,16 +197,6 @@ namespace SetBoxWebUI
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "SetBox API");
-            });
-        }
-
-        private void ConfigureRollbarSingleton()
-        {
-            string rollbarAccessToken = Configuration["Rollbar:AccessToken"];
-            string rollbarEnvironment = Configuration["Rollbar:Environment"];
-            RollbarLocator.RollbarInstance.Configure(new RollbarConfig(rollbarAccessToken)
-            {
-                Environment = rollbarEnvironment
             });
         }
     }

@@ -30,6 +30,7 @@ namespace SetBoxTV.VideoPlayer
                 log.DeviceIdentifier = device?.GetIdentifier();
                 log.Platform = DevicePicker.GetPlatform().ToString();
                 log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
+                log.IsDebugEnabled = PlayerSettings.DebugEnabled;
             }
         }
 
@@ -102,6 +103,7 @@ namespace SetBoxTV.VideoPlayer
             model.ShowWebImage = SwitchWebImage.On;
             model.ShowWebVideo = SwitchWebVideo.On;
             model.EnableTransactionTime = SwitchTransaction.On;
+            model.DebugMode = SwitchDebugMode.On;
 
             if (int.TryParse(SwitchTransactionTime.Text, out int time))
             {
@@ -119,11 +121,12 @@ namespace SetBoxTV.VideoPlayer
             PlayerSettings.ShowWebVideo = model.ShowWebVideo;
             PlayerSettings.EnableTransactionTime = model.EnableTransactionTime;
             PlayerSettings.TransactionTime = model.TransactionTime;
+            PlayerSettings.DebugEnabled = model.DebugMode;
 
             try
             {
                 var api = new API.SetBoxApi(deviceIdentifier, model.License, PlayerSettings.Url);
-                log?.Info("Salvando as Configurações no Servidor");
+                log?.Debug("Salvando as Configurações no Servidor");
                 
                 await api.SetConfig(new ConfigModel()
                 {
@@ -147,7 +150,7 @@ namespace SetBoxTV.VideoPlayer
         {
             DependencyService.Get<IClipboardService>().SendTextToClipboard(LicenseID.Detail.Replace("ID: ", ""));
             DependencyService.Get<IMessage>().Alert("Licença Copiada para o Clipboard");
-            log?.Info($"Licença Copiada para o Clipboard: {LicenseID.Detail.Replace("ID: ", "")}");
+            log?.Debug($"Licença Copiada para o Clipboard: {LicenseID.Detail.Replace("ID: ", "")}");
         }
     }
 }

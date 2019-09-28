@@ -3,7 +3,6 @@ using Xamarin.Forms;
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using Rollbar;
 using SetBoxTV.VideoPlayer.Helpers;
 using ILogger = SetBoxTV.VideoPlayer.Interface.ILogger;
 using Java.Lang;
@@ -15,6 +14,15 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 {
     public class LoggerService : ILogger
     {
+        private API.SetBoxApi api;
+
+        private void CreateApiLogError(string msg, API.LogLevel level)
+        {
+            if (api == null)
+                api = new API.SetBoxApi(new DevicePicker().GetIdentifier(), PlayerSettings.License, PlayerSettings.Url);
+
+            api.Log(msg, level);
+        }
 
         private static readonly object lockSync = new object();
 
@@ -29,6 +37,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
                     _instance.DeviceIdentifier = new DevicePicker().GetIdentifier();
                     _instance.Platform = Interface.DevicePicker.GetPlatform().ToString();
                     _instance.Version = $"{Interface.DevicePicker.GetVersion().Major}.{Interface.DevicePicker.GetVersion().Minor}.{Interface.DevicePicker.GetVersion().Revision}.{Interface.DevicePicker.GetVersion().Build}"; ;
+                    _instance.IsDebugEnabled = PlayerSettings.DebugEnabled;
                 }
                 return _instance;
             }
@@ -37,36 +46,48 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
         public string DeviceIdentifier { get; set; } = "ABCD";
         public string Platform { get; set; } = "Android";
         public string Version { get; set; } = "1.0";
+        public bool IsDebugEnabled { get; set; }
 
          public void Debug(string text)
         {
-            Log.Debug("SetBoxTV", $"{text}");
-            RollbarLocator.RollbarInstance.Debug(text);
-            SaveFile("DEBUG ", text, null);
+            if (IsDebugEnabled)
+            {
+                Log.Debug("SetBoxTV", $"{text}");
+                SaveFile("DEBUG ", text, null);
+                Analytics.TrackEvent($"Identifier: {DeviceIdentifier} - {text}");
+                CreateApiLogError($"{text}", API.LogLevel.DEBUG);
+            }
         }
+
+        public void Debug(string text, System.Exception ex)
+        {
+            if (IsDebugEnabled)
+            {
+                Log.Debug("SetBoxTV", $"{text}");
+                SaveFile("DEBUG ", text, null);
+                Analytics.TrackEvent($"Identifier: {DeviceIdentifier} - {text}");
+                CreateApiLogError($"{text} - {ex.Message}", API.LogLevel.DEBUG);
+            }
+        }
+
 
         public void Error(string text, System.Exception ex)
         {
             Log.Error("SetBoxTV", Throwable.FromException(ex), $"{text} - {ex.Message}");
-            Crashes.TrackError(ex);
-            RollbarLocator.RollbarInstance.Error(ex);
             SaveFile("ERRO  ", text, ex);
+            Crashes.TrackError(ex);
+            CreateApiLogError($"{text} - {ex.Message}", API.LogLevel.ERROR);
         }
 
         public void Error(System.Exception ex)
         {
+            if (ex == null)
+                return;
+           
             Log.Error("SetBoxTV", Throwable.FromException(ex), $"{ex.Message}");
-            Crashes.TrackError(ex);
-            RollbarLocator.RollbarInstance.Error(ex);
             SaveFile("ERRO  ", null, ex);
-        }
-
-        public void Info(string text)
-        {
-            Log.Info("SetBoxTV", $"{text}");
-            Analytics.TrackEvent($"Identifier: {DeviceIdentifier} - {text}");
-            RollbarLocator.RollbarInstance.Info(text);
-            SaveFile("INFO  ", text, null);
+            Crashes.TrackError(ex);
+            CreateApiLogError($"{ex.Message}", API.LogLevel.ERROR);
         }
 
 

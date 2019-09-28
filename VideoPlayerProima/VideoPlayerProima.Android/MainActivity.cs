@@ -14,7 +14,6 @@ using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
-using Rollbar;
 using SetBoxTV.VideoPlayer.Droid.Controls;
 using SetBoxTV.VideoPlayer.Helpers;
 using LibVLCSharp.Forms.Shared;
@@ -51,30 +50,20 @@ namespace SetBoxTV.VideoPlayer.Droid
             Distribute.SetEnabledAsync(true);
 
             // Rollbar notifier configuartion
-            RollbarHelper.ConfigureRollbarSingleton();
 
             AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
             {
-                var newExc = new Exception("CurrentDomainOnUnhandledException", args.ExceptionObject as Exception);
-                LoggerService.Instance.Error(newExc);
-                Crashes.TrackError(newExc);
-                RollbarLocator.RollbarInstance.AsBlockingLogger(TimeSpan.FromSeconds(10)).Critical(newExc);
+                LoggerService.Instance.Error(args.ExceptionObject as Exception);
             };
 
             TaskScheduler.UnobservedTaskException += (sender, args) =>
             {
-                var newExc = new ApplicationException("TaskSchedulerOnUnobservedTaskException", args.Exception);
                 LoggerService.Instance.Error(args.Exception);
-                Crashes.TrackError(args.Exception);
-                RollbarLocator.RollbarInstance.AsBlockingLogger(TimeSpan.FromSeconds(10)).Critical(newExc);
             };
 
             AndroidEnvironment.UnhandledExceptionRaiser += (sender, args) =>
             {
-                var newExc = new ApplicationException("AndroidEnvironment_UnhandledExceptionRaiser", args.Exception);
                 LoggerService.Instance.Error(args.Exception);
-                Crashes.TrackError(args.Exception);
-                RollbarLocator.RollbarInstance.AsBlockingLogger(TimeSpan.FromSeconds(10)).Critical(newExc);
             };
 
             TabLayoutResource = Resource.Layout.Tabbar;
