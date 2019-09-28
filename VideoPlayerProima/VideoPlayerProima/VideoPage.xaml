@@ -15,15 +15,6 @@
             <TapGestureRecognizer Tapped="OnTapped" NumberOfTapsRequired="2" />
         </StackLayout.GestureRecognizers>
 
-        <vlc:VideoView x:Name="videoPlayer" 
-                       HorizontalOptions="FillAndExpand" 
-                       VerticalOptions="FillAndExpand" 
-                       IsVisible="False"/>
 
-        <Image x:Name="imagePlayer" BackgroundColor="Black" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnTapped" NumberOfTapsRequired="2" />
-            </Image.GestureRecognizers>
-        </Image>
     </StackLayout>
 </ContentPage>

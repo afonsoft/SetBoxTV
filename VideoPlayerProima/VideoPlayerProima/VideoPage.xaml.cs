@@ -12,6 +12,7 @@ using System.ComponentModel;
 using Android.Media;
 using LibVLCSharp.Shared;
 using Microsoft.AppCenter.Analytics;
+using LibVLCSharp.Forms.Shared;
 
 namespace SetBoxTV.VideoPlayer
 {
@@ -25,6 +26,9 @@ namespace SetBoxTV.VideoPlayer
         private readonly ILogger log;
         private int index = 0;
         private VideoViewModel model;
+
+        private VideoView _videoView;
+        private Xamarin.Forms.Image _image;
 
         public VideoPage(IList<FileDetails> files)
         {
@@ -61,8 +65,6 @@ namespace SetBoxTV.VideoPlayer
 
             NavigationPage.SetHasNavigationBar(this, false);
             model.OnAppearing();
-            videoPlayer.IsVisible = false;
-            videoPlayer.MediaPlayerChanged += MediaPlayerChanged;
             GoNextPlayer();
         }
 
@@ -70,23 +72,6 @@ namespace SetBoxTV.VideoPlayer
         {
             log?.Debug("OnTapped to Settings");
             Application.Current.MainPage = new SettingsPage();
-        }
-
-        private async void VideoFade()
-        {
-            if (PlayerSettings.EnableTransactionTime)
-                videoPlayer.FadeIn(1000, Easing.BounceIn);
-        }
-
-        private async void ImageFade()
-        {
-            if (PlayerSettings.EnableTransactionTime)
-                imagePlayer.FadeIn(1000, Easing.BounceIn);
-        }
-        private async void WebPageFade()
-        {
-            if (PlayerSettings.EnableTransactionTime)
-                imagePlayer.FadeIn(1000, Easing.BounceIn);
         }
 
         private void GoNextPlayer()
@@ -97,6 +82,7 @@ namespace SetBoxTV.VideoPlayer
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
+                    PageStackLayout.Children.Clear();
                     Player(fileDetails[index]);
                     index++;
 
@@ -115,8 +101,6 @@ namespace SetBoxTV.VideoPlayer
 
         private void Player(FileDetails fileOrUrl)
         {
-            videoPlayer.IsVisible = false;
-            imagePlayer.IsVisible = false;
 
             switch (fileOrUrl.fileType)
             {
@@ -144,21 +128,21 @@ namespace SetBoxTV.VideoPlayer
                 case EnumFileType.Video:
                 case EnumFileType.WebVideo:
                     {
-
-                        videoPlayer.IsVisible = true;
+                        _videoView = new VideoView { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
+                        PageStackLayout.Children.Add(_videoView);
+                        _videoView.IsVisible = true;
                         model.VideoFile = ((FileVideoSource)fileToPlay).File;
-                        videoPlayer.MediaPlayer = model.MediaPlayer;
-                        videoPlayer.MediaPlayer.Stopped += MediaPlayerStopped;
-                        VideoFade();
+                        _videoView.MediaPlayer = model.MediaPlayer;
+                        _videoView.MediaPlayer.Stopped += MediaPlayerStopped;
+                        _videoView.MediaPlayerChanged += MediaPlayerChanged;
                         log?.Debug($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
                         break;
                     }
                 case EnumFileType.Image:
                 case EnumFileType.WebImage:
                     {
-                        imagePlayer.IsVisible = true;
-                        imagePlayer.Source = imagaToPlay;
-                        ImageFade();
+                        _image = new Xamarin.Forms.Image();
+                        _image.Source = imagaToPlay;
                         Delay();
                         break;
                     }
@@ -176,14 +160,12 @@ namespace SetBoxTV.VideoPlayer
         private void MediaPlayerChanged(object sender, MediaPlayerChangedEventArgs e)
         {
             if (model.CanPlay())
-                videoPlayer.MediaPlayer.Play();
+                _videoView.MediaPlayer.Play();
         }
 
 
         private async void MediaPlayerStopped(object sender, EventArgs e)
         {
-            if (PlayerSettings.EnableTransactionTime)
-                videoPlayer.FadeOut(600, Easing.BounceOut);
             GoNextPlayer();
         }
 
@@ -191,9 +173,6 @@ namespace SetBoxTV.VideoPlayer
         {
             log?.Debug($"Duration: {PlayerSettings.TransactionTime} Segundos");
             await Task.Delay(PlayerSettings.TransactionTime * 1000);
-
-            if (PlayerSettings.EnableTransactionTime)
-                imagePlayer.FadeOut(600, Easing.BounceOut);
 
             GoNextPlayer();
         }
