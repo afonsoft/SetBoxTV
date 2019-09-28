@@ -61,7 +61,7 @@ namespace SetBoxTV.VideoPlayer
             NavigationPage.SetHasNavigationBar(this, false);
             model.OnAppearing();
             videoPlayer.IsVisible = false;
-
+            videoPlayer.MediaPlayerChanged += MediaPlayerChanged;
             GoNextPlayer();
         }
 
@@ -141,12 +141,9 @@ namespace SetBoxTV.VideoPlayer
                     {
                         
                         videoPlayer.IsVisible = true;
-                        videoPlayer.LibVLC = model.LibVLC;
                         model.VideoFile = ((FileVideoSource)fileToPlay).File;
-                        model.MediaPlayer.Stopped += MediaPlayer_Stopped;
                         videoPlayer.MediaPlayer = model.MediaPlayer;
-                        model.Play();
-
+                        videoPlayer.MediaPlayer.Stopped += MediaPlayerStopped;
                         VideoFade();
                         log?.Info($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
                         break;
@@ -171,7 +168,14 @@ namespace SetBoxTV.VideoPlayer
             }
         }
 
-        private async void MediaPlayer_Stopped(object sender, EventArgs e)
+        private void MediaPlayerChanged(object sender, MediaPlayerChangedEventArgs e)
+        {
+            if (model.CanPlay())
+                videoPlayer.MediaPlayer.Play();
+        }
+
+
+        private async void MediaPlayerStopped(object sender, EventArgs e)
         {
             if (PlayerSettings.EnableTransactionTime)
                 await videoPlayer.FadeOut(600, Easing.BounceOut);

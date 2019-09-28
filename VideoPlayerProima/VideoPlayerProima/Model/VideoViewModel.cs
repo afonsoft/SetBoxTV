@@ -160,12 +160,9 @@ namespace SetBoxTV.VideoPlayer.Model
             IsVideoViewInitialized = true;
         }
 
-        public void Play()
+        public bool CanPlay()
         {
-            if (IsLoaded && IsVideoViewInitialized && IsInitialized)
-            {
-                MediaPlayer.Play();
-            }
+            return IsLoaded && IsVideoViewInitialized && IsInitialized;
         }
 
         public void PlayInChromecast()
