@@ -49,12 +49,6 @@ namespace SetBoxTV.VideoPlayer
         {
             model.LoadingText = t;
             model.IsLoading = true;
-
-            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-            {
-                message?.Alert(t);
-            });
-
             log?.Debug(t);
         }
 

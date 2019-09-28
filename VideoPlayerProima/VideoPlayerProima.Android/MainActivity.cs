@@ -49,22 +49,9 @@ namespace SetBoxTV.VideoPlayer.Droid
             Crashes.SetEnabledAsync(true);
             Distribute.SetEnabledAsync(true);
 
-            // Rollbar notifier configuartion
-
-            AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
-            {
-                LoggerService.Instance.Error(args.ExceptionObject as Exception);
-            };
-
-            TaskScheduler.UnobservedTaskException += (sender, args) =>
-            {
-                LoggerService.Instance.Error(args.Exception);
-            };
-
-            AndroidEnvironment.UnhandledExceptionRaiser += (sender, args) =>
-            {
-                LoggerService.Instance.Error(args.Exception);
-            };
+            AppDomain.CurrentDomain.UnhandledException += (sender, args) => LoggerService.Instance.Error(args.ExceptionObject as Exception);
+            TaskScheduler.UnobservedTaskException += (sender, args) => LoggerService.Instance.Error(args.Exception);
+            AndroidEnvironment.UnhandledExceptionRaiser += (sender, args) => LoggerService.Instance.Error(args.Exception);
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
@@ -120,8 +107,7 @@ namespace SetBoxTV.VideoPlayer.Droid
             Manifest.Permission.WakeLock,
             Manifest.Permission.ReceiveBootCompleted,
             Manifest.Permission.MediaContentControl,
-            Manifest.Permission.AccessNetworkState,
-            Manifest.Permission.ReadLogs,
+            Manifest.Permission.AccessNetworkState
         };
 
             int requestCode = 100;

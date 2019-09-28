@@ -16,12 +16,19 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
     {
         private API.SetBoxApi api;
 
-        private void CreateApiLogError(string msg, API.LogLevel level)
+        private async void CreateApiLogError(string msg, API.LogLevel level)
         {
-            if (api == null)
-                api = new API.SetBoxApi(new DevicePicker().GetIdentifier(), PlayerSettings.License, PlayerSettings.Url);
+            try
+            {
+                if (api == null)
+                    api = new API.SetBoxApi(new DevicePicker().GetIdentifier(), PlayerSettings.License, PlayerSettings.Url);
 
-            api.Log(msg, level);
+               await api.Log(msg, level);
+            }
+            catch
+            {
+                //Ignore
+            }
         }
 
         private static readonly object lockSync = new object();
@@ -52,6 +59,9 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
         {
             if (IsDebugEnabled)
             {
+                if (string.IsNullOrEmpty(text))
+                    return;
+
                 Log.Debug("SetBoxTV", $"{text}");
                 SaveFile("DEBUG ", text, null);
                 Analytics.TrackEvent($"Identifier: {DeviceIdentifier} - {text}");
@@ -63,6 +73,9 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
         {
             if (IsDebugEnabled)
             {
+                if (ex == null && string.IsNullOrEmpty(text))
+                    return;
+
                 Log.Debug("SetBoxTV", $"{text}");
                 SaveFile("DEBUG ", text, null);
                 Analytics.TrackEvent($"Identifier: {DeviceIdentifier} - {text}");
@@ -73,6 +86,9 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
         public void Error(string text, System.Exception ex)
         {
+            if (ex == null && string.IsNullOrEmpty(text))
+                return;
+
             Log.Error("SetBoxTV", Throwable.FromException(ex), $"{text} - {ex.Message}");
             SaveFile("ERRO  ", text, ex);
             Crashes.TrackError(ex);
