@@ -57,8 +57,12 @@ namespace SetBoxTV.VideoPlayer
             base.OnAppearing();
             NavigationPage.SetHasNavigationBar(this, false);
             model.IsLoading = true;
-            Loading();
-            model.IsLoading = false;
+           
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                Loading();
+                model.IsLoading = false;
+            });
         }
 
         public async void Loading()

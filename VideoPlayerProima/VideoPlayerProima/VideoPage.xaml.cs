@@ -28,10 +28,10 @@ namespace SetBoxTV.VideoPlayer
 
         public VideoPage(IList<FileDetails> files)
         {
-            
+
             InitializeComponent();
             BindingContext = model = new VideoViewModel();
-            MainPage.isInProcess = false;            
+            MainPage.isInProcess = false;
             model.IsLoading = true;
 
             fileDetails = files;
@@ -75,18 +75,18 @@ namespace SetBoxTV.VideoPlayer
         private async void VideoFade()
         {
             if (PlayerSettings.EnableTransactionTime)
-                await videoPlayer.FadeIn(1000, Easing.BounceIn);
+                videoPlayer.FadeIn(1000, Easing.BounceIn);
         }
 
         private async void ImageFade()
         {
             if (PlayerSettings.EnableTransactionTime)
-                await imagePlayer.FadeIn(1000, Easing.BounceIn);
+                imagePlayer.FadeIn(1000, Easing.BounceIn);
         }
         private async void WebPageFade()
         {
             if (PlayerSettings.EnableTransactionTime)
-                await imagePlayer.FadeIn(1000, Easing.BounceIn);
+                imagePlayer.FadeIn(1000, Easing.BounceIn);
         }
 
         private void GoNextPlayer()
@@ -94,11 +94,15 @@ namespace SetBoxTV.VideoPlayer
             model.IsLoading = true;
             try
             {
-                Player(fileDetails[index]);
-                index++;
 
-                if (index >= fileDetails.Count)
-                    index = 0;
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    Player(fileDetails[index]);
+                    index++;
+
+                    if (index >= fileDetails.Count)
+                        index = 0;
+                });
             }
             catch (Exception ex)
             {
@@ -140,7 +144,7 @@ namespace SetBoxTV.VideoPlayer
                 case EnumFileType.Video:
                 case EnumFileType.WebVideo:
                     {
-                        
+
                         videoPlayer.IsVisible = true;
                         model.VideoFile = ((FileVideoSource)fileToPlay).File;
                         videoPlayer.MediaPlayer = model.MediaPlayer;
@@ -179,7 +183,7 @@ namespace SetBoxTV.VideoPlayer
         private async void MediaPlayerStopped(object sender, EventArgs e)
         {
             if (PlayerSettings.EnableTransactionTime)
-                await videoPlayer.FadeOut(600, Easing.BounceOut);
+                videoPlayer.FadeOut(600, Easing.BounceOut);
             GoNextPlayer();
         }
 
@@ -189,7 +193,7 @@ namespace SetBoxTV.VideoPlayer
             await Task.Delay(PlayerSettings.TransactionTime * 1000);
 
             if (PlayerSettings.EnableTransactionTime)
-                await imagePlayer.FadeOut(600, Easing.BounceOut);
+                imagePlayer.FadeOut(600, Easing.BounceOut);
 
             GoNextPlayer();
         }
