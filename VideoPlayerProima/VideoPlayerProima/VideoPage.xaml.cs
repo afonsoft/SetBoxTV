@@ -29,6 +29,7 @@ namespace SetBoxTV.VideoPlayer
 
         private VideoView _videoView;
         private Xamarin.Forms.Image _image;
+        float _position;
 
         public VideoPage(IList<FileDetails> files)
         {
@@ -48,6 +49,29 @@ namespace SetBoxTV.VideoPlayer
                 log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
                 log.IsDebugEnabled = PlayerSettings.DebugEnabled;
             }
+
+            MessagingCenter.Subscribe<string>(this, "OnPause", app =>
+            {
+                VideoView.MediaPlayerChanged -= MediaPlayerChanged;
+                model.MediaPlayer.Pause();
+                _position = model.MediaPlayer.Position;
+                model.MediaPlayer.Stop();
+                MainGrid.Children.Clear();
+            });
+
+            MessagingCenter.Subscribe<string>(this, "OnRestart", app =>
+            {
+                _videoView = new VideoView { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
+                MainGrid.Children.Add(_videoView);
+
+                _videoView.MediaPlayerChanged += MediaPlayerChanged;
+
+                _videoView.MediaPlayer = model.MediaPlayer;
+                _videoView.MediaPlayer.Position = _position;
+                _position = 0;
+            });
+
+
         }
 
         protected override void OnAppearing()
@@ -65,14 +89,13 @@ namespace SetBoxTV.VideoPlayer
 
             NavigationPage.SetHasNavigationBar(this, false);
             model.OnAppearing();
+
+            VideoView.MediaPlayerChanged += MediaPlayerChanged;
+
             GoNextPlayer();
         }
 
-        private void OnTapped(object sender, EventArgs e)
-        {
-            log?.Debug("OnTapped to Settings");
-            Application.Current.MainPage = new SettingsPage();
-        }
+
 
         private void GoNextPlayer()
         {
@@ -82,7 +105,6 @@ namespace SetBoxTV.VideoPlayer
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    PageStackLayout.Children.Clear();
                     Player(fileDetails[index]);
                     index++;
 
@@ -101,66 +123,77 @@ namespace SetBoxTV.VideoPlayer
 
         private void Player(FileDetails fileOrUrl)
         {
-
-            switch (fileOrUrl.fileType)
+            try
             {
-                case EnumFileType.Video:
-                    fileToPlay = new FileVideoSource { File = fileOrUrl.path };
-                    break;
-                case EnumFileType.WebVideo:
-                    fileToPlay = new UriVideoSource { Uri = fileOrUrl.path };
-                    break;
-                case EnumFileType.Image:
-                    imagaToPlay = ImageSource.FromFile(fileOrUrl.path);
-                    break;
-                case EnumFileType.WebImage:
-                    imagaToPlay = ImageSource.FromUri(new Uri(fileOrUrl.path));
-                    break;
-                case EnumFileType.WebPage:
-                    urlToPlayer = new Uri(fileOrUrl.path);
-                    break;
+                switch (fileOrUrl.fileType)
+                {
+                    case EnumFileType.Video:
+                        fileToPlay = new FileVideoSource { File = fileOrUrl.path };
+                        break;
+                    case EnumFileType.WebVideo:
+                        fileToPlay = new UriVideoSource { Uri = fileOrUrl.path };
+                        break;
+                    case EnumFileType.Image:
+                        imagaToPlay = ImageSource.FromFile(fileOrUrl.path);
+                        break;
+                    case EnumFileType.WebImage:
+                        imagaToPlay = ImageSource.FromUri(new Uri(fileOrUrl.path));
+                        break;
+                    case EnumFileType.WebPage:
+                        urlToPlayer = new Uri(fileOrUrl.path);
+                        break;
+                }
+
+                log?.Debug($"File: {fileOrUrl.path}");
+
+                switch (fileOrUrl.fileType)
+                {
+                    case EnumFileType.Video:
+                    case EnumFileType.WebVideo:
+                        {
+                            model.VideoFile = ((FileVideoSource)fileToPlay).File;
+                            VideoView.MediaPlayer = model.MediaPlayer;
+                            VideoView.MediaPlayer.Stopped += MediaPlayerStopped;
+                            VideoView.MediaPlayerChanged += MediaPlayerChanged;
+                            log?.Debug($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
+                            break;
+                        }
+                    case EnumFileType.Image:
+                    case EnumFileType.WebImage:
+                        {
+                            _image = new Xamarin.Forms.Image() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
+                            _image.Source = imagaToPlay;
+                            Delay();
+                            break;
+                        }
+                    case EnumFileType.WebPage:
+                        {
+                            //Show WebPage
+                            //WebPageFade();
+                            //Delay();
+                            //GoNextPlayer();
+                            break;
+                        }
+                }
             }
-
-            log?.Debug($"File: {fileOrUrl.path}");
-
-            switch (fileOrUrl.fileType)
+            catch (Exception ex)
             {
-                case EnumFileType.Video:
-                case EnumFileType.WebVideo:
-                    {
-                        _videoView = new VideoView { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
-                        PageStackLayout.Children.Add(_videoView);
-                        _videoView.IsVisible = true;
-                        model.VideoFile = ((FileVideoSource)fileToPlay).File;
-                        _videoView.MediaPlayer = model.MediaPlayer;
-                        _videoView.MediaPlayer.Stopped += MediaPlayerStopped;
-                        _videoView.MediaPlayerChanged += MediaPlayerChanged;
-                        log?.Debug($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
-                        break;
-                    }
-                case EnumFileType.Image:
-                case EnumFileType.WebImage:
-                    {
-                        _image = new Xamarin.Forms.Image();
-                        _image.Source = imagaToPlay;
-                        Delay();
-                        break;
-                    }
-                case EnumFileType.WebPage:
-                    {
-                        //Show WebPage
-                        //WebPageFade();
-                        //Delay();
-                        //GoNextPlayer();
-                        break;
-                    }
+                log?.Error(ex);
+                MainPage.isInProcess = false;
+                Application.Current.MainPage = new MainPage();
             }
+        }
+
+        private void OnTapped(object sender, EventArgs e)
+        {
+            log?.Debug("OnTapped to Settings");
+            Application.Current.MainPage = new SettingsPage();
         }
 
         private void MediaPlayerChanged(object sender, MediaPlayerChangedEventArgs e)
         {
             if (model.CanPlay())
-                _videoView.MediaPlayer.Play();
+                VideoView.MediaPlayer.Play();
         }
 
 
