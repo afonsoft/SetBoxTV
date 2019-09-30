@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0" package="br.com.Afonsoft.SetBoxTV.VideoPlayer.Android" android:installLocation="auto" android:versionCode="1">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.1" package="br.com.Afonsoft.SetBoxTV.VideoPlayer.Android" android:installLocation="auto" android:versionCode="1">
 	<uses-sdk android:minSdkVersion="22" android:targetSdkVersion="28" />
 	<uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -9,14 +9,13 @@
 	<uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
 	<uses-permission android:name="android.permission.WAKE_LOCK" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 	<uses-permission android:name="android.permission.RESTART_PACKAGES" />
 	<uses-permission android:name="android.permission.READ_LOGS" />
-  <uses-permission android:name="android.permission.C2D_MESSAGE" />
-	<application android:label="SetBoxTV.VideoPlayer.Android" android:icon="@mipmap/icon">
-		<receiver android:name="br.com.Afonsoft.SetBoxTV.VideoPlayer.Android.Droid.BootReceiver">
+	<uses-permission android:name="android.permission.C2D_MESSAGE" />
+	<application android:label="SetBoxTV" android:icon="@mipmap/icon">
+		<receiver android:name="br.com.Afonsoft.SetBoxTV.VideoPlayer.Droid.BootReceiver">
 			<intent-filter>
 				<action android:name="android.intent.action.BOOT_COMPLETED" />
 				<action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />

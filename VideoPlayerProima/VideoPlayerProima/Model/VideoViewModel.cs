@@ -95,21 +95,12 @@ namespace SetBoxTV.VideoPlayer.Model
                 if (!string.IsNullOrEmpty(_file))
                 {
                     Media = new Media(LibVLC, _file, FromType.FromPath);
-                    MediaPlayer = new MediaPlayer(Media)
-                    {
-                        EnableHardwareDecoding = true,
-                        Fullscreen = true,
-                        Mute = false,
-                        Volume = 100,
-                        AspectRatio = "Fit screen"
-                    };
                     Media.AddOption(":fullscreen");
                     IsVideoViewInitialized = true;
                 }
                 else
                 {
                     IsVideoViewInitialized = false;
-                    MediaPlayer = new MediaPlayer(LibVLC);
                 }
 
             }
@@ -143,7 +134,14 @@ namespace SetBoxTV.VideoPlayer.Model
             LibVLC = new LibVLC();
 
             // instanciate the main MediaPlayer object
-            MediaPlayer = new MediaPlayer(LibVLC);
+            MediaPlayer = new MediaPlayer(LibVLC)
+            {
+                EnableHardwareDecoding = true,
+                Fullscreen = true,
+                Mute = false,
+                Volume = 100,
+                AspectRatio = "Fit screen"
+            };
 
             IsInitialized = true;
 
@@ -155,11 +153,6 @@ namespace SetBoxTV.VideoPlayer.Model
             IsLoaded = true;
         }
 
-        public void OnVideoViewInitialized()
-        {
-            IsVideoViewInitialized = true;
-        }
-
         public bool CanPlay()
         {
             return IsLoaded && IsVideoViewInitialized && IsInitialized;
@@ -167,14 +160,14 @@ namespace SetBoxTV.VideoPlayer.Model
 
         public void PlayInChromecast()
         {
-            if (IsLoaded && IsVideoViewInitialized && IsInitialized)
+            if (CanPlay())
             {
                 DiscoverChromecasts();
                 if (_rendererItems.Any())
                 {
                     MediaPlayer.SetRenderer(_rendererItems.First());
                 }
-                MediaPlayer.Play();
+                MediaPlayer.Play(Media);
             }
         }
     }

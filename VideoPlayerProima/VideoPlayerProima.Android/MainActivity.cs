@@ -106,7 +106,6 @@ namespace SetBoxTV.VideoPlayer.Droid
             Manifest.Permission.Internet,
             Manifest.Permission.WakeLock,
             Manifest.Permission.ReceiveBootCompleted,
-            Manifest.Permission.MediaContentControl,
             Manifest.Permission.AccessNetworkState
         };
 
