@@ -16,7 +16,7 @@
         <Grid.GestureRecognizers>
             <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="OnTapped" />
         </Grid.GestureRecognizers>
-        <vlc:VideoView x:Name="VideoView" Grid.Row="0" Grid.Column="0"/>
+        <vlc:VideoView x:Name="VideoView" Grid.Row="0" Grid.Column="0" MediaPlayerChanged="MediaPlayerChanged"/>
     </Grid>
 
 </ContentPage>

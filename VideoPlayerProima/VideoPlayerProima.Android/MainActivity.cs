@@ -25,6 +25,7 @@ using Microsoft.AppCenter.Push;
 namespace SetBoxTV.VideoPlayer.Droid
 {
     [Activity(Label = "SetBoxTV", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, HardwareAccelerated = true, Exported = true, NoHistory = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Landscape)]
+    [IntentFilter( actions: new string[] { "android.intent.action.MAIN" }, Categories = new string[] { "android.intent.category.LEANBACK_LAUNCHER" })]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnResume()
@@ -52,7 +53,6 @@ namespace SetBoxTV.VideoPlayer.Droid
             AppCenter.Start("35661827-5555-4b62-b333-145f0456c75d", typeof(Analytics), typeof(Crashes), typeof(Distribute), typeof(Push));
             Crashes.SetEnabledAsync(true);
             Distribute.SetEnabledAsync(true);
-            Distribute.SetEnabledForDebuggableBuild(true);
 
             AppDomain.CurrentDomain.UnhandledException += (sender, args) => LoggerService.Instance.Error(args.ExceptionObject as Exception);
             TaskScheduler.UnobservedTaskException += (sender, args) => LoggerService.Instance.Error(args.Exception);

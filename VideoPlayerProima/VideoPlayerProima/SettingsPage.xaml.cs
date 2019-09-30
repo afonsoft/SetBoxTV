@@ -37,7 +37,7 @@ namespace SetBoxTV.VideoPlayer
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-
+            NavigationPage.SetHasNavigationBar(this, false);
             directoyPicker = DependencyService.Get<IDirectoyPicker>();
             devicePicker = DependencyService.Get<IDevicePicker>();
             deviceIdentifier = devicePicker?.GetIdentifier();
@@ -122,6 +122,8 @@ namespace SetBoxTV.VideoPlayer
             PlayerSettings.EnableTransactionTime = model.EnableTransactionTime;
             PlayerSettings.TransactionTime = model.TransactionTime;
             PlayerSettings.DebugEnabled = model.DebugMode;
+
+            PlayerSettings.FirstInsall = false;
 
             try
             {

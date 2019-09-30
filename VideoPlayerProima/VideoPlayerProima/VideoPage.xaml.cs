@@ -36,7 +36,6 @@ namespace SetBoxTV.VideoPlayer
             BindingContext = model = new VideoViewModel();
             MainPage.isInProcess = false;
             model.IsLoading = true;
-
             fileDetails = files;
             log = DependencyService.Get<ILogger>();
             if (log != null)
@@ -51,13 +50,13 @@ namespace SetBoxTV.VideoPlayer
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            VideoView.MediaPlayer.Stop();
+            VideoView.MediaPlayer?.Stop();
             VideoView.MediaPlayer = null;
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            NavigationPage.SetHasNavigationBar(this, false);
             log?.Debug($"VideoPage : License: {PlayerSettings.License}");
             log?.Debug($"VideoPage : PathFiles: {PlayerSettings.PathFiles}");
             log?.Debug($"VideoPage : ShowVideo: {PlayerSettings.ShowVideo}");
@@ -67,10 +66,8 @@ namespace SetBoxTV.VideoPlayer
             log?.Debug($"VideoPage : EnableTransactionTime: {PlayerSettings.EnableTransactionTime}");
             log?.Debug($"VideoPage : TransactionTime: {PlayerSettings.TransactionTime}");
 
-            NavigationPage.SetHasNavigationBar(this, false);
             model.OnAppearing();
-
-            VideoView.MediaPlayerChanged += MediaPlayerChanged;
+            model.EndReached += MediaPlayerEndReached;
 
             GoNextPlayer();
         }
@@ -130,8 +127,6 @@ namespace SetBoxTV.VideoPlayer
                         {
                             model.VideoFile = ((FileVideoSource)fileToPlay).File;
                             VideoView.MediaPlayer = model.MediaPlayer;
-                            VideoView.MediaPlayer.Stopped += MediaPlayerStopped;
-                            VideoView.MediaPlayerChanged += MediaPlayerChanged;
                             log?.Debug($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
                             break;
                         }
@@ -161,8 +156,6 @@ namespace SetBoxTV.VideoPlayer
             }
         }
 
-     
-
         private void OnTapped(object sender, EventArgs e)
         {
             log?.Debug("OnTapped to Settings");
@@ -179,14 +172,13 @@ namespace SetBoxTV.VideoPlayer
 
         private void MediaPlayerChanged(object sender, MediaPlayerChangedEventArgs e)
         {
-            if (model.CanPlay())
-                VideoView.MediaPlayer.Play();
+            if (model.CanPlay() && VideoView.MediaPlayer != null)
+                VideoView.MediaPlayer.Play(model.Media);
         }
 
 
-        private void MediaPlayerStopped(object sender, EventArgs e)
+        private void MediaPlayerEndReached(object sender, EventArgs e)
         {
-            VideoView.MediaPlayer = null;
             GoNextPlayer();
         }
     }

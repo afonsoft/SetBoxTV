@@ -56,24 +56,24 @@ namespace SetBoxTV.VideoPlayer
         {
             base.OnAppearing();
             NavigationPage.SetHasNavigationBar(this, false);
-            model.IsLoading = true;
 
-            if (PlayerSettings.FirstInsall)
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
             {
-                log?.Debug("First Install");
-                model.IsLoading = false;
-                MainPage.isInProcess = false;
-                ShowMessage("Favor efetuar as configurações de instação do SetBoxTV", "Instalação", "OK",
-                () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); });
-            }
-            else
-            {
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                model.IsLoading = true;
+                if (PlayerSettings.FirstInsall || string.IsNullOrEmpty(PlayerSettings.License))
+                {
+                    log?.Debug("First Install");
+                    model.IsLoading = false;
+                    MainPage.isInProcess = false;
+                  await  ShowMessage("Favor efetuar as configurações de instação do SetBoxTV", "Instalação", "OK",
+                    () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
+                }
+                else
                 {
                     Loading();
                     model.IsLoading = false;
-                });
-            }
+                }
+            });
         }
 
         public async void Loading()
@@ -121,8 +121,8 @@ namespace SetBoxTV.VideoPlayer
                 log?.Debug("Licença: Licença inválida");
                 model.IsLoading = false;
                 MainPage.isInProcess = false;
-                ShowMessage("Licença inválida!", "Licença", "OK",
-                () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); });
+                await ShowMessage("Licença inválida!", "Licença", "OK",
+                () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
             }
             else
             {
@@ -184,8 +184,8 @@ namespace SetBoxTV.VideoPlayer
                     log?.Debug("Directory: Nenhum arquivo localizado na pasta especifica.");
                     model.IsLoading = false;
                     MainPage.isInProcess = false;
-                    ShowMessage("Nenhum arquivo localizado na pasta especifica", "Arquivo", "OK",
-                        () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); });
+                    await ShowMessage("Nenhum arquivo localizado na pasta especifica", "Arquivo", "OK",
+                        () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
                 }
                 else
                 {
@@ -257,20 +257,19 @@ namespace SetBoxTV.VideoPlayer
 
         }
 
-        public void ShowMessage(string message,
+        public async Task ShowMessage(string message,
             string title,
             string buttonText,
             Action afterHideCallback)
         {
-            Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-            {
-                await DisplayAlert(
-                title,
-                message,
-                buttonText).ConfigureAwait(true);
 
-                afterHideCallback?.Invoke();
-            });
+            await DisplayAlert(
+            title,
+            message,
+            buttonText).ConfigureAwait(true);
+
+            afterHideCallback?.Invoke();
+
         }
 
         private async Task StartDownloadHandler(string urlToDownload, string pathToSave, string fileName)

@@ -142,10 +142,19 @@ namespace SetBoxTV.VideoPlayer.Model
                 Volume = 100,
                 AspectRatio = "Fit screen"
             };
-
+            MediaPlayer.EndReached += MediaPlayerEndReached;
             IsInitialized = true;
 
         }
+
+        private void MediaPlayerEndReached(object sender, EventArgs e)
+        {
+            MediaPlayer.Stop();
+            MediaPlayer.Dispose();
+            EndReached?.Invoke(sender, e);
+        }
+
+        public event EventHandler<EventArgs> EndReached;
 
         public void OnAppearing()
         {
@@ -158,10 +167,44 @@ namespace SetBoxTV.VideoPlayer.Model
             return IsLoaded && IsVideoViewInitialized && IsInitialized;
         }
 
+        public void Play()
+        {
+            if (CanPlay())
+            {
+                CheckMediaPlayer();
+                MediaPlayer.Play(Media);
+            }
+        }
+
+        public void Stop()
+        {
+            IsVideoViewInitialized = false;
+            if (MediaPlayer != null && MediaPlayer.State != VLCState.Stopped && MediaPlayer.State != VLCState.Ended)
+                MediaPlayer.Stop();
+        }
+
+
+        private void CheckMediaPlayer()
+        {
+            if (MediaPlayer == null)
+            {
+                MediaPlayer = new MediaPlayer(LibVLC)
+                {
+                    EnableHardwareDecoding = true,
+                    Fullscreen = true,
+                    Mute = false,
+                    Volume = 100,
+                    AspectRatio = "Fit screen"
+                };
+                MediaPlayer.EndReached += MediaPlayerEndReached;
+            }
+        }
+
         public void PlayInChromecast()
         {
             if (CanPlay())
             {
+                CheckMediaPlayer();
                 DiscoverChromecasts();
                 if (_rendererItems.Any())
                 {
