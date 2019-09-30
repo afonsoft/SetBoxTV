@@ -103,7 +103,7 @@ namespace SetBoxTV.VideoPlayer.Model
                         Volume = 100,
                         AspectRatio = "Fit screen"
                     };
-
+                    Media.AddOption(":fullscreen");
                     IsVideoViewInitialized = true;
                 }
                 else

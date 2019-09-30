@@ -13,6 +13,7 @@ using Android.Media;
 using LibVLCSharp.Shared;
 using Microsoft.AppCenter.Analytics;
 using LibVLCSharp.Forms.Shared;
+using System.Threading;
 
 namespace SetBoxTV.VideoPlayer
 {
@@ -73,7 +74,12 @@ namespace SetBoxTV.VideoPlayer
 
 
         }
-
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            VideoView.MediaPlayer.Stop();
+            VideoView.MediaPlayer = null;
+        }
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -155,6 +161,7 @@ namespace SetBoxTV.VideoPlayer
                             VideoView.MediaPlayer = model.MediaPlayer;
                             VideoView.MediaPlayer.Stopped += MediaPlayerStopped;
                             VideoView.MediaPlayerChanged += MediaPlayerChanged;
+                            VideoView.MediaPlayer.EndReached += MediaPlayerEndReached;
                             log?.Debug($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
                             break;
                         }
@@ -184,22 +191,12 @@ namespace SetBoxTV.VideoPlayer
             }
         }
 
+     
+
         private void OnTapped(object sender, EventArgs e)
         {
             log?.Debug("OnTapped to Settings");
             Application.Current.MainPage = new SettingsPage();
-        }
-
-        private void MediaPlayerChanged(object sender, MediaPlayerChangedEventArgs e)
-        {
-            if (model.CanPlay())
-                VideoView.MediaPlayer.Play();
-        }
-
-
-        private async void MediaPlayerStopped(object sender, EventArgs e)
-        {
-            GoNextPlayer();
         }
 
         private async void Delay()
@@ -209,5 +206,24 @@ namespace SetBoxTV.VideoPlayer
 
             GoNextPlayer();
         }
+
+        private void MediaPlayerChanged(object sender, MediaPlayerChangedEventArgs e)
+        {
+            if (model.CanPlay())
+                VideoView.MediaPlayer.Play();
+        }
+
+
+        private void MediaPlayerStopped(object sender, EventArgs e)
+        {
+            VideoView.MediaPlayer.Stop();
+            VideoView.MediaPlayer = null;
+            GoNextPlayer();
+        }
+        private void MediaPlayerEndReached(object sender, EventArgs e)
+        {
+            VideoView.MediaPlayer.Stop();
+        }
+
     }
 }
