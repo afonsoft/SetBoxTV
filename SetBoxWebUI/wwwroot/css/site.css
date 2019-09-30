@@ -101,3 +101,9 @@ body {
         -webkit-transform: rotate(360deg);
     }
 }
+
+@media (max-width: 767px) {
+    .HideColInMobile {
+        display: none;
+    }
+}
