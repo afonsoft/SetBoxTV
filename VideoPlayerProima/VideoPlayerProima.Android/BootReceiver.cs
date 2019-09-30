@@ -28,6 +28,7 @@ namespace SetBoxTV.VideoPlayer.Droid
                 LoggerService.Instance.Debug($"BootReceiver: bootCompleted: {bootCompleted}");
 
                 Intent serviceStart = new Intent(context, typeof(MainActivity));
+
                 serviceStart.AddFlags(ActivityFlags.NewTask);
                 context.StartActivity(serviceStart);
             }

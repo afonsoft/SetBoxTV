@@ -8,6 +8,8 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Distribute;
 using Microsoft.AppCenter.Push;
+using SetBoxTV.VideoPlayer.Interface;
+using SetBoxTV.VideoPlayer.Helpers;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace SetBoxTV.VideoPlayer
@@ -30,9 +32,11 @@ namespace SetBoxTV.VideoPlayer
             // Handle when your app starts
             base.OnStart();
             MessagingCenter.Send(new LifecycleMessage(), nameof(OnStart));
+            Distribute.ReleaseAvailable = OnReleaseAvailable;
             AppCenter.Start("android=35661827-5555-4b62-b333-145f0456c75d", typeof(Analytics), typeof(Crashes), typeof(Distribute), typeof(Push));
             Crashes.SetEnabledAsync(true);
             Distribute.SetEnabledAsync(true);
+
 
             MainPage = new MainPage();
         }
@@ -50,6 +54,44 @@ namespace SetBoxTV.VideoPlayer
             base.OnResume();
             MessagingCenter.Send(new LifecycleMessage(), nameof(OnResume));
 
+        }
+
+        bool OnReleaseAvailable(ReleaseDetails releaseDetails)
+        {
+            // Look at releaseDetails public properties to get version information, release notes text or release notes URL
+            string versionName = releaseDetails.ShortVersion;
+            string versionCodeOrBuildNumber = releaseDetails.Version;
+            string releaseNotes = releaseDetails.ReleaseNotes;
+            Uri releaseNotesUrl = releaseDetails.ReleaseNotesUrl;
+
+            string title = $"versionName: {versionName} - versionCodeOrBuildNumber: {versionCodeOrBuildNumber} - releaseNotes: {releaseNotes} - releaseNotesUrl: {releaseNotesUrl}";
+
+            var log = DependencyService.Get<ILogger>();
+            if (log != null)
+            {
+                IDevicePicker device = DependencyService.Get<IDevicePicker>();
+                log.DeviceIdentifier = device?.GetIdentifier();
+                log.Platform = DevicePicker.GetPlatform().ToString();
+                log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
+                log.IsDebugEnabled = PlayerSettings.DebugEnabled;
+                log.Debug(title);
+            }
+
+            // On mandatory update, user cannot postpone
+            if (releaseDetails.MandatoryUpdate)
+            {
+                // Notify SDK that user selected update
+                Distribute.NotifyUpdateAction(UpdateAction.Update);
+            }
+            else
+            {
+                // Notify SDK that user selected postpone (for 1 day)
+                // Note that this method call is ignored by the SDK if the update is mandatory
+                Distribute.NotifyUpdateAction(UpdateAction.Postpone);
+            }
+          
+            // Return true if you are using your own dialog, false otherwise
+            return true;
         }
     }
 }

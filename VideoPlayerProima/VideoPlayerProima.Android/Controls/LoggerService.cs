@@ -55,14 +55,15 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
         public string Version { get; set; } = "1.0";
         public bool IsDebugEnabled { get; set; }
 
-         public void Debug(string text)
+        public void Debug(string text)
         {
+
+            if (string.IsNullOrEmpty(text))
+                return;
+            Log.Debug("SetBoxTV", $"{text}");
+
             if (IsDebugEnabled)
             {
-                if (string.IsNullOrEmpty(text))
-                    return;
-
-                Log.Debug("SetBoxTV", $"{text}");
                 SaveFile("DEBUG ", text, null);
                 Analytics.TrackEvent($"Identifier: {DeviceIdentifier} - {text}");
                 CreateApiLogError($"{text}", API.LogLevel.DEBUG);
@@ -71,12 +72,13 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
         public void Debug(string text, System.Exception ex)
         {
+
+            if (ex == null && string.IsNullOrEmpty(text))
+                return;
+            Log.Debug("SetBoxTV", $"{text}");
+
             if (IsDebugEnabled)
             {
-                if (ex == null && string.IsNullOrEmpty(text))
-                    return;
-
-                Log.Debug("SetBoxTV", $"{text}");
                 SaveFile("DEBUG ", text, null);
                 Analytics.TrackEvent($"Identifier: {DeviceIdentifier} - {text}");
                 CreateApiLogError($"{text} - {ex.Message}", API.LogLevel.DEBUG);

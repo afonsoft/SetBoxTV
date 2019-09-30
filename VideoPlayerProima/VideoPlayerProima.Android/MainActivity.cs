@@ -15,7 +15,6 @@ using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
 using SetBoxTV.VideoPlayer.Droid.Controls;
-using SetBoxTV.VideoPlayer.Helpers;
 using LibVLCSharp.Forms.Shared;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
@@ -40,14 +39,20 @@ namespace SetBoxTV.VideoPlayer.Droid
                 (StatusBarVisibility)(SystemUiFlags.ImmersiveSticky | SystemUiFlags.Fullscreen | SystemUiFlags.HideNavigation |
                 SystemUiFlags.LayoutStable | SystemUiFlags.LayoutFullscreen | SystemUiFlags.LayoutHideNavigation);
         }
-
+        protected override void OnNewIntent(Android.Content.Intent intent)
+        {
+            base.OnNewIntent(intent);
+            Push.CheckLaunchedFromNotification(this, intent);
+        }
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Instance = this;
 
+            Push.EnableFirebaseAnalytics();
             AppCenter.Start("35661827-5555-4b62-b333-145f0456c75d", typeof(Analytics), typeof(Crashes), typeof(Distribute), typeof(Push));
             Crashes.SetEnabledAsync(true);
             Distribute.SetEnabledAsync(true);
+            Distribute.SetEnabledForDebuggableBuild(true);
 
             AppDomain.CurrentDomain.UnhandledException += (sender, args) => LoggerService.Instance.Error(args.ExceptionObject as Exception);
             TaskScheduler.UnobservedTaskException += (sender, args) => LoggerService.Instance.Error(args.Exception);
