@@ -68,7 +68,7 @@ namespace SetBoxTV.VideoPlayer
 
             model.OnAppearing();
             model.EndReached += MediaPlayerEndReached;
-
+            VideoView.MediaPlayer = model.MediaPlayer;
             GoNextPlayer();
         }
 
@@ -126,7 +126,13 @@ namespace SetBoxTV.VideoPlayer
                     case EnumFileType.WebVideo:
                         {
                             model.VideoFile = ((FileVideoSource)fileToPlay).File;
-                            VideoView.MediaPlayer = model.MediaPlayer;
+
+                            if (VideoView.MediaPlayer == null)
+                                VideoView.MediaPlayer = model.MediaPlayer;
+
+                            if (model.CanPlay())
+                                VideoView.MediaPlayer.Play(model.Media);
+
                             log?.Debug($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
                             break;
                         }
@@ -170,12 +176,7 @@ namespace SetBoxTV.VideoPlayer
             GoNextPlayer();
         }
 
-        private void MediaPlayerChanged(object sender, MediaPlayerChangedEventArgs e)
-        {
-            if (model.CanPlay() && VideoView.MediaPlayer != null)
-                VideoView.MediaPlayer.Play(model.Media);
-        }
-
+     
 
         private void MediaPlayerEndReached(object sender, EventArgs e)
         {

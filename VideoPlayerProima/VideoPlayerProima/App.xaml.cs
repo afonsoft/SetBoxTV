@@ -54,6 +54,7 @@ namespace SetBoxTV.VideoPlayer
             base.OnResume();
             MessagingCenter.Send(new LifecycleMessage(), nameof(OnResume));
             //restart
+            SetBoxTV.VideoPlayer.MainPage.isInProcess = false;
             MainPage = new MainPage();
 
         }
