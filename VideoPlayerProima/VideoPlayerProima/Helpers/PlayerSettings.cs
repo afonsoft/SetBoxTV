@@ -29,6 +29,13 @@ namespace SetBoxTV.VideoPlayer.Helpers
             set => AppSettings.AddOrUpdateValue(nameof(DebugEnabled), value);
         }
 
+        public static bool FirstInsall
+        {
+            get => AppSettings.GetValueOrDefault(nameof(FirstInsall), true);
+            set => AppSettings.AddOrUpdateValue(nameof(FirstInsall), value);
+        }
+
+
         public static string Password
         {
             get => AppSettings.GetValueOrDefault(nameof(Password), null);

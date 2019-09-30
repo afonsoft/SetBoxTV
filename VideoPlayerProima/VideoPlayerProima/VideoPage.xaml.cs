@@ -27,10 +27,7 @@ namespace SetBoxTV.VideoPlayer
         private readonly ILogger log;
         private int index = 0;
         private VideoViewModel model;
-
-        private VideoView _videoView;
         private Xamarin.Forms.Image _image;
-        float _position;
 
         public VideoPage(IList<FileDetails> files)
         {
@@ -50,29 +47,6 @@ namespace SetBoxTV.VideoPlayer
                 log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
                 log.IsDebugEnabled = PlayerSettings.DebugEnabled;
             }
-
-            MessagingCenter.Subscribe<string>(this, "OnPause", app =>
-            {
-                VideoView.MediaPlayerChanged -= MediaPlayerChanged;
-                model.MediaPlayer.Pause();
-                _position = model.MediaPlayer.Position;
-                model.MediaPlayer.Stop();
-                MainGrid.Children.Clear();
-            });
-
-            MessagingCenter.Subscribe<string>(this, "OnRestart", app =>
-            {
-                _videoView = new VideoView { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
-                MainGrid.Children.Add(_videoView);
-
-                _videoView.MediaPlayerChanged += MediaPlayerChanged;
-
-                _videoView.MediaPlayer = model.MediaPlayer;
-                _videoView.MediaPlayer.Position = _position;
-                _position = 0;
-            });
-
-
         }
         protected override void OnDisappearing()
         {
@@ -101,14 +75,11 @@ namespace SetBoxTV.VideoPlayer
             GoNextPlayer();
         }
 
-
-
         private void GoNextPlayer()
         {
             model.IsLoading = true;
             try
             {
-
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
                     Player(fileDetails[index]);
@@ -161,7 +132,6 @@ namespace SetBoxTV.VideoPlayer
                             VideoView.MediaPlayer = model.MediaPlayer;
                             VideoView.MediaPlayer.Stopped += MediaPlayerStopped;
                             VideoView.MediaPlayerChanged += MediaPlayerChanged;
-                            VideoView.MediaPlayer.EndReached += MediaPlayerEndReached;
                             log?.Debug($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
                             break;
                         }
@@ -216,14 +186,8 @@ namespace SetBoxTV.VideoPlayer
 
         private void MediaPlayerStopped(object sender, EventArgs e)
         {
-            VideoView.MediaPlayer.Stop();
             VideoView.MediaPlayer = null;
             GoNextPlayer();
         }
-        private void MediaPlayerEndReached(object sender, EventArgs e)
-        {
-            VideoView.MediaPlayer.Stop();
-        }
-
     }
 }
