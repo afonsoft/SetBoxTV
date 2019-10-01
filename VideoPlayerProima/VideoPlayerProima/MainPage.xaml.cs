@@ -304,11 +304,11 @@ namespace SetBoxTV.VideoPlayer
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
                 model.LoadingText = e.Filename;
-                model.ProgressValue = (int)(100 * e.PercentComplete);
+                model.ProgressValue = e.PercentComplete;
 
                 progressBarId.Progress = model.ProgressValue;
                 labelId.Text = model.LoadingText;
-                labelLoadingId.Text = string.Format("{0:F2}%", model.ProgressValue);
+                labelLoadingId.Text = string.Format("{0:F2}%", (model.ProgressValue * 100));
 
             });
         }

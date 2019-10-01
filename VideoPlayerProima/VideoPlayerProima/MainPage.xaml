@@ -38,7 +38,7 @@
                             Grid.Column="0"/>
 
         <Label x:Name="labelId"
-                FontSize="Medium"
+                FontSize="Small"
                 TextColor="White" 
                 BackgroundColor="Black"
                 Text="{Binding LoadingText}"
@@ -63,7 +63,7 @@
         <Label x:Name="labelLoadingId" 
                 TextColor="White" 
                 BackgroundColor="Black"
-                FontSize="Medium"
+                FontSize="Small"
                 Text="{Binding ProgressValue, StringFormat='{0:F2}%'}" 
                 IsVisible="{Binding IsDownloading}" 
                 HorizontalTextAlignment="Center"
