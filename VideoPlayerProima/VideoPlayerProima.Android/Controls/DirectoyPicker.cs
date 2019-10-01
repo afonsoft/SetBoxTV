@@ -16,9 +16,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
         public string GetStorageFolderPath()
         {
-            string docFolder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-            string libFolder = Path.Combine(docFolder, "..", "Library");
-            return libFolder;
+            return Android.OS.Environment.GetExternalStoragePublicDirectory(Android.OS.Environment.DirectoryMovies).AbsolutePath;
         }
 
         public Task<string> OpenSelectFolderAsync()

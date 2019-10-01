@@ -100,11 +100,27 @@ namespace SetBoxTV.VideoPlayer
 
             AppCenter.SetUserId(device.GetIdentifier());
 
+            if (!string.IsNullOrEmpty(PlayerSettings.PathFiles) && !Directory.Exists(PlayerSettings.PathFiles))
+                PlayerSettings.PathFiles = "";
+
             if (string.IsNullOrEmpty(PlayerSettings.PathFiles))
             {
                 PlayerSettings.PathFiles = DependencyService.Get<IDirectoyPicker>().GetStorageFolderPath();
                 if (string.IsNullOrEmpty(PlayerSettings.PathFiles))
                     PlayerSettings.PathFiles = "/storage/emulated/0/Movies";
+            }
+
+            if (!Directory.Exists(PlayerSettings.PathFiles))
+            {
+                try
+                {
+                    log?.Debug("Criando o diretorio de videos");
+                    Directory.CreateDirectory(PlayerSettings.PathFiles);
+                }
+                catch (Exception ex)
+                {
+                    log?.Error(ex);
+                }
             }
 
             ShowText("Verificando a Licença de uso da SetBox");
