@@ -86,172 +86,214 @@ namespace SetBoxTV.VideoPlayer
 
         public async void Loading()
         {
-            if (MainPage.isInProcess)
-                return;
-
-            MainPage.isInProcess = true;
-
-            model.IsLoading = true;
-            IDevicePicker device = DependencyService.Get<IDevicePicker>();
-
-            string license = PlayerSettings.License;
-            string deviceIdentifier = "";
-            bool isLicensed = false;
-
-            AppCenter.SetUserId(device.GetIdentifier());
-
-            if (!string.IsNullOrEmpty(PlayerSettings.PathFiles) && !Directory.Exists(PlayerSettings.PathFiles))
-                PlayerSettings.PathFiles = "";
-
-            if (string.IsNullOrEmpty(PlayerSettings.PathFiles))
+            try
             {
-                PlayerSettings.PathFiles = DependencyService.Get<IDirectoyPicker>().GetStorageFolderPath();
+                if (MainPage.isInProcess)
+                    return;
+
+                MainPage.isInProcess = true;
+
+                model.IsLoading = true;
+                IDevicePicker device = DependencyService.Get<IDevicePicker>();
+
+                string license = PlayerSettings.License;
+                string deviceIdentifier = "";
+                bool isLicensed = false;
+
+                AppCenter.SetUserId(device.GetIdentifier());
+
+                if (!string.IsNullOrEmpty(PlayerSettings.PathFiles) && !Directory.Exists(PlayerSettings.PathFiles))
+                    PlayerSettings.PathFiles = "";
+
                 if (string.IsNullOrEmpty(PlayerSettings.PathFiles))
-                    PlayerSettings.PathFiles = "/storage/emulated/0/Movies";
-            }
-
-            if (!Directory.Exists(PlayerSettings.PathFiles))
-            {
-                try
                 {
-                    log?.Debug("Criando o diretorio de videos");
-                    Directory.CreateDirectory(PlayerSettings.PathFiles);
-                }
-                catch (Exception ex)
-                {
-                    log?.Error(ex);
-                }
-            }
-
-            ShowText("Verificando a Licença de uso da SetBox");
-
-            if (!string.IsNullOrEmpty(license))
-            {
-                deviceIdentifier = device.GetIdentifier();
-
-                log?.Debug($"deviceIdentifier: {deviceIdentifier}");
-                log?.Debug($"deviceIdentifier64: {CriptoHelpers.Base64Encode(deviceIdentifier)}");
-
-                string deviceIdentifier64 = CriptoHelpers.Base64Encode(deviceIdentifier);
-
-                if (license == deviceIdentifier64 || license == "1111")
-                    isLicensed = true;
-            }
-
-            if (!isLicensed)
-            {
-                log?.Debug("Licença: Licença inválida");
-                model.IsLoading = false;
-                MainPage.isInProcess = false;
-                await ShowMessage("Licença inválida!", "Licença", "OK",
-                () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
-            }
-            else
-            {
-
-                log?.Debug("Licença: Válida");
-                log?.Debug("Atualizar as informações pelo Serivdor");
-                IEnumerable<FileCheckSum> serverFiles = new List<FileCheckSum>();
-                try
-                {
-                    ShowText("Conectando no servidor");
-
-                    var api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
-
-                    await api.UpdateInfo(DevicePicker.GetPlatform().ToString(),
-                        $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}",
-                        $"{device.GetApkVersion()}.{device.GetApkBuild()}",
-                        DevicePicker.GetModel(),
-                        DevicePicker.GetManufacturer(),
-                        DevicePicker.GetName()).ConfigureAwait(true);
-
-                    ShowText("Recuperando a lista de arquivos");
-                    serverFiles = await api.GetFilesCheckSums().ConfigureAwait(true);
-                    serverFiles = serverFiles.ToList();
-
-                    log?.Debug($"Total de arquivos no servidor: {serverFiles.Count()}");
-
-                }
-                catch (Exception ex)
-                {
-                    log?.Error("Erro para Atualizar", ex);
+                    PlayerSettings.PathFiles = DependencyService.Get<IDirectoyPicker>().GetStorageFolderPath();
+                    if (string.IsNullOrEmpty(PlayerSettings.PathFiles))
+                        PlayerSettings.PathFiles = "/storage/emulated/0/Movies";
                 }
 
-                IFilePicker filePicker = DependencyService.Get<IFilePicker>();
-                log?.Debug($"Directory: {PlayerSettings.PathFiles}");
-
-                GetFilesInFolder(filePicker);
-
-                if (!arquivos.Any())
+                if (!Directory.Exists(PlayerSettings.PathFiles))
                 {
-                    foreach (var fi in serverFiles)
+                    try
                     {
-                        try
-                        {
-                            log?.Debug($"Download do arquivo: {fi.url}");
-                            ShowText($"Download da midia {fi.name}");
-                            await StartDownloadHandler(fi.url, PlayerSettings.PathFiles, fi.name).ConfigureAwait(false);
-                        }
-                        catch (Exception ex)
-                        {
-                            log?.Error($"Erro no download do arquivo {fi.name}", ex);
-                        }
+                        log?.Debug("Criando o diretorio de videos");
+                        Directory.CreateDirectory(PlayerSettings.PathFiles);
                     }
-                    GetFilesInFolder(filePicker);
+                    catch (Exception ex)
+                    {
+                        log?.Error(ex);
+                    }
                 }
 
+                ShowText("Verificando a Licença de uso da SetBox");
 
-                if (!arquivos.Any())
+                if (!string.IsNullOrEmpty(license))
                 {
-                    log?.Debug("Directory: Nenhum arquivo localizado na pasta especifica.");
+                    deviceIdentifier = device.GetIdentifier();
+
+                    log?.Debug($"deviceIdentifier: {deviceIdentifier}");
+                    log?.Debug($"deviceIdentifier64: {CriptoHelpers.Base64Encode(deviceIdentifier)}");
+
+                    string deviceIdentifier64 = CriptoHelpers.Base64Encode(deviceIdentifier);
+
+                    if (license == deviceIdentifier64 || license == "1111")
+                        isLicensed = true;
+                }
+
+                if (!isLicensed)
+                {
+                    log?.Debug("Licença: Licença inválida");
                     model.IsLoading = false;
                     MainPage.isInProcess = false;
-                    await ShowMessage("Nenhum arquivo localizado na pasta especifica", "Arquivo", "OK",
-                        () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
+                    await ShowMessage("Licença inválida!", "Licença", "OK",
+                    () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
                 }
                 else
                 {
-                    log?.Debug($"Directory: Arquivos localizados {arquivos.Count}");
 
-                    if (serverFiles.Any())
+                    log?.Debug("Licença: Válida");
+                    log?.Debug("Atualizar as informações pelo Serivdor");
+                    IList<FileCheckSum> serverFiles = new List<FileCheckSum>();
+                    try
                     {
-                        log?.Debug($"Validar os arquivos com o do servidor");
-                        foreach (var fi in arquivos)
+                        ShowText("Conectando no servidor");
+
+                        var api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
+
+                        await api.UpdateInfo(DevicePicker.GetPlatform().ToString(),
+                            $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}",
+                            $"{device.GetApkVersion()}.{device.GetApkBuild()}",
+                            DevicePicker.GetModel(),
+                            DevicePicker.GetManufacturer(),
+                            DevicePicker.GetName()).ConfigureAwait(true);
+
+                        ShowText("Recuperando a lista de arquivos");
+                        var serverFiles1 = await api.GetFilesCheckSums().ConfigureAwait(true);
+                        serverFiles = serverFiles1.ToList();
+
+                        log?.Debug($"Total de arquivos no servidor: {serverFiles.Count()}");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        log?.Error("Erro para Atualizar", ex);
+                    }
+
+                    IFilePicker filePicker = DependencyService.Get<IFilePicker>();
+                    log?.Debug($"Directory: {PlayerSettings.PathFiles}");
+
+                    GetFilesInFolder(filePicker);
+
+                    if (!arquivos.Any())
+                    {
+                        foreach (var fi in serverFiles)
                         {
-                            var fiServier = serverFiles.FirstOrDefault(x => x.name == fi.name);
-                            //verificar o checksum
-                            if (fiServier != null && !CheckSumHelpers.CheckMD5Hash(fiServier.checkSum, fi.checkSum))
+                            try
                             {
-                                log?.Debug($"Deletando o arquivo {fi.name} CheckSum {fi.checkSum} != {fiServier.checkSum} Diferentes");
-                                filePicker.DeleteFile(fi.path);
-                                try
-                                {
-                                    log?.Debug($"Download do arquivo: {fiServier.url}");
-                                    ShowText($"Download da midia {fiServier.name}");
-                                    await StartDownloadHandler(fiServier.url, PlayerSettings.PathFiles, fiServier.name).ConfigureAwait(false);
-                                }
-                                catch (Exception ex)
-                                {
-                                    log?.Error($"Erro no download do arquivo {fi.name}", ex);
-                                }
+                                log?.Debug($"Download do arquivo: {fi.url}");
+                                ShowText($"Download da midia {fi.name}");
+                                await StartDownloadHandler(fi.url, PlayerSettings.PathFiles, fi.name).ConfigureAwait(false);
                             }
-                            else
+                            catch (Exception ex)
                             {
-                                if (fiServier == null)
-                                {
-                                    log?.Debug($"Deletando o arquivo {fi.name} pois não tem no servidor");
-                                    filePicker.DeleteFile(fi.path);
-                                }
+                                log?.Error($"Erro no download do arquivo {fi.name}", ex);
                             }
                         }
+                        GetFilesInFolder(filePicker);
                     }
-                    ShowText("Iniciando o Player");
-                    model.IsLoading = false;
-                    MainPage.isInProcess = false;
-                    Application.Current.MainPage = new VideoPage(arquivos);
+
+
+                    if (!arquivos.Any())
+                    {
+                        log?.Debug("Directory: Nenhum arquivo localizado na pasta especifica.");
+                        model.IsLoading = false;
+                        MainPage.isInProcess = false;
+                        await ShowMessage("Nenhum arquivo localizado na pasta especifica", "Arquivo", "OK",
+                            () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
+                    }
+                    else
+                    {
+                        log?.Debug($"Directory: Arquivos localizados {arquivos.Count}");
+
+                        if (serverFiles.Any())
+                        {
+                            string[] arqs = arquivos.Select(x => x.name).ToArray();
+                            var fiServierToDown = serverFiles.Where(x => !arqs.Contains(x.name));
+                            
+                            log?.Debug($"Validar os arquivos com o do servidor");
+                            foreach (var fi in arquivos)
+                            {
+                                var fiServier = serverFiles.FirstOrDefault(x => x.name == fi.name);
+                                //verificar o checksum
+                                if (fiServier != null && !CheckSumHelpers.CheckMD5Hash(fiServier.checkSum, fi.checkSum))
+                                {
+                                    log?.Debug($"Deletando o arquivo {fi.name} CheckSum {fi.checkSum} != {fiServier.checkSum} Diferentes");
+                                    filePicker.DeleteFile(fi.path);
+                                    try
+                                    {
+                                        log?.Debug($"Download do arquivo: {fiServier.url}");
+                                        ShowText($"Download da midia {fiServier.name}");
+                                        await StartDownloadHandler(fiServier.url, PlayerSettings.PathFiles, fiServier.name).ConfigureAwait(false);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        log?.Error($"Erro no download do arquivo {fi.name}", ex);
+                                    }
+                                }
+                                else
+                                {
+                                    if (fiServier == null)
+                                    {
+                                        log?.Debug($"Deletando o arquivo {fi.name} pois não tem no servidor");
+                                        filePicker.DeleteFile(fi.path);
+                                    }
+                                }
+                            }
+
+                            if (fiServierToDown.Any())
+                            {
+                                log?.Debug($"Fazendo downloads dos arquivos faltandos ou novos");
+                                log?.Debug($"Total de arquivos novos: {fiServierToDown.Count()}");
+
+                                foreach(var fi in fiServierToDown)
+                                {
+                                    try
+                                    {
+                                        log?.Debug($"Download do arquivo: {fi.url}");
+                                        ShowText($"Download da midia {fi.name}");
+                                        await StartDownloadHandler(fi.url, PlayerSettings.PathFiles, fi.name).ConfigureAwait(false);
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        log?.Error($"Erro no download do arquivo {fi.name}", ex);
+                                    }
+                                }
+
+                            }
+                        }
+                        ShowText("Iniciando o Player");
+                        model.IsLoading = false;
+                        MainPage.isInProcess = false;
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                        {
+                            Application.Current.MainPage = new VideoPage(arquivos);
+                        });
+                    }
                 }
+
             }
-            model.IsLoading = false;
+            catch (Exception ex)
+            {
+                log?.Error(ex);
+                MainPage.isInProcess = false;
+                model.IsLoading = false;
+                Application.Current.MainPage = new MainPage();
+            }
+            finally
+            {
+                MainPage.isInProcess = false;
+                model.IsLoading = false;
+            }
         }
 
         private void GetFilesInFolder(IFilePicker filePicker)
