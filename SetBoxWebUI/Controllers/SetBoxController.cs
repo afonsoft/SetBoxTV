@@ -232,7 +232,7 @@ namespace SetBoxWebUI.Controllers
             try
             {
                 string deviceIdentifier64 = CriptoHelpers.Base64Encode(identifier);
-                if (license == deviceIdentifier64 || license == DefaultLicense)
+                if (license == deviceIdentifier64 || license == DefaultLicense || license == "")
                 {
 
                     var device = await _devices.FirstOrDefaultAsync(x => x.DeviceIdentifier == identifier);
@@ -245,7 +245,8 @@ namespace SetBoxWebUI.Controllers
                             License = license,
                             Platform = "unknown",
                             Version = "unknown",
-                            DeviceId = Guid.NewGuid()
+                            DeviceId = Guid.NewGuid(),
+                            Active = license != ""
                         };
                         device.LogAccesses = new List<DeviceLogAccesses>();
                         device.LogAccesses.Add(new DeviceLogAccesses()
@@ -253,19 +254,30 @@ namespace SetBoxWebUI.Controllers
                             CreationDateTime = DateTime.Now,
                             DeviceLogAccessesId = Guid.NewGuid(),
                             IpAcessed = HttpContext.GetClientIpAddress(),
-                            Message = "Created"
+                            Message = license != "" ? "Created" : "Created Not License"
                         });
                         await _devices.AddAsync(device);
                     }
+
+                    if (license == "")
+                        license = device.License;
+                    
+                    if (license != device.License)
+                        device.License = license;
+                    
+                    device.Active = license != "";
 
                     device.LogAccesses.Add(new DeviceLogAccesses()
                     {
                         CreationDateTime = DateTime.Now,
                         DeviceLogAccessesId = Guid.NewGuid(),
                         IpAcessed = HttpContext.GetClientIpAddress(),
-                        Message = "Logged"
+                        Message = license != ""?"Logged" : "Logged Not License"
                     });
                     await _devices.UpdateAsync(device);
+
+                    if (license == "")
+                        license = "TEMP_LICENSE";
 
                     r.Result = CriptoHelpers.Base64Encode($"{identifier}|{CriptoHelpers.Base64Encode(license)}|{HttpContext.GetClientIpAddress()}|{DateTime.Now.AddMinutes(30):yyyyMMddHHmmss}|{device.DeviceId}");
 
@@ -600,7 +612,7 @@ namespace SetBoxWebUI.Controllers
                     throw new SessionException($"Erro para descriptografar a session {session} Erro : {ex.Message}");
                 }
 
-                if (license != deviceIdentifier64 && license != DefaultLicense)
+                if (license != deviceIdentifier64 && license != DefaultLicense && license != "TEMP_LICENSE")
                     throw new SessionException($"A Licença não confere com o Device!");
 
                 if (dt <= DateTime.Now)

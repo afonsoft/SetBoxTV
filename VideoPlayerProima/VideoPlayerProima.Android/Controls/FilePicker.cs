@@ -19,32 +19,46 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
         {
             if (Directory.Exists(searchPath))
             {
-                DirectoryInfo di = new DirectoryInfo(searchPath);
+                try
+                {
+                    DirectoryInfo di = new DirectoryInfo(searchPath);
 
-                var files = di.EnumerateFiles("*.*", SearchOption.AllDirectories)
-                         .AsParallel()
-                         .Where(s => searchExt.Any(s.Name.EndsWith))
-                         .Select(f => new FileDetails
-                         {
-                             fileType = type,
-                             path = f.FullName,
-                             creationDateTime = f.CreationTime,
-                             extension = f.Extension,
-                             name = f.Name,
-                             size = f.Length,
-                             description = "",
-                             url = f.FullName,
-                             checkSum = CheckSumHelpers.MD5HashFile(f.FullName)
-                         }).ToList();
+                    var files = di.EnumerateFiles("*.*", SearchOption.AllDirectories)
+                             .AsParallel()
+                             .Where(s => searchExt.Any(s.Name.EndsWith))
+                             .Select(f => new FileDetails
+                             {
+                                 fileType = type,
+                                 path = f.FullName,
+                                 creationDateTime = f.CreationTime,
+                                 extension = f.Extension,
+                                 name = f.Name,
+                                 size = f.Length,
+                                 description = "",
+                                 url = f.FullName,
+                                 checkSum = CheckSumHelpers.MD5HashFile(f.FullName)
+                             }).ToList();
 
-                return files;
+                    return files;
+                }
+                catch (Exception ex)
+                {
+                    LoggerService.Instance.Error($"GetFiles {searchPath} : {ex.Message}", ex);
+                }
             }
             return new List<FileDetails>();
         }
 
         public void DeleteFile(string fullPath)
         {
-            File.Delete(fullPath);
+            try
+            {
+                File.Delete(fullPath);
+            }
+            catch (Exception ex)
+            {
+                LoggerService.Instance.Error($"Delete {fullPath} : {ex.Message}", ex);
+            }
         }
     }
 }

@@ -26,6 +26,8 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.Property(c => c.DeviceName).HasColumnName("DeviceName").HasMaxLength(255).HasDefaultValue("SetBox");
 
             builder.Property(c => c.CreationDateTime).HasColumnName("CreationDateTime").HasDefaultValueSql("getdate()");
+            builder.Property(c => c.Active).HasColumnName("Active").HasDefaultValue(false);
+
             builder.HasOne(c => c.Configuration).WithOne(d => d.Device).HasForeignKey<Config>(c=>c.DeviceId);
             builder.HasOne(c => c.Support).WithMany(s => s.Devices);
         }

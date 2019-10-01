@@ -21,6 +21,7 @@ namespace SetBoxWebUI.Models
         public string Model { get; set; }
         public string Manufacturer { get; set; }
         public string DeviceName { get; set; }
+        public bool Active { get; set; }
 
         [JsonIgnore]
         public virtual Support Support { get; set; }

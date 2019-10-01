@@ -92,7 +92,7 @@ namespace SetBoxTV.VideoPlayer
                     return;
 
                 MainPage.isInProcess = true;
-
+                API.SetBoxApi api;
                 model.IsLoading = true;
                 IDevicePicker device = DependencyService.Get<IDevicePicker>();
 
@@ -121,11 +121,29 @@ namespace SetBoxTV.VideoPlayer
                     }
                     catch (Exception ex)
                     {
-                        log?.Error(ex);
+                        log?.Error("Directory: " + ex.Message, ex);
                     }
                 }
 
-                ShowText("Verificando a Licença de uso da SetBox");
+                try
+                {
+                    ShowText("Conectando no servidor");
+
+                    api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
+
+                    await api.UpdateInfo(DevicePicker.GetPlatform().ToString(),
+                        $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}",
+                        $"{device.GetApkVersion()}.{device.GetApkBuild()}",
+                        DevicePicker.GetModel(),
+                        DevicePicker.GetManufacturer(),
+                        DevicePicker.GetName()).ConfigureAwait(true);
+                }
+                catch (Exception ex)
+                {
+                    log?.Error("UpdateInfo: " + ex.Message, ex);
+                }
+
+                ShowText("Verificando a Licença de uso da SetBoxTV");
 
                 if (!string.IsNullOrEmpty(license))
                 {
@@ -156,18 +174,9 @@ namespace SetBoxTV.VideoPlayer
                     IList<FileCheckSum> serverFiles = new List<FileCheckSum>();
                     try
                     {
-                        ShowText("Conectando no servidor");
-
-                        var api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
-
-                        await api.UpdateInfo(DevicePicker.GetPlatform().ToString(),
-                            $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}",
-                            $"{device.GetApkVersion()}.{device.GetApkBuild()}",
-                            DevicePicker.GetModel(),
-                            DevicePicker.GetManufacturer(),
-                            DevicePicker.GetName()).ConfigureAwait(true);
 
                         ShowText("Recuperando a lista de arquivos");
+                        api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
                         var serverFiles1 = await api.GetFilesCheckSums().ConfigureAwait(true);
                         serverFiles = serverFiles1.ToList();
 
@@ -176,7 +185,7 @@ namespace SetBoxTV.VideoPlayer
                     }
                     catch (Exception ex)
                     {
-                        log?.Error("Erro para Atualizar", ex);
+                        log?.Error("GetFilesCheckSums: " + ex.Message, ex);
                     }
 
                     IFilePicker filePicker = DependencyService.Get<IFilePicker>();
@@ -196,7 +205,7 @@ namespace SetBoxTV.VideoPlayer
                             }
                             catch (Exception ex)
                             {
-                                log?.Error($"Erro no download do arquivo {fi.name}", ex);
+                                log?.Error($"Download {fi.name}: {ex.Message}", ex);
                             }
                         }
                         GetFilesInFolder(filePicker);
@@ -237,7 +246,7 @@ namespace SetBoxTV.VideoPlayer
                                     }
                                     catch (Exception ex)
                                     {
-                                        log?.Error($"Erro no download do arquivo {fi.name}", ex);
+                                        log?.Error($"Download {fi.name}: {ex.Message}", ex);
                                     }
                                 }
                                 else
@@ -265,7 +274,7 @@ namespace SetBoxTV.VideoPlayer
                                     }
                                     catch (Exception ex)
                                     {
-                                        log?.Error($"Erro no download do arquivo {fi.name}", ex);
+                                        log?.Error($"Download {fi.name}: {ex.Message}", ex);
                                     }
                                 }
 
@@ -361,12 +370,12 @@ namespace SetBoxTV.VideoPlayer
         {
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
-                model.LoadingText = e.Filename;
+                model.LoadingText = $"Download da midia {e.Filename}"; 
                 model.ProgressValue = e.PercentComplete;
 
                 progressBarId.Progress = model.ProgressValue;
                 labelId.Text = model.LoadingText;
-                labelLoadingId.Text = string.Format("{0:F2}%", (model.ProgressValue * 100));
+                labelLoadingId.Text = $"{(model.ProgressValue * 100):F2}%";
 
             });
         }
