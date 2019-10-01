@@ -32,11 +32,13 @@ namespace SetBoxTV.VideoPlayer
                 log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
                 log.IsDebugEnabled = PlayerSettings.DebugEnabled;
             }
+            model.IsLoading = true;
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
+            model.IsLoading = true;
             NavigationPage.SetHasNavigationBar(this, false);
             directoyPicker = DependencyService.Get<IDirectoyPicker>();
             devicePicker = DependencyService.Get<IDevicePicker>();
@@ -61,6 +63,8 @@ namespace SetBoxTV.VideoPlayer
             {
                 log?.Error("Erro para atualizar o suporte", ex);
             }
+
+            model.IsLoading = false;
         }
 
         public async void OnButtonSelectClicked(object sender, EventArgs e)
@@ -96,6 +100,7 @@ namespace SetBoxTV.VideoPlayer
 
         public async void OnButtonSalvarClicked(object sender, EventArgs e)
         {
+            model.IsLoading = true;
             model.License = LabelKey.Text;
             model.PathFiles = FolderSeleted.Detail;
             model.ShowVideo = SwitchVideo.On;
@@ -144,6 +149,7 @@ namespace SetBoxTV.VideoPlayer
                 log?.Error(ex);
             }
             MainPage.isInProcess = false;
+            model.IsLoading = false;
             await ShowMessage("Dados Salvos com sucesso!", "Salvar", "OK",
                 () => { Application.Current.MainPage = new MainPage(); }).ConfigureAwait(true);
         }

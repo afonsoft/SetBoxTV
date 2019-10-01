@@ -83,11 +83,13 @@ namespace SetBoxTV.VideoPlayer
             // On mandatory update, user cannot postpone
             if (releaseDetails.MandatoryUpdate)
             {
+                log?.Debug("Notify SDK that user selected update");
                 // Notify SDK that user selected update
                 Distribute.NotifyUpdateAction(UpdateAction.Update);
             }
             else
             {
+                log?.Debug("Notify SDK that user selected postpone (for 1 day)");
                 // Notify SDK that user selected postpone (for 1 day)
                 // Note that this method call is ignored by the SDK if the update is mandatory
                 Distribute.NotifyUpdateAction(UpdateAction.Postpone);

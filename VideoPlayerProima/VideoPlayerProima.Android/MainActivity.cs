@@ -120,17 +120,17 @@ namespace SetBoxTV.VideoPlayer.Droid
                 requestCode++;
                 try
                 {
-                    if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(Instance, permission) != (int)Permission.Granted)
+                    if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(Instance, permission) != Permission.Granted)
                     {
+                        LoggerService.Instance.Debug("Permission: " + permission);
                         await RequestPermission(requestCode, permission);
                     }
                 }
-                catch
+                catch(Exception ex)
                 {
-                    //Igore
+                    LoggerService.Instance.Error("CheckSelfPermission: " + ex.Message, ex);
                 }
             }
-
         }
 
         private TaskCompletionSource<bool> taskGrantPermission { get; set; }

@@ -50,9 +50,24 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             }
         }
 
-        public string DeviceIdentifier { get; set; } = "ABCD";
-        public string Platform { get; set; } = "Android";
-        public string Version { get; set; } = "1.0";
+        public LoggerService()
+        {
+            try
+            {
+                DeviceIdentifier = new DevicePicker().GetIdentifier();
+                Platform = Interface.DevicePicker.GetPlatform().ToString();
+                Version = $"{Interface.DevicePicker.GetVersion().Major}.{Interface.DevicePicker.GetVersion().Minor}.{Interface.DevicePicker.GetVersion().Revision}.{Interface.DevicePicker.GetVersion().Build}"; ;
+                IsDebugEnabled = PlayerSettings.DebugEnabled;
+            }
+            catch
+            {
+                //Igonre
+            }
+        }
+
+        public string DeviceIdentifier { get; set; }
+        public string Platform { get; set; }
+        public string Version { get; set; } 
         public bool IsDebugEnabled { get; set; }
 
         public void Debug(string text)

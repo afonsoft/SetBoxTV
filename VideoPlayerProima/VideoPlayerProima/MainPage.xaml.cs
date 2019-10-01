@@ -47,26 +47,34 @@ namespace SetBoxTV.VideoPlayer
 
         private void ShowText(string t)
         {
-            model.LoadingText = t;
-            model.IsLoading = true;
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                model.LoadingText = t;
+                model.IsLoading = true;
+                labelId.Text = model.LoadingText;
+            });
+
             log?.Debug(t);
         }
 
-        protected async override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             NavigationPage.SetHasNavigationBar(this, false);
 
             Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
             {
+                log?.Debug("CheckSelfPermission");
+                await DependencyService.Get<ICheckPermission>()?.CheckSelfPermission();
+
                 model.IsLoading = true;
                 if (PlayerSettings.FirstInsall || string.IsNullOrEmpty(PlayerSettings.License))
                 {
                     log?.Debug("First Install");
                     model.IsLoading = false;
                     MainPage.isInProcess = false;
-                  await  ShowMessage("Favor efetuar as configurações de instação do SetBoxTV", "Instalação", "OK",
-                    () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
+                    await ShowMessage("Favor efetuar as configurações de instação do SetBoxTV", "Instalação", "OK",
+                      () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
                 }
                 else
                 {
@@ -84,8 +92,6 @@ namespace SetBoxTV.VideoPlayer
             MainPage.isInProcess = true;
 
             model.IsLoading = true;
-            log?.Debug("CheckSelfPermission");
-            DependencyService.Get<ICheckPermission>()?.CheckSelfPermission();
             IDevicePicker device = DependencyService.Get<IDevicePicker>();
 
             string license = PlayerSettings.License;
@@ -299,6 +305,11 @@ namespace SetBoxTV.VideoPlayer
             {
                 model.LoadingText = e.Filename;
                 model.ProgressValue = (int)(100 * e.PercentComplete);
+
+                progressBarId.Progress = model.ProgressValue;
+                labelId.Text = model.LoadingText;
+                labelLoadingId.Text = string.Format("{0:F2}%", model.ProgressValue);
+
             });
         }
     }

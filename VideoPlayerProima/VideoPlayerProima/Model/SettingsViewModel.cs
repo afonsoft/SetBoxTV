@@ -15,6 +15,9 @@ namespace SetBoxTV.VideoPlayer.Model
         private bool _ShowWebVideo = false;
         private bool _EnableTransactionTime = false;
         private int _TransactionTime;
+        private bool _IsLoading;
+
+
 
         private bool _DebugMode;
 
@@ -33,6 +36,12 @@ namespace SetBoxTV.VideoPlayer.Model
             if (string.IsNullOrEmpty(_PathFiles))
                 _PathFiles = "/storage/emulated/0/Movies";
 
+        }
+
+        public bool IsLoading
+        {
+            get => this._IsLoading;
+            set => SetProperty(ref _IsLoading, value);
         }
 
         public string License

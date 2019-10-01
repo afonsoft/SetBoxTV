@@ -6,7 +6,22 @@
              Title="Configurações do Player">
     <ContentPage.Content>
         <!--<ScrollView>-->
-            <TableView Intent="Settings" x:Name="SwiCell" HasUnevenRows="True">
+
+        <Grid x:Name="MainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ActivityIndicator  IsRunning="{Binding IsLoading}"
+                            IsVisible="{Binding IsLoading}"
+                            Color="Red"
+                            Grid.Row="0"
+                            Grid.Column="0"/>
+
+            <TableView Intent="Settings" x:Name="SwiCell" HasUnevenRows="True" Grid.Row="0" Grid.Column="0">
                 <TableRoot>
                     <TableSection Title="Exibir">
                     <SwitchCell x:Name="SwitchVideo" Text="Videos" On="{Binding ShowVideo, Mode=TwoWay}"/>
@@ -48,5 +63,7 @@
                 </TableRoot>
             </TableView>
         <!--</ScrollView>-->
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
