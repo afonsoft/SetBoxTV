@@ -41,20 +41,20 @@ namespace SetBoxTV.VideoPlayer.Model
         public bool IsLoading
         {
             get => this._IsLoading;
-            set => SetProperty(ref _IsLoading, value);
+            set => SetProperty(ref _IsLoading, value, nameof(IsLoading));
         }
 
         public string License
         {
             get => this._License;
-            set => SetProperty(ref _License, value);
+            set => SetProperty(ref _License, value, nameof(License));
             
         }
 
         public bool DebugMode
         {
             get => this._DebugMode;
-            set => SetProperty(ref _DebugMode, value);
+            set => SetProperty(ref _DebugMode, value, nameof(DebugMode));
 
         }
         public string PathFiles
@@ -65,7 +65,7 @@ namespace SetBoxTV.VideoPlayer.Model
             }
             set
             {
-                SetProperty(ref _PathFiles, value);
+                SetProperty(ref _PathFiles, value, nameof(PathFiles));
             }
         }
         public bool ShowVideo
@@ -76,7 +76,7 @@ namespace SetBoxTV.VideoPlayer.Model
             }
             set
             {
-                SetProperty(ref _ShowVideo, value);
+                SetProperty(ref _ShowVideo, value, nameof(ShowVideo));
             }
         }
         public bool ShowPhoto
@@ -87,7 +87,7 @@ namespace SetBoxTV.VideoPlayer.Model
             }
             set
             {
-                SetProperty(ref _ShowPhoto, value);
+                SetProperty(ref _ShowPhoto, value, nameof(ShowPhoto));
             }
         }
         public bool ShowWebImage
@@ -98,7 +98,7 @@ namespace SetBoxTV.VideoPlayer.Model
             }
             set
             {
-                SetProperty(ref _ShowWebImage, value);
+                SetProperty(ref _ShowWebImage, value, nameof(ShowWebImage));
             }
         }
         public bool ShowWebVideo
@@ -109,7 +109,7 @@ namespace SetBoxTV.VideoPlayer.Model
             }
             set
             {
-                SetProperty(ref _ShowWebVideo, value);
+                SetProperty(ref _ShowWebVideo, value, nameof(ShowWebVideo));
             }
         }
         public bool EnableTransactionTime
@@ -120,7 +120,7 @@ namespace SetBoxTV.VideoPlayer.Model
             }
             set
             {
-                SetProperty(ref _EnableTransactionTime, value);
+                SetProperty(ref _EnableTransactionTime, value, nameof(EnableTransactionTime));
             }
         }
         public int TransactionTime
@@ -131,7 +131,7 @@ namespace SetBoxTV.VideoPlayer.Model
             }
             set
             {
-                SetProperty(ref _TransactionTime, value);
+                SetProperty(ref _TransactionTime, value, nameof(TransactionTime));
             }
         }
     }

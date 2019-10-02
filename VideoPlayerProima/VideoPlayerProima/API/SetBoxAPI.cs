@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using SetBoxTV.VideoPlayer.Helpers;
 using SetBoxTV.VideoPlayer.Model;
 
 namespace SetBoxTV.VideoPlayer.API
@@ -29,10 +30,21 @@ namespace SetBoxTV.VideoPlayer.API
     public class SetBoxApi
     {
         private readonly string deviceIdentifier;
-        private readonly string license;
+        private string _license;
         private readonly Afonsoft.Http.Rest rest;
+        private string _session;
 
-        private string session;
+        public string License
+        {
+            get => _license;
+            private set { _license = value; }
+        }
+
+        public string Session
+        {
+            get => _session;
+            private set { _session = value; }
+        }
 
         /// <summary>
         /// Contrutor
@@ -43,22 +55,22 @@ namespace SetBoxTV.VideoPlayer.API
         public SetBoxApi(string identifier, string license, string endPoint)
         {
             deviceIdentifier = identifier;
-            this.license = license;
+            License = license;
             rest = new Afonsoft.Http.Rest(endPoint);
             GetSessionLogin();
         }
 
         private void GetSessionLogin()
         {
-            if (string.IsNullOrEmpty(license))
-                return;
-
             try
             {
-                var resp = rest.HttpGet<Response<string>>("/Login", Afonsoft.Http.Parameters.With("identifier", deviceIdentifier).And("license", license));
+                var resp = rest.HttpGet<Response<string>>("/Login", Afonsoft.Http.Parameters.With("identifier", deviceIdentifier).And("license", License));
 
                 if (!resp.sessionExpired && resp.status)
-                    session = resp.result;
+                {
+                    Session = resp.result;
+                    License = CriptoHelpers.Base64Decode(Session).Split('|')[1];
+                }
                 else
                     throw new ApiException(resp.message);
             }
@@ -70,7 +82,7 @@ namespace SetBoxTV.VideoPlayer.API
 
         private Task<Response<T>> GetResponse<T>(string endpont)
         {
-            return rest.HttpGetAsync<Response<T>>(endpont, Afonsoft.Http.Parameters.With("session", session));
+            return rest.HttpGetAsync<Response<T>>(endpont, Afonsoft.Http.Parameters.With("session", Session));
         }
 
         /// <summary>
@@ -79,7 +91,7 @@ namespace SetBoxTV.VideoPlayer.API
         /// <returns></returns>
         public async Task<IEnumerable<FileCheckSum>> GetFilesCheckSums()
         {
-            if (string.IsNullOrEmpty(session))
+            if (string.IsNullOrEmpty(Session))
                 return null;
 
             try
@@ -103,7 +115,7 @@ namespace SetBoxTV.VideoPlayer.API
         /// <returns></returns>
         public async Task<ConfigModel> GetConfig()
         {
-            if (string.IsNullOrEmpty(session))
+            if (string.IsNullOrEmpty(Session))
                 return null;
 
             try
@@ -127,13 +139,13 @@ namespace SetBoxTV.VideoPlayer.API
         /// <returns></returns>
         public async Task<ConfigModel> SetConfig(ConfigModel config)
         {
-            if (string.IsNullOrEmpty(session))
+            if (string.IsNullOrEmpty(Session))
                 return null;
 
             try
             {
                 var resp = await rest.HttpPostAsync<Response<ConfigModel>>("/SetConfig",
-                    Afonsoft.Http.Parameters.With("session", session)
+                    Afonsoft.Http.Parameters.With("session", Session)
                                             .And("enableVideo", config.enableVideo.ToString())
                                             .And("enablePhoto", config.enablePhoto.ToString())
                                             .And("enableWebVideo", config.enableWebVideo.ToString())
@@ -160,13 +172,13 @@ namespace SetBoxTV.VideoPlayer.API
         /// <returns></returns>
         public async Task<string> Log(string mensage, LogLevel level = LogLevel.ERROR)
         {
-            if (string.IsNullOrEmpty(session))
+            if (string.IsNullOrEmpty(Session))
                 return null;
 
             try
             {
                 var resp = await rest.HttpPostAsync<Response<string>>("/Log",
-                    Afonsoft.Http.Parameters.With("session", session)
+                    Afonsoft.Http.Parameters.With("session", Session)
                                             .And("mensage", mensage)
                                             .And("level", level.ToString().ToUpper()));
 
@@ -187,13 +199,13 @@ namespace SetBoxTV.VideoPlayer.API
         /// <returns></returns>
         public async Task<string> UpdateInfo(string platform, string version, string apkVersion, string model, string manufacturer, string deviceName)
         {
-            if (string.IsNullOrEmpty(session))
+            if (string.IsNullOrEmpty(Session))
                 return null;
 
             try
             {
                 var resp = await rest.HttpPostAsync<Response<string>>("/UpdateInfo",
-                    Afonsoft.Http.Parameters.With("session", session)
+                    Afonsoft.Http.Parameters.With("session", Session)
                                             .And("platform", platform)
                                             .And("version", version)
                                             .And("apkVersion", apkVersion)
@@ -219,7 +231,7 @@ namespace SetBoxTV.VideoPlayer.API
         /// <returns></returns>
         public async Task<SupportModel> GetSupport()
         {
-            if (string.IsNullOrEmpty(session))
+            if (string.IsNullOrEmpty(Session))
                 return null;
 
             try

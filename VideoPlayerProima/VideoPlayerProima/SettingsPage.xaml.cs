@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using SetBoxTV.VideoPlayer.Helpers;
 using SetBoxTV.VideoPlayer.Interface;
@@ -47,21 +48,54 @@ namespace SetBoxTV.VideoPlayer
             Company.Detail = "Art Vision Indoor";
             Telephone.Detail = "(13) 9817-76786";
             Email.Detail = "artvisionindoor@gmail.com";
-
+            AppCenter.SetUserId(devicePicker?.GetIdentifier());
             try
             {
                 var api = new API.SetBoxApi(deviceIdentifier, PlayerSettings.License, PlayerSettings.Url);
-                var config = await api.GetSupport().ConfigureAwait(true);
+                var support = await api.GetSupport().ConfigureAwait(true);
+                if (support != null)
+                {
+                    Company.Detail = support.company;
+                    Telephone.Detail = support.telephone;
+                    Email.Detail = support.email;
+                }
+
+                var config = await api.GetConfig().ConfigureAwait(true);
                 if (config != null)
                 {
-                    Company.Detail = config.company;
-                    Telephone.Detail = config.telephone;
-                    Email.Detail = config.email;
+
+                    model.License = api.License;
+                    model.ShowVideo = config.enableVideo;
+                    model.ShowPhoto = config.enablePhoto;
+                    model.ShowWebImage = config.enableWebImage;
+                    model.ShowWebVideo = config.enableWebVideo;
+                    model.EnableTransactionTime = config.enableTransaction;
+                    model.TransactionTime = config.transactionTime;
+
+                    SwitchTransactionTime.Text = model.TransactionTime.ToString();
+                    LabelKey.Text = model.License;
+                    FolderSeleted.Detail = model.PathFiles;
+                    SwitchVideo.On = model.ShowVideo;
+                    SwitchPhoto.On = model.ShowPhoto;
+                    SwitchWebImage.On = model.ShowWebImage;
+                    SwitchWebVideo.On = model.ShowWebVideo;
+                    SwitchTransaction.On = model.EnableTransactionTime;
+                    SwitchDebugMode.On = model.DebugMode;
+                    PlayerSettings.License = model.License;
+                    PlayerSettings.PathFiles = model.PathFiles;
+                    PlayerSettings.ShowVideo = model.ShowVideo;
+                    PlayerSettings.ShowPhoto = model.ShowPhoto;
+                    PlayerSettings.ShowWebImage = model.ShowWebImage;
+                    PlayerSettings.ShowWebVideo = model.ShowWebVideo;
+                    PlayerSettings.EnableTransactionTime = model.EnableTransactionTime;
+                    PlayerSettings.TransactionTime = model.TransactionTime;
+                    PlayerSettings.DebugEnabled = model.DebugMode;
                 }
+
             }
             catch (Exception ex)
             {
-                log?.Error("Erro para atualizar o suporte", ex);
+                log?.Error("Erro GetConfig: " + ex.Message, ex);
             }
 
             model.IsLoading = false;
@@ -141,7 +175,9 @@ namespace SetBoxTV.VideoPlayer
                     enableVideo = model.ShowVideo,
                     enableTransaction = model.EnableTransactionTime,
                     enableWebVideo = model.ShowWebVideo,
-                    transactionTime = model.TransactionTime
+                    enableWebImage = model.ShowWebImage,
+                    transactionTime = model.TransactionTime,
+                    creationDateTime = DateTime.Now
                 }).ConfigureAwait(true);
             }
             catch (Exception ex)

@@ -20,7 +20,7 @@ namespace SetBoxTV.VideoPlayer.Model
             }
             set
             {
-                SetProperty(ref _loadingText, value);
+                SetProperty(ref _loadingText, value, nameof(LoadingText));
             }
         }
 
@@ -36,7 +36,7 @@ namespace SetBoxTV.VideoPlayer.Model
             }
             set
             {
-                SetProperty(ref _isLoading, value);
+                SetProperty(ref _isLoading, value, nameof(IsLoading));
             }
         }
 
@@ -52,7 +52,7 @@ namespace SetBoxTV.VideoPlayer.Model
             }
             set
             {
-                SetProperty(ref _isDownloading, value);
+                SetProperty(ref _isDownloading, value, nameof(IsDownloading));
             }
         }
 
@@ -65,7 +65,7 @@ namespace SetBoxTV.VideoPlayer.Model
             get { return _progressValue; }
             set
             {
-                SetProperty(ref _progressValue, value);
+                SetProperty(ref _progressValue, value, nameof(ProgressValue));
             }
         }
 

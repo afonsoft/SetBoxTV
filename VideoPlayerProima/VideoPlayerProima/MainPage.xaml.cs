@@ -160,7 +160,7 @@ namespace SetBoxTV.VideoPlayer
 
                 if (!isLicensed)
                 {
-                    log?.Debug("Licença: Licença inválida");
+                    log?.Debug("Licença: Licença inválida: " + license);
                     model.IsLoading = false;
                     MainPage.isInProcess = false;
                     await ShowMessage("Licença inválida!", "Licença", "OK",
