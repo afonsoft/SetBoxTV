@@ -27,17 +27,37 @@ namespace SetBoxWebUI
                 var roleManager = scope.ServiceProvider.GetService<RoleManager<ApplicationIdentityRole>>();
 
 
-                // Create an identity role object out of the enum value
-                var identityRole = new ApplicationIdentityRole
+                // Create the role if it doesn't already exist
+                if (!await roleManager.RoleExistsAsync(Roles.SysAdmin))
                 {
-                    Id = Guid.NewGuid(),
-                    Name = "Admin"
-                };
+                    // Create an identity role object out of the enum value
+                    await roleManager.CreateAsync(new ApplicationIdentityRole
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = Roles.SysAdmin
+                    });
+                }
 
                 // Create the role if it doesn't already exist
-                if (!await roleManager.RoleExistsAsync(identityRole.Name))
+                if (!await roleManager.RoleExistsAsync(Roles.Application_Admin))
                 {
-                    await roleManager.CreateAsync(identityRole);
+                    // Create an identity role object out of the enum value
+                    await roleManager.CreateAsync(new ApplicationIdentityRole
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = Roles.Application_Admin
+                    });
+                }
+
+                // Create the role if it doesn't already exist
+                if (!await roleManager.RoleExistsAsync(Roles.Application_User))
+                {
+                    // Create an identity role object out of the enum value
+                    await roleManager.CreateAsync(new ApplicationIdentityRole
+                    {
+                        Id = Guid.NewGuid(),
+                        Name = Roles.Application_User
+                    });
                 }
 
                 // Our default user
@@ -54,7 +74,7 @@ namespace SetBoxWebUI
                     // WARNING: Do NOT check in credentials of any kind into source control
                     await userManager.CreateAsync(user, "Senha#2019");
                     // Assign all roles to the default user
-                    await userManager.AddToRolesAsync(user, new string[] { "Admin" });
+                    await userManager.AddToRolesAsync(user, new string[] { Roles.SysAdmin });
                     
                 }
             }

@@ -17,6 +17,7 @@ namespace SetBoxWebUI.Models
         public string Telephone { get; set; }
         public string Email { get; set; }
         public string Name { get; set; }
+        public string UrlLogo { get; set; }
         public DateTime CreationDateTime { get; set; }
 
         [JsonIgnore]
