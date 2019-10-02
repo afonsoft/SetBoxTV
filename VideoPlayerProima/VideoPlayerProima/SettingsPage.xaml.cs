@@ -71,25 +71,6 @@ namespace SetBoxTV.VideoPlayer
                     model.ShowWebVideo = config.enableWebVideo;
                     model.EnableTransactionTime = config.enableTransaction;
                     model.TransactionTime = config.transactionTime;
-
-                    SwitchTransactionTime.Text = model.TransactionTime.ToString();
-                    LabelKey.Text = model.License;
-                    FolderSeleted.Detail = model.PathFiles;
-                    SwitchVideo.On = model.ShowVideo;
-                    SwitchPhoto.On = model.ShowPhoto;
-                    SwitchWebImage.On = model.ShowWebImage;
-                    SwitchWebVideo.On = model.ShowWebVideo;
-                    SwitchTransaction.On = model.EnableTransactionTime;
-                    SwitchDebugMode.On = model.DebugMode;
-                    PlayerSettings.License = model.License;
-                    PlayerSettings.PathFiles = model.PathFiles;
-                    PlayerSettings.ShowVideo = model.ShowVideo;
-                    PlayerSettings.ShowPhoto = model.ShowPhoto;
-                    PlayerSettings.ShowWebImage = model.ShowWebImage;
-                    PlayerSettings.ShowWebVideo = model.ShowWebVideo;
-                    PlayerSettings.EnableTransactionTime = model.EnableTransactionTime;
-                    PlayerSettings.TransactionTime = model.TransactionTime;
-                    PlayerSettings.DebugEnabled = model.DebugMode;
                 }
 
             }
@@ -97,6 +78,17 @@ namespace SetBoxTV.VideoPlayer
             {
                 log?.Error("Erro GetConfig: " + ex.Message, ex);
             }
+
+            SwitchTransactionTime.Text = model.TransactionTime.ToString();
+            LabelKey.Text = model.License;
+            FolderSeleted.Detail = model.PathFiles;
+            SwitchVideo.On = model.ShowVideo;
+            SwitchPhoto.On = model.ShowPhoto;
+            SwitchWebImage.On = model.ShowWebImage;
+            SwitchWebVideo.On = model.ShowWebVideo;
+            SwitchTransaction.On = model.EnableTransactionTime;
+            SwitchDebugMode.On = model.DebugMode;
+            PlayerSettings.License = model.License;
 
             model.IsLoading = false;
         }
