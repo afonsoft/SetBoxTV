@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SetBoxWebUI.Helpers;
 using SetBoxWebUI.Interfaces;
 using SetBoxWebUI.Models;
 using SetBoxWebUI.Models.Views;
@@ -61,7 +62,8 @@ namespace SetBoxWebUI.Controllers
                     ApkVersion = item.ApkVersion,
                     DeviceName = item.DeviceName,
                     Manufacturer = item.Manufacturer,
-                    Model = item.Model
+                    Model = item.Model,
+                    Session = CriptoHelpers.Base64Encode(item.DeviceId.ToString())
                 };
                 if (item.Configuration != null)
                 {
@@ -134,6 +136,19 @@ namespace SetBoxWebUI.Controllers
             }
         }
         //Device
+
+        public async Task<string> Key(string identifier, string session)
+        {
+            var deviceId = CriptoHelpers.Base64Decode(session);
+            var devices = await _devices.FirstOrDefaultAsync(f => f.DeviceId.ToString() == deviceId);
+            if (devices != null)
+            {
+                devices.License = CriptoHelpers.MD5HashString(identifier);
+                await _devices.UpdateAsync(devices);
+                return devices.License;
+            }
+            return "";
+        }
 
         public async Task<GridPagedOutput<FileCheckSum>> ListFiles(GridPagedInput input)
         {

@@ -121,8 +121,13 @@
                                 <div class="form-group row">
 
                                     <label asp-for="License" class="col-sm-3 col-form-label"></label>
-                                    <div class="col-sm-9">
-                                        <input asp-for="License" class="form-control form-control-sm" readonly />
+                                    <div class="col-sm-9 input-group input-group-sm">
+                                        <input asp-for="License" id="DeviceLicense" class="form-control form-control-sm" readonly />
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="GeneratorKey('@Model.DeviceIdentifier', 'DeviceLicense',  '@Model.Session' );">
+                                                <span class="glyphicon glyphicon glyphicon-repeat" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -274,6 +279,12 @@
 
 @section scripts{
     <script type="text/javascript">
+
+        function GeneratorKey(identifier, license, session) {
+            $.get("/Devices/Key?identifier=" + identifier + "&session=" +session, function(result){
+                $("#" + license).val(result);
+            })
+        }
 
         function openModal(action, id) {
 

@@ -33,6 +33,8 @@ namespace SetBoxWebUI.Models.Views
         public string Model { get; set; }
         public string Manufacturer { get; set; }
         public string DeviceName { get; set; }
+
+        public string Session { get; set; }
         public DateTime CreationDateTime { get; set; }
 
         public Guid ConfigId { get; set; }
