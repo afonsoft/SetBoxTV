@@ -85,7 +85,8 @@ namespace SetBoxTV.VideoPlayer
             {
                 log?.Debug("Notify SDK that user selected update");
                 // Notify SDK that user selected update
-                Distribute.NotifyUpdateAction(UpdateAction.Update);
+                //Distribute.NotifyUpdateAction(UpdateAction.Update);
+                Distribute.NotifyUpdateAction(UpdateAction.Postpone);
             }
             else
             {
