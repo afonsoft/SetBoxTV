@@ -124,8 +124,8 @@
                                     <div class="col-sm-9 input-group input-group-sm">
                                         <input asp-for="License" id="DeviceLicense" class="form-control form-control-sm" readonly />
                                         <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary" type="button" onclick="GeneratorKey('@Model.DeviceIdentifier', 'DeviceLicense',  '@Model.Session' );">
-                                                <span class="glyphicon glyphicon glyphicon-repeat" aria-hidden="true"></span>
+                                            <button class="btn btn-outline-secondary" type="button" title="Generate Key" onclick="GeneratorKey('@Model.DeviceIdentifier', 'DeviceLicense',  '@Model.Session' );">
+                                                <span class="glyphicon glyphicon glyphicon-repeat" aria-hidden="true" title="Generate Key"></span>
                                             </button>
                                         </div>
                                     </div>
