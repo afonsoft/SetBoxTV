@@ -28,6 +28,7 @@ namespace SetBoxTV.VideoPlayer
         private int index = 0;
         private VideoViewModel model;
         private Xamarin.Forms.Image _image;
+        private VideoView _videoView;
 
         public VideoPage(IList<FileDetails> files)
         {
@@ -50,8 +51,6 @@ namespace SetBoxTV.VideoPlayer
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            VideoView.MediaPlayer?.Stop();
-            VideoView.MediaPlayer = null;
         }
         protected override void OnAppearing()
         {
@@ -68,7 +67,6 @@ namespace SetBoxTV.VideoPlayer
 
             model.OnAppearing();
             model.EndReached += MediaPlayerEndReached;
-            VideoView.MediaPlayer = model.MediaPlayer;
             GoNextPlayer();
         }
 
@@ -99,6 +97,7 @@ namespace SetBoxTV.VideoPlayer
         {
             try
             {
+                MainGrid.Children.Clear();
                 switch (fileOrUrl.fileType)
                 {
                     case EnumFileType.Video:
@@ -122,16 +121,17 @@ namespace SetBoxTV.VideoPlayer
 
                 switch (fileOrUrl.fileType)
                 {
-                    case EnumFileType.Video:
                     case EnumFileType.WebVideo:
+                    case EnumFileType.Video:
                         {
                             model.VideoFile = ((FileVideoSource)fileToPlay).File;
+                            _videoView = new VideoView() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
 
-                            if (VideoView.MediaPlayer == null)
-                                VideoView.MediaPlayer = model.MediaPlayer;
+                            MainGrid.Children.Add(_videoView);
+                            _videoView.MediaPlayer = model.MediaPlayer;
 
                             if (model.CanPlay())
-                                VideoView.MediaPlayer.Play(model.Media);
+                                _videoView.MediaPlayer.Play(model.Media);
 
                             log?.Debug($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
                             break;
@@ -141,6 +141,7 @@ namespace SetBoxTV.VideoPlayer
                         {
                             _image = new Xamarin.Forms.Image() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
                             _image.Source = imagaToPlay;
+                            MainGrid.Children.Add(_image);
                             Delay();
                             break;
                         }

@@ -149,11 +149,6 @@ namespace SetBoxTV.VideoPlayer.Model
 
         private void MediaPlayerEndReached(object sender, EventArgs e)
         {
-            //Task.Run(() =>
-            //{
-            //    MediaPlayer.Media.Dispose();
-            //    MediaPlayer.Media = null;
-            //});
             IsVideoViewInitialized = false;
             EndReached?.Invoke(sender, e);
         }
