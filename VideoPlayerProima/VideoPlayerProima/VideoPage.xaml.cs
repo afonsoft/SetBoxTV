@@ -3,17 +3,11 @@ using System.Threading.Tasks;
 using SetBoxTV.VideoPlayer.Library;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using SetBoxTV.VideoPlayer.Extensions;
 using SetBoxTV.VideoPlayer.Helpers;
 using SetBoxTV.VideoPlayer.Model;
 using System.Collections.Generic;
 using SetBoxTV.VideoPlayer.Interface;
-using System.ComponentModel;
-using Android.Media;
-using LibVLCSharp.Shared;
-using Microsoft.AppCenter.Analytics;
 using LibVLCSharp.Forms.Shared;
-using System.Threading;
 
 namespace SetBoxTV.VideoPlayer
 {
