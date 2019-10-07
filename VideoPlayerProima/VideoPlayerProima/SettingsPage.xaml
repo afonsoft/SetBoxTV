@@ -56,7 +56,7 @@
                 <TableSection Title="">
                         <ViewCell>
                             <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
-                                    <Button Text="Salvar" Clicked="OnButtonSalvarClicked" />
+                                    <Button Text="Salvar" x:Name="SaveButton" Clicked="OnButtonSalvarClicked" />
                             </StackLayout>
                         </ViewCell>
                     </TableSection>

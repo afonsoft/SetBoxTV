@@ -48,9 +48,18 @@ namespace SetBoxTV.VideoPlayer
             Telephone.Detail = "(13) 9817-76786";
             Email.Detail = "artvisionindoor@gmail.com";
             AppCenter.SetUserId(devicePicker?.GetIdentifier());
+
             try
             {
                 var api = new API.SetBoxApi(deviceIdentifier, PlayerSettings.License, PlayerSettings.Url);
+
+                await api.UpdateInfo(DevicePicker.GetPlatform().ToString(),
+                        $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}",
+                        $"{devicePicker.GetApkVersion()}.{devicePicker.GetApkBuild()}",
+                        DevicePicker.GetModel(),
+                        DevicePicker.GetManufacturer(),
+                        DevicePicker.GetName()).ConfigureAwait(true);
+
                 var support = await api.GetSupport().ConfigureAwait(true);
                 if (support != null)
                 {

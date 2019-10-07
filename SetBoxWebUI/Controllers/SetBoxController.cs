@@ -613,7 +613,7 @@ namespace SetBoxWebUI.Controllers
                 }
 
                 if (license != deviceIdentifier64 && license != DefaultLicense && license != "TEMP_LICENSE")
-                    throw new SessionException($"A Licença não confere com o Device!");
+                    throw new SessionException($"A Licença {license} não confere com o Device!");
 
                 if (dt <= DateTime.Now)
                     throw new SessionException($"A data da session expirou! data: {dt.ToString("yyyyMMddHHmmss")}");
