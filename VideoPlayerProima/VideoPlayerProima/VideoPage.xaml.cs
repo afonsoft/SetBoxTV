@@ -17,7 +17,7 @@ using System.Threading;
 
 namespace SetBoxTV.VideoPlayer
 {
-    
+    [XamlCompilation(XamlCompilationOptions.Skip)]
     public partial class VideoPage : ContentPage
     {
         private SetBoxTV.VideoPlayer.Library.VideoSource fileToPlay;
