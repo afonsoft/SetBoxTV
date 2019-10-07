@@ -17,7 +17,7 @@ using System.Threading;
 
 namespace SetBoxTV.VideoPlayer
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    
     public partial class VideoPage : ContentPage
     {
         private SetBoxTV.VideoPlayer.Library.VideoSource fileToPlay;
@@ -125,11 +125,13 @@ namespace SetBoxTV.VideoPlayer
                     case EnumFileType.Video:
                         {
                             model.VideoFile = ((FileVideoSource)fileToPlay).File;
+
                             _videoView = new VideoView() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
 
                             MainGrid.Children.Add(_videoView);
-                            _videoView.MediaPlayer = model.MediaPlayer;
 
+                            _videoView.MediaPlayer = model.MediaPlayer;
+                            
                             if (model.CanPlay())
                                 _videoView.MediaPlayer.Play(model.Media);
 

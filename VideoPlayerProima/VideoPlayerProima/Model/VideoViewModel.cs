@@ -69,7 +69,23 @@ namespace SetBoxTV.VideoPlayer.Model
         /// </summary>
         public MediaPlayer MediaPlayer
         {
-            get => _mediaPlayer;
+            get
+            {
+                if (_mediaPlayer == null)
+                {
+                    _mediaPlayer = new MediaPlayer(LibVLC)
+                    {
+                        EnableHardwareDecoding = true,
+                        Fullscreen = true,
+                        Mute = false,
+                        Volume = 100,
+                        AspectRatio = "Fit screen"
+                    };
+                    _mediaPlayer.EndReached += MediaPlayerEndReached;
+                }
+                return _mediaPlayer;
+            }
+
             private set => SetProperty(ref _mediaPlayer, value);
         }
 
@@ -150,6 +166,10 @@ namespace SetBoxTV.VideoPlayer.Model
         private void MediaPlayerEndReached(object sender, EventArgs e)
         {
             IsVideoViewInitialized = false;
+
+            _media = null;
+            _mediaPlayer = null;
+
             EndReached?.Invoke(sender, e);
         }
 
@@ -170,7 +190,6 @@ namespace SetBoxTV.VideoPlayer.Model
         {
             if (CanPlay())
             {
-                CheckMediaPlayer();
                 MediaPlayer.Play(Media);
             }
         }
@@ -183,27 +202,10 @@ namespace SetBoxTV.VideoPlayer.Model
         }
 
 
-        private void CheckMediaPlayer()
-        {
-            if (MediaPlayer == null)
-            {
-                MediaPlayer = new MediaPlayer(LibVLC)
-                {
-                    EnableHardwareDecoding = true,
-                    Fullscreen = true,
-                    Mute = false,
-                    Volume = 100,
-                    AspectRatio = "Fit screen"
-                };
-                MediaPlayer.EndReached += MediaPlayerEndReached;
-            }
-        }
-
         public void PlayInChromecast()
         {
             if (CanPlay())
             {
-                CheckMediaPlayer();
                 DiscoverChromecasts();
                 if (_rendererItems.Any())
                 {

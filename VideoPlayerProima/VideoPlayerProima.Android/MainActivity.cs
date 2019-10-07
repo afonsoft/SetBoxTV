@@ -60,9 +60,16 @@ namespace SetBoxTV.VideoPlayer.Droid
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+            
             RequestWindowFeature(WindowFeatures.NoTitle);
+            
             Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
-            Forms.SetTitleBarVisibility(Instance, AndroidTitleBarVisibility.Never);
+            Window.SetFlags(WindowManagerFlags.KeepScreenOn, WindowManagerFlags.KeepScreenOn);
+            Window.SetFlags(WindowManagerFlags.HardwareAccelerated, WindowManagerFlags.HardwareAccelerated);
+            Window.SetFlags(WindowManagerFlags.LayoutInScreen, WindowManagerFlags.LayoutInScreen);
+            Window.SetFlags(WindowManagerFlags.TurnScreenOn, WindowManagerFlags.TurnScreenOn);
+
+             Forms.SetTitleBarVisibility(this, AndroidTitleBarVisibility.Never);
 
             App.ScreenDensity = Resources.DisplayMetrics.Density;
             App.ScreenWidth = Resources.DisplayMetrics.WidthPixels;

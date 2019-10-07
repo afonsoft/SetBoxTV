@@ -13,9 +13,11 @@ using SetBoxTV.VideoPlayer.Interface;
 using SetBoxTV.VideoPlayer.Model;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace SetBoxTV.VideoPlayer
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
         private readonly List<FileDetails> arquivos = new List<FileDetails>();
