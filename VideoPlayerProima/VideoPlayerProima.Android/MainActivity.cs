@@ -24,8 +24,8 @@ using Microsoft.AppCenter.Push;
 
 namespace SetBoxTV.VideoPlayer.Droid
 {
-    [Activity(Label = "SetBoxTV", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, HardwareAccelerated = true, Exported = true, NoHistory = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Landscape)]
-    [IntentFilter( actions: new string[] { "android.intent.action.MAIN" }, Categories = new string[] { "android.intent.category.LEANBACK_LAUNCHER" })]
+    [Activity(Label = "SetBoxTV", Icon = "@mipmap/icon", Banner = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, HardwareAccelerated = true, Exported = true, NoHistory = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Landscape)]
+    [IntentFilter(actions: new string[] { "android.intent.action.MAIN" }, Categories = new string[] { "android.intent.category.LEANBACK_LAUNCHER" })]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnResume()
@@ -62,16 +62,16 @@ namespace SetBoxTV.VideoPlayer.Droid
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-            
+
             RequestWindowFeature(WindowFeatures.NoTitle);
-            
+
             Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
             Window.SetFlags(WindowManagerFlags.KeepScreenOn, WindowManagerFlags.KeepScreenOn);
             Window.SetFlags(WindowManagerFlags.HardwareAccelerated, WindowManagerFlags.HardwareAccelerated);
             Window.SetFlags(WindowManagerFlags.LayoutInScreen, WindowManagerFlags.LayoutInScreen);
             Window.SetFlags(WindowManagerFlags.TurnScreenOn, WindowManagerFlags.TurnScreenOn);
 
-             Forms.SetTitleBarVisibility(this, AndroidTitleBarVisibility.Never);
+            Forms.SetTitleBarVisibility(this, AndroidTitleBarVisibility.Never);
 
             App.ScreenDensity = Resources.DisplayMetrics.Density;
             App.ScreenWidth = Resources.DisplayMetrics.WidthPixels;
@@ -135,7 +135,7 @@ namespace SetBoxTV.VideoPlayer.Droid
                         await RequestPermission(requestCode, permission);
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     LoggerService.Instance.Error("CheckSelfPermission: " + ex.Message, ex);
                 }
@@ -325,7 +325,7 @@ namespace SetBoxTV.VideoPlayer.Droid
 
             try
             {
-                cursor = context.ContentResolver.Query(uri, projection, selection, selectionArgs,null);
+                cursor = context.ContentResolver.Query(uri, projection, selection, selectionArgs, null);
                 if (cursor != null && cursor.MoveToFirst())
                 {
                     int column_index = cursor.GetColumnIndexOrThrow(column);
