@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.4" package="br.com.Afonsoft.SetBoxTV.VideoPlayer.Android" android:installLocation="auto" android:versionCode="4">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.5" package="br.com.Afonsoft.SetBoxTV.VideoPlayer.Android" android:installLocation="auto" android:versionCode="5">
 	<uses-sdk android:minSdkVersion="22" android:targetSdkVersion="29" />
 	<uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -14,7 +14,7 @@
 	<uses-permission android:name="android.permission.RESTART_PACKAGES" />
 	<uses-permission android:name="android.permission.C2D_MESSAGE" />
 	<application android:label="SetBoxTV" android:icon="@mipmap/icon">
-		<receiver android:name="br.com.Afonsoft.SetBoxTV.VideoPlayer.Droid.BootReceiver">
+		<receiver android:name="SetBoxTV.VideoPlayer.Droid.BootReceiver">
 			<intent-filter>
 				<action android:name="android.intent.action.BOOT_COMPLETED" />
 				<action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />

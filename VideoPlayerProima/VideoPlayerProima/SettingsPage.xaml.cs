@@ -166,9 +166,16 @@ namespace SetBoxTV.VideoPlayer
 
             try
             {
-                var api = new API.SetBoxApi(deviceIdentifier, model.License, PlayerSettings.Url);
                 log?.Debug("Salvando as Configurações no Servidor");
-                
+                var api = new API.SetBoxApi(deviceIdentifier, model.License, PlayerSettings.Url);
+
+                await api.UpdateInfo(DevicePicker.GetPlatform().ToString(),
+                        $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}",
+                        $"{devicePicker.GetApkVersion()}.{devicePicker.GetApkBuild()}",
+                        DevicePicker.GetModel(),
+                        DevicePicker.GetManufacturer(),
+                        DevicePicker.GetName()).ConfigureAwait(true);
+
                 await api.SetConfig(new ConfigModel()
                 {
                     enablePhoto = model.ShowPhoto,
