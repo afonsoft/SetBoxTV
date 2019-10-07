@@ -8,6 +8,8 @@ using ILogger = SetBoxTV.VideoPlayer.Interface.ILogger;
 using Java.Lang;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Push;
 
 [assembly: Dependency(typeof(SetBoxTV.VideoPlayer.Droid.Controls.LoggerService))]
 namespace SetBoxTV.VideoPlayer.Droid.Controls
@@ -45,6 +47,8 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
                     _instance.Platform = Interface.DevicePicker.GetPlatform().ToString();
                     _instance.Version = $"{Interface.DevicePicker.GetVersion().Major}.{Interface.DevicePicker.GetVersion().Minor}.{Interface.DevicePicker.GetVersion().Revision}.{Interface.DevicePicker.GetVersion().Build}"; ;
                     _instance.IsDebugEnabled = PlayerSettings.DebugEnabled;
+                    AppCenter.SetUserId(_instance.DeviceIdentifier);
+                    Push.SetSenderId(_instance.DeviceIdentifier);
                 }
                 return _instance;
             }
@@ -58,6 +62,8 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
                 Platform = Interface.DevicePicker.GetPlatform().ToString();
                 Version = $"{Interface.DevicePicker.GetVersion().Major}.{Interface.DevicePicker.GetVersion().Minor}.{Interface.DevicePicker.GetVersion().Revision}.{Interface.DevicePicker.GetVersion().Build}"; ;
                 IsDebugEnabled = PlayerSettings.DebugEnabled;
+                AppCenter.SetUserId(DeviceIdentifier);
+                Push.SetSenderId(DeviceIdentifier);
             }
             catch
             {
@@ -108,6 +114,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
             Log.Error("SetBoxTV", Throwable.FromException(ex), $"{text} - {ex.Message}");
             SaveFile("ERRO  ", text, ex);
+            Analytics.TrackEvent($"Identifier: {DeviceIdentifier} - {text} - {ex.Message}");
             Crashes.TrackError(ex);
             CreateApiLogError($"{text} - {ex.Message}", API.LogLevel.ERROR);
         }
@@ -119,6 +126,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
            
             Log.Error("SetBoxTV", Throwable.FromException(ex), $"{ex.Message}");
             SaveFile("ERRO  ", null, ex);
+            Analytics.TrackEvent($"Identifier: {DeviceIdentifier} - {ex.Message}");
             Crashes.TrackError(ex);
             CreateApiLogError($"{ex.Message}", API.LogLevel.ERROR);
         }

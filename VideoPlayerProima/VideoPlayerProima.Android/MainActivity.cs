@@ -52,6 +52,8 @@ namespace SetBoxTV.VideoPlayer.Droid
             Push.EnableFirebaseAnalytics();
             AppCenter.Start("35661827-5555-4b62-b333-145f0456c75d", typeof(Analytics), typeof(Crashes), typeof(Distribute), typeof(Push));
             Crashes.SetEnabledAsync(true);
+            Push.SetEnabledAsync(true);
+            Analytics.SetEnabledAsync(true);
             Distribute.SetEnabledAsync(true);
 
             AppDomain.CurrentDomain.UnhandledException += (sender, args) => LoggerService.Instance.Error(args.ExceptionObject as Exception);
