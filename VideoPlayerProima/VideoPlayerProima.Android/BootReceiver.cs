@@ -6,7 +6,7 @@ using SetBoxTV.VideoPlayer.Droid.Controls;
 
 namespace SetBoxTV.VideoPlayer.Droid
 {
-    [BroadcastReceiver(Enabled = true, Exported = true, DirectBootAware = true)]
+    [BroadcastReceiver(Enabled = true, Exported = true, DirectBootAware = true, Label = "SetBoxTvReceiver", Name = "SetBoxTV.VideoPlayer.Droid.BootReceiver")]
     [IntentFilter(new[] {Intent.ActionBootCompleted, Intent.ActionLockedBootCompleted})]
     public class BootReceiver : BroadcastReceiver
     {

@@ -21,17 +21,17 @@
                             Grid.Row="0"
                             Grid.Column="0"/>
 
-            <TableView Intent="Settings" x:Name="SwiCell" HasUnevenRows="True" Grid.Row="0" Grid.Column="0">
+            <TableView Intent="Settings" x:Name="SwiCell" HasUnevenRows="True" Grid.Row="0" Grid.Column="0" >
                 <TableRoot>
-                    <TableSection Title="Exibir">
-                    <SwitchCell x:Name="SwitchVideo" Text="Videos" On="{Binding ShowVideo, Mode=TwoWay}"/>
-                    <SwitchCell x:Name="SwitchPhoto" Text="Fotos" On="{Binding ShowPhoto, Mode=TwoWay}"/>
-                    <SwitchCell x:Name="SwitchWebImage" Text="Web Image" On="{Binding ShowWebImage, Mode=TwoWay}"/>
-                    <SwitchCell x:Name="SwitchWebVideo" Text="Web Video" On="{Binding ShowWebVideo, Mode=TwoWay}"/>
+                    <TableSection Title="Exibir" >
+                        <SwitchCell x:Name="SwitchVideo" Text="Videos" On="{Binding ShowVideo, Mode=TwoWay}"/>
+                        <SwitchCell x:Name="SwitchPhoto" Text="Fotos" On="{Binding ShowPhoto, Mode=TwoWay}"/>
+                        <SwitchCell x:Name="SwitchWebImage" Text="Web Image" On="{Binding ShowWebImage, Mode=TwoWay}"/>
+                        <SwitchCell x:Name="SwitchWebVideo" Text="Web Video" On="{Binding ShowWebVideo, Mode=TwoWay}"/>
                     </TableSection>
                     <TableSection Title="Configuração">
-                    <EntryCell x:Name="SwitchTransactionTime" Label="Tempo de Exibição" Placeholder="20" Keyboard="Numeric" HorizontalTextAlignment="End" Text="{Binding TransactionTime, Mode=TwoWay}" />
-                    <SwitchCell x:Name="SwitchTransaction" Text="Transição (Fade)" On="{Binding EnableTransactionTime , Mode=TwoWay}"/>
+                        <EntryCell x:Name="SwitchTransactionTime" Label="Tempo de Exibição" Placeholder="20" Keyboard="Numeric" HorizontalTextAlignment="End" Text="{Binding TransactionTime, Mode=TwoWay}" />
+                        <SwitchCell x:Name="SwitchTransaction" Text="Transição (Fade)" On="{Binding EnableTransactionTime , Mode=TwoWay}"/>
                     </TableSection>
                     <TableSection Title="Pasta">
                     <TextCell Text="Pasta Selecionada" Detail="{Binding PathFiles}" x:Name="FolderSeleted" />
@@ -43,7 +43,7 @@
                     </TableSection>
                     <TableSection Title="Licença">
                         <TextCell Text="Licença" x:Name="LicenseID" Detail="ID: "  Tapped="LicenseID_Tapped"/>
-                    <EntryCell Label="Key" x:Name="LabelKey" Placeholder="" Keyboard="Default" Text="{Binding License, Mode=TwoWay}" />
+                        <EntryCell Label="Key" x:Name="LabelKey" Placeholder=""  Keyboard="Default" Text="{Binding License, Mode=TwoWay}" />
                     </TableSection>
                 <TableSection Title="Debug Mode">
                     <SwitchCell x:Name="SwitchDebugMode" Text="Enable Debug Mode" On="{Binding DebugMode, Mode=TwoWay}"/>
