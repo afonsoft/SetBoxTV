@@ -21,10 +21,10 @@
                             Grid.Row="0"
                             Grid.Column="0"/>
 
-            <TableView Intent="Settings" x:Name="SwiCell" HasUnevenRows="True" Grid.Row="0" Grid.Column="0" >
+            <TableView Intent="Settings" x:Name="SwiCell" HasUnevenRows="True" Grid.Row="0" Grid.Column="0"  TabIndex="0">
                 <TableRoot>
-                    <TableSection Title="Exibir" x:Name="TableSection1" >
-                        <SwitchCell x:Name="SwitchVideo" Text="Videos" On="{Binding ShowVideo, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True"/>
+                    <TableSection Title="Exibir" x:Name="TableSection1"  >
+                        <SwitchCell x:Name="SwitchVideo" Text="Videos"  On="{Binding ShowVideo, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True"/>
                         <SwitchCell x:Name="SwitchPhoto" Text="Fotos" On="{Binding ShowPhoto, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True"/>
                         <SwitchCell x:Name="SwitchWebImage" Text="Web Image" On="{Binding ShowWebImage, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True"/>
                         <SwitchCell x:Name="SwitchWebVideo" Text="Web Video" On="{Binding ShowWebVideo, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True"/>
@@ -36,7 +36,7 @@
                     <TableSection Title="Pasta" x:Name="TableSection3">
                         <TextCell Text="Pasta Selecionada" Detail="{Binding PathFiles}" x:Name="FolderSeleted" />
                         <ViewCell>
-                            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
+                            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" TabIndex="1">
                                 <Button Text="Selecionar" Clicked="OnButtonSelectClicked" AutomationProperties.IsInAccessibleTree="True" />
                             </StackLayout>
                         </ViewCell>
@@ -55,7 +55,7 @@
                     </TableSection>
                     <TableSection Title="" x:Name="TableSection7">
                         <ViewCell>
-                            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
+                            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" TabIndex="3">
                                 <Button Text="Salvar" x:Name="SaveButton" Clicked="OnButtonSalvarClicked" AutomationProperties.IsInAccessibleTree="True" />
                             </StackLayout>
                         </ViewCell>
