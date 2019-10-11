@@ -99,6 +99,7 @@ namespace SetBoxTV.VideoPlayer
             PlayerSettings.License = model.License;
 
             model.IsLoading = false;
+
         }
 
         public async void OnButtonSelectClicked(object sender, EventArgs e)
