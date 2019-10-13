@@ -81,6 +81,13 @@ namespace SetBoxTV.VideoPlayer
                     model.TransactionTime = config.transactionTime;
                 }
 
+                PlayerSettings.License = model.License;
+                if (PlayerSettings.FirstInsall || string.IsNullOrEmpty(PlayerSettings.License))
+                {
+                    model.IsLoading = false;
+                    await ShowMessage("SetBox Atualizado no Site! Já pode entrar no site e associar os arquivos e colocar a licença.", "Informações", "OK", null).ConfigureAwait(true);
+                }
+
             }
             catch (Exception ex)
             {
