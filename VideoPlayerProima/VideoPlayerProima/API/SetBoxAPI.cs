@@ -56,6 +56,10 @@ namespace SetBoxTV.VideoPlayer.API
         {
             deviceIdentifier = identifier;
             License = license;
+
+            if (string.IsNullOrEmpty(License))
+                License = "";
+
             rest = new Afonsoft.Http.Rest(endPoint);
             GetSessionLogin();
         }
