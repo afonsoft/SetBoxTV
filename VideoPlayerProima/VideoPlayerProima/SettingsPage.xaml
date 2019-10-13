@@ -47,6 +47,7 @@
                     </TableSection>
                     <TableSection Title="Debug Mode" x:Name="TableSection5">
                         <SwitchCell x:Name="SwitchDebugMode" Text="Enable Debug Mode" On="{Binding DebugMode, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True"/>
+                        <SwitchCell x:Name="SwitchConecction" Text="Enable Check Conecction" On="{Binding ReportNotConnection, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True"/>
                     </TableSection>
                     <TableSection Title="Suporte" x:Name="TableSection6">
                         <TextCell Text="Empresa" Detail="{Binding Company}" x:Name="Company" DetailColor="Black" AutomationProperties.IsInAccessibleTree="True"/>

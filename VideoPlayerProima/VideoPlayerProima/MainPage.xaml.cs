@@ -8,6 +8,7 @@ using Microsoft.AppCenter;
 using SetBoxTV.VideoPlayer.Helpers;
 using SetBoxTV.VideoPlayer.Interface;
 using SetBoxTV.VideoPlayer.Model;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -64,6 +65,13 @@ namespace SetBoxTV.VideoPlayer
             {
                 log?.Debug("CheckSelfPermission");
                 await DependencyService.Get<ICheckPermission>()?.CheckSelfPermission();
+
+                if (Connectivity.NetworkAccess != NetworkAccess.Internet  && PlayerSettings.ReportNotConnection)
+                {
+                    // Connection to internet is not available
+                    await ShowMessage("Sem acesso a internet! Favor conectar na internet para configurar a SetBoX", "Internet", "OK",
+                      null).ConfigureAwait(true);
+                }
 
                 model.IsLoading = true;
                 if (PlayerSettings.FirstInsall || string.IsNullOrEmpty(PlayerSettings.License))

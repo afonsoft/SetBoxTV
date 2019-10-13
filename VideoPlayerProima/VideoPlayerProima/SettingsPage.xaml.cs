@@ -102,6 +102,7 @@ namespace SetBoxTV.VideoPlayer
             SwitchWebVideo.On = model.ShowWebVideo;
             SwitchTransaction.On = model.EnableTransactionTime;
             SwitchDebugMode.On = model.DebugMode;
+            SwitchConecction.On = model.CheckConection;
             PlayerSettings.License = model.License;
 
             model.IsLoading = false;
@@ -150,6 +151,7 @@ namespace SetBoxTV.VideoPlayer
             model.ShowWebVideo = SwitchWebVideo.On;
             model.EnableTransactionTime = SwitchTransaction.On;
             model.DebugMode = SwitchDebugMode.On;
+            model.CheckConection = SwitchConecction.On;
 
             if (int.TryParse(SwitchTransactionTime.Text, out int time))
             {
@@ -168,6 +170,7 @@ namespace SetBoxTV.VideoPlayer
             PlayerSettings.EnableTransactionTime = model.EnableTransactionTime;
             PlayerSettings.TransactionTime = model.TransactionTime;
             PlayerSettings.DebugEnabled = model.DebugMode;
+            PlayerSettings.ReportNotConnection = model.CheckConection;
 
             PlayerSettings.FirstInsall = false;
 

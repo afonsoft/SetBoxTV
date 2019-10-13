@@ -26,6 +26,7 @@ namespace SetBoxTV.VideoPlayer.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::LibVLCSharp.Resource.String.app_name = global::SetBoxTV.VideoPlayer.Droid.Resource.String.app_name;
 			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_dialog_actioned_on_disabled_toast = global::SetBoxTV.VideoPlayer.Droid.Resource.String.appcenter_distribute_dialog_actioned_on_disabled_toast;
 			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_download_progress_number_format = global::SetBoxTV.VideoPlayer.Droid.Resource.String.appcenter_distribute_download_progress_number_format;
 			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_downloading_mandatory_update = global::SetBoxTV.VideoPlayer.Droid.Resource.String.appcenter_distribute_downloading_mandatory_update;

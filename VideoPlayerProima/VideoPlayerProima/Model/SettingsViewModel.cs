@@ -16,6 +16,7 @@ namespace SetBoxTV.VideoPlayer.Model
         private bool _EnableTransactionTime = false;
         private int _TransactionTime;
         private bool _IsLoading;
+        private bool _checkConection;
 
 
 
@@ -32,10 +33,17 @@ namespace SetBoxTV.VideoPlayer.Model
             _EnableTransactionTime = PlayerSettings.EnableTransactionTime;
             _TransactionTime = PlayerSettings.TransactionTime;
             _DebugMode = PlayerSettings.DebugEnabled;
+            _checkConection = PlayerSettings.ReportNotConnection;
 
             if (string.IsNullOrEmpty(_PathFiles))
                 _PathFiles = "/storage/emulated/0/Movies";
 
+        }
+
+        public bool CheckConection
+        {
+            get => this._checkConection;
+            set => SetProperty(ref _checkConection, value, nameof(CheckConection));
         }
 
         public bool IsLoading

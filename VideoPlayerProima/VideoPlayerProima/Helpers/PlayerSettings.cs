@@ -11,6 +11,14 @@ namespace SetBoxTV.VideoPlayer.Helpers
             AppSettings.Clear();
         }
 
+        //ReportNotConnection
+
+        public static bool ReportNotConnection
+        {
+            get => AppSettings.GetValueOrDefault(nameof(ReportNotConnection), true);
+            set => AppSettings.AddOrUpdateValue(nameof(ReportNotConnection), value);
+        }
+
         public static string PathFiles
         {
             get => AppSettings.GetValueOrDefault(nameof(PathFiles), "");
