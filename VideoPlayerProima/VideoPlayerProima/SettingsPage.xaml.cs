@@ -71,7 +71,6 @@ namespace SetBoxTV.VideoPlayer
                 var config = await api.GetConfig().ConfigureAwait(true);
                 if (config != null)
                 {
-
                     model.License = api.License;
                     model.ShowVideo = config.enableVideo;
                     model.ShowPhoto = config.enablePhoto;
@@ -79,9 +78,9 @@ namespace SetBoxTV.VideoPlayer
                     model.ShowWebVideo = config.enableWebVideo;
                     model.EnableTransactionTime = config.enableTransaction;
                     model.TransactionTime = config.transactionTime;
+                    PlayerSettings.License = model.License;
                 }
 
-                PlayerSettings.License = model.License;
                 if (PlayerSettings.FirstInsall || string.IsNullOrEmpty(PlayerSettings.License))
                 {
                     model.IsLoading = false;
