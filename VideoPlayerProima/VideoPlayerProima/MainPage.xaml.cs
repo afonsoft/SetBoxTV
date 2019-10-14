@@ -103,10 +103,10 @@ namespace SetBoxTV.VideoPlayer
                 IDevicePicker device = DependencyService.Get<IDevicePicker>();
 
                 string license = PlayerSettings.License;
-                string deviceIdentifier = "";
+                string deviceIdentifier = device.GetIdentifier();
                 bool isLicensed = false;
 
-                AppCenter.SetUserId(device.GetIdentifier());
+                AppCenter.SetUserId(deviceIdentifier);
 
                 if (!string.IsNullOrEmpty(PlayerSettings.PathFiles) && !Directory.Exists(PlayerSettings.PathFiles))
                     PlayerSettings.PathFiles = "";
@@ -153,8 +153,6 @@ namespace SetBoxTV.VideoPlayer
 
                 if (!string.IsNullOrEmpty(license))
                 {
-                    deviceIdentifier = device.GetIdentifier();
-
                     log?.Debug($"deviceIdentifier: {deviceIdentifier}");
                     log?.Debug($"deviceIdentifier64: {CriptoHelpers.Base64Encode(deviceIdentifier)}");
 

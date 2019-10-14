@@ -93,7 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Afonsoft.Http">
-      <Version>2019.10.13</Version>
+      <Version>2019.10.14</Version>
     </PackageReference>
     <PackageReference Include="LibVLCSharp">
       <Version>3.2.4</Version>
