@@ -17,7 +17,6 @@ namespace SetBoxTV.VideoPlayer
     {
         private SetBoxTV.VideoPlayer.Library.VideoSource fileToPlay;
         private ImageSource imagaToPlay;
-        private Uri urlToPlayer;
         private readonly List<FileDetails> fileDetails;
         private readonly ILogger log;
         private int index = 0;
