@@ -17,21 +17,18 @@ namespace SetBoxTV.VideoPlayer
         private SetBoxTV.VideoPlayer.Library.VideoSource fileToPlay;
         private ImageSource imagaToPlay;
         private Uri urlToPlayer;
-        private readonly IList<FileDetails> fileDetails;
+        private readonly List<FileDetails> fileDetails;
         private readonly ILogger log;
         private int index = 0;
         private VideoViewModel model;
         private Xamarin.Forms.Image _image;
         private VideoView _videoView;
 
-        public VideoPage(IList<FileDetails> files)
+        public VideoPage(List<FileDetails> files)
         {
-
             InitializeComponent();
-            BindingContext = model = new VideoViewModel();
             MainPage.isInProcess = false;
             model.IsLoading = true;
-            fileDetails = files;
             log = DependencyService.Get<ILogger>();
             if (log != null)
             {
@@ -41,10 +38,9 @@ namespace SetBoxTV.VideoPlayer
                 log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
                 log.IsDebugEnabled = PlayerSettings.DebugEnabled;
             }
-        }
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
+            BindingContext = model = new VideoViewModel();
+            fileDetails = files;
+            log?.Debug($"VideoPage Total Files {fileDetails?.Count}");
         }
         protected override void OnAppearing()
         {
