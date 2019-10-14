@@ -659,7 +659,7 @@ namespace SetBoxWebUI.Controllers
     /// <summary>
     /// SessionException
     /// </summary>
-    public class SessionException : ArgumentException, ISerializable
+    public class SessionException : ArgumentException
     {
 
         /// <summary>
