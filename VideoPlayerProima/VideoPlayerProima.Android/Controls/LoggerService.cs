@@ -86,7 +86,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             if (IsDebugEnabled)
             {
                 SaveFile("DEBUG ", text, null);
-                Analytics.TrackEvent($"Identifier: {DeviceIdentifier} - {text}");
+                Analytics.TrackEvent($"{text} - Identifier: {DeviceIdentifier}");
                 CreateApiLogError($"{text}", API.LogLevel.DEBUG);
             }
         }
@@ -101,8 +101,8 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             if (IsDebugEnabled)
             {
                 SaveFile("DEBUG ", text, null);
-                Analytics.TrackEvent($"Identifier: {DeviceIdentifier} - {text}");
-                CreateApiLogError($"{text} - {ex.Message}", API.LogLevel.DEBUG);
+                Analytics.TrackEvent($"{text} - Identifier: {DeviceIdentifier}");
+                CreateApiLogError($"{text} - {ex?.Message}", API.LogLevel.DEBUG);
             }
         }
 
@@ -114,7 +114,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
             Log.Error("SetBoxTV", Throwable.FromException(ex), $"{text} - {ex.Message}");
             SaveFile("ERRO  ", text, ex);
-            Analytics.TrackEvent($"Identifier: {DeviceIdentifier} - {text} - {ex.Message}");
+            Analytics.TrackEvent($"{text} - {ex.Message} - Identifier: {DeviceIdentifier}");
             Crashes.TrackError(ex);
             CreateApiLogError($"{text} - {ex.Message}", API.LogLevel.ERROR);
         }
@@ -126,7 +126,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
            
             Log.Error("SetBoxTV", Throwable.FromException(ex), $"{ex.Message}");
             SaveFile("ERRO  ", null, ex);
-            Analytics.TrackEvent($"Identifier: {DeviceIdentifier} - {ex.Message}");
+            Analytics.TrackEvent($"{ex.Message} - Identifier: {DeviceIdentifier}");
             Crashes.TrackError(ex);
             CreateApiLogError($"{ex.Message}", API.LogLevel.ERROR);
         }

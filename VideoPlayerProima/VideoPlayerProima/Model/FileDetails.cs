@@ -49,9 +49,6 @@ namespace SetBoxTV.VideoPlayer.Model
     public enum EnumFileType
     {
         Video,
-        Image,
-        WebImage,
-        WebPage,
-        WebVideo
+        Image
     }
 }

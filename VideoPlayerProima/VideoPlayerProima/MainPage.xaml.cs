@@ -324,16 +324,6 @@ namespace SetBoxTV.VideoPlayer
                 arquivos.AddRange(filePicker.GetFiles(PlayerSettings.PathFiles, EnumFileType.Image, ".JPG", ".jpg", ".png", ".PNG", ".bmp", ".BMP"));
             }
 
-            if (PlayerSettings.ShowWebImage)
-            {
-                arquivos.AddRange(filePicker.GetFiles(PlayerSettings.PathFiles, EnumFileType.WebImage, ".webimage", ".WEBIMAGE"));
-            }
-
-            if (PlayerSettings.ShowWebVideo)
-            {
-                arquivos.AddRange(filePicker.GetFiles(PlayerSettings.PathFiles, EnumFileType.WebVideo, ".WEBVIDEO", ".webvideo"));
-            }
-
         }
 
         public async Task ShowMessage(string message,

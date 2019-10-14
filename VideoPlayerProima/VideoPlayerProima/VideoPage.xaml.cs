@@ -8,6 +8,7 @@ using SetBoxTV.VideoPlayer.Model;
 using System.Collections.Generic;
 using SetBoxTV.VideoPlayer.Interface;
 using LibVLCSharp.Forms.Shared;
+using System.Windows.Input;
 
 namespace SetBoxTV.VideoPlayer
 {
@@ -40,6 +41,19 @@ namespace SetBoxTV.VideoPlayer
             }
             BindingContext = model = new VideoViewModel();
             fileDetails = files;
+
+            Tapped = new Command(
+                execute: () =>
+                {
+                    log?.Debug("Tapped to Settings");
+                    Application.Current.MainPage = new SettingsPage();
+                },
+                canExecute: () =>
+                {
+                    return true;
+                }
+            );
+
             log?.Debug($"VideoPage Total Files {fileDetails?.Count}");
         }
         protected override void OnAppearing()
@@ -93,17 +107,9 @@ namespace SetBoxTV.VideoPlayer
                     case EnumFileType.Video:
                         fileToPlay = new FileVideoSource { File = fileOrUrl.path };
                         break;
-                    case EnumFileType.WebVideo:
-                        fileToPlay = new UriVideoSource { Uri = fileOrUrl.path };
-                        break;
+
                     case EnumFileType.Image:
                         imagaToPlay = ImageSource.FromFile(fileOrUrl.path);
-                        break;
-                    case EnumFileType.WebImage:
-                        imagaToPlay = ImageSource.FromUri(new Uri(fileOrUrl.path));
-                        break;
-                    case EnumFileType.WebPage:
-                        urlToPlayer = new Uri(fileOrUrl.path);
                         break;
                 }
 
@@ -111,17 +117,17 @@ namespace SetBoxTV.VideoPlayer
 
                 switch (fileOrUrl.fileType)
                 {
-                    case EnumFileType.WebVideo:
                     case EnumFileType.Video:
                         {
                             model.VideoFile = ((FileVideoSource)fileToPlay).File;
 
                             _videoView = new VideoView() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
-
+                            _videoView.TabIndex = 1;
+                            _videoView.GestureRecognizers.Add(new TapGestureRecognizer() { NumberOfTapsRequired = 2, Command = Tapped });
                             MainGrid.Children.Add(_videoView);
 
                             _videoView.MediaPlayer = model.MediaPlayer;
-                            
+
                             if (model.CanPlay())
                                 _videoView.MediaPlayer.Play(model.Media);
 
@@ -129,20 +135,13 @@ namespace SetBoxTV.VideoPlayer
                             break;
                         }
                     case EnumFileType.Image:
-                    case EnumFileType.WebImage:
                         {
                             _image = new Xamarin.Forms.Image() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
                             _image.Source = imagaToPlay;
+                            _image.TabIndex = 1;
+                            _image.GestureRecognizers.Add(new TapGestureRecognizer() { NumberOfTapsRequired = 2, Command = Tapped });
                             MainGrid.Children.Add(_image);
                             Delay();
-                            break;
-                        }
-                    case EnumFileType.WebPage:
-                        {
-                            //Show WebPage
-                            //WebPageFade();
-                            //Delay();
-                            //GoNextPlayer();
                             break;
                         }
                 }
@@ -154,6 +153,8 @@ namespace SetBoxTV.VideoPlayer
                 Application.Current.MainPage = new MainPage();
             }
         }
+
+        public ICommand Tapped { private set; get; }
 
         private void OnTapped(object sender, EventArgs e)
         {
@@ -169,7 +170,7 @@ namespace SetBoxTV.VideoPlayer
             GoNextPlayer();
         }
 
-     
+
 
         private void MediaPlayerEndReached(object sender, EventArgs e)
         {
