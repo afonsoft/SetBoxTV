@@ -51,42 +51,47 @@ namespace SetBoxTV.VideoPlayer
 
             try
             {
-                var api = new API.SetBoxApi(deviceIdentifier, PlayerSettings.License, PlayerSettings.Url);
-
-                await api.UpdateInfo(DevicePicker.GetPlatform().ToString(),
-                        $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}",
-                        $"{devicePicker.GetApkVersion()}.{devicePicker.GetApkBuild()}",
-                        DevicePicker.GetModel(),
-                        DevicePicker.GetManufacturer(),
-                        DevicePicker.GetName()).ConfigureAwait(true);
-
-                var support = await api.GetSupport().ConfigureAwait(true);
-                if (support != null)
+                if (!string.IsNullOrEmpty(deviceIdentifier))
                 {
-                    Company.Detail = support.company;
-                    Telephone.Detail = support.telephone;
-                    Email.Detail = support.email;
-                }
+                    var api = new API.SetBoxApi(deviceIdentifier, PlayerSettings.License, PlayerSettings.Url);
 
-                var config = await api.GetConfig().ConfigureAwait(true);
-                if (config != null)
-                {
-                    model.License = api.License;
-                    model.ShowVideo = config.enableVideo;
-                    model.ShowPhoto = config.enablePhoto;
-                    model.ShowWebImage = config.enableWebImage;
-                    model.ShowWebVideo = config.enableWebVideo;
-                    model.EnableTransactionTime = config.enableTransaction;
-                    model.TransactionTime = config.transactionTime;
-                    PlayerSettings.License = model.License;
-                }
+                    await api.UpdateInfo(DevicePicker.GetPlatform().ToString(),
+                            $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}",
+                            $"{devicePicker.GetApkVersion()}.{devicePicker.GetApkBuild()}",
+                            DevicePicker.GetModel(),
+                            DevicePicker.GetManufacturer(),
+                            DevicePicker.GetName()).ConfigureAwait(true);
 
-                if (PlayerSettings.FirstInsall || string.IsNullOrEmpty(PlayerSettings.License))
-                {
-                    model.IsLoading = false;
-                    await ShowMessage("SetBox Atualizado no Site! Já pode entrar no site e associar os arquivos e colocar a licença.", "Informações", "OK", null).ConfigureAwait(true);
-                }
+                    var support = await api.GetSupport().ConfigureAwait(true);
+                    if (support != null)
+                    {
+                        Company.Detail = support.company;
+                        Telephone.Detail = support.telephone;
+                        Email.Detail = support.email;
+                    }
 
+                    var config = await api.GetConfig().ConfigureAwait(true);
+                    if (config != null)
+                    {
+                        model.License = api.License;
+                        model.ShowVideo = config.enableVideo;
+                        model.ShowPhoto = config.enablePhoto;
+                        model.ShowWebImage = config.enableWebImage;
+                        model.ShowWebVideo = config.enableWebVideo;
+                        model.EnableTransactionTime = config.enableTransaction;
+                        model.TransactionTime = config.transactionTime;
+                        PlayerSettings.License = model.License;
+                    }
+
+                    if (PlayerSettings.FirstInsall || string.IsNullOrEmpty(PlayerSettings.License))
+                    {
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            model.IsLoading = false;
+                            await ShowMessage("SetBox Atualizada no Site! Já pode entrar no site e associar os arquivos e colocar a licença.", "Informações", "OK", null).ConfigureAwait(true);
+                        });
+                    }
+                }
             }
             catch (Exception ex)
             {

@@ -60,6 +60,9 @@ namespace SetBoxTV.VideoPlayer.API
             if (string.IsNullOrEmpty(License))
                 License = "";
 
+            if (string.IsNullOrEmpty(identifier))
+                throw new ArgumentNullException(nameof(identifier), $"identifier {identifier} is null or invalid!");
+
             rest = new Afonsoft.Http.Rest(endPoint);
             GetSessionLogin();
         }
@@ -68,7 +71,17 @@ namespace SetBoxTV.VideoPlayer.API
         {
             try
             {
-                var resp = rest.HttpGet<Response<string>>("/Login", Afonsoft.Http.Parameters.With("identifier", deviceIdentifier).And("license", License));
+                if (string.IsNullOrEmpty(deviceIdentifier))
+                {
+                    Session = "";
+                    License = "";
+                    return;
+                }
+                Response<string> resp;
+                if (string.IsNullOrEmpty(License))
+                    resp = rest.HttpGet<Response<string>>("/Login", Afonsoft.Http.Parameters.With("identifier", deviceIdentifier));
+                else
+                    resp = rest.HttpGet<Response<string>>("/Login", Afonsoft.Http.Parameters.With("identifier", deviceIdentifier).And("license", License));
 
                 if (!resp.sessionExpired && resp.status)
                 {
