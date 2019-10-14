@@ -36,6 +36,7 @@ namespace SetBoxWebUI.Controllers
         {
             _logger = logger;
             _devices = new Repository<Device, Guid>(context);
+            _support = new Repository<Support, Guid>(context);
 
         }
 
@@ -440,9 +441,20 @@ namespace SetBoxWebUI.Controllers
 
                 if (device == null || device.Configuration == null)
                 {
-                    r.Status = false;
+                    r.Result = new Config()
+                    {
+                        CreationDateTime = DateTime.Now,
+                        EnablePhoto = false,
+                        EnableVideo = true,
+                        EnableTransaction = false,
+                        TransactionTime = 10,
+                        EnableWebImage = false,
+                        EnableWebVideo = false
+                    };
+
+                    r.Status = true;
                     r.Message = "Not Found Configuration Specifies for this Device.";
-                    return NotFound(r);
+                    return Ok(r);
                 }
 
                 r.Result = device.Configuration;

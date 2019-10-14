@@ -28,7 +28,9 @@ namespace SetBoxTV.VideoPlayer
         {
             InitializeComponent();
             MainPage.isInProcess = false;
+            BindingContext = model = new VideoViewModel();
             model.IsLoading = true;
+
             log = DependencyService.Get<ILogger>();
             if (log != null)
             {
@@ -38,7 +40,7 @@ namespace SetBoxTV.VideoPlayer
                 log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
                 log.IsDebugEnabled = PlayerSettings.DebugEnabled;
             }
-            BindingContext = model = new VideoViewModel();
+
             fileDetails = files;
 
             Tapped = new Command(
