@@ -1,0 +1,35 @@
+﻿@model LicenseViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+@if (!string.IsNullOrEmpty(Model.Mensage))
+{
+    <script>
+        bootbox.alert({ title: "@Model.Title", message: "@Model.Mensage" });
+    </script>
+}
+<h1>License</h1>
+<h4>Gerar as licenças das SetBox</h4>
+<form asp-controller="License" asp-action="index" method="post" id="FormEdit">
+    <input type="hidden" asp-for="Session" id="Session">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <label asp-for="deviceIdentifier" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="deviceIdentifier" id="deviceIdentifier" class="form-control form-control-sm" />
+                </div>
+            </div>
+            <div class="col">
+                <label asp-for="deviceLicense" class="col-sm-3 col-form-label"></label>
+                <div class="col-sm-9">
+                    <input asp-for="deviceLicense" id="deviceLicense" class="form-control form-control-sm" />
+                </div>
+            </div>
+            <div class="col">
+                <br />
+                <button type="submit" id="buttonGetKey" class="btn btn-primary"><i class="fa fa-check"></i>Gerar Licença</button>
+            </div>
+        </div>
+    </div>
+</form>

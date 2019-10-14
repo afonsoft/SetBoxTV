@@ -16,7 +16,7 @@
 <form asp-controller="Devices" asp-action="Edit" method="post" id="FormEdit">
     <input type="hidden" name="id" value="" id="id" />
     <input type="hidden" name="command" value="" id="command" />
-    <table id="grid-data-device" class="table table-condensed table-hover table-striped" style="font-size:8pt;">
+    <table id="grid-data-device" class="table table-condensed table-hover table-striped" style="font-size:8pt;" data-ajax="true" data-url="/Devices/List">
         <thead>
             <tr>
                 <th data-column-id="deviceId" data-identifier="true" data-visible="false">ID</th>
@@ -437,15 +437,17 @@
                                     if (result) {
                                         $.ajax({
                                             url: '/Devices/Delete?id=' + id,
-                                            cache: false
-                                        }).done(function (result) {
-                                            PleaseWaitHide();
-                                            grid.reload();
-                                            bootbox.alert({ title: "Info", message: result });
-                                        }).fail(function (result) {
-                                            PleaseWaitHide();
-                                            grid.reload();
-                                            bootbox.alert({ title: "Error", message: result });
+                                            cache: false,
+                                            success: function (result) {
+                                                PleaseWaitHide();
+                                                bootbox.alert({ title: "Info", message: result });
+                                                grid.reload();
+                                            },
+                                            error: function (xhr, ajaxOptions, thrownError) {
+                                                PleaseWaitHide();
+                                                bootbox.alert({ title: "Error", message: xhr.responseText });
+                                                grid.reload();
+                                            }
                                         });
                                     }
                                 }

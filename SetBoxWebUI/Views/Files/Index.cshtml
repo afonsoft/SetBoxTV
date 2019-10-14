@@ -26,7 +26,7 @@
             </div>
         </div>
     </div>
-    <table id="grid-data-device-files" class="table table-condensed table-hover table-striped" style="font-size:8pt;">
+    <table id="grid-data-device-files" class="table table-condensed table-hover table-striped" style="font-size:8pt;" data-ajax="true" data-url="/Files/List">
         <thead>
             <tr>
                 <th data-column-id="fileId" data-visible="false" data-identifier="true">Id</th>
@@ -224,15 +224,17 @@
                                     if (result) {
                                         $.ajax({
                                             url: '/Files/Delete?id=' + id,
-                                            cache: false
-                                        }).done(function (result) {
-                                            PleaseWaitHide();
-                                            grid.reload();
-                                            bootbox.alert({ title: "Info", message: result });
-                                        }).fail(function (result) {
-                                            PleaseWaitHide();
-                                            grid.reload();
-                                            bootbox.alert({ title: "Error", message: result });
+                                            cache: false,
+                                            success: function (result) {
+                                                PleaseWaitHide();
+                                                bootbox.alert({ title: "Info", message: result });
+                                                grid.reload();
+                                            },
+                                            error: function (xhr, ajaxOptions, thrownError) {
+                                                PleaseWaitHide();
+                                                bootbox.alert({ title: "Error", message: xhr.responseText });
+                                                grid.reload();
+                                            }
                                         });
                                     }
                                 }
