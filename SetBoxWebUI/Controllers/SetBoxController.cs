@@ -39,13 +39,13 @@ namespace SetBoxWebUI.Controllers
 
         }
 
-         /// <summary>
-         /// 
-         /// </summary>
-         /// <param name="session">Session</param>
-         /// <param name="level">Log level</param>
-         /// <param name="mensage">mensage</param>
-         /// <returns></returns>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="session">Session</param>
+        /// <param name="level">Log level</param>
+        /// <param name="mensage">mensage</param>
+        /// <returns></returns>
         [HttpPost("Log")]
         [HttpGet("Log")]
         public async Task<ActionResult<Response<string>>> Log(string session, string mensage, LogLevel level = LogLevel.ERROR)
@@ -138,8 +138,8 @@ namespace SetBoxWebUI.Controllers
                     return NotFound(r);
                 }
 
-                if (device.Version != version 
-                    || device.License != deviceLicense 
+                if (device.Version != version
+                    || device.License != deviceLicense
                     || device.Platform != platform
                     || device.Model != model
                     || device.Manufacturer != manufacturer
@@ -163,7 +163,7 @@ namespace SetBoxWebUI.Controllers
                     if (device.Version != version)
                         log.Message += $"Version: {version} ({device.Version}) ";
 
-                    if(device.ApkVersion != apkVersion)
+                    if (device.ApkVersion != apkVersion)
                         log.Message += $"ApkVersion: {apkVersion} ({device.ApkVersion}) ";
 
                     if (device.Model != model)
@@ -231,8 +231,18 @@ namespace SetBoxWebUI.Controllers
             var r = new Models.Response<string>();
             try
             {
+                if (string.IsNullOrEmpty(license))
+                    license = "";
+
+                if (string.IsNullOrEmpty(identifier))
+                {
+                    r.Message = $"Device {identifier} is null";
+                    r.Status = false;
+                    return BadRequest(r);
+                }
+
                 string deviceIdentifier64 = CriptoHelpers.Base64Encode(identifier);
-                if (license == deviceIdentifier64 || license == DefaultLicense || license == "")
+                if (license == deviceIdentifier64 || license == DefaultLicense || string.IsNullOrEmpty(license))
                 {
 
                     var device = await _devices.FirstOrDefaultAsync(x => x.DeviceIdentifier == identifier);
@@ -261,10 +271,10 @@ namespace SetBoxWebUI.Controllers
 
                     if (license == "")
                         license = device.License;
-                    
+
                     if (license != device.License)
                         device.License = license;
-                    
+
                     device.Active = license != "";
 
                     device.LogAccesses.Add(new DeviceLogAccesses()
@@ -272,7 +282,7 @@ namespace SetBoxWebUI.Controllers
                         CreationDateTime = DateTime.Now,
                         DeviceLogAccessesId = Guid.NewGuid(),
                         IpAcessed = HttpContext.GetClientIpAddress(),
-                        Message = license != ""?"Logged" : "Logged Not License"
+                        Message = license != "" ? "Logged" : "Logged Not License"
                     });
                     await _devices.UpdateAsync(device);
 
@@ -476,7 +486,7 @@ namespace SetBoxWebUI.Controllers
                 //Recuperar as configurações especifica para o DeviceId
                 var device = await _devices.FirstOrDefaultAsync(x => x.DeviceIdentifier == identifier);
 
-                if (device == null )
+                if (device == null)
                 {
                     r.Status = false;
                     r.Message = "Not Found Support Specifies for this Device.";
@@ -536,7 +546,7 @@ namespace SetBoxWebUI.Controllers
                 string identifier = GetDeviceIdFromSession(session);
 
                 var device = await _devices.FirstOrDefaultAsync(x => x.DeviceIdentifier == identifier);
-                
+
                 if (device == null)
                 {
                     r.Status = false;
