@@ -79,6 +79,8 @@ namespace SetBoxWebUI.Controllers
 
                 if (result.Succeeded)
                 {
+                    var user = await _signInManager.UserManager.FindByEmailAsync(u.Username);
+
                     var authProperties = new AuthenticationProperties
                     {
                         AllowRefresh = true,
@@ -89,9 +91,11 @@ namespace SetBoxWebUI.Controllers
 
                     authProperties.Items.Add("Username", u.Username);
                     authProperties.SetString(".persistent", u.RememberMe.ToString());
-                 
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, User, authProperties);
-
+                    authProperties.Items.Add("Id", user.Id.ToString());
+                    authProperties.Items.Add("Email", user.Email);
+                   
+                    await _signInManager.SignInAsync(user, authProperties, CookieAuthenticationDefaults.AuthenticationScheme);
+                    
                     _logger.LogInformation($"Usuário {u.Username} efetuou o login com sucesso.");
 
                     if (!string.IsNullOrEmpty(u.ReturnUrl) && Url.IsLocalUrl(u.ReturnUrl))

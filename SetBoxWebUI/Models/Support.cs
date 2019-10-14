@@ -19,6 +19,8 @@ namespace SetBoxWebUI.Models
         public string Name { get; set; }
         public string UrlLogo { get; set; }
         public DateTime CreationDateTime { get; set; }
+        public string UrlApk { get; set; }
+        public string VersionApk { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<Device> Devices { get; set; }

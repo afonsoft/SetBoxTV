@@ -22,7 +22,6 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.Property(c => c.Email1).HasColumnName("Email1").HasMaxLength(500);
             builder.Property(c => c.Email2).HasColumnName("Email2").HasMaxLength(500);
             builder.Property(c => c.Document).HasColumnName("Document").HasMaxLength(100);
-            builder.HasOne(c => c.Company).WithMany(c => c.Contacts);
             builder.Property(c => c.CreationDateTime).HasColumnName("CreationDateTime").HasDefaultValueSql("getdate()");
         }
     }

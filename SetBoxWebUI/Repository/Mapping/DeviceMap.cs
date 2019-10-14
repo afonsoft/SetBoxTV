@@ -30,6 +30,11 @@ namespace SetBoxWebUI.Repository.Mapping
 
             builder.HasOne(c => c.Configuration).WithOne(d => d.Device).HasForeignKey<Config>(c=>c.DeviceId);
             builder.HasOne(c => c.Support).WithMany(s => s.Devices);
+
+            builder.HasMany(c => c.Files).WithOne(d => d.Device).OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(d => d.Logs).WithOne(l => l.Device).OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(d => d.LogAccesses).WithOne(l => l.Device).OnDelete(DeleteBehavior.Cascade);
+
         }
     }
 }

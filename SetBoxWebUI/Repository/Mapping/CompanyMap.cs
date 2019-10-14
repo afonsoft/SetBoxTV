@@ -20,6 +20,8 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.Property(c => c.Name).HasColumnName("Name").HasMaxLength(500);
             builder.Property(c => c.Fatansy).HasColumnName("Fatansy").HasMaxLength(500);
             builder.Property(c => c.CreationDateTime).HasColumnName("CreationDateTime").HasDefaultValueSql("getdate()");
+            builder.HasMany(c => c.Contacts).WithOne(d => d.Company).OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(c => c.Address).WithOne(d => d.Company).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

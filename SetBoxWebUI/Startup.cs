@@ -83,7 +83,7 @@ namespace SetBoxWebUI
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.IdleTimeout = TimeSpan.FromHours(2);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
@@ -92,7 +92,8 @@ namespace SetBoxWebUI
             {
                 // Cookie settings
                 options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                options.Cookie.IsEssential = true;
+                options.ExpireTimeSpan = TimeSpan.FromHours(24);
                 options.LoginPath = new PathString("/Auth/Login");
                 options.AccessDeniedPath = new PathString("/Auth/Denied");
                 options.SlidingExpiration = true;

@@ -14,7 +14,7 @@ namespace SetBoxWebUI.Repository.Mapping
         {
             builder.HasKey(c => c.FileId);
 
-            builder.ToTable("SetBoxFileCheckSum");
+            builder.ToTable("SetBoxFiles");
             builder.Property(c => c.FileId).HasColumnName("FileId");
             builder.Property(c => c.Name).HasColumnName("Name").HasMaxLength(255).IsRequired();
             builder.Property(c => c.Description).HasColumnName("Description").HasMaxLength(500).HasDefaultValue("");
@@ -23,6 +23,8 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.Property(c => c.Path).HasColumnName("Path").HasMaxLength(500);
             builder.Property(c => c.Size).HasColumnName("Size");
             builder.Property(c => c.CreationDateTime).HasColumnName("CreationDateTime").HasDefaultValueSql("getdate()");
+
+            builder.HasMany(c => c.Devices).WithOne(d => d.File).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

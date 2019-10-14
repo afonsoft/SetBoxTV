@@ -21,6 +21,8 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.Property(c => c.Company).HasColumnName("Company").HasMaxLength(200);
             builder.Property(c => c.Name).HasColumnName("Name").HasMaxLength(200);
             builder.Property(c => c.UrlLogo).HasColumnName("UrlLogo").HasMaxLength(4000);
+            builder.Property(c => c.UrlApk).HasColumnName("UrlApk").HasMaxLength(4000);
+            builder.Property(c => c.VersionApk).HasColumnName("VersionApk").HasMaxLength(20);
             builder.Property(c => c.CreationDateTime).HasColumnName("CreationDateTime").HasDefaultValueSql("getdate()");
         }
     }

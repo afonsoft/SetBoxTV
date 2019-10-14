@@ -20,7 +20,7 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.Property(c => c.IpAcessed).HasColumnName("IpAcessed");
             builder.Property(c => c.Message).HasColumnName("Message").HasColumnType("TEXT");
             builder.Property(c => c.Level).HasColumnName("Level").HasMaxLength(20);
-            builder.HasOne(d => d.Device).WithMany(l => l.Logs);
+           
         }
     }
 }
