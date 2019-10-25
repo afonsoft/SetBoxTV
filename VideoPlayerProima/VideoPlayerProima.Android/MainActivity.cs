@@ -21,13 +21,19 @@ using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Distribute;
 using Microsoft.AppCenter.Push;
+using Android.Hardware.Input;
+using System.Collections.Generic;
 
 namespace SetBoxTV.VideoPlayer.Droid
 {
-    [Activity(Label = "SetBoxTV Outdoor Media", Name = "SetBoxTV.VideoPlayer.Droid.MainActivity", Icon = "@mipmap/launcher_foreground", Banner = "@mipmap/banner", Theme = "@style/MainTheme", MainLauncher = true, HardwareAccelerated = true, Exported = true, NoHistory = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Landscape)]
+    [Activity(Label = "SetBoxTV Outdoor Media", Name = "SetBoxTV.VideoPlayer.Droid.MainActivity", Icon = "@mipmap/launcher_foreground", Banner = "@mipmap/banner", Theme = "@style/MainTheme", MainLauncher = true, HardwareAccelerated = true, Exported = true, NoHistory = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.KeyboardHidden | ConfigChanges.Keyboard | ConfigChanges.Navigation, ScreenOrientation = ScreenOrientation.Landscape)]
     [IntentFilter(actions: new string[] { "android.intent.action.MAIN" }, Categories = new string[] { "android.intent.category.LEANBACK_LAUNCHER" })]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, InputManager.IInputDeviceListener
     {
+
+        private List<int> ConnectedDevices = new List<int>();
+        private int currentDeviceId = -1;
+       
         protected override void OnResume()
         {
             base.OnResume();
@@ -67,7 +73,7 @@ namespace SetBoxTV.VideoPlayer.Droid
             Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
             Window.SetFlags(WindowManagerFlags.KeepScreenOn, WindowManagerFlags.KeepScreenOn);
             Window.SetFlags(WindowManagerFlags.HardwareAccelerated, WindowManagerFlags.HardwareAccelerated);
-            Window.SetFlags(WindowManagerFlags.LayoutInScreen, WindowManagerFlags.LayoutInScreen);
+            Window.SetFlags(WindowManagerFlags.LayoutNoLimits, WindowManagerFlags.LayoutNoLimits);
             Window.SetFlags(WindowManagerFlags.TurnScreenOn, WindowManagerFlags.TurnScreenOn);
 
             Forms.SetTitleBarVisibility(this, AndroidTitleBarVisibility.Never);
@@ -366,5 +372,43 @@ namespace SetBoxTV.VideoPlayer.Droid
             return "com.android.providers.media.documents".Equals(uri.Authority);
         }
 
+        public void OnInputDeviceAdded(int deviceId)
+        {
+            if (!ConnectedDevices.Contains(deviceId))
+            {
+                ConnectedDevices.Add(deviceId);
+            }
+            if (currentDeviceId == -1)
+            {
+                currentDeviceId = deviceId;
+                InputDevice dev = InputDevice.GetDevice(currentDeviceId);
+                if (dev != null)
+                {
+
+                }
+            }
+        }
+
+        public void OnInputDeviceChanged(int deviceId)
+        {
+
+        }
+
+        public void OnInputDeviceRemoved(int deviceId)
+        {
+            ConnectedDevices.Remove(deviceId);
+            if (currentDeviceId == deviceId)
+                currentDeviceId = -1;
+
+            if (ConnectedDevices.Count != 0)
+            {   
+                currentDeviceId = ConnectedDevices[0];
+                InputDevice dev = InputDevice.GetDevice(currentDeviceId);
+                if (dev != null)
+                {
+                    
+                }
+            }
+        }
     }
 }

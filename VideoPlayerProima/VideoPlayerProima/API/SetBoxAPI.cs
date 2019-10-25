@@ -58,7 +58,7 @@ namespace SetBoxTV.VideoPlayer.API
             License = license;
 
             if (string.IsNullOrEmpty(License))
-                License = "";
+                License = "1111";
 
             if (string.IsNullOrEmpty(identifier))
                 throw new ArgumentNullException(nameof(identifier), $"identifier {identifier} is null or invalid!");
@@ -86,7 +86,14 @@ namespace SetBoxTV.VideoPlayer.API
                 if (!resp.sessionExpired && resp.status)
                 {
                     Session = resp.result;
-                    License = CriptoHelpers.Base64Decode(Session).Split('|')[1];
+                    try
+                    {
+                        License = CriptoHelpers.Base64Decode(CriptoHelpers.Base64Decode(Session).Split('|')[1]);
+                    }
+                    catch(Exception)
+                    {
+                        License = "";
+                    }
                 }
                 else
                     throw new ApiException(resp.message);

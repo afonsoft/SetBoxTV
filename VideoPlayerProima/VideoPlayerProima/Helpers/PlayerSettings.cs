@@ -1,5 +1,6 @@
 ﻿using Plugin.Settings;
 using Plugin.Settings.Abstractions;
+using System;
 
 namespace SetBoxTV.VideoPlayer.Helpers
 {
@@ -52,7 +53,12 @@ namespace SetBoxTV.VideoPlayer.Helpers
 
         public static string License
         {
-            get => AppSettings.GetValueOrDefault(nameof(License), null);
+            get => AppSettings.GetValueOrDefault(nameof(License), "1234567890");
+            set => AppSettings.AddOrUpdateValue(nameof(License), value);
+        }
+        public static DateTime DateTimeInstall
+        {
+            get => AppSettings.GetValueOrDefault(nameof(License), DateTime.Now);
             set => AppSettings.AddOrUpdateValue(nameof(License), value);
         }
 

@@ -68,6 +68,7 @@ namespace SetBoxTV.VideoPlayer
 
                 if (Connectivity.NetworkAccess != NetworkAccess.Internet  && PlayerSettings.ReportNotConnection)
                 {
+                    model.IsLoading = false;
                     // Connection to internet is not available
                     await ShowMessage("Sem acesso a internet! Favor conectar na internet para configurar a SetBoX", "Internet", "OK",
                       null).ConfigureAwait(true);
@@ -76,6 +77,8 @@ namespace SetBoxTV.VideoPlayer
                 model.IsLoading = true;
                 if (PlayerSettings.FirstInsall || string.IsNullOrEmpty(PlayerSettings.License))
                 {
+                    PlayerSettings.License = "1234567890";
+                    PlayerSettings.DateTimeInstall = DateTime.Now;
                     log?.Debug("First Install");
                     model.IsLoading = false;
                     MainPage.isInProcess = false;
@@ -84,8 +87,21 @@ namespace SetBoxTV.VideoPlayer
                 }
                 else
                 {
-                    Loading();
-                    model.IsLoading = false;
+                    if (PlayerSettings.DateTimeInstall < DateTime.Now.AddDays(-15) && PlayerSettings.License == "1234567890")
+                    {
+                        log?.Debug("Expirou a instalação");
+                        log?.Debug($"Data Install: {PlayerSettings.DateTimeInstall}");
+                        model.IsLoading = false;
+                        MainPage.isInProcess = false;
+                        await ShowMessage("A licença Temporária da SetBoxTV Expirou! Favor colocar a nova licença!", "Licença", "OK",
+                          () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
+                    }
+                    else
+                    {
+                        Loading();
+                        model.IsLoading = false;
+                        MainPage.isInProcess = false;
+                    }
                 }
             });
         }
