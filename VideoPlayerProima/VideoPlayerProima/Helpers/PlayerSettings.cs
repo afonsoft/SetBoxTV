@@ -53,7 +53,7 @@ namespace SetBoxTV.VideoPlayer.Helpers
 
         public static string License
         {
-            get => AppSettings.GetValueOrDefault(nameof(License), "1234567890");
+            get => AppSettings.GetValueOrDefault(nameof(License), "1111");
             set => AppSettings.AddOrUpdateValue(nameof(License), value);
         }
         public static DateTime DateTimeInstall

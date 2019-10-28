@@ -77,7 +77,7 @@ namespace SetBoxTV.VideoPlayer
                 model.IsLoading = true;
                 if (PlayerSettings.FirstInsall || string.IsNullOrEmpty(PlayerSettings.License))
                 {
-                    PlayerSettings.License = "1234567890";
+                    PlayerSettings.License = "1111";
                     PlayerSettings.DateTimeInstall = DateTime.Now;
                     log?.Debug("First Install");
                     model.IsLoading = false;
@@ -87,7 +87,7 @@ namespace SetBoxTV.VideoPlayer
                 }
                 else
                 {
-                    if (PlayerSettings.DateTimeInstall < DateTime.Now.AddDays(-15) && PlayerSettings.License == "1234567890")
+                    if (PlayerSettings.DateTimeInstall < DateTime.Now.AddDays(-15) && PlayerSettings.License == "1111")
                     {
                         log?.Debug("Expirou a instalação");
                         log?.Debug($"Data Install: {PlayerSettings.DateTimeInstall}");

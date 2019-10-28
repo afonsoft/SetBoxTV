@@ -23,7 +23,7 @@ namespace SetBoxWebUI.Controllers
     [ApiController]
     public class SetBoxController : ControllerBase
     {
-        private const string DefaultLicense = "1234567890";
+        private const string DefaultLicense = "1111";
         private readonly ILogger<SetBoxController> _logger;
         private readonly IRepository<Device, Guid> _devices;
         private readonly IRepository<Support, Guid> _support;
