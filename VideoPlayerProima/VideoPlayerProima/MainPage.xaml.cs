@@ -88,10 +88,10 @@ namespace SetBoxTV.VideoPlayer
                 }
                 else
                 {
-                    if (PlayerSettings.DateTimeInstall < DateTime.Now.AddDays(-15) && PlayerSettings.License == "1111")
+                    if (PlayerSettings.DateTimeInstall < DateTime.UtcNow.AddDays(-15) && PlayerSettings.License == "1111")
                     {
                         log?.Debug("Expirou a instalação");
-                        log?.Debug($"Data Install: {PlayerSettings.DateTimeInstall}");
+                        log?.Debug($"Data UTC Install: {PlayerSettings.DateTimeInstall}");
                         model.IsLoading = false;
                         MainPage.isInProcess = false;
                         await ShowMessage("A licença Temporária da SetBoxTV Expirou! Favor colocar a nova licença!", "Licença", "OK",

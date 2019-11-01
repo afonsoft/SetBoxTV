@@ -6,6 +6,7 @@ namespace SetBoxTV.VideoPlayer.Helpers
 {
     public static class PlayerSettings
     {
+        private static readonly DateTime dateInstall = DateTime.UtcNow;
         static ISettings AppSettings => CrossSettings.Current;
         public static void ClearAllData()
         {
@@ -58,8 +59,8 @@ namespace SetBoxTV.VideoPlayer.Helpers
         }
         public static DateTime DateTimeInstall
         {
-            get => AppSettings.GetValueOrDefault(nameof(License), DateTime.Now);
-            set => AppSettings.AddOrUpdateValue(nameof(License), value);
+            get => AppSettings.GetValueOrDefault(nameof(License), DateTime.SpecifyKind(dateInstall, DateTimeKind.Utc));
+            set => AppSettings.AddOrUpdateValue(nameof(License), DateTime.SpecifyKind(value, DateTimeKind.Utc));
         }
 
         public static int TransactionTime
