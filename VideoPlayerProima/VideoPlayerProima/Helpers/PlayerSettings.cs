@@ -59,8 +59,8 @@ namespace SetBoxTV.VideoPlayer.Helpers
         }
         public static DateTime DateTimeInstall
         {
-            get => AppSettings.GetValueOrDefault(nameof(License), DateTime.SpecifyKind(dateInstall, DateTimeKind.Utc));
-            set => AppSettings.AddOrUpdateValue(nameof(License), DateTime.SpecifyKind(value, DateTimeKind.Utc));
+            get => AppSettings.GetValueOrDefault(nameof(DateTimeInstall), DateTime.SpecifyKind(dateInstall, DateTimeKind.Utc));
+            set => AppSettings.AddOrUpdateValue(nameof(DateTimeInstall), DateTime.SpecifyKind(value, DateTimeKind.Utc));
         }
 
         public static int TransactionTime
