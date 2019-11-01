@@ -2265,7 +2265,9 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::LibVLCSharp.Forms.Resource.Styleable.View_theme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_theme;
 			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_dialog_actioned_on_disabled_toast = global::SetBoxTV.VideoPlayer.Droid.Resource.String.appcenter_distribute_dialog_actioned_on_disabled_toast;
 			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_download_progress_number_format = global::SetBoxTV.VideoPlayer.Droid.Resource.String.appcenter_distribute_download_progress_number_format;
+			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_downloading_error = global::SetBoxTV.VideoPlayer.Droid.Resource.String.appcenter_distribute_downloading_error;
 			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_downloading_mandatory_update = global::SetBoxTV.VideoPlayer.Droid.Resource.String.appcenter_distribute_downloading_mandatory_update;
+			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_downloading_update = global::SetBoxTV.VideoPlayer.Droid.Resource.String.appcenter_distribute_downloading_update;
 			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_install = global::SetBoxTV.VideoPlayer.Droid.Resource.String.appcenter_distribute_install;
 			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_install_ready_message = global::SetBoxTV.VideoPlayer.Droid.Resource.String.appcenter_distribute_install_ready_message;
 			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_install_ready_title = global::SetBoxTV.VideoPlayer.Droid.Resource.String.appcenter_distribute_install_ready_title;
@@ -10289,8 +10291,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			// aapt resource value: 0x7f0a0045
 			public const int abc_toolbar_collapse_description = 2131361861;
 			
-			// aapt resource value: 0x7f0a0075
-			public const int app_name = 2131361909;
+			// aapt resource value: 0x7f0a0077
+			public const int app_name = 2131361911;
 			
 			// aapt resource value: 0x7f0a0053
 			public const int appbar_scrolling_view_behavior = 2131361875;
@@ -10301,8 +10303,14 @@ namespace SetBoxTV.VideoPlayer.Droid
 			// aapt resource value: 0x7f0a0063
 			public const int appcenter_distribute_download_progress_number_format = 2131361891;
 			
+			// aapt resource value: 0x7f0a0075
+			public const int appcenter_distribute_downloading_error = 2131361909;
+			
 			// aapt resource value: 0x7f0a0064
 			public const int appcenter_distribute_downloading_mandatory_update = 2131361892;
+			
+			// aapt resource value: 0x7f0a0076
+			public const int appcenter_distribute_downloading_update = 2131361910;
 			
 			// aapt resource value: 0x7f0a0065
 			public const int appcenter_distribute_install = 2131361893;
@@ -10415,8 +10423,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			// aapt resource value: 0x7f0a0011
 			public const int common_signin_button_text_long = 2131361809;
 			
-			// aapt resource value: 0x7f0a0078
-			public const int default_web_client_id = 2131361912;
+			// aapt resource value: 0x7f0a007a
+			public const int default_web_client_id = 2131361914;
 			
 			// aapt resource value: 0x7f0a0057
 			public const int fab_transformation_scrim_behavior = 2131361879;
@@ -10427,23 +10435,23 @@ namespace SetBoxTV.VideoPlayer.Droid
 			// aapt resource value: 0x7f0a0012
 			public const int fcm_fallback_notification_channel_label = 2131361810;
 			
-			// aapt resource value: 0x7f0a0079
-			public const int firebase_database_url = 2131361913;
-			
-			// aapt resource value: 0x7f0a0076
-			public const int gcm_defaultSenderId = 2131361910;
-			
-			// aapt resource value: 0x7f0a007a
-			public const int google_api_key = 2131361914;
-			
-			// aapt resource value: 0x7f0a0077
-			public const int google_app_id = 2131361911;
-			
 			// aapt resource value: 0x7f0a007b
-			public const int google_crash_reporting_api_key = 2131361915;
+			public const int firebase_database_url = 2131361915;
+			
+			// aapt resource value: 0x7f0a0078
+			public const int gcm_defaultSenderId = 2131361912;
 			
 			// aapt resource value: 0x7f0a007c
-			public const int google_storage_bucket = 2131361916;
+			public const int google_api_key = 2131361916;
+			
+			// aapt resource value: 0x7f0a0079
+			public const int google_app_id = 2131361913;
+			
+			// aapt resource value: 0x7f0a007d
+			public const int google_crash_reporting_api_key = 2131361917;
+			
+			// aapt resource value: 0x7f0a007e
+			public const int google_storage_bucket = 2131361918;
 			
 			// aapt resource value: 0x7f0a0059
 			public const int hide_bottom_view_on_scroll_behavior = 2131361881;
@@ -10541,8 +10549,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			// aapt resource value: 0x7f0a005f
 			public const int path_password_strike_through = 2131361887;
 			
-			// aapt resource value: 0x7f0a007d
-			public const int project_id = 2131361917;
+			// aapt resource value: 0x7f0a007f
+			public const int project_id = 2131361919;
 			
 			// aapt resource value: 0x7f0a0046
 			public const int search_menu_title = 2131361862;

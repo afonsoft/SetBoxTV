@@ -115,21 +115,25 @@ namespace SetBoxTV.VideoPlayer.Droid
 	            <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
              */
 
-            string[] PERMISSIONS_CONTACT =
+            string[] PERMISSIONS =
             {
-            Manifest.Permission.ReadExternalStorage,
-            Manifest.Permission.WriteExternalStorage,
-            Manifest.Permission.AccessCoarseLocation,
-            Manifest.Permission.AccessFineLocation,
-            Manifest.Permission.AccessNotificationPolicy,
-            Manifest.Permission.Internet,
-            Manifest.Permission.WakeLock,
-            Manifest.Permission.ReceiveBootCompleted,
-            Manifest.Permission.AccessNetworkState
-        };
+                "android.permission.READ_EXTERNAL_STORAGE" ,
+                "android.permission.WRITE_EXTERNAL_STORAGE" ,
+                "android.permission.ACCESS_NOTIFICATION_POLICY" ,
+                "android.permission.INTERNET" ,
+                "android.permission.ACCESS_NETWORK_STATE" ,
+                "android.permission.WAKE_LOCK" ,
+                "android.permission.RECEIVE_BOOT_COMPLETED" ,
+                "android.permission.RESTART_PACKAGES" ,
+                "android.permission.C2D_MESSAGE" ,
+                "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" ,
+                "com.google.android.c2dm.permission.RECEIVE" ,
+                "android.permission.REQUEST_INSTALL_PACKAGES" ,
+                "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"
+            };
 
             int requestCode = 100;
-            foreach (string permission in PERMISSIONS_CONTACT)
+            foreach (string permission in PERMISSIONS)
             {
                 requestCode++;
                 try
