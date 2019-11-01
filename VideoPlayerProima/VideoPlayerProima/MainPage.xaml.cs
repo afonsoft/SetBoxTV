@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -63,8 +64,8 @@ namespace SetBoxTV.VideoPlayer
 
             Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
             {
+                await DependencyService.Get<ICheckPermission>()?.CheckSelfPermission(); 
                 log?.Debug("CheckSelfPermission");
-                await DependencyService.Get<ICheckPermission>()?.CheckSelfPermission();
 
                 if (Connectivity.NetworkAccess != NetworkAccess.Internet  && PlayerSettings.ReportNotConnection)
                 {
@@ -123,6 +124,7 @@ namespace SetBoxTV.VideoPlayer
                 bool isLicensed = false;
 
                 AppCenter.SetUserId(deviceIdentifier);
+                log?.Debug("DateTime Installed: " + PlayerSettings.DateTimeInstall.ToString("dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture));
 
                 if (!string.IsNullOrEmpty(PlayerSettings.PathFiles) && !Directory.Exists(PlayerSettings.PathFiles))
                     PlayerSettings.PathFiles = "";
