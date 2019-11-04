@@ -45,7 +45,7 @@ namespace SetBoxTV.VideoPlayer
             directoyPicker = DependencyService.Get<IDirectoyPicker>();
             devicePicker = DependencyService.Get<IDevicePicker>();
             deviceIdentifier = devicePicker?.GetIdentifier();
-            LicenseID.Detail = "ID: " + deviceIdentifier;
+            LicenseID.Detail = "Device ID: " + deviceIdentifier;
             Company.Detail = "Art Vision Indoor";
             Telephone.Detail = "(13) 9817-76786";
             Email.Detail = "artvisionindoor@gmail.com";
@@ -82,6 +82,7 @@ namespace SetBoxTV.VideoPlayer
                         model.ShowWebVideo = config.enableWebVideo;
                         model.EnableTransactionTime = config.enableTransaction;
                         model.TransactionTime = config.transactionTime;
+                        model.DeviceName = config.;
                         PlayerSettings.License = model.License;
                     }
 
@@ -90,7 +91,7 @@ namespace SetBoxTV.VideoPlayer
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
                         {
                             model.IsLoading = false;
-                            await ShowMessage("SetBox Atualizada no Site! Já pode entrar no site e associar os arquivos e colocar a licença.", "Informações", "OK", null).ConfigureAwait(true);
+                            await ShowMessage($"SetBox Atualizada no Site!\nJá pode entrar no site e associar os arquivos e colocar a licença.\nInformações da SetBox:\nIdentifier:{deviceIdentifier}", "Informações", "OK", null).ConfigureAwait(true);
                         });
                     }
                 }
@@ -159,6 +160,7 @@ namespace SetBoxTV.VideoPlayer
             model.EnableTransactionTime = SwitchTransaction.On;
             model.DebugMode = SwitchDebugMode.On;
             model.CheckConection = SwitchConecction.On;
+            model.DeviceName = SetBoxName.Text;
 
             if (int.TryParse(SwitchTransactionTime.Text, out int time))
             {
@@ -178,6 +180,7 @@ namespace SetBoxTV.VideoPlayer
             PlayerSettings.TransactionTime = model.TransactionTime;
             PlayerSettings.DebugEnabled = model.DebugMode;
             PlayerSettings.ReportNotConnection = model.CheckConection;
+            PlayerSettings.DeviceName = model.DeviceName;
 
             PlayerSettings.FirstInsall = false;
 

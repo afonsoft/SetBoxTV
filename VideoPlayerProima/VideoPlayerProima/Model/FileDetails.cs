@@ -16,6 +16,7 @@ namespace SetBoxTV.VideoPlayer.Model
      
         public EnumFileType fileType { get; set; }
 
+        public int? order { get; set; }
         /// <summary>
         /// Nome do Arquivo
         /// </summary>

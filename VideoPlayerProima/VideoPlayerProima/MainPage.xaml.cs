@@ -18,7 +18,7 @@ namespace SetBoxTV.VideoPlayer
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
-        private readonly List<FileDetails> arquivos = new List<FileDetails>();
+        private List<FileDetails> arquivos = new List<FileDetails>();
         private readonly ILogger log;
         private readonly IMessage message;
         private MainViewModel model;
@@ -299,8 +299,10 @@ namespace SetBoxTV.VideoPlayer
                                         log?.Error($"Download {fi.name}: {ex.Message}", ex);
                                     }
                                 }
-
+                                GetFilesInFolder(filePicker);
                             }
+
+                            GetFilesInOrder(arquivos, serverFiles);
                         }
                         ShowText("Iniciando o Player");
                         model.IsLoading = false;
@@ -327,8 +329,22 @@ namespace SetBoxTV.VideoPlayer
             }
         }
 
+        private void GetFilesInOrder(List<FileDetails> arquivos, IList<FileCheckSum> serverFiles)
+        {
+            foreach (var arq in arquivos)
+            {
+                var arqs = serverFiles.FirstOrDefault(x => x.checkSum == arq.checkSum);
+                if (arqs != null && arqs.order.HasValue)
+                {
+                    log?.Debug($"Atualizando a ordem ({arqs.order}) de exibição do arquivo {arq.name} checkSum {arq.checkSum}");
+                    arq.order = arqs.order;
+                }
+            }
+        }
+
         private void GetFilesInFolder(IFilePicker filePicker)
         {
+            arquivos = new List<FileDetails>();
 
             if (PlayerSettings.ShowVideo)
             {

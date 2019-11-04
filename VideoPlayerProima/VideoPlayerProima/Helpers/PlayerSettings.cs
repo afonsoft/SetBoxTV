@@ -110,6 +110,10 @@ namespace SetBoxTV.VideoPlayer.Helpers
             get => AppSettings.GetValueOrDefault(nameof(Url), "https://setbox.afonsoft.com.br/api/SetBox");
             set => AppSettings.AddOrUpdateValue(nameof(Url), value);
         }
-
+        public static string DeviceName
+        {
+            get => AppSettings.GetValueOrDefault(nameof(DeviceName), "");
+            set => AppSettings.AddOrUpdateValue(nameof(DeviceName), value);
+        }
     }
 }

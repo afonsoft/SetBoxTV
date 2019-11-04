@@ -112,13 +112,14 @@ namespace SetBoxWebUI.Controllers
         /// <param name="model"></param>
         /// <param name="manufacturer"></param>
         /// <param name="deviceName"></param>
+        /// <param name="setboxName"></param>
         /// <returns></returns>
         [HttpPost("UpdateInfo")]
         [HttpGet("UpdateInfo")]
         [ProducesResponseType(typeof(Response<string>), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(Response<string>), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(Response<string>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<Response<string>>> UpdateInfo(string session, string platform, string version, string apkVersion, string model, string manufacturer, string deviceName)
+        public async Task<ActionResult<Response<string>>> UpdateInfo(string session, string platform, string version, string apkVersion, string model, string manufacturer, string deviceName, string setboxName)
         {
             var r = new Models.Response<string>();
             try
@@ -145,7 +146,8 @@ namespace SetBoxWebUI.Controllers
                     || device.Model != model
                     || device.Manufacturer != manufacturer
                     || device.DeviceName != deviceName
-                    || device.ApkVersion != apkVersion)
+                    || device.ApkVersion != apkVersion
+                    || device.Name != setboxName)
                 {
                     DeviceLogAccesses log = new DeviceLogAccesses
                     {
@@ -176,6 +178,9 @@ namespace SetBoxWebUI.Controllers
                     if (device.DeviceName != deviceName)
                         log.Message += $"ApkVersion: {deviceName} ({device.DeviceName}) ";
 
+                    if (device.Name != setboxName)
+                        log.Message += $"Name: {setboxName} ({device.Name}) ";
+
                     device.Platform = platform;
                     device.Version = version;
                     device.License = deviceLicense;
@@ -183,6 +188,7 @@ namespace SetBoxWebUI.Controllers
                     device.Model = model;
                     device.Manufacturer = manufacturer;
                     device.DeviceName = deviceName;
+                    device.Name = setboxName;
 
                     device.LogAccesses.Add(log);
 
@@ -585,7 +591,8 @@ namespace SetBoxWebUI.Controllers
                         Url = item.File.Url,
                         CreationDateTime = item.File.CreationDateTime,
                         Description = item.File.Description,
-                        FileId = item.FileId
+                        FileId = item.FileId,
+                        Order = item.Order
                     });
                 }
 

@@ -125,7 +125,6 @@ namespace SetBoxTV.VideoPlayer.Droid
                 "android.permission.WAKE_LOCK" ,
                 "android.permission.RECEIVE_BOOT_COMPLETED" ,
                 "android.permission.RESTART_PACKAGES" ,
-                "android.permission.C2D_MESSAGE" ,
                 "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" ,
                 "com.google.android.c2dm.permission.RECEIVE" ,
                 "android.permission.REQUEST_INSTALL_PACKAGES" ,

@@ -51,6 +51,9 @@ namespace SetBoxWebUI.Models
         [NotMapped]
         public int TotalDevice { get { return Devices != null ? Devices.Count : 0; } }
 
+        [NotMapped]
+        public int? Order { get; set; }
+
         /// <summary>
         /// Devices
         /// </summary>
@@ -62,6 +65,7 @@ namespace SetBoxWebUI.Models
     {
         public Guid FileId { get; set; }
         public virtual FileCheckSum File { get; set; }
+        public int? Order { get; set; }
         public Guid DeviceId { get; set; }
         public virtual Device Device { get; set; }
         public DateTime CreationDateTime { get; set; }

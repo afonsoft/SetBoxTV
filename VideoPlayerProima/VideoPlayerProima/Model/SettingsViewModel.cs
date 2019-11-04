@@ -9,6 +9,7 @@ namespace SetBoxTV.VideoPlayer.Model
     {
         private string _License ;
         private string _PathFiles;
+        private string _DeviceNane;
         private bool _ShowVideo;
         private bool _ShowPhoto = false;
         private bool _ShowWebImage = false;
@@ -34,6 +35,7 @@ namespace SetBoxTV.VideoPlayer.Model
             _TransactionTime = PlayerSettings.TransactionTime;
             _DebugMode = PlayerSettings.DebugEnabled;
             _checkConection = PlayerSettings.ReportNotConnection;
+            _DeviceNane = PlayerSettings.DeviceName;
 
             if (string.IsNullOrEmpty(_PathFiles))
                 _PathFiles = "/storage/emulated/0/Movies";
@@ -141,6 +143,14 @@ namespace SetBoxTV.VideoPlayer.Model
             {
                 SetProperty(ref _TransactionTime, value, nameof(TransactionTime));
             }
+        }
+
+
+        public string DeviceName
+        {
+            get => this._DeviceNane;
+            set => SetProperty(ref _DeviceNane, value, nameof(DeviceName));
+
         }
     }
 }

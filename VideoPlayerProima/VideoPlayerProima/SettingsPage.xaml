@@ -53,6 +53,7 @@
                         <TextCell Text="Empresa" Detail="{Binding Company}" x:Name="Company" DetailColor="Black" AutomationProperties.IsInAccessibleTree="True"/>
                         <TextCell Text="Telefone" Detail="{Binding Telephone}" x:Name="Telephone" DetailColor="Black" AutomationProperties.IsInAccessibleTree="True"/>
                         <TextCell Text="E-Mail" Detail="{Binding Email}" x:Name="Email" DetailColor="Black" AutomationProperties.IsInAccessibleTree="True"/>
+                        <EntryCell Label="SetBox Name" x:Name="SetBoxName" Placeholder=""  Keyboard="Default" Text="{Binding DeviceName, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True" />
                     </TableSection>
                     <TableSection Title="" x:Name="TableSection7">
                         <ViewCell>
