@@ -19,7 +19,7 @@ namespace SetBoxWebUI.Controllers
     {
         private readonly ILogger<DevicesController> _logger;
         private readonly IRepository<Device, Guid> _devices;
-
+        private readonly FileDeviceRepository fileDeviceRepository;
         /// <summary>
         /// SetBoxController
         /// </summary>
@@ -27,6 +27,7 @@ namespace SetBoxWebUI.Controllers
         {
             _logger = logger;
             _devices = new Repository<Device, Guid>(context);
+            fileDeviceRepository = new FileDeviceRepository(context);
         }
        
         public IActionResult Index(DeviceViewModel m)
@@ -65,7 +66,7 @@ namespace SetBoxWebUI.Controllers
                     Model = item.Model,
                     LastAccessDateTime = item.LastAccessDateTime,
                     Session = CriptoHelpers.Base64Encode(item.DeviceId.ToString()),
-                    Files = item.Files.Select(x => x.File).OrderBy(x => x.Order).ToList()
+                    Files = item.Files.OrderBy(x => x.Order).Select(x => x.File).ToList()
                 };
 
                 if (item.Configuration != null)
@@ -103,9 +104,7 @@ namespace SetBoxWebUI.Controllers
                         {
                             for (int idx = 0; idx < orders.Length; idx++) 
                             {
-                                var updFileOrder = device.Files.FirstOrDefault(x => x.FileId.ToString() == orders[idx]);
-                                if (updFileOrder != null)
-                                    updFileOrder.Order = idx;
+                               await fileDeviceRepository.UpdateOrder(id, orders[idx], idx);
                             }
 
                             await _devices.UpdateAsync(device);
