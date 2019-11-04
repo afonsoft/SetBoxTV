@@ -15,6 +15,7 @@ using Afonsoft.Logger;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using SetBoxWebUI.Interfaces;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace SetBoxWebUI
 {
@@ -142,6 +143,12 @@ namespace SetBoxWebUI
                 options.User.RequireUniqueEmail = true;
             });
 
+            services.Configure<FormOptions>(options =>
+            {
+                options.ValueLengthLimit = int.MaxValue;
+                options.MultipartBodyLengthLimit = int.MaxValue;
+                options.MultipartHeadersLengthLimit = int.MaxValue;
+            });
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)

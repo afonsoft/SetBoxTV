@@ -90,7 +90,12 @@ namespace SetBoxWebUI
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
             .CaptureStartupErrors(true)
-            .UseKestrel()
+            .UseKestrel(options =>
+            {
+                options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(120);
+                options.Limits.RequestHeadersTimeout = TimeSpan.FromMinutes(120);
+              
+            })
             .UseContentRoot(Directory.GetCurrentDirectory())
             .UseIISIntegration()
             .UseStartup<Startup>();
