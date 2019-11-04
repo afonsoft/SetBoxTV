@@ -30,6 +30,7 @@
                 <th data-column-id="apkVersion" data-width="8%" data-header-css-class="HideColInMobile" data-css-class="HideColInMobile">Apk</th>
                 <th data-column-id="totalFiles" data-width="8%" data-header-css-class="HideColInMobile" data-css-class="HideColInMobile">Files</th>
                 <th data-column-id="creationDateTime" data-converter="datetime" data-width="10%" data-header-css-class="HideColInMobile" data-css-class="HideColInMobile">CreationDate</th>
+                <th data-column-id="lastAccessDateTime" data-converter="datetime" data-width="10%" data-header-css-class="HideColInMobile" data-css-class="HideColInMobile">AccessedDate</th>
                 <th data-formatter="actions" data-sortable="false">Commands</th>
             </tr>
         </thead>
@@ -147,6 +148,14 @@
                                     </div>
 
                                 </div>
+                                <div class="form-group row">
+
+                                    <label class="col-sm-3 col-form-label">Last Accessed Date</label>
+                                    <div class="col-sm-9">
+                                        <input asp-for="LastAccessDateTime" class="form-control form-control-sm" readonly />
+                                    </div>
+
+                                </div>
                             </div>
                             <div class="col-md-7 ml-auto" style="font-size:7.5pt;">
                                 <div id="DivPainelConfig">
@@ -221,15 +230,30 @@
                                         <div class="tab-pane fade show active" id="files" role="tabpanel" aria-labelledby="files-tab">
                                             <div class="row">
                                                 <div class="col-12">
-                                                    <table id="grid-data-device-files" class="table table-condensed table-hover table-striped" style="font-size:8pt;" data-navigation="2">
-                                                        <thead>
-                                                            <tr>
-                                                                <th data-column-id="name" data-order="asc">Name</th>
-                                                                <th data-column-id="extension" data-width="18%" data-header-css-class="HideColInMobile" data-css-class="HideColInMobile">Extension</th>
-                                                                <th data-column-id="size" data-converter="size" data-width="18%">Size</th>
-                                                            </tr>
-                                                        </thead>
-                                                    </table>
+                                                    @*<table id="grid-data-device-files" class="table table-condensed table-hover table-striped" style="font-size:8pt;" data-navigation="2">
+            <thead>
+                <tr>
+                    <th data-column-id="name" data-order="asc">Name</th>
+                    <th data-column-id="extension" data-width="18%" data-header-css-class="HideColInMobile" data-css-class="HideColInMobile">Extension</th>
+                    <th data-column-id="size" data-converter="size" data-width="18%">Size</th>
+                </tr>
+            </thead>
+        </table>*@
+                                                    <br><ul id="sortable">
+                                                        @foreach (var item in Model.Files)
+                                                        {
+                                                            <li id="@item.FileId" class="list-group-item list-group-item-action flex-column align-items-start">
+                                                                <div class="d-flex w-100 justify-content-between">
+                                                                    <h6 class="mb-1">@item.Name</h6>
+                                                                </div>
+                                                                <p class="mb-1">
+                                                                    Extension: @item.Extension<br />
+                                                                    Size: @item.Size<br />
+                                                                </p>
+                                                            </li>
+                                                        }
+                                                    </ul>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -343,28 +367,37 @@
                         }
                     });
 
-                 $("#grid-data-device-files").bootgrid(
-                    {
-                        ajax: true,
-                        post: function () {
-                            return {
-                                id: id
-                            };
-                        },
-                        url: '/Devices/ListFiles',
-                        labels: translate,
-                        searchSettings: {
-                            delay: 100,
-                            characters: 3
-                        },
+                 //$("#grid-data-device-files").bootgrid(
+                 //   {
+                 //       ajax: true,
+                 //       post: function () {
+                 //           return {
+                 //               id: id
+                 //           };
+                 //       },
+                 //       url: '/Devices/ListFiles',
+                 //       labels: translate,
+                 //       searchSettings: {
+                 //           delay: 100,
+                 //           characters: 3
+                 //       },
 
-                        converters: {
-                            size: {  // Tratar os campos data que vem no formato incorreto
-                                from: function (value) { return value; },
-                                to: function (value) { return FormatsonSize(value); }
-                            }
-                        }
-                    });
+                 //       converters: {
+                 //           size: {  // Tratar os campos data que vem no formato incorreto
+                 //               from: function (value) { return value; },
+                 //               to: function (value) { return FormatsonSize(value); }
+                 //           }
+                 //       }
+                 //   });
+
+                $("#sortable").sortable({
+                    axis: 'y',
+                    update: function (event, ui) {
+                        var data = $(this).sortable('serialize');
+                        $.post('/Devices/UpdateOrderFiles', { id: id, order: data });
+                    }
+                });
+                $("#sortable").disableSelection();
 
             } else {
                 $("#DivPainelConfig").show();
@@ -373,6 +406,7 @@
             }
             $('#ModalEdit').modal('show');
         }
+
 
         $(document).ready(function () {
 

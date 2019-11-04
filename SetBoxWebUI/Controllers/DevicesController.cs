@@ -63,8 +63,11 @@ namespace SetBoxWebUI.Controllers
                     DeviceName = item.DeviceName,
                     Manufacturer = item.Manufacturer,
                     Model = item.Model,
-                    Session = CriptoHelpers.Base64Encode(item.DeviceId.ToString())
+                    LastAccessDateTime = item.LastAccessDateTime,
+                    Session = CriptoHelpers.Base64Encode(item.DeviceId.ToString()),
+                    Files = item.Files.Select(x => x.File).OrderBy(x => x.Order).ToList()
                 };
+
                 if (item.Configuration != null)
                 {
                     model.TransactionTime = item.Configuration.TransactionTime;
@@ -83,6 +86,39 @@ namespace SetBoxWebUI.Controllers
                 ViewData["Edit"] = false;
                 return View("Index", new DeviceViewModel(ex));
             }
+        }
+
+        [HttpPost]
+        public async Task<bool> UpdateOrderFiles(string id, string order)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(order) && !string.IsNullOrEmpty(id))
+                {
+                    string[] orders = order.Replace("[]=", "-").Split("&");
+                    if (orders.Length > 0)
+                    {
+                        var device = await _devices.FirstOrDefaultAsync(x => x.DeviceId.ToString() == id);
+                        if (device != null)
+                        {
+                            for (int idx = 0; idx < orders.Length; idx++) 
+                            {
+                                var updFileOrder = device.Files.FirstOrDefault(x => x.FileId.ToString() == orders[idx]);
+                                if (updFileOrder != null)
+                                    updFileOrder.Order = idx;
+                            }
+
+                            await _devices.UpdateAsync(device);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+            }
+
+            return true;
         }
 
         [HttpPost]

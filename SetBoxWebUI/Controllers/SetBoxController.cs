@@ -288,6 +288,8 @@ namespace SetBoxWebUI.Controllers
 
                     device.Active = license != DefaultLicense;
 
+                    device.LastAccessDateTime = DateTime.Now;
+
                     device.LogAccesses.Add(new DeviceLogAccesses()
                     {
                         CreationDateTime = DateTime.Now,

@@ -17,6 +17,7 @@ namespace SetBoxWebUI.Models
         public string License { get; set; }
         public string Name { get; set; }
         public DateTime CreationDateTime { get; set; }
+        public DateTime? LastAccessDateTime { get; set; }
         public string ApkVersion { get; set; }
         public string Model { get; set; }
         public string Manufacturer { get; set; }

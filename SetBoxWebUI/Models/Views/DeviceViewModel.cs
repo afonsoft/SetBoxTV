@@ -10,16 +10,16 @@ namespace SetBoxWebUI.Models.Views
     {
         public DeviceViewModel(string messageError) : base(messageError)
         {
-
+            Files = new List<FileCheckSum>();
         }
         public DeviceViewModel(Exception exception) : base(exception)
         {
-
+            Files = new List<FileCheckSum>();
         }
 
         public DeviceViewModel() : base("")
         {
-            
+            Files = new List<FileCheckSum>();
         }
 
         public bool IsEdited { get; set; }
@@ -36,6 +36,9 @@ namespace SetBoxWebUI.Models.Views
 
         public string Session { get; set; }
         public DateTime CreationDateTime { get; set; }
+        public DateTime? LastAccessDateTime { get; set; }
+
+        public List<FileCheckSum> Files { get; set; } 
 
         public Guid ConfigId { get; set; }
         /// <summary>
