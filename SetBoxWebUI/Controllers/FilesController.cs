@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SetBoxWebUI.Helpers;
@@ -163,6 +166,44 @@ namespace SetBoxWebUI.Controllers
                 ViewData["New"] = false;
                 return View("Index", new FilesViewModel(ex));
             }
+        }
+
+        [HttpPost]
+        [DisableFormValueModelBinding]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SaveStream()
+        {
+            if (!MultipartRequestHelper.IsMultipartContentType(Request.ContentType))
+            {
+                ModelState.AddModelError("File",
+                    $"The request couldn't be processed (Error 1).");
+                // Log error
+
+                return BadRequest(ModelState);
+            }
+
+            string _targetFilePath = Path.Combine(_hostingEnvironment.WebRootPath, "UploadedFiles", Path.GetTempFileName());
+
+
+            FormValueProvider formModel;
+            using (var targetStream = System.IO.File.Create(_targetFilePath))
+            {
+                formModel = await Request.StreamFile(targetStream);
+            }
+
+            if (formModel != null)
+            {
+                return Created(nameof(FilesController), null);
+            }
+            else
+            {
+                ModelState.AddModelError("File",
+                  $"The request couldn't be processed (Error 1).");
+                // Log error
+
+                return BadRequest(ModelState);
+            }
+           
         }
 
         [HttpPost]

@@ -147,6 +147,7 @@ namespace SetBoxWebUI
             {
                 options.ValueLengthLimit = int.MaxValue;
                 options.MultipartBodyLengthLimit = int.MaxValue;
+                options.MultipartBoundaryLengthLimit = 256;
                 options.MultipartHeadersLengthLimit = int.MaxValue;
             });
 
