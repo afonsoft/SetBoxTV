@@ -238,12 +238,14 @@
                                                                 <div class="d-flex w-100 justify-content-between">
                                                                     <h6 class="mb-1">@item.Name</h6>
                                                                 </div>
-                                                                <div class="col-9">
-                                                                    Extension: @item.Extension<br />
-                                                                    Size: @SizeHelpers.FormatsonSize(item.Size)<br />
-                                                                </div>
-                                                                <div class="col-3">
-                                                                    <span class='glyphicon glyphicon-trash'></span>
+                                                                <div class="row">
+                                                                    <div class="col-9">
+                                                                        Extension: @item.Extension<br />
+                                                                        Size: @SizeHelpers.FormatsonSize(item.Size)<br />
+                                                                    </div>
+                                                                    <div class="col-3">
+                                                                        <span class='glyphicon glyphicon-trash'></span>
+                                                                    </div>
                                                                 </div>
                                                             </li>
                                                         }
@@ -300,7 +302,7 @@
     <script type="text/javascript">
 
         function GeneratorKey(identifier, license, session) {
-            $.get("/Devices/Key?identifier=" + identifier + "&session=" +session, function(result){
+            $.get("/Devices/Key?identifier=" + identifier + "&session=" + session, function (result) {
                 $("#" + license).val(result);
             })
         }
@@ -362,28 +364,28 @@
                         }
                     });
 
-                 //$("#grid-data-device-files").bootgrid(
-                 //   {
-                 //       ajax: true,
-                 //       post: function () {
-                 //           return {
-                 //               id: id
-                 //           };
-                 //       },
-                 //       url: '/Devices/ListFiles',
-                 //       labels: translate,
-                 //       searchSettings: {
-                 //           delay: 100,
-                 //           characters: 3
-                 //       },
+                //$("#grid-data-device-files").bootgrid(
+                //   {
+                //       ajax: true,
+                //       post: function () {
+                //           return {
+                //               id: id
+                //           };
+                //       },
+                //       url: '/Devices/ListFiles',
+                //       labels: translate,
+                //       searchSettings: {
+                //           delay: 100,
+                //           characters: 3
+                //       },
 
-                 //       converters: {
-                 //           size: {  // Tratar os campos data que vem no formato incorreto
-                 //               from: function (value) { return value; },
-                 //               to: function (value) { return FormatsonSize(value); }
-                 //           }
-                 //       }
-                 //   });
+                //       converters: {
+                //           size: {  // Tratar os campos data que vem no formato incorreto
+                //               from: function (value) { return value; },
+                //               to: function (value) { return FormatsonSize(value); }
+                //           }
+                //       }
+                //   });
 
                 $("#sortable").sortable({
                     axis: 'y',
