@@ -161,11 +161,30 @@ namespace SetBoxTV.VideoPlayer
                         $"{device.GetApkVersion()}.{device.GetApkBuild()}",
                         DevicePicker.GetModel(),
                         DevicePicker.GetManufacturer(),
-                        DevicePicker.GetName()).ConfigureAwait(true);
+                        DevicePicker.GetName(),
+                        PlayerSettings.DeviceName).ConfigureAwait(true);
+
+
+                    ShowText("Recuperando as configurações do servidor");
+
+                    var config = await api.GetConfig().ConfigureAwait(true);
+
+                    if(config != null)
+                    {
+                        PlayerSettings.License = api.License;
+                        PlayerSettings.ShowVideo = config.enableVideo;
+                        PlayerSettings.ShowPhoto = config.enablePhoto;
+                        PlayerSettings.ShowWebImage = config.enableWebImage;
+                        PlayerSettings.ShowWebVideo = config.enableWebVideo;
+                        PlayerSettings.EnableTransactionTime = config.enableTransaction;
+                        PlayerSettings.TransactionTime = config.transactionTime;
+                        PlayerSettings.DeviceName = config.DeviceName;
+                    }
                 }
                 catch (Exception ex)
                 {
                     log?.Error("UpdateInfo: " + ex.Message, ex);
+                    ShowText("Erro ao conectar no servidor");
                 }
 
                 ShowText("Verificando a Licença de uso da SetBoxTV");
