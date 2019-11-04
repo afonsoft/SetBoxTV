@@ -178,7 +178,7 @@ namespace SetBoxWebUI.Controllers
                     if (device.DeviceName != deviceName)
                         log.Message += $"ApkVersion: {deviceName} ({device.DeviceName}) ";
 
-                    if (device.Name != setboxName)
+                    if (device.Name != setboxName && !string.IsNullOrEmpty(setboxName))
                         log.Message += $"Name: {setboxName} ({device.Name}) ";
 
                     device.Platform = platform;
@@ -188,7 +188,7 @@ namespace SetBoxWebUI.Controllers
                     device.Model = model;
                     device.Manufacturer = manufacturer;
                     device.DeviceName = deviceName;
-                    device.Name = setboxName;
+                    device.Name = !string.IsNullOrEmpty(setboxName) ? setboxName : device.Name;
 
                     device.LogAccesses.Add(log);
 
@@ -396,6 +396,8 @@ namespace SetBoxWebUI.Controllers
                 device.Configuration.EnableWebImage = config.EnableWebImage;
                 device.Configuration.EnableWebVideo = config.EnableWebVideo;
                 device.Configuration.TransactionTime = config.TransactionTime;
+
+                device.Configuration.DeviceName = device.Name;
 
                 device.LogAccesses.Add(new DeviceLogAccesses()
                 {

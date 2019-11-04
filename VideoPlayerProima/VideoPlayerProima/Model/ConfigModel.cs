@@ -30,5 +30,6 @@ namespace SetBoxTV.VideoPlayer.Model
         public bool enableTransaction { get; set; }
         public int transactionTime { get; set; }
         public DateTime creationDateTime { get; set; }
+        public string DeviceName { get; set; }
     }
 }

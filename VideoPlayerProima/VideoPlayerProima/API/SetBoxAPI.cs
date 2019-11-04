@@ -221,7 +221,7 @@ namespace SetBoxTV.VideoPlayer.API
         /// Update information from SetBox
         /// </summary>
         /// <returns></returns>
-        public async Task<string> UpdateInfo(string platform, string version, string apkVersion, string model, string manufacturer, string deviceName)
+        public async Task<string> UpdateInfo(string platform, string version, string apkVersion, string model, string manufacturer, string deviceName, string setboxName)
         {
             if (string.IsNullOrEmpty(Session))
                 return null;
@@ -235,7 +235,8 @@ namespace SetBoxTV.VideoPlayer.API
                                             .And("apkVersion", apkVersion)
                                             .And("model", model)
                                             .And("manufacturer", manufacturer)
-                                            .And("deviceName", deviceName));
+                                            .And("deviceName", deviceName)
+                                            .And("setboxName", setboxName));
 
                 if (!resp.sessionExpired && resp.status)
                     return resp.result;

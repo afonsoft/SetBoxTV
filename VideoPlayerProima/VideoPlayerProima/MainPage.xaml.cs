@@ -66,6 +66,7 @@ namespace SetBoxTV.VideoPlayer
             {
                 await DependencyService.Get<ICheckPermission>()?.CheckSelfPermission(); 
                 log?.Debug("CheckSelfPermission");
+                log?.Debug($"SetBox Name {PlayerSettings.DeviceName}");
 
                 if (Connectivity.NetworkAccess != NetworkAccess.Internet  && PlayerSettings.ReportNotConnection)
                 {
@@ -94,7 +95,7 @@ namespace SetBoxTV.VideoPlayer
                         log?.Debug($"Data UTC Install: {PlayerSettings.DateTimeInstall}");
                         model.IsLoading = false;
                         MainPage.isInProcess = false;
-                        await ShowMessage("A licença Temporária da SetBoxTV Expirou! Favor colocar a nova licença!", "Licença", "OK",
+                        await ShowMessage("A licença Temporária da SetBoxTV Expirou!\nFavor colocar a nova licença!\n\nOu acesse o site e coloque a licença!", "Licença", "OK",
                           () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
                     }
                     else

@@ -66,5 +66,8 @@ namespace SetBoxWebUI.Models
         /// </summary>
         public DateTime CreationDateTime { get; set; }
 
+        [NotMapped]
+        public string DeviceName { get; set; }
+
     }
 }

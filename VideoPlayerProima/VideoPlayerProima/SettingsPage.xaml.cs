@@ -62,7 +62,8 @@ namespace SetBoxTV.VideoPlayer
                             $"{devicePicker.GetApkVersion()}.{devicePicker.GetApkBuild()}",
                             DevicePicker.GetModel(),
                             DevicePicker.GetManufacturer(),
-                            DevicePicker.GetName()).ConfigureAwait(true);
+                            DevicePicker.GetName(),
+                            PlayerSettings.DeviceName).ConfigureAwait(true);
 
                     var support = await api.GetSupport().ConfigureAwait(true);
                     if (support != null)
@@ -82,7 +83,8 @@ namespace SetBoxTV.VideoPlayer
                         model.ShowWebVideo = config.enableWebVideo;
                         model.EnableTransactionTime = config.enableTransaction;
                         model.TransactionTime = config.transactionTime;
-                        model.DeviceName = config.;
+                        model.DeviceName = config.DeviceName;
+                        PlayerSettings.DeviceName = model.DeviceName;
                         PlayerSettings.License = model.License;
                     }
 
@@ -194,7 +196,8 @@ namespace SetBoxTV.VideoPlayer
                         $"{devicePicker.GetApkVersion()}.{devicePicker.GetApkBuild()}",
                         DevicePicker.GetModel(),
                         DevicePicker.GetManufacturer(),
-                        DevicePicker.GetName()).ConfigureAwait(true);
+                        DevicePicker.GetName(),
+                        PlayerSettings.DeviceName).ConfigureAwait(true);
 
                 await api.SetConfig(new ConfigModel()
                 {
