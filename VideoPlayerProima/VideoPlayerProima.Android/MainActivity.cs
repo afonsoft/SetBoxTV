@@ -56,10 +56,13 @@ namespace SetBoxTV.VideoPlayer.Droid
             Instance = this;
 
             Push.EnableFirebaseAnalytics();
-            AppCenter.Start("35661827-5555-4b62-b333-145f0456c75d", typeof(Analytics), typeof(Crashes), typeof(Push));
+            Distribute.SetEnabledForDebuggableBuild(true);
+
+            AppCenter.Start("35661827-5555-4b62-b333-145f0456c75d", typeof(Analytics), typeof(Crashes), typeof(Push), typeof(Distribute));
             Crashes.SetEnabledAsync(true);
             Push.SetEnabledAsync(true);
             Analytics.SetEnabledAsync(true);
+            Distribute.SetEnabledAsync(false);
 
             AppDomain.CurrentDomain.UnhandledException += (sender, args) => LoggerService.Instance.Error(args.ExceptionObject as Exception);
             TaskScheduler.UnobservedTaskException += (sender, args) => LoggerService.Instance.Error(args.Exception);
@@ -70,11 +73,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 
             RequestWindowFeature(WindowFeatures.NoTitle);
 
-            Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
-            Window.SetFlags(WindowManagerFlags.KeepScreenOn, WindowManagerFlags.KeepScreenOn);
-            Window.SetFlags(WindowManagerFlags.HardwareAccelerated, WindowManagerFlags.HardwareAccelerated);
-            Window.SetFlags(WindowManagerFlags.LayoutNoLimits, WindowManagerFlags.LayoutNoLimits);
-            Window.SetFlags(WindowManagerFlags.TurnScreenOn, WindowManagerFlags.TurnScreenOn);
+            Window.AddFlags(WindowManagerFlags.Fullscreen);
+            Window.AddFlags(WindowManagerFlags.KeepScreenOn);
+            Window.AddFlags(WindowManagerFlags.HardwareAccelerated);
+            Window.AddFlags(WindowManagerFlags.LayoutNoLimits);
+            Window.AddFlags(WindowManagerFlags.TurnScreenOn);
 
             Forms.SetTitleBarVisibility(this, AndroidTitleBarVisibility.Never);
 
@@ -104,17 +107,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 
         public async Task CheckSelfPermission()
         {
-            /*
-                <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-	            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-	            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	            <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
-	            <uses-permission android:name="android.permission.INTERNET" />
-	            <uses-permission android:name="android.permission.WAKE_LOCK" />
-	            <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-             */
-
             string[] PERMISSIONS =
             {
                 "android.permission.READ_EXTERNAL_STORAGE" ,
@@ -177,11 +169,12 @@ namespace SetBoxTV.VideoPlayer.Droid
                 if (grantResults[0] == Permission.Denied)
                 {
                     taskGrantPermission.SetResult(false);
-                    Toast.MakeText(this, $" {permissions[0]} Negado", ToastLength.Long).Show();
+                    LoggerService.Instance.Debug($"Permissions Denied : {permissions[0]}");
                 }
                 else
                 {
                     taskGrantPermission.SetResult(true);
+                    LoggerService.Instance.Debug($"Permissions Granted: {permissions[0]}");
                 }
             }
             catch
@@ -387,14 +380,21 @@ namespace SetBoxTV.VideoPlayer.Droid
                 InputDevice dev = InputDevice.GetDevice(currentDeviceId);
                 if (dev != null)
                 {
-
+                    LoggerService.Instance.Debug($"ControllerNumber: {dev.ControllerNumber} - Descriptor: {dev.Descriptor} - Name: {dev.Name}");
                 }
             }
         }
 
         public void OnInputDeviceChanged(int deviceId)
         {
-
+            if (ConnectedDevices.Contains(deviceId))
+            {
+                InputDevice dev = InputDevice.GetDevice(deviceId);
+                if (dev != null)
+                {
+                    LoggerService.Instance.Debug($"ControllerNumber: {dev.ControllerNumber} - Descriptor: {dev.Descriptor} - Name: {dev.Name}");
+                }
+            }
         }
 
         public void OnInputDeviceRemoved(int deviceId)
@@ -409,7 +409,7 @@ namespace SetBoxTV.VideoPlayer.Droid
                 InputDevice dev = InputDevice.GetDevice(currentDeviceId);
                 if (dev != null)
                 {
-                    
+                    LoggerService.Instance.Debug($"ControllerNumber: {dev.ControllerNumber} - Descriptor: {dev.Descriptor} - Name: {dev.Name}");
                 }
             }
         }

@@ -7,7 +7,7 @@
              NavigationPage.HasNavigationBar="False"
              x:Name="Root">
 
-    <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1" BackgroundColor="Black" >
+    <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1" BackgroundColor="White" >
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />

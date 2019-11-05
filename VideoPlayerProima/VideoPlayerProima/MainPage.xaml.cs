@@ -89,7 +89,7 @@ namespace SetBoxTV.VideoPlayer
                 }
                 else
                 {
-                    if (PlayerSettings.DateTimeInstall < DateTime.UtcNow.AddDays(-15) && PlayerSettings.License == "1111")
+                    if (PlayerSettings.DateTimeInstall < DateTime.UtcNow.AddDays(-5) && PlayerSettings.License == "1111")
                     {
                         log?.Debug("Expirou a instalação");
                         log?.Debug($"Data UTC Install: {PlayerSettings.DateTimeInstall}");

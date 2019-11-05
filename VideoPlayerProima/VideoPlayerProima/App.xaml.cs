@@ -32,12 +32,13 @@ namespace SetBoxTV.VideoPlayer
             base.OnStart();
             MessagingCenter.Send(new LifecycleMessage(), nameof(OnStart));
             Distribute.ReleaseAvailable = OnReleaseAvailable;
-            AppCenter.Start("android=35661827-5555-4b62-b333-145f0456c75d", typeof(Analytics), typeof(Crashes),  typeof(Push));
+            AppCenter.Start("android=35661827-5555-4b62-b333-145f0456c75d", typeof(Analytics), typeof(Crashes),  typeof(Push), typeof(Distribute));
             
             Crashes.SetEnabledAsync(true);
             Push.SetEnabledAsync(true);
             Analytics.SetEnabledAsync(true);
-
+            Distribute.SetEnabledAsync(false);
+            DependencyService.Get<ILogger>()?.Debug("OnStart");
             MainPage = new MainPage();
         }
 
@@ -46,6 +47,7 @@ namespace SetBoxTV.VideoPlayer
             // Handle when your app sleeps
             base.OnSleep();
             MessagingCenter.Send(new LifecycleMessage(), nameof(OnSleep));
+            DependencyService.Get<ILogger>()?.Debug("OnSleep");
 
         }
 
@@ -53,6 +55,9 @@ namespace SetBoxTV.VideoPlayer
         {
             base.OnResume();
             MessagingCenter.Send(new LifecycleMessage(), nameof(OnResume));
+
+            DependencyService.Get<ILogger>()?.Debug("OnResume");
+
             //restart
             SetBoxTV.VideoPlayer.MainPage.isInProcess = false;
             MainPage = new MainPage();
