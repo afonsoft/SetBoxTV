@@ -20,7 +20,6 @@ namespace SetBoxTV.VideoPlayer
     {
         private List<FileDetails> arquivos = new List<FileDetails>();
         private readonly ILogger log;
-        private readonly IMessage message;
         private MainViewModel model;
         public static bool isInProcess = false;
 
@@ -29,12 +28,11 @@ namespace SetBoxTV.VideoPlayer
         {
             InitializeComponent();
             BindingContext = model = new MainViewModel();
-
             model.IsLoading = true;
             model.LoadingText = "Loading";
 
             log = DependencyService.Get<ILogger>();
-            message = DependencyService.Get<IMessage>();
+            
             if (log != null)
             {
                 IDevicePicker device = DependencyService.Get<IDevicePicker>();
@@ -42,6 +40,29 @@ namespace SetBoxTV.VideoPlayer
                 log.Platform = DevicePicker.GetPlatform().ToString();
                 log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
                 log.IsDebugEnabled = PlayerSettings.DebugEnabled;
+
+                // First time ever launched application
+                log.Debug($"firstLaunch: {VersionTracking.IsFirstLaunchEver}");
+                // First time launching current version
+                log.Debug($"firstLaunchCurrent: {VersionTracking.IsFirstLaunchForCurrentVersion}");
+                // First time launching current build
+                log.Debug($"firstLaunchBuild: {VersionTracking.IsFirstLaunchForCurrentBuild}");
+                // Current app version (2.0.0)
+                log.Debug($"currentVersion: {VersionTracking.CurrentVersion}");
+                // Current build (2)
+                log.Debug($"currentBuild: {VersionTracking.CurrentBuild}");
+                // Previous app version (1.0.0)
+                log.Debug($"previousVersion: {VersionTracking.PreviousVersion}");
+                // Previous app build (1)
+                log.Debug($"previousBuild: {VersionTracking.PreviousBuild}");
+                // First version of app installed (1.0.0)
+                log.Debug($"firstVersion: {VersionTracking.FirstInstalledVersion}");
+                // First build of app installed (1)
+                log.Debug($"firstBuild: {VersionTracking.FirstInstalledBuild}");
+                // List of versions installed (1.0.0, 2.0.0)
+                log.Debug($"versionHistory: {VersionTracking.VersionHistory}");
+                // List of builds installed (1, 2)
+                log.Debug($"buildHistory: {VersionTracking.BuildHistory}");
             }
         }
 
@@ -61,7 +82,7 @@ namespace SetBoxTV.VideoPlayer
         {
             base.OnAppearing();
             NavigationPage.SetHasNavigationBar(this, false);
-
+            
             Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
             {
                 await DependencyService.Get<ICheckPermission>()?.CheckSelfPermission(); 

@@ -9,6 +9,7 @@ using Microsoft.AppCenter.Distribute;
 using Microsoft.AppCenter.Push;
 using SetBoxTV.VideoPlayer.Interface;
 using SetBoxTV.VideoPlayer.Helpers;
+using Xamarin.Essentials;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace SetBoxTV.VideoPlayer
@@ -38,6 +39,8 @@ namespace SetBoxTV.VideoPlayer
             Push.SetEnabledAsync(true);
             Analytics.SetEnabledAsync(true);
             Distribute.SetEnabledAsync(false);
+            VersionTracking.Track();
+
             DependencyService.Get<ILogger>()?.Debug("OnStart");
             MainPage = new MainPage();
         }

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using SetBoxTV.VideoPlayer.Interface;
 using LibVLCSharp.Forms.Shared;
 using System.Windows.Input;
+using System.Linq;
 
 namespace SetBoxTV.VideoPlayer
 {
@@ -41,7 +42,8 @@ namespace SetBoxTV.VideoPlayer
                 log.IsDebugEnabled = PlayerSettings.DebugEnabled;
             }
 
-            fileDetails = files;
+            //Ordenar por order e depois por nome
+            fileDetails = files.OrderBy(x => x.order).ThenBy(x => x.name).ToList();
 
             Tapped = new Command(
                 execute: () =>
@@ -115,6 +117,8 @@ namespace SetBoxTV.VideoPlayer
                 }
 
                 log?.Debug($"File: {fileOrUrl.path}");
+                log?.Debug($"Order: {fileOrUrl.order}");
+                log?.Debug($"Size: {fileOrUrl.size}");
 
                 switch (fileOrUrl.fileType)
                 {
@@ -132,7 +136,7 @@ namespace SetBoxTV.VideoPlayer
                             if (model.CanPlay())
                                 _videoView.MediaPlayer.Play(model.Media);
 
-                            log?.Debug($"Duration: {model.MediaPlayer.Length / 1000} Segundos");
+                            log?.Debug($"Duration: {model.Media.Duration / 1000} Segundos");
                             break;
                         }
                     case EnumFileType.Image:
@@ -166,7 +170,7 @@ namespace SetBoxTV.VideoPlayer
         private async void Delay()
         {
             log?.Debug($"Duration: {PlayerSettings.TransactionTime} Segundos");
-            await Task.Delay(PlayerSettings.TransactionTime * 1000);
+            await Task.Delay(PlayerSettings.TransactionTime * 1000).ConfigureAwait(true);
 
             GoNextPlayer();
         }
