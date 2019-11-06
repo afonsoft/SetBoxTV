@@ -6,7 +6,7 @@
              BackgroundColor="DarkGray"
              xmlns:vlc="clr-namespace:LibVLCSharp.Forms.Shared;assembly=LibVLCSharp.Forms"
              x:Class="SetBoxTV.VideoPlayer.VideoPage">
-    <Grid x:Name="MainGrid">
+    <Grid x:Name="MainGrid" TabIndex="0" AutomationId="MainGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>

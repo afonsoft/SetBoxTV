@@ -117,6 +117,27 @@ namespace SetBoxTV.VideoPlayer
 
             model.IsLoading = false;
 
+            try
+            {
+                //Fix navegação DPAD
+
+                //SwitchTransactionTime.
+                //LabelKey.Text
+                //FolderSeleted.Detail
+                //SwitchVideo.
+                //SwitchPhoto.
+                //SwitchWebImage.
+                //SwitchWebVideo.
+                //SwitchTransaction.
+                //SwitchDebugMode.
+                //SwitchConecction.
+
+            }
+            catch (Exception ex)
+            {
+                log?.Error(ex);
+            }
+
         }
 
         public async void OnButtonSelectClicked(object sender, EventArgs e)

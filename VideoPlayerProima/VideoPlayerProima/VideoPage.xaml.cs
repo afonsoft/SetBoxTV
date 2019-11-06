@@ -126,7 +126,7 @@ namespace SetBoxTV.VideoPlayer
                         {
                             model.VideoFile = ((FileVideoSource)fileToPlay).File;
 
-                            _videoView = new VideoView() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
+                            _videoView = new VideoView() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, AutomationId = "VideoLVC", TabIndex = 1 };
                             _videoView.TabIndex = 1;
                             _videoView.GestureRecognizers.Add(new TapGestureRecognizer() { NumberOfTapsRequired = 2, Command = Tapped });
                             MainGrid.Children.Add(_videoView);
