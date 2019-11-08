@@ -55,6 +55,26 @@ namespace SetBoxTV.VideoPlayer
                 {
                     var api = new API.SetBoxApi(deviceIdentifier, PlayerSettings.License, PlayerSettings.Url);
 
+                    var config = await api.GetConfig().ConfigureAwait(true);
+                    if (config != null)
+                    {
+                        model.License = api.License;
+                        model.ShowVideo = config.enableVideo;
+                        model.ShowPhoto = config.enablePhoto;
+                        model.ShowWebImage = config.enableWebImage;
+                        model.ShowWebVideo = config.enableWebVideo;
+                        model.EnableTransactionTime = config.enableTransaction;
+                        model.TransactionTime = config.transactionTime;
+                        model.DeviceName = config.DeviceName;
+                        PlayerSettings.DeviceName = model.DeviceName;
+
+                        if (PlayerSettings.License != model.License)
+                        {
+                            PlayerSettings.License = model.License;
+                            api = new API.SetBoxApi(deviceIdentifier, PlayerSettings.License, PlayerSettings.Url);
+                        }
+                    }
+
                     await api.UpdateInfo(DevicePicker.GetPlatform().ToString(),
                             $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}",
                             $"{devicePicker.GetApkVersion()}.{devicePicker.GetApkBuild()}",
@@ -71,20 +91,6 @@ namespace SetBoxTV.VideoPlayer
                         Email.Detail = support.email;
                     }
 
-                    var config = await api.GetConfig().ConfigureAwait(true);
-                    if (config != null)
-                    {
-                        model.License = api.License;
-                        model.ShowVideo = config.enableVideo;
-                        model.ShowPhoto = config.enablePhoto;
-                        model.ShowWebImage = config.enableWebImage;
-                        model.ShowWebVideo = config.enableWebVideo;
-                        model.EnableTransactionTime = config.enableTransaction;
-                        model.TransactionTime = config.transactionTime;
-                        model.DeviceName = config.DeviceName;
-                        PlayerSettings.DeviceName = model.DeviceName;
-                        PlayerSettings.License = model.License;
-                    }
 
                     if (PlayerSettings.FirstInsall || string.IsNullOrEmpty(PlayerSettings.License))
                     {
@@ -111,6 +117,7 @@ namespace SetBoxTV.VideoPlayer
             SwitchTransaction.On = model.EnableTransactionTime;
             SwitchDebugMode.On = model.DebugMode;
             SwitchConecction.On = model.CheckConection;
+            SetBoxName.Text = model.DeviceName;
             PlayerSettings.License = model.License;
 
             model.IsLoading = false;
