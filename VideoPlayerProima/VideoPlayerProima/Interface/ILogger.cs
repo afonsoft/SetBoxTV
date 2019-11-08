@@ -16,5 +16,6 @@ namespace SetBoxTV.VideoPlayer.Interface
         void Debug(string text, Exception ex);
         void Error(string text, Exception ex);
         void Error(Exception ex);
+        void Error(string text);
     }
 }

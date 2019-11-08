@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AppCenter;
+using Microsoft.AppCenter.Crashes;
 using SetBoxTV.VideoPlayer.Helpers;
 using SetBoxTV.VideoPlayer.Interface;
 using SetBoxTV.VideoPlayer.Model;
@@ -23,6 +24,34 @@ namespace SetBoxTV.VideoPlayer
         private MainViewModel model;
         public static bool isInProcess = false;
 
+
+        private async Task GetLastError()
+        {
+            bool isEnabled = await Crashes.IsEnabledAsync().ConfigureAwait(true);
+            log?.Debug($"Crashes: IsCrashesEnabled: {isEnabled}");
+
+            if (isEnabled)
+            {
+                bool didAppCrash = await Crashes.HasCrashedInLastSessionAsync().ConfigureAwait(true);
+                bool hadMemoryWarning = await Crashes.HasReceivedMemoryWarningInLastSessionAsync().ConfigureAwait(true);
+
+                log?.Debug($"Crashes: HasCrashedInLastSession: {didAppCrash}");
+                log?.Debug($"Crashes: HasReceivedMemoryWarningInLastSession: {hadMemoryWarning}");
+
+                if (didAppCrash)
+                {
+                    ErrorReport crashReport = await Crashes.GetLastSessionCrashReportAsync().ConfigureAwait(true);
+
+                    if (crashReport != null)
+                    {
+                        log?.Error($"Crashes: id: {crashReport.Id} - AppStartTime: {crashReport.AppStartTime} - AppErrorTime: {crashReport.AppErrorTime}");
+                        log?.Error($"Crashes: StackTrace: {crashReport.StackTrace}");
+                        log?.Error($"Crashes: AndroidDetails.ThreadName: {crashReport.AndroidDetails.ThreadName}");
+                        log?.Error($"Crashes: AndroidDetails.StackTrace: {crashReport.AndroidDetails.StackTrace}");
+                    }
+                }
+            }
+        }
 
         public MainPage()
         {
@@ -82,12 +111,15 @@ namespace SetBoxTV.VideoPlayer
         {
             base.OnAppearing();
             NavigationPage.SetHasNavigationBar(this, false);
-            
+           
+
             Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
             {
                 await DependencyService.Get<ICheckPermission>()?.CheckSelfPermission(); 
                 log?.Debug("CheckSelfPermission");
                 log?.Debug($"SetBox Name {PlayerSettings.DeviceName}");
+
+                await GetLastError();
 
                 if (Connectivity.NetworkAccess != NetworkAccess.Internet  && PlayerSettings.ReportNotConnection)
                 {

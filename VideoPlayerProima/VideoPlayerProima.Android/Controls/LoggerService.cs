@@ -131,6 +131,17 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             CreateApiLogError($"{ex.Message}", API.LogLevel.ERROR);
         }
 
+        public void Error(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+                return;
+
+            Log.Error("SetBoxTV", $"{text}");
+            SaveFile("ERRO  ", text, null);
+            Analytics.TrackEvent($"{text} - Identifier: {DeviceIdentifier}");
+            Crashes.TrackError(new System.Exception(text));
+            CreateApiLogError($"{text}", API.LogLevel.ERROR);
+        }
 
         private void SaveFile(string tipo,  string text, System.Exception ex)
         {

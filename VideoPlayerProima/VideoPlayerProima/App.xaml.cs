@@ -32,6 +32,8 @@ namespace SetBoxTV.VideoPlayer
             // Handle when your app starts
             base.OnStart();
             MessagingCenter.Send(new LifecycleMessage(), nameof(OnStart));
+            DependencyService.Get<ILogger>()?.Debug("OnStart");
+
             Distribute.ReleaseAvailable = OnReleaseAvailable;
             AppCenter.Start("android=35661827-5555-4b62-b333-145f0456c75d", typeof(Analytics), typeof(Crashes),  typeof(Push), typeof(Distribute));
             
@@ -41,7 +43,6 @@ namespace SetBoxTV.VideoPlayer
             Distribute.SetEnabledAsync(false);
             VersionTracking.Track();
 
-            DependencyService.Get<ILogger>()?.Debug("OnStart");
             MainPage = new MainPage();
         }
 
