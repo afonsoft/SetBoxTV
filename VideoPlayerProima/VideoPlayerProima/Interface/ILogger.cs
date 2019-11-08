@@ -12,6 +12,9 @@ namespace SetBoxTV.VideoPlayer.Interface
 
         bool IsDebugEnabled { get; set; }
 
+        string LogFileName { get; }
+        string LogFileContent { get; }
+
         void Debug(string text);
         void Debug(string text, Exception ex);
         void Error(string text, Exception ex);

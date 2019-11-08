@@ -168,6 +168,7 @@
     <Compile Include="Controls\FilePicker.cs" />
     <Compile Include="Controls\LoggerService.cs" />
     <Compile Include="Controls\MessageService.cs" />
+    <Compile Include="Controls\ScreenshotService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

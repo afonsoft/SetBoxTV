@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using SetBoxTV.VideoPlayer.Interface;
 using System.Linq;
 using SetBoxTV.VideoPlayer.Model;
 using SetBoxTV.VideoPlayer.Helpers;
-using System.Net;
 using System;
 
 [assembly: Dependency(typeof(SetBoxTV.VideoPlayer.Droid.Controls.FilePicker))]

@@ -10,6 +10,7 @@ using Microsoft.AppCenter.Push;
 using SetBoxTV.VideoPlayer.Interface;
 using SetBoxTV.VideoPlayer.Helpers;
 using Xamarin.Essentials;
+using System.Collections.Generic;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace SetBoxTV.VideoPlayer
@@ -35,6 +36,10 @@ namespace SetBoxTV.VideoPlayer
             DependencyService.Get<ILogger>()?.Debug("OnStart");
 
             Distribute.ReleaseAvailable = OnReleaseAvailable;
+            Crashes.GetErrorAttachments = OnGetErrorAttachments;
+            Crashes.ShouldAwaitUserConfirmation = () => { return true; };
+            Crashes.NotifyUserConfirmation(UserConfirmation.AlwaysSend);
+
             AppCenter.Start("android=35661827-5555-4b62-b333-145f0456c75d", typeof(Analytics), typeof(Crashes),  typeof(Push), typeof(Distribute));
             
             Crashes.SetEnabledAsync(true);
@@ -66,6 +71,17 @@ namespace SetBoxTV.VideoPlayer
             SetBoxTV.VideoPlayer.MainPage.isInProcess = false;
             MainPage = new MainPage();
 
+        }
+
+        IEnumerable<ErrorAttachmentLog> OnGetErrorAttachments(ErrorReport report)
+        {
+            return new ErrorAttachmentLog[]
+            {
+                ErrorAttachmentLog.AttachmentWithText($"Id: {report.Id} {Environment.NewLine} AppStartTime: {report.AppStartTime} {Environment.NewLine} AppErrorTime: {report.AppErrorTime} {Environment.NewLine} StackTrace: {report.StackTrace}", "StackTrace.txt"),
+                ErrorAttachmentLog.AttachmentWithText($"Id: {report.Id} {Environment.NewLine} AppStartTime: {report.AppStartTime} {Environment.NewLine} AppErrorTime: {report.AppErrorTime} {Environment.NewLine} StackTrace: {report.AndroidDetails.StackTrace} {Environment.NewLine} ThreadName: {report.AndroidDetails.ThreadName}" , "AndroidDetails.txt"),
+                ErrorAttachmentLog.AttachmentWithText(DependencyService.Get<ILogger>().LogFileContent, DependencyService.Get<ILogger>().LogFileName),
+                ErrorAttachmentLog.AttachmentWithBinary(DependencyService.Get<IScreenshotService>().CaptureScreen(), "Screenshot.jpg", "image/jpeg")
+            };
         }
 
         bool OnReleaseAvailable(ReleaseDetails releaseDetails)

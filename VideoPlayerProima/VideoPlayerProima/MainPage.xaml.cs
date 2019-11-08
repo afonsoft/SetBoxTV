@@ -61,7 +61,7 @@ namespace SetBoxTV.VideoPlayer
             model.LoadingText = "Loading";
 
             log = DependencyService.Get<ILogger>();
-            
+
             if (log != null)
             {
                 IDevicePicker device = DependencyService.Get<IDevicePicker>();
@@ -89,9 +89,9 @@ namespace SetBoxTV.VideoPlayer
                 // First build of app installed (1)
                 log.Debug($"firstBuild: {VersionTracking.FirstInstalledBuild}");
                 // List of versions installed (1.0.0, 2.0.0)
-                log.Debug($"versionHistory: {VersionTracking.VersionHistory}");
+                log.Debug($"versionHistory: {String.Join(" | ", VersionTracking.VersionHistory)}");
                 // List of builds installed (1, 2)
-                log.Debug($"buildHistory: {VersionTracking.BuildHistory}");
+                log.Debug($"buildHistory: {String.Join(" | ", VersionTracking.BuildHistory)}");
             }
         }
 

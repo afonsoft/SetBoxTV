@@ -76,6 +76,31 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
         public string Version { get; set; } 
         public bool IsDebugEnabled { get; set; }
 
+        public string LogFileName { get; private set; }
+
+        public string LogFileContent
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(LogFileName))
+                    return "";
+
+                StringBuilder sb = new StringBuilder();
+                lock (lockSync)
+                {
+                    using (StreamReader streamReader = File.OpenText(LogFileName))
+                    {
+                        string line = "";
+                        while ((line = streamReader.ReadLine()) != null)
+                        {
+                            sb.Append(line);
+                        }
+                    }
+                }
+                return sb.ToString();
+            }
+        }
+
         public void Debug(string text)
         {
 
@@ -157,7 +182,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
                             Directory.CreateDirectory(directory);
 
                         string fileName = Path.Combine(directory, $"LOG-{DateTime.Now:yyyy-MM-dd}.txt");
-
+                        LogFileName = fileName;
 
                         using (var streamWriter = !File.Exists(fileName)
                             ? File.CreateText(fileName)
