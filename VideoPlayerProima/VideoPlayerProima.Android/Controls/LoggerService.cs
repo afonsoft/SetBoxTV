@@ -109,9 +109,9 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             if (IsDebugEnabled)
             {
                 SaveFile(TAG, "DEBUG ", text, null);
+                CreateApiLogError($"{text}", API.LogLevel.DEBUG);
                 AppCenterLog.Debug(TAG, text);
                 Analytics.TrackEvent($"{text} - Identifier: {DeviceIdentifier}");
-                CreateApiLogError($"{text}", API.LogLevel.DEBUG);
             }
         }
 
@@ -125,9 +125,9 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             if (IsDebugEnabled)
             {
                 SaveFile(TAG, "DEBUG ", text, null);
+                CreateApiLogError($"{text} - {ex?.Message}", API.LogLevel.DEBUG);
                 AppCenterLog.Debug(TAG, $"{text} - {ex?.Message}");
                 Analytics.TrackEvent($"{text} - Identifier: {DeviceIdentifier}");
-                CreateApiLogError($"{text} - {ex?.Message}", API.LogLevel.DEBUG);
             }
         }
 
@@ -139,10 +139,10 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
             Log.Error($"SetBoxTV : {TAG}", Throwable.FromException(ex), $"{text} - {ex?.Message}");
             SaveFile(TAG, "ERRO  ", text, ex);
+            CreateApiLogError($"{text} - {ex?.Message}", API.LogLevel.ERROR);
             AppCenterLog.Error(TAG, $"{text} - {ex?.Message}", ex);
             Analytics.TrackEvent($"{text} - {ex?.Message} - Identifier: {DeviceIdentifier}");
             Crashes.TrackError(ex);
-            CreateApiLogError($"{text} - {ex?.Message}", API.LogLevel.ERROR);
         }
 
         public void Error(System.Exception ex)
@@ -152,10 +152,10 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
            
             Log.Error($"SetBoxTV : {TAG}", Throwable.FromException(ex), $"{ex.Message}");
             SaveFile(TAG, "ERRO  ", null, ex);
+            CreateApiLogError($"{ex.Message}", API.LogLevel.ERROR);
             AppCenterLog.Error(TAG, $"{ex.Message}", ex);
             Analytics.TrackEvent($"{ex.Message} - Identifier: {DeviceIdentifier}");
             Crashes.TrackError(ex);
-            CreateApiLogError($"{ex.Message}", API.LogLevel.ERROR);
         }
 
         public void Error(string text)
@@ -165,24 +165,31 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
             Log.Error($"SetBoxTV : {TAG}", $"{text}");
             SaveFile(TAG, "ERRO  ", text, null);
+            CreateApiLogError($"{text}", API.LogLevel.ERROR);
             AppCenterLog.Error(TAG, $"{text}");
             Analytics.TrackEvent($"{text} - Identifier: {DeviceIdentifier}");
             Crashes.TrackError(new System.Exception(text));
-            CreateApiLogError($"{text}", API.LogLevel.ERROR);
         }
 
         private void SaveFile(string tag, string tipo,  string text, System.Exception ex)
         {
             Task.Run(() =>
             {
-                try
+                lock (lockSync)
                 {
-                    lock (lockSync)
+                    try
                     {
                         string directory = Path.Combine(PlayerSettings.PathFiles, "LOGS");
 
-                        if (!Directory.Exists(directory))
-                            Directory.CreateDirectory(directory);
+                        try
+                        {
+                            if (!Directory.Exists(directory))
+                                Directory.CreateDirectory(directory);
+                        }
+                        catch
+                        {
+                            directory = Xamarin.Essentials.FileSystem.AppDataDirectory;
+                        }
 
                         string fileName = Path.Combine(directory, $"LOG-{DateTime.Now:yyyy-MM-dd}.txt");
                         LogFileName = fileName;
@@ -208,11 +215,12 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
                                 }
                             }
                         }
+
                     }
-                }
-                catch (System.Exception)
-                {
-                    //Ignore
+                    catch (System.Exception)
+                    {
+                        //Ignore
+                    }
                 }
             });
         }

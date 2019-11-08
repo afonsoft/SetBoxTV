@@ -31,7 +31,7 @@ namespace SetBoxTV.VideoPlayer.Helpers
             using (HttpClient _client = new HttpClient())
             {
                 // Step 1 : Get call
-                var response = await _client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, token);
+                var response = await _client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, token).ConfigureAwait(true);
 
                 if (!response.IsSuccessStatusCode)
                 {

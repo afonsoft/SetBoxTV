@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
@@ -204,7 +205,7 @@ namespace SetBoxTV.VideoPlayer.API
                 var resp = await rest.HttpPostAsync<Response<string>>("/Log",
                     Afonsoft.Http.Parameters.With("session", Session)
                                             .And("mensage", mensage)
-                                            .And("level", level.ToString().ToUpper()));
+                                            .And("level", level.ToString().ToUpper(CultureInfo.InvariantCulture)));
 
                 if (!resp.sessionExpired && resp.status)
                     return resp.result;

@@ -24,7 +24,7 @@ namespace SetBoxTV.VideoPlayer
         static public float ScreenDensity { get; set; } = 1;
 
         const string androidKey = "35661827-5555-4b62-b333-145f0456c75d";
-        public static ILogger Log { get; set; }
+        private readonly  ILogger Log;
 
         public App()
         {
@@ -36,19 +36,7 @@ namespace SetBoxTV.VideoPlayer
             Log.Platform = DevicePicker.GetPlatform().ToString();
             Log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
             Log.IsDebugEnabled = PlayerSettings.DebugEnabled;
-            MainPage = new MainPage();
-        }
-
-        static App()
-        {
-            Push.PushNotificationReceived += OnPushNotificationReceived;
-            Log = DependencyService.Get<ILogger>();
-            Log.TAG = "App";
-            IDevicePicker device = DependencyService.Get<IDevicePicker>();
-            Log.DeviceIdentifier = device?.GetIdentifier();
-            Log.Platform = DevicePicker.GetPlatform().ToString();
-            Log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
-            Log.IsDebugEnabled = PlayerSettings.DebugEnabled;
+            
         }
 
         static void OnPushNotificationReceived(object sender, PushNotificationReceivedEventArgs e)
@@ -68,12 +56,11 @@ namespace SetBoxTV.VideoPlayer
         {
             // Handle when your app starts
             base.OnStart();
-            MessagingCenter.Send(new LifecycleMessage(), nameof(OnStart));
-            Log.Debug("OnStart");
 
-            Distribute.ReleaseAvailable = OnReleaseAvailable;
+            Push.PushNotificationReceived += OnPushNotificationReceived;
             Crashes.GetErrorAttachments = OnGetErrorAttachments;
             Crashes.ShouldAwaitUserConfirmation = () => { return true; };
+            Distribute.ReleaseAvailable = OnReleaseAvailable;
             Crashes.NotifyUserConfirmation(UserConfirmation.AlwaysSend);
 
             AppCenter.Start($"android={androidKey}", typeof(Analytics), typeof(Crashes), typeof(Push), typeof(Distribute));
@@ -85,21 +72,9 @@ namespace SetBoxTV.VideoPlayer
             VersionTracking.Track();
             AppCenter.SetUserId(DependencyService.Get<IDevicePicker>()?.GetIdentifier());
 
-            AppCenter.GetInstallIdAsync().ContinueWith(installId =>
-            {
-                Log.Debug("AppCenter.InstallId=" + installId.Result);
-            });
+            Log.Debug("OnStart");
 
-            Crashes.HasCrashedInLastSessionAsync().ContinueWith(hasCrashed =>
-            {
-                Log.Debug("Crashes.HasCrashedInLastSession=" + hasCrashed.Result);
-            });
-
-            Crashes.GetLastSessionCrashReportAsync().ContinueWith(report =>
-            {
-                Log.Error("Crashes.LastSessionCrashReport.Exception=" + report.Result?.Exception, report.Result?.Exception);
-            });
-
+            MessagingCenter.Send(new LifecycleMessage(), nameof(OnStart));
             MainPage = new MainPage();
         }
 
@@ -131,7 +106,7 @@ namespace SetBoxTV.VideoPlayer
             {
                 ErrorAttachmentLog.AttachmentWithText($"Id: {report.Id} {Environment.NewLine} AppStartTime: {report.AppStartTime} {Environment.NewLine} AppErrorTime: {report.AppErrorTime} {Environment.NewLine} StackTrace: {report.StackTrace}", "StackTrace.txt"),
                 ErrorAttachmentLog.AttachmentWithText($"Id: {report.Id} {Environment.NewLine} AppStartTime: {report.AppStartTime} {Environment.NewLine} AppErrorTime: {report.AppErrorTime} {Environment.NewLine} StackTrace: {report.AndroidDetails.StackTrace} {Environment.NewLine} ThreadName: {report.AndroidDetails.ThreadName}" , "AndroidDetails.txt"),
-                ErrorAttachmentLog.AttachmentWithText(DependencyService.Get<ILogger>().LogFileContent, DependencyService.Get<ILogger>().LogFileName),
+                ErrorAttachmentLog.AttachmentWithText(Log.LogFileContent, Log.LogFileName),
                 ErrorAttachmentLog.AttachmentWithBinary(DependencyService.Get<IScreenshotService>().CaptureScreen(), "Screenshot.jpg", "image/jpeg")
             };
         }

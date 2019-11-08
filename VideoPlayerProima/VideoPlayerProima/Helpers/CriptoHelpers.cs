@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SetBoxTV.VideoPlayer.Helpers
 {
-    public class CriptoHelpers
+    public static class CriptoHelpers
     {
         //Method using to Encode, you can use internal, public, private...
         public static string Base64Encode(string plainText)

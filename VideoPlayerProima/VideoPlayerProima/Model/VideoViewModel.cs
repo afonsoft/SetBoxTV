@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace SetBoxTV.VideoPlayer.Model
 {
-    public class VideoViewModel : BaseViewModel
+    public class VideoViewModel : BaseViewModel, IDisposable
     {
 
         public VideoViewModel()
@@ -50,7 +50,7 @@ namespace SetBoxTV.VideoPlayer.Model
             _rendererItems.Add(e.RendererItem);
         }
 
-        public override void Dispose()
+        public void Dispose()
         {
             IsVideoViewInitialized = false;
             IsInitialized = false;
@@ -64,7 +64,6 @@ namespace SetBoxTV.VideoPlayer.Model
             _media = null;
             _mediaPlayer = null;
             _libVLC = null;
-            base.Dispose();
         }
 
         private LibVLC _libVLC;

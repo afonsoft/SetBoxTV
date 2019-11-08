@@ -23,6 +23,7 @@ namespace SetBoxTV.VideoPlayer
         private VideoViewModel model;
         private Xamarin.Forms.Image _image;
         private VideoView _videoView;
+        private readonly ILogger Log;
 
         public VideoPage(List<FileDetails> files)
         {
@@ -30,7 +31,15 @@ namespace SetBoxTV.VideoPlayer
             MainPage.isInProcess = false;
             BindingContext = model = new VideoViewModel();
             model.IsLoading = true;
-            App.Log.TAG = "VideoPage";
+
+            Log = DependencyService.Get<ILogger>();
+            IDevicePicker device = DependencyService.Get<IDevicePicker>();
+            Log.DeviceIdentifier = device?.GetIdentifier();
+            Log.Platform = DevicePicker.GetPlatform().ToString();
+            Log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
+            Log.IsDebugEnabled = PlayerSettings.DebugEnabled;
+
+            Log.TAG = "VideoPage";
 
             //Ordenar por order e depois por nome
             fileDetails = files.OrderBy(x => x.order).ThenBy(x => x.name).ToList();
@@ -38,7 +47,7 @@ namespace SetBoxTV.VideoPlayer
             Tapped = new Command(
                 execute: () =>
                 {
-                    App.Log.Debug("Tapped to Settings");
+                    Log.Debug("Tapped to Settings");
                     Application.Current.MainPage = new SettingsPage();
                 },
                 canExecute: () =>
@@ -47,20 +56,20 @@ namespace SetBoxTV.VideoPlayer
                 }
             );
 
-            App.Log.Debug($"VideoPage Total Files {fileDetails?.Count}");
+            Log.Debug($"VideoPage Total Files {fileDetails?.Count}");
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
             NavigationPage.SetHasNavigationBar(this, false);
-            App.Log.Debug($"VideoPage : License: {PlayerSettings.License}");
-            App.Log.Debug($"VideoPage : PathFiles: {PlayerSettings.PathFiles}");
-            App.Log.Debug($"VideoPage : ShowVideo: {PlayerSettings.ShowVideo}");
-            App.Log.Debug($"VideoPage : ShowPhoto: {PlayerSettings.ShowPhoto}");
-            App.Log.Debug($"VideoPage : ShowWebImage: {PlayerSettings.ShowWebImage}");
-            App.Log.Debug($"VideoPage : ShowWebVideo: {PlayerSettings.ShowWebVideo}");
-            App.Log.Debug($"VideoPage : EnableTransactionTime: {PlayerSettings.EnableTransactionTime}");
-            App.Log.Debug($"VideoPage : TransactionTime: {PlayerSettings.TransactionTime}");
+            Log.Debug($"VideoPage : License: {PlayerSettings.License}");
+            Log.Debug($"VideoPage : PathFiles: {PlayerSettings.PathFiles}");
+            Log.Debug($"VideoPage : ShowVideo: {PlayerSettings.ShowVideo}");
+            Log.Debug($"VideoPage : ShowPhoto: {PlayerSettings.ShowPhoto}");
+            Log.Debug($"VideoPage : ShowWebImage: {PlayerSettings.ShowWebImage}");
+            Log.Debug($"VideoPage : ShowWebVideo: {PlayerSettings.ShowWebVideo}");
+            Log.Debug($"VideoPage : EnableTransactionTime: {PlayerSettings.EnableTransactionTime}");
+            Log.Debug($"VideoPage : TransactionTime: {PlayerSettings.TransactionTime}");
 
             model.OnAppearing();
             model.EndReached += MediaPlayerEndReached;
@@ -83,7 +92,7 @@ namespace SetBoxTV.VideoPlayer
             }
             catch (Exception ex)
             {
-                App.Log.Error("GoNextPlayer", ex);
+                Log.Error("GoNextPlayer", ex);
                 MainPage.isInProcess = false;
                 Application.Current.MainPage = new MainPage();
             }
@@ -106,9 +115,9 @@ namespace SetBoxTV.VideoPlayer
                         break;
                 }
 
-                App.Log.Debug($"File: {fileOrUrl.path}");
-                App.Log.Debug($"Order: {fileOrUrl.order}");
-                App.Log.Debug($"Size: {fileOrUrl.size}");
+                Log.Debug($"File: {fileOrUrl.path}");
+                Log.Debug($"Order: {fileOrUrl.order}");
+                Log.Debug($"Size: {fileOrUrl.size}");
 
                 switch (fileOrUrl.fileType)
                 {
@@ -126,7 +135,7 @@ namespace SetBoxTV.VideoPlayer
                             if (model.CanPlay())
                                 _videoView.MediaPlayer.Play(model.Media);
 
-                            App.Log.Debug($"Duration: {model.Media.Duration / 1000} Segundos");
+                            Log.Debug($"Duration: {model.Media.Duration / 1000} Segundos");
                             break;
                         }
                     case EnumFileType.Image:
@@ -143,7 +152,7 @@ namespace SetBoxTV.VideoPlayer
             }
             catch (Exception ex)
             {
-                App.Log.Error(ex);
+                Log.Error(ex);
                 MainPage.isInProcess = false;
                 Application.Current.MainPage = new MainPage();
             }
@@ -153,13 +162,13 @@ namespace SetBoxTV.VideoPlayer
 
         private void OnTapped(object sender, EventArgs e)
         {
-            App.Log.Debug("OnTapped to Settings");
+            Log.Debug("OnTapped to Settings");
             Application.Current.MainPage = new SettingsPage();
         }
 
         private async void Delay()
         {
-            App.Log.Debug($"Duration: {PlayerSettings.TransactionTime} Segundos");
+            Log.Debug($"Duration: {PlayerSettings.TransactionTime} Segundos");
             await Task.Delay(PlayerSettings.TransactionTime * 1000).ConfigureAwait(true);
 
             GoNextPlayer();
