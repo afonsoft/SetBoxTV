@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace SetBoxTV.VideoPlayer.Model
 {
-    public class VideoViewModel : BaseViewModel, IDisposable
+    public class VideoViewModel : BaseViewModel
     {
 
         public VideoViewModel()
@@ -50,22 +50,6 @@ namespace SetBoxTV.VideoPlayer.Model
             _rendererItems.Add(e.RendererItem);
         }
 
-        public void Dispose()
-        {
-            IsVideoViewInitialized = false;
-            IsInitialized = false;
-
-            _rendererItems.Clear();
-
-            _media?.Dispose();
-            _mediaPlayer?.Dispose();
-            _libVLC?.Dispose();
-
-            _media = null;
-            _mediaPlayer = null;
-            _libVLC = null;
-        }
-
         private LibVLC _libVLC;
         /// <summary>
         /// Gets the <see cref="LibVLCSharp.Shared.LibVLC"/> instance.
@@ -86,18 +70,19 @@ namespace SetBoxTV.VideoPlayer.Model
         {
             get
             {
-                if (_mediaPlayer == null)
+                if (_mediaPlayer != null)
+                    _mediaPlayer.Dispose();
+
+                _mediaPlayer = new MediaPlayer(LibVLC)
                 {
-                    _mediaPlayer = new MediaPlayer(LibVLC)
-                    {
-                        EnableHardwareDecoding = true,
-                        Fullscreen = true,
-                        Mute = false,
-                        Volume = 100,
-                        AspectRatio = "Fit screen"
-                    };
-                    _mediaPlayer.EndReached += MediaPlayerEndReached;
-                }
+                    EnableHardwareDecoding = true,
+                    Fullscreen = true,
+                    Mute = false,
+                    Volume = 100,
+                    AspectRatio = "Fit screen"
+                };
+                _mediaPlayer.EndReached += MediaPlayerEndReached;
+
                 return _mediaPlayer;
             }
 
@@ -122,9 +107,13 @@ namespace SetBoxTV.VideoPlayer.Model
             get => _file;
             set
             {
+                IsVideoViewInitialized = false;
                 SetProperty(ref _file, value);
                 if (!string.IsNullOrEmpty(_file))
                 {
+                    if (Media != null)
+                        Media.Dispose();
+                    
                     Media = new Media(LibVLC, _file, FromType.FromPath);
                     Media.AddOption(":fullscreen");
                     IsVideoViewInitialized = true;
@@ -165,15 +154,15 @@ namespace SetBoxTV.VideoPlayer.Model
             LibVLC = new LibVLC();
 
             // instanciate the main MediaPlayer object
-            MediaPlayer = new MediaPlayer(LibVLC)
-            {
-                EnableHardwareDecoding = true,
-                Fullscreen = true,
-                Mute = false,
-                Volume = 100,
-                AspectRatio = "Fit screen"
-            };
-            MediaPlayer.EndReached += MediaPlayerEndReached;
+            //MediaPlayer = new MediaPlayer(LibVLC)
+            //{
+            //    EnableHardwareDecoding = true,
+            //    Fullscreen = true,
+            //    Mute = false,
+            //    Volume = 100,
+            //    AspectRatio = "Fit screen"
+            //};
+            //MediaPlayer.EndReached += MediaPlayerEndReached;
             IsInitialized = true;
 
         }
@@ -181,16 +170,13 @@ namespace SetBoxTV.VideoPlayer.Model
         private void MediaPlayerEndReached(object sender, EventArgs e)
         {
             IsVideoViewInitialized = false;
-            var toDispose = _mediaPlayer;
 
-            Task.Run(() =>
-            {
-                toDispose?.Dispose();
-            });
-
+            _mediaPlayer.Stop();
+            _mediaPlayer.Dispose();
+            _media.Dispose();
             _media = null;
             _mediaPlayer = null;
-
+            
             EndReached?.Invoke(sender, e);
         }
 
@@ -211,15 +197,15 @@ namespace SetBoxTV.VideoPlayer.Model
         {
             if (CanPlay())
             {
-                MediaPlayer.Play(Media);
+                _mediaPlayer.Play(Media);
             }
         }
 
         public void Stop()
         {
             IsVideoViewInitialized = false;
-            if (MediaPlayer != null && MediaPlayer.State != VLCState.Stopped && MediaPlayer.State != VLCState.Ended)
-                MediaPlayer.Stop();
+            if (_mediaPlayer != null && _mediaPlayer.State != VLCState.Stopped && _mediaPlayer.State != VLCState.Ended)
+                _mediaPlayer.Stop();
         }
 
 
@@ -230,9 +216,9 @@ namespace SetBoxTV.VideoPlayer.Model
                 DiscoverChromecasts();
                 if (_rendererItems.Any())
                 {
-                    MediaPlayer.SetRenderer(_rendererItems.First());
+                    _mediaPlayer.SetRenderer(_rendererItems.First());
                 }
-                MediaPlayer.Play(Media);
+                _mediaPlayer.Play(Media);
             }
         }
     }

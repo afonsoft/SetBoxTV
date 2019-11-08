@@ -61,6 +61,7 @@ namespace SetBoxTV.VideoPlayer
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            model.OnAppearing();
             NavigationPage.SetHasNavigationBar(this, false);
             Log.Debug($"VideoPage : License: {PlayerSettings.License}");
             Log.Debug($"VideoPage : PathFiles: {PlayerSettings.PathFiles}");
@@ -71,7 +72,6 @@ namespace SetBoxTV.VideoPlayer
             Log.Debug($"VideoPage : EnableTransactionTime: {PlayerSettings.EnableTransactionTime}");
             Log.Debug($"VideoPage : TransactionTime: {PlayerSettings.TransactionTime}");
 
-            model.OnAppearing();
             model.EndReached += MediaPlayerEndReached;
             GoNextPlayer();
         }
@@ -135,7 +135,7 @@ namespace SetBoxTV.VideoPlayer
                             if (model.CanPlay())
                                 _videoView.MediaPlayer.Play(model.Media);
 
-                            Log.Debug($"Duration: {model.Media.Duration / 1000} Segundos");
+                            Log.Debug($"Duration: {_videoView.MediaPlayer.Length / 1000} Segundos");
                             break;
                         }
                     case EnumFileType.Image:
