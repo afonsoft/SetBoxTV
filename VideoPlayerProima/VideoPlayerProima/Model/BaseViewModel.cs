@@ -9,12 +9,17 @@ namespace SetBoxTV.VideoPlayer.Model
     /// <summary>
     /// BaseViewModel
     /// </summary>
-    public abstract class BaseViewModel : INotifyPropertyChanged
+    public abstract class BaseViewModel : INotifyPropertyChanged, IDisposable
     {
         /// <summary>
         /// PropertyChanged
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public virtual void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
 
         /// <summary>
         /// OnPropertyChanged

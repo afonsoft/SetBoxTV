@@ -50,6 +50,22 @@ namespace SetBoxTV.VideoPlayer.Model
             _rendererItems.Add(e.RendererItem);
         }
 
+        public override void Dispose()
+        {
+            IsVideoViewInitialized = false;
+            IsInitialized = false;
+
+            _rendererItems.Clear();
+
+            _media?.Dispose();
+            _mediaPlayer?.Dispose();
+            _libVLC?.Dispose();
+
+            _media = null;
+            _mediaPlayer = null;
+            _libVLC = null;
+            base.Dispose();
+        }
 
         private LibVLC _libVLC;
         /// <summary>

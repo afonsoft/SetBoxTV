@@ -9,7 +9,6 @@ using Java.Lang;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter;
-using Microsoft.AppCenter.Push;
 
 [assembly: Dependency(typeof(SetBoxTV.VideoPlayer.Droid.Controls.LoggerService))]
 namespace SetBoxTV.VideoPlayer.Droid.Controls
@@ -48,7 +47,6 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
                     _instance.Version = $"{Interface.DevicePicker.GetVersion().Major}.{Interface.DevicePicker.GetVersion().Minor}.{Interface.DevicePicker.GetVersion().Revision}.{Interface.DevicePicker.GetVersion().Build}"; ;
                     _instance.IsDebugEnabled = PlayerSettings.DebugEnabled;
                     AppCenter.SetUserId(_instance.DeviceIdentifier);
-                    Push.SetSenderId(_instance.DeviceIdentifier);
                 }
                 return _instance;
             }
@@ -63,7 +61,6 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
                 Version = $"{Interface.DevicePicker.GetVersion().Major}.{Interface.DevicePicker.GetVersion().Minor}.{Interface.DevicePicker.GetVersion().Revision}.{Interface.DevicePicker.GetVersion().Build}"; ;
                 IsDebugEnabled = PlayerSettings.DebugEnabled;
                 AppCenter.SetUserId(DeviceIdentifier);
-                Push.SetSenderId(DeviceIdentifier);
             }
             catch
             {
@@ -71,6 +68,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             }
         }
 
+        public string TAG { get; set; }
         public string DeviceIdentifier { get; set; }
         public string Platform { get; set; }
         public string Version { get; set; } 
@@ -106,11 +104,12 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
             if (string.IsNullOrEmpty(text))
                 return;
-            Log.Debug("SetBoxTV", $"{text}");
+            Log.Debug($"SetBoxTV : {TAG}", $"{text}");
 
             if (IsDebugEnabled)
             {
-                SaveFile("DEBUG ", text, null);
+                SaveFile(TAG, "DEBUG ", text, null);
+                AppCenterLog.Debug(TAG, text);
                 Analytics.TrackEvent($"{text} - Identifier: {DeviceIdentifier}");
                 CreateApiLogError($"{text}", API.LogLevel.DEBUG);
             }
@@ -121,11 +120,12 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
             if (ex == null && string.IsNullOrEmpty(text))
                 return;
-            Log.Debug("SetBoxTV", $"{text}");
+            Log.Debug($"SetBoxTV : {TAG}", $"{text} - {ex?.Message}");
 
             if (IsDebugEnabled)
             {
-                SaveFile("DEBUG ", text, null);
+                SaveFile(TAG, "DEBUG ", text, null);
+                AppCenterLog.Debug(TAG, $"{text} - {ex?.Message}");
                 Analytics.TrackEvent($"{text} - Identifier: {DeviceIdentifier}");
                 CreateApiLogError($"{text} - {ex?.Message}", API.LogLevel.DEBUG);
             }
@@ -137,11 +137,12 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             if (ex == null && string.IsNullOrEmpty(text))
                 return;
 
-            Log.Error("SetBoxTV", Throwable.FromException(ex), $"{text} - {ex.Message}");
-            SaveFile("ERRO  ", text, ex);
-            Analytics.TrackEvent($"{text} - {ex.Message} - Identifier: {DeviceIdentifier}");
+            Log.Error($"SetBoxTV : {TAG}", Throwable.FromException(ex), $"{text} - {ex?.Message}");
+            SaveFile(TAG, "ERRO  ", text, ex);
+            AppCenterLog.Error(TAG, $"{text} - {ex?.Message}", ex);
+            Analytics.TrackEvent($"{text} - {ex?.Message} - Identifier: {DeviceIdentifier}");
             Crashes.TrackError(ex);
-            CreateApiLogError($"{text} - {ex.Message}", API.LogLevel.ERROR);
+            CreateApiLogError($"{text} - {ex?.Message}", API.LogLevel.ERROR);
         }
 
         public void Error(System.Exception ex)
@@ -149,8 +150,9 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             if (ex == null)
                 return;
            
-            Log.Error("SetBoxTV", Throwable.FromException(ex), $"{ex.Message}");
-            SaveFile("ERRO  ", null, ex);
+            Log.Error($"SetBoxTV : {TAG}", Throwable.FromException(ex), $"{ex.Message}");
+            SaveFile(TAG, "ERRO  ", null, ex);
+            AppCenterLog.Error(TAG, $"{ex.Message}", ex);
             Analytics.TrackEvent($"{ex.Message} - Identifier: {DeviceIdentifier}");
             Crashes.TrackError(ex);
             CreateApiLogError($"{ex.Message}", API.LogLevel.ERROR);
@@ -161,14 +163,15 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             if (string.IsNullOrEmpty(text))
                 return;
 
-            Log.Error("SetBoxTV", $"{text}");
-            SaveFile("ERRO  ", text, null);
+            Log.Error($"SetBoxTV : {TAG}", $"{text}");
+            SaveFile(TAG, "ERRO  ", text, null);
+            AppCenterLog.Error(TAG, $"{text}");
             Analytics.TrackEvent($"{text} - Identifier: {DeviceIdentifier}");
             Crashes.TrackError(new System.Exception(text));
             CreateApiLogError($"{text}", API.LogLevel.ERROR);
         }
 
-        private void SaveFile(string tipo,  string text, System.Exception ex)
+        private void SaveFile(string tag, string tipo,  string text, System.Exception ex)
         {
             Task.Run(() =>
             {
@@ -189,19 +192,19 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
                             : new StreamWriter(fileName, true))
                         {
                             if (!string.IsNullOrEmpty(text))
-                                streamWriter.WriteLine($"{DateTime.Now:HH:mm} | {tipo} | {text}");
+                                streamWriter.WriteLine($"{DateTime.Now:HH:mm} | {tipo} | {tag} | {text}");
 
                             if (ex != null)
                             {
-                                streamWriter.WriteLine($"{DateTime.Now:HH:mm} | ERROR  | {ex.Message}");
-                                streamWriter.WriteLine($"{DateTime.Now:HH:mm} | STACK  | {ex.StackTrace}");
-                                streamWriter.WriteLine($"{DateTime.Now:HH:mm} | SOURCE | {ex.Source}");
+                                streamWriter.WriteLine($"{DateTime.Now:HH:mm} | ERROR  | {tag} | {ex.Message}");
+                                streamWriter.WriteLine($"{DateTime.Now:HH:mm} | STACK  | {tag} | {ex.StackTrace}");
+                                streamWriter.WriteLine($"{DateTime.Now:HH:mm} | SOURCE | {tag} | {ex.Source}");
 
                                 if (ex.InnerException != null)
                                 {
-                                    streamWriter.WriteLine($"{DateTime.Now:HH:mm} | ERROR  | {ex.InnerException.Message}");
-                                    streamWriter.WriteLine($"{DateTime.Now:HH:mm} | STACK  | {ex.InnerException.StackTrace}");
-                                    streamWriter.WriteLine($"{DateTime.Now:HH:mm} | SOURCE | {ex.InnerException.Source}");
+                                    streamWriter.WriteLine($"{DateTime.Now:HH:mm} | ERROR  | {tag} | {ex.InnerException.Message}");
+                                    streamWriter.WriteLine($"{DateTime.Now:HH:mm} | STACK  | {tag} | {ex.InnerException.StackTrace}");
+                                    streamWriter.WriteLine($"{DateTime.Now:HH:mm} | SOURCE | {tag} | {ex.InnerException.Source}");
                                 }
                             }
                         }

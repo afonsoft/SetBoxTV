@@ -15,7 +15,6 @@ namespace SetBoxTV.VideoPlayer
     {
         private IDevicePicker devicePicker;
         private IDirectoyPicker directoyPicker;
-        private readonly ILogger log;
         private SettingsViewModel model;
         string deviceIdentifier;
 
@@ -24,16 +23,7 @@ namespace SetBoxTV.VideoPlayer
             InitializeComponent();
             BindingContext = model = new SettingsViewModel();
 
-            log = DependencyService.Get<ILogger>();
-            if (log != null)
-            {
-                IDevicePicker device = DependencyService.Get<IDevicePicker>();
-                log.DeviceIdentifier = device?.GetIdentifier();
-                log.Platform = DevicePicker.GetPlatform().ToString();
-                log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
-                log.IsDebugEnabled = PlayerSettings.DebugEnabled;
-                log?.Debug("DateTime UTC Installed: " + PlayerSettings.DateTimeInstall.ToString("dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture));
-            }
+            App.Log.TAG = "SettingsPage";
             model.IsLoading = true;
         }
 
@@ -100,7 +90,7 @@ namespace SetBoxTV.VideoPlayer
             }
             catch (Exception ex)
             {
-                log?.Error("Erro GetConfig: " + ex.Message, ex);
+                App.Log.Error("Erro GetConfig: " + ex.Message, ex);
             }
 
             SwitchTransactionTime.Text = model.TransactionTime.ToString();
@@ -135,7 +125,7 @@ namespace SetBoxTV.VideoPlayer
             }
             catch (Exception ex)
             {
-                log?.Error(ex);
+                App.Log.Error(ex);
             }
 
         }
@@ -154,7 +144,7 @@ namespace SetBoxTV.VideoPlayer
             }
             catch (Exception ex)
             {
-                log.Error(ex);
+                App.Log.Error(ex);
             }
         }
 
@@ -209,7 +199,7 @@ namespace SetBoxTV.VideoPlayer
 
             try
             {
-                log?.Debug("Salvando as Configurações no Servidor");
+                App.Log.Debug("Salvando as Configurações no Servidor");
                 var api = new API.SetBoxApi(deviceIdentifier, model.License, PlayerSettings.Url);
 
                 await api.UpdateInfo(DevicePicker.GetPlatform().ToString(),
@@ -233,7 +223,7 @@ namespace SetBoxTV.VideoPlayer
             }
             catch (Exception ex)
             {
-                log?.Error(ex);
+                App.Log.Error(ex);
             }
             MainPage.isInProcess = false;
             model.IsLoading = false;
@@ -245,7 +235,7 @@ namespace SetBoxTV.VideoPlayer
         {
             DependencyService.Get<IClipboardService>().SendTextToClipboard(LicenseID.Detail.Replace("ID: ", ""));
             DependencyService.Get<IMessage>().Alert("Licença Copiada para o Clipboard");
-            log?.Debug($"Licença Copiada para o Clipboard: {LicenseID.Detail.Replace("ID: ", "")}");
+            App.Log.Debug($"Licença Copiada para o Clipboard: {LicenseID.Detail.Replace("ID: ", "")}");
         }
     }
 }

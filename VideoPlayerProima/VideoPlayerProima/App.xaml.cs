@@ -11,6 +11,7 @@ using SetBoxTV.VideoPlayer.Interface;
 using SetBoxTV.VideoPlayer.Helpers;
 using Xamarin.Essentials;
 using System.Collections.Generic;
+using System.Linq;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace SetBoxTV.VideoPlayer
@@ -22,10 +23,45 @@ namespace SetBoxTV.VideoPlayer
         static public int ScreenHeight { get; set; }
         static public float ScreenDensity { get; set; } = 1;
 
+        const string androidKey = "35661827-5555-4b62-b333-145f0456c75d";
+        public static ILogger Log { get; set; }
+
         public App()
         {
             InitializeComponent();
+            Log = DependencyService.Get<ILogger>();
+            Log.TAG = "App";
+            IDevicePicker device = DependencyService.Get<IDevicePicker>();
+            Log.DeviceIdentifier = device?.GetIdentifier();
+            Log.Platform = DevicePicker.GetPlatform().ToString();
+            Log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
+            Log.IsDebugEnabled = PlayerSettings.DebugEnabled;
             MainPage = new MainPage();
+        }
+
+        static App()
+        {
+            Push.PushNotificationReceived += OnPushNotificationReceived;
+            Log = DependencyService.Get<ILogger>();
+            Log.TAG = "App";
+            IDevicePicker device = DependencyService.Get<IDevicePicker>();
+            Log.DeviceIdentifier = device?.GetIdentifier();
+            Log.Platform = DevicePicker.GetPlatform().ToString();
+            Log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
+            Log.IsDebugEnabled = PlayerSettings.DebugEnabled;
+        }
+
+        static void OnPushNotificationReceived(object sender, PushNotificationReceivedEventArgs e)
+        {
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                var message = e.Message;
+                if (e.CustomData != null && e.CustomData.Count > 0)
+                {
+                    message += "\nCustom data = {" + string.Join(",", e.CustomData.Select(kv => kv.Key + "=" + kv.Value)) + "}";
+                }
+                Current.MainPage.DisplayAlert(e.Title, message, "OK");
+            });
         }
 
         protected override void OnStart()
@@ -33,20 +69,36 @@ namespace SetBoxTV.VideoPlayer
             // Handle when your app starts
             base.OnStart();
             MessagingCenter.Send(new LifecycleMessage(), nameof(OnStart));
-            DependencyService.Get<ILogger>()?.Debug("OnStart");
+            Log.Debug("OnStart");
 
             Distribute.ReleaseAvailable = OnReleaseAvailable;
             Crashes.GetErrorAttachments = OnGetErrorAttachments;
             Crashes.ShouldAwaitUserConfirmation = () => { return true; };
             Crashes.NotifyUserConfirmation(UserConfirmation.AlwaysSend);
 
-            AppCenter.Start("android=35661827-5555-4b62-b333-145f0456c75d", typeof(Analytics), typeof(Crashes),  typeof(Push), typeof(Distribute));
-            
+            AppCenter.Start($"android={androidKey}", typeof(Analytics), typeof(Crashes), typeof(Push), typeof(Distribute));
+
             Crashes.SetEnabledAsync(true);
             Push.SetEnabledAsync(true);
             Analytics.SetEnabledAsync(true);
             Distribute.SetEnabledAsync(false);
             VersionTracking.Track();
+            AppCenter.SetUserId(DependencyService.Get<IDevicePicker>()?.GetIdentifier());
+
+            AppCenter.GetInstallIdAsync().ContinueWith(installId =>
+            {
+                Log.Debug("AppCenter.InstallId=" + installId.Result);
+            });
+
+            Crashes.HasCrashedInLastSessionAsync().ContinueWith(hasCrashed =>
+            {
+                Log.Debug("Crashes.HasCrashedInLastSession=" + hasCrashed.Result);
+            });
+
+            Crashes.GetLastSessionCrashReportAsync().ContinueWith(report =>
+            {
+                Log.Error("Crashes.LastSessionCrashReport.Exception=" + report.Result?.Exception, report.Result?.Exception);
+            });
 
             MainPage = new MainPage();
         }
@@ -56,7 +108,7 @@ namespace SetBoxTV.VideoPlayer
             // Handle when your app sleeps
             base.OnSleep();
             MessagingCenter.Send(new LifecycleMessage(), nameof(OnSleep));
-            DependencyService.Get<ILogger>()?.Debug("OnSleep");
+            Log.Debug("OnSleep");
 
         }
 
@@ -65,7 +117,7 @@ namespace SetBoxTV.VideoPlayer
             base.OnResume();
             MessagingCenter.Send(new LifecycleMessage(), nameof(OnResume));
 
-            DependencyService.Get<ILogger>()?.Debug("OnResume");
+            Log.Debug("OnResume");
 
             //restart
             SetBoxTV.VideoPlayer.MainPage.isInProcess = false;
@@ -94,33 +146,24 @@ namespace SetBoxTV.VideoPlayer
 
             string title = $"versionName: {versionName} - versionCodeOrBuildNumber: {versionCodeOrBuildNumber} - releaseNotes: {releaseNotes} - releaseNotesUrl: {releaseNotesUrl}";
 
-            var log = DependencyService.Get<ILogger>();
-            if (log != null)
-            {
-                IDevicePicker device = DependencyService.Get<IDevicePicker>();
-                log.DeviceIdentifier = device?.GetIdentifier();
-                log.Platform = DevicePicker.GetPlatform().ToString();
-                log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
-                log.IsDebugEnabled = PlayerSettings.DebugEnabled;
-                log.Debug(title);
-            }
+            Log.Debug(title);
 
             // On mandatory update, user cannot postpone
             if (releaseDetails.MandatoryUpdate)
             {
-                log?.Debug("Notify SDK that user selected update");
+                Log.Debug("Notify SDK that user selected update");
                 // Notify SDK that user selected update
                 // Distribute.NotifyUpdateAction(UpdateAction.Update);
                 // Distribute.NotifyUpdateAction(UpdateAction.Postpone);
             }
             else
             {
-                log?.Debug("Notify SDK that user selected postpone (for 1 day)");
+                Log.Debug("Notify SDK that user selected postpone (for 1 day)");
                 // Notify SDK that user selected postpone (for 1 day)
                 // Note that this method call is ignored by the SDK if the update is mandatory
                 // Distribute.NotifyUpdateAction(UpdateAction.Postpone);
             }
-          
+
             // Return true if you are using your own dialog, false otherwise
             return true;
         }

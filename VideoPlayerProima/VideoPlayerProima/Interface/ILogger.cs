@@ -6,6 +6,7 @@ namespace SetBoxTV.VideoPlayer.Interface
 {
     public interface ILogger
     {
+        string TAG { get; set; }
         string DeviceIdentifier { get; set; }
         string Platform { get; set; }
         string Version { get; set; }
