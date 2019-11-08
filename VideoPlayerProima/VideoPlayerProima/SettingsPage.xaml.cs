@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
 using Microsoft.AppCenter;
@@ -104,7 +105,14 @@ namespace SetBoxTV.VideoPlayer
             }
             catch (Exception ex)
             {
-                Log.Error("Erro GetConfig: " + ex.Message, ex);
+                Log.Error("Erro GetConfig: " + ex.Message, ex, new Dictionary<string, string>()
+                {
+                    { "Platform", DevicePicker.GetPlatform().ToString() },
+                    { "Model", DevicePicker.GetModel() },
+                    { "Class", "SettingsPage"},
+                    { "Method", "OnAppearing"},
+                    { "Exception", ex.Message}
+                });
             }
 
             SwitchTransactionTime.Text = model.TransactionTime.ToString();
@@ -147,9 +155,10 @@ namespace SetBoxTV.VideoPlayer
 
         public async void OnButtonSelectClicked(object sender, EventArgs e)
         {
+            string path = "";
             try
             {
-                string path = await directoyPicker.OpenSelectFolderAsync();
+                path = await directoyPicker.OpenSelectFolderAsync();
                 if (!string.IsNullOrEmpty(path))
                 {
                     path = path.Substring(0, path.LastIndexOf('/') + 1);
@@ -159,7 +168,15 @@ namespace SetBoxTV.VideoPlayer
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
+                Log.Error(ex, new Dictionary<string, string>()
+                {
+                    { "Platform", DevicePicker.GetPlatform().ToString() },
+                    { "Model", DevicePicker.GetModel() },
+                    { "Class", "SettingsPage"},
+                    { "Method", "OnButtonSelectClicked"},
+                    { "Exception", ex.Message},
+                    { "Path", path }
+                });
             }
         }
 

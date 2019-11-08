@@ -9,6 +9,7 @@ using Java.Lang;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter;
+using System.Collections.Generic;
 
 [assembly: Dependency(typeof(SetBoxTV.VideoPlayer.Droid.Controls.LoggerService))]
 namespace SetBoxTV.VideoPlayer.Droid.Controls
@@ -169,6 +170,45 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             AppCenterLog.Error(TAG, $"{text}");
             Analytics.TrackEvent($"{text} - Identifier: {DeviceIdentifier}");
             Crashes.TrackError(new System.Exception(text));
+        }
+
+        public void Error(string text, System.Exception ex, Dictionary<string, string> property)
+        {
+            if (ex == null && string.IsNullOrEmpty(text))
+                return;
+
+            Log.Error($"SetBoxTV : {TAG}", Throwable.FromException(ex), $"{text} - {ex?.Message}");
+            SaveFile(TAG, "ERRO  ", text, ex);
+            CreateApiLogError($"{text} - {ex?.Message}", API.LogLevel.ERROR);
+            AppCenterLog.Error(TAG, $"{text} - {ex?.Message}", ex);
+            Analytics.TrackEvent($"{text} - {ex?.Message} - Identifier: {DeviceIdentifier}", property);
+            Crashes.TrackError(ex, property);
+        }
+
+        public void Error(System.Exception ex, Dictionary<string, string> property)
+        {
+            if (ex == null)
+                return;
+
+            Log.Error($"SetBoxTV : {TAG}", Throwable.FromException(ex), $"{ex.Message}");
+            SaveFile(TAG, "ERRO  ", null, ex);
+            CreateApiLogError($"{ex.Message}", API.LogLevel.ERROR);
+            AppCenterLog.Error(TAG, $"{ex.Message}", ex);
+            Analytics.TrackEvent($"{ex.Message} - Identifier: {DeviceIdentifier}", property);
+            Crashes.TrackError(ex, property);
+        }
+
+        public void Error(string text, Dictionary<string, string> property)
+        {
+            if (string.IsNullOrEmpty(text))
+                return;
+
+            Log.Error($"SetBoxTV : {TAG}", $"{text}");
+            SaveFile(TAG, "ERRO  ", text, null);
+            CreateApiLogError($"{text}", API.LogLevel.ERROR);
+            AppCenterLog.Error(TAG, $"{text}");
+            Analytics.TrackEvent($"{text} - Identifier: {DeviceIdentifier}", property);
+            Crashes.TrackError(new System.Exception(text), property);
         }
 
         private void SaveFile(string tag, string tipo,  string text, System.Exception ex)

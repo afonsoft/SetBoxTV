@@ -207,7 +207,12 @@ namespace SetBoxTV.VideoPlayer
                     }
                     catch (Exception ex)
                     {
-                        Log.Error("Directory: " + ex.Message, ex);
+                        Log.Error("Directory: " + ex.Message, ex, new Dictionary<string, string>() { 
+                            { "PathFiles", PlayerSettings.PathFiles },
+                            { "Class", "MainPage"},
+                            { "Method", "Loading"},
+                            { "Exception", ex.Message} 
+                        });
                     }
                 }
 
@@ -244,7 +249,11 @@ namespace SetBoxTV.VideoPlayer
                 }
                 catch (Exception ex)
                 {
-                    Log.Error("UpdateInfo: " + ex.Message, ex);
+                    Log.Error("UpdateInfo: " + ex.Message, ex, new Dictionary<string, string>() 
+                    { 
+                        { "Platform", DevicePicker.GetPlatform().ToString() },
+                        { "Model", DevicePicker.GetModel() }
+                    });
                     ShowText("Erro ao conectar no servidor");
                 }
 
@@ -308,7 +317,17 @@ namespace SetBoxTV.VideoPlayer
                             }
                             catch (Exception ex)
                             {
-                                Log.Error($"Download {fi.name}: {ex.Message}", ex);
+                                Log.Error($"Download {fi.name}: {ex.Message}", ex, new Dictionary<string, string>()
+                                {
+                                    { "Platform", DevicePicker.GetPlatform().ToString() },
+                                    { "Model", DevicePicker.GetModel() },
+                                    { "URL", fi.url},
+                                    { "PathFiles", PlayerSettings.PathFiles},
+                                    { "FileName", fi.name},
+                                    { "Class", "MainPage"},
+                                    { "Method", "Loading"},
+                                    { "Exception", ex.Message},
+                                });
                             }
                         }
                         GetFilesInFolder(filePicker);
@@ -349,7 +368,17 @@ namespace SetBoxTV.VideoPlayer
                                     }
                                     catch (Exception ex)
                                     {
-                                        Log.Error($"Download {fi.name}: {ex.Message}", ex);
+                                        Log.Error($"Download {fiServier.name}: {ex.Message}", ex, new Dictionary<string, string>()
+                                        {
+                                            { "Platform", DevicePicker.GetPlatform().ToString() },
+                                            { "Model", DevicePicker.GetModel() },
+                                            { "URL", fiServier.url},
+                                            { "PathFiles", PlayerSettings.PathFiles},
+                                            { "FileName", fiServier.name},
+                                            { "Class", "MainPage"},
+                                            { "Method", "Loading"},
+                                            { "Exception", ex.Message},
+                                        });
                                     }
                                 }
                                 else
@@ -398,7 +427,14 @@ namespace SetBoxTV.VideoPlayer
             }
             catch (Exception ex)
             {
-                Log.Error(ex);
+                Log.Error(ex, new Dictionary<string, string>()
+                {
+                    { "Platform", DevicePicker.GetPlatform().ToString() },
+                    { "Model", DevicePicker.GetModel() },
+                    { "Class", "MainPage"},
+                    { "Method", "Loading"},
+                    { "Exception", ex.Message},
+                });
                 MainPage.isInProcess = false;
                 model.IsLoading = false;
                 Application.Current.MainPage = new MainPage();
@@ -467,7 +503,17 @@ namespace SetBoxTV.VideoPlayer
             }
             catch (OperationCanceledException ex)
             {
-                Log.Error(ex);
+                Log.Error(ex, new Dictionary<string, string>()
+                {
+                    { "Platform", DevicePicker.GetPlatform().ToString() },
+                    { "Model", DevicePicker.GetModel() },
+                    { "Class", "MainPage"},
+                    { "Method", "StartDownloadHandler"},
+                    { "Exception", ex.Message},
+                    { "UrlToDownload", urlToDownload },
+                    { "PathToSave", pathToSave },
+                    { "FileName", fileName }
+                });
             }
             finally
             {
