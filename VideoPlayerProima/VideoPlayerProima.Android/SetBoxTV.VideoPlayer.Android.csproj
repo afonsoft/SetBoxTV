@@ -54,6 +54,7 @@
     <AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>false</AndroidUseAapt2>
+    <AndroidLinkSkip>Xamarin.Android.Support.v7.AppCompat;Xamarin.Android.Support.Core.UI;Microsoft.AppCenter.Crashes</AndroidLinkSkip>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -80,6 +81,7 @@
     <OutputPath>C:\Xamarin\SetBox-VideoPlayer\VideoPlayerProima\VideoPlayerProima\bin\Release</OutputPath>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <AndroidUseAapt2>false</AndroidUseAapt2>
+	<AndroidLinkSkip>Xamarin.Android.Support.v7.AppCompat;Xamarin.Android.Support.Core.UI;Microsoft.AppCenter.Crashes</AndroidLinkSkip>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Java.Interop" />
@@ -178,6 +180,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </GoogleServicesJson>
     <ProguardConfiguration Include="proguard.cfg" />
+    <AndroidEnvironment Include="AndroidEnvironment.cfg" />
     <None Include="ProimaVideo.keystore" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />

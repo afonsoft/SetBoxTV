@@ -24,6 +24,7 @@ using Microsoft.AppCenter.Push;
 using Android.Hardware.Input;
 using System.Collections.Generic;
 
+[assembly: Dependency(typeof(SetBoxTV.VideoPlayer.Droid.MainActivity))]
 namespace SetBoxTV.VideoPlayer.Droid
 {
     [Activity(Label = "SetBoxTV Outdoor Media", Name = "SetBoxTV.VideoPlayer.Droid.MainActivity", Icon = "@mipmap/launcher_foreground", Banner = "@mipmap/banner", Theme = "@style/MainTheme", MainLauncher = true, HardwareAccelerated = true, Exported = true, NoHistory = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.KeyboardHidden | ConfigChanges.Keyboard | ConfigChanges.Navigation, ScreenOrientation = ScreenOrientation.Landscape)]
@@ -54,15 +55,6 @@ namespace SetBoxTV.VideoPlayer.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Instance = this;
-
-            Push.EnableFirebaseAnalytics();
-            Distribute.SetEnabledForDebuggableBuild(true);
-
-            AppCenter.Start("35661827-5555-4b62-b333-145f0456c75d", typeof(Analytics), typeof(Crashes), typeof(Push), typeof(Distribute));
-            Crashes.SetEnabledAsync(true);
-            Push.SetEnabledAsync(true);
-            Analytics.SetEnabledAsync(true);
-            Distribute.SetEnabledAsync(false);
 
             AppDomain.CurrentDomain.UnhandledException += (sender, args) => LoggerService.Instance.Error(args.ExceptionObject as Exception);
             TaskScheduler.UnobservedTaskException += (sender, args) => LoggerService.Instance.Error(args.Exception);

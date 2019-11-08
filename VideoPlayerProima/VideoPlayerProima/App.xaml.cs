@@ -36,7 +36,7 @@ namespace SetBoxTV.VideoPlayer
             Log.Platform = DevicePicker.GetPlatform().ToString();
             Log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
             Log.IsDebugEnabled = PlayerSettings.DebugEnabled;
-            
+            MainPage = new MainPage();
         }
 
         static void OnPushNotificationReceived(object sender, PushNotificationReceivedEventArgs e)
@@ -56,26 +56,28 @@ namespace SetBoxTV.VideoPlayer
         {
             // Handle when your app starts
             base.OnStart();
+            if (!AppCenter.Configured)
+            {
+                Push.PushNotificationReceived += OnPushNotificationReceived;
+                Crashes.GetErrorAttachments = OnGetErrorAttachments;
+                Crashes.ShouldAwaitUserConfirmation = () => { return true; };
+                Distribute.ReleaseAvailable = OnReleaseAvailable;
 
-            Push.PushNotificationReceived += OnPushNotificationReceived;
-            Crashes.GetErrorAttachments = OnGetErrorAttachments;
-            Crashes.ShouldAwaitUserConfirmation = () => { return true; };
-            Distribute.ReleaseAvailable = OnReleaseAvailable;
-            Crashes.NotifyUserConfirmation(UserConfirmation.AlwaysSend);
 
-            AppCenter.Start($"android={androidKey}", typeof(Analytics), typeof(Crashes), typeof(Push), typeof(Distribute));
+                AppCenter.Start($"android={androidKey}", typeof(Analytics), typeof(Crashes), typeof(Push), typeof(Distribute));
 
-            Crashes.SetEnabledAsync(true);
-            Push.SetEnabledAsync(true);
-            Analytics.SetEnabledAsync(true);
-            Distribute.SetEnabledAsync(false);
-            VersionTracking.Track();
-            AppCenter.SetUserId(DependencyService.Get<IDevicePicker>()?.GetIdentifier());
+                Crashes.SetEnabledAsync(true);
+                Push.SetEnabledAsync(true);
+                Analytics.SetEnabledAsync(true);
+                Distribute.SetEnabledAsync(false);
+                VersionTracking.Track();
+                AppCenter.SetUserId(DependencyService.Get<IDevicePicker>()?.GetIdentifier());
+                Crashes.NotifyUserConfirmation(UserConfirmation.AlwaysSend);
+            }
 
             Log.Debug("OnStart");
 
             MessagingCenter.Send(new LifecycleMessage(), nameof(OnStart));
-            MainPage = new MainPage();
         }
 
         protected override void OnSleep()
@@ -100,13 +102,15 @@ namespace SetBoxTV.VideoPlayer
 
         }
 
-        IEnumerable<ErrorAttachmentLog> OnGetErrorAttachments(ErrorReport report)
+        static IEnumerable<ErrorAttachmentLog> OnGetErrorAttachments(ErrorReport report)
         {
+            ILogger log = DependencyService.Get<ILogger>();
+            log.Debug("OnGetErrorAttachments");
             return new ErrorAttachmentLog[]
             {
                 ErrorAttachmentLog.AttachmentWithText($"Id: {report.Id} {Environment.NewLine} AppStartTime: {report.AppStartTime} {Environment.NewLine} AppErrorTime: {report.AppErrorTime} {Environment.NewLine} StackTrace: {report.StackTrace}", "StackTrace.txt"),
                 ErrorAttachmentLog.AttachmentWithText($"Id: {report.Id} {Environment.NewLine} AppStartTime: {report.AppStartTime} {Environment.NewLine} AppErrorTime: {report.AppErrorTime} {Environment.NewLine} StackTrace: {report.AndroidDetails.StackTrace} {Environment.NewLine} ThreadName: {report.AndroidDetails.ThreadName}" , "AndroidDetails.txt"),
-                ErrorAttachmentLog.AttachmentWithText(Log.LogFileContent, Log.LogFileName),
+                ErrorAttachmentLog.AttachmentWithText(log.LogFileContent, log.LogFileName),
                 ErrorAttachmentLog.AttachmentWithBinary(DependencyService.Get<IScreenshotService>().CaptureScreen(), "Screenshot.jpg", "image/jpeg")
             };
         }
