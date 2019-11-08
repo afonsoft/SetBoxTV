@@ -23,7 +23,7 @@ namespace SetBoxTV.VideoPlayer.Helpers
 
         public static string PathFiles
         {
-            get => AppSettings.GetValueOrDefault(nameof(PathFiles), "");
+            get => AppSettings.GetValueOrDefault(nameof(PathFiles), "/storage/emulated/0/Movies");
             set => AppSettings.AddOrUpdateValue(nameof(PathFiles), value);
         }
 

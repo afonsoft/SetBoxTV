@@ -55,7 +55,7 @@ namespace SetBoxTV.VideoPlayer
         protected override void OnStart()
         {
             // Handle when your app starts
-            base.OnStart();
+            
             if (!AppCenter.Configured)
             {
                 Push.PushNotificationReceived += OnPushNotificationReceived;
@@ -76,8 +76,8 @@ namespace SetBoxTV.VideoPlayer
             }
 
             Log.Debug("OnStart");
-
             MessagingCenter.Send(new LifecycleMessage(), nameof(OnStart));
+            base.OnStart();
         }
 
         protected override void OnSleep()
