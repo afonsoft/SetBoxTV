@@ -24,7 +24,7 @@ namespace SetBoxTV.VideoPlayer
         static public float ScreenDensity { get; set; } = 1;
 
         const string androidKey = "35661827-5555-4b62-b333-145f0456c75d";
-        private readonly  ILogger Log;
+        private readonly ILogger Log;
 
         public App()
         {
@@ -52,18 +52,20 @@ namespace SetBoxTV.VideoPlayer
             });
         }
 
+        static App()
+        {
+            Push.PushNotificationReceived += OnPushNotificationReceived;
+            Crashes.GetErrorAttachments = OnGetErrorAttachments;
+            Crashes.ShouldAwaitUserConfirmation = () => { return true; };
+            Distribute.ReleaseAvailable = OnReleaseAvailable;
+        }
+
         protected override void OnStart()
         {
-            // Handle when your app starts
-            
+            // Handle when your app starts 
             if (!AppCenter.Configured)
             {
-                Push.PushNotificationReceived += OnPushNotificationReceived;
-                Crashes.GetErrorAttachments = OnGetErrorAttachments;
-                Crashes.ShouldAwaitUserConfirmation = () => { return true; };
-                Distribute.ReleaseAvailable = OnReleaseAvailable;
-
-
+                
                 AppCenter.Start($"android={androidKey}", typeof(Analytics), typeof(Crashes), typeof(Push), typeof(Distribute));
 
                 Crashes.SetEnabledAsync(true);
@@ -115,7 +117,7 @@ namespace SetBoxTV.VideoPlayer
             };
         }
 
-        bool OnReleaseAvailable(ReleaseDetails releaseDetails)
+        static bool OnReleaseAvailable(ReleaseDetails releaseDetails)
         {
             // Look at releaseDetails public properties to get version information, release notes text or release notes URL
             string versionName = releaseDetails.ShortVersion;
@@ -124,26 +126,18 @@ namespace SetBoxTV.VideoPlayer
             Uri releaseNotesUrl = releaseDetails.ReleaseNotesUrl;
 
             string title = $"versionName: {versionName} - versionCodeOrBuildNumber: {versionCodeOrBuildNumber} - releaseNotes: {releaseNotes} - releaseNotesUrl: {releaseNotesUrl}";
-
-            Log.Debug(title);
+            ILogger log = DependencyService.Get<ILogger>();
+            log.Debug(title);
 
             // On mandatory update, user cannot postpone
             if (releaseDetails.MandatoryUpdate)
             {
-                Log.Debug("Notify SDK that user selected update");
-                // Notify SDK that user selected update
-                // Distribute.NotifyUpdateAction(UpdateAction.Update);
-                // Distribute.NotifyUpdateAction(UpdateAction.Postpone);
+                log.Debug("Notify SDK that user selected update");
             }
             else
             {
-                Log.Debug("Notify SDK that user selected postpone (for 1 day)");
-                // Notify SDK that user selected postpone (for 1 day)
-                // Note that this method call is ignored by the SDK if the update is mandatory
-                // Distribute.NotifyUpdateAction(UpdateAction.Postpone);
+                log.Debug("Notify SDK that user selected postpone (for 1 day)");
             }
-
-            // Return true if you are using your own dialog, false otherwise
             return true;
         }
     }

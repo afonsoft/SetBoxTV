@@ -414,10 +414,11 @@ namespace SetBoxTV.VideoPlayer
 
                             GetFilesInOrder(arquivos, serverFiles);
                         }
+                        ShowText("Iniciando o Player");
+
                         labelLoadingId.IsVisible = false;
                         progressBarId.IsVisible = false;
 
-                        ShowText("Iniciando o Player");
                         model.IsLoading = false;
                         MainPage.isInProcess = false;
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>

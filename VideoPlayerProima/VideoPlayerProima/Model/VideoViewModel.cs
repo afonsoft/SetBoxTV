@@ -1,4 +1,6 @@
 ﻿using LibVLCSharp.Shared;
+using SetBoxTV.VideoPlayer.Helpers;
+using SetBoxTV.VideoPlayer.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +12,18 @@ namespace SetBoxTV.VideoPlayer.Model
 {
     public class VideoViewModel : BaseViewModel
     {
-
+        private readonly ILogger log;
         public VideoViewModel()
         {
-            
+            log = DependencyService.Get<ILogger>();
+            if (log != null)
+            {
+                IDevicePicker device = DependencyService.Get<IDevicePicker>();
+                log.DeviceIdentifier = device?.GetIdentifier();
+                log.Platform = DevicePicker.GetPlatform().ToString();
+                log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
+                log.IsDebugEnabled = PlayerSettings.DebugEnabled;
+            }
         }
 
         private bool IsLoaded { get; set; }
@@ -50,6 +60,7 @@ namespace SetBoxTV.VideoPlayer.Model
             _rendererItems.Add(e.RendererItem);
         }
 
+
         private LibVLC _libVLC;
         /// <summary>
         /// Gets the <see cref="LibVLCSharp.Shared.LibVLC"/> instance.
@@ -70,19 +81,18 @@ namespace SetBoxTV.VideoPlayer.Model
         {
             get
             {
-                if (_mediaPlayer != null)
-                    _mediaPlayer.Dispose();
-
-                _mediaPlayer = new MediaPlayer(LibVLC)
+                if (_mediaPlayer == null)
                 {
-                    EnableHardwareDecoding = true,
-                    Fullscreen = true,
-                    Mute = false,
-                    Volume = 100,
-                    AspectRatio = "Fit screen"
-                };
-                _mediaPlayer.EndReached += MediaPlayerEndReached;
-
+                    _mediaPlayer = new MediaPlayer(LibVLC)
+                    {
+                        EnableHardwareDecoding = true,
+                        Fullscreen = true,
+                        Mute = false,
+                        Volume = 100,
+                        AspectRatio = "Fit screen"
+                    };
+                    _mediaPlayer.EndReached += MediaPlayerEndReached;
+                }
                 return _mediaPlayer;
             }
 
@@ -107,14 +117,11 @@ namespace SetBoxTV.VideoPlayer.Model
             get => _file;
             set
             {
-                IsVideoViewInitialized = false;
                 SetProperty(ref _file, value);
                 if (!string.IsNullOrEmpty(_file))
                 {
-                    if (Media != null)
-                        Media.Dispose();
-                    
                     Media = new Media(LibVLC, _file, FromType.FromPath);
+                    Media.AddOption(new MediaConfiguration() { EnableHardwareDecoding = true, FileCaching = 1500 });
                     Media.AddOption(":fullscreen");
                     IsVideoViewInitialized = true;
                 }
@@ -152,31 +159,46 @@ namespace SetBoxTV.VideoPlayer.Model
 
             // instanciate the main libvlc object
             LibVLC = new LibVLC();
-
+            _libVLC.Log += libVLC_Log;
             // instanciate the main MediaPlayer object
-            //MediaPlayer = new MediaPlayer(LibVLC)
-            //{
-            //    EnableHardwareDecoding = true,
-            //    Fullscreen = true,
-            //    Mute = false,
-            //    Volume = 100,
-            //    AspectRatio = "Fit screen"
-            //};
-            //MediaPlayer.EndReached += MediaPlayerEndReached;
+            MediaPlayer = new MediaPlayer(LibVLC)
+            {
+                EnableHardwareDecoding = true,
+                Fullscreen = true,
+                Mute = false,
+                Volume = 100,
+                AspectRatio = "Fit screen"
+            };
+            MediaPlayer.EndReached += MediaPlayerEndReached;
             IsInitialized = true;
 
+        }
+
+        private void libVLC_Log(object sender, LogEventArgs e)
+        {
+            if (e.Level == LogLevel.Error || e.Level == LogLevel.Warning)
+            {
+                string msg = $"libVLC: {e.Message} - Module: {e.Module} - SourceFile: {e.SourceFile}";
+                if (e.Level == LogLevel.Error)
+                    log?.Error(msg);
+                else if (e.Level == LogLevel.Warning)
+                    log?.Debug(msg);
+            }
         }
 
         private void MediaPlayerEndReached(object sender, EventArgs e)
         {
             IsVideoViewInitialized = false;
+            var toDispose = _mediaPlayer;
 
-            _mediaPlayer.Stop();
-            _mediaPlayer.Dispose();
-            _media.Dispose();
+            Task.Run(() =>
+            {
+                toDispose?.Dispose();
+            });
+
             _media = null;
             _mediaPlayer = null;
-            
+
             EndReached?.Invoke(sender, e);
         }
 
@@ -197,15 +219,15 @@ namespace SetBoxTV.VideoPlayer.Model
         {
             if (CanPlay())
             {
-                _mediaPlayer.Play(Media);
+                MediaPlayer.Play(Media);
             }
         }
 
         public void Stop()
         {
             IsVideoViewInitialized = false;
-            if (_mediaPlayer != null && _mediaPlayer.State != VLCState.Stopped && _mediaPlayer.State != VLCState.Ended)
-                _mediaPlayer.Stop();
+            if (MediaPlayer != null && MediaPlayer.State != VLCState.Stopped && MediaPlayer.State != VLCState.Ended)
+                MediaPlayer.Stop();
         }
 
 
@@ -216,9 +238,9 @@ namespace SetBoxTV.VideoPlayer.Model
                 DiscoverChromecasts();
                 if (_rendererItems.Any())
                 {
-                    _mediaPlayer.SetRenderer(_rendererItems.First());
+                    MediaPlayer.SetRenderer(_rendererItems.First());
                 }
-                _mediaPlayer.Play(Media);
+                MediaPlayer.Play(Media);
             }
         }
     }

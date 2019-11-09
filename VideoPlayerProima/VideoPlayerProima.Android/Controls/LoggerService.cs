@@ -17,20 +17,23 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
     public class LoggerService : ILogger
     {
         private API.SetBoxApi api;
-
-        private async void CreateApiLogError(string msg, API.LogLevel level)
+        private static readonly IList<string> logMemory = new List<string>();
+        private void CreateApiLogError(string msg, API.LogLevel level)
         {
-            try
+            Task.Run(async () =>
             {
-                if (api == null)
-                    api = new API.SetBoxApi(new DevicePicker().GetIdentifier(), PlayerSettings.License, PlayerSettings.Url);
+                try
+                {
+                    if (api == null)
+                        api = new API.SetBoxApi(new DevicePicker().GetIdentifier(), PlayerSettings.License, PlayerSettings.Url);
 
-               await api.Log(msg, level);
-            }
-            catch
-            {
-                //Ignore
-            }
+                    await api.Log(msg, level);
+                }
+                catch
+                {
+                    api = null;
+                }
+            });
         }
 
         private static readonly object lockSync = new object();
@@ -72,7 +75,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
         public string TAG { get; set; }
         public string DeviceIdentifier { get; set; }
         public string Platform { get; set; }
-        public string Version { get; set; } 
+        public string Version { get; set; }
         public bool IsDebugEnabled { get; set; }
 
         public string LogFileName { get; private set; }
@@ -81,22 +84,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
         {
             get
             {
-                if (string.IsNullOrEmpty(LogFileName))
-                    return "";
-
-                StringBuilder sb = new StringBuilder();
-                lock (lockSync)
-                {
-                    using (StreamReader streamReader = File.OpenText(LogFileName))
-                    {
-                        string line = "";
-                        while ((line = streamReader.ReadLine()) != null)
-                        {
-                            sb.Append(line);
-                        }
-                    }
-                }
-                return sb.ToString();
+                return string.Join(Environment.NewLine, logMemory);
             }
         }
 
@@ -105,15 +93,17 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
             if (string.IsNullOrEmpty(text))
                 return;
+
             Log.Debug($"SetBoxTV : {TAG}", $"{text}");
+            logMemory.Add($"{text}");
 
             if (IsDebugEnabled)
             {
-                SaveFile(TAG, "DEBUG ", text, null);
                 CreateApiLogError($"{text}", API.LogLevel.DEBUG);
                 AppCenterLog.Debug(TAG, text);
                 Analytics.TrackEvent($"{text} - Identifier: {DeviceIdentifier}");
             }
+
         }
 
         public void Debug(string text, System.Exception ex)
@@ -121,15 +111,16 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
             if (ex == null && string.IsNullOrEmpty(text))
                 return;
-            Log.Debug($"SetBoxTV : {TAG}", $"{text} - {ex?.Message}");
 
+            Log.Debug($"SetBoxTV : {TAG}", $"{text} - {ex?.Message}");
+            logMemory.Add($"{text} - {ex?.Message}");
             if (IsDebugEnabled)
             {
-                SaveFile(TAG, "DEBUG ", text, null);
                 CreateApiLogError($"{text} - {ex?.Message}", API.LogLevel.DEBUG);
                 AppCenterLog.Debug(TAG, $"{text} - {ex?.Message}");
                 Analytics.TrackEvent($"{text} - Identifier: {DeviceIdentifier}");
             }
+
         }
 
 
@@ -140,23 +131,27 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
             Log.Error($"SetBoxTV : {TAG}", Throwable.FromException(ex), $"{text} - {ex?.Message}");
             SaveFile(TAG, "ERRO  ", text, ex);
+            logMemory.Add($"{text} - {ex?.Message}");
             CreateApiLogError($"{text} - {ex?.Message}", API.LogLevel.ERROR);
             AppCenterLog.Error(TAG, $"{text} - {ex?.Message}", ex);
             Analytics.TrackEvent($"{text} - {ex?.Message} - Identifier: {DeviceIdentifier}");
             Crashes.TrackError(ex);
+
         }
 
         public void Error(System.Exception ex)
         {
             if (ex == null)
                 return;
-           
+
             Log.Error($"SetBoxTV : {TAG}", Throwable.FromException(ex), $"{ex.Message}");
             SaveFile(TAG, "ERRO  ", null, ex);
+            logMemory.Add($"{ex?.Message}");
             CreateApiLogError($"{ex.Message}", API.LogLevel.ERROR);
             AppCenterLog.Error(TAG, $"{ex.Message}", ex);
             Analytics.TrackEvent($"{ex.Message} - Identifier: {DeviceIdentifier}");
             Crashes.TrackError(ex);
+
         }
 
         public void Error(string text)
@@ -166,10 +161,12 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
             Log.Error($"SetBoxTV : {TAG}", $"{text}");
             SaveFile(TAG, "ERRO  ", text, null);
+            logMemory.Add($"{text}");
             CreateApiLogError($"{text}", API.LogLevel.ERROR);
             AppCenterLog.Error(TAG, $"{text}");
             Analytics.TrackEvent($"{text} - Identifier: {DeviceIdentifier}");
             Crashes.TrackError(new System.Exception(text));
+
         }
 
         public void Error(string text, System.Exception ex, Dictionary<string, string> property)
@@ -179,6 +176,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
             Log.Error($"SetBoxTV : {TAG}", Throwable.FromException(ex), $"{text} - {ex?.Message}");
             SaveFile(TAG, "ERRO  ", text, ex);
+            logMemory.Add($"{text} - {ex?.Message}");
             CreateApiLogError($"{text} - {ex?.Message}", API.LogLevel.ERROR);
             AppCenterLog.Error(TAG, $"{text} - {ex?.Message}", ex);
             Analytics.TrackEvent($"{text} - {ex?.Message} - Identifier: {DeviceIdentifier}", property);
@@ -192,10 +190,12 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
             Log.Error($"SetBoxTV : {TAG}", Throwable.FromException(ex), $"{ex.Message}");
             SaveFile(TAG, "ERRO  ", null, ex);
+            logMemory.Add($"{ex?.Message}");
             CreateApiLogError($"{ex.Message}", API.LogLevel.ERROR);
             AppCenterLog.Error(TAG, $"{ex.Message}", ex);
             Analytics.TrackEvent($"{ex.Message} - Identifier: {DeviceIdentifier}", property);
             Crashes.TrackError(ex, property);
+
         }
 
         public void Error(string text, Dictionary<string, string> property)
@@ -205,13 +205,15 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
             Log.Error($"SetBoxTV : {TAG}", $"{text}");
             SaveFile(TAG, "ERRO  ", text, null);
+            logMemory.Add($"{text}");
             CreateApiLogError($"{text}", API.LogLevel.ERROR);
             AppCenterLog.Error(TAG, $"{text}");
             Analytics.TrackEvent($"{text} - Identifier: {DeviceIdentifier}", property);
             Crashes.TrackError(new System.Exception(text), property);
+
         }
 
-        private void SaveFile(string tag, string tipo,  string text, System.Exception ex)
+        private void SaveFile(string tag, string tipo, string text, System.Exception ex)
         {
             Task.Run(() =>
             {
