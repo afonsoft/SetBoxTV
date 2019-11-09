@@ -12,18 +12,8 @@ namespace SetBoxTV.VideoPlayer.Model
 {
     public class VideoViewModel : BaseViewModel
     {
-        private readonly ILogger log;
         public VideoViewModel()
         {
-            log = DependencyService.Get<ILogger>();
-            if (log != null)
-            {
-                IDevicePicker device = DependencyService.Get<IDevicePicker>();
-                log.DeviceIdentifier = device?.GetIdentifier();
-                log.Platform = DevicePicker.GetPlatform().ToString();
-                log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
-                log.IsDebugEnabled = PlayerSettings.DebugEnabled;
-            }
         }
 
         private bool IsLoaded { get; set; }
@@ -159,7 +149,7 @@ namespace SetBoxTV.VideoPlayer.Model
 
             // instanciate the main libvlc object
             LibVLC = new LibVLC();
-            _libVLC.Log += libVLC_Log;
+            
             // instanciate the main MediaPlayer object
             MediaPlayer = new MediaPlayer(LibVLC)
             {
@@ -174,27 +164,9 @@ namespace SetBoxTV.VideoPlayer.Model
 
         }
 
-        private void libVLC_Log(object sender, LogEventArgs e)
-        {
-            if (e.Level == LogLevel.Error || e.Level == LogLevel.Warning)
-            {
-                string msg = $"libVLC: {e.Message} - Module: {e.Module} - SourceFile: {e.SourceFile}";
-                if (e.Level == LogLevel.Error)
-                    log?.Error(msg);
-                else if (e.Level == LogLevel.Warning)
-                    log?.Debug(msg);
-            }
-        }
-
         private void MediaPlayerEndReached(object sender, EventArgs e)
         {
             IsVideoViewInitialized = false;
-            var toDispose = _mediaPlayer;
-
-            Task.Run(() =>
-            {
-                toDispose?.Dispose();
-            });
 
             _media = null;
             _mediaPlayer = null;
