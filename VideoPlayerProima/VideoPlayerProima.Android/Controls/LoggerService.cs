@@ -10,6 +10,8 @@ using Microsoft.AppCenter.Crashes;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter;
 using System.Collections.Generic;
+using System.Globalization;
+using Xamarin.Essentials;
 
 [assembly: Dependency(typeof(SetBoxTV.VideoPlayer.Droid.Controls.LoggerService))]
 namespace SetBoxTV.VideoPlayer.Droid.Controls
@@ -48,7 +50,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
                     _instance = new LoggerService();
                     _instance.DeviceIdentifier = new DevicePicker().GetIdentifier();
                     _instance.Platform = Interface.DevicePicker.GetPlatform().ToString();
-                    _instance.Version = $"{Interface.DevicePicker.GetVersion().Major}.{Interface.DevicePicker.GetVersion().Minor}.{Interface.DevicePicker.GetVersion().Revision}.{Interface.DevicePicker.GetVersion().Build}"; ;
+                    _instance.Version = $"{Interface.DevicePicker.GetVersion().Major}.{Interface.DevicePicker.GetVersion().Minor}.{Interface.DevicePicker.GetVersion().Revision}.{Interface.DevicePicker.GetVersion().Build}"; 
                     _instance.IsDebugEnabled = PlayerSettings.DebugEnabled;
                     AppCenter.SetUserId(_instance.DeviceIdentifier);
                 }
@@ -62,7 +64,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             {
                 DeviceIdentifier = new DevicePicker().GetIdentifier();
                 Platform = Interface.DevicePicker.GetPlatform().ToString();
-                Version = $"{Interface.DevicePicker.GetVersion().Major}.{Interface.DevicePicker.GetVersion().Minor}.{Interface.DevicePicker.GetVersion().Revision}.{Interface.DevicePicker.GetVersion().Build}"; ;
+                Version = $"{Interface.DevicePicker.GetVersion().Major}.{Interface.DevicePicker.GetVersion().Minor}.{Interface.DevicePicker.GetVersion().Revision}.{Interface.DevicePicker.GetVersion().Build}"; 
                 IsDebugEnabled = PlayerSettings.DebugEnabled;
                 AppCenter.SetUserId(DeviceIdentifier);
             }
@@ -95,13 +97,13 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
                 return;
 
             AppCenterLog.Debug(TAG, text);
-            Analytics.TrackEvent($"{text} - {TAG} : Identifier: {DeviceIdentifier}");
+            Analytics.TrackEvent($"{text} - {TAG} : Identifier: {DeviceIdentifier}", GetPropreryAsync().GetAwaiter().GetResult());
 
             if (IsDebugEnabled)
             {
                 Log.Debug($"SetBoxTV", $"{TAG} : {text}");
                 logMemory.Add($"{text}");
-                CreateApiLogError($"{text}", API.LogLevel.DEBUG);   
+                CreateApiLogError($"{text}", API.LogLevel.DEBUG);
             }
 
         }
@@ -112,7 +114,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
             AppCenterLog.Debug(TAG, text);
             Analytics.TrackEvent($"{text} - {TAG} : Identifier: {DeviceIdentifier}", property);
-            
+
             if (IsDebugEnabled)
             {
                 Log.Debug($"SetBoxTV", $"{TAG} : {text}");
@@ -127,10 +129,9 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             if (ex == null && string.IsNullOrEmpty(text))
                 return;
 
-            
             AppCenterLog.Debug(TAG, $"{text} - {ex?.Message}");
-            Analytics.TrackEvent($"{text} - {ex?.Message} - {TAG} : Identifier: {DeviceIdentifier}");
-           
+            Analytics.TrackEvent($"{text} - {ex?.Message} - {TAG} : Identifier: {DeviceIdentifier}", GetPropreryAsync().GetAwaiter().GetResult());
+
             if (IsDebugEnabled)
             {
                 Log.Debug($"SetBoxTV", $"{TAG} : {text} - {ex?.Message}");
@@ -147,10 +148,12 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
                 return;
 
             Log.Error($"SetBoxTV", Throwable.FromException(ex), $"{TAG} : {text} - {ex?.Message}");
-            
+
+            var p = GetPropreryAsync().GetAwaiter().GetResult();
+
             AppCenterLog.Error(TAG, $"{text} - {ex?.Message}", ex);
-            Analytics.TrackEvent($"{text} - {ex?.Message} - {TAG} : Identifier: {DeviceIdentifier}");
-            Crashes.TrackError(ex);
+            Analytics.TrackEvent($"{text} - {ex?.Message} - {TAG} : Identifier: {DeviceIdentifier}", p);
+            Crashes.TrackError(ex, p);
 
             SaveFile(TAG, "ERRO  ", text, ex);
             logMemory.Add($"{text} - {ex?.Message}");
@@ -163,10 +166,12 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
                 return;
 
             Log.Error($"SetBoxTV", Throwable.FromException(ex), $"{TAG} : {ex.Message}");
-            
+
+            var p = GetPropreryAsync().GetAwaiter().GetResult();
+
             AppCenterLog.Error(TAG, $"{ex.Message}", ex);
-            Analytics.TrackEvent($"{ex.Message} - {TAG} : Identifier: {DeviceIdentifier}");
-            Crashes.TrackError(ex);
+            Analytics.TrackEvent($"{ex.Message} - {TAG} : Identifier: {DeviceIdentifier}", p);
+            Crashes.TrackError(ex, p);
 
             logMemory.Add($"{ex?.Message}");
             SaveFile(TAG, "ERRO  ", null, ex);
@@ -179,10 +184,12 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             if (string.IsNullOrEmpty(text))
                 return;
 
+            var p = GetPropreryAsync().GetAwaiter().GetResult();
+
             Log.Error($"SetBoxTV", $"{TAG} : {text}");
             AppCenterLog.Error(TAG, $"{text}");
-            Analytics.TrackEvent($"{text} - {TAG} : Identifier: {DeviceIdentifier}");
-            Crashes.TrackError(new System.Exception(text));
+            Analytics.TrackEvent($"{text} - {TAG} : Identifier: {DeviceIdentifier}", p);
+            Crashes.TrackError(new System.Exception(text), p);
             SaveFile(TAG, "ERRO  ", text, null);
             logMemory.Add($"{text}");
             CreateApiLogError($"{text}", API.LogLevel.ERROR);
@@ -192,9 +199,86 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
         public void ErrorVLC(string text)
         {
             Log.Error($"SetBoxTV (LibVLC)", $"{text}");
-            Analytics.TrackEvent($"LibVLC: {text} - {TAG} : Identifier: {DeviceIdentifier}");
+            Analytics.TrackEvent($"LibVLC: {text} - {TAG} : Identifier: {DeviceIdentifier}", GetPropreryAsync().GetAwaiter().GetResult());
             AppCenterLog.Error("LibVLC", $"{text}");
             logMemory.Add($"LibVLC: {text}");
+        }
+
+        private async Task<Dictionary<string, string>> GetPropreryAsync()
+        {
+            var p = new Dictionary<string, string>()
+            {
+                { "DeviceIdentifier" , new DevicePicker().GetIdentifier() },
+                { "Platform" , Interface.DevicePicker.GetPlatform().ToString() },
+                { "Version" , $"{Interface.DevicePicker.GetVersion().Major}.{Interface.DevicePicker.GetVersion().Minor}.{Interface.DevicePicker.GetVersion().Revision}.{Interface.DevicePicker.GetVersion().Build}"},
+                { "DebugEnabled" , PlayerSettings.DebugEnabled.ToString(CultureInfo.InvariantCulture) },
+                { "FirstLaunch",VersionTracking.IsFirstLaunchEver.ToString(CultureInfo.InvariantCulture)},
+                { "FirstLaunchCurrent",VersionTracking.IsFirstLaunchForCurrentVersion.ToString(CultureInfo.InvariantCulture)},
+                { "FirstLaunchBuild",VersionTracking.IsFirstLaunchForCurrentBuild.ToString(CultureInfo.InvariantCulture)},
+                { "CurrentVersion",VersionTracking.CurrentVersion},
+                { "CurrentBuild",VersionTracking.CurrentBuild},
+                { "PreviousVersion",VersionTracking.PreviousVersion},
+                { "PreviousBuild",VersionTracking.PreviousBuild},
+                { "FirstVersion",VersionTracking.FirstInstalledVersion},
+                { "FirstBuild",VersionTracking.FirstInstalledBuild},
+                { "VersionHistory",string.Join(" | ", VersionTracking.VersionHistory)},
+                { "BuildHistory", string.Join(" | ", VersionTracking.BuildHistory)},
+                { "License", PlayerSettings.License},
+                { "PathFiles", PlayerSettings.PathFiles},
+                { "ShowVideo", PlayerSettings.ShowVideo.ToString(CultureInfo.InvariantCulture) },
+                { "ShowPhoto", PlayerSettings.ShowPhoto.ToString(CultureInfo.InvariantCulture) },
+                { "ShowWebImage", PlayerSettings.ShowWebImage.ToString(CultureInfo.InvariantCulture)},
+                { "ShowWebVideo", PlayerSettings.ShowWebVideo.ToString(CultureInfo.InvariantCulture)},
+                { "EnableTransactionTime", PlayerSettings.EnableTransactionTime.ToString(CultureInfo.InvariantCulture) },
+                { "TransactionTime", PlayerSettings.TransactionTime.ToString(CultureInfo.InvariantCulture) },
+                { "ReportNotConnection", PlayerSettings.ReportNotConnection.ToString(CultureInfo.InvariantCulture) },
+                { "DeviceName", PlayerSettings.DeviceName },
+                { "FirstInsall", PlayerSettings.FirstInsall.ToString(CultureInfo.InvariantCulture)},
+                { "DateTimeInstall", PlayerSettings.DateTimeInstall.ToString("dd/MM/yyyy HH:mm:ss",CultureInfo.InvariantCulture)}
+            };
+
+
+            bool isEnabled = await Crashes.IsEnabledAsync().ConfigureAwait(true);
+            bool didAppCrash = await Crashes.HasCrashedInLastSessionAsync().ConfigureAwait(true);
+            bool hadMemoryWarning = await Crashes.HasReceivedMemoryWarningInLastSessionAsync().ConfigureAwait(true);
+            ErrorReport crashReport = await Crashes.GetLastSessionCrashReportAsync().ConfigureAwait(true);
+
+            p.Add("IsCrashesEnabled", isEnabled.ToString(CultureInfo.InvariantCulture));
+            p.Add("HasCrashedInLastSession", didAppCrash.ToString(CultureInfo.InvariantCulture));
+            p.Add("HasReceivedMemoryWarningInLastSession", hadMemoryWarning.ToString(CultureInfo.InvariantCulture));
+
+            if (crashReport != null)
+            {
+                if (crashReport.Device != null)
+                {
+                    p.Add("AppNamespace", crashReport.Device.AppNamespace);
+                    p.Add("CarrierCountry", crashReport.Device.CarrierCountry);
+                    p.Add("CarrierName", crashReport.Device.CarrierName);
+                    p.Add("Locale", crashReport.Device.Locale);
+                    p.Add("OsApiLevel", crashReport.Device.OsApiLevel?.ToString(CultureInfo.InvariantCulture));
+                    p.Add("Model", crashReport.Device.Model);
+                    p.Add("OemName", crashReport.Device.OemName);
+                    p.Add("OsBuild", crashReport.Device.OsBuild);
+                    p.Add("OsVersion", crashReport.Device.OsVersion);
+                    p.Add("ScreenSize", crashReport.Device.ScreenSize);
+                    p.Add("SdkName", crashReport.Device.SdkName);
+                    p.Add("SdkVersion", crashReport.Device.SdkVersion);
+                    p.Add("TimeZoneOffset", crashReport.Device.TimeZoneOffset.ToString(CultureInfo.InvariantCulture));
+                }
+
+                p.Add("AppErrorTime", crashReport.AppErrorTime.ToString("dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+                p.Add("AppStartTime", crashReport.AppStartTime.ToString("dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture));
+                p.Add("Id", crashReport.Id);
+                p.Add("StackTrace", crashReport.StackTrace);
+
+                if (crashReport.AndroidDetails != null)
+                {
+                    p.Add("StackTrace Android", crashReport.AndroidDetails.StackTrace);
+                    p.Add("ThreadName", crashReport.AndroidDetails.ThreadName);
+                }
+            }
+
+            return p;
         }
 
         private void SaveFile(string tag, string tipo, string text, System.Exception ex)
@@ -251,6 +335,6 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             });
         }
 
-       
+
     }
 }
