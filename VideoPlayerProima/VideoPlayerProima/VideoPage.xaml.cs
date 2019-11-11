@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace SetBoxTV.VideoPlayer
 {
-    [XamlCompilation(XamlCompilationOptions.Skip)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VideoPage : ContentPage
     {
         private SetBoxTV.VideoPlayer.Library.VideoSource fileToPlay;
@@ -63,6 +63,8 @@ namespace SetBoxTV.VideoPlayer
         {
             base.OnAppearing();
             NavigationPage.SetHasNavigationBar(this, false);
+            model.OnAppearing();
+
             log?.Debug($"VideoPage : License: {PlayerSettings.License}");
             log?.Debug($"VideoPage : PathFiles: {PlayerSettings.PathFiles}");
             log?.Debug($"VideoPage : ShowVideo: {PlayerSettings.ShowVideo}");
@@ -72,7 +74,6 @@ namespace SetBoxTV.VideoPlayer
             log?.Debug($"VideoPage : EnableTransactionTime: {PlayerSettings.EnableTransactionTime}");
             log?.Debug($"VideoPage : TransactionTime: {PlayerSettings.TransactionTime}");
 
-            model.OnAppearing();
             model.EndReached += MediaPlayerEndReached;
             GoNextPlayer();
         }
@@ -80,23 +81,14 @@ namespace SetBoxTV.VideoPlayer
         private void GoNextPlayer()
         {
             model.IsLoading = true;
-            try
+            Device.BeginInvokeOnMainThread(() =>
             {
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                {
-                    Player(fileDetails[index]);
-                    index++;
+                Player(fileDetails[index]);
+                index++;
 
-                    if (index >= fileDetails.Count)
-                        index = 0;
-                });
-            }
-            catch (Exception ex)
-            {
-                log?.Error("GoNextPlayer", ex);
-                MainPage.isInProcess = false;
-                Application.Current.MainPage = new MainPage();
-            }
+                if (index >= fileDetails.Count)
+                    index = 0;
+            });
             model.IsLoading = false;
         }
 
@@ -136,7 +128,6 @@ namespace SetBoxTV.VideoPlayer
                             if (model.CanPlay())
                                 _videoView.MediaPlayer.Play(model.Media);
 
-                            log?.Debug($"Duration: {model.Media.Duration / 1000} Segundos");
                             break;
                         }
                     case EnumFileType.Image:

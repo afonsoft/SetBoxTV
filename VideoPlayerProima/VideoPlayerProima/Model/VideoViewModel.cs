@@ -1,10 +1,8 @@
 ﻿using LibVLCSharp.Shared;
-using SetBoxTV.VideoPlayer.Helpers;
 using SetBoxTV.VideoPlayer.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -199,7 +197,7 @@ namespace SetBoxTV.VideoPlayer.Model
 
         public void OnAppearing()
         {
-            Initialize();
+            Task.Run(() => { Initialize(); }); 
             IsLoaded = true;
         }
 
