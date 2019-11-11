@@ -17,6 +17,7 @@ namespace SetBoxTV.VideoPlayer.Interface
         string LogFileContent { get; }
 
         void Debug(string text);
+        void Debug(string text, Dictionary<string, string> property);
         void Debug(string text, Exception ex);
         void Error(string text, Exception ex);
         void Error(Exception ex);
@@ -24,5 +25,7 @@ namespace SetBoxTV.VideoPlayer.Interface
         void Error(string text, Exception ex, Dictionary<string, string> property);
         void Error(Exception ex, Dictionary<string, string> property);
         void Error(string text, Dictionary<string, string> property);
+
+        void ErrorVLC(string text);
     }
 }

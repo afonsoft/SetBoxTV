@@ -14,8 +14,9 @@ namespace SetBoxTV.VideoPlayer.Model
     {
         public VideoViewModel()
         {
+            log = DependencyService.Get<ILogger>();
         }
-
+        private readonly ILogger log;
         private bool IsLoaded { get; set; }
         private bool IsVideoViewInitialized { get; set; }
         private bool IsInitialized { get; set; }
@@ -111,7 +112,7 @@ namespace SetBoxTV.VideoPlayer.Model
                 if (!string.IsNullOrEmpty(_file))
                 {
                     Media = new Media(LibVLC, _file, FromType.FromPath);
-                    Media.AddOption(new MediaConfiguration() { EnableHardwareDecoding = true, FileCaching = 1500 });
+                    Media.AddOption(new MediaConfiguration() { EnableHardwareDecoding = false, FileCaching = 1500 });
                     Media.AddOption(":fullscreen");
                     IsVideoViewInitialized = true;
                 }
@@ -149,19 +150,41 @@ namespace SetBoxTV.VideoPlayer.Model
 
             // instanciate the main libvlc object
             LibVLC = new LibVLC();
-            
+            LibVLC.Log += LibVLC_Log;
+
             // instanciate the main MediaPlayer object
             MediaPlayer = new MediaPlayer(LibVLC)
             {
-                EnableHardwareDecoding = true,
+                EnableHardwareDecoding = false,
                 Fullscreen = true,
                 Mute = false,
                 Volume = 100,
-                AspectRatio = "Fit screen"
+                AspectRatio = "Fit screen",
+                FileCaching = 1500
             };
+
             MediaPlayer.EndReached += MediaPlayerEndReached;
+            MediaPlayer.EncounteredError += MediaPlayerEncounteredError;
             IsInitialized = true;
 
+        }
+
+       
+
+        private void LibVLC_Log(object sender, LogEventArgs e)
+        {
+            if (e.Level == LogLevel.Error)
+                log.ErrorVLC($"{e.Message} : {e.Module} : {e.SourceFile} ({e.SourceLine})");
+        }
+
+
+        public event EventHandler<EventArgs> EndReached;
+        public event EventHandler<EventArgs> EncounteredError;
+
+        private void MediaPlayerEncounteredError(object sender, EventArgs e)
+        {
+            IsVideoViewInitialized = false;
+            EncounteredError?.Invoke(sender, e);
         }
 
         private void MediaPlayerEndReached(object sender, EventArgs e)
@@ -173,8 +196,6 @@ namespace SetBoxTV.VideoPlayer.Model
 
             EndReached?.Invoke(sender, e);
         }
-
-        public event EventHandler<EventArgs> EndReached;
 
         public void OnAppearing()
         {

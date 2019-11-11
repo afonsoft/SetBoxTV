@@ -35,7 +35,7 @@ namespace SetBoxTV.VideoPlayer.Helpers
 
         public static bool DebugEnabled
         {
-            get => AppSettings.GetValueOrDefault(nameof(DebugEnabled), true);
+            get => AppSettings.GetValueOrDefault(nameof(DebugEnabled), false);
             set => AppSettings.AddOrUpdateValue(nameof(DebugEnabled), value);
         }
 
