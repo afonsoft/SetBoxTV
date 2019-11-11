@@ -14,6 +14,7 @@ namespace SetBoxTV.VideoPlayer.Model
         public VideoViewModel()
         {
             log = DependencyService.Get<ILogger>();
+            log.TAG = "VideoViewModel";
         }
         private readonly ILogger log;
         private bool IsLoaded { get; set; }
@@ -73,6 +74,12 @@ namespace SetBoxTV.VideoPlayer.Model
             {
                 if (_mediaPlayer == null)
                 {
+                    if(_libVLC == null)
+                    {
+                        LibVLC = new LibVLC();
+                        LibVLC.Log += LibVLC_Log;
+                    }
+
                     _mediaPlayer = new MediaPlayer(LibVLC)
                     {
                         EnableHardwareDecoding = true,
@@ -110,6 +117,12 @@ namespace SetBoxTV.VideoPlayer.Model
                 SetProperty(ref _file, value);
                 if (!string.IsNullOrEmpty(_file))
                 {
+                    if(_libVLC == null)
+                    {
+                        LibVLC = new LibVLC();
+                        LibVLC.Log += LibVLC_Log;
+                    }
+
                     Media = new Media(LibVLC, _file, FromType.FromPath);
                     Media.AddOption(new MediaConfiguration() { EnableHardwareDecoding = false, FileCaching = 1500 });
                     Media.AddOption(":fullscreen");

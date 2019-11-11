@@ -15,7 +15,7 @@ using System.Globalization;
 
 namespace SetBoxTV.VideoPlayer
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Skip)]
     public partial class VideoPage : ContentPage
     {
         private SetBoxTV.VideoPlayer.Library.VideoSource fileToPlay;
@@ -42,6 +42,7 @@ namespace SetBoxTV.VideoPlayer
                 log.Platform = DevicePicker.GetPlatform().ToString();
                 log.Version = $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}";
                 log.IsDebugEnabled = PlayerSettings.DebugEnabled;
+                log.TAG = "VideoPage";
             }
 
             //Ordenar por order e depois por nome
@@ -77,8 +78,6 @@ namespace SetBoxTV.VideoPlayer
                 { "EnableTransactionTime",PlayerSettings.EnableTransactionTime.ToString(CultureInfo.InvariantCulture)},
                 { "TransactionTime",PlayerSettings.TransactionTime.ToString(CultureInfo.InvariantCulture)},
             });
-
-            
 
             model.EndReached += MediaPlayerEndReached;
             GoNextPlayer();
@@ -147,7 +146,7 @@ namespace SetBoxTV.VideoPlayer
                             else
                             {
                                 Thread.Sleep(200);
-                                Player(fileOrUrl);
+                                GoNextPlayer();
                             }
 
                             break;
@@ -166,9 +165,12 @@ namespace SetBoxTV.VideoPlayer
             }
             catch (Exception ex)
             {
-                log?.Error(ex);
-                MainPage.isInProcess = false;
-                Application.Current.MainPage = new MainPage();
+                log?.Error(ex); 
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    MainPage.isInProcess = false;
+                    Application.Current.MainPage = new MainPage();
+                });
             }
         }
 
@@ -176,8 +178,11 @@ namespace SetBoxTV.VideoPlayer
 
         private void OnTapped(object sender, EventArgs e)
         {
-            log?.Debug("OnTapped to Settings");
-            Application.Current.MainPage = new SettingsPage();
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                log?.Debug("OnTapped to Settings");
+                Application.Current.MainPage = new SettingsPage();
+            });
         }
 
         private async void Delay()
