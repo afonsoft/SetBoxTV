@@ -90,14 +90,14 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             }
         }
 
-        public void Debug(string text)
+        public async void Debug(string text)
         {
 
             if (string.IsNullOrEmpty(text))
                 return;
 
             AppCenterLog.Debug(TAG, text);
-            Analytics.TrackEvent($"{text} - {TAG} : Identifier: {DeviceIdentifier}", GetPropreryAsync().GetAwaiter().GetResult());
+            Analytics.TrackEvent($"{text} - {TAG} : Identifier: {DeviceIdentifier}", await GetProprery());
 
             if (IsDebugEnabled)
             {
@@ -123,14 +123,14 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             }
         }
 
-        public void Debug(string text, System.Exception ex)
+        public async void Debug(string text, System.Exception ex)
         {
 
             if (ex == null && string.IsNullOrEmpty(text))
                 return;
 
             AppCenterLog.Debug(TAG, $"{text} - {ex?.Message}");
-            Analytics.TrackEvent($"{text} - {ex?.Message} - {TAG} : Identifier: {DeviceIdentifier}", GetPropreryAsync().GetAwaiter().GetResult());
+            Analytics.TrackEvent($"{text} - {ex?.Message} - {TAG} : Identifier: {DeviceIdentifier}", await GetProprery());
 
             if (IsDebugEnabled)
             {
@@ -142,14 +142,14 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
         }
 
 
-        public void Error(string text, System.Exception ex)
+        public async void Error(string text, System.Exception ex)
         {
             if (ex == null && string.IsNullOrEmpty(text))
                 return;
 
             Log.Error($"SetBoxTV", Throwable.FromException(ex), $"{TAG} : {text} - {ex?.Message}");
 
-            var p = GetPropreryAsync().GetAwaiter().GetResult();
+            var p = await GetProprery();
 
             AppCenterLog.Error(TAG, $"{text} - {ex?.Message}", ex);
             Analytics.TrackEvent($"{text} - {ex?.Message} - {TAG} : Identifier: {DeviceIdentifier}", p);
@@ -160,14 +160,14 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             CreateApiLogError($"{text} - {ex?.Message}", API.LogLevel.ERROR);
         }
 
-        public void Error(System.Exception ex)
+        public async void Error(System.Exception ex)
         {
             if (ex == null)
                 return;
 
             Log.Error($"SetBoxTV", Throwable.FromException(ex), $"{TAG} : {ex.Message}");
 
-            var p = GetPropreryAsync().GetAwaiter().GetResult();
+            var p = await GetProprery();
 
             AppCenterLog.Error(TAG, $"{ex.Message}", ex);
             Analytics.TrackEvent($"{ex.Message} - {TAG} : Identifier: {DeviceIdentifier}", p);
@@ -179,12 +179,12 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
         }
 
-        public void Error(string text)
+        public async void Error(string text)
         {
             if (string.IsNullOrEmpty(text))
                 return;
 
-            var p = GetPropreryAsync().GetAwaiter().GetResult();
+            var p = await GetProprery();
 
             Log.Error($"SetBoxTV", $"{TAG} : {text}");
             AppCenterLog.Error(TAG, $"{text}");
@@ -196,15 +196,15 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
         }
 
 
-        public void ErrorVLC(string text)
+        public async void ErrorVLC(string text)
         {
             Log.Error($"SetBoxTV (LibVLC)", $"{text}");
-            Analytics.TrackEvent($"LibVLC: {text} - {TAG} : Identifier: {DeviceIdentifier}", GetPropreryAsync().GetAwaiter().GetResult());
+            Analytics.TrackEvent($"LibVLC: {text} - {TAG} : Identifier: {DeviceIdentifier}", await GetProprery());
             AppCenterLog.Error("LibVLC", $"{text}");
             logMemory.Add($"LibVLC: {text}");
         }
 
-        private async Task<Dictionary<string, string>> GetPropreryAsync()
+        private async Task<Dictionary<string, string>> GetProprery()
         {
             var p = new Dictionary<string, string>()
             {
@@ -238,12 +238,10 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             };
 
 
-            bool isEnabled = await Crashes.IsEnabledAsync().ConfigureAwait(true);
             bool didAppCrash = await Crashes.HasCrashedInLastSessionAsync().ConfigureAwait(true);
             bool hadMemoryWarning = await Crashes.HasReceivedMemoryWarningInLastSessionAsync().ConfigureAwait(true);
             ErrorReport crashReport = await Crashes.GetLastSessionCrashReportAsync().ConfigureAwait(true);
 
-            p.Add("IsCrashesEnabled", isEnabled.ToString(CultureInfo.InvariantCulture));
             p.Add("HasCrashedInLastSession", didAppCrash.ToString(CultureInfo.InvariantCulture));
             p.Add("HasReceivedMemoryWarningInLastSession", hadMemoryWarning.ToString(CultureInfo.InvariantCulture));
 

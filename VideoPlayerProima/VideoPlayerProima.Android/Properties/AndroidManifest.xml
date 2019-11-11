@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.21" package="br.com.Afonsoft.SetBoxTV.VideoPlayer.Android" android:installLocation="auto" android:versionCode="21">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.22" package="br.com.Afonsoft.SetBoxTV.VideoPlayer.Android" android:installLocation="auto" android:versionCode="22">
 	<uses-sdk android:minSdkVersion="22" android:targetSdkVersion="29" />
   <uses-feature android:name="android.hardware.gamepad" android:required="false"/>
 	<uses-feature android:name="android.software.leanback" android:required="false" />
