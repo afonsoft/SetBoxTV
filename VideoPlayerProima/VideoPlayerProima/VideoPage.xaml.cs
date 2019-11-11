@@ -141,7 +141,7 @@ namespace SetBoxTV.VideoPlayer
                         }
                     case EnumFileType.Image:
                         {
-                            _image = new Xamarin.Forms.Image() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
+                            _image = new Image() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
                             _image.Source = imagaToPlay;
                             _image.TabIndex = 1;
                             _image.GestureRecognizers.Add(new TapGestureRecognizer() { NumberOfTapsRequired = 2, Command = Tapped });
