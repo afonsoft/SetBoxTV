@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Threading.Tasks;
 using Microsoft.AppCenter;
 using SetBoxTV.VideoPlayer.Helpers;
@@ -105,14 +103,7 @@ namespace SetBoxTV.VideoPlayer
             }
             catch (Exception ex)
             {
-                Log.Error("Erro GetConfig: " + ex.Message, ex, new Dictionary<string, string>()
-                {
-                    { "Platform", DevicePicker.GetPlatform().ToString() },
-                    { "Model", DevicePicker.GetModel() },
-                    { "Class", "SettingsPage"},
-                    { "Method", "OnAppearing"},
-                    { "Exception", ex.Message}
-                });
+                Log.Error("Erro GetConfig: " + ex.Message, ex);
             }
 
             SwitchTransactionTime.Text = model.TransactionTime.ToString();
@@ -168,15 +159,7 @@ namespace SetBoxTV.VideoPlayer
             }
             catch (Exception ex)
             {
-                Log.Error(ex, new Dictionary<string, string>()
-                {
-                    { "Platform", DevicePicker.GetPlatform().ToString() },
-                    { "Model", DevicePicker.GetModel() },
-                    { "Class", "SettingsPage"},
-                    { "Method", "OnButtonSelectClicked"},
-                    { "Exception", ex.Message},
-                    { "Path", path }
-                });
+                Log.Error(ex);
             }
         }
 

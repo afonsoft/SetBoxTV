@@ -44,10 +44,14 @@ namespace SetBoxTV.VideoPlayer
 
                     if (crashReport != null)
                     {
-                        Log.Error($"Crashes: id: {crashReport.Id} - AppStartTime: {crashReport.AppStartTime} - AppErrorTime: {crashReport.AppErrorTime}");
-                        Log.Error($"Crashes: StackTrace: {crashReport.StackTrace}");
-                        Log.Error($"Crashes: AndroidDetails.ThreadName: {crashReport.AndroidDetails.ThreadName}");
-                        Log.Error($"Crashes: AndroidDetails.StackTrace: {crashReport.AndroidDetails.StackTrace}");
+                        string msgEr = $"HasCrashedInLastSession: {didAppCrash} : HasReceivedMemoryWarningInLastSession: {hadMemoryWarning}" + Environment.NewLine +
+                            $"Crashes: id: {crashReport.Id} - AppStartTime: {crashReport.AppStartTime} - AppErrorTime: {crashReport.AppErrorTime}" + Environment.NewLine +
+                            $"StackTrace: {crashReport.StackTrace}" + Environment.NewLine +
+                            $"AndroidDetails.ThreadName: {crashReport.AndroidDetails.ThreadName}" + Environment.NewLine +
+                            $"AndroidDetails.StackTrace: {crashReport.AndroidDetails.StackTrace}";
+                        Log.TAG = "GetLastError";
+                        Log.Error(msgEr);
+
                     }
                 }
             }
@@ -71,31 +75,35 @@ namespace SetBoxTV.VideoPlayer
 
             Log.TAG = "MainPage";
 
-            // First time ever launched application
-            Log.Debug($"firstLaunch: {VersionTracking.IsFirstLaunchEver}");
-            // First time launching current version
-            Log.Debug($"firstLaunchCurrent: {VersionTracking.IsFirstLaunchForCurrentVersion}");
-            // First time launching current build
-            Log.Debug($"firstLaunchBuild: {VersionTracking.IsFirstLaunchForCurrentBuild}");
-            // Current app version (2.0.0)
-            Log.Debug($"currentVersion: {VersionTracking.CurrentVersion}");
-            // Current build (2)
-            Log.Debug($"currentBuild: {VersionTracking.CurrentBuild}");
-            // Previous app version (1.0.0)
-            Log.Debug($"previousVersion: {VersionTracking.PreviousVersion}");
-            // Previous app build (1)
-            Log.Debug($"previousBuild: {VersionTracking.PreviousBuild}");
-            // First version of app installed (1.0.0)
-            Log.Debug($"firstVersion: {VersionTracking.FirstInstalledVersion}");
-            // First build of app installed (1)
-            Log.Debug($"firstBuild: {VersionTracking.FirstInstalledBuild}");
-            // List of versions installed (1.0.0, 2.0.0)
-            Log.Debug($"versionHistory: {String.Join(" | ", VersionTracking.VersionHistory)}");
-            // List of builds installed (1, 2)
-            Log.Debug($"buildHistory: {String.Join(" | ", VersionTracking.BuildHistory)}");
+            Log.Debug($"firstLaunch: {VersionTracking.IsFirstLaunchEver}" +
+            $"firstLaunchCurrent: {VersionTracking.IsFirstLaunchForCurrentVersion}" +
+            $"firstLaunchBuild: {VersionTracking.IsFirstLaunchForCurrentBuild}" +
+            $"currentVersion: {VersionTracking.CurrentVersion}" +
+            $"currentBuild: {VersionTracking.CurrentBuild}" +
+            $"previousVersion: {VersionTracking.PreviousVersion}" +
+            $"previousBuild: {VersionTracking.PreviousBuild}" +
+            $"firstVersion: {VersionTracking.FirstInstalledVersion}" +
+            $"firstBuild: {VersionTracking.FirstInstalledBuild}" +
+            $"versionHistory: {String.Join(" | ", VersionTracking.VersionHistory)}");
+
+            Log.Debug("MainPage", new Dictionary<string, string>() 
+            {
+                {"firstLaunch",VersionTracking.IsFirstLaunchEver.ToString(CultureInfo.InvariantCulture)},
+                {"firstLaunchCurrent",VersionTracking.IsFirstLaunchForCurrentVersion.ToString(CultureInfo.InvariantCulture)},
+                {"firstLaunchBuild",VersionTracking.IsFirstLaunchForCurrentBuild.ToString(CultureInfo.InvariantCulture)},
+                {"currentVersion",VersionTracking.CurrentVersion},
+                {"currentBuild",VersionTracking.CurrentBuild},
+                {"previousVersion",VersionTracking.PreviousVersion},
+                {"previousBuild",VersionTracking.PreviousBuild},
+                {"firstVersion",VersionTracking.FirstInstalledVersion},
+                {"firstBuild",VersionTracking.FirstInstalledBuild},
+                {"versionHistory",String.Join(" | ", VersionTracking.VersionHistory)},
+                {"buildHistory",String.Join(" | ", VersionTracking.BuildHistory)}
+            });
+
         }
 
-        private void ShowText(string t)
+        private void ShowText(string t, Dictionary<string, string> pro)
         {
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
@@ -104,7 +112,7 @@ namespace SetBoxTV.VideoPlayer
                 labelId.Text = model.LoadingText;
             });
 
-            Log.Debug(t);
+            Log.Debug(t, pro);
         }
 
         protected override void OnAppearing()
@@ -119,9 +127,11 @@ namespace SetBoxTV.VideoPlayer
                 {
                     await DependencyService.Get<ICheckPermission>()?.CheckSelfPermission();
                     Log.Debug("CheckSelfPermission");
-                    Log.Debug($"SetBox Name {PlayerSettings.DeviceName}");
+                    Log.Debug($"SetBox Name {PlayerSettings.DeviceName}", new Dictionary<string, string>() { { "DeviceName", PlayerSettings.DeviceName } });
 
                     await GetLastError();
+
+                    Log.TAG = "OnAppearing";
 
                     if (Connectivity.NetworkAccess != NetworkAccess.Internet && PlayerSettings.ReportNotConnection)
                     {
@@ -202,23 +212,22 @@ namespace SetBoxTV.VideoPlayer
                 {
                     try
                     {
-                        Log.Debug("Criando o diretorio de videos");
+                        Log.Debug("Criando o diretorio de videos", new Dictionary<string, string>() { { "PathFiles", PlayerSettings.PathFiles } });
                         Directory.CreateDirectory(PlayerSettings.PathFiles);
                     }
                     catch (Exception ex)
                     {
-                        Log.Error("Directory: " + ex.Message, ex, new Dictionary<string, string>() { 
-                            { "PathFiles", PlayerSettings.PathFiles },
-                            { "Class", "MainPage"},
-                            { "Method", "Loading"},
-                            { "Exception", ex.Message} 
-                        });
+                        Log.Error("Directory: " + ex.Message, ex);
                     }
                 }
 
                 try
                 {
-                    ShowText("Conectando no servidor");
+                    ShowText("Conectando no servidor", new Dictionary<string, string>() {
+                        {"deviceIdentifier", deviceIdentifier},
+                        {"license",license },
+                        {"Url", PlayerSettings.Url}
+                    });
 
                     api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
 
@@ -231,7 +240,7 @@ namespace SetBoxTV.VideoPlayer
                         PlayerSettings.DeviceName).ConfigureAwait(true);
 
 
-                    ShowText("Recuperando as configurações do servidor");
+                    ShowText("Recuperando as configurações do servidor", new Dictionary<string, string>() { { "DeviceName", PlayerSettings.DeviceName } });
 
                     var config = await api.GetConfig().ConfigureAwait(true);
 
@@ -249,15 +258,11 @@ namespace SetBoxTV.VideoPlayer
                 }
                 catch (Exception ex)
                 {
-                    Log.Error("UpdateInfo: " + ex.Message, ex, new Dictionary<string, string>() 
-                    { 
-                        { "Platform", DevicePicker.GetPlatform().ToString() },
-                        { "Model", DevicePicker.GetModel() }
-                    });
-                    ShowText("Erro ao conectar no servidor");
+                    Log.Error("UpdateInfo: " + ex.Message, ex);
+                    ShowText("Erro ao conectar no servidor", new Dictionary<string, string>() { { "Error", ex.Message} });
                 }
 
-                ShowText("Verificando a Licença de uso da SetBoxTV");
+                ShowText("Verificando a Licença de uso da SetBoxTV", new Dictionary<string, string>() { { "license", license } });
 
                 if (!string.IsNullOrEmpty(license))
                 {
@@ -287,13 +292,12 @@ namespace SetBoxTV.VideoPlayer
                     try
                     {
 
-                        ShowText("Recuperando a lista de arquivos");
+                        ShowText("Recuperando a lista de arquivos", new Dictionary<string, string>() { { "GetFilesCheckSums", "GetFilesCheckSums" } });
                         api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
                         var serverFiles1 = await api.GetFilesCheckSums().ConfigureAwait(true);
                         serverFiles = serverFiles1.ToList();
 
-                        Log.Debug($"Total de arquivos no servidor: {serverFiles.Count}");
-
+                        Log.Debug($"Total de arquivos no servidor: {serverFiles.Count}", new Dictionary<string, string>() { { "Count File", serverFiles.Count.ToString(CultureInfo.InvariantCulture) } });
                     }
                     catch (Exception ex)
                     {
@@ -311,23 +315,22 @@ namespace SetBoxTV.VideoPlayer
                         {
                             try
                             {
-                                Log.Debug($"Download do arquivo: {fi.url}");
-                                ShowText($"Download da midia {fi.name}");
+                                ShowText($"Download da midia {fi.name}", new Dictionary<string, string>()
+                                {
+                                     { "size", fi.size.ToString(CultureInfo.InvariantCulture) } ,
+                                     { "order", fi.order?.ToString(CultureInfo.InvariantCulture) } ,
+                                     { "name", fi.name } ,
+                                     { "creationDateTime", fi.creationDateTime.ToString("dd/MM/yyyy HH:mm:ss",CultureInfo.InvariantCulture) } ,
+                                     { "extension", fi.extension } ,
+                                     { "description", fi.description } ,
+                                     { "checkSum", fi.checkSum } ,
+                                     { "url", fi.url }
+                                });
                                 await StartDownloadHandler(fi.url, PlayerSettings.PathFiles, fi.name).ConfigureAwait(false);
                             }
                             catch (Exception ex)
                             {
-                                Log.Error($"Download {fi.name}: {ex.Message}", ex, new Dictionary<string, string>()
-                                {
-                                    { "Platform", DevicePicker.GetPlatform().ToString() },
-                                    { "Model", DevicePicker.GetModel() },
-                                    { "URL", fi.url},
-                                    { "PathFiles", PlayerSettings.PathFiles},
-                                    { "FileName", fi.name},
-                                    { "Class", "MainPage"},
-                                    { "Method", "Loading"},
-                                    { "Exception", ex.Message},
-                                });
+                                Log.Error($"Download {fi.name}: {ex.Message}", ex);
                             }
                         }
                         GetFilesInFolder(filePicker);
@@ -363,22 +366,22 @@ namespace SetBoxTV.VideoPlayer
                                     try
                                     {
                                         Log.Debug($"Download do arquivo: {fiServier.url}");
-                                        ShowText($"Download da midia {fiServier.name}");
+                                        ShowText($"Download da midia {fiServier.name}", new Dictionary<string, string>()
+                                        {
+                                             { "size", fiServier.size.ToString(CultureInfo.InvariantCulture) } ,
+                                             { "order", fiServier.order?.ToString(CultureInfo.InvariantCulture) } ,
+                                             { "name", fiServier.name } ,
+                                             { "creationDateTime", fiServier.creationDateTime.ToString("dd/MM/yyyy HH:mm:ss",CultureInfo.InvariantCulture) } ,
+                                             { "extension", fiServier.extension } ,
+                                             { "description", fiServier.description } ,
+                                             { "checkSum", fiServier.checkSum } ,
+                                             { "url", fiServier.url }
+                                        });
                                         await StartDownloadHandler(fiServier.url, PlayerSettings.PathFiles, fiServier.name).ConfigureAwait(false);
                                     }
                                     catch (Exception ex)
                                     {
-                                        Log.Error($"Download {fiServier.name}: {ex.Message}", ex, new Dictionary<string, string>()
-                                        {
-                                            { "Platform", DevicePicker.GetPlatform().ToString() },
-                                            { "Model", DevicePicker.GetModel() },
-                                            { "URL", fiServier.url},
-                                            { "PathFiles", PlayerSettings.PathFiles},
-                                            { "FileName", fiServier.name},
-                                            { "Class", "MainPage"},
-                                            { "Method", "Loading"},
-                                            { "Exception", ex.Message},
-                                        });
+                                        Log.Error($"Download {fiServier.name}: {ex.Message}", ex);
                                     }
                                 }
                                 else
@@ -401,7 +404,17 @@ namespace SetBoxTV.VideoPlayer
                                     try
                                     {
                                         Log.Debug($"Download do arquivo: {fi.url}");
-                                        ShowText($"Download da midia {fi.name}");
+                                        ShowText($"Download da midia {fi.name}", new Dictionary<string, string>()
+                                        {
+                                                { "size", fi.size.ToString(CultureInfo.InvariantCulture) } ,
+                                                { "order", fi.order?.ToString(CultureInfo.InvariantCulture) } ,
+                                                { "name", fi.name } ,
+                                                { "creationDateTime", fi.creationDateTime.ToString("dd/MM/yyyy HH:mm:ss",CultureInfo.InvariantCulture) } ,
+                                                { "extension", fi.extension } ,
+                                                { "description", fi.description } ,
+                                                { "checkSum", fi.checkSum } ,
+                                                { "url", fi.url }
+                                        });
                                         await StartDownloadHandler(fi.url, PlayerSettings.PathFiles, fi.name).ConfigureAwait(false);
                                     }
                                     catch (Exception ex)
@@ -414,7 +427,7 @@ namespace SetBoxTV.VideoPlayer
 
                             GetFilesInOrder(arquivos, serverFiles);
                         }
-                        ShowText("Iniciando o Player");
+                        ShowText("Iniciando o Player", new Dictionary<string, string>() { {"Count Files", arquivos.Count.ToString(CultureInfo.InvariantCulture)} });
 
                         labelLoadingId.IsVisible = false;
                         progressBarId.IsVisible = false;
@@ -431,14 +444,7 @@ namespace SetBoxTV.VideoPlayer
             }
             catch (Exception ex)
             {
-                Log.Error(ex, new Dictionary<string, string>()
-                {
-                    { "Platform", DevicePicker.GetPlatform().ToString() },
-                    { "Model", DevicePicker.GetModel() },
-                    { "Class", "MainPage"},
-                    { "Method", "Loading"},
-                    { "Exception", ex.Message},
-                });
+                Log.Error(ex);
                 MainPage.isInProcess = false;
                 model.IsLoading = false;
                 Application.Current.MainPage = new MainPage();
@@ -507,17 +513,7 @@ namespace SetBoxTV.VideoPlayer
             }
             catch (OperationCanceledException ex)
             {
-                Log.Error(ex, new Dictionary<string, string>()
-                {
-                    { "Platform", DevicePicker.GetPlatform().ToString() },
-                    { "Model", DevicePicker.GetModel() },
-                    { "Class", "MainPage"},
-                    { "Method", "StartDownloadHandler"},
-                    { "Exception", ex.Message},
-                    { "UrlToDownload", urlToDownload },
-                    { "PathToSave", pathToSave },
-                    { "FileName", fileName }
-                });
+                Log.Error(ex);
             }
             finally
             {

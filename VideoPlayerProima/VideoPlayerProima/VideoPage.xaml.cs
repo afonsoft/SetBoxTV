@@ -11,6 +11,7 @@ using LibVLCSharp.Forms.Shared;
 using System.Windows.Input;
 using System.Linq;
 using System.Threading;
+using System.Globalization;
 
 namespace SetBoxTV.VideoPlayer
 {
@@ -66,14 +67,18 @@ namespace SetBoxTV.VideoPlayer
             NavigationPage.SetHasNavigationBar(this, false);
             model.OnAppearing();
 
-            log?.Debug($"VideoPage : License: {PlayerSettings.License}");
-            log?.Debug($"VideoPage : PathFiles: {PlayerSettings.PathFiles}");
-            log?.Debug($"VideoPage : ShowVideo: {PlayerSettings.ShowVideo}");
-            log?.Debug($"VideoPage : ShowPhoto: {PlayerSettings.ShowPhoto}");
-            log?.Debug($"VideoPage : ShowWebImage: {PlayerSettings.ShowWebImage}");
-            log?.Debug($"VideoPage : ShowWebVideo: {PlayerSettings.ShowWebVideo}");
-            log?.Debug($"VideoPage : EnableTransactionTime: {PlayerSettings.EnableTransactionTime}");
-            log?.Debug($"VideoPage : TransactionTime: {PlayerSettings.TransactionTime}");
+            log?.Debug("VideoPage: OnAppearing", new Dictionary<string, string>() {
+                { "License",PlayerSettings.License},
+                { "PathFiles",PlayerSettings.PathFiles},
+                { "ShowVideo",PlayerSettings.ShowVideo.ToString(CultureInfo.InvariantCulture)},
+                { "ShowPhoto",PlayerSettings.ShowPhoto.ToString(CultureInfo.InvariantCulture)},
+                { "ShowWebImage",PlayerSettings.ShowWebImage.ToString(CultureInfo.InvariantCulture)},
+                { "ShowWebVideo",PlayerSettings.ShowWebVideo.ToString(CultureInfo.InvariantCulture)},
+                { "EnableTransactionTime",PlayerSettings.EnableTransactionTime.ToString(CultureInfo.InvariantCulture)},
+                { "TransactionTime",PlayerSettings.TransactionTime.ToString(CultureInfo.InvariantCulture)},
+            });
+
+            
 
             model.EndReached += MediaPlayerEndReached;
             GoNextPlayer();
@@ -109,9 +114,17 @@ namespace SetBoxTV.VideoPlayer
                         break;
                 }
 
-                log?.Debug($"File: {fileOrUrl.path}");
-                log?.Debug($"Order: {fileOrUrl.order}");
-                log?.Debug($"Size: {fileOrUrl.size}");
+                log.Debug($"Player {fileOrUrl.name}", new Dictionary<string, string>()
+                {
+                    { "File", fileOrUrl.path},
+                    { "Order", fileOrUrl.order.ToString()},
+                    { "Size", fileOrUrl.size.ToString("N2", CultureInfo.InvariantCulture)},
+                    { "Name", fileOrUrl.name},
+                    { "CreationDateTime", fileOrUrl.creationDateTime.ToString("dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture)},
+                    { "Description", fileOrUrl.description},
+                    { "Extension", fileOrUrl.extension},
+                    { "CheckSum", fileOrUrl.checkSum}
+                });
 
                 switch (fileOrUrl.fileType)
                 {

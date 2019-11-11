@@ -188,53 +188,6 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             CreateApiLogError($"{text}", API.LogLevel.ERROR);
         }
 
-        public void Error(string text, System.Exception ex, Dictionary<string, string> property)
-        {
-            if (ex == null && string.IsNullOrEmpty(text))
-                return;
-
-            Log.Error($"SetBoxTV", Throwable.FromException(ex), $"{text} - {ex?.Message}");
-            AppCenterLog.Error(TAG, $"{text} - {ex?.Message}", ex);
-            Analytics.TrackEvent($"{text} - {ex?.Message} - {TAG} : Identifier: {DeviceIdentifier}", property);
-            Crashes.TrackError(ex, property);
-
-            SaveFile(TAG, "ERRO  ", text, ex);
-            logMemory.Add($"{text} - {ex?.Message}");
-            CreateApiLogError($"{text} - {ex?.Message}", API.LogLevel.ERROR);
-        }
-
-        public void Error(System.Exception ex, Dictionary<string, string> property)
-        {
-            if (ex == null)
-                return;
-
-            Log.Error($"SetBoxTV", Throwable.FromException(ex), $"{ex.Message}");
-            
-            AppCenterLog.Error(TAG, $"{ex.Message}", ex);
-            Analytics.TrackEvent($"{ex.Message} - {TAG} : Identifier: {DeviceIdentifier}", property);
-            Crashes.TrackError(ex, property);
-
-            SaveFile(TAG, "ERRO  ", null, ex);
-            logMemory.Add($"{ex?.Message}");
-            CreateApiLogError($"{ex.Message}", API.LogLevel.ERROR);
-        }
-
-        public void Error(string text, Dictionary<string, string> property)
-        {
-            if (string.IsNullOrEmpty(text))
-                return;
-
-            Log.Error($"SetBoxTV", $"{TAG} : {text}");
-            
-            AppCenterLog.Error(TAG, $"{text}");
-            Analytics.TrackEvent($"{text} - {TAG} : Identifier: {DeviceIdentifier}", property);
-            Crashes.TrackError(new System.Exception(text), property);
-
-            SaveFile(TAG, "ERRO  ", text, null);
-            logMemory.Add($"{text}");
-            CreateApiLogError($"{text}", API.LogLevel.ERROR);
-
-        }
 
         public void ErrorVLC(string text)
         {

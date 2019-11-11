@@ -62,18 +62,18 @@ namespace SetBoxTV.VideoPlayer
                 Crashes.ShouldAwaitUserConfirmation = () => { return true; };
                 Crashes.ShouldProcessErrorReport = (ErrorReport report) => { return true; };
                 Distribute.ReleaseAvailable = OnReleaseAvailable;
-                Crashes.NotifyUserConfirmation(UserConfirmation.AlwaysSend);
 
                 AppCenter.Start($"android={androidKey}", typeof(Analytics), typeof(Crashes), typeof(Push), typeof(Distribute));
-
+                
+                AppCenter.SetUserId(DependencyService.Get<IDevicePicker>()?.GetIdentifier());
+                Crashes.NotifyUserConfirmation(UserConfirmation.AlwaysSend);
+                
                 Crashes.SetEnabledAsync(true);
                 Push.SetEnabledAsync(true);
                 Analytics.SetEnabledAsync(true);
                 Distribute.SetEnabledAsync(false);
 
                 VersionTracking.Track();
-                AppCenter.SetUserId(DependencyService.Get<IDevicePicker>()?.GetIdentifier());
-                
             }
 
             Log.Debug("OnStart");
