@@ -3,6 +3,7 @@ using SetBoxTV.VideoPlayer.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -182,6 +183,11 @@ namespace SetBoxTV.VideoPlayer.Model
         private void MediaPlayerEncounteredError(object sender, EventArgs e)
         {
             IsVideoViewInitialized = false;
+
+
+            _media = null;
+            _mediaPlayer = null;
+
             EncounteredError?.Invoke(sender, e);
         }
 
@@ -211,6 +217,7 @@ namespace SetBoxTV.VideoPlayer.Model
             if (CanPlay())
             {
                 MediaPlayer.Play(Media);
+                Thread.Sleep(200);
             }
         }
 
@@ -232,6 +239,7 @@ namespace SetBoxTV.VideoPlayer.Model
                     MediaPlayer.SetRenderer(_rendererItems.First());
                 }
                 MediaPlayer.Play(Media);
+                Thread.Sleep(200);
             }
         }
     }

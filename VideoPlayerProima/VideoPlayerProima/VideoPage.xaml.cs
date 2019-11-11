@@ -10,6 +10,7 @@ using SetBoxTV.VideoPlayer.Interface;
 using LibVLCSharp.Forms.Shared;
 using System.Windows.Input;
 using System.Linq;
+using System.Threading;
 
 namespace SetBoxTV.VideoPlayer
 {
@@ -126,7 +127,15 @@ namespace SetBoxTV.VideoPlayer
                             _videoView.MediaPlayer = model.MediaPlayer;
 
                             if (model.CanPlay())
+                            {
                                 _videoView.MediaPlayer.Play(model.Media);
+                                Thread.Sleep(200);
+                            }
+                            else
+                            {
+                                Thread.Sleep(200);
+                                Player(fileOrUrl);
+                            }
 
                             break;
                         }
