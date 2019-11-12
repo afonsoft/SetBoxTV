@@ -216,8 +216,10 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
                     ErrorAttachmentLog.AttachmentWithBinary(new ScreenshotService().CaptureScreen(), $"Screenshot{DateTime.Now:yyyyMMddHHmmss}.png", "image/png")
                 };
             }
-            catch
+            catch(System.Exception ex)
             {
+                logMemory.Add($"GetErrorAttachments: {ex.Message}");
+                SaveFile("GetErrorAttachments", "ERRO  ", ex.Message, ex);
                 return null;
             }
         }
@@ -298,8 +300,10 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
 
                 return p;
             }
-            catch
+            catch(System.Exception ex)
             {
+                logMemory.Add($"GetProprery: {ex.Message}");
+                SaveFile("GetProprery", "ERRO  ", ex.Message, ex);
                 return null;
             }
         }
