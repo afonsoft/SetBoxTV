@@ -44,7 +44,7 @@ namespace SetBoxTV.VideoPlayer
                 log.IsDebugEnabled = PlayerSettings.DebugEnabled;
                 log.TAG = "VideoPage";
             }
-
+                
             //Ordenar por order e depois por nome
             fileDetails = files.OrderBy(x => x.order).ThenBy(x => x.name).ToList();
 
@@ -52,7 +52,7 @@ namespace SetBoxTV.VideoPlayer
                 execute: () =>
                 {
                     log?.Debug("Tapped to Settings");
-                    Application.Current.MainPage = new SettingsPage();
+                    Application.Current.MainPage = new NavigationPage(new SettingsPage());
                 },
                 canExecute: () =>
                 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AppCenter;
 using SetBoxTV.VideoPlayer.Helpers;
@@ -146,10 +147,9 @@ namespace SetBoxTV.VideoPlayer
 
         public async void OnButtonSelectClicked(object sender, EventArgs e)
         {
-            string path = "";
             try
             {
-                path = await directoyPicker.OpenSelectFolderAsync();
+                string path = await directoyPicker.OpenSelectFolderAsync().ConfigureAwait(true);
                 if (!string.IsNullOrEmpty(path))
                 {
                     path = path.Substring(0, path.LastIndexOf('/') + 1);
@@ -244,6 +244,14 @@ namespace SetBoxTV.VideoPlayer
             model.IsLoading = false;
             await ShowMessage("Dados Salvos com sucesso!", "Salvar", "OK",
                 () => { Application.Current.MainPage = new MainPage(); }).ConfigureAwait(true);
+        }
+
+        public void OnButtonPrintScreenClicked(object sender, EventArgs e)
+        {
+            var arrBytes = DependencyService.Get<IScreenshotService>().CaptureScreen();
+            string imageName = $"Screenshot{DateTime.Now:yyyyMMddHHmmss}.png";
+            File.WriteAllBytes(imageName, arrBytes);
+            DependencyService.Get<IMessage>().Alert($"{imageName} salvo na pasta {PlayerSettings.PathFiles}");
         }
 
         private void LicenseID_Tapped(object sender, EventArgs e)

@@ -12,6 +12,7 @@ using Microsoft.AppCenter;
 using System.Collections.Generic;
 using System.Globalization;
 using Xamarin.Essentials;
+using SetBoxTV.VideoPlayer.Extensions;
 
 [assembly: Dependency(typeof(SetBoxTV.VideoPlayer.Droid.Controls.LoggerService))]
 namespace SetBoxTV.VideoPlayer.Droid.Controls
@@ -108,15 +109,18 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             }
 
         }
-        public void Debug(string text, Dictionary<string, string> property)
+        public async void Debug(string text, Dictionary<string, string> property)
         {
             if (string.IsNullOrEmpty(text))
                 return;
 
             AppCenterLog.Debug(TAG, text);
-            Analytics.TrackEvent($"{text} - {TAG} : Identifier: {DeviceIdentifier}", property);
             Log.Debug($"SetBoxTV", $"{TAG} : {text}");
 
+            var p = await GetProprery();
+            p.AddRange(property);
+            Analytics.TrackEvent($"{text} - {TAG} : Identifier: {DeviceIdentifier}", property);
+            
             if (IsDebugEnabled)
             {
                 logMemory.Add($"{text}");
@@ -220,7 +224,7 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
             {
                 logMemory.Add($"GetErrorAttachments: {ex.Message}");
                 SaveFile("GetErrorAttachments", "ERRO  ", ex.Message, ex);
-                return null;
+                return new ErrorAttachmentLog[0];
             }
         }
 
@@ -325,11 +329,11 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
                         }
                         catch
                         {
-                            directory = Xamarin.Essentials.FileSystem.AppDataDirectory;
+                            directory = FileSystem.AppDataDirectory;
                         }
 
-                        string fileName = Path.Combine(directory, $"LOG-{DateTime.Now:yyyy-MM-dd}.txt");
-                        LogFileName = fileName;
+                        LogFileName = $"LOG-{DateTime.Now:yyyy-MM-dd}.txt";
+                        string fileName = Path.Combine(directory, LogFileName);
 
                         using (var streamWriter = !File.Exists(fileName)
                             ? File.CreateText(fileName)

@@ -44,6 +44,11 @@
                     <TableSection Title="Licença" x:Name="TableSection4">
                         <TextCell Text="Licença" x:Name="LicenseID" Detail="ID: " AutomationId="LicenseID" Tapped="LicenseID_Tapped"/>
                         <EntryCell Label="Key" x:Name="LabelKey" AutomationId="LabelKey" Placeholder=""  Keyboard="Default" Text="{Binding License, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True" />
+                        <ViewCell>
+                            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" TabIndex="2">
+                                <Button Text="PrintScreen" x:Name="PrintScreenButton" TabIndex="3" AutomationId="PrintScreenButton" Clicked="OnButtonPrintScreenClicked" AutomationProperties.IsInAccessibleTree="True" />
+                            </StackLayout>
+                        </ViewCell>
                     </TableSection>
                     <TableSection Title="Debug Mode" x:Name="TableSection5">
                         <SwitchCell x:Name="SwitchDebugMode" AutomationId="SwitchDebugMode" Text="Enable Debug Mode" On="{Binding DebugMode, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True"/>
@@ -57,7 +62,7 @@
                     </TableSection>
                     <TableSection Title="" x:Name="TableSection7">
                         <ViewCell>
-                            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" TabIndex="2">
+                            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" TabIndex="3">
                                 <Button Text="Salvar" x:Name="SaveButton" TabIndex="3" AutomationId="SaveButton" Clicked="OnButtonSalvarClicked" AutomationProperties.IsInAccessibleTree="True" />
                             </StackLayout>
                         </ViewCell>

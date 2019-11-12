@@ -18,5 +18,20 @@ namespace SetBoxTV.VideoPlayer.Extensions
 
             return source.SelectMany(childrenSelector).FirstOrDefaultFromMany(childrenSelector, condition);
         }
+
+        public static void ForEach<T>(this IEnumerable<T> source, Action<T> action)
+        {
+            if (source == null)
+                return; 
+
+            foreach (var item in source)
+                action(item);
+        }
+
+        public static void AddRange<TKey, TValue>(this Dictionary<TKey, TValue> dicSource, Dictionary<TKey, TValue> dicNewSource)
+        {
+            if (dicNewSource == null) return;
+            dicNewSource.ForEach(x => { if (!dicSource.ContainsKey(x.Key)) dicSource.Add(x.Key, x.Value); });
+        }
     }
 }

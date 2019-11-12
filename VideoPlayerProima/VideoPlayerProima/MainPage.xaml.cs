@@ -447,7 +447,10 @@ namespace SetBoxTV.VideoPlayer
                 Log.Error(ex);
                 MainPage.isInProcess = false;
                 model.IsLoading = false;
-                Application.Current.MainPage = new MainPage();
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    Application.Current.MainPage = new MainPage();
+                });
             }
             finally
             {
@@ -504,7 +507,7 @@ namespace SetBoxTV.VideoPlayer
         {
             model.ProgressValue = 0;
             model.IsDownloading = true;
-            var cts = new CancellationTokenSource();
+            var cts = new CancellationTokenSource(5*60*1000); //5 minutos de timeout
             try
             {
                 Progress<DownloadBytesProgress> progressReporter = new Progress<DownloadBytesProgress>();

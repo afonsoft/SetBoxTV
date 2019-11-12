@@ -106,7 +106,6 @@ namespace SetBoxTV.VideoPlayer
         public static IEnumerable<ErrorAttachmentLog> OnGetErrorAttachments(ErrorReport report)
         {
             ILogger log = DependencyService.Get<ILogger>();
-            log.Debug("OnGetErrorAttachments");
             return new ErrorAttachmentLog[]
             {
                 ErrorAttachmentLog.AttachmentWithText($"Id: {report.Id} {Environment.NewLine} AppStartTime: {report.AppStartTime} {Environment.NewLine} AppErrorTime: {report.AppErrorTime} {Environment.NewLine} StackTrace: {report.StackTrace}", "StackTrace.txt"),
