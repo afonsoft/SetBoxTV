@@ -103,7 +103,7 @@ namespace SetBoxTV.VideoPlayer
 
         }
 
-        static IEnumerable<ErrorAttachmentLog> OnGetErrorAttachments(ErrorReport report)
+        public static IEnumerable<ErrorAttachmentLog> OnGetErrorAttachments(ErrorReport report)
         {
             ILogger log = DependencyService.Get<ILogger>();
             log.Debug("OnGetErrorAttachments");
@@ -112,7 +112,7 @@ namespace SetBoxTV.VideoPlayer
                 ErrorAttachmentLog.AttachmentWithText($"Id: {report.Id} {Environment.NewLine} AppStartTime: {report.AppStartTime} {Environment.NewLine} AppErrorTime: {report.AppErrorTime} {Environment.NewLine} StackTrace: {report.StackTrace}", "StackTrace.txt"),
                 ErrorAttachmentLog.AttachmentWithText($"Id: {report.Id} {Environment.NewLine} AppStartTime: {report.AppStartTime} {Environment.NewLine} AppErrorTime: {report.AppErrorTime} {Environment.NewLine} StackTrace: {report.AndroidDetails.StackTrace} {Environment.NewLine} ThreadName: {report.AndroidDetails.ThreadName}" , "AndroidDetails.txt"),
                 ErrorAttachmentLog.AttachmentWithText(log.LogFileContent, log.LogFileName),
-                ErrorAttachmentLog.AttachmentWithBinary(DependencyService.Get<IScreenshotService>().CaptureScreen(), "Screenshot.jpg", "image/jpeg")
+                ErrorAttachmentLog.AttachmentWithBinary(DependencyService.Get<IScreenshotService>().CaptureScreen(), $"Screenshot{DateTime.Now:yyyyMMddHHmmss}.png", "image/png")
             };
         }
 
