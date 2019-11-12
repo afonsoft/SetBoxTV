@@ -50,7 +50,7 @@ namespace SetBoxTV.VideoPlayer
                             $"AndroidDetails.ThreadName: {crashReport.AndroidDetails.ThreadName}" + Environment.NewLine +
                             $"AndroidDetails.StackTrace: {crashReport.AndroidDetails.StackTrace}";
                         Log.TAG = "GetLastError";
-                        Log.Error(msgEr,null, App.GetErrorAttachments(crashReport));
+                        Log.Error(msgEr);
 
                     }
                 }
