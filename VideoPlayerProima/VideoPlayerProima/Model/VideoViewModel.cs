@@ -72,7 +72,7 @@ namespace SetBoxTV.VideoPlayer.Model
         {
             get
             {
-                if (_mediaPlayer == null)
+                if (_mediaPlayer == null || _libVLC == null)
                 {
                     if(_libVLC == null)
                     {
@@ -90,6 +90,7 @@ namespace SetBoxTV.VideoPlayer.Model
                         FileCaching = 5000
                     };
                     _mediaPlayer.EndReached += MediaPlayerEndReached;
+                    _mediaPlayer.EncounteredError += MediaPlayerEncounteredError;
                 }
                 return _mediaPlayer;
             }
@@ -210,9 +211,8 @@ namespace SetBoxTV.VideoPlayer.Model
             IsVideoViewInitialized = false;
 
             _media = null;
-            _mediaPlayer = null;
-
             Thread.Sleep(200);
+
             EndReached?.Invoke(sender, e);
         }
 
@@ -239,7 +239,7 @@ namespace SetBoxTV.VideoPlayer.Model
         public void Stop()
         {
             IsVideoViewInitialized = false;
-            if (MediaPlayer != null && MediaPlayer.State != VLCState.Stopped && MediaPlayer.State != VLCState.Ended)
+            if (MediaPlayer != null && MediaPlayer.State != VLCState.Stopped && MediaPlayer.State != VLCState.Ended) 
                 MediaPlayer.Stop();
         }
 
