@@ -76,7 +76,7 @@ namespace SetBoxTV.VideoPlayer.Model
                 {
                     if(_libVLC == null)
                     {
-                        LibVLC = new LibVLC();
+                        LibVLC = new LibVLC("--android-display-chroma", "RV16");
                         LibVLC.Log += LibVLC_Log;
                     }
 
@@ -86,7 +86,8 @@ namespace SetBoxTV.VideoPlayer.Model
                         Fullscreen = true,
                         Mute = false,
                         Volume = 100,
-                        AspectRatio = "Fit screen"
+                        AspectRatio = "Fit screen",
+                        FileCaching = 5000
                     };
                     _mediaPlayer.EndReached += MediaPlayerEndReached;
                 }
@@ -119,12 +120,12 @@ namespace SetBoxTV.VideoPlayer.Model
                 {
                     if(_libVLC == null)
                     {
-                        LibVLC = new LibVLC();
+                        LibVLC = new LibVLC("--android-display-chroma", "RV16");
                         LibVLC.Log += LibVLC_Log;
                     }
 
                     Media = new Media(LibVLC, _file, FromType.FromPath);
-                    Media.AddOption(new MediaConfiguration() { EnableHardwareDecoding = false, FileCaching = 1500 });
+                    Media.AddOption(new MediaConfiguration() { EnableHardwareDecoding = true, FileCaching = 5000 });
                     Media.AddOption(":fullscreen");
                     IsVideoViewInitialized = true;
                 }
@@ -161,18 +162,18 @@ namespace SetBoxTV.VideoPlayer.Model
             Core.Initialize();
 
             // instanciate the main libvlc object
-            LibVLC = new LibVLC();
+            LibVLC = new LibVLC("--android-display-chroma", "RV16");
             LibVLC.Log += LibVLC_Log;
 
             // instanciate the main MediaPlayer object
             MediaPlayer = new MediaPlayer(LibVLC)
             {
-                EnableHardwareDecoding = false,
+                EnableHardwareDecoding = true,
                 Fullscreen = true,
                 Mute = false,
                 Volume = 100,
                 AspectRatio = "Fit screen",
-                FileCaching = 1500
+                FileCaching = 5000
             };
 
             MediaPlayer.EndReached += MediaPlayerEndReached;
@@ -197,9 +198,9 @@ namespace SetBoxTV.VideoPlayer.Model
         {
             IsVideoViewInitialized = false;
 
-
             _media = null;
             _mediaPlayer = null;
+            Thread.Sleep(200);
 
             EncounteredError?.Invoke(sender, e);
         }
@@ -211,6 +212,7 @@ namespace SetBoxTV.VideoPlayer.Model
             _media = null;
             _mediaPlayer = null;
 
+            Thread.Sleep(200);
             EndReached?.Invoke(sender, e);
         }
 
