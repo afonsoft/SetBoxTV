@@ -59,7 +59,7 @@ namespace SetBoxTV.VideoPlayer.Model
         public LibVLC LibVLC
         {
             get => _libVLC;
-            private set => SetProperty(ref _libVLC, value);
+            private set => SetProperty(ref _libVLC, value, nameof(LibVLC));
         }
 
 
@@ -95,7 +95,7 @@ namespace SetBoxTV.VideoPlayer.Model
                 return _mediaPlayer;
             }
 
-            private set => SetProperty(ref _mediaPlayer, value);
+            private set => SetProperty(ref _mediaPlayer, value, nameof(MediaPlayer));
         }
 
 
@@ -107,7 +107,7 @@ namespace SetBoxTV.VideoPlayer.Model
         public Media Media
         {
             get => _media;
-            private set => SetProperty(ref _media, value);
+            private set => SetProperty(ref _media, value, nameof(Media));
         }
 
         private string _file;
@@ -116,7 +116,7 @@ namespace SetBoxTV.VideoPlayer.Model
             get => _file;
             set
             {
-                SetProperty(ref _file, value);
+                SetProperty(ref _file, value, nameof(VideoFile));
                 if (!string.IsNullOrEmpty(_file))
                 {
                     if(_libVLC == null)
@@ -150,7 +150,7 @@ namespace SetBoxTV.VideoPlayer.Model
             }
             set
             {
-                SetProperty(ref _isLoading, value);
+                SetProperty(ref _isLoading, value, nameof(IsLoading));
             }
         }
 
