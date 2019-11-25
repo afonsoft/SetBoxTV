@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.23" package="br.com.Afonsoft.SetBoxTV.VideoPlayer.Android" android:installLocation="auto" android:versionCode="23">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.24" package="br.com.Afonsoft.SetBoxTV.VideoPlayer.Android" android:installLocation="auto" android:versionCode="24">
 	<uses-sdk android:minSdkVersion="22" android:targetSdkVersion="29" />
-  <uses-feature android:name="android.hardware.gamepad" android:required="false"/>
+	<uses-feature android:name="android.hardware.gamepad" android:required="false" />
 	<uses-feature android:name="android.software.leanback" android:required="false" />
-  <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+	<uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 	<uses-feature android:name="android.hardware.faketouch" android:required="false" />
 	<uses-feature android:name="android.hardware.telephony" android:required="false" />
 	<uses-feature android:name="android.hardware.camera" android:required="false" />
@@ -23,8 +23,8 @@
 	<uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
 	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 	<uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
-  <application android:icon="@mipmap/launcher_foreground" android:banner="@mipmap/banner" android:logo="@mipmap/launcher_foreground" android:label="SetBoxTV Outdoor Media" >
-  <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
+	<application android:icon="@mipmap/launcher_foreground" android:banner="@mipmap/banner" android:logo="@mipmap/launcher_foreground" android:label="SetBoxTV Outdoor Media">
+		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
 		<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
 			<intent-filter>
 				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -32,5 +32,5 @@
 				<category android:name="${applicationId}" />
 			</intent-filter>
 		</receiver>
-  </application>
+	</application>
 </manifest>
