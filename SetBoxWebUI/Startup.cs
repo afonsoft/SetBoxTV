@@ -107,6 +107,9 @@ namespace SetBoxWebUI
                         options.LoginPath = new PathString("/Auth/Login");
                         options.AccessDeniedPath = new PathString("/Auth/Denied");
                         options.SlidingExpiration = true;
+                        options.Cookie.HttpOnly = true;
+                        options.Cookie.IsEssential = true;
+                        options.ExpireTimeSpan = TimeSpan.FromHours(24);
                     })
                  .AddJwtBearer(options => {
                      options.Audience = "https://setbox.afonsoft.com.br/";
@@ -152,7 +155,7 @@ namespace SetBoxWebUI
             });
 
             services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddControllersAsServices()
                 .AddJsonOptions(
                 options =>
