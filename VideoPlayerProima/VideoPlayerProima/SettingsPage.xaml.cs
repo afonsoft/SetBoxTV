@@ -252,6 +252,7 @@ namespace SetBoxTV.VideoPlayer
                 Log.Error(ex);
             }
             ConstVars.IsInProcess = false;
+            ConstVars.EventHandlerCalled = false;
             model.IsLoading = false;
             await ShowMessage("Dados Salvos com sucesso!", "Salvar", "OK",
                 () => { Application.Current.MainPage = new MainPage(); }).ConfigureAwait(true);

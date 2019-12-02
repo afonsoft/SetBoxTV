@@ -10,29 +10,26 @@ using SetBoxTV.VideoPlayer.Interface;
 using LibVLCSharp.Forms.Shared;
 using System.Windows.Input;
 using System.Linq;
-using System.Threading;
 using System.Globalization;
+using LibVLCSharp.Shared;
 
 namespace SetBoxTV.VideoPlayer
 {
     [XamlCompilation(XamlCompilationOptions.Skip)]
     public partial class VideoPage : ContentPage
     {
-        private SetBoxTV.VideoPlayer.Library.VideoSource fileToPlay;
-        private ImageSource imagaToPlay;
         private readonly List<FileDetails> fileDetails;
         private readonly ILogger log;
-        private int index = 0;
-        private VideoViewModel model;
-        private Xamarin.Forms.Image _image;
         private VideoView _videoView;
+
+        #region VLC
+        private LibVLC _libVLC;
+        #endregion
 
         public VideoPage(List<FileDetails> files)
         {
             InitializeComponent();
             ConstVars.IsInProcess = false;
-            BindingContext = model = new VideoViewModel();
-            model.IsLoading = true;
 
             log = DependencyService.Get<ILogger>();
             if (log != null)
@@ -51,6 +48,7 @@ namespace SetBoxTV.VideoPlayer
             Tapped = new Command(
                 execute: () =>
                 {
+                    ConstVars.EventHandlerCalled = true;
                     log?.Debug("Tapped to Settings");
                     Application.Current.MainPage = new NavigationPage(new SettingsPage());
                 },
@@ -61,12 +59,13 @@ namespace SetBoxTV.VideoPlayer
             );
 
             log?.Debug($"VideoPage Total Files {fileDetails?.Count}");
+
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
             NavigationPage.SetHasNavigationBar(this, false);
-            model.OnAppearing();
+            Core.Initialize();
 
             log?.Debug("VideoPage: OnAppearing", new Dictionary<string, string>() {
                 { "License",PlayerSettings.License},
@@ -79,123 +78,73 @@ namespace SetBoxTV.VideoPlayer
                 { "TransactionTime",PlayerSettings.TransactionTime.ToString(CultureInfo.InvariantCulture)},
             });
 
-            model.EndReached += MediaPlayerEndReached;
-            GoNextPlayer();
+            WhileFilesToPlayer();
         }
 
-        private void GoNextPlayer()
+        private async void WhileFilesToPlayer()
         {
-            model.IsLoading = true;
-            Device.BeginInvokeOnMainThread(() =>
+            // instanciate the main libvlc object
+            _libVLC = new LibVLC("--android-display-chroma", "RV16", "--input-repeat=65545", "input-repeat=65545");
+            _libVLC.Log += LibVLC_Log;
+
+            //Criar a PlayList
+            MediaList medias = new MediaList(_libVLC);
+            int idx = 0;
+
+            _videoView = new VideoView() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, AutomationId = "VideoLVC", TabIndex = 1 };
+            _videoView.TabIndex = 1;
+            _videoView.GestureRecognizers.Add(new TapGestureRecognizer() { NumberOfTapsRequired = 2, Command = Tapped });
+            MainGrid.Children.Add(_videoView);
+
+            _videoView.MediaPlayer = new MediaPlayer(_libVLC)
             {
-                Player(fileDetails[index]);
-                index++;
+                EnableHardwareDecoding = true,
+                Fullscreen = true,
+                Mute = false,
+                Volume = 100,
+                AspectRatio = "Fit screen",
+                FileCaching = 5000
+            };
 
-                if (index >= fileDetails.Count)
-                    index = 0;
-            });
-            model.IsLoading = false;
-        }
-
-        private void Player(FileDetails fileOrUrl)
-        {
-            try
+            while (!ConstVars.EventHandlerCalled)
             {
-                MainGrid.Children.Clear();
-                switch (fileOrUrl.fileType)
-                {
-                    case EnumFileType.Video:
-                        fileToPlay = new FileVideoSource { File = fileOrUrl.path };
-                        break;
+                var m = new Media(_libVLC, (new FileVideoSource { File = fileDetails[idx].path }).File, FromType.FromPath);
+                m.AddOption(new MediaConfiguration() { EnableHardwareDecoding = true, FileCaching = 5000 });
+                m.AddOption(":fullscreen");
+                medias.SetMedia(m);
+                idx++;
 
-                    case EnumFileType.Image:
-                        imagaToPlay = ImageSource.FromFile(fileOrUrl.path);
-                        break;
-                }
+                if (idx >= fileDetails.Count)
+                    idx = 0;
 
-                log.Debug($"Player {fileOrUrl.name}", new Dictionary<string, string>()
-                {
-                    { "File", fileOrUrl.path},
-                    { "Order", fileOrUrl.order.ToString()},
-                    { "Size", fileOrUrl.size.ToString("N2", CultureInfo.InvariantCulture)},
-                    { "Name", fileOrUrl.name},
-                    { "CreationDateTime", fileOrUrl.creationDateTime.ToString("dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture)},
-                    { "Description", fileOrUrl.description},
-                    { "Extension", fileOrUrl.extension},
-                    { "CheckSum", fileOrUrl.checkSum}
-                });
+                var taskEndPlayer = new TaskCompletionSource<bool>();
+                _videoView.MediaPlayer.EndReached += async (sender, args) => { await Task.Delay(500).ConfigureAwait(true);  taskEndPlayer.SetResult(true); };
+                _videoView.MediaPlayer.EncounteredError += (sender, args) => { taskEndPlayer.SetResult(true); };
 
-                switch (fileOrUrl.fileType)
-                {
-                    case EnumFileType.Video:
-                        {
-                            model.VideoFile = ((FileVideoSource)fileToPlay).File;
-
-                            _videoView = new VideoView() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, AutomationId = "VideoLVC", TabIndex = 1 };
-                            _videoView.TabIndex = 1;
-                            _videoView.GestureRecognizers.Add(new TapGestureRecognizer() { NumberOfTapsRequired = 2, Command = Tapped });
-                            MainGrid.Children.Add(_videoView);
-
-                            _videoView.MediaPlayer = model.MediaPlayer;
-
-                            if (model.CanPlay())
-                            {
-                                _videoView.MediaPlayer.Play(model.Media);
-                                Thread.Sleep(200);
-                            }
-                            else
-                            {
-                                Thread.Sleep(200);
-                                GoNextPlayer();
-                            }
-
-                            break;
-                        }
-                    case EnumFileType.Image:
-                        {
-                            _image = new Image() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand };
-                            _image.Source = imagaToPlay;
-                            _image.TabIndex = 1;
-                            _image.GestureRecognizers.Add(new TapGestureRecognizer() { NumberOfTapsRequired = 2, Command = Tapped });
-                            MainGrid.Children.Add(_image);
-                            Delay();
-                            break;
-                        }
-                }
-            }
-            catch (Exception ex)
-            {
-                log?.Error(ex); 
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    ConstVars.IsInProcess = false;
-                    Application.Current.MainPage = new MainPage();
+                    try
+                    {
+                        _videoView.MediaPlayer.Play(new Media(medias));
+                    }
+                    catch (Exception ex)
+                    {
+                        taskEndPlayer.SetException(ex);
+                    }
                 });
+
+                await Task.Delay(5000).ConfigureAwait(true);
+                await taskEndPlayer.Task.ConfigureAwait(true);
             }
+        }
+
+        private void LibVLC_Log(object sender, LogEventArgs e)
+        {
+            if (e.Level == LogLevel.Error)
+                log.ErrorVLC($"{e.Message} : {e.Module} : {e.SourceFile} ({e.SourceLine})");
         }
 
         public ICommand Tapped { private set; get; }
 
-        private void OnTapped(object sender, EventArgs e)
-        {
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                log?.Debug("OnTapped to Settings");
-                Application.Current.MainPage = new SettingsPage();
-            });
-        }
-
-        private async void Delay()
-        {
-            log?.Debug($"Duration: {PlayerSettings.TransactionTime} Segundos");
-            await Task.Delay(PlayerSettings.TransactionTime * 1000).ConfigureAwait(true);
-
-            GoNextPlayer();
-        }
-
-        private void MediaPlayerEndReached(object sender, EventArgs e)
-        {
-            GoNextPlayer();
-        }
     }
 }

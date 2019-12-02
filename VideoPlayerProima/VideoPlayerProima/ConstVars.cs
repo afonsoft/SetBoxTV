@@ -9,5 +9,6 @@ namespace SetBoxTV.VideoPlayer
         public static bool IsInProcess = false;
         public static bool IsStartProcess = false;
         public static bool IsBootProcess = false;
+        public static bool EventHandlerCalled = false;
     }
 }
