@@ -18,10 +18,18 @@ namespace SetBoxTV.VideoPlayer.Droid
 
                 if (Intent.ActionLockedBootCompleted == intent.Action || Intent.ActionBootCompleted == intent.Action)
                 {
-                    LoggerService.Instance.Debug($"BootReceiver: Iniciando o SetBoxTV");
-                    Intent serviceStart = new Intent(context, typeof(MainActivity));
-                    serviceStart.AddFlags(ActivityFlags.NewTask);
-                    context.StartActivity(serviceStart);
+                    ConstVars.IsBootProcess = true;
+                    if (!ConstVars.IsStartProcess)
+                    {
+                        LoggerService.Instance.Debug($"BootReceiver: Iniciando o SetBoxTV");
+                        Intent serviceStart = new Intent(context, typeof(MainActivity));
+                        serviceStart.AddFlags(ActivityFlags.NewTask);
+                        context.StartActivity(serviceStart);
+                    }
+                    else
+                    {
+                        LoggerService.Instance.Debug($"BootReceiver: Processo SetBoxTV já está em execução!");
+                    }
                 }
             }
             catch (Exception ex)

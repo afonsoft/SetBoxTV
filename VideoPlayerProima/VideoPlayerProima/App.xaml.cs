@@ -98,7 +98,7 @@ namespace SetBoxTV.VideoPlayer
             Log.Debug("OnResume");
 
             //restart
-            SetBoxTV.VideoPlayer.MainPage.isInProcess = false;
+            SetBoxTV.VideoPlayer.ConstVars.IsInProcess = false;
             MainPage = new MainPage();
 
         }

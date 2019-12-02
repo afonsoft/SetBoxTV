@@ -118,7 +118,18 @@ namespace SetBoxTV.VideoPlayer
             SwitchDebugMode.On = model.DebugMode;
             SwitchConecction.On = model.CheckConection;
             SetBoxName.Text = model.DeviceName;
+            
             PlayerSettings.License = model.License;
+            PlayerSettings.PathFiles = model.PathFiles;
+            PlayerSettings.ShowVideo = model.ShowVideo;
+            PlayerSettings.ShowPhoto = model.ShowPhoto;
+            PlayerSettings.ShowWebImage = model.ShowWebImage;
+            PlayerSettings.ShowWebVideo = model.ShowWebVideo;
+            PlayerSettings.EnableTransactionTime = model.EnableTransactionTime;
+            PlayerSettings.TransactionTime = model.TransactionTime;
+            PlayerSettings.DebugEnabled = model.DebugMode;
+            PlayerSettings.ReportNotConnection = model.CheckConection;
+            PlayerSettings.DeviceName = model.DeviceName;
 
             model.IsLoading = false;
 
@@ -240,7 +251,7 @@ namespace SetBoxTV.VideoPlayer
             {
                 Log.Error(ex);
             }
-            MainPage.isInProcess = false;
+            ConstVars.IsInProcess = false;
             model.IsLoading = false;
             await ShowMessage("Dados Salvos com sucesso!", "Salvar", "OK",
                 () => { Application.Current.MainPage = new MainPage(); }).ConfigureAwait(true);

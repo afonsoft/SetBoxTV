@@ -21,7 +21,6 @@ namespace SetBoxTV.VideoPlayer
     {
         private List<FileDetails> arquivos = new List<FileDetails>();
         private MainViewModel model;
-        public static bool isInProcess = false;
         private readonly ILogger Log;
 
 
@@ -59,6 +58,7 @@ namespace SetBoxTV.VideoPlayer
 
         public MainPage()
         {
+            ConstVars.IsStartProcess = false;
             InitializeComponent();
             BindingContext = model = new MainViewModel();
             model.IsLoading = true;
@@ -100,7 +100,7 @@ namespace SetBoxTV.VideoPlayer
                 {"versionHistory",String.Join(" | ", VersionTracking.VersionHistory)},
                 {"buildHistory",String.Join(" | ", VersionTracking.BuildHistory)}
             });
-
+            ConstVars.IsStartProcess = true;
         }
 
         private void ShowText(string t, Dictionary<string, string> pro)
@@ -148,7 +148,7 @@ namespace SetBoxTV.VideoPlayer
                         PlayerSettings.DateTimeInstall = DateTime.Now;
                         Log.Debug("First Install");
                         model.IsLoading = false;
-                        MainPage.isInProcess = false;
+                        ConstVars.IsInProcess = false;
                         await ShowMessage("Favor efetuar as configurações de instação do SetBoxTV", "Instalação", "OK",
                           () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
                     }
@@ -159,7 +159,7 @@ namespace SetBoxTV.VideoPlayer
                             Log.Debug("Expirou a instalação");
                             Log.Debug($"Data UTC Install: {PlayerSettings.DateTimeInstall}");
                             model.IsLoading = false;
-                            MainPage.isInProcess = false;
+                            ConstVars.IsInProcess = false;
                             await ShowMessage("A licença Temporária da SetBoxTV Expirou!\nFavor colocar a nova licença!\n\nOu acesse o site e coloque a licença!", "Licença", "OK",
                               () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
                         }
@@ -167,7 +167,7 @@ namespace SetBoxTV.VideoPlayer
                         {
                             Loading();
                             model.IsLoading = false;
-                            MainPage.isInProcess = false;
+                            ConstVars.IsInProcess = false;
                         }
                     }
                 }
@@ -183,10 +183,10 @@ namespace SetBoxTV.VideoPlayer
         {
             try
             {
-                if (MainPage.isInProcess)
+                if (ConstVars.IsInProcess)
                     return;
 
-                MainPage.isInProcess = true;
+                ConstVars.IsInProcess = true;
                 API.SetBoxApi api;
                 model.IsLoading = true;
                 IDevicePicker device = DependencyService.Get<IDevicePicker>();
@@ -279,7 +279,7 @@ namespace SetBoxTV.VideoPlayer
                 {
                     Log.Debug("Licença: Licença inválida: " + license);
                     model.IsLoading = false;
-                    MainPage.isInProcess = false;
+                    ConstVars.IsInProcess = false;
                     await ShowMessage("Licença inválida!", "Licença", "OK",
                     () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
                 }
@@ -341,7 +341,7 @@ namespace SetBoxTV.VideoPlayer
                     {
                         Log.Debug("Directory: Nenhum arquivo localizado na pasta especifica.");
                         model.IsLoading = false;
-                        MainPage.isInProcess = false;
+                        ConstVars.IsInProcess = false;
                         await ShowMessage("Nenhum arquivo localizado na pasta especifica", "Arquivo", "OK",
                             () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
                     }
@@ -433,7 +433,7 @@ namespace SetBoxTV.VideoPlayer
                         progressBarId.IsVisible = false;
 
                         model.IsLoading = false;
-                        MainPage.isInProcess = false;
+                        ConstVars.IsInProcess = false;
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
                             Application.Current.MainPage = new VideoPage(arquivos);
@@ -445,7 +445,7 @@ namespace SetBoxTV.VideoPlayer
             catch (Exception ex)
             {
                 Log.Error(ex);
-                MainPage.isInProcess = false;
+                ConstVars.IsInProcess = false;
                 model.IsLoading = false;
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
@@ -454,7 +454,7 @@ namespace SetBoxTV.VideoPlayer
             }
             finally
             {
-                MainPage.isInProcess = false;
+                ConstVars.IsInProcess = false;
                 model.IsLoading = false;
             }
         }

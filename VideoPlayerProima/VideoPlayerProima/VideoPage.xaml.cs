@@ -30,7 +30,7 @@ namespace SetBoxTV.VideoPlayer
         public VideoPage(List<FileDetails> files)
         {
             InitializeComponent();
-            MainPage.isInProcess = false;
+            ConstVars.IsInProcess = false;
             BindingContext = model = new VideoViewModel();
             model.IsLoading = true;
 
@@ -168,7 +168,7 @@ namespace SetBoxTV.VideoPlayer
                 log?.Error(ex); 
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    MainPage.isInProcess = false;
+                    ConstVars.IsInProcess = false;
                     Application.Current.MainPage = new MainPage();
                 });
             }
