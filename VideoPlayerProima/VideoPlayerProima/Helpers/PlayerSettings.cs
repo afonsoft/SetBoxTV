@@ -14,6 +14,14 @@ namespace SetBoxTV.VideoPlayer.Helpers
         }
 
         //ReportNotConnection
+        /// <summary>
+        /// LibVLCArguments
+        /// </summary>
+        public static string[] LibVLCArguments
+        {
+            get => AppSettings.GetValueOrDefault(nameof(LibVLCArguments), "--android-display-chroma, RV16").Split(',');
+            set => AppSettings.AddOrUpdateValue(nameof(LibVLCArguments), String.Join(",", value));
+        }
 
         public static bool ReportNotConnection
         {
@@ -35,7 +43,7 @@ namespace SetBoxTV.VideoPlayer.Helpers
 
         public static bool DebugEnabled
         {
-            get => AppSettings.GetValueOrDefault(nameof(DebugEnabled), false);
+            get => AppSettings.GetValueOrDefault(nameof(DebugEnabled), true);
             set => AppSettings.AddOrUpdateValue(nameof(DebugEnabled), value);
         }
 
