@@ -106,6 +106,19 @@ namespace SetBoxTV.VideoPlayer
                 AspectRatio = "Fit screen",
                 FileCaching = 5000
             };
+            var taskEndPlayer = new TaskCompletionSource<bool>();
+
+            _videoView.MediaPlayer.EndReached += async (sender, args) =>
+            {
+                await Task.Delay(500).ConfigureAwait(true);
+                log?.Debug($"Finalizando (EndReached) o video");
+                taskEndPlayer.SetResult(true);
+            };
+            _videoView.MediaPlayer.EncounteredError += (sender, args) =>
+            {
+                log?.Debug($"Error (EncounteredError) no video");
+                taskEndPlayer.SetResult(true);
+            };
 
             await Task.Delay(1000).ConfigureAwait(true);
             while (!ConstVars.EventHandlerCalled)
@@ -119,23 +132,10 @@ namespace SetBoxTV.VideoPlayer
                     m.AddOption(":fullscreen");
                     medias.SetMedia(m);
                     idx++;
-
+                    taskEndPlayer = new TaskCompletionSource<bool>();
 
                     if (idx >= fileDetails.Count)
                         idx = 0;
-
-                    var taskEndPlayer = new TaskCompletionSource<bool>();
-                    _videoView.MediaPlayer.EndReached += async (sender, args) =>
-                        {
-                            await Task.Delay(500).ConfigureAwait(true);
-                            log?.Debug($"Finalizando (EndReached) o video");
-                            taskEndPlayer.SetResult(true);
-                        };
-                    _videoView.MediaPlayer.EncounteredError += (sender, args) =>
-                    {
-                        log?.Debug($"Error (EncounteredError) no video");
-                        taskEndPlayer.SetResult(true);
-                    };
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
