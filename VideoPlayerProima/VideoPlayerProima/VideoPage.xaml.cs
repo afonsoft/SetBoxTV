@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Linq;
 using System.Globalization;
 using LibVLCSharp.Shared;
+using System.Threading;
 
 namespace SetBoxTV.VideoPlayer
 {
