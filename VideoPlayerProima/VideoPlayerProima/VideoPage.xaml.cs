@@ -79,10 +79,10 @@ namespace SetBoxTV.VideoPlayer
                 { "TransactionTime",PlayerSettings.TransactionTime.ToString(CultureInfo.InvariantCulture)},
             });
 
-            Task.Run(() => WhileFilesToPlayer());
+            WhileFilesToPlayer();
         }
 
-        private async Task WhileFilesToPlayer()
+        private async void WhileFilesToPlayer()
         {
             // instanciate the main libvlc object
             _libVLC = new LibVLC(PlayerSettings.LibVLCArguments);
