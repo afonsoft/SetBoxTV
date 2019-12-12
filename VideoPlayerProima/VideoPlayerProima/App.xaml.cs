@@ -12,6 +12,7 @@ using SetBoxTV.VideoPlayer.Helpers;
 using Xamarin.Essentials;
 using System.Collections.Generic;
 using System.Linq;
+using SetBoxTV.VideoPlayer.Extensions;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace SetBoxTV.VideoPlayer
@@ -48,7 +49,7 @@ namespace SetBoxTV.VideoPlayer
                 {
                     message += "\nCustom data = {" + string.Join(",", e.CustomData.Select(kv => kv.Key + "=" + kv.Value)) + "}";
                 }
-                Current.MainPage.DisplayAlert(e.Title, message, "OK");
+                Current.MainPage.DisplayAlertOnUi(e.Title, message, "OK");
             });
         }
 

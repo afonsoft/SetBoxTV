@@ -13,6 +13,7 @@ using SetBoxTV.VideoPlayer.Model;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SetBoxTV.VideoPlayer.Extensions;
 
 namespace SetBoxTV.VideoPlayer
 {
@@ -137,8 +138,7 @@ namespace SetBoxTV.VideoPlayer
                     {
                         model.IsLoading = false;
                         // Connection to internet is not available
-                        await ShowMessage("Sem acesso a internet! Favor conectar na internet para configurar a SetBoX", "Internet", "OK",
-                          null).ConfigureAwait(true);
+                        await this.DisplayAlertOnUi( "Internet", "Sem acesso a internet! Favor conectar na internet para configurar a SetBoX", "OK").ConfigureAwait(true);
                     }
 
                     model.IsLoading = true;
@@ -149,7 +149,7 @@ namespace SetBoxTV.VideoPlayer
                         Log.Debug("First Install");
                         model.IsLoading = false;
                         ConstVars.IsInProcess = false;
-                        await ShowMessage("Favor efetuar as configurações de instação do SetBoxTV", "Instalação", "OK",
+                        await this.DisplayAlertOnUi("Instalação", "Favor efetuar as configurações de instação do SetBoxTV", "OK",
                           () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
                     }
                     else
@@ -160,7 +160,7 @@ namespace SetBoxTV.VideoPlayer
                             Log.Debug($"Data UTC Install: {PlayerSettings.DateTimeInstall}");
                             model.IsLoading = false;
                             ConstVars.IsInProcess = false;
-                            await ShowMessage("A licença Temporária da SetBoxTV Expirou!\nFavor colocar a nova licença!\n\nOu acesse o site e coloque a licença!", "Licença", "OK",
+                            await this.DisplayAlertOnUi("Licença", "A licença Temporária da SetBoxTV Expirou!\nFavor colocar a nova licença!\n\nOu acesse o site e coloque a licença!", "OK",
                               () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
                         }
                         else
@@ -280,7 +280,7 @@ namespace SetBoxTV.VideoPlayer
                     Log.Debug("Licença: Licença inválida: " + license);
                     model.IsLoading = false;
                     ConstVars.IsInProcess = false;
-                    await ShowMessage("Licença inválida!", "Licença", "OK",
+                    await this.DisplayAlertOnUi("Licença", "Licença inválida!", "OK",
                     () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
                 }
                 else
@@ -342,7 +342,7 @@ namespace SetBoxTV.VideoPlayer
                         Log.Debug("Directory: Nenhum arquivo localizado na pasta especifica.");
                         model.IsLoading = false;
                         ConstVars.IsInProcess = false;
-                        await ShowMessage("Nenhum arquivo localizado na pasta especifica", "Arquivo", "OK",
+                        await this.DisplayAlertOnUi("Arquivo", "Nenhum arquivo localizado na pasta especifica", "OK",
                             () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
                     }
                     else
@@ -485,21 +485,6 @@ namespace SetBoxTV.VideoPlayer
             {
                 arquivos.AddRange(filePicker.GetFiles(PlayerSettings.PathFiles, EnumFileType.Image, ".JPG", ".jpg", ".png", ".PNG", ".bmp", ".BMP"));
             }
-
-        }
-
-        public async Task ShowMessage(string message,
-            string title,
-            string buttonText,
-            Action afterHideCallback)
-        {
-
-            await DisplayAlert(
-            title,
-            message,
-            buttonText).ConfigureAwait(true);
-
-            afterHideCallback?.Invoke();
 
         }
 

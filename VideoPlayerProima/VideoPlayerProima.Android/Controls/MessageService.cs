@@ -9,7 +9,10 @@ namespace SetBoxTV.VideoPlayer.Droid.Controls
     {
         public void Alert(string message)
         {
-            Toast.MakeText(MainActivity.Instance, message, ToastLength.Long).Show();
+            MainActivity.Instance.RunOnUiThread(() =>
+            {
+                Toast.MakeText(MainActivity.Instance, message, ToastLength.Long).Show();
+            });
         }
     }
 }

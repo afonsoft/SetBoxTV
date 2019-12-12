@@ -7,6 +7,7 @@ using SetBoxTV.VideoPlayer.Interface;
 using SetBoxTV.VideoPlayer.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SetBoxTV.VideoPlayer.Extensions;
 
 namespace SetBoxTV.VideoPlayer
 {
@@ -97,7 +98,7 @@ namespace SetBoxTV.VideoPlayer
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
                         {
                             model.IsLoading = false;
-                            await ShowMessage($"SetBox Atualizada no Site!\nJá pode entrar no site e associar os arquivos e colocar a licença.\nInformações da SetBox:\nIdentifier:{deviceIdentifier}", "Informações", "OK", null).ConfigureAwait(true);
+                            await this.DisplayAlertOnUi($"SetBox Atualizada no Site!\nJá pode entrar no site e associar os arquivos e colocar a licença.\nInformações da SetBox:\nIdentifier:{deviceIdentifier}", "Informações", "OK").ConfigureAwait(true);
                         });
                     }
                 }
@@ -174,19 +175,6 @@ namespace SetBoxTV.VideoPlayer
             }
         }
 
-        public async Task ShowMessage(string message,
-            string title,
-            string buttonText,
-            Action afterHideCallback)
-        {
-            await DisplayAlert(
-                title,
-                message,
-                buttonText).ConfigureAwait(true);
-
-            afterHideCallback?.Invoke();
-        }
-
         public async void OnButtonSalvarClicked(object sender, EventArgs e)
         {
             model.IsLoading = true;
@@ -254,7 +242,7 @@ namespace SetBoxTV.VideoPlayer
             ConstVars.IsInProcess = false;
             ConstVars.EventHandlerCalled = false;
             model.IsLoading = false;
-            await ShowMessage("Dados Salvos com sucesso!", "Salvar", "OK",
+            await this.DisplayAlertOnUi("Dados Salvos com sucesso!", "Salvar", "OK",
                 () => { Application.Current.MainPage = new MainPage(); }).ConfigureAwait(true);
         }
 
