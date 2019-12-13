@@ -21,7 +21,7 @@ env:
   global:
     - ResolveNuGetPackageAssets=true
     - EnableNuGetPackageRestore=true
-    - ANDROID_COMPONENTS=build-tools-25.0.1,android-27,extra-android-support,extra-google-google_play_services,extra-google-m2repository,extra-android-m2repository
+    - ANDROID_COMPONENTS=build-tools-28.0.3,android-27,extra-android-support,extra-google-google_play_services,extra-google-m2repository,extra-android-m2repository
     - ANDROID_LICENSES=android-sdk-license-e6a904e8
     - MONO_VERSION=5.20.1
     - MONO_ANDROID_VERSION=8.3.3-2
@@ -33,7 +33,7 @@ before_install:
   - wget "https://dl.xamarin.com/MonoforAndroid/Mac/xamarin.android-${MONO_ANDROID_VERSION}.pkg"
   - sudo installer -pkg "xamarin.android-${MONO_ANDROID_VERSION}.pkg" -target /
 install:
-  - /Library/Frameworks/Mono.framework/Commands/nuget restore VideoPlayerProima.sln
+  - /Library/Frameworks/Mono.framework/Commands/nuget restore SetBoxTVApp.sln
 script:
-  - /Library/Frameworks/Mono.framework/Commands/xbuild /t:SignAndroidPackage /p:Configuration=Release VideoPlayerProima.Android/VideoPlayerProima.Android.csproj
+  - /Library/Frameworks/Mono.framework/Commands/xbuild /t:SignAndroidPackage /p:Configuration=Release VideoPlayerProima.Android/SetBoxTV.VideoPlayer.Android.csproj
 

@@ -47,7 +47,7 @@
     </MandroidI18n>
     <AndroidDexTool>dx</AndroidDexTool>
     <AndroidLinkTool>proguard</AndroidLinkTool>
-    <AndroidSupportedAbis>armeabi-v7a;arm64-v8a</AndroidSupportedAbis>
+    <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
     <UseShortFileNames>True</UseShortFileNames>
     <IntermediateOutputPath>C:\Xamarin\SetBox-VideoPlayer\VideoPlayerProima\VideoPlayerProima\obj\Debug</IntermediateOutputPath>
     <OutputPath>..\VideoPlayerProima\bin\</OutputPath>
