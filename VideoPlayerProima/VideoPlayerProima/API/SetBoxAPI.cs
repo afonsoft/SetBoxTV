@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using SetBoxTV.VideoPlayer.Helpers;
 using SetBoxTV.VideoPlayer.Model;
+using Xamarin.Forms.Internals;
 
 namespace SetBoxTV.VideoPlayer.API
 {
@@ -90,9 +91,10 @@ namespace SetBoxTV.VideoPlayer.API
                     {
                         License = CriptoHelpers.Base64Decode(CriptoHelpers.Base64Decode(Session).Split('|')[1]);
                     }
-                    catch
+                    catch(Exception ex)
                     {
                         License = "";
+                        throw new ApiException(ex.Message, ex);
                     }
                 }
                 else
@@ -120,7 +122,7 @@ namespace SetBoxTV.VideoPlayer.API
 
             try
             {
-                var resp = await GetResponse<IEnumerable<FileCheckSum>>("/ListFilesCheckSum");
+                var resp = await GetResponse<IEnumerable<FileCheckSum>>("/ListFilesCheckSum").ConfigureAwait(true);
 
                 if (!resp.sessionExpired && resp.status)
                     return resp.result;
@@ -144,7 +146,7 @@ namespace SetBoxTV.VideoPlayer.API
 
             try
             {
-                var resp = await GetResponse<ConfigModel>("/GetConfig");
+                var resp = await GetResponse<ConfigModel>("/GetConfig").ConfigureAwait(true);
 
                 if (!resp.sessionExpired && resp.status)
                     return resp.result;
@@ -166,16 +168,19 @@ namespace SetBoxTV.VideoPlayer.API
             if (string.IsNullOrEmpty(Session))
                 return null;
 
+            if (config == null)
+                return null;
+
             try
             {
                 var resp = await rest.HttpPostAsync<Response<ConfigModel>>("/SetConfig",
                     Afonsoft.Http.Parameters.With("session", Session)
-                                            .And("enableVideo", config.enableVideo.ToString())
-                                            .And("enablePhoto", config.enablePhoto.ToString())
-                                            .And("enableWebVideo", config.enableWebVideo.ToString())
-                                            .And("enableWebImage", config.enableWebImage.ToString())
-                                            .And("enableTransaction", config.enableTransaction.ToString())
-                                            .And("transactionTime", config.transactionTime.ToString()));
+                                            .And("enableVideo", config.enableVideo.ToString(CultureInfo.InvariantCulture))
+                                            .And("enablePhoto", config.enablePhoto.ToString(CultureInfo.InvariantCulture))
+                                            .And("enableWebVideo", config.enableWebVideo.ToString(CultureInfo.InvariantCulture))
+                                            .And("enableWebImage", config.enableWebImage.ToString(CultureInfo.InvariantCulture))
+                                            .And("enableTransaction", config.enableTransaction.ToString(CultureInfo.InvariantCulture))
+                                            .And("transactionTime", config.transactionTime.ToString(CultureInfo.InvariantCulture))).ConfigureAwait(true);
 
                 if (!resp.sessionExpired && resp.status)
                     return resp.result;
@@ -204,7 +209,7 @@ namespace SetBoxTV.VideoPlayer.API
                 var resp = await rest.HttpPostAsync<Response<string>>("/Log",
                     Afonsoft.Http.Parameters.With("session", Session)
                                             .And("mensage", mensage)
-                                            .And("level", level.ToString().ToUpper(CultureInfo.InvariantCulture)));
+                                            .And("level", level.ToString().ToUpper(CultureInfo.InvariantCulture))).ConfigureAwait(true);
 
                 if (!resp.sessionExpired && resp.status)
                     return resp.result;
@@ -236,7 +241,7 @@ namespace SetBoxTV.VideoPlayer.API
                                             .And("model", model)
                                             .And("manufacturer", manufacturer)
                                             .And("deviceName", deviceName)
-                                            .And("setboxName", setboxName));
+                                            .And("setboxName", setboxName)).ConfigureAwait(true);
 
                 if (!resp.sessionExpired && resp.status)
                     return resp.result;
@@ -261,7 +266,7 @@ namespace SetBoxTV.VideoPlayer.API
 
             try
             {
-                var resp = await GetResponse<SupportModel>("/GetSupport");
+                var resp = await GetResponse<SupportModel>("/GetSupport").ConfigureAwait(true);
 
                 if (!resp.sessionExpired && resp.status)
                     return resp.result;
@@ -279,7 +284,7 @@ namespace SetBoxTV.VideoPlayer.API
     /// Response
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    [Android.Runtime.Preserve(AllMembers = true)]
+    [Preserve(AllMembers = true)]
     public class Response<T>
     {
         /// <summary>
@@ -338,6 +343,10 @@ namespace SetBoxTV.VideoPlayer.API
         /// <param name="info"></param>
         /// <param name="context"></param>
         protected ApiException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
+
+        public ApiException()
         {
         }
     }

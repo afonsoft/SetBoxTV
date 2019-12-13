@@ -1,8 +1,9 @@
 ﻿using System;
+using Xamarin.Forms.Internals;
 
 namespace SetBoxTV.VideoPlayer.Model
 {
-    [Android.Runtime.Preserve(AllMembers = true)]
+    [Preserve(AllMembers = true)]
     public class FileDetails 
     {
         [Newtonsoft.Json.JsonConstructor]

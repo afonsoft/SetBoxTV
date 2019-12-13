@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Forms.Internals;
 
 namespace SetBoxTV.VideoPlayer.Model
 {
@@ -6,7 +7,7 @@ namespace SetBoxTV.VideoPlayer.Model
     /// <summary>
     /// Files
     /// </summary>
-    [Android.Runtime.Preserve(AllMembers = true)]
+    [Preserve(AllMembers = true)]
     public class FileCheckSum
     {
         [Newtonsoft.Json.JsonConstructor]
