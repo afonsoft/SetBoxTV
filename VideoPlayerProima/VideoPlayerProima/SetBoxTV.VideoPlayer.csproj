@@ -14,14 +14,14 @@
     <DebugSymbols>true</DebugSymbols>
     <UseShortFileNames>True</UseShortFileNames>
     <IntermediateOutputPath>C:\Xamarin\SetBox-VideoPlayer\VideoPlayerProima\VideoPlayerProima\obj\Debug</IntermediateOutputPath>
-    <OutputPath>C:\Xamarin\SetBox-VideoPlayer\VideoPlayerProima\VideoPlayerProima\bin\Debug</OutputPath>
+    <OutputPath>bin\Debug</OutputPath>
     <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <UseShortFileNames>True</UseShortFileNames>
     <IntermediateOutputPath>C:\Xamarin\SetBox-VideoPlayer\VideoPlayerProima\VideoPlayerProima\obj\Release</IntermediateOutputPath>
-    <OutputPath>C:\Xamarin\SetBox-VideoPlayer\VideoPlayerProima\VideoPlayerProima\bin\Release</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
