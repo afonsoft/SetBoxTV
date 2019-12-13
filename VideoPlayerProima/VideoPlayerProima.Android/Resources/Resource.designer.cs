@@ -2720,8 +2720,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.behavior_overlapTop = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.behavior_overlapTop;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.behavior_peekHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.behavior_peekHeight;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.behavior_skipCollapsed = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.behavior_skipCollapsed;
-			global::Xamarin.Forms.Material.Android.Resource.Attribute.borderlessButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.borderlessButtonStyle;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.borderWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.borderWidth;
+			global::Xamarin.Forms.Material.Android.Resource.Attribute.borderlessButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.borderlessButtonStyle;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.bottomAppBarStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.bottomAppBarStyle;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.bottomNavigationStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.bottomNavigationStyle;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.bottomSheetDialogTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.bottomSheetDialogTheme;
@@ -2787,9 +2787,9 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.closeIconVisible = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.closeIconVisible;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.closeItemLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.closeItemLayout;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.collapseContentDescription = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.collapseContentDescription;
+			global::Xamarin.Forms.Material.Android.Resource.Attribute.collapseIcon = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.collapseIcon;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.collapsedTitleGravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.collapsedTitleGravity;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.collapsedTitleTextAppearance = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.collapsedTitleTextAppearance;
-			global::Xamarin.Forms.Material.Android.Resource.Attribute.collapseIcon = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.collapseIcon;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.color = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.color;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.colorAccent = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.colorAccent;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.colorBackgroundFloating = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.colorBackgroundFloating;
@@ -2835,8 +2835,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.dividerVertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dividerVertical;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.drawableSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableSize;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.drawerArrowStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawerArrowStyle;
-			global::Xamarin.Forms.Material.Android.Resource.Attribute.dropdownListPreferredItemHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.dropDownListViewStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dropDownListViewStyle;
+			global::Xamarin.Forms.Material.Android.Resource.Attribute.dropdownListPreferredItemHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.editTextBackground = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.editTextBackground;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.editTextColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.editTextColor;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.editTextStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.editTextStyle;
@@ -2898,12 +2898,12 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.icon = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.icon;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.iconEndPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconEndPadding;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.iconGravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconGravity;
-			global::Xamarin.Forms.Material.Android.Resource.Attribute.iconifiedByDefault = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconifiedByDefault;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.iconPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconPadding;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.iconSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconSize;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.iconStartPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconStartPadding;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.iconTint = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconTint;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.iconTintMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconTintMode;
+			global::Xamarin.Forms.Material.Android.Resource.Attribute.iconifiedByDefault = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconifiedByDefault;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.imageButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.imageButtonStyle;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.indeterminateProgressStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.indeterminateProgressStyle;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.initialActivityCount = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.initialActivityCount;
@@ -3112,9 +3112,9 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.titleMargin = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleMargin;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.titleMarginBottom = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleMarginBottom;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.titleMarginEnd = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleMarginEnd;
-			global::Xamarin.Forms.Material.Android.Resource.Attribute.titleMargins = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleMargins;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.titleMarginStart = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleMarginStart;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.titleMarginTop = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleMarginTop;
+			global::Xamarin.Forms.Material.Android.Resource.Attribute.titleMargins = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleMargins;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.titleTextAppearance = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleTextAppearance;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.titleTextColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleTextColor;
 			global::Xamarin.Forms.Material.Android.Resource.Attribute.titleTextStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleTextStyle;
@@ -3243,11 +3243,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Color.mtrl_tabs_icon_color_selector_colored = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_tabs_icon_color_selector_colored;
 			global::Xamarin.Forms.Material.Android.Resource.Color.mtrl_tabs_legacy_text_color_selector = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_tabs_legacy_text_color_selector;
 			global::Xamarin.Forms.Material.Android.Resource.Color.mtrl_tabs_ripple_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_tabs_ripple_color;
+			global::Xamarin.Forms.Material.Android.Resource.Color.mtrl_text_btn_text_color_selector = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_text_btn_text_color_selector;
 			global::Xamarin.Forms.Material.Android.Resource.Color.mtrl_textinput_default_box_stroke_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_textinput_default_box_stroke_color;
 			global::Xamarin.Forms.Material.Android.Resource.Color.mtrl_textinput_disabled_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_textinput_disabled_color;
 			global::Xamarin.Forms.Material.Android.Resource.Color.mtrl_textinput_filled_box_default_background_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_textinput_filled_box_default_background_color;
 			global::Xamarin.Forms.Material.Android.Resource.Color.mtrl_textinput_hovered_box_stroke_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_textinput_hovered_box_stroke_color;
-			global::Xamarin.Forms.Material.Android.Resource.Color.mtrl_text_btn_text_color_selector = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_text_btn_text_color_selector;
 			global::Xamarin.Forms.Material.Android.Resource.Color.notification_action_color_filter = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.notification_action_color_filter;
 			global::Xamarin.Forms.Material.Android.Resource.Color.notification_icon_bg_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.notification_icon_bg_color;
 			global::Xamarin.Forms.Material.Android.Resource.Color.notification_material_background_media_default_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.notification_material_background_media_default_color;
@@ -3564,11 +3564,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_switch_track_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_tab_indicator_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_tab_indicator_material;
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
-			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
-			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
-			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
-			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
-			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_textfield_search_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_search_material;
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_text_cursor_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_text_cursor_material;
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_text_select_handle_left_mtrl_dark = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_dark;
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_text_select_handle_left_mtrl_light = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_light;
@@ -3576,9 +3571,20 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_text_select_handle_middle_mtrl_light = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_light;
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_text_select_handle_right_mtrl_dark = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_dark;
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_text_select_handle_right_mtrl_light = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_light;
+			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
+			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
+			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
+			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
+			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_textfield_search_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_search_material;
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.abc_vector_test = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_vector_test;
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.avd_hide_password = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_hide_password;
+			global::Xamarin.Forms.Material.Android.Resource.Drawable.avd_hide_password_1 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_hide_password_1;
+			global::Xamarin.Forms.Material.Android.Resource.Drawable.avd_hide_password_2 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_hide_password_2;
+			global::Xamarin.Forms.Material.Android.Resource.Drawable.avd_hide_password_3 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_hide_password_3;
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.avd_show_password = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_show_password;
+			global::Xamarin.Forms.Material.Android.Resource.Drawable.avd_show_password_1 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_show_password_1;
+			global::Xamarin.Forms.Material.Android.Resource.Drawable.avd_show_password_2 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_show_password_2;
+			global::Xamarin.Forms.Material.Android.Resource.Drawable.avd_show_password_3 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_show_password_3;
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.design_bottom_navigation_item_background = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.design_bottom_navigation_item_background;
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.design_fab_background = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.design_fab_background;
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.design_ic_visibility = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.design_ic_visibility;
@@ -3607,8 +3613,13 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.notify_panel_notification_icon_bg = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.tooltip_frame_dark = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.tooltip_frame_dark;
 			global::Xamarin.Forms.Material.Android.Resource.Drawable.tooltip_frame_light = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.tooltip_frame_light;
+			global::Xamarin.Forms.Material.Android.Resource.Id.ALT = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.ALT;
+			global::Xamarin.Forms.Material.Android.Resource.Id.CTRL = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.CTRL;
+			global::Xamarin.Forms.Material.Android.Resource.Id.FUNCTION = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.FUNCTION;
+			global::Xamarin.Forms.Material.Android.Resource.Id.META = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.META;
+			global::Xamarin.Forms.Material.Android.Resource.Id.SHIFT = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.SHIFT;
+			global::Xamarin.Forms.Material.Android.Resource.Id.SYM = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.SYM;
 			global::Xamarin.Forms.Material.Android.Resource.Id.action0 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action0;
-			global::Xamarin.Forms.Material.Android.Resource.Id.actions = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.actions;
 			global::Xamarin.Forms.Material.Android.Resource.Id.action_bar = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_bar;
 			global::Xamarin.Forms.Material.Android.Resource.Id.action_bar_activity_content = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_bar_activity_content;
 			global::Xamarin.Forms.Material.Android.Resource.Id.action_bar_container = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_bar_container;
@@ -3626,11 +3637,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Id.action_mode_bar_stub = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_mode_bar_stub;
 			global::Xamarin.Forms.Material.Android.Resource.Id.action_mode_close_button = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_mode_close_button;
 			global::Xamarin.Forms.Material.Android.Resource.Id.action_text = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_text;
+			global::Xamarin.Forms.Material.Android.Resource.Id.actions = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.actions;
 			global::Xamarin.Forms.Material.Android.Resource.Id.activity_chooser_view_content = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.activity_chooser_view_content;
 			global::Xamarin.Forms.Material.Android.Resource.Id.add = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.add;
 			global::Xamarin.Forms.Material.Android.Resource.Id.alertTitle = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.alertTitle;
 			global::Xamarin.Forms.Material.Android.Resource.Id.all = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.all;
-			global::Xamarin.Forms.Material.Android.Resource.Id.ALT = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.ALT;
 			global::Xamarin.Forms.Material.Android.Resource.Id.always = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.always;
 			global::Xamarin.Forms.Material.Android.Resource.Id.async = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.async;
 			global::Xamarin.Forms.Material.Android.Resource.Id.auto = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.auto;
@@ -3653,7 +3664,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Id.content = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.content;
 			global::Xamarin.Forms.Material.Android.Resource.Id.contentPanel = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.contentPanel;
 			global::Xamarin.Forms.Material.Android.Resource.Id.coordinator = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.coordinator;
-			global::Xamarin.Forms.Material.Android.Resource.Id.CTRL = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.CTRL;
 			global::Xamarin.Forms.Material.Android.Resource.Id.custom = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.custom;
 			global::Xamarin.Forms.Material.Android.Resource.Id.customPanel = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.customPanel;
 			global::Xamarin.Forms.Material.Android.Resource.Id.decor_content_parent = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.decor_content_parent;
@@ -3670,17 +3680,16 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Id.enterAlways = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.enterAlways;
 			global::Xamarin.Forms.Material.Android.Resource.Id.enterAlwaysCollapsed = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.enterAlwaysCollapsed;
 			global::Xamarin.Forms.Material.Android.Resource.Id.exitUntilCollapsed = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.exitUntilCollapsed;
-			global::Xamarin.Forms.Material.Android.Resource.Id.expanded_menu = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.expanded_menu;
 			global::Xamarin.Forms.Material.Android.Resource.Id.expand_activities_button = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.expand_activities_button;
+			global::Xamarin.Forms.Material.Android.Resource.Id.expanded_menu = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.expanded_menu;
 			global::Xamarin.Forms.Material.Android.Resource.Id.fill = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.fill;
-			global::Xamarin.Forms.Material.Android.Resource.Id.filled = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.filled;
 			global::Xamarin.Forms.Material.Android.Resource.Id.fill_horizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.fill_horizontal;
 			global::Xamarin.Forms.Material.Android.Resource.Id.fill_vertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.fill_vertical;
+			global::Xamarin.Forms.Material.Android.Resource.Id.filled = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.filled;
 			global::Xamarin.Forms.Material.Android.Resource.Id.@fixed = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.@fixed;
 			global::Xamarin.Forms.Material.Android.Resource.Id.flyoutcontent_appbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.flyoutcontent_appbar;
 			global::Xamarin.Forms.Material.Android.Resource.Id.flyoutcontent_recycler = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.flyoutcontent_recycler;
 			global::Xamarin.Forms.Material.Android.Resource.Id.forever = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.forever;
-			global::Xamarin.Forms.Material.Android.Resource.Id.FUNCTION = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.FUNCTION;
 			global::Xamarin.Forms.Material.Android.Resource.Id.ghost_view = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.ghost_view;
 			global::Xamarin.Forms.Material.Android.Resource.Id.group_divider = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.group_divider;
 			global::Xamarin.Forms.Material.Android.Resource.Id.home = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.home;
@@ -3707,7 +3716,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Id.materialformsedittext = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.materialformsedittext;
 			global::Xamarin.Forms.Material.Android.Resource.Id.media_actions = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.media_actions;
 			global::Xamarin.Forms.Material.Android.Resource.Id.message = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.message;
-			global::Xamarin.Forms.Material.Android.Resource.Id.META = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.META;
 			global::Xamarin.Forms.Material.Android.Resource.Id.middle = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.middle;
 			global::Xamarin.Forms.Material.Android.Resource.Id.mini = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.mini;
 			global::Xamarin.Forms.Material.Android.Resource.Id.mtrl_child_content_container = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.mtrl_child_content_container;
@@ -3736,10 +3744,10 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Id.save_scale_type = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.save_scale_type;
 			global::Xamarin.Forms.Material.Android.Resource.Id.screen = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.screen;
 			global::Xamarin.Forms.Material.Android.Resource.Id.scroll = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.scroll;
-			global::Xamarin.Forms.Material.Android.Resource.Id.scrollable = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.scrollable;
 			global::Xamarin.Forms.Material.Android.Resource.Id.scrollIndicatorDown = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.scrollIndicatorDown;
 			global::Xamarin.Forms.Material.Android.Resource.Id.scrollIndicatorUp = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.scrollIndicatorUp;
 			global::Xamarin.Forms.Material.Android.Resource.Id.scrollView = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.scrollView;
+			global::Xamarin.Forms.Material.Android.Resource.Id.scrollable = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.scrollable;
 			global::Xamarin.Forms.Material.Android.Resource.Id.search_badge = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.search_badge;
 			global::Xamarin.Forms.Material.Android.Resource.Id.search_bar = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.search_bar;
 			global::Xamarin.Forms.Material.Android.Resource.Id.search_button = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.search_button;
@@ -3750,11 +3758,10 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Id.search_plate = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.search_plate;
 			global::Xamarin.Forms.Material.Android.Resource.Id.search_src_text = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.search_src_text;
 			global::Xamarin.Forms.Material.Android.Resource.Id.search_voice_btn = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.search_voice_btn;
-			global::Xamarin.Forms.Material.Android.Resource.Id.selected = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.selected;
 			global::Xamarin.Forms.Material.Android.Resource.Id.select_dialog_listview = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.select_dialog_listview;
+			global::Xamarin.Forms.Material.Android.Resource.Id.selected = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.selected;
 			global::Xamarin.Forms.Material.Android.Resource.Id.shellcontent_appbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.shellcontent_appbar;
 			global::Xamarin.Forms.Material.Android.Resource.Id.shellcontent_toolbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.shellcontent_toolbar;
-			global::Xamarin.Forms.Material.Android.Resource.Id.SHIFT = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.SHIFT;
 			global::Xamarin.Forms.Material.Android.Resource.Id.shortcut = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.shortcut;
 			global::Xamarin.Forms.Material.Android.Resource.Id.showCustom = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.showCustom;
 			global::Xamarin.Forms.Material.Android.Resource.Id.showHome = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.showHome;
@@ -3774,20 +3781,19 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Id.stretch = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.stretch;
 			global::Xamarin.Forms.Material.Android.Resource.Id.submenuarrow = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.submenuarrow;
 			global::Xamarin.Forms.Material.Android.Resource.Id.submit_area = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.submit_area;
-			global::Xamarin.Forms.Material.Android.Resource.Id.SYM = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.SYM;
 			global::Xamarin.Forms.Material.Android.Resource.Id.tabMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tabMode;
 			global::Xamarin.Forms.Material.Android.Resource.Id.tag_transition_group = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_transition_group;
 			global::Xamarin.Forms.Material.Android.Resource.Id.tag_unhandled_key_event_manager = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_unhandled_key_event_manager;
 			global::Xamarin.Forms.Material.Android.Resource.Id.tag_unhandled_key_listeners = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_unhandled_key_listeners;
 			global::Xamarin.Forms.Material.Android.Resource.Id.text = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.text;
 			global::Xamarin.Forms.Material.Android.Resource.Id.text2 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.text2;
-			global::Xamarin.Forms.Material.Android.Resource.Id.textinput_counter = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textinput_counter;
-			global::Xamarin.Forms.Material.Android.Resource.Id.textinput_error = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textinput_error;
-			global::Xamarin.Forms.Material.Android.Resource.Id.textinput_helper_text = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textinput_helper_text;
 			global::Xamarin.Forms.Material.Android.Resource.Id.textSpacerNoButtons = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textSpacerNoButtons;
 			global::Xamarin.Forms.Material.Android.Resource.Id.textSpacerNoTitle = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textSpacerNoTitle;
 			global::Xamarin.Forms.Material.Android.Resource.Id.textStart = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textStart;
 			global::Xamarin.Forms.Material.Android.Resource.Id.text_input_password_toggle = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.text_input_password_toggle;
+			global::Xamarin.Forms.Material.Android.Resource.Id.textinput_counter = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textinput_counter;
+			global::Xamarin.Forms.Material.Android.Resource.Id.textinput_error = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textinput_error;
+			global::Xamarin.Forms.Material.Android.Resource.Id.textinput_helper_text = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textinput_helper_text;
 			global::Xamarin.Forms.Material.Android.Resource.Id.time = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.time;
 			global::Xamarin.Forms.Material.Android.Resource.Id.title = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.title;
 			global::Xamarin.Forms.Material.Android.Resource.Id.titleDividerNoCustom = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.titleDividerNoCustom;
@@ -3900,8 +3906,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_action_bar_up_description = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_action_bar_up_description;
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_action_menu_overflow_description = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_action_menu_overflow_description;
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_action_mode_done = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_action_mode_done;
-			global::Xamarin.Forms.Material.Android.Resource.String.abc_activitychooserview_choose_application = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_activitychooserview_choose_application;
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_activity_chooser_view_see_all = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_activity_chooser_view_see_all;
+			global::Xamarin.Forms.Material.Android.Resource.String.abc_activitychooserview_choose_application = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_activitychooserview_choose_application;
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_capital_off = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_capital_off;
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_capital_on = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_capital_on;
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_font_family_body_1_material = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_font_family_body_1_material;
@@ -3926,12 +3932,12 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_menu_space_shortcut_label = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_menu_space_shortcut_label;
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_menu_sym_shortcut_label = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_menu_sym_shortcut_label;
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_prepend_shortcut_label = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_prepend_shortcut_label;
+			global::Xamarin.Forms.Material.Android.Resource.String.abc_search_hint = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_search_hint;
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_searchview_description_clear = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_searchview_description_clear;
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_searchview_description_query = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_searchview_description_query;
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_searchview_description_search = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_searchview_description_search;
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_searchview_description_submit = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_searchview_description_submit;
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_searchview_description_voice = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_searchview_description_voice;
-			global::Xamarin.Forms.Material.Android.Resource.String.abc_search_hint = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_search_hint;
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_shareactionprovider_share_with = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_shareactionprovider_share_with;
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_shareactionprovider_share_with_application = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_shareactionprovider_share_with_application;
 			global::Xamarin.Forms.Material.Android.Resource.String.abc_toolbar_collapse_description = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_toolbar_collapse_description;
@@ -3962,8 +3968,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Animation_AppCompat_Tooltip = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Animation_AppCompat_Tooltip;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_CardView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_CardView;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_DialogWindowTitle_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_TextAppearance_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_TextAppearance_AppCompat;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
@@ -4012,6 +4018,37 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Bridge;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_CompactMenu = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_CompactMenu;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_Alert;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Dialog_FixedSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_FixedSize;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_MinWidth;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_DialogWhenLarge;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Bridge;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Alert;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_FixedSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_FixedSize;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_MinWidth;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DialogWhenLarge;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_ThemeOverlay_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_ThemeOverlay_AppCompat;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
@@ -4021,39 +4058,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Bridge;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_CompactMenu = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_CompactMenu;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_DialogWhenLarge;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_Alert;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Dialog_FixedSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_FixedSize;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_MinWidth;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Bridge;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DialogWhenLarge;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Alert;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_FixedSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_FixedSize;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_MinWidth;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V14_Theme_MaterialComponents = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_Theme_MaterialComponents;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V14_Theme_MaterialComponents_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Bridge;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V14_Theme_MaterialComponents_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Dialog;
@@ -4061,11 +4065,13 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Bridge;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V14_Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_DarkActionBar_Bridge;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Dialog;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V21_Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V21_Theme_AppCompat;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V21_Theme_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V22_Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V22_Theme_AppCompat;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V22_Theme_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V23_Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V23_Theme_AppCompat;
@@ -4075,11 +4081,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V26_Widget_AppCompat_Toolbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V26_Widget_AppCompat_Toolbar;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V28_Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V28_Theme_AppCompat;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V28_Theme_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V28_Theme_AppCompat_Light;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V7_Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_Theme_AppCompat;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V7_Theme_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_V7_Widget_AppCompat_Toolbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_Widget_AppCompat_Toolbar;
@@ -4095,13 +4101,13 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Widget_AppCompat_Button = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Button;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Widget_AppCompat_Button_Small = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
@@ -4147,7 +4153,7 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.CardView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.CardView;
 			global::Xamarin.Forms.Material.Android.Resource.Style.CardView_Dark = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.CardView_Dark;
 			global::Xamarin.Forms.Material.Android.Resource.Style.CardView_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.CardView_Light;
-			global::Xamarin.Forms.Material.Android.Resource.Style.collectionViewStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.collectionViewStyle;
+			global::Xamarin.Forms.Material.Android.Resource.Style.NestedScrollBarStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.NestedScrollBarStyle;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Platform_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Platform_AppCompat;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Platform_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Platform_AppCompat_Light;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Platform_MaterialComponents = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Platform_MaterialComponents;
@@ -4171,12 +4177,12 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow;
 			global::Xamarin.Forms.Material.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
 			global::Xamarin.Forms.Material.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title;
-			global::Xamarin.Forms.Material.Android.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
 			global::Xamarin.Forms.Material.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
 			global::Xamarin.Forms.Material.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
 			global::Xamarin.Forms.Material.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
 			global::Xamarin.Forms.Material.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
 			global::Xamarin.Forms.Material.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
+			global::Xamarin.Forms.Material.Android.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
 			global::Xamarin.Forms.Material.Android.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
 			global::Xamarin.Forms.Material.Android.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
 			global::Xamarin.Forms.Material.Android.Resource.Style.TextAppearance_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.TextAppearance_AppCompat;
@@ -4263,6 +4269,54 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
 			global::Xamarin.Forms.Material.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
 			global::Xamarin.Forms.Material.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_CompactMenu = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_DayNight = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Dialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_Design = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_Design_BottomSheetDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_BottomSheetDialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_Design_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_Light;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_Design_Light_BottomSheetDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_Design_Light_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_Light_NoActionBar;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_Design_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_NoActionBar;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_BottomSheetDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_BottomSheetDialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Bridge;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_CompactMenu = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_CompactMenu;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Dialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Dialog_Alert;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_DialogWhenLarge;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_BottomSheetDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_BottomSheetDialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_Bridge;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar_Bridge;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_DialogWhenLarge;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_NoActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar_Bridge;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_NoActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar_Bridge;
 			global::Xamarin.Forms.Material.Android.Resource.Style.ThemeOverlay_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat;
 			global::Xamarin.Forms.Material.Android.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
 			global::Xamarin.Forms.Material.Android.Resource.Style.ThemeOverlay_AppCompat_Dark = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
@@ -4282,54 +4336,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox_Dense = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox_Dense;
 			global::Xamarin.Forms.Material.Android.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox;
 			global::Xamarin.Forms.Material.Android.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox_Dense = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox_Dense;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_CompactMenu = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_DayNight = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Dialog;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_AppCompat_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_Design = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_Design_BottomSheetDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_BottomSheetDialog;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_Design_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_Light;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_Design_Light_BottomSheetDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_Design_Light_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_Light_NoActionBar;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_Design_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_NoActionBar;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_BottomSheetDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_BottomSheetDialog;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Bridge;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_CompactMenu = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_CompactMenu;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Dialog;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_DialogWhenLarge;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Dialog_Alert;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_BottomSheetDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_BottomSheetDialog;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_Bridge;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar_Bridge;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_DialogWhenLarge;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_Light_NoActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar_Bridge;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Theme_MaterialComponents_NoActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar_Bridge;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_ActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_ActionBar;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
@@ -4342,13 +4348,13 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_ActivityChooserView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_Button = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Button;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_ButtonBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_Button_Borderless = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Button_Borderless;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_Button_Colored = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Button_Colored;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_Button_Small = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Button_Small;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_ButtonBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
@@ -4430,11 +4436,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton_Icon = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton_Icon;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_MaterialComponents_CardView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_CardView;
-			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_MaterialComponents_ChipGroup = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_ChipGroup;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_MaterialComponents_Chip_Action = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_Chip_Action;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_MaterialComponents_Chip_Choice = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_Chip_Choice;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_MaterialComponents_Chip_Entry = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_Chip_Entry;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_MaterialComponents_Chip_Filter = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_Chip_Filter;
+			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_MaterialComponents_ChipGroup = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_ChipGroup;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_MaterialComponents_CompoundButton_CheckBox = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_CompoundButton_CheckBox;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_MaterialComponents_FloatingActionButton = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_FloatingActionButton;
 			global::Xamarin.Forms.Material.Android.Resource.Style.Widget_MaterialComponents_NavigationView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_NavigationView;
@@ -4460,9 +4466,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Style.XamarinFormsMaterialProgressBarHorizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.XamarinFormsMaterialProgressBarHorizontal;
 			global::Xamarin.Forms.Material.Android.Resource.Style.XamarinFormsMaterialSlider = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.XamarinFormsMaterialSlider;
 			global::Xamarin.Forms.Material.Android.Resource.Style.XamarinFormsMaterialTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.XamarinFormsMaterialTheme;
+			global::Xamarin.Forms.Material.Android.Resource.Style.collectionViewStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.collectionViewStyle;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBar;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionBarLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBarLayout;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionBar_background = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBar_background;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionBar_backgroundSplit = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBar_backgroundSplit;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionBar_backgroundStacked = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBar_backgroundStacked;
@@ -4492,6 +4497,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionBar_subtitleTextStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBar_subtitleTextStyle;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionBar_title = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBar_title;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionBar_titleTextStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBar_titleTextStyle;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionBarLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBarLayout;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionMenuItemView = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionMenuItemView;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionMenuItemView_android_minWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ActionMenuView = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionMenuView;
@@ -4530,20 +4537,20 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayoutStates = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayoutStates_state_collapsed = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsed;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayoutStates_state_collapsible = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsible;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayoutStates_state_liftable = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates_state_liftable;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayoutStates_state_lifted = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates_state_lifted;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayout_android_background = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_android_background;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayout_elevation = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_elevation;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayout_expanded = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_expanded;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayout_liftOnScroll = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_liftOnScroll;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayoutStates = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayoutStates_state_collapsed = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsed;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayoutStates_state_collapsible = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsible;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayoutStates_state_liftable = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates_state_liftable;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayoutStates_state_lifted = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates_state_lifted;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayout_Layout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_Layout;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppBarLayout_liftOnScroll = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_liftOnScroll;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppCompatImageView = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatImageView;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppCompatImageView_android_src = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatImageView_android_src;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppCompatImageView_srcCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatImageView_srcCompat;
@@ -4639,8 +4646,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppCompatTheme_dialogTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_dialogTheme;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppCompatTheme_dividerVertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_dividerVertical;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppCompatTheme_editTextBackground = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_editTextBackground;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppCompatTheme_editTextColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_editTextColor;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.AppCompatTheme_editTextStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_editTextStyle;
@@ -4736,13 +4743,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CardView_contentPaddingRight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CardView_contentPaddingRight;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CardView_contentPaddingTop = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CardView_contentPaddingTop;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Chip = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Chip;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.ChipGroup = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.ChipGroup_checkedChip = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_checkedChip;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.ChipGroup_chipSpacing = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_chipSpacing;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.ChipGroup_chipSpacingHorizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_chipSpacingHorizontal;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.ChipGroup_chipSpacingVertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_chipSpacingVertical;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.ChipGroup_singleLine = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_singleLine;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.ChipGroup_singleSelection = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_singleSelection;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Chip_android_checkable = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Chip_android_checkable;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Chip_android_ellipsize = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Chip_android_ellipsize;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Chip_android_maxWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Chip_android_maxWidth;
@@ -4777,6 +4777,13 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Chip_showMotionSpec = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Chip_showMotionSpec;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Chip_textEndPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Chip_textEndPadding;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Chip_textStartPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Chip_textStartPadding;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.ChipGroup = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.ChipGroup_checkedChip = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_checkedChip;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.ChipGroup_chipSpacing = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_chipSpacing;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.ChipGroup_chipSpacingHorizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_chipSpacingHorizontal;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.ChipGroup_chipSpacingVertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_chipSpacingVertical;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.ChipGroup_singleLine = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_singleLine;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.ChipGroup_singleSelection = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_singleSelection;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
@@ -4788,15 +4795,15 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_Layout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_title = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_title;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_Layout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ColorStateListItem = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ColorStateListItem;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ColorStateListItem_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ColorStateListItem_alpha;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ColorStateListItem_android_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ColorStateListItem_android_alpha;
@@ -4807,6 +4814,7 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CompoundButton_buttonTintMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CoordinatorLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CoordinatorLayout_keylines = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_keylines;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CoordinatorLayout_Layout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_Layout;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
@@ -4815,7 +4823,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.DesignTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.DesignTheme;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.DesignTheme_bottomSheetDialogTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.DesignTheme_bottomSheetStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle;
@@ -4831,8 +4838,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FloatingActionButton = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FloatingActionButton_backgroundTint = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_backgroundTint;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.FloatingActionButton_Behavior_Layout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FloatingActionButton_borderWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_borderWidth;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FloatingActionButton_elevation = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_elevation;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FloatingActionButton_fabCustomSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_fabCustomSize;
@@ -4844,10 +4849,18 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FloatingActionButton_rippleColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_rippleColor;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FloatingActionButton_showMotionSpec = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_showMotionSpec;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FloatingActionButton_useCompatPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.FloatingActionButton_Behavior_Layout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FlowLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FlowLayout;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FlowLayout_itemSpacing = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FlowLayout_itemSpacing;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FlowLayout_lineSpacing = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FlowLayout_lineSpacing;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamily = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamily_fontProviderAuthority = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamily_fontProviderCerts = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamily_fontProviderPackage = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamily_fontProviderQuery = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamilyFont = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamilyFont;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamilyFont_android_font = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamilyFont_android_font;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamilyFont_android_fontStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle;
@@ -4859,20 +4872,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamilyFont_fontVariationSettings;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamilyFont_fontWeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamilyFont_fontWeight;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamilyFont_ttcIndex = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamilyFont_ttcIndex;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamily_fontProviderAuthority = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderAuthority;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamily_fontProviderCerts = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderCerts;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamily_fontProviderPackage = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.FontFamily_fontProviderQuery = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ForegroundLinearLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ForegroundLinearLayout;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ForegroundLinearLayout_android_foreground = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.GradientColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColor;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.GradientColorItem = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColorItem;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.GradientColorItem_android_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColorItem_android_color;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.GradientColorItem_android_offset = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColorItem_android_offset;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.GradientColor_android_centerColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColor_android_centerColor;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.GradientColor_android_centerX = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColor_android_centerX;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.GradientColor_android_centerY = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColor_android_centerY;
@@ -4885,6 +4889,9 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.GradientColor_android_startY = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColor_android_startY;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.GradientColor_android_tileMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColor_android_tileMode;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.GradientColor_android_type = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColor_android_type;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.GradientColorItem = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColorItem;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.GradientColorItem_android_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColorItem_android_color;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.GradientColorItem_android_offset = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColorItem_android_offset;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.LinearLayoutCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
@@ -4893,13 +4900,13 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.LinearLayoutCompat_divider = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_divider;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.LinearLayoutCompat_showDividers = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.LinearLayoutCompat_Layout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_Layout;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.LinearLayoutCompat_showDividers = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ListPopupWindow = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ListPopupWindow;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
@@ -5011,11 +5018,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.NavigationView_itemTextColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.NavigationView_itemTextColor;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.NavigationView_menu = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.NavigationView_menu;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.PopupWindow = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.PopupWindow;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.PopupWindowBackgroundState = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.PopupWindowBackgroundState;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.PopupWindow_android_popupAnimationStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.PopupWindow_android_popupAnimationStyle;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.PopupWindow_android_popupBackground = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.PopupWindow_android_popupBackground;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.PopupWindow_overlapAnchor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.PopupWindow_overlapAnchor;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.PopupWindowBackgroundState = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.PopupWindowBackgroundState;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.RecycleListView = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecycleListView;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecycleListView_paddingTopNoTitle;
@@ -5054,12 +5061,12 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.SearchView_suggestionRowLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SearchView_suggestionRowLayout;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.SearchView_voiceIcon = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SearchView_voiceIcon;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Snackbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Snackbar;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.Snackbar_snackbarButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Snackbar_snackbarButtonStyle;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.Snackbar_snackbarStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Snackbar_snackbarStyle;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.SnackbarLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SnackbarLayout;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.SnackbarLayout_android_maxWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.SnackbarLayout_elevation = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SnackbarLayout_elevation;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.Snackbar_snackbarButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Snackbar_snackbarButtonStyle;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.Snackbar_snackbarStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Snackbar_snackbarStyle;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Spinner = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Spinner;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Spinner_android_dropDownWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Spinner_android_dropDownWidth;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Spinner_android_entries = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Spinner_android_entries;
@@ -5067,14 +5074,14 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Spinner_android_prompt = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Spinner_android_prompt;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Spinner_popupTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Spinner_popupTheme;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.StateListDrawable = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawable;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.StateListDrawableItem = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawableItem;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.StateListDrawableItem_android_drawable = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawableItem_android_drawable;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.StateListDrawable_android_constantSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawable_android_constantSize;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.StateListDrawable_android_dither = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawable_android_dither;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.StateListDrawable_android_enterFadeDuration = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawable_android_enterFadeDuration;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.StateListDrawable_android_exitFadeDuration = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawable_android_exitFadeDuration;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.StateListDrawable_android_variablePadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawable_android_variablePadding;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.StateListDrawable_android_visible = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawable_android_visible;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.StateListDrawableItem = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawableItem;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.StateListDrawableItem_android_drawable = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawableItem_android_drawable;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.SwitchCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SwitchCompat;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.SwitchCompat_android_textOff = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SwitchCompat_android_textOff;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.SwitchCompat_android_textOn = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SwitchCompat_android_textOn;
@@ -5192,12 +5199,17 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Toolbar_titleMargin = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleMargin;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Toolbar_titleMarginBottom = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleMarginBottom;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Toolbar_titleMarginEnd = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleMarginEnd;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.Toolbar_titleMargins = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleMargins;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Toolbar_titleMarginStart = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleMarginStart;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Toolbar_titleMarginTop = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleMarginTop;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.Toolbar_titleMargins = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleMargins;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Toolbar_titleTextAppearance = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.Toolbar_titleTextColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleTextColor;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.View = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.View_android_focusable = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_android_focusable;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.View_android_theme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_android_theme;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.View_paddingEnd = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_paddingEnd;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.View_paddingStart = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_paddingStart;
+			global::Xamarin.Forms.Material.Android.Resource.Styleable.View_theme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_theme;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ViewBackgroundHelper = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ViewBackgroundHelper;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ViewBackgroundHelper_android_background = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ViewBackgroundHelper_android_background;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
@@ -5206,11 +5218,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ViewStubCompat_android_id = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ViewStubCompat_android_id;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ViewStubCompat_android_inflatedId = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
 			global::Xamarin.Forms.Material.Android.Resource.Styleable.ViewStubCompat_android_layout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ViewStubCompat_android_layout;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.View_android_focusable = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_android_focusable;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.View_android_theme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_android_theme;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.View_paddingEnd = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_paddingEnd;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.View_paddingStart = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_paddingStart;
-			global::Xamarin.Forms.Material.Android.Resource.Styleable.View_theme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_theme;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_fade_in = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_fade_out = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_grow_fade_in_from_bottom = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -5302,8 +5309,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.behavior_overlapTop = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.behavior_overlapTop;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.behavior_peekHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.behavior_peekHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.behavior_skipCollapsed = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.behavior_skipCollapsed;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.borderlessButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.borderlessButtonStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.borderWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.borderWidth;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.borderlessButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.borderlessButtonStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.bottomAppBarStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.bottomAppBarStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.bottomNavigationStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.bottomNavigationStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.bottomSheetDialogTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.bottomSheetDialogTheme;
@@ -5369,9 +5376,9 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.closeIconVisible = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.closeIconVisible;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.closeItemLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.closeItemLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.collapseContentDescription = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.collapseContentDescription;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.collapseIcon = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.collapseIcon;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.collapsedTitleGravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.collapsedTitleGravity;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.collapsedTitleTextAppearance = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.collapsedTitleTextAppearance;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.collapseIcon = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.collapseIcon;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.color = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.color;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.colorAccent = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.colorAccent;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.colorBackgroundFloating = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.colorBackgroundFloating;
@@ -5417,8 +5424,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.dividerVertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dividerVertical;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.drawableSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableSize;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.drawerArrowStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawerArrowStyle;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.dropdownListPreferredItemHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.dropDownListViewStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dropDownListViewStyle;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.dropdownListPreferredItemHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.editTextBackground = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.editTextBackground;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.editTextColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.editTextColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.editTextStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.editTextStyle;
@@ -5480,12 +5487,12 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.icon = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.icon;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.iconEndPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconEndPadding;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.iconGravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconGravity;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.iconifiedByDefault = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconifiedByDefault;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.iconPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconPadding;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.iconSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconSize;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.iconStartPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconStartPadding;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.iconTint = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.iconTintMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconTintMode;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.iconifiedByDefault = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.iconifiedByDefault;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.imageButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.imageButtonStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.indeterminateProgressStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.indeterminateProgressStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.initialActivityCount = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.initialActivityCount;
@@ -5689,9 +5696,9 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.titleMargin = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleMargin;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.titleMarginBottom = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleMarginBottom;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.titleMarginEnd = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleMarginEnd;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.titleMargins = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleMargins;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.titleMarginStart = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleMarginStart;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.titleMarginTop = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleMarginTop;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.titleMargins = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleMargins;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.titleTextAppearance = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleTextAppearance;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.titleTextColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleTextColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.titleTextStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.titleTextStyle;
@@ -5820,11 +5827,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_tabs_icon_color_selector_colored = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_tabs_icon_color_selector_colored;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_tabs_legacy_text_color_selector = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_tabs_legacy_text_color_selector;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_tabs_ripple_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_tabs_ripple_color;
+			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_text_btn_text_color_selector = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_text_btn_text_color_selector;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_textinput_default_box_stroke_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_textinput_default_box_stroke_color;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_textinput_disabled_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_textinput_disabled_color;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_textinput_filled_box_default_background_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_textinput_filled_box_default_background_color;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_textinput_hovered_box_stroke_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_textinput_hovered_box_stroke_color;
-			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_text_btn_text_color_selector = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.mtrl_text_btn_text_color_selector;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.notification_action_color_filter = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.notification_action_color_filter;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.notification_icon_bg_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.notification_icon_bg_color;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.notification_material_background_media_default_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Color.notification_material_background_media_default_color;
@@ -6140,11 +6147,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_switch_track_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_tab_indicator_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_tab_indicator_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
-			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_textfield_search_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_search_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_text_cursor_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_text_cursor_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_text_select_handle_left_mtrl_dark = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_dark;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_text_select_handle_left_mtrl_light = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_light;
@@ -6152,9 +6154,20 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_text_select_handle_middle_mtrl_light = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_light;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_text_select_handle_right_mtrl_dark = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_dark;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_text_select_handle_right_mtrl_light = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_light;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_textfield_search_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_textfield_search_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_vector_test = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_vector_test;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.avd_hide_password = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_hide_password;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.avd_hide_password_1 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_hide_password_1;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.avd_hide_password_2 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_hide_password_2;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.avd_hide_password_3 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_hide_password_3;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.avd_show_password = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_show_password;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.avd_show_password_1 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_show_password_1;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.avd_show_password_2 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_show_password_2;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.avd_show_password_3 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_show_password_3;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.design_bottom_navigation_item_background = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.design_bottom_navigation_item_background;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.design_fab_background = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.design_fab_background;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.design_ic_visibility = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.design_ic_visibility;
@@ -6181,8 +6194,13 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.notify_panel_notification_icon_bg = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.tooltip_frame_dark = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.tooltip_frame_dark;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.tooltip_frame_light = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.tooltip_frame_light;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.ALT = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.ALT;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.CTRL = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.CTRL;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.FUNCTION = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.FUNCTION;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.META = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.META;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.SHIFT = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.SHIFT;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.SYM = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.SYM;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.action0 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action0;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.actions = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.actions;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.action_bar = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_bar;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.action_bar_activity_content = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_bar_activity_content;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.action_bar_container = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_bar_container;
@@ -6200,11 +6218,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.action_mode_bar_stub = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_mode_bar_stub;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.action_mode_close_button = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_mode_close_button;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.action_text = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_text;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.actions = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.actions;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.activity_chooser_view_content = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.activity_chooser_view_content;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.add = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.add;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.alertTitle = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.alertTitle;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.all = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.all;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.ALT = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.ALT;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.always = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.always;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.async = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.async;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.auto = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.auto;
@@ -6227,7 +6245,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.content = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.content;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.contentPanel = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.contentPanel;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.coordinator = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.coordinator;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.CTRL = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.CTRL;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.custom = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.custom;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.customPanel = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.customPanel;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.decor_content_parent = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.decor_content_parent;
@@ -6244,17 +6261,16 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.enterAlways = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.enterAlways;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.enterAlwaysCollapsed = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.enterAlwaysCollapsed;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.exitUntilCollapsed = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.exitUntilCollapsed;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.expanded_menu = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.expanded_menu;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.expand_activities_button = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.expand_activities_button;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.expanded_menu = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.expanded_menu;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.fill = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.fill;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.filled = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.filled;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.fill_horizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.fill_horizontal;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.fill_vertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.fill_vertical;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.filled = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.filled;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.@fixed = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.@fixed;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.flyoutcontent_appbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.flyoutcontent_appbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.flyoutcontent_recycler = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.flyoutcontent_recycler;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.forever = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.forever;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.FUNCTION = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.FUNCTION;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.ghost_view = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.ghost_view;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.group_divider = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.group_divider;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.home = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.home;
@@ -6280,7 +6296,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.masked = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.masked;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.media_actions = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.media_actions;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.message = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.message;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.META = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.META;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.middle = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.middle;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.mini = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.mini;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.mtrl_child_content_container = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.mtrl_child_content_container;
@@ -6309,10 +6324,10 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.save_scale_type = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.save_scale_type;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.screen = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.screen;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.scroll = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.scroll;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.scrollable = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.scrollable;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.scrollIndicatorDown = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.scrollIndicatorDown;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.scrollIndicatorUp = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.scrollIndicatorUp;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.scrollView = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.scrollView;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.scrollable = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.scrollable;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.search_badge = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.search_badge;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.search_bar = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.search_bar;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.search_button = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.search_button;
@@ -6323,11 +6338,10 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.search_plate = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.search_plate;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.search_src_text = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.search_src_text;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.search_voice_btn = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.search_voice_btn;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.selected = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.selected;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.select_dialog_listview = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.select_dialog_listview;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.selected = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.selected;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.shellcontent_appbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.shellcontent_appbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.shellcontent_toolbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.shellcontent_toolbar;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.SHIFT = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.SHIFT;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.shortcut = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.shortcut;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.showCustom = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.showCustom;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.showHome = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.showHome;
@@ -6347,20 +6361,19 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.stretch = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.stretch;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.submenuarrow = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.submenuarrow;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.submit_area = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.submit_area;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.SYM = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.SYM;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.tabMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tabMode;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.tag_transition_group = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_transition_group;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.tag_unhandled_key_event_manager = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_unhandled_key_event_manager;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.tag_unhandled_key_listeners = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_unhandled_key_listeners;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.text = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.text;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.text2 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.text2;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.textinput_counter = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textinput_counter;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.textinput_error = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textinput_error;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.textinput_helper_text = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textinput_helper_text;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.textSpacerNoButtons = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textSpacerNoButtons;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.textSpacerNoTitle = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textSpacerNoTitle;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.textStart = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textStart;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.text_input_password_toggle = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.text_input_password_toggle;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.textinput_counter = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textinput_counter;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.textinput_error = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textinput_error;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.textinput_helper_text = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.textinput_helper_text;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.time = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.time;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.title = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.title;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.titleDividerNoCustom = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.titleDividerNoCustom;
@@ -6471,8 +6484,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_action_bar_up_description = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_action_bar_up_description;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_action_menu_overflow_description = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_action_menu_overflow_description;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_action_mode_done = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_action_mode_done;
-			global::Xamarin.Forms.Platform.Android.Resource.String.abc_activitychooserview_choose_application = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_activitychooserview_choose_application;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_activity_chooser_view_see_all = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_activity_chooser_view_see_all;
+			global::Xamarin.Forms.Platform.Android.Resource.String.abc_activitychooserview_choose_application = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_activitychooserview_choose_application;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_capital_off = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_capital_off;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_capital_on = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_capital_on;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_font_family_body_1_material = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_font_family_body_1_material;
@@ -6497,12 +6510,12 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_menu_space_shortcut_label = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_menu_space_shortcut_label;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_menu_sym_shortcut_label = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_menu_sym_shortcut_label;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_prepend_shortcut_label = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_prepend_shortcut_label;
+			global::Xamarin.Forms.Platform.Android.Resource.String.abc_search_hint = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_search_hint;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_searchview_description_clear = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_searchview_description_clear;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_searchview_description_query = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_searchview_description_query;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_searchview_description_search = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_searchview_description_search;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_searchview_description_submit = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_searchview_description_submit;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_searchview_description_voice = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_searchview_description_voice;
-			global::Xamarin.Forms.Platform.Android.Resource.String.abc_search_hint = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_search_hint;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_shareactionprovider_share_with = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_shareactionprovider_share_with;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_shareactionprovider_share_with_application = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_shareactionprovider_share_with_application;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_toolbar_collapse_description = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_toolbar_collapse_description;
@@ -6533,8 +6546,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Animation_AppCompat_Tooltip = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Animation_AppCompat_Tooltip;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_CardView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_CardView;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_DialogWindowTitle_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_TextAppearance_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_TextAppearance_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
@@ -6583,6 +6596,37 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Bridge;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_CompactMenu = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_CompactMenu;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_Alert;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Dialog_FixedSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_FixedSize;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_MinWidth;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_DialogWhenLarge;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Bridge;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Alert;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_FixedSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_FixedSize;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_MinWidth;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DialogWhenLarge;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_ThemeOverlay_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_ThemeOverlay_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
@@ -6592,39 +6636,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Bridge;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_CompactMenu = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_CompactMenu;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_DialogWhenLarge;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_Alert;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Dialog_FixedSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_FixedSize;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_MinWidth;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Bridge;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DialogWhenLarge;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Alert;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_FixedSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_FixedSize;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_MinWidth;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V14_Theme_MaterialComponents = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_Theme_MaterialComponents;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V14_Theme_MaterialComponents_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Bridge;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V14_Theme_MaterialComponents_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Dialog;
@@ -6632,11 +6643,13 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Bridge;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V14_Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_DarkActionBar_Bridge;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Dialog;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V21_Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V21_Theme_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V21_Theme_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V22_Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V22_Theme_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V22_Theme_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V23_Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V23_Theme_AppCompat;
@@ -6646,11 +6659,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V26_Widget_AppCompat_Toolbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V26_Widget_AppCompat_Toolbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V28_Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V28_Theme_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V28_Theme_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V28_Theme_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V7_Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_Theme_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V7_Theme_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V7_Widget_AppCompat_Toolbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_V7_Widget_AppCompat_Toolbar;
@@ -6666,13 +6679,13 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_Button = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Button;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_Button_Small = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
@@ -6718,7 +6731,7 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.CardView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.CardView;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.CardView_Dark = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.CardView_Dark;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.CardView_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.CardView_Light;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.collectionViewStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.collectionViewStyle;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.NestedScrollBarStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.NestedScrollBarStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Platform_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Platform_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Platform_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Platform_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Platform_MaterialComponents = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Platform_MaterialComponents;
@@ -6742,12 +6755,12 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.TextAppearance_AppCompat;
@@ -6834,6 +6847,54 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_CompactMenu = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_DayNight = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Dialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_Design = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_Design_BottomSheetDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_BottomSheetDialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_Design_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_Light;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_Design_Light_BottomSheetDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_Design_Light_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_Light_NoActionBar;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_Design_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_NoActionBar;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_BottomSheetDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_BottomSheetDialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Bridge;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_CompactMenu = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_CompactMenu;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Dialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Dialog_Alert;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_DialogWhenLarge;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_BottomSheetDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_BottomSheetDialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_Bridge;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar_Bridge;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_DialogWhenLarge;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_NoActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar_Bridge;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_NoActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar_Bridge;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_AppCompat_Dark = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
@@ -6853,54 +6914,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox_Dense = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox_Dense;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox_Dense = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox_Dense;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_CompactMenu = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_DayNight = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Dialog;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_AppCompat_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_Design = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_Design_BottomSheetDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_BottomSheetDialog;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_Design_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_Light;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_Design_Light_BottomSheetDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_Design_Light_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_Light_NoActionBar;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_Design_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_Design_NoActionBar;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_BottomSheetDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_BottomSheetDialog;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Bridge;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_CompactMenu = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_CompactMenu;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Dialog;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_DialogWhenLarge;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Dialog_Alert;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_BottomSheetDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_BottomSheetDialog;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_Bridge;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar_Bridge;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_DialogWhenLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_DialogWhenLarge;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_Light_NoActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar_Bridge;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_NoActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Theme_MaterialComponents_NoActionBar_Bridge = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar_Bridge;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_ActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_ActionBar;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
@@ -6913,13 +6926,13 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_ActivityChooserView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_Button = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Button;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_ButtonBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_Button_Borderless = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Button_Borderless;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_Button_Colored = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Button_Colored;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_Button_Small = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Button_Small;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_ButtonBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
@@ -7001,11 +7014,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton_Icon = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton_Icon;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_CardView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_CardView;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_ChipGroup = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_ChipGroup;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Chip_Action = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_Chip_Action;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Chip_Choice = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_Chip_Choice;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Chip_Entry = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_Chip_Entry;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Chip_Filter = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_Chip_Filter;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_ChipGroup = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_ChipGroup;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_FloatingActionButton = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_FloatingActionButton;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_NavigationView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_NavigationView;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Snackbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_Snackbar;
@@ -7022,9 +7035,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Toolbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_MaterialComponents_Toolbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_Support_CoordinatorLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_Support_CoordinatorLayout;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.collectionViewStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.collectionViewStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBar;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionBarLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBarLayout;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionBar_background = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBar_background;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionBar_backgroundSplit = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBar_backgroundSplit;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionBar_backgroundStacked = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBar_backgroundStacked;
@@ -7054,6 +7066,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionBar_subtitleTextStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBar_subtitleTextStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionBar_title = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBar_title;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionBar_titleTextStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBar_titleTextStyle;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionBarLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBarLayout;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionMenuItemView = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionMenuItemView;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionMenuItemView_android_minWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionMenuView = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ActionMenuView;
@@ -7092,20 +7106,20 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayoutStates = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayoutStates_state_collapsed = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsed;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayoutStates_state_collapsible = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsible;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayoutStates_state_liftable = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates_state_liftable;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayoutStates_state_lifted = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates_state_lifted;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayout_android_background = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_android_background;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayout_elevation = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_elevation;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayout_expanded = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_expanded;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayout_liftOnScroll = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_liftOnScroll;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayoutStates = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayoutStates_state_collapsed = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsed;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayoutStates_state_collapsible = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsible;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayoutStates_state_liftable = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates_state_liftable;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayoutStates_state_lifted = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayoutStates_state_lifted;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayout_Layout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_Layout;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppBarLayout_liftOnScroll = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppBarLayout_liftOnScroll;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatImageView = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatImageView;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatImageView_android_src = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatImageView_android_src;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatImageView_srcCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatImageView_srcCompat;
@@ -7201,8 +7215,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_dialogTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_dialogTheme;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_dividerVertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_dividerVertical;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_editTextBackground = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_editTextBackground;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_editTextColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_editTextColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_editTextStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_editTextStyle;
@@ -7298,13 +7312,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CardView_contentPaddingRight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CardView_contentPaddingRight;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CardView_contentPaddingTop = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CardView_contentPaddingTop;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Chip = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Chip;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_checkedChip = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_checkedChip;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_chipSpacing = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_chipSpacing;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_chipSpacingHorizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_chipSpacingHorizontal;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_chipSpacingVertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_chipSpacingVertical;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_singleLine = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_singleLine;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_singleSelection = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_singleSelection;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Chip_android_checkable = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Chip_android_checkable;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Chip_android_ellipsize = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Chip_android_ellipsize;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Chip_android_maxWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Chip_android_maxWidth;
@@ -7339,6 +7346,13 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Chip_showMotionSpec = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Chip_showMotionSpec;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Chip_textEndPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Chip_textEndPadding;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Chip_textStartPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Chip_textStartPadding;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_checkedChip = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_checkedChip;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_chipSpacing = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_chipSpacing;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_chipSpacingHorizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_chipSpacingHorizontal;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_chipSpacingVertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_chipSpacingVertical;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_singleLine = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_singleLine;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_singleSelection = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ChipGroup_singleSelection;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
@@ -7350,15 +7364,15 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_Layout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_title = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_title;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_Layout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ColorStateListItem = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ColorStateListItem;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ColorStateListItem_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ColorStateListItem_alpha;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ColorStateListItem_android_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ColorStateListItem_android_alpha;
@@ -7369,6 +7383,7 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CompoundButton_buttonTintMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CoordinatorLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CoordinatorLayout_keylines = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_keylines;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CoordinatorLayout_Layout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_Layout;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
@@ -7377,7 +7392,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.DesignTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.DesignTheme;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.DesignTheme_bottomSheetDialogTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.DesignTheme_bottomSheetStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle;
@@ -7393,8 +7407,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton_backgroundTint = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_backgroundTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton_Behavior_Layout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton_borderWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_borderWidth;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton_elevation = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_elevation;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton_fabCustomSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_fabCustomSize;
@@ -7406,10 +7418,18 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton_rippleColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_rippleColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton_showMotionSpec = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_showMotionSpec;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton_useCompatPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton_Behavior_Layout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FlowLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FlowLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FlowLayout_itemSpacing = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FlowLayout_itemSpacing;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FlowLayout_lineSpacing = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FlowLayout_lineSpacing;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamily = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamily_fontProviderAuthority = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamily_fontProviderCerts = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamily_fontProviderPackage = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamily_fontProviderQuery = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamilyFont = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamilyFont;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamilyFont_android_font = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamilyFont_android_font;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamilyFont_android_fontStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle;
@@ -7421,20 +7441,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamilyFont_fontVariationSettings;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamilyFont_fontWeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamilyFont_fontWeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamilyFont_ttcIndex = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamilyFont_ttcIndex;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamily_fontProviderAuthority = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderAuthority;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamily_fontProviderCerts = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderCerts;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamily_fontProviderPackage = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FontFamily_fontProviderQuery = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ForegroundLinearLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ForegroundLinearLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ForegroundLinearLayout_android_foreground = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColor;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColorItem = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColorItem;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColorItem_android_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColorItem_android_color;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColorItem_android_offset = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColorItem_android_offset;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColor_android_centerColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColor_android_centerColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColor_android_centerX = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColor_android_centerX;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColor_android_centerY = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColor_android_centerY;
@@ -7447,6 +7458,9 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColor_android_startY = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColor_android_startY;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColor_android_tileMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColor_android_tileMode;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColor_android_type = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColor_android_type;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColorItem = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColorItem;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColorItem_android_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColorItem_android_color;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColorItem_android_offset = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.GradientColorItem_android_offset;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
@@ -7455,13 +7469,13 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat_divider = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_divider;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat_showDividers = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat_Layout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_Layout;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat_showDividers = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ListPopupWindow = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ListPopupWindow;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
@@ -7573,11 +7587,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.NavigationView_itemTextColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.NavigationView_itemTextColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.NavigationView_menu = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.NavigationView_menu;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.PopupWindow = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.PopupWindow;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.PopupWindowBackgroundState = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.PopupWindowBackgroundState;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.PopupWindow_android_popupAnimationStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.PopupWindow_android_popupAnimationStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.PopupWindow_android_popupBackground = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.PopupWindow_android_popupBackground;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.PopupWindow_overlapAnchor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.PopupWindow_overlapAnchor;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.PopupWindowBackgroundState = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.PopupWindowBackgroundState;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.RecycleListView = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecycleListView;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecycleListView_paddingTopNoTitle;
@@ -7616,12 +7630,12 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SearchView_suggestionRowLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SearchView_suggestionRowLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SearchView_voiceIcon = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SearchView_voiceIcon;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Snackbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Snackbar;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Snackbar_snackbarButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Snackbar_snackbarButtonStyle;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Snackbar_snackbarStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Snackbar_snackbarStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SnackbarLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SnackbarLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SnackbarLayout_android_maxWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SnackbarLayout_elevation = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SnackbarLayout_elevation;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Snackbar_snackbarButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Snackbar_snackbarButtonStyle;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Snackbar_snackbarStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Snackbar_snackbarStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Spinner = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Spinner;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Spinner_android_dropDownWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Spinner_android_dropDownWidth;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Spinner_android_entries = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Spinner_android_entries;
@@ -7629,14 +7643,14 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Spinner_android_prompt = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Spinner_android_prompt;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Spinner_popupTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Spinner_popupTheme;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.StateListDrawable = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawable;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.StateListDrawableItem = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawableItem;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.StateListDrawableItem_android_drawable = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawableItem_android_drawable;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.StateListDrawable_android_constantSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawable_android_constantSize;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.StateListDrawable_android_dither = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawable_android_dither;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.StateListDrawable_android_enterFadeDuration = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawable_android_enterFadeDuration;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.StateListDrawable_android_exitFadeDuration = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawable_android_exitFadeDuration;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.StateListDrawable_android_variablePadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawable_android_variablePadding;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.StateListDrawable_android_visible = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawable_android_visible;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.StateListDrawableItem = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawableItem;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.StateListDrawableItem_android_drawable = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.StateListDrawableItem_android_drawable;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SwitchCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SwitchCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SwitchCompat_android_textOff = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SwitchCompat_android_textOff;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SwitchCompat_android_textOn = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.SwitchCompat_android_textOn;
@@ -7754,12 +7768,17 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_titleMargin = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleMargin;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_titleMarginBottom = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleMarginBottom;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_titleMarginEnd = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleMarginEnd;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_titleMargins = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleMargins;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_titleMarginStart = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleMarginStart;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_titleMarginTop = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleMarginTop;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_titleMargins = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleMargins;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_titleTextAppearance = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_titleTextColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_titleTextColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.View = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.View_android_focusable = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_android_focusable;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.View_android_theme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_android_theme;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.View_paddingEnd = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_paddingEnd;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.View_paddingStart = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_paddingStart;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.View_theme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_theme;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ViewBackgroundHelper = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ViewBackgroundHelper;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ViewBackgroundHelper_android_background = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ViewBackgroundHelper_android_background;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
@@ -7768,11 +7787,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ViewStubCompat_android_id = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ViewStubCompat_android_id;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ViewStubCompat_android_inflatedId = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ViewStubCompat_android_layout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ViewStubCompat_android_layout;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.View_android_focusable = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_android_focusable;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.View_android_theme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_android_theme;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.View_paddingEnd = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_paddingEnd;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.View_paddingStart = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_paddingStart;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.View_theme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.View_theme;
 		}
 		
 		public partial class Animation
@@ -15851,1907 +15865,1910 @@ namespace SetBoxTV.VideoPlayer.Droid
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f0e00a2
-			public const int AlertDialog_AppCompat = 2131624098;
-			
 			// aapt resource value: 0x7f0e00a3
-			public const int AlertDialog_AppCompat_Light = 2131624099;
+			public const int AlertDialog_AppCompat = 2131624099;
 			
 			// aapt resource value: 0x7f0e00a4
-			public const int Animation_AppCompat_Dialog = 2131624100;
+			public const int AlertDialog_AppCompat_Light = 2131624100;
 			
 			// aapt resource value: 0x7f0e00a5
-			public const int Animation_AppCompat_DropDownUp = 2131624101;
+			public const int Animation_AppCompat_Dialog = 2131624101;
 			
 			// aapt resource value: 0x7f0e00a6
-			public const int Animation_AppCompat_Tooltip = 2131624102;
-			
-			// aapt resource value: 0x7f0e01e6
-			public const int Animation_Design_BottomSheetDialog = 2131624422;
-			
-			// aapt resource value: 0x7f0e027a
-			public const int AppCompatDialogStyle = 2131624570;
+			public const int Animation_AppCompat_DropDownUp = 2131624102;
 			
 			// aapt resource value: 0x7f0e00a7
-			public const int Base_AlertDialog_AppCompat = 2131624103;
-			
-			// aapt resource value: 0x7f0e00a8
-			public const int Base_AlertDialog_AppCompat_Light = 2131624104;
-			
-			// aapt resource value: 0x7f0e00a9
-			public const int Base_Animation_AppCompat_Dialog = 2131624105;
-			
-			// aapt resource value: 0x7f0e00aa
-			public const int Base_Animation_AppCompat_DropDownUp = 2131624106;
-			
-			// aapt resource value: 0x7f0e00ab
-			public const int Base_Animation_AppCompat_Tooltip = 2131624107;
-			
-			// aapt resource value: 0x7f0e0016
-			public const int Base_CardView = 2131623958;
-			
-			// aapt resource value: 0x7f0e00ac
-			public const int Base_DialogWindowTitle_AppCompat = 2131624108;
-			
-			// aapt resource value: 0x7f0e00ad
-			public const int Base_DialogWindowTitleBackground_AppCompat = 2131624109;
-			
-			// aapt resource value: 0x7f0e0036
-			public const int Base_TextAppearance_AppCompat = 2131623990;
-			
-			// aapt resource value: 0x7f0e0037
-			public const int Base_TextAppearance_AppCompat_Body1 = 2131623991;
-			
-			// aapt resource value: 0x7f0e0038
-			public const int Base_TextAppearance_AppCompat_Body2 = 2131623992;
-			
-			// aapt resource value: 0x7f0e0039
-			public const int Base_TextAppearance_AppCompat_Button = 2131623993;
-			
-			// aapt resource value: 0x7f0e003a
-			public const int Base_TextAppearance_AppCompat_Caption = 2131623994;
-			
-			// aapt resource value: 0x7f0e003b
-			public const int Base_TextAppearance_AppCompat_Display1 = 2131623995;
-			
-			// aapt resource value: 0x7f0e003c
-			public const int Base_TextAppearance_AppCompat_Display2 = 2131623996;
-			
-			// aapt resource value: 0x7f0e003d
-			public const int Base_TextAppearance_AppCompat_Display3 = 2131623997;
-			
-			// aapt resource value: 0x7f0e003e
-			public const int Base_TextAppearance_AppCompat_Display4 = 2131623998;
-			
-			// aapt resource value: 0x7f0e003f
-			public const int Base_TextAppearance_AppCompat_Headline = 2131623999;
-			
-			// aapt resource value: 0x7f0e0040
-			public const int Base_TextAppearance_AppCompat_Inverse = 2131624000;
-			
-			// aapt resource value: 0x7f0e0041
-			public const int Base_TextAppearance_AppCompat_Large = 2131624001;
-			
-			// aapt resource value: 0x7f0e0042
-			public const int Base_TextAppearance_AppCompat_Large_Inverse = 2131624002;
-			
-			// aapt resource value: 0x7f0e0043
-			public const int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = 2131624003;
-			
-			// aapt resource value: 0x7f0e0044
-			public const int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = 2131624004;
-			
-			// aapt resource value: 0x7f0e0045
-			public const int Base_TextAppearance_AppCompat_Medium = 2131624005;
-			
-			// aapt resource value: 0x7f0e0046
-			public const int Base_TextAppearance_AppCompat_Medium_Inverse = 2131624006;
-			
-			// aapt resource value: 0x7f0e0047
-			public const int Base_TextAppearance_AppCompat_Menu = 2131624007;
-			
-			// aapt resource value: 0x7f0e00ae
-			public const int Base_TextAppearance_AppCompat_SearchResult = 2131624110;
-			
-			// aapt resource value: 0x7f0e0048
-			public const int Base_TextAppearance_AppCompat_SearchResult_Subtitle = 2131624008;
-			
-			// aapt resource value: 0x7f0e0049
-			public const int Base_TextAppearance_AppCompat_SearchResult_Title = 2131624009;
-			
-			// aapt resource value: 0x7f0e004a
-			public const int Base_TextAppearance_AppCompat_Small = 2131624010;
-			
-			// aapt resource value: 0x7f0e004b
-			public const int Base_TextAppearance_AppCompat_Small_Inverse = 2131624011;
-			
-			// aapt resource value: 0x7f0e004c
-			public const int Base_TextAppearance_AppCompat_Subhead = 2131624012;
-			
-			// aapt resource value: 0x7f0e00af
-			public const int Base_TextAppearance_AppCompat_Subhead_Inverse = 2131624111;
-			
-			// aapt resource value: 0x7f0e004d
-			public const int Base_TextAppearance_AppCompat_Title = 2131624013;
-			
-			// aapt resource value: 0x7f0e00b0
-			public const int Base_TextAppearance_AppCompat_Title_Inverse = 2131624112;
-			
-			// aapt resource value: 0x7f0e00b1
-			public const int Base_TextAppearance_AppCompat_Tooltip = 2131624113;
-			
-			// aapt resource value: 0x7f0e0091
-			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = 2131624081;
-			
-			// aapt resource value: 0x7f0e004e
-			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = 2131624014;
-			
-			// aapt resource value: 0x7f0e004f
-			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = 2131624015;
-			
-			// aapt resource value: 0x7f0e0050
-			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Title = 2131624016;
-			
-			// aapt resource value: 0x7f0e0051
-			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = 2131624017;
-			
-			// aapt resource value: 0x7f0e0052
-			public const int Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = 2131624018;
-			
-			// aapt resource value: 0x7f0e0053
-			public const int Base_TextAppearance_AppCompat_Widget_ActionMode_Title = 2131624019;
-			
-			// aapt resource value: 0x7f0e0054
-			public const int Base_TextAppearance_AppCompat_Widget_Button = 2131624020;
-			
-			// aapt resource value: 0x7f0e0098
-			public const int Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored = 2131624088;
-			
-			// aapt resource value: 0x7f0e0099
-			public const int Base_TextAppearance_AppCompat_Widget_Button_Colored = 2131624089;
-			
-			// aapt resource value: 0x7f0e0092
-			public const int Base_TextAppearance_AppCompat_Widget_Button_Inverse = 2131624082;
-			
-			// aapt resource value: 0x7f0e00b2
-			public const int Base_TextAppearance_AppCompat_Widget_DropDownItem = 2131624114;
-			
-			// aapt resource value: 0x7f0e0055
-			public const int Base_TextAppearance_AppCompat_Widget_PopupMenu_Header = 2131624021;
-			
-			// aapt resource value: 0x7f0e0056
-			public const int Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = 2131624022;
-			
-			// aapt resource value: 0x7f0e0057
-			public const int Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = 2131624023;
-			
-			// aapt resource value: 0x7f0e0058
-			public const int Base_TextAppearance_AppCompat_Widget_Switch = 2131624024;
-			
-			// aapt resource value: 0x7f0e0059
-			public const int Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = 2131624025;
-			
-			// aapt resource value: 0x7f0e00b3
-			public const int Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = 2131624115;
-			
-			// aapt resource value: 0x7f0e005a
-			public const int Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = 2131624026;
-			
-			// aapt resource value: 0x7f0e005b
-			public const int Base_TextAppearance_Widget_AppCompat_Toolbar_Title = 2131624027;
-			
-			// aapt resource value: 0x7f0e005c
-			public const int Base_Theme_AppCompat = 2131624028;
-			
-			// aapt resource value: 0x7f0e00b4
-			public const int Base_Theme_AppCompat_CompactMenu = 2131624116;
-			
-			// aapt resource value: 0x7f0e005d
-			public const int Base_Theme_AppCompat_Dialog = 2131624029;
-			
-			// aapt resource value: 0x7f0e00b5
-			public const int Base_Theme_AppCompat_Dialog_Alert = 2131624117;
-			
-			// aapt resource value: 0x7f0e00b6
-			public const int Base_Theme_AppCompat_Dialog_FixedSize = 2131624118;
-			
-			// aapt resource value: 0x7f0e00b7
-			public const int Base_Theme_AppCompat_Dialog_MinWidth = 2131624119;
-			
-			// aapt resource value: 0x7f0e001a
-			public const int Base_Theme_AppCompat_DialogWhenLarge = 2131623962;
-			
-			// aapt resource value: 0x7f0e005e
-			public const int Base_Theme_AppCompat_Light = 2131624030;
-			
-			// aapt resource value: 0x7f0e00b8
-			public const int Base_Theme_AppCompat_Light_DarkActionBar = 2131624120;
-			
-			// aapt resource value: 0x7f0e005f
-			public const int Base_Theme_AppCompat_Light_Dialog = 2131624031;
-			
-			// aapt resource value: 0x7f0e00b9
-			public const int Base_Theme_AppCompat_Light_Dialog_Alert = 2131624121;
-			
-			// aapt resource value: 0x7f0e00ba
-			public const int Base_Theme_AppCompat_Light_Dialog_FixedSize = 2131624122;
-			
-			// aapt resource value: 0x7f0e00bb
-			public const int Base_Theme_AppCompat_Light_Dialog_MinWidth = 2131624123;
-			
-			// aapt resource value: 0x7f0e001b
-			public const int Base_Theme_AppCompat_Light_DialogWhenLarge = 2131623963;
+			public const int Animation_AppCompat_Tooltip = 2131624103;
 			
 			// aapt resource value: 0x7f0e01e7
-			public const int Base_Theme_MaterialComponents = 2131624423;
+			public const int Animation_Design_BottomSheetDialog = 2131624423;
 			
-			// aapt resource value: 0x7f0e01e8
-			public const int Base_Theme_MaterialComponents_Bridge = 2131624424;
+			// aapt resource value: 0x7f0e027b
+			public const int AppCompatDialogStyle = 2131624571;
 			
-			// aapt resource value: 0x7f0e01e9
-			public const int Base_Theme_MaterialComponents_CompactMenu = 2131624425;
+			// aapt resource value: 0x7f0e00a8
+			public const int Base_AlertDialog_AppCompat = 2131624104;
 			
-			// aapt resource value: 0x7f0e01ea
-			public const int Base_Theme_MaterialComponents_Dialog = 2131624426;
+			// aapt resource value: 0x7f0e00a9
+			public const int Base_AlertDialog_AppCompat_Light = 2131624105;
 			
-			// aapt resource value: 0x7f0e01eb
-			public const int Base_Theme_MaterialComponents_Dialog_Alert = 2131624427;
+			// aapt resource value: 0x7f0e00aa
+			public const int Base_Animation_AppCompat_Dialog = 2131624106;
 			
-			// aapt resource value: 0x7f0e01ec
-			public const int Base_Theme_MaterialComponents_Dialog_FixedSize = 2131624428;
+			// aapt resource value: 0x7f0e00ab
+			public const int Base_Animation_AppCompat_DropDownUp = 2131624107;
 			
-			// aapt resource value: 0x7f0e01ed
-			public const int Base_Theme_MaterialComponents_Dialog_MinWidth = 2131624429;
-			
-			// aapt resource value: 0x7f0e01e0
-			public const int Base_Theme_MaterialComponents_DialogWhenLarge = 2131624416;
-			
-			// aapt resource value: 0x7f0e01ee
-			public const int Base_Theme_MaterialComponents_Light = 2131624430;
-			
-			// aapt resource value: 0x7f0e01ef
-			public const int Base_Theme_MaterialComponents_Light_Bridge = 2131624431;
-			
-			// aapt resource value: 0x7f0e01f0
-			public const int Base_Theme_MaterialComponents_Light_DarkActionBar = 2131624432;
-			
-			// aapt resource value: 0x7f0e01f1
-			public const int Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge = 2131624433;
-			
-			// aapt resource value: 0x7f0e01f2
-			public const int Base_Theme_MaterialComponents_Light_Dialog = 2131624434;
-			
-			// aapt resource value: 0x7f0e01f3
-			public const int Base_Theme_MaterialComponents_Light_Dialog_Alert = 2131624435;
-			
-			// aapt resource value: 0x7f0e01f4
-			public const int Base_Theme_MaterialComponents_Light_Dialog_FixedSize = 2131624436;
-			
-			// aapt resource value: 0x7f0e01f5
-			public const int Base_Theme_MaterialComponents_Light_Dialog_MinWidth = 2131624437;
-			
-			// aapt resource value: 0x7f0e01e1
-			public const int Base_Theme_MaterialComponents_Light_DialogWhenLarge = 2131624417;
-			
-			// aapt resource value: 0x7f0e00bc
-			public const int Base_ThemeOverlay_AppCompat = 2131624124;
-			
-			// aapt resource value: 0x7f0e00bd
-			public const int Base_ThemeOverlay_AppCompat_ActionBar = 2131624125;
-			
-			// aapt resource value: 0x7f0e00be
-			public const int Base_ThemeOverlay_AppCompat_Dark = 2131624126;
-			
-			// aapt resource value: 0x7f0e00bf
-			public const int Base_ThemeOverlay_AppCompat_Dark_ActionBar = 2131624127;
-			
-			// aapt resource value: 0x7f0e0060
-			public const int Base_ThemeOverlay_AppCompat_Dialog = 2131624032;
-			
-			// aapt resource value: 0x7f0e00c0
-			public const int Base_ThemeOverlay_AppCompat_Dialog_Alert = 2131624128;
-			
-			// aapt resource value: 0x7f0e00c1
-			public const int Base_ThemeOverlay_AppCompat_Light = 2131624129;
-			
-			// aapt resource value: 0x7f0e01f6
-			public const int Base_ThemeOverlay_MaterialComponents_Dialog = 2131624438;
-			
-			// aapt resource value: 0x7f0e01f7
-			public const int Base_ThemeOverlay_MaterialComponents_Dialog_Alert = 2131624439;
-			
-			// aapt resource value: 0x7f0e01f8
-			public const int Base_V14_Theme_MaterialComponents = 2131624440;
-			
-			// aapt resource value: 0x7f0e01f9
-			public const int Base_V14_Theme_MaterialComponents_Bridge = 2131624441;
-			
-			// aapt resource value: 0x7f0e01fa
-			public const int Base_V14_Theme_MaterialComponents_Dialog = 2131624442;
-			
-			// aapt resource value: 0x7f0e01fb
-			public const int Base_V14_Theme_MaterialComponents_Light = 2131624443;
-			
-			// aapt resource value: 0x7f0e01fc
-			public const int Base_V14_Theme_MaterialComponents_Light_Bridge = 2131624444;
-			
-			// aapt resource value: 0x7f0e01fd
-			public const int Base_V14_Theme_MaterialComponents_Light_DarkActionBar_Bridge = 2131624445;
-			
-			// aapt resource value: 0x7f0e01fe
-			public const int Base_V14_Theme_MaterialComponents_Light_Dialog = 2131624446;
-			
-			// aapt resource value: 0x7f0e01ff
-			public const int Base_V14_ThemeOverlay_MaterialComponents_Dialog = 2131624447;
-			
-			// aapt resource value: 0x7f0e0200
-			public const int Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert = 2131624448;
-			
-			// aapt resource value: 0x7f0e0061
-			public const int Base_V21_Theme_AppCompat = 2131624033;
-			
-			// aapt resource value: 0x7f0e0062
-			public const int Base_V21_Theme_AppCompat_Dialog = 2131624034;
-			
-			// aapt resource value: 0x7f0e0063
-			public const int Base_V21_Theme_AppCompat_Light = 2131624035;
-			
-			// aapt resource value: 0x7f0e0064
-			public const int Base_V21_Theme_AppCompat_Light_Dialog = 2131624036;
-			
-			// aapt resource value: 0x7f0e0065
-			public const int Base_V21_ThemeOverlay_AppCompat_Dialog = 2131624037;
-			
-			// aapt resource value: 0x7f0e008f
-			public const int Base_V22_Theme_AppCompat = 2131624079;
-			
-			// aapt resource value: 0x7f0e0090
-			public const int Base_V22_Theme_AppCompat_Light = 2131624080;
-			
-			// aapt resource value: 0x7f0e0093
-			public const int Base_V23_Theme_AppCompat = 2131624083;
-			
-			// aapt resource value: 0x7f0e0094
-			public const int Base_V23_Theme_AppCompat_Light = 2131624084;
-			
-			// aapt resource value: 0x7f0e009c
-			public const int Base_V26_Theme_AppCompat = 2131624092;
-			
-			// aapt resource value: 0x7f0e009d
-			public const int Base_V26_Theme_AppCompat_Light = 2131624093;
-			
-			// aapt resource value: 0x7f0e009e
-			public const int Base_V26_Widget_AppCompat_Toolbar = 2131624094;
-			
-			// aapt resource value: 0x7f0e00a0
-			public const int Base_V28_Theme_AppCompat = 2131624096;
-			
-			// aapt resource value: 0x7f0e00a1
-			public const int Base_V28_Theme_AppCompat_Light = 2131624097;
-			
-			// aapt resource value: 0x7f0e00c2
-			public const int Base_V7_Theme_AppCompat = 2131624130;
-			
-			// aapt resource value: 0x7f0e00c3
-			public const int Base_V7_Theme_AppCompat_Dialog = 2131624131;
-			
-			// aapt resource value: 0x7f0e00c4
-			public const int Base_V7_Theme_AppCompat_Light = 2131624132;
-			
-			// aapt resource value: 0x7f0e00c5
-			public const int Base_V7_Theme_AppCompat_Light_Dialog = 2131624133;
-			
-			// aapt resource value: 0x7f0e00c6
-			public const int Base_V7_ThemeOverlay_AppCompat_Dialog = 2131624134;
-			
-			// aapt resource value: 0x7f0e00c7
-			public const int Base_V7_Widget_AppCompat_AutoCompleteTextView = 2131624135;
-			
-			// aapt resource value: 0x7f0e00c8
-			public const int Base_V7_Widget_AppCompat_EditText = 2131624136;
-			
-			// aapt resource value: 0x7f0e00c9
-			public const int Base_V7_Widget_AppCompat_Toolbar = 2131624137;
-			
-			// aapt resource value: 0x7f0e00ca
-			public const int Base_Widget_AppCompat_ActionBar = 2131624138;
-			
-			// aapt resource value: 0x7f0e00cb
-			public const int Base_Widget_AppCompat_ActionBar_Solid = 2131624139;
-			
-			// aapt resource value: 0x7f0e00cc
-			public const int Base_Widget_AppCompat_ActionBar_TabBar = 2131624140;
-			
-			// aapt resource value: 0x7f0e0066
-			public const int Base_Widget_AppCompat_ActionBar_TabText = 2131624038;
-			
-			// aapt resource value: 0x7f0e0067
-			public const int Base_Widget_AppCompat_ActionBar_TabView = 2131624039;
-			
-			// aapt resource value: 0x7f0e0068
-			public const int Base_Widget_AppCompat_ActionButton = 2131624040;
-			
-			// aapt resource value: 0x7f0e0069
-			public const int Base_Widget_AppCompat_ActionButton_CloseMode = 2131624041;
-			
-			// aapt resource value: 0x7f0e006a
-			public const int Base_Widget_AppCompat_ActionButton_Overflow = 2131624042;
-			
-			// aapt resource value: 0x7f0e00cd
-			public const int Base_Widget_AppCompat_ActionMode = 2131624141;
-			
-			// aapt resource value: 0x7f0e00ce
-			public const int Base_Widget_AppCompat_ActivityChooserView = 2131624142;
-			
-			// aapt resource value: 0x7f0e006b
-			public const int Base_Widget_AppCompat_AutoCompleteTextView = 2131624043;
-			
-			// aapt resource value: 0x7f0e006c
-			public const int Base_Widget_AppCompat_Button = 2131624044;
-			
-			// aapt resource value: 0x7f0e006d
-			public const int Base_Widget_AppCompat_Button_Borderless = 2131624045;
-			
-			// aapt resource value: 0x7f0e006e
-			public const int Base_Widget_AppCompat_Button_Borderless_Colored = 2131624046;
-			
-			// aapt resource value: 0x7f0e00cf
-			public const int Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = 2131624143;
-			
-			// aapt resource value: 0x7f0e0095
-			public const int Base_Widget_AppCompat_Button_Colored = 2131624085;
-			
-			// aapt resource value: 0x7f0e006f
-			public const int Base_Widget_AppCompat_Button_Small = 2131624047;
-			
-			// aapt resource value: 0x7f0e0070
-			public const int Base_Widget_AppCompat_ButtonBar = 2131624048;
-			
-			// aapt resource value: 0x7f0e00d0
-			public const int Base_Widget_AppCompat_ButtonBar_AlertDialog = 2131624144;
-			
-			// aapt resource value: 0x7f0e0071
-			public const int Base_Widget_AppCompat_CompoundButton_CheckBox = 2131624049;
-			
-			// aapt resource value: 0x7f0e0072
-			public const int Base_Widget_AppCompat_CompoundButton_RadioButton = 2131624050;
-			
-			// aapt resource value: 0x7f0e00d1
-			public const int Base_Widget_AppCompat_CompoundButton_Switch = 2131624145;
-			
-			// aapt resource value: 0x7f0e0019
-			public const int Base_Widget_AppCompat_DrawerArrowToggle = 2131623961;
-			
-			// aapt resource value: 0x7f0e00d2
-			public const int Base_Widget_AppCompat_DrawerArrowToggle_Common = 2131624146;
-			
-			// aapt resource value: 0x7f0e0073
-			public const int Base_Widget_AppCompat_DropDownItem_Spinner = 2131624051;
-			
-			// aapt resource value: 0x7f0e0074
-			public const int Base_Widget_AppCompat_EditText = 2131624052;
-			
-			// aapt resource value: 0x7f0e0075
-			public const int Base_Widget_AppCompat_ImageButton = 2131624053;
-			
-			// aapt resource value: 0x7f0e00d3
-			public const int Base_Widget_AppCompat_Light_ActionBar = 2131624147;
-			
-			// aapt resource value: 0x7f0e00d4
-			public const int Base_Widget_AppCompat_Light_ActionBar_Solid = 2131624148;
-			
-			// aapt resource value: 0x7f0e00d5
-			public const int Base_Widget_AppCompat_Light_ActionBar_TabBar = 2131624149;
-			
-			// aapt resource value: 0x7f0e0076
-			public const int Base_Widget_AppCompat_Light_ActionBar_TabText = 2131624054;
-			
-			// aapt resource value: 0x7f0e0077
-			public const int Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = 2131624055;
-			
-			// aapt resource value: 0x7f0e0078
-			public const int Base_Widget_AppCompat_Light_ActionBar_TabView = 2131624056;
-			
-			// aapt resource value: 0x7f0e0079
-			public const int Base_Widget_AppCompat_Light_PopupMenu = 2131624057;
-			
-			// aapt resource value: 0x7f0e007a
-			public const int Base_Widget_AppCompat_Light_PopupMenu_Overflow = 2131624058;
-			
-			// aapt resource value: 0x7f0e00d6
-			public const int Base_Widget_AppCompat_ListMenuView = 2131624150;
-			
-			// aapt resource value: 0x7f0e007b
-			public const int Base_Widget_AppCompat_ListPopupWindow = 2131624059;
-			
-			// aapt resource value: 0x7f0e007c
-			public const int Base_Widget_AppCompat_ListView = 2131624060;
-			
-			// aapt resource value: 0x7f0e007d
-			public const int Base_Widget_AppCompat_ListView_DropDown = 2131624061;
-			
-			// aapt resource value: 0x7f0e007e
-			public const int Base_Widget_AppCompat_ListView_Menu = 2131624062;
-			
-			// aapt resource value: 0x7f0e007f
-			public const int Base_Widget_AppCompat_PopupMenu = 2131624063;
-			
-			// aapt resource value: 0x7f0e0080
-			public const int Base_Widget_AppCompat_PopupMenu_Overflow = 2131624064;
-			
-			// aapt resource value: 0x7f0e00d7
-			public const int Base_Widget_AppCompat_PopupWindow = 2131624151;
-			
-			// aapt resource value: 0x7f0e0081
-			public const int Base_Widget_AppCompat_ProgressBar = 2131624065;
-			
-			// aapt resource value: 0x7f0e0082
-			public const int Base_Widget_AppCompat_ProgressBar_Horizontal = 2131624066;
-			
-			// aapt resource value: 0x7f0e0083
-			public const int Base_Widget_AppCompat_RatingBar = 2131624067;
-			
-			// aapt resource value: 0x7f0e0096
-			public const int Base_Widget_AppCompat_RatingBar_Indicator = 2131624086;
-			
-			// aapt resource value: 0x7f0e0097
-			public const int Base_Widget_AppCompat_RatingBar_Small = 2131624087;
-			
-			// aapt resource value: 0x7f0e00d8
-			public const int Base_Widget_AppCompat_SearchView = 2131624152;
-			
-			// aapt resource value: 0x7f0e00d9
-			public const int Base_Widget_AppCompat_SearchView_ActionBar = 2131624153;
-			
-			// aapt resource value: 0x7f0e0084
-			public const int Base_Widget_AppCompat_SeekBar = 2131624068;
-			
-			// aapt resource value: 0x7f0e00da
-			public const int Base_Widget_AppCompat_SeekBar_Discrete = 2131624154;
-			
-			// aapt resource value: 0x7f0e0085
-			public const int Base_Widget_AppCompat_Spinner = 2131624069;
-			
-			// aapt resource value: 0x7f0e001c
-			public const int Base_Widget_AppCompat_Spinner_Underlined = 2131623964;
-			
-			// aapt resource value: 0x7f0e0086
-			public const int Base_Widget_AppCompat_TextView_SpinnerItem = 2131624070;
-			
-			// aapt resource value: 0x7f0e009f
-			public const int Base_Widget_AppCompat_Toolbar = 2131624095;
-			
-			// aapt resource value: 0x7f0e0087
-			public const int Base_Widget_AppCompat_Toolbar_Button_Navigation = 2131624071;
-			
-			// aapt resource value: 0x7f0e0201
-			public const int Base_Widget_Design_TabLayout = 2131624449;
-			
-			// aapt resource value: 0x7f0e0202
-			public const int Base_Widget_MaterialComponents_Chip = 2131624450;
-			
-			// aapt resource value: 0x7f0e0203
-			public const int Base_Widget_MaterialComponents_TextInputEditText = 2131624451;
-			
-			// aapt resource value: 0x7f0e0204
-			public const int Base_Widget_MaterialComponents_TextInputLayout = 2131624452;
-			
-			// aapt resource value: 0x7f0e0015
-			public const int CardView = 2131623957;
+			// aapt resource value: 0x7f0e00ac
+			public const int Base_Animation_AppCompat_Tooltip = 2131624108;
 			
 			// aapt resource value: 0x7f0e0017
-			public const int CardView_Dark = 2131623959;
+			public const int Base_CardView = 2131623959;
 			
-			// aapt resource value: 0x7f0e0018
-			public const int CardView_Light = 2131623960;
+			// aapt resource value: 0x7f0e00ad
+			public const int Base_DialogWindowTitle_AppCompat = 2131624109;
 			
-			// aapt resource value: 0x7f0e0278
-			public const int MainTheme = 2131624568;
+			// aapt resource value: 0x7f0e00ae
+			public const int Base_DialogWindowTitleBackground_AppCompat = 2131624110;
 			
-			// aapt resource value: 0x7f0e0279
-			public const int MainTheme_Base = 2131624569;
+			// aapt resource value: 0x7f0e0037
+			public const int Base_TextAppearance_AppCompat = 2131623991;
 			
-			// aapt resource value: 0x7f0e0088
-			public const int Platform_AppCompat = 2131624072;
+			// aapt resource value: 0x7f0e0038
+			public const int Base_TextAppearance_AppCompat_Body1 = 2131623992;
 			
-			// aapt resource value: 0x7f0e0089
-			public const int Platform_AppCompat_Light = 2131624073;
+			// aapt resource value: 0x7f0e0039
+			public const int Base_TextAppearance_AppCompat_Body2 = 2131623993;
 			
-			// aapt resource value: 0x7f0e0205
-			public const int Platform_MaterialComponents = 2131624453;
+			// aapt resource value: 0x7f0e003a
+			public const int Base_TextAppearance_AppCompat_Button = 2131623994;
 			
-			// aapt resource value: 0x7f0e0206
-			public const int Platform_MaterialComponents_Dialog = 2131624454;
+			// aapt resource value: 0x7f0e003b
+			public const int Base_TextAppearance_AppCompat_Caption = 2131623995;
 			
-			// aapt resource value: 0x7f0e0207
-			public const int Platform_MaterialComponents_Light = 2131624455;
+			// aapt resource value: 0x7f0e003c
+			public const int Base_TextAppearance_AppCompat_Display1 = 2131623996;
 			
-			// aapt resource value: 0x7f0e0208
-			public const int Platform_MaterialComponents_Light_Dialog = 2131624456;
+			// aapt resource value: 0x7f0e003d
+			public const int Base_TextAppearance_AppCompat_Display2 = 2131623997;
 			
-			// aapt resource value: 0x7f0e008a
-			public const int Platform_ThemeOverlay_AppCompat = 2131624074;
+			// aapt resource value: 0x7f0e003e
+			public const int Base_TextAppearance_AppCompat_Display3 = 2131623998;
 			
-			// aapt resource value: 0x7f0e008b
-			public const int Platform_ThemeOverlay_AppCompat_Dark = 2131624075;
+			// aapt resource value: 0x7f0e003f
+			public const int Base_TextAppearance_AppCompat_Display4 = 2131623999;
 			
-			// aapt resource value: 0x7f0e008c
-			public const int Platform_ThemeOverlay_AppCompat_Light = 2131624076;
+			// aapt resource value: 0x7f0e0040
+			public const int Base_TextAppearance_AppCompat_Headline = 2131624000;
 			
-			// aapt resource value: 0x7f0e008d
-			public const int Platform_V21_AppCompat = 2131624077;
+			// aapt resource value: 0x7f0e0041
+			public const int Base_TextAppearance_AppCompat_Inverse = 2131624001;
 			
-			// aapt resource value: 0x7f0e008e
-			public const int Platform_V21_AppCompat_Light = 2131624078;
+			// aapt resource value: 0x7f0e0042
+			public const int Base_TextAppearance_AppCompat_Large = 2131624002;
+			
+			// aapt resource value: 0x7f0e0043
+			public const int Base_TextAppearance_AppCompat_Large_Inverse = 2131624003;
+			
+			// aapt resource value: 0x7f0e0044
+			public const int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = 2131624004;
+			
+			// aapt resource value: 0x7f0e0045
+			public const int Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = 2131624005;
+			
+			// aapt resource value: 0x7f0e0046
+			public const int Base_TextAppearance_AppCompat_Medium = 2131624006;
+			
+			// aapt resource value: 0x7f0e0047
+			public const int Base_TextAppearance_AppCompat_Medium_Inverse = 2131624007;
+			
+			// aapt resource value: 0x7f0e0048
+			public const int Base_TextAppearance_AppCompat_Menu = 2131624008;
+			
+			// aapt resource value: 0x7f0e00af
+			public const int Base_TextAppearance_AppCompat_SearchResult = 2131624111;
+			
+			// aapt resource value: 0x7f0e0049
+			public const int Base_TextAppearance_AppCompat_SearchResult_Subtitle = 2131624009;
+			
+			// aapt resource value: 0x7f0e004a
+			public const int Base_TextAppearance_AppCompat_SearchResult_Title = 2131624010;
+			
+			// aapt resource value: 0x7f0e004b
+			public const int Base_TextAppearance_AppCompat_Small = 2131624011;
+			
+			// aapt resource value: 0x7f0e004c
+			public const int Base_TextAppearance_AppCompat_Small_Inverse = 2131624012;
+			
+			// aapt resource value: 0x7f0e004d
+			public const int Base_TextAppearance_AppCompat_Subhead = 2131624013;
+			
+			// aapt resource value: 0x7f0e00b0
+			public const int Base_TextAppearance_AppCompat_Subhead_Inverse = 2131624112;
+			
+			// aapt resource value: 0x7f0e004e
+			public const int Base_TextAppearance_AppCompat_Title = 2131624014;
+			
+			// aapt resource value: 0x7f0e00b1
+			public const int Base_TextAppearance_AppCompat_Title_Inverse = 2131624113;
+			
+			// aapt resource value: 0x7f0e00b2
+			public const int Base_TextAppearance_AppCompat_Tooltip = 2131624114;
+			
+			// aapt resource value: 0x7f0e0092
+			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = 2131624082;
+			
+			// aapt resource value: 0x7f0e004f
+			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = 2131624015;
+			
+			// aapt resource value: 0x7f0e0050
+			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = 2131624016;
+			
+			// aapt resource value: 0x7f0e0051
+			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Title = 2131624017;
+			
+			// aapt resource value: 0x7f0e0052
+			public const int Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = 2131624018;
+			
+			// aapt resource value: 0x7f0e0053
+			public const int Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = 2131624019;
+			
+			// aapt resource value: 0x7f0e0054
+			public const int Base_TextAppearance_AppCompat_Widget_ActionMode_Title = 2131624020;
+			
+			// aapt resource value: 0x7f0e0055
+			public const int Base_TextAppearance_AppCompat_Widget_Button = 2131624021;
+			
+			// aapt resource value: 0x7f0e0099
+			public const int Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored = 2131624089;
 			
 			// aapt resource value: 0x7f0e009a
-			public const int Platform_V25_AppCompat = 2131624090;
+			public const int Base_TextAppearance_AppCompat_Widget_Button_Colored = 2131624090;
 			
-			// aapt resource value: 0x7f0e009b
-			public const int Platform_V25_AppCompat_Light = 2131624091;
+			// aapt resource value: 0x7f0e0093
+			public const int Base_TextAppearance_AppCompat_Widget_Button_Inverse = 2131624083;
 			
-			// aapt resource value: 0x7f0e00db
-			public const int Platform_Widget_AppCompat_Spinner = 2131624155;
+			// aapt resource value: 0x7f0e00b3
+			public const int Base_TextAppearance_AppCompat_Widget_DropDownItem = 2131624115;
 			
-			// aapt resource value: 0x7f0e0025
-			public const int RtlOverlay_DialogWindowTitle_AppCompat = 2131623973;
+			// aapt resource value: 0x7f0e0056
+			public const int Base_TextAppearance_AppCompat_Widget_PopupMenu_Header = 2131624022;
 			
-			// aapt resource value: 0x7f0e0026
-			public const int RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = 2131623974;
+			// aapt resource value: 0x7f0e0057
+			public const int Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = 2131624023;
 			
-			// aapt resource value: 0x7f0e0027
-			public const int RtlOverlay_Widget_AppCompat_DialogTitle_Icon = 2131623975;
+			// aapt resource value: 0x7f0e0058
+			public const int Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = 2131624024;
 			
-			// aapt resource value: 0x7f0e0028
-			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem = 2131623976;
+			// aapt resource value: 0x7f0e0059
+			public const int Base_TextAppearance_AppCompat_Widget_Switch = 2131624025;
 			
-			// aapt resource value: 0x7f0e0029
-			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = 2131623977;
+			// aapt resource value: 0x7f0e005a
+			public const int Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = 2131624026;
 			
-			// aapt resource value: 0x7f0e002a
-			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut = 2131623978;
+			// aapt resource value: 0x7f0e00b4
+			public const int Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = 2131624116;
 			
-			// aapt resource value: 0x7f0e002b
-			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow = 2131623979;
+			// aapt resource value: 0x7f0e005b
+			public const int Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = 2131624027;
 			
-			// aapt resource value: 0x7f0e002c
-			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = 2131623980;
+			// aapt resource value: 0x7f0e005c
+			public const int Base_TextAppearance_Widget_AppCompat_Toolbar_Title = 2131624028;
 			
-			// aapt resource value: 0x7f0e002d
-			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem_Title = 2131623981;
+			// aapt resource value: 0x7f0e005d
+			public const int Base_Theme_AppCompat = 2131624029;
 			
-			// aapt resource value: 0x7f0e002e
-			public const int RtlOverlay_Widget_AppCompat_Search_DropDown = 2131623982;
+			// aapt resource value: 0x7f0e00b5
+			public const int Base_Theme_AppCompat_CompactMenu = 2131624117;
 			
-			// aapt resource value: 0x7f0e002f
-			public const int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = 2131623983;
+			// aapt resource value: 0x7f0e005e
+			public const int Base_Theme_AppCompat_Dialog = 2131624030;
 			
-			// aapt resource value: 0x7f0e0030
-			public const int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = 2131623984;
+			// aapt resource value: 0x7f0e00b6
+			public const int Base_Theme_AppCompat_Dialog_Alert = 2131624118;
 			
-			// aapt resource value: 0x7f0e0031
-			public const int RtlOverlay_Widget_AppCompat_Search_DropDown_Query = 2131623985;
+			// aapt resource value: 0x7f0e00b7
+			public const int Base_Theme_AppCompat_Dialog_FixedSize = 2131624119;
 			
-			// aapt resource value: 0x7f0e0032
-			public const int RtlOverlay_Widget_AppCompat_Search_DropDown_Text = 2131623986;
+			// aapt resource value: 0x7f0e00b8
+			public const int Base_Theme_AppCompat_Dialog_MinWidth = 2131624120;
 			
-			// aapt resource value: 0x7f0e0033
-			public const int RtlOverlay_Widget_AppCompat_SearchView_MagIcon = 2131623987;
+			// aapt resource value: 0x7f0e001b
+			public const int Base_Theme_AppCompat_DialogWhenLarge = 2131623963;
 			
-			// aapt resource value: 0x7f0e0034
-			public const int RtlUnderlay_Widget_AppCompat_ActionButton = 2131623988;
+			// aapt resource value: 0x7f0e005f
+			public const int Base_Theme_AppCompat_Light = 2131624031;
 			
-			// aapt resource value: 0x7f0e0035
-			public const int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = 2131623989;
+			// aapt resource value: 0x7f0e00b9
+			public const int Base_Theme_AppCompat_Light_DarkActionBar = 2131624121;
 			
-			// aapt resource value: 0x7f0e00dc
-			public const int TextAppearance_AppCompat = 2131624156;
+			// aapt resource value: 0x7f0e0060
+			public const int Base_Theme_AppCompat_Light_Dialog = 2131624032;
 			
-			// aapt resource value: 0x7f0e00dd
-			public const int TextAppearance_AppCompat_Body1 = 2131624157;
+			// aapt resource value: 0x7f0e00ba
+			public const int Base_Theme_AppCompat_Light_Dialog_Alert = 2131624122;
 			
-			// aapt resource value: 0x7f0e00de
-			public const int TextAppearance_AppCompat_Body2 = 2131624158;
+			// aapt resource value: 0x7f0e00bb
+			public const int Base_Theme_AppCompat_Light_Dialog_FixedSize = 2131624123;
 			
-			// aapt resource value: 0x7f0e00df
-			public const int TextAppearance_AppCompat_Button = 2131624159;
+			// aapt resource value: 0x7f0e00bc
+			public const int Base_Theme_AppCompat_Light_Dialog_MinWidth = 2131624124;
 			
-			// aapt resource value: 0x7f0e00e0
-			public const int TextAppearance_AppCompat_Caption = 2131624160;
+			// aapt resource value: 0x7f0e001c
+			public const int Base_Theme_AppCompat_Light_DialogWhenLarge = 2131623964;
 			
-			// aapt resource value: 0x7f0e00e1
-			public const int TextAppearance_AppCompat_Display1 = 2131624161;
+			// aapt resource value: 0x7f0e01e8
+			public const int Base_Theme_MaterialComponents = 2131624424;
 			
-			// aapt resource value: 0x7f0e00e2
-			public const int TextAppearance_AppCompat_Display2 = 2131624162;
+			// aapt resource value: 0x7f0e01e9
+			public const int Base_Theme_MaterialComponents_Bridge = 2131624425;
 			
-			// aapt resource value: 0x7f0e00e3
-			public const int TextAppearance_AppCompat_Display3 = 2131624163;
+			// aapt resource value: 0x7f0e01ea
+			public const int Base_Theme_MaterialComponents_CompactMenu = 2131624426;
 			
-			// aapt resource value: 0x7f0e00e4
-			public const int TextAppearance_AppCompat_Display4 = 2131624164;
+			// aapt resource value: 0x7f0e01eb
+			public const int Base_Theme_MaterialComponents_Dialog = 2131624427;
 			
-			// aapt resource value: 0x7f0e00e5
-			public const int TextAppearance_AppCompat_Headline = 2131624165;
+			// aapt resource value: 0x7f0e01ec
+			public const int Base_Theme_MaterialComponents_Dialog_Alert = 2131624428;
 			
-			// aapt resource value: 0x7f0e00e6
-			public const int TextAppearance_AppCompat_Inverse = 2131624166;
+			// aapt resource value: 0x7f0e01ed
+			public const int Base_Theme_MaterialComponents_Dialog_FixedSize = 2131624429;
 			
-			// aapt resource value: 0x7f0e00e7
-			public const int TextAppearance_AppCompat_Large = 2131624167;
+			// aapt resource value: 0x7f0e01ee
+			public const int Base_Theme_MaterialComponents_Dialog_MinWidth = 2131624430;
 			
-			// aapt resource value: 0x7f0e00e8
-			public const int TextAppearance_AppCompat_Large_Inverse = 2131624168;
+			// aapt resource value: 0x7f0e01e1
+			public const int Base_Theme_MaterialComponents_DialogWhenLarge = 2131624417;
 			
-			// aapt resource value: 0x7f0e00e9
-			public const int TextAppearance_AppCompat_Light_SearchResult_Subtitle = 2131624169;
+			// aapt resource value: 0x7f0e01ef
+			public const int Base_Theme_MaterialComponents_Light = 2131624431;
 			
-			// aapt resource value: 0x7f0e00ea
-			public const int TextAppearance_AppCompat_Light_SearchResult_Title = 2131624170;
+			// aapt resource value: 0x7f0e01f0
+			public const int Base_Theme_MaterialComponents_Light_Bridge = 2131624432;
 			
-			// aapt resource value: 0x7f0e00eb
-			public const int TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = 2131624171;
+			// aapt resource value: 0x7f0e01f1
+			public const int Base_Theme_MaterialComponents_Light_DarkActionBar = 2131624433;
 			
-			// aapt resource value: 0x7f0e00ec
-			public const int TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = 2131624172;
+			// aapt resource value: 0x7f0e01f2
+			public const int Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge = 2131624434;
 			
-			// aapt resource value: 0x7f0e00ed
-			public const int TextAppearance_AppCompat_Medium = 2131624173;
+			// aapt resource value: 0x7f0e01f3
+			public const int Base_Theme_MaterialComponents_Light_Dialog = 2131624435;
 			
-			// aapt resource value: 0x7f0e00ee
-			public const int TextAppearance_AppCompat_Medium_Inverse = 2131624174;
+			// aapt resource value: 0x7f0e01f4
+			public const int Base_Theme_MaterialComponents_Light_Dialog_Alert = 2131624436;
 			
-			// aapt resource value: 0x7f0e00ef
-			public const int TextAppearance_AppCompat_Menu = 2131624175;
+			// aapt resource value: 0x7f0e01f5
+			public const int Base_Theme_MaterialComponents_Light_Dialog_FixedSize = 2131624437;
 			
-			// aapt resource value: 0x7f0e00f0
-			public const int TextAppearance_AppCompat_SearchResult_Subtitle = 2131624176;
-			
-			// aapt resource value: 0x7f0e00f1
-			public const int TextAppearance_AppCompat_SearchResult_Title = 2131624177;
-			
-			// aapt resource value: 0x7f0e00f2
-			public const int TextAppearance_AppCompat_Small = 2131624178;
-			
-			// aapt resource value: 0x7f0e00f3
-			public const int TextAppearance_AppCompat_Small_Inverse = 2131624179;
-			
-			// aapt resource value: 0x7f0e00f4
-			public const int TextAppearance_AppCompat_Subhead = 2131624180;
-			
-			// aapt resource value: 0x7f0e00f5
-			public const int TextAppearance_AppCompat_Subhead_Inverse = 2131624181;
-			
-			// aapt resource value: 0x7f0e00f6
-			public const int TextAppearance_AppCompat_Title = 2131624182;
-			
-			// aapt resource value: 0x7f0e00f7
-			public const int TextAppearance_AppCompat_Title_Inverse = 2131624183;
-			
-			// aapt resource value: 0x7f0e0024
-			public const int TextAppearance_AppCompat_Tooltip = 2131623972;
-			
-			// aapt resource value: 0x7f0e00f8
-			public const int TextAppearance_AppCompat_Widget_ActionBar_Menu = 2131624184;
-			
-			// aapt resource value: 0x7f0e00f9
-			public const int TextAppearance_AppCompat_Widget_ActionBar_Subtitle = 2131624185;
-			
-			// aapt resource value: 0x7f0e00fa
-			public const int TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = 2131624186;
-			
-			// aapt resource value: 0x7f0e00fb
-			public const int TextAppearance_AppCompat_Widget_ActionBar_Title = 2131624187;
-			
-			// aapt resource value: 0x7f0e00fc
-			public const int TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = 2131624188;
-			
-			// aapt resource value: 0x7f0e00fd
-			public const int TextAppearance_AppCompat_Widget_ActionMode_Subtitle = 2131624189;
-			
-			// aapt resource value: 0x7f0e00fe
-			public const int TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = 2131624190;
-			
-			// aapt resource value: 0x7f0e00ff
-			public const int TextAppearance_AppCompat_Widget_ActionMode_Title = 2131624191;
-			
-			// aapt resource value: 0x7f0e0100
-			public const int TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = 2131624192;
-			
-			// aapt resource value: 0x7f0e0101
-			public const int TextAppearance_AppCompat_Widget_Button = 2131624193;
-			
-			// aapt resource value: 0x7f0e0102
-			public const int TextAppearance_AppCompat_Widget_Button_Borderless_Colored = 2131624194;
-			
-			// aapt resource value: 0x7f0e0103
-			public const int TextAppearance_AppCompat_Widget_Button_Colored = 2131624195;
-			
-			// aapt resource value: 0x7f0e0104
-			public const int TextAppearance_AppCompat_Widget_Button_Inverse = 2131624196;
-			
-			// aapt resource value: 0x7f0e0105
-			public const int TextAppearance_AppCompat_Widget_DropDownItem = 2131624197;
-			
-			// aapt resource value: 0x7f0e0106
-			public const int TextAppearance_AppCompat_Widget_PopupMenu_Header = 2131624198;
-			
-			// aapt resource value: 0x7f0e0107
-			public const int TextAppearance_AppCompat_Widget_PopupMenu_Large = 2131624199;
-			
-			// aapt resource value: 0x7f0e0108
-			public const int TextAppearance_AppCompat_Widget_PopupMenu_Small = 2131624200;
-			
-			// aapt resource value: 0x7f0e0109
-			public const int TextAppearance_AppCompat_Widget_Switch = 2131624201;
-			
-			// aapt resource value: 0x7f0e010a
-			public const int TextAppearance_AppCompat_Widget_TextView_SpinnerItem = 2131624202;
-			
-			// aapt resource value: 0x7f0e0271
-			public const int TextAppearance_Compat_Notification = 2131624561;
-			
-			// aapt resource value: 0x7f0e0272
-			public const int TextAppearance_Compat_Notification_Info = 2131624562;
-			
-			// aapt resource value: 0x7f0e01da
-			public const int TextAppearance_Compat_Notification_Info_Media = 2131624410;
-			
-			// aapt resource value: 0x7f0e0277
-			public const int TextAppearance_Compat_Notification_Line2 = 2131624567;
-			
-			// aapt resource value: 0x7f0e01de
-			public const int TextAppearance_Compat_Notification_Line2_Media = 2131624414;
-			
-			// aapt resource value: 0x7f0e01db
-			public const int TextAppearance_Compat_Notification_Media = 2131624411;
-			
-			// aapt resource value: 0x7f0e0273
-			public const int TextAppearance_Compat_Notification_Time = 2131624563;
-			
-			// aapt resource value: 0x7f0e01dc
-			public const int TextAppearance_Compat_Notification_Time_Media = 2131624412;
-			
-			// aapt resource value: 0x7f0e0274
-			public const int TextAppearance_Compat_Notification_Title = 2131624564;
-			
-			// aapt resource value: 0x7f0e01dd
-			public const int TextAppearance_Compat_Notification_Title_Media = 2131624413;
-			
-			// aapt resource value: 0x7f0e0209
-			public const int TextAppearance_Design_CollapsingToolbar_Expanded = 2131624457;
-			
-			// aapt resource value: 0x7f0e020a
-			public const int TextAppearance_Design_Counter = 2131624458;
-			
-			// aapt resource value: 0x7f0e020b
-			public const int TextAppearance_Design_Counter_Overflow = 2131624459;
-			
-			// aapt resource value: 0x7f0e020c
-			public const int TextAppearance_Design_Error = 2131624460;
-			
-			// aapt resource value: 0x7f0e020d
-			public const int TextAppearance_Design_HelperText = 2131624461;
-			
-			// aapt resource value: 0x7f0e020e
-			public const int TextAppearance_Design_Hint = 2131624462;
-			
-			// aapt resource value: 0x7f0e020f
-			public const int TextAppearance_Design_Snackbar_Message = 2131624463;
-			
-			// aapt resource value: 0x7f0e0210
-			public const int TextAppearance_Design_Tab = 2131624464;
-			
-			// aapt resource value: 0x7f0e0176
-			public const int TextAppearance_Leanback = 2131624310;
-			
-			// aapt resource value: 0x7f0e0177
-			public const int TextAppearance_Leanback_DetailsActionButton = 2131624311;
-			
-			// aapt resource value: 0x7f0e0178
-			public const int TextAppearance_Leanback_DetailsDescriptionBody = 2131624312;
-			
-			// aapt resource value: 0x7f0e0179
-			public const int TextAppearance_Leanback_DetailsDescriptionSubtitle = 2131624313;
-			
-			// aapt resource value: 0x7f0e017a
-			public const int TextAppearance_Leanback_DetailsDescriptionTitle = 2131624314;
-			
-			// aapt resource value: 0x7f0e017b
-			public const int TextAppearance_Leanback_ErrorMessage = 2131624315;
-			
-			// aapt resource value: 0x7f0e017c
-			public const int TextAppearance_Leanback_Header = 2131624316;
-			
-			// aapt resource value: 0x7f0e017d
-			public const int TextAppearance_Leanback_Header_Section = 2131624317;
-			
-			// aapt resource value: 0x7f0e017e
-			public const int TextAppearance_Leanback_ImageCardView = 2131624318;
-			
-			// aapt resource value: 0x7f0e017f
-			public const int TextAppearance_Leanback_ImageCardView_Content = 2131624319;
-			
-			// aapt resource value: 0x7f0e0180
-			public const int TextAppearance_Leanback_ImageCardView_Title = 2131624320;
-			
-			// aapt resource value: 0x7f0e0181
-			public const int TextAppearance_Leanback_PlaybackControlLabel = 2131624321;
-			
-			// aapt resource value: 0x7f0e0182
-			public const int TextAppearance_Leanback_PlaybackControlsTime = 2131624322;
-			
-			// aapt resource value: 0x7f0e0183
-			public const int TextAppearance_Leanback_PlaybackMediaItemDuration = 2131624323;
-			
-			// aapt resource value: 0x7f0e0184
-			public const int TextAppearance_Leanback_PlaybackMediaItemName = 2131624324;
-			
-			// aapt resource value: 0x7f0e0185
-			public const int TextAppearance_Leanback_PlaybackMediaItemNumber = 2131624325;
-			
-			// aapt resource value: 0x7f0e0186
-			public const int TextAppearance_Leanback_PlaybackMediaListHeaderTitle = 2131624326;
-			
-			// aapt resource value: 0x7f0e0187
-			public const int TextAppearance_Leanback_Row_Header = 2131624327;
-			
-			// aapt resource value: 0x7f0e0188
-			public const int TextAppearance_Leanback_Row_Header_Description = 2131624328;
-			
-			// aapt resource value: 0x7f0e0189
-			public const int TextAppearance_Leanback_Row_HoverCardDescription = 2131624329;
-			
-			// aapt resource value: 0x7f0e018a
-			public const int TextAppearance_Leanback_Row_HoverCardTitle = 2131624330;
-			
-			// aapt resource value: 0x7f0e018b
-			public const int TextAppearance_Leanback_SearchTextEdit = 2131624331;
-			
-			// aapt resource value: 0x7f0e018c
-			public const int TextAppearance_Leanback_Title = 2131624332;
-			
-			// aapt resource value: 0x7f0e016c
-			public const int TextAppearance_LeanbackBase = 2131624300;
-			
-			// aapt resource value: 0x7f0e0211
-			public const int TextAppearance_MaterialComponents_Body1 = 2131624465;
-			
-			// aapt resource value: 0x7f0e0212
-			public const int TextAppearance_MaterialComponents_Body2 = 2131624466;
+			// aapt resource value: 0x7f0e01f6
+			public const int Base_Theme_MaterialComponents_Light_Dialog_MinWidth = 2131624438;
 			
 			// aapt resource value: 0x7f0e01e2
-			public const int TextAppearance_MaterialComponents_Button = 2131624418;
+			public const int Base_Theme_MaterialComponents_Light_DialogWhenLarge = 2131624418;
 			
-			// aapt resource value: 0x7f0e0213
-			public const int TextAppearance_MaterialComponents_Caption = 2131624467;
+			// aapt resource value: 0x7f0e00bd
+			public const int Base_ThemeOverlay_AppCompat = 2131624125;
 			
-			// aapt resource value: 0x7f0e0214
-			public const int TextAppearance_MaterialComponents_Chip = 2131624468;
+			// aapt resource value: 0x7f0e00be
+			public const int Base_ThemeOverlay_AppCompat_ActionBar = 2131624126;
 			
-			// aapt resource value: 0x7f0e0215
-			public const int TextAppearance_MaterialComponents_Headline1 = 2131624469;
+			// aapt resource value: 0x7f0e00bf
+			public const int Base_ThemeOverlay_AppCompat_Dark = 2131624127;
 			
-			// aapt resource value: 0x7f0e0216
-			public const int TextAppearance_MaterialComponents_Headline2 = 2131624470;
+			// aapt resource value: 0x7f0e00c0
+			public const int Base_ThemeOverlay_AppCompat_Dark_ActionBar = 2131624128;
 			
-			// aapt resource value: 0x7f0e0217
-			public const int TextAppearance_MaterialComponents_Headline3 = 2131624471;
+			// aapt resource value: 0x7f0e0061
+			public const int Base_ThemeOverlay_AppCompat_Dialog = 2131624033;
 			
-			// aapt resource value: 0x7f0e0218
-			public const int TextAppearance_MaterialComponents_Headline4 = 2131624472;
+			// aapt resource value: 0x7f0e00c1
+			public const int Base_ThemeOverlay_AppCompat_Dialog_Alert = 2131624129;
 			
-			// aapt resource value: 0x7f0e0219
-			public const int TextAppearance_MaterialComponents_Headline5 = 2131624473;
+			// aapt resource value: 0x7f0e00c2
+			public const int Base_ThemeOverlay_AppCompat_Light = 2131624130;
 			
-			// aapt resource value: 0x7f0e01e3
-			public const int TextAppearance_MaterialComponents_Headline6 = 2131624419;
+			// aapt resource value: 0x7f0e01f7
+			public const int Base_ThemeOverlay_MaterialComponents_Dialog = 2131624439;
 			
-			// aapt resource value: 0x7f0e01e4
-			public const int TextAppearance_MaterialComponents_Overline = 2131624420;
+			// aapt resource value: 0x7f0e01f8
+			public const int Base_ThemeOverlay_MaterialComponents_Dialog_Alert = 2131624440;
 			
-			// aapt resource value: 0x7f0e021a
-			public const int TextAppearance_MaterialComponents_Subtitle1 = 2131624474;
+			// aapt resource value: 0x7f0e01f9
+			public const int Base_V14_Theme_MaterialComponents = 2131624441;
 			
-			// aapt resource value: 0x7f0e01e5
-			public const int TextAppearance_MaterialComponents_Subtitle2 = 2131624421;
+			// aapt resource value: 0x7f0e01fa
+			public const int Base_V14_Theme_MaterialComponents_Bridge = 2131624442;
 			
-			// aapt resource value: 0x7f0e021b
-			public const int TextAppearance_MaterialComponents_Tab = 2131624475;
+			// aapt resource value: 0x7f0e01fb
+			public const int Base_V14_Theme_MaterialComponents_Dialog = 2131624443;
 			
-			// aapt resource value: 0x7f0e000a
-			public const int TextAppearance_MediaRouter_PrimaryText = 2131623946;
+			// aapt resource value: 0x7f0e01fc
+			public const int Base_V14_Theme_MaterialComponents_Light = 2131624444;
 			
-			// aapt resource value: 0x7f0e000b
-			public const int TextAppearance_MediaRouter_SecondaryText = 2131623947;
+			// aapt resource value: 0x7f0e01fd
+			public const int Base_V14_Theme_MaterialComponents_Light_Bridge = 2131624445;
 			
-			// aapt resource value: 0x7f0e000c
-			public const int TextAppearance_MediaRouter_Title = 2131623948;
+			// aapt resource value: 0x7f0e01fe
+			public const int Base_V14_Theme_MaterialComponents_Light_DarkActionBar_Bridge = 2131624446;
 			
-			// aapt resource value: 0x7f0e010b
-			public const int TextAppearance_Widget_AppCompat_ExpandedMenu_Item = 2131624203;
+			// aapt resource value: 0x7f0e01ff
+			public const int Base_V14_Theme_MaterialComponents_Light_Dialog = 2131624447;
 			
-			// aapt resource value: 0x7f0e010c
-			public const int TextAppearance_Widget_AppCompat_Toolbar_Subtitle = 2131624204;
+			// aapt resource value: 0x7f0e0200
+			public const int Base_V14_ThemeOverlay_MaterialComponents_Dialog = 2131624448;
 			
-			// aapt resource value: 0x7f0e010d
-			public const int TextAppearance_Widget_AppCompat_Toolbar_Title = 2131624205;
+			// aapt resource value: 0x7f0e0201
+			public const int Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert = 2131624449;
 			
-			// aapt resource value: 0x7f0e010e
-			public const int Theme_AppCompat = 2131624206;
+			// aapt resource value: 0x7f0e0062
+			public const int Base_V21_Theme_AppCompat = 2131624034;
 			
-			// aapt resource value: 0x7f0e010f
-			public const int Theme_AppCompat_CompactMenu = 2131624207;
+			// aapt resource value: 0x7f0e0063
+			public const int Base_V21_Theme_AppCompat_Dialog = 2131624035;
+			
+			// aapt resource value: 0x7f0e0064
+			public const int Base_V21_Theme_AppCompat_Light = 2131624036;
+			
+			// aapt resource value: 0x7f0e0065
+			public const int Base_V21_Theme_AppCompat_Light_Dialog = 2131624037;
+			
+			// aapt resource value: 0x7f0e0066
+			public const int Base_V21_ThemeOverlay_AppCompat_Dialog = 2131624038;
+			
+			// aapt resource value: 0x7f0e0090
+			public const int Base_V22_Theme_AppCompat = 2131624080;
+			
+			// aapt resource value: 0x7f0e0091
+			public const int Base_V22_Theme_AppCompat_Light = 2131624081;
+			
+			// aapt resource value: 0x7f0e0094
+			public const int Base_V23_Theme_AppCompat = 2131624084;
+			
+			// aapt resource value: 0x7f0e0095
+			public const int Base_V23_Theme_AppCompat_Light = 2131624085;
+			
+			// aapt resource value: 0x7f0e009d
+			public const int Base_V26_Theme_AppCompat = 2131624093;
+			
+			// aapt resource value: 0x7f0e009e
+			public const int Base_V26_Theme_AppCompat_Light = 2131624094;
+			
+			// aapt resource value: 0x7f0e009f
+			public const int Base_V26_Widget_AppCompat_Toolbar = 2131624095;
+			
+			// aapt resource value: 0x7f0e00a1
+			public const int Base_V28_Theme_AppCompat = 2131624097;
+			
+			// aapt resource value: 0x7f0e00a2
+			public const int Base_V28_Theme_AppCompat_Light = 2131624098;
+			
+			// aapt resource value: 0x7f0e00c3
+			public const int Base_V7_Theme_AppCompat = 2131624131;
+			
+			// aapt resource value: 0x7f0e00c4
+			public const int Base_V7_Theme_AppCompat_Dialog = 2131624132;
+			
+			// aapt resource value: 0x7f0e00c5
+			public const int Base_V7_Theme_AppCompat_Light = 2131624133;
+			
+			// aapt resource value: 0x7f0e00c6
+			public const int Base_V7_Theme_AppCompat_Light_Dialog = 2131624134;
+			
+			// aapt resource value: 0x7f0e00c7
+			public const int Base_V7_ThemeOverlay_AppCompat_Dialog = 2131624135;
+			
+			// aapt resource value: 0x7f0e00c8
+			public const int Base_V7_Widget_AppCompat_AutoCompleteTextView = 2131624136;
+			
+			// aapt resource value: 0x7f0e00c9
+			public const int Base_V7_Widget_AppCompat_EditText = 2131624137;
+			
+			// aapt resource value: 0x7f0e00ca
+			public const int Base_V7_Widget_AppCompat_Toolbar = 2131624138;
+			
+			// aapt resource value: 0x7f0e00cb
+			public const int Base_Widget_AppCompat_ActionBar = 2131624139;
+			
+			// aapt resource value: 0x7f0e00cc
+			public const int Base_Widget_AppCompat_ActionBar_Solid = 2131624140;
+			
+			// aapt resource value: 0x7f0e00cd
+			public const int Base_Widget_AppCompat_ActionBar_TabBar = 2131624141;
+			
+			// aapt resource value: 0x7f0e0067
+			public const int Base_Widget_AppCompat_ActionBar_TabText = 2131624039;
+			
+			// aapt resource value: 0x7f0e0068
+			public const int Base_Widget_AppCompat_ActionBar_TabView = 2131624040;
+			
+			// aapt resource value: 0x7f0e0069
+			public const int Base_Widget_AppCompat_ActionButton = 2131624041;
+			
+			// aapt resource value: 0x7f0e006a
+			public const int Base_Widget_AppCompat_ActionButton_CloseMode = 2131624042;
+			
+			// aapt resource value: 0x7f0e006b
+			public const int Base_Widget_AppCompat_ActionButton_Overflow = 2131624043;
+			
+			// aapt resource value: 0x7f0e00ce
+			public const int Base_Widget_AppCompat_ActionMode = 2131624142;
+			
+			// aapt resource value: 0x7f0e00cf
+			public const int Base_Widget_AppCompat_ActivityChooserView = 2131624143;
+			
+			// aapt resource value: 0x7f0e006c
+			public const int Base_Widget_AppCompat_AutoCompleteTextView = 2131624044;
+			
+			// aapt resource value: 0x7f0e006d
+			public const int Base_Widget_AppCompat_Button = 2131624045;
+			
+			// aapt resource value: 0x7f0e006e
+			public const int Base_Widget_AppCompat_Button_Borderless = 2131624046;
+			
+			// aapt resource value: 0x7f0e006f
+			public const int Base_Widget_AppCompat_Button_Borderless_Colored = 2131624047;
+			
+			// aapt resource value: 0x7f0e00d0
+			public const int Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = 2131624144;
+			
+			// aapt resource value: 0x7f0e0096
+			public const int Base_Widget_AppCompat_Button_Colored = 2131624086;
+			
+			// aapt resource value: 0x7f0e0070
+			public const int Base_Widget_AppCompat_Button_Small = 2131624048;
+			
+			// aapt resource value: 0x7f0e0071
+			public const int Base_Widget_AppCompat_ButtonBar = 2131624049;
+			
+			// aapt resource value: 0x7f0e00d1
+			public const int Base_Widget_AppCompat_ButtonBar_AlertDialog = 2131624145;
+			
+			// aapt resource value: 0x7f0e0072
+			public const int Base_Widget_AppCompat_CompoundButton_CheckBox = 2131624050;
+			
+			// aapt resource value: 0x7f0e0073
+			public const int Base_Widget_AppCompat_CompoundButton_RadioButton = 2131624051;
+			
+			// aapt resource value: 0x7f0e00d2
+			public const int Base_Widget_AppCompat_CompoundButton_Switch = 2131624146;
+			
+			// aapt resource value: 0x7f0e001a
+			public const int Base_Widget_AppCompat_DrawerArrowToggle = 2131623962;
+			
+			// aapt resource value: 0x7f0e00d3
+			public const int Base_Widget_AppCompat_DrawerArrowToggle_Common = 2131624147;
+			
+			// aapt resource value: 0x7f0e0074
+			public const int Base_Widget_AppCompat_DropDownItem_Spinner = 2131624052;
+			
+			// aapt resource value: 0x7f0e0075
+			public const int Base_Widget_AppCompat_EditText = 2131624053;
+			
+			// aapt resource value: 0x7f0e0076
+			public const int Base_Widget_AppCompat_ImageButton = 2131624054;
+			
+			// aapt resource value: 0x7f0e00d4
+			public const int Base_Widget_AppCompat_Light_ActionBar = 2131624148;
+			
+			// aapt resource value: 0x7f0e00d5
+			public const int Base_Widget_AppCompat_Light_ActionBar_Solid = 2131624149;
+			
+			// aapt resource value: 0x7f0e00d6
+			public const int Base_Widget_AppCompat_Light_ActionBar_TabBar = 2131624150;
+			
+			// aapt resource value: 0x7f0e0077
+			public const int Base_Widget_AppCompat_Light_ActionBar_TabText = 2131624055;
+			
+			// aapt resource value: 0x7f0e0078
+			public const int Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = 2131624056;
+			
+			// aapt resource value: 0x7f0e0079
+			public const int Base_Widget_AppCompat_Light_ActionBar_TabView = 2131624057;
+			
+			// aapt resource value: 0x7f0e007a
+			public const int Base_Widget_AppCompat_Light_PopupMenu = 2131624058;
+			
+			// aapt resource value: 0x7f0e007b
+			public const int Base_Widget_AppCompat_Light_PopupMenu_Overflow = 2131624059;
+			
+			// aapt resource value: 0x7f0e00d7
+			public const int Base_Widget_AppCompat_ListMenuView = 2131624151;
+			
+			// aapt resource value: 0x7f0e007c
+			public const int Base_Widget_AppCompat_ListPopupWindow = 2131624060;
+			
+			// aapt resource value: 0x7f0e007d
+			public const int Base_Widget_AppCompat_ListView = 2131624061;
+			
+			// aapt resource value: 0x7f0e007e
+			public const int Base_Widget_AppCompat_ListView_DropDown = 2131624062;
+			
+			// aapt resource value: 0x7f0e007f
+			public const int Base_Widget_AppCompat_ListView_Menu = 2131624063;
+			
+			// aapt resource value: 0x7f0e0080
+			public const int Base_Widget_AppCompat_PopupMenu = 2131624064;
+			
+			// aapt resource value: 0x7f0e0081
+			public const int Base_Widget_AppCompat_PopupMenu_Overflow = 2131624065;
+			
+			// aapt resource value: 0x7f0e00d8
+			public const int Base_Widget_AppCompat_PopupWindow = 2131624152;
+			
+			// aapt resource value: 0x7f0e0082
+			public const int Base_Widget_AppCompat_ProgressBar = 2131624066;
+			
+			// aapt resource value: 0x7f0e0083
+			public const int Base_Widget_AppCompat_ProgressBar_Horizontal = 2131624067;
+			
+			// aapt resource value: 0x7f0e0084
+			public const int Base_Widget_AppCompat_RatingBar = 2131624068;
+			
+			// aapt resource value: 0x7f0e0097
+			public const int Base_Widget_AppCompat_RatingBar_Indicator = 2131624087;
+			
+			// aapt resource value: 0x7f0e0098
+			public const int Base_Widget_AppCompat_RatingBar_Small = 2131624088;
+			
+			// aapt resource value: 0x7f0e00d9
+			public const int Base_Widget_AppCompat_SearchView = 2131624153;
+			
+			// aapt resource value: 0x7f0e00da
+			public const int Base_Widget_AppCompat_SearchView_ActionBar = 2131624154;
+			
+			// aapt resource value: 0x7f0e0085
+			public const int Base_Widget_AppCompat_SeekBar = 2131624069;
+			
+			// aapt resource value: 0x7f0e00db
+			public const int Base_Widget_AppCompat_SeekBar_Discrete = 2131624155;
+			
+			// aapt resource value: 0x7f0e0086
+			public const int Base_Widget_AppCompat_Spinner = 2131624070;
 			
 			// aapt resource value: 0x7f0e001d
-			public const int Theme_AppCompat_DayNight = 2131623965;
+			public const int Base_Widget_AppCompat_Spinner_Underlined = 2131623965;
 			
-			// aapt resource value: 0x7f0e001e
-			public const int Theme_AppCompat_DayNight_DarkActionBar = 2131623966;
+			// aapt resource value: 0x7f0e0087
+			public const int Base_Widget_AppCompat_TextView_SpinnerItem = 2131624071;
 			
-			// aapt resource value: 0x7f0e001f
-			public const int Theme_AppCompat_DayNight_Dialog = 2131623967;
+			// aapt resource value: 0x7f0e00a0
+			public const int Base_Widget_AppCompat_Toolbar = 2131624096;
 			
-			// aapt resource value: 0x7f0e0020
-			public const int Theme_AppCompat_DayNight_Dialog_Alert = 2131623968;
+			// aapt resource value: 0x7f0e0088
+			public const int Base_Widget_AppCompat_Toolbar_Button_Navigation = 2131624072;
 			
-			// aapt resource value: 0x7f0e0021
-			public const int Theme_AppCompat_DayNight_Dialog_MinWidth = 2131623969;
+			// aapt resource value: 0x7f0e0202
+			public const int Base_Widget_Design_TabLayout = 2131624450;
 			
-			// aapt resource value: 0x7f0e0022
-			public const int Theme_AppCompat_DayNight_DialogWhenLarge = 2131623970;
+			// aapt resource value: 0x7f0e0203
+			public const int Base_Widget_MaterialComponents_Chip = 2131624451;
 			
-			// aapt resource value: 0x7f0e0023
-			public const int Theme_AppCompat_DayNight_NoActionBar = 2131623971;
+			// aapt resource value: 0x7f0e0204
+			public const int Base_Widget_MaterialComponents_TextInputEditText = 2131624452;
 			
-			// aapt resource value: 0x7f0e0110
-			public const int Theme_AppCompat_Dialog = 2131624208;
+			// aapt resource value: 0x7f0e0205
+			public const int Base_Widget_MaterialComponents_TextInputLayout = 2131624453;
 			
-			// aapt resource value: 0x7f0e0111
-			public const int Theme_AppCompat_Dialog_Alert = 2131624209;
+			// aapt resource value: 0x7f0e0016
+			public const int CardView = 2131623958;
 			
-			// aapt resource value: 0x7f0e0112
-			public const int Theme_AppCompat_Dialog_MinWidth = 2131624210;
+			// aapt resource value: 0x7f0e0018
+			public const int CardView_Dark = 2131623960;
 			
-			// aapt resource value: 0x7f0e0113
-			public const int Theme_AppCompat_DialogWhenLarge = 2131624211;
+			// aapt resource value: 0x7f0e0019
+			public const int CardView_Light = 2131623961;
 			
-			// aapt resource value: 0x7f0e0114
-			public const int Theme_AppCompat_Light = 2131624212;
+			// aapt resource value: 0x7f0e0279
+			public const int MainTheme = 2131624569;
 			
-			// aapt resource value: 0x7f0e0115
-			public const int Theme_AppCompat_Light_DarkActionBar = 2131624213;
-			
-			// aapt resource value: 0x7f0e0116
-			public const int Theme_AppCompat_Light_Dialog = 2131624214;
-			
-			// aapt resource value: 0x7f0e0117
-			public const int Theme_AppCompat_Light_Dialog_Alert = 2131624215;
-			
-			// aapt resource value: 0x7f0e0118
-			public const int Theme_AppCompat_Light_Dialog_MinWidth = 2131624216;
-			
-			// aapt resource value: 0x7f0e0119
-			public const int Theme_AppCompat_Light_DialogWhenLarge = 2131624217;
-			
-			// aapt resource value: 0x7f0e011a
-			public const int Theme_AppCompat_Light_NoActionBar = 2131624218;
-			
-			// aapt resource value: 0x7f0e011b
-			public const int Theme_AppCompat_NoActionBar = 2131624219;
-			
-			// aapt resource value: 0x7f0e021c
-			public const int Theme_Design = 2131624476;
-			
-			// aapt resource value: 0x7f0e021d
-			public const int Theme_Design_BottomSheetDialog = 2131624477;
-			
-			// aapt resource value: 0x7f0e021e
-			public const int Theme_Design_Light = 2131624478;
-			
-			// aapt resource value: 0x7f0e021f
-			public const int Theme_Design_Light_BottomSheetDialog = 2131624479;
-			
-			// aapt resource value: 0x7f0e0220
-			public const int Theme_Design_Light_NoActionBar = 2131624480;
-			
-			// aapt resource value: 0x7f0e0221
-			public const int Theme_Design_NoActionBar = 2131624481;
-			
-			// aapt resource value: 0x7f0e018d
-			public const int Theme_Leanback = 2131624333;
-			
-			// aapt resource value: 0x7f0e016d
-			public const int Theme_Leanback_Browse = 2131624301;
-			
-			// aapt resource value: 0x7f0e016e
-			public const int Theme_Leanback_Details = 2131624302;
-			
-			// aapt resource value: 0x7f0e016f
-			public const int Theme_Leanback_Details_NoSharedElementTransition = 2131624303;
-			
-			// aapt resource value: 0x7f0e018e
-			public const int Theme_Leanback_GuidedStep = 2131624334;
-			
-			// aapt resource value: 0x7f0e018f
-			public const int Theme_Leanback_GuidedStep_Half = 2131624335;
-			
-			// aapt resource value: 0x7f0e0170
-			public const int Theme_Leanback_GuidedStep_HalfBase = 2131624304;
-			
-			// aapt resource value: 0x7f0e0171
-			public const int Theme_Leanback_GuidedStepBase = 2131624305;
-			
-			// aapt resource value: 0x7f0e0190
-			public const int Theme_Leanback_Onboarding = 2131624336;
-			
-			// aapt resource value: 0x7f0e0172
-			public const int Theme_Leanback_VerticalGrid = 2131624306;
-			
-			// aapt resource value: 0x7f0e016b
-			public const int Theme_LeanbackBase = 2131624299;
-			
-			// aapt resource value: 0x7f0e0222
-			public const int Theme_MaterialComponents = 2131624482;
-			
-			// aapt resource value: 0x7f0e0223
-			public const int Theme_MaterialComponents_BottomSheetDialog = 2131624483;
-			
-			// aapt resource value: 0x7f0e0224
-			public const int Theme_MaterialComponents_Bridge = 2131624484;
-			
-			// aapt resource value: 0x7f0e0225
-			public const int Theme_MaterialComponents_CompactMenu = 2131624485;
-			
-			// aapt resource value: 0x7f0e0226
-			public const int Theme_MaterialComponents_Dialog = 2131624486;
-			
-			// aapt resource value: 0x7f0e0227
-			public const int Theme_MaterialComponents_Dialog_Alert = 2131624487;
-			
-			// aapt resource value: 0x7f0e0228
-			public const int Theme_MaterialComponents_Dialog_MinWidth = 2131624488;
-			
-			// aapt resource value: 0x7f0e0229
-			public const int Theme_MaterialComponents_DialogWhenLarge = 2131624489;
-			
-			// aapt resource value: 0x7f0e022a
-			public const int Theme_MaterialComponents_Light = 2131624490;
-			
-			// aapt resource value: 0x7f0e022b
-			public const int Theme_MaterialComponents_Light_BottomSheetDialog = 2131624491;
-			
-			// aapt resource value: 0x7f0e022c
-			public const int Theme_MaterialComponents_Light_Bridge = 2131624492;
-			
-			// aapt resource value: 0x7f0e022d
-			public const int Theme_MaterialComponents_Light_DarkActionBar = 2131624493;
-			
-			// aapt resource value: 0x7f0e022e
-			public const int Theme_MaterialComponents_Light_DarkActionBar_Bridge = 2131624494;
-			
-			// aapt resource value: 0x7f0e022f
-			public const int Theme_MaterialComponents_Light_Dialog = 2131624495;
-			
-			// aapt resource value: 0x7f0e0230
-			public const int Theme_MaterialComponents_Light_Dialog_Alert = 2131624496;
-			
-			// aapt resource value: 0x7f0e0231
-			public const int Theme_MaterialComponents_Light_Dialog_MinWidth = 2131624497;
-			
-			// aapt resource value: 0x7f0e0232
-			public const int Theme_MaterialComponents_Light_DialogWhenLarge = 2131624498;
-			
-			// aapt resource value: 0x7f0e0233
-			public const int Theme_MaterialComponents_Light_NoActionBar = 2131624499;
-			
-			// aapt resource value: 0x7f0e0234
-			public const int Theme_MaterialComponents_Light_NoActionBar_Bridge = 2131624500;
-			
-			// aapt resource value: 0x7f0e0235
-			public const int Theme_MaterialComponents_NoActionBar = 2131624501;
-			
-			// aapt resource value: 0x7f0e0236
-			public const int Theme_MaterialComponents_NoActionBar_Bridge = 2131624502;
-			
-			// aapt resource value: 0x7f0e000d
-			public const int Theme_MediaRouter = 2131623949;
-			
-			// aapt resource value: 0x7f0e000e
-			public const int Theme_MediaRouter_Light = 2131623950;
-			
-			// aapt resource value: 0x7f0e000f
-			public const int Theme_MediaRouter_Light_DarkControlPanel = 2131623951;
-			
-			// aapt resource value: 0x7f0e0010
-			public const int Theme_MediaRouter_LightControlPanel = 2131623952;
-			
-			// aapt resource value: 0x7f0e011c
-			public const int ThemeOverlay_AppCompat = 2131624220;
-			
-			// aapt resource value: 0x7f0e011d
-			public const int ThemeOverlay_AppCompat_ActionBar = 2131624221;
-			
-			// aapt resource value: 0x7f0e011e
-			public const int ThemeOverlay_AppCompat_Dark = 2131624222;
-			
-			// aapt resource value: 0x7f0e011f
-			public const int ThemeOverlay_AppCompat_Dark_ActionBar = 2131624223;
-			
-			// aapt resource value: 0x7f0e0120
-			public const int ThemeOverlay_AppCompat_Dialog = 2131624224;
-			
-			// aapt resource value: 0x7f0e0121
-			public const int ThemeOverlay_AppCompat_Dialog_Alert = 2131624225;
-			
-			// aapt resource value: 0x7f0e0122
-			public const int ThemeOverlay_AppCompat_Light = 2131624226;
-			
-			// aapt resource value: 0x7f0e0237
-			public const int ThemeOverlay_MaterialComponents = 2131624503;
-			
-			// aapt resource value: 0x7f0e0238
-			public const int ThemeOverlay_MaterialComponents_ActionBar = 2131624504;
-			
-			// aapt resource value: 0x7f0e0239
-			public const int ThemeOverlay_MaterialComponents_Dark = 2131624505;
-			
-			// aapt resource value: 0x7f0e023a
-			public const int ThemeOverlay_MaterialComponents_Dark_ActionBar = 2131624506;
-			
-			// aapt resource value: 0x7f0e023b
-			public const int ThemeOverlay_MaterialComponents_Dialog = 2131624507;
-			
-			// aapt resource value: 0x7f0e023c
-			public const int ThemeOverlay_MaterialComponents_Dialog_Alert = 2131624508;
-			
-			// aapt resource value: 0x7f0e023d
-			public const int ThemeOverlay_MaterialComponents_Light = 2131624509;
-			
-			// aapt resource value: 0x7f0e023e
-			public const int ThemeOverlay_MaterialComponents_TextInputEditText = 2131624510;
-			
-			// aapt resource value: 0x7f0e023f
-			public const int ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox = 2131624511;
-			
-			// aapt resource value: 0x7f0e0240
-			public const int ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox_Dense = 2131624512;
-			
-			// aapt resource value: 0x7f0e0241
-			public const int ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox = 2131624513;
-			
-			// aapt resource value: 0x7f0e0242
-			public const int ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox_Dense = 2131624514;
-			
-			// aapt resource value: 0x7f0e0011
-			public const int ThemeOverlay_MediaRouter_Dark = 2131623953;
-			
-			// aapt resource value: 0x7f0e0012
-			public const int ThemeOverlay_MediaRouter_Light = 2131623954;
-			
-			// aapt resource value: 0x7f0e0123
-			public const int Widget_AppCompat_ActionBar = 2131624227;
-			
-			// aapt resource value: 0x7f0e0124
-			public const int Widget_AppCompat_ActionBar_Solid = 2131624228;
-			
-			// aapt resource value: 0x7f0e0125
-			public const int Widget_AppCompat_ActionBar_TabBar = 2131624229;
-			
-			// aapt resource value: 0x7f0e0126
-			public const int Widget_AppCompat_ActionBar_TabText = 2131624230;
-			
-			// aapt resource value: 0x7f0e0127
-			public const int Widget_AppCompat_ActionBar_TabView = 2131624231;
-			
-			// aapt resource value: 0x7f0e0128
-			public const int Widget_AppCompat_ActionButton = 2131624232;
-			
-			// aapt resource value: 0x7f0e0129
-			public const int Widget_AppCompat_ActionButton_CloseMode = 2131624233;
-			
-			// aapt resource value: 0x7f0e012a
-			public const int Widget_AppCompat_ActionButton_Overflow = 2131624234;
-			
-			// aapt resource value: 0x7f0e012b
-			public const int Widget_AppCompat_ActionMode = 2131624235;
-			
-			// aapt resource value: 0x7f0e012c
-			public const int Widget_AppCompat_ActivityChooserView = 2131624236;
-			
-			// aapt resource value: 0x7f0e012d
-			public const int Widget_AppCompat_AutoCompleteTextView = 2131624237;
-			
-			// aapt resource value: 0x7f0e012e
-			public const int Widget_AppCompat_Button = 2131624238;
-			
-			// aapt resource value: 0x7f0e012f
-			public const int Widget_AppCompat_Button_Borderless = 2131624239;
-			
-			// aapt resource value: 0x7f0e0130
-			public const int Widget_AppCompat_Button_Borderless_Colored = 2131624240;
-			
-			// aapt resource value: 0x7f0e0131
-			public const int Widget_AppCompat_Button_ButtonBar_AlertDialog = 2131624241;
-			
-			// aapt resource value: 0x7f0e0132
-			public const int Widget_AppCompat_Button_Colored = 2131624242;
-			
-			// aapt resource value: 0x7f0e0133
-			public const int Widget_AppCompat_Button_Small = 2131624243;
-			
-			// aapt resource value: 0x7f0e0134
-			public const int Widget_AppCompat_ButtonBar = 2131624244;
-			
-			// aapt resource value: 0x7f0e0135
-			public const int Widget_AppCompat_ButtonBar_AlertDialog = 2131624245;
-			
-			// aapt resource value: 0x7f0e0136
-			public const int Widget_AppCompat_CompoundButton_CheckBox = 2131624246;
-			
-			// aapt resource value: 0x7f0e0137
-			public const int Widget_AppCompat_CompoundButton_RadioButton = 2131624247;
-			
-			// aapt resource value: 0x7f0e0138
-			public const int Widget_AppCompat_CompoundButton_Switch = 2131624248;
-			
-			// aapt resource value: 0x7f0e0139
-			public const int Widget_AppCompat_DrawerArrowToggle = 2131624249;
-			
-			// aapt resource value: 0x7f0e013a
-			public const int Widget_AppCompat_DropDownItem_Spinner = 2131624250;
-			
-			// aapt resource value: 0x7f0e013b
-			public const int Widget_AppCompat_EditText = 2131624251;
-			
-			// aapt resource value: 0x7f0e013c
-			public const int Widget_AppCompat_ImageButton = 2131624252;
-			
-			// aapt resource value: 0x7f0e013d
-			public const int Widget_AppCompat_Light_ActionBar = 2131624253;
-			
-			// aapt resource value: 0x7f0e013e
-			public const int Widget_AppCompat_Light_ActionBar_Solid = 2131624254;
-			
-			// aapt resource value: 0x7f0e013f
-			public const int Widget_AppCompat_Light_ActionBar_Solid_Inverse = 2131624255;
-			
-			// aapt resource value: 0x7f0e0140
-			public const int Widget_AppCompat_Light_ActionBar_TabBar = 2131624256;
-			
-			// aapt resource value: 0x7f0e0141
-			public const int Widget_AppCompat_Light_ActionBar_TabBar_Inverse = 2131624257;
-			
-			// aapt resource value: 0x7f0e0142
-			public const int Widget_AppCompat_Light_ActionBar_TabText = 2131624258;
-			
-			// aapt resource value: 0x7f0e0143
-			public const int Widget_AppCompat_Light_ActionBar_TabText_Inverse = 2131624259;
-			
-			// aapt resource value: 0x7f0e0144
-			public const int Widget_AppCompat_Light_ActionBar_TabView = 2131624260;
-			
-			// aapt resource value: 0x7f0e0145
-			public const int Widget_AppCompat_Light_ActionBar_TabView_Inverse = 2131624261;
-			
-			// aapt resource value: 0x7f0e0146
-			public const int Widget_AppCompat_Light_ActionButton = 2131624262;
-			
-			// aapt resource value: 0x7f0e0147
-			public const int Widget_AppCompat_Light_ActionButton_CloseMode = 2131624263;
-			
-			// aapt resource value: 0x7f0e0148
-			public const int Widget_AppCompat_Light_ActionButton_Overflow = 2131624264;
-			
-			// aapt resource value: 0x7f0e0149
-			public const int Widget_AppCompat_Light_ActionMode_Inverse = 2131624265;
-			
-			// aapt resource value: 0x7f0e014a
-			public const int Widget_AppCompat_Light_ActivityChooserView = 2131624266;
-			
-			// aapt resource value: 0x7f0e014b
-			public const int Widget_AppCompat_Light_AutoCompleteTextView = 2131624267;
-			
-			// aapt resource value: 0x7f0e014c
-			public const int Widget_AppCompat_Light_DropDownItem_Spinner = 2131624268;
-			
-			// aapt resource value: 0x7f0e014d
-			public const int Widget_AppCompat_Light_ListPopupWindow = 2131624269;
-			
-			// aapt resource value: 0x7f0e014e
-			public const int Widget_AppCompat_Light_ListView_DropDown = 2131624270;
-			
-			// aapt resource value: 0x7f0e014f
-			public const int Widget_AppCompat_Light_PopupMenu = 2131624271;
-			
-			// aapt resource value: 0x7f0e0150
-			public const int Widget_AppCompat_Light_PopupMenu_Overflow = 2131624272;
-			
-			// aapt resource value: 0x7f0e0151
-			public const int Widget_AppCompat_Light_SearchView = 2131624273;
-			
-			// aapt resource value: 0x7f0e0152
-			public const int Widget_AppCompat_Light_Spinner_DropDown_ActionBar = 2131624274;
-			
-			// aapt resource value: 0x7f0e0153
-			public const int Widget_AppCompat_ListMenuView = 2131624275;
-			
-			// aapt resource value: 0x7f0e0154
-			public const int Widget_AppCompat_ListPopupWindow = 2131624276;
-			
-			// aapt resource value: 0x7f0e0155
-			public const int Widget_AppCompat_ListView = 2131624277;
-			
-			// aapt resource value: 0x7f0e0156
-			public const int Widget_AppCompat_ListView_DropDown = 2131624278;
-			
-			// aapt resource value: 0x7f0e0157
-			public const int Widget_AppCompat_ListView_Menu = 2131624279;
-			
-			// aapt resource value: 0x7f0e0158
-			public const int Widget_AppCompat_PopupMenu = 2131624280;
-			
-			// aapt resource value: 0x7f0e0159
-			public const int Widget_AppCompat_PopupMenu_Overflow = 2131624281;
-			
-			// aapt resource value: 0x7f0e015a
-			public const int Widget_AppCompat_PopupWindow = 2131624282;
-			
-			// aapt resource value: 0x7f0e015b
-			public const int Widget_AppCompat_ProgressBar = 2131624283;
-			
-			// aapt resource value: 0x7f0e015c
-			public const int Widget_AppCompat_ProgressBar_Horizontal = 2131624284;
-			
-			// aapt resource value: 0x7f0e015d
-			public const int Widget_AppCompat_RatingBar = 2131624285;
-			
-			// aapt resource value: 0x7f0e015e
-			public const int Widget_AppCompat_RatingBar_Indicator = 2131624286;
-			
-			// aapt resource value: 0x7f0e015f
-			public const int Widget_AppCompat_RatingBar_Small = 2131624287;
-			
-			// aapt resource value: 0x7f0e0160
-			public const int Widget_AppCompat_SearchView = 2131624288;
-			
-			// aapt resource value: 0x7f0e0161
-			public const int Widget_AppCompat_SearchView_ActionBar = 2131624289;
-			
-			// aapt resource value: 0x7f0e0162
-			public const int Widget_AppCompat_SeekBar = 2131624290;
-			
-			// aapt resource value: 0x7f0e0163
-			public const int Widget_AppCompat_SeekBar_Discrete = 2131624291;
-			
-			// aapt resource value: 0x7f0e0164
-			public const int Widget_AppCompat_Spinner = 2131624292;
-			
-			// aapt resource value: 0x7f0e0165
-			public const int Widget_AppCompat_Spinner_DropDown = 2131624293;
-			
-			// aapt resource value: 0x7f0e0166
-			public const int Widget_AppCompat_Spinner_DropDown_ActionBar = 2131624294;
-			
-			// aapt resource value: 0x7f0e0167
-			public const int Widget_AppCompat_Spinner_Underlined = 2131624295;
-			
-			// aapt resource value: 0x7f0e0168
-			public const int Widget_AppCompat_TextView_SpinnerItem = 2131624296;
-			
-			// aapt resource value: 0x7f0e0169
-			public const int Widget_AppCompat_Toolbar = 2131624297;
-			
-			// aapt resource value: 0x7f0e016a
-			public const int Widget_AppCompat_Toolbar_Button_Navigation = 2131624298;
-			
-			// aapt resource value: 0x7f0e0275
-			public const int Widget_Compat_NotificationActionContainer = 2131624565;
-			
-			// aapt resource value: 0x7f0e0276
-			public const int Widget_Compat_NotificationActionText = 2131624566;
-			
-			// aapt resource value: 0x7f0e0243
-			public const int Widget_Design_AppBarLayout = 2131624515;
-			
-			// aapt resource value: 0x7f0e0244
-			public const int Widget_Design_BottomNavigationView = 2131624516;
-			
-			// aapt resource value: 0x7f0e0245
-			public const int Widget_Design_BottomSheet_Modal = 2131624517;
-			
-			// aapt resource value: 0x7f0e0246
-			public const int Widget_Design_CollapsingToolbar = 2131624518;
-			
-			// aapt resource value: 0x7f0e0247
-			public const int Widget_Design_FloatingActionButton = 2131624519;
-			
-			// aapt resource value: 0x7f0e0248
-			public const int Widget_Design_NavigationView = 2131624520;
-			
-			// aapt resource value: 0x7f0e0249
-			public const int Widget_Design_ScrimInsetsFrameLayout = 2131624521;
-			
-			// aapt resource value: 0x7f0e024a
-			public const int Widget_Design_Snackbar = 2131624522;
-			
-			// aapt resource value: 0x7f0e01df
-			public const int Widget_Design_TabLayout = 2131624415;
-			
-			// aapt resource value: 0x7f0e024b
-			public const int Widget_Design_TextInputLayout = 2131624523;
-			
-			// aapt resource value: 0x7f0e0191
-			public const int Widget_Leanback = 2131624337;
-			
-			// aapt resource value: 0x7f0e0192
-			public const int Widget_Leanback_BaseCardViewStyle = 2131624338;
-			
-			// aapt resource value: 0x7f0e0193
-			public const int Widget_Leanback_DetailsActionButtonStyle = 2131624339;
-			
-			// aapt resource value: 0x7f0e0173
-			public const int Widget_Leanback_DetailsActionButtonStyleBase = 2131624307;
-			
-			// aapt resource value: 0x7f0e0194
-			public const int Widget_Leanback_DetailsDescriptionBodyStyle = 2131624340;
-			
-			// aapt resource value: 0x7f0e0195
-			public const int Widget_Leanback_DetailsDescriptionSubtitleStyle = 2131624341;
-			
-			// aapt resource value: 0x7f0e0196
-			public const int Widget_Leanback_DetailsDescriptionTitleStyle = 2131624342;
-			
-			// aapt resource value: 0x7f0e0197
-			public const int Widget_Leanback_ErrorMessageStyle = 2131624343;
-			
-			// aapt resource value: 0x7f0e0198
-			public const int Widget_Leanback_GridItems = 2131624344;
-			
-			// aapt resource value: 0x7f0e0199
-			public const int Widget_Leanback_GridItems_VerticalGridView = 2131624345;
-			
-			// aapt resource value: 0x7f0e019a
-			public const int Widget_Leanback_GuidanceBreadcrumbStyle = 2131624346;
-			
-			// aapt resource value: 0x7f0e019b
-			public const int Widget_Leanback_GuidanceContainerStyle = 2131624347;
-			
-			// aapt resource value: 0x7f0e019c
-			public const int Widget_Leanback_GuidanceDescriptionStyle = 2131624348;
-			
-			// aapt resource value: 0x7f0e019d
-			public const int Widget_Leanback_GuidanceIconStyle = 2131624349;
-			
-			// aapt resource value: 0x7f0e019e
-			public const int Widget_Leanback_GuidanceTitleStyle = 2131624350;
-			
-			// aapt resource value: 0x7f0e019f
-			public const int Widget_Leanback_GuidedActionItemCheckmarkStyle = 2131624351;
-			
-			// aapt resource value: 0x7f0e01a0
-			public const int Widget_Leanback_GuidedActionItemChevronStyle = 2131624352;
-			
-			// aapt resource value: 0x7f0e01a1
-			public const int Widget_Leanback_GuidedActionItemContainerStyle = 2131624353;
-			
-			// aapt resource value: 0x7f0e01a2
-			public const int Widget_Leanback_GuidedActionItemContentStyle = 2131624354;
-			
-			// aapt resource value: 0x7f0e01a3
-			public const int Widget_Leanback_GuidedActionItemDescriptionStyle = 2131624355;
-			
-			// aapt resource value: 0x7f0e01a4
-			public const int Widget_Leanback_GuidedActionItemIconStyle = 2131624356;
-			
-			// aapt resource value: 0x7f0e01a5
-			public const int Widget_Leanback_GuidedActionItemTitleStyle = 2131624357;
-			
-			// aapt resource value: 0x7f0e01a6
-			public const int Widget_Leanback_GuidedActionsContainerStyle = 2131624358;
-			
-			// aapt resource value: 0x7f0e01a7
-			public const int Widget_Leanback_GuidedActionsListStyle = 2131624359;
-			
-			// aapt resource value: 0x7f0e01a8
-			public const int Widget_Leanback_GuidedActionsSelectorStyle = 2131624360;
-			
-			// aapt resource value: 0x7f0e01a9
-			public const int Widget_Leanback_GuidedButtonActionsListStyle = 2131624361;
-			
-			// aapt resource value: 0x7f0e01aa
-			public const int Widget_Leanback_GuidedSubActionsListStyle = 2131624362;
-			
-			// aapt resource value: 0x7f0e01ab
-			public const int Widget_Leanback_Header = 2131624363;
-			
-			// aapt resource value: 0x7f0e01ac
-			public const int Widget_Leanback_Header_Section = 2131624364;
-			
-			// aapt resource value: 0x7f0e01ad
-			public const int Widget_Leanback_Headers = 2131624365;
-			
-			// aapt resource value: 0x7f0e01ae
-			public const int Widget_Leanback_Headers_VerticalGridView = 2131624366;
-			
-			// aapt resource value: 0x7f0e01af
-			public const int Widget_Leanback_ImageCardView = 2131624367;
-			
-			// aapt resource value: 0x7f0e01b0
-			public const int Widget_Leanback_ImageCardView_BadgeStyle = 2131624368;
-			
-			// aapt resource value: 0x7f0e01b1
-			public const int Widget_Leanback_ImageCardView_ContentStyle = 2131624369;
-			
-			// aapt resource value: 0x7f0e01b2
-			public const int Widget_Leanback_ImageCardView_ImageStyle = 2131624370;
-			
-			// aapt resource value: 0x7f0e01b3
-			public const int Widget_Leanback_ImageCardView_InfoAreaStyle = 2131624371;
-			
-			// aapt resource value: 0x7f0e01b4
-			public const int Widget_Leanback_ImageCardView_TitleStyle = 2131624372;
-			
-			// aapt resource value: 0x7f0e01b5
-			public const int Widget_Leanback_ImageCardViewStyle = 2131624373;
-			
-			// aapt resource value: 0x7f0e01b6
-			public const int Widget_Leanback_OnboardingDescriptionStyle = 2131624374;
-			
-			// aapt resource value: 0x7f0e01b7
-			public const int Widget_Leanback_OnboardingHeaderStyle = 2131624375;
-			
-			// aapt resource value: 0x7f0e01b8
-			public const int Widget_Leanback_OnboardingLogoStyle = 2131624376;
-			
-			// aapt resource value: 0x7f0e01b9
-			public const int Widget_Leanback_OnboardingMainIconStyle = 2131624377;
-			
-			// aapt resource value: 0x7f0e01ba
-			public const int Widget_Leanback_OnboardingNavigatorContainerStyle = 2131624378;
-			
-			// aapt resource value: 0x7f0e01bb
-			public const int Widget_Leanback_OnboardingPageIndicatorStyle = 2131624379;
-			
-			// aapt resource value: 0x7f0e01bc
-			public const int Widget_Leanback_OnboardingStartButtonStyle = 2131624380;
-			
-			// aapt resource value: 0x7f0e0174
-			public const int Widget_Leanback_OnboardingStartButtonStyleBase = 2131624308;
-			
-			// aapt resource value: 0x7f0e01bd
-			public const int Widget_Leanback_OnboardingTitleStyle = 2131624381;
-			
-			// aapt resource value: 0x7f0e01be
-			public const int Widget_Leanback_PlaybackControlLabelStyle = 2131624382;
-			
-			// aapt resource value: 0x7f0e01bf
-			public const int Widget_Leanback_PlaybackControlsActionIconsStyle = 2131624383;
-			
-			// aapt resource value: 0x7f0e01c0
-			public const int Widget_Leanback_PlaybackControlsButtonStyle = 2131624384;
-			
-			// aapt resource value: 0x7f0e01c1
-			public const int Widget_Leanback_PlaybackControlsTimeStyle = 2131624385;
-			
-			// aapt resource value: 0x7f0e01c2
-			public const int Widget_Leanback_PlaybackMediaItemDetailsStyle = 2131624386;
-			
-			// aapt resource value: 0x7f0e01c3
-			public const int Widget_Leanback_PlaybackMediaItemDurationStyle = 2131624387;
-			
-			// aapt resource value: 0x7f0e01c4
-			public const int Widget_Leanback_PlaybackMediaItemNameStyle = 2131624388;
-			
-			// aapt resource value: 0x7f0e01c5
-			public const int Widget_Leanback_PlaybackMediaItemNumberStyle = 2131624389;
-			
-			// aapt resource value: 0x7f0e01c6
-			public const int Widget_Leanback_PlaybackMediaItemNumberViewFlipperStyle = 2131624390;
-			
-			// aapt resource value: 0x7f0e01c7
-			public const int Widget_Leanback_PlaybackMediaItemRowStyle = 2131624391;
-			
-			// aapt resource value: 0x7f0e01c8
-			public const int Widget_Leanback_PlaybackMediaItemSeparatorStyle = 2131624392;
-			
-			// aapt resource value: 0x7f0e01c9
-			public const int Widget_Leanback_PlaybackMediaListHeaderStyle = 2131624393;
-			
-			// aapt resource value: 0x7f0e01ca
-			public const int Widget_Leanback_PlaybackMediaListHeaderTitleStyle = 2131624394;
-			
-			// aapt resource value: 0x7f0e01cb
-			public const int Widget_Leanback_PlaybackRow = 2131624395;
-			
-			// aapt resource value: 0x7f0e01cc
-			public const int Widget_Leanback_Row = 2131624396;
-			
-			// aapt resource value: 0x7f0e01cd
-			public const int Widget_Leanback_Row_Header = 2131624397;
-			
-			// aapt resource value: 0x7f0e01ce
-			public const int Widget_Leanback_Row_Header_Description = 2131624398;
-			
-			// aapt resource value: 0x7f0e01cf
-			public const int Widget_Leanback_Row_HeaderDock = 2131624399;
-			
-			// aapt resource value: 0x7f0e01d0
-			public const int Widget_Leanback_Row_HorizontalGridView = 2131624400;
-			
-			// aapt resource value: 0x7f0e01d1
-			public const int Widget_Leanback_Row_HoverCardDescription = 2131624401;
-			
-			// aapt resource value: 0x7f0e01d2
-			public const int Widget_Leanback_Row_HoverCardTitle = 2131624402;
-			
-			// aapt resource value: 0x7f0e01d3
-			public const int Widget_Leanback_Rows = 2131624403;
-			
-			// aapt resource value: 0x7f0e01d4
-			public const int Widget_Leanback_Rows_VerticalGridView = 2131624404;
-			
-			// aapt resource value: 0x7f0e01d5
-			public const int Widget_Leanback_SearchOrbViewStyle = 2131624405;
-			
-			// aapt resource value: 0x7f0e01d6
-			public const int Widget_Leanback_Title = 2131624406;
-			
-			// aapt resource value: 0x7f0e01d7
-			public const int Widget_Leanback_Title_Icon = 2131624407;
-			
-			// aapt resource value: 0x7f0e01d8
-			public const int Widget_Leanback_Title_Text = 2131624408;
-			
-			// aapt resource value: 0x7f0e01d9
-			public const int Widget_Leanback_TitleView = 2131624409;
-			
-			// aapt resource value: 0x7f0e0175
-			public const int Widget_LeanbackBase = 2131624309;
-			
-			// aapt resource value: 0x7f0e024c
-			public const int Widget_MaterialComponents_BottomAppBar = 2131624524;
-			
-			// aapt resource value: 0x7f0e024d
-			public const int Widget_MaterialComponents_BottomAppBar_Colored = 2131624525;
-			
-			// aapt resource value: 0x7f0e024e
-			public const int Widget_MaterialComponents_BottomNavigationView = 2131624526;
-			
-			// aapt resource value: 0x7f0e024f
-			public const int Widget_MaterialComponents_BottomNavigationView_Colored = 2131624527;
-			
-			// aapt resource value: 0x7f0e0250
-			public const int Widget_MaterialComponents_BottomSheet_Modal = 2131624528;
-			
-			// aapt resource value: 0x7f0e0251
-			public const int Widget_MaterialComponents_Button = 2131624529;
-			
-			// aapt resource value: 0x7f0e0252
-			public const int Widget_MaterialComponents_Button_Icon = 2131624530;
-			
-			// aapt resource value: 0x7f0e0253
-			public const int Widget_MaterialComponents_Button_OutlinedButton = 2131624531;
-			
-			// aapt resource value: 0x7f0e0254
-			public const int Widget_MaterialComponents_Button_OutlinedButton_Icon = 2131624532;
-			
-			// aapt resource value: 0x7f0e0255
-			public const int Widget_MaterialComponents_Button_TextButton = 2131624533;
-			
-			// aapt resource value: 0x7f0e0256
-			public const int Widget_MaterialComponents_Button_TextButton_Dialog = 2131624534;
-			
-			// aapt resource value: 0x7f0e0257
-			public const int Widget_MaterialComponents_Button_TextButton_Dialog_Icon = 2131624535;
-			
-			// aapt resource value: 0x7f0e0258
-			public const int Widget_MaterialComponents_Button_TextButton_Icon = 2131624536;
-			
-			// aapt resource value: 0x7f0e0259
-			public const int Widget_MaterialComponents_Button_UnelevatedButton = 2131624537;
-			
-			// aapt resource value: 0x7f0e025a
-			public const int Widget_MaterialComponents_Button_UnelevatedButton_Icon = 2131624538;
-			
-			// aapt resource value: 0x7f0e025b
-			public const int Widget_MaterialComponents_CardView = 2131624539;
-			
-			// aapt resource value: 0x7f0e025c
-			public const int Widget_MaterialComponents_Chip_Action = 2131624540;
-			
-			// aapt resource value: 0x7f0e025d
-			public const int Widget_MaterialComponents_Chip_Choice = 2131624541;
-			
-			// aapt resource value: 0x7f0e025e
-			public const int Widget_MaterialComponents_Chip_Entry = 2131624542;
-			
-			// aapt resource value: 0x7f0e025f
-			public const int Widget_MaterialComponents_Chip_Filter = 2131624543;
-			
-			// aapt resource value: 0x7f0e0260
-			public const int Widget_MaterialComponents_ChipGroup = 2131624544;
-			
-			// aapt resource value: 0x7f0e0008
-			public const int Widget_MaterialComponents_CompoundButton_CheckBox = 2131623944;
-			
-			// aapt resource value: 0x7f0e0261
-			public const int Widget_MaterialComponents_FloatingActionButton = 2131624545;
-			
-			// aapt resource value: 0x7f0e0262
-			public const int Widget_MaterialComponents_NavigationView = 2131624546;
-			
-			// aapt resource value: 0x7f0e0263
-			public const int Widget_MaterialComponents_Snackbar = 2131624547;
-			
-			// aapt resource value: 0x7f0e0264
-			public const int Widget_MaterialComponents_Snackbar_FullWidth = 2131624548;
-			
-			// aapt resource value: 0x7f0e0265
-			public const int Widget_MaterialComponents_TabLayout = 2131624549;
-			
-			// aapt resource value: 0x7f0e0266
-			public const int Widget_MaterialComponents_TabLayout_Colored = 2131624550;
-			
-			// aapt resource value: 0x7f0e0267
-			public const int Widget_MaterialComponents_TextInputEditText_FilledBox = 2131624551;
-			
-			// aapt resource value: 0x7f0e0268
-			public const int Widget_MaterialComponents_TextInputEditText_FilledBox_Dense = 2131624552;
-			
-			// aapt resource value: 0x7f0e0269
-			public const int Widget_MaterialComponents_TextInputEditText_OutlinedBox = 2131624553;
-			
-			// aapt resource value: 0x7f0e026a
-			public const int Widget_MaterialComponents_TextInputEditText_OutlinedBox_Dense = 2131624554;
-			
-			// aapt resource value: 0x7f0e026b
-			public const int Widget_MaterialComponents_TextInputLayout_FilledBox = 2131624555;
-			
-			// aapt resource value: 0x7f0e026c
-			public const int Widget_MaterialComponents_TextInputLayout_FilledBox_Dense = 2131624556;
-			
-			// aapt resource value: 0x7f0e026d
-			public const int Widget_MaterialComponents_TextInputLayout_OutlinedBox = 2131624557;
-			
-			// aapt resource value: 0x7f0e026e
-			public const int Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense = 2131624558;
-			
-			// aapt resource value: 0x7f0e026f
-			public const int Widget_MaterialComponents_Toolbar = 2131624559;
-			
-			// aapt resource value: 0x7f0e0013
-			public const int Widget_MediaRouter_Light_MediaRouteButton = 2131623955;
-			
-			// aapt resource value: 0x7f0e0014
-			public const int Widget_MediaRouter_MediaRouteButton = 2131623956;
-			
-			// aapt resource value: 0x7f0e0270
-			public const int Widget_Support_CoordinatorLayout = 2131624560;
-			
-			// aapt resource value: 0x7f0e0005
-			public const int XamarinFormsMaterialButton = 2131623941;
-			
-			// aapt resource value: 0x7f0e0006
-			public const int XamarinFormsMaterialButtonOutlined = 2131623942;
-			
-			// aapt resource value: 0x7f0e0009
-			public const int XamarinFormsMaterialCheckBox = 2131623945;
-			
-			// aapt resource value: 0x7f0e0007
-			public const int XamarinFormsMaterialEntryFilled = 2131623943;
-			
-			// aapt resource value: 0x7f0e0004
-			public const int XamarinFormsMaterialProgressBarCircular = 2131623940;
-			
-			// aapt resource value: 0x7f0e0003
-			public const int XamarinFormsMaterialProgressBarHorizontal = 2131623939;
-			
-			// aapt resource value: 0x7f0e0002
-			public const int XamarinFormsMaterialSlider = 2131623938;
+			// aapt resource value: 0x7f0e027a
+			public const int MainTheme_Base = 2131624570;
 			
 			// aapt resource value: 0x7f0e0001
-			public const int XamarinFormsMaterialTheme = 2131623937;
+			public const int NestedScrollBarStyle = 2131623937;
+			
+			// aapt resource value: 0x7f0e0089
+			public const int Platform_AppCompat = 2131624073;
+			
+			// aapt resource value: 0x7f0e008a
+			public const int Platform_AppCompat_Light = 2131624074;
+			
+			// aapt resource value: 0x7f0e0206
+			public const int Platform_MaterialComponents = 2131624454;
+			
+			// aapt resource value: 0x7f0e0207
+			public const int Platform_MaterialComponents_Dialog = 2131624455;
+			
+			// aapt resource value: 0x7f0e0208
+			public const int Platform_MaterialComponents_Light = 2131624456;
+			
+			// aapt resource value: 0x7f0e0209
+			public const int Platform_MaterialComponents_Light_Dialog = 2131624457;
+			
+			// aapt resource value: 0x7f0e008b
+			public const int Platform_ThemeOverlay_AppCompat = 2131624075;
+			
+			// aapt resource value: 0x7f0e008c
+			public const int Platform_ThemeOverlay_AppCompat_Dark = 2131624076;
+			
+			// aapt resource value: 0x7f0e008d
+			public const int Platform_ThemeOverlay_AppCompat_Light = 2131624077;
+			
+			// aapt resource value: 0x7f0e008e
+			public const int Platform_V21_AppCompat = 2131624078;
+			
+			// aapt resource value: 0x7f0e008f
+			public const int Platform_V21_AppCompat_Light = 2131624079;
+			
+			// aapt resource value: 0x7f0e009b
+			public const int Platform_V25_AppCompat = 2131624091;
+			
+			// aapt resource value: 0x7f0e009c
+			public const int Platform_V25_AppCompat_Light = 2131624092;
+			
+			// aapt resource value: 0x7f0e00dc
+			public const int Platform_Widget_AppCompat_Spinner = 2131624156;
+			
+			// aapt resource value: 0x7f0e0026
+			public const int RtlOverlay_DialogWindowTitle_AppCompat = 2131623974;
+			
+			// aapt resource value: 0x7f0e0027
+			public const int RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = 2131623975;
+			
+			// aapt resource value: 0x7f0e0028
+			public const int RtlOverlay_Widget_AppCompat_DialogTitle_Icon = 2131623976;
+			
+			// aapt resource value: 0x7f0e0029
+			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem = 2131623977;
+			
+			// aapt resource value: 0x7f0e002a
+			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = 2131623978;
+			
+			// aapt resource value: 0x7f0e002b
+			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut = 2131623979;
+			
+			// aapt resource value: 0x7f0e002c
+			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow = 2131623980;
+			
+			// aapt resource value: 0x7f0e002d
+			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = 2131623981;
+			
+			// aapt resource value: 0x7f0e002e
+			public const int RtlOverlay_Widget_AppCompat_PopupMenuItem_Title = 2131623982;
+			
+			// aapt resource value: 0x7f0e002f
+			public const int RtlOverlay_Widget_AppCompat_Search_DropDown = 2131623983;
+			
+			// aapt resource value: 0x7f0e0030
+			public const int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = 2131623984;
+			
+			// aapt resource value: 0x7f0e0031
+			public const int RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = 2131623985;
+			
+			// aapt resource value: 0x7f0e0032
+			public const int RtlOverlay_Widget_AppCompat_Search_DropDown_Query = 2131623986;
+			
+			// aapt resource value: 0x7f0e0033
+			public const int RtlOverlay_Widget_AppCompat_Search_DropDown_Text = 2131623987;
+			
+			// aapt resource value: 0x7f0e0034
+			public const int RtlOverlay_Widget_AppCompat_SearchView_MagIcon = 2131623988;
+			
+			// aapt resource value: 0x7f0e0035
+			public const int RtlUnderlay_Widget_AppCompat_ActionButton = 2131623989;
+			
+			// aapt resource value: 0x7f0e0036
+			public const int RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = 2131623990;
+			
+			// aapt resource value: 0x7f0e00dd
+			public const int TextAppearance_AppCompat = 2131624157;
+			
+			// aapt resource value: 0x7f0e00de
+			public const int TextAppearance_AppCompat_Body1 = 2131624158;
+			
+			// aapt resource value: 0x7f0e00df
+			public const int TextAppearance_AppCompat_Body2 = 2131624159;
+			
+			// aapt resource value: 0x7f0e00e0
+			public const int TextAppearance_AppCompat_Button = 2131624160;
+			
+			// aapt resource value: 0x7f0e00e1
+			public const int TextAppearance_AppCompat_Caption = 2131624161;
+			
+			// aapt resource value: 0x7f0e00e2
+			public const int TextAppearance_AppCompat_Display1 = 2131624162;
+			
+			// aapt resource value: 0x7f0e00e3
+			public const int TextAppearance_AppCompat_Display2 = 2131624163;
+			
+			// aapt resource value: 0x7f0e00e4
+			public const int TextAppearance_AppCompat_Display3 = 2131624164;
+			
+			// aapt resource value: 0x7f0e00e5
+			public const int TextAppearance_AppCompat_Display4 = 2131624165;
+			
+			// aapt resource value: 0x7f0e00e6
+			public const int TextAppearance_AppCompat_Headline = 2131624166;
+			
+			// aapt resource value: 0x7f0e00e7
+			public const int TextAppearance_AppCompat_Inverse = 2131624167;
+			
+			// aapt resource value: 0x7f0e00e8
+			public const int TextAppearance_AppCompat_Large = 2131624168;
+			
+			// aapt resource value: 0x7f0e00e9
+			public const int TextAppearance_AppCompat_Large_Inverse = 2131624169;
+			
+			// aapt resource value: 0x7f0e00ea
+			public const int TextAppearance_AppCompat_Light_SearchResult_Subtitle = 2131624170;
+			
+			// aapt resource value: 0x7f0e00eb
+			public const int TextAppearance_AppCompat_Light_SearchResult_Title = 2131624171;
+			
+			// aapt resource value: 0x7f0e00ec
+			public const int TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = 2131624172;
+			
+			// aapt resource value: 0x7f0e00ed
+			public const int TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = 2131624173;
+			
+			// aapt resource value: 0x7f0e00ee
+			public const int TextAppearance_AppCompat_Medium = 2131624174;
+			
+			// aapt resource value: 0x7f0e00ef
+			public const int TextAppearance_AppCompat_Medium_Inverse = 2131624175;
+			
+			// aapt resource value: 0x7f0e00f0
+			public const int TextAppearance_AppCompat_Menu = 2131624176;
+			
+			// aapt resource value: 0x7f0e00f1
+			public const int TextAppearance_AppCompat_SearchResult_Subtitle = 2131624177;
+			
+			// aapt resource value: 0x7f0e00f2
+			public const int TextAppearance_AppCompat_SearchResult_Title = 2131624178;
+			
+			// aapt resource value: 0x7f0e00f3
+			public const int TextAppearance_AppCompat_Small = 2131624179;
+			
+			// aapt resource value: 0x7f0e00f4
+			public const int TextAppearance_AppCompat_Small_Inverse = 2131624180;
+			
+			// aapt resource value: 0x7f0e00f5
+			public const int TextAppearance_AppCompat_Subhead = 2131624181;
+			
+			// aapt resource value: 0x7f0e00f6
+			public const int TextAppearance_AppCompat_Subhead_Inverse = 2131624182;
+			
+			// aapt resource value: 0x7f0e00f7
+			public const int TextAppearance_AppCompat_Title = 2131624183;
+			
+			// aapt resource value: 0x7f0e00f8
+			public const int TextAppearance_AppCompat_Title_Inverse = 2131624184;
+			
+			// aapt resource value: 0x7f0e0025
+			public const int TextAppearance_AppCompat_Tooltip = 2131623973;
+			
+			// aapt resource value: 0x7f0e00f9
+			public const int TextAppearance_AppCompat_Widget_ActionBar_Menu = 2131624185;
+			
+			// aapt resource value: 0x7f0e00fa
+			public const int TextAppearance_AppCompat_Widget_ActionBar_Subtitle = 2131624186;
+			
+			// aapt resource value: 0x7f0e00fb
+			public const int TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = 2131624187;
+			
+			// aapt resource value: 0x7f0e00fc
+			public const int TextAppearance_AppCompat_Widget_ActionBar_Title = 2131624188;
+			
+			// aapt resource value: 0x7f0e00fd
+			public const int TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = 2131624189;
+			
+			// aapt resource value: 0x7f0e00fe
+			public const int TextAppearance_AppCompat_Widget_ActionMode_Subtitle = 2131624190;
+			
+			// aapt resource value: 0x7f0e00ff
+			public const int TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = 2131624191;
+			
+			// aapt resource value: 0x7f0e0100
+			public const int TextAppearance_AppCompat_Widget_ActionMode_Title = 2131624192;
+			
+			// aapt resource value: 0x7f0e0101
+			public const int TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = 2131624193;
+			
+			// aapt resource value: 0x7f0e0102
+			public const int TextAppearance_AppCompat_Widget_Button = 2131624194;
+			
+			// aapt resource value: 0x7f0e0103
+			public const int TextAppearance_AppCompat_Widget_Button_Borderless_Colored = 2131624195;
+			
+			// aapt resource value: 0x7f0e0104
+			public const int TextAppearance_AppCompat_Widget_Button_Colored = 2131624196;
+			
+			// aapt resource value: 0x7f0e0105
+			public const int TextAppearance_AppCompat_Widget_Button_Inverse = 2131624197;
+			
+			// aapt resource value: 0x7f0e0106
+			public const int TextAppearance_AppCompat_Widget_DropDownItem = 2131624198;
+			
+			// aapt resource value: 0x7f0e0107
+			public const int TextAppearance_AppCompat_Widget_PopupMenu_Header = 2131624199;
+			
+			// aapt resource value: 0x7f0e0108
+			public const int TextAppearance_AppCompat_Widget_PopupMenu_Large = 2131624200;
+			
+			// aapt resource value: 0x7f0e0109
+			public const int TextAppearance_AppCompat_Widget_PopupMenu_Small = 2131624201;
+			
+			// aapt resource value: 0x7f0e010a
+			public const int TextAppearance_AppCompat_Widget_Switch = 2131624202;
+			
+			// aapt resource value: 0x7f0e010b
+			public const int TextAppearance_AppCompat_Widget_TextView_SpinnerItem = 2131624203;
+			
+			// aapt resource value: 0x7f0e0272
+			public const int TextAppearance_Compat_Notification = 2131624562;
+			
+			// aapt resource value: 0x7f0e0273
+			public const int TextAppearance_Compat_Notification_Info = 2131624563;
+			
+			// aapt resource value: 0x7f0e01db
+			public const int TextAppearance_Compat_Notification_Info_Media = 2131624411;
+			
+			// aapt resource value: 0x7f0e0278
+			public const int TextAppearance_Compat_Notification_Line2 = 2131624568;
+			
+			// aapt resource value: 0x7f0e01df
+			public const int TextAppearance_Compat_Notification_Line2_Media = 2131624415;
+			
+			// aapt resource value: 0x7f0e01dc
+			public const int TextAppearance_Compat_Notification_Media = 2131624412;
+			
+			// aapt resource value: 0x7f0e0274
+			public const int TextAppearance_Compat_Notification_Time = 2131624564;
+			
+			// aapt resource value: 0x7f0e01dd
+			public const int TextAppearance_Compat_Notification_Time_Media = 2131624413;
+			
+			// aapt resource value: 0x7f0e0275
+			public const int TextAppearance_Compat_Notification_Title = 2131624565;
+			
+			// aapt resource value: 0x7f0e01de
+			public const int TextAppearance_Compat_Notification_Title_Media = 2131624414;
+			
+			// aapt resource value: 0x7f0e020a
+			public const int TextAppearance_Design_CollapsingToolbar_Expanded = 2131624458;
+			
+			// aapt resource value: 0x7f0e020b
+			public const int TextAppearance_Design_Counter = 2131624459;
+			
+			// aapt resource value: 0x7f0e020c
+			public const int TextAppearance_Design_Counter_Overflow = 2131624460;
+			
+			// aapt resource value: 0x7f0e020d
+			public const int TextAppearance_Design_Error = 2131624461;
+			
+			// aapt resource value: 0x7f0e020e
+			public const int TextAppearance_Design_HelperText = 2131624462;
+			
+			// aapt resource value: 0x7f0e020f
+			public const int TextAppearance_Design_Hint = 2131624463;
+			
+			// aapt resource value: 0x7f0e0210
+			public const int TextAppearance_Design_Snackbar_Message = 2131624464;
+			
+			// aapt resource value: 0x7f0e0211
+			public const int TextAppearance_Design_Tab = 2131624465;
+			
+			// aapt resource value: 0x7f0e0177
+			public const int TextAppearance_Leanback = 2131624311;
+			
+			// aapt resource value: 0x7f0e0178
+			public const int TextAppearance_Leanback_DetailsActionButton = 2131624312;
+			
+			// aapt resource value: 0x7f0e0179
+			public const int TextAppearance_Leanback_DetailsDescriptionBody = 2131624313;
+			
+			// aapt resource value: 0x7f0e017a
+			public const int TextAppearance_Leanback_DetailsDescriptionSubtitle = 2131624314;
+			
+			// aapt resource value: 0x7f0e017b
+			public const int TextAppearance_Leanback_DetailsDescriptionTitle = 2131624315;
+			
+			// aapt resource value: 0x7f0e017c
+			public const int TextAppearance_Leanback_ErrorMessage = 2131624316;
+			
+			// aapt resource value: 0x7f0e017d
+			public const int TextAppearance_Leanback_Header = 2131624317;
+			
+			// aapt resource value: 0x7f0e017e
+			public const int TextAppearance_Leanback_Header_Section = 2131624318;
+			
+			// aapt resource value: 0x7f0e017f
+			public const int TextAppearance_Leanback_ImageCardView = 2131624319;
+			
+			// aapt resource value: 0x7f0e0180
+			public const int TextAppearance_Leanback_ImageCardView_Content = 2131624320;
+			
+			// aapt resource value: 0x7f0e0181
+			public const int TextAppearance_Leanback_ImageCardView_Title = 2131624321;
+			
+			// aapt resource value: 0x7f0e0182
+			public const int TextAppearance_Leanback_PlaybackControlLabel = 2131624322;
+			
+			// aapt resource value: 0x7f0e0183
+			public const int TextAppearance_Leanback_PlaybackControlsTime = 2131624323;
+			
+			// aapt resource value: 0x7f0e0184
+			public const int TextAppearance_Leanback_PlaybackMediaItemDuration = 2131624324;
+			
+			// aapt resource value: 0x7f0e0185
+			public const int TextAppearance_Leanback_PlaybackMediaItemName = 2131624325;
+			
+			// aapt resource value: 0x7f0e0186
+			public const int TextAppearance_Leanback_PlaybackMediaItemNumber = 2131624326;
+			
+			// aapt resource value: 0x7f0e0187
+			public const int TextAppearance_Leanback_PlaybackMediaListHeaderTitle = 2131624327;
+			
+			// aapt resource value: 0x7f0e0188
+			public const int TextAppearance_Leanback_Row_Header = 2131624328;
+			
+			// aapt resource value: 0x7f0e0189
+			public const int TextAppearance_Leanback_Row_Header_Description = 2131624329;
+			
+			// aapt resource value: 0x7f0e018a
+			public const int TextAppearance_Leanback_Row_HoverCardDescription = 2131624330;
+			
+			// aapt resource value: 0x7f0e018b
+			public const int TextAppearance_Leanback_Row_HoverCardTitle = 2131624331;
+			
+			// aapt resource value: 0x7f0e018c
+			public const int TextAppearance_Leanback_SearchTextEdit = 2131624332;
+			
+			// aapt resource value: 0x7f0e018d
+			public const int TextAppearance_Leanback_Title = 2131624333;
+			
+			// aapt resource value: 0x7f0e016d
+			public const int TextAppearance_LeanbackBase = 2131624301;
+			
+			// aapt resource value: 0x7f0e0212
+			public const int TextAppearance_MaterialComponents_Body1 = 2131624466;
+			
+			// aapt resource value: 0x7f0e0213
+			public const int TextAppearance_MaterialComponents_Body2 = 2131624467;
+			
+			// aapt resource value: 0x7f0e01e3
+			public const int TextAppearance_MaterialComponents_Button = 2131624419;
+			
+			// aapt resource value: 0x7f0e0214
+			public const int TextAppearance_MaterialComponents_Caption = 2131624468;
+			
+			// aapt resource value: 0x7f0e0215
+			public const int TextAppearance_MaterialComponents_Chip = 2131624469;
+			
+			// aapt resource value: 0x7f0e0216
+			public const int TextAppearance_MaterialComponents_Headline1 = 2131624470;
+			
+			// aapt resource value: 0x7f0e0217
+			public const int TextAppearance_MaterialComponents_Headline2 = 2131624471;
+			
+			// aapt resource value: 0x7f0e0218
+			public const int TextAppearance_MaterialComponents_Headline3 = 2131624472;
+			
+			// aapt resource value: 0x7f0e0219
+			public const int TextAppearance_MaterialComponents_Headline4 = 2131624473;
+			
+			// aapt resource value: 0x7f0e021a
+			public const int TextAppearance_MaterialComponents_Headline5 = 2131624474;
+			
+			// aapt resource value: 0x7f0e01e4
+			public const int TextAppearance_MaterialComponents_Headline6 = 2131624420;
+			
+			// aapt resource value: 0x7f0e01e5
+			public const int TextAppearance_MaterialComponents_Overline = 2131624421;
+			
+			// aapt resource value: 0x7f0e021b
+			public const int TextAppearance_MaterialComponents_Subtitle1 = 2131624475;
+			
+			// aapt resource value: 0x7f0e01e6
+			public const int TextAppearance_MaterialComponents_Subtitle2 = 2131624422;
+			
+			// aapt resource value: 0x7f0e021c
+			public const int TextAppearance_MaterialComponents_Tab = 2131624476;
+			
+			// aapt resource value: 0x7f0e000b
+			public const int TextAppearance_MediaRouter_PrimaryText = 2131623947;
+			
+			// aapt resource value: 0x7f0e000c
+			public const int TextAppearance_MediaRouter_SecondaryText = 2131623948;
+			
+			// aapt resource value: 0x7f0e000d
+			public const int TextAppearance_MediaRouter_Title = 2131623949;
+			
+			// aapt resource value: 0x7f0e010c
+			public const int TextAppearance_Widget_AppCompat_ExpandedMenu_Item = 2131624204;
+			
+			// aapt resource value: 0x7f0e010d
+			public const int TextAppearance_Widget_AppCompat_Toolbar_Subtitle = 2131624205;
+			
+			// aapt resource value: 0x7f0e010e
+			public const int TextAppearance_Widget_AppCompat_Toolbar_Title = 2131624206;
+			
+			// aapt resource value: 0x7f0e010f
+			public const int Theme_AppCompat = 2131624207;
+			
+			// aapt resource value: 0x7f0e0110
+			public const int Theme_AppCompat_CompactMenu = 2131624208;
+			
+			// aapt resource value: 0x7f0e001e
+			public const int Theme_AppCompat_DayNight = 2131623966;
+			
+			// aapt resource value: 0x7f0e001f
+			public const int Theme_AppCompat_DayNight_DarkActionBar = 2131623967;
+			
+			// aapt resource value: 0x7f0e0020
+			public const int Theme_AppCompat_DayNight_Dialog = 2131623968;
+			
+			// aapt resource value: 0x7f0e0021
+			public const int Theme_AppCompat_DayNight_Dialog_Alert = 2131623969;
+			
+			// aapt resource value: 0x7f0e0022
+			public const int Theme_AppCompat_DayNight_Dialog_MinWidth = 2131623970;
+			
+			// aapt resource value: 0x7f0e0023
+			public const int Theme_AppCompat_DayNight_DialogWhenLarge = 2131623971;
+			
+			// aapt resource value: 0x7f0e0024
+			public const int Theme_AppCompat_DayNight_NoActionBar = 2131623972;
+			
+			// aapt resource value: 0x7f0e0111
+			public const int Theme_AppCompat_Dialog = 2131624209;
+			
+			// aapt resource value: 0x7f0e0112
+			public const int Theme_AppCompat_Dialog_Alert = 2131624210;
+			
+			// aapt resource value: 0x7f0e0113
+			public const int Theme_AppCompat_Dialog_MinWidth = 2131624211;
+			
+			// aapt resource value: 0x7f0e0114
+			public const int Theme_AppCompat_DialogWhenLarge = 2131624212;
+			
+			// aapt resource value: 0x7f0e0115
+			public const int Theme_AppCompat_Light = 2131624213;
+			
+			// aapt resource value: 0x7f0e0116
+			public const int Theme_AppCompat_Light_DarkActionBar = 2131624214;
+			
+			// aapt resource value: 0x7f0e0117
+			public const int Theme_AppCompat_Light_Dialog = 2131624215;
+			
+			// aapt resource value: 0x7f0e0118
+			public const int Theme_AppCompat_Light_Dialog_Alert = 2131624216;
+			
+			// aapt resource value: 0x7f0e0119
+			public const int Theme_AppCompat_Light_Dialog_MinWidth = 2131624217;
+			
+			// aapt resource value: 0x7f0e011a
+			public const int Theme_AppCompat_Light_DialogWhenLarge = 2131624218;
+			
+			// aapt resource value: 0x7f0e011b
+			public const int Theme_AppCompat_Light_NoActionBar = 2131624219;
+			
+			// aapt resource value: 0x7f0e011c
+			public const int Theme_AppCompat_NoActionBar = 2131624220;
+			
+			// aapt resource value: 0x7f0e021d
+			public const int Theme_Design = 2131624477;
+			
+			// aapt resource value: 0x7f0e021e
+			public const int Theme_Design_BottomSheetDialog = 2131624478;
+			
+			// aapt resource value: 0x7f0e021f
+			public const int Theme_Design_Light = 2131624479;
+			
+			// aapt resource value: 0x7f0e0220
+			public const int Theme_Design_Light_BottomSheetDialog = 2131624480;
+			
+			// aapt resource value: 0x7f0e0221
+			public const int Theme_Design_Light_NoActionBar = 2131624481;
+			
+			// aapt resource value: 0x7f0e0222
+			public const int Theme_Design_NoActionBar = 2131624482;
+			
+			// aapt resource value: 0x7f0e018e
+			public const int Theme_Leanback = 2131624334;
+			
+			// aapt resource value: 0x7f0e016e
+			public const int Theme_Leanback_Browse = 2131624302;
+			
+			// aapt resource value: 0x7f0e016f
+			public const int Theme_Leanback_Details = 2131624303;
+			
+			// aapt resource value: 0x7f0e0170
+			public const int Theme_Leanback_Details_NoSharedElementTransition = 2131624304;
+			
+			// aapt resource value: 0x7f0e018f
+			public const int Theme_Leanback_GuidedStep = 2131624335;
+			
+			// aapt resource value: 0x7f0e0190
+			public const int Theme_Leanback_GuidedStep_Half = 2131624336;
+			
+			// aapt resource value: 0x7f0e0171
+			public const int Theme_Leanback_GuidedStep_HalfBase = 2131624305;
+			
+			// aapt resource value: 0x7f0e0172
+			public const int Theme_Leanback_GuidedStepBase = 2131624306;
+			
+			// aapt resource value: 0x7f0e0191
+			public const int Theme_Leanback_Onboarding = 2131624337;
+			
+			// aapt resource value: 0x7f0e0173
+			public const int Theme_Leanback_VerticalGrid = 2131624307;
+			
+			// aapt resource value: 0x7f0e016c
+			public const int Theme_LeanbackBase = 2131624300;
+			
+			// aapt resource value: 0x7f0e0223
+			public const int Theme_MaterialComponents = 2131624483;
+			
+			// aapt resource value: 0x7f0e0224
+			public const int Theme_MaterialComponents_BottomSheetDialog = 2131624484;
+			
+			// aapt resource value: 0x7f0e0225
+			public const int Theme_MaterialComponents_Bridge = 2131624485;
+			
+			// aapt resource value: 0x7f0e0226
+			public const int Theme_MaterialComponents_CompactMenu = 2131624486;
+			
+			// aapt resource value: 0x7f0e0227
+			public const int Theme_MaterialComponents_Dialog = 2131624487;
+			
+			// aapt resource value: 0x7f0e0228
+			public const int Theme_MaterialComponents_Dialog_Alert = 2131624488;
+			
+			// aapt resource value: 0x7f0e0229
+			public const int Theme_MaterialComponents_Dialog_MinWidth = 2131624489;
+			
+			// aapt resource value: 0x7f0e022a
+			public const int Theme_MaterialComponents_DialogWhenLarge = 2131624490;
+			
+			// aapt resource value: 0x7f0e022b
+			public const int Theme_MaterialComponents_Light = 2131624491;
+			
+			// aapt resource value: 0x7f0e022c
+			public const int Theme_MaterialComponents_Light_BottomSheetDialog = 2131624492;
+			
+			// aapt resource value: 0x7f0e022d
+			public const int Theme_MaterialComponents_Light_Bridge = 2131624493;
+			
+			// aapt resource value: 0x7f0e022e
+			public const int Theme_MaterialComponents_Light_DarkActionBar = 2131624494;
+			
+			// aapt resource value: 0x7f0e022f
+			public const int Theme_MaterialComponents_Light_DarkActionBar_Bridge = 2131624495;
+			
+			// aapt resource value: 0x7f0e0230
+			public const int Theme_MaterialComponents_Light_Dialog = 2131624496;
+			
+			// aapt resource value: 0x7f0e0231
+			public const int Theme_MaterialComponents_Light_Dialog_Alert = 2131624497;
+			
+			// aapt resource value: 0x7f0e0232
+			public const int Theme_MaterialComponents_Light_Dialog_MinWidth = 2131624498;
+			
+			// aapt resource value: 0x7f0e0233
+			public const int Theme_MaterialComponents_Light_DialogWhenLarge = 2131624499;
+			
+			// aapt resource value: 0x7f0e0234
+			public const int Theme_MaterialComponents_Light_NoActionBar = 2131624500;
+			
+			// aapt resource value: 0x7f0e0235
+			public const int Theme_MaterialComponents_Light_NoActionBar_Bridge = 2131624501;
+			
+			// aapt resource value: 0x7f0e0236
+			public const int Theme_MaterialComponents_NoActionBar = 2131624502;
+			
+			// aapt resource value: 0x7f0e0237
+			public const int Theme_MaterialComponents_NoActionBar_Bridge = 2131624503;
+			
+			// aapt resource value: 0x7f0e000e
+			public const int Theme_MediaRouter = 2131623950;
+			
+			// aapt resource value: 0x7f0e000f
+			public const int Theme_MediaRouter_Light = 2131623951;
+			
+			// aapt resource value: 0x7f0e0010
+			public const int Theme_MediaRouter_Light_DarkControlPanel = 2131623952;
+			
+			// aapt resource value: 0x7f0e0011
+			public const int Theme_MediaRouter_LightControlPanel = 2131623953;
+			
+			// aapt resource value: 0x7f0e011d
+			public const int ThemeOverlay_AppCompat = 2131624221;
+			
+			// aapt resource value: 0x7f0e011e
+			public const int ThemeOverlay_AppCompat_ActionBar = 2131624222;
+			
+			// aapt resource value: 0x7f0e011f
+			public const int ThemeOverlay_AppCompat_Dark = 2131624223;
+			
+			// aapt resource value: 0x7f0e0120
+			public const int ThemeOverlay_AppCompat_Dark_ActionBar = 2131624224;
+			
+			// aapt resource value: 0x7f0e0121
+			public const int ThemeOverlay_AppCompat_Dialog = 2131624225;
+			
+			// aapt resource value: 0x7f0e0122
+			public const int ThemeOverlay_AppCompat_Dialog_Alert = 2131624226;
+			
+			// aapt resource value: 0x7f0e0123
+			public const int ThemeOverlay_AppCompat_Light = 2131624227;
+			
+			// aapt resource value: 0x7f0e0238
+			public const int ThemeOverlay_MaterialComponents = 2131624504;
+			
+			// aapt resource value: 0x7f0e0239
+			public const int ThemeOverlay_MaterialComponents_ActionBar = 2131624505;
+			
+			// aapt resource value: 0x7f0e023a
+			public const int ThemeOverlay_MaterialComponents_Dark = 2131624506;
+			
+			// aapt resource value: 0x7f0e023b
+			public const int ThemeOverlay_MaterialComponents_Dark_ActionBar = 2131624507;
+			
+			// aapt resource value: 0x7f0e023c
+			public const int ThemeOverlay_MaterialComponents_Dialog = 2131624508;
+			
+			// aapt resource value: 0x7f0e023d
+			public const int ThemeOverlay_MaterialComponents_Dialog_Alert = 2131624509;
+			
+			// aapt resource value: 0x7f0e023e
+			public const int ThemeOverlay_MaterialComponents_Light = 2131624510;
+			
+			// aapt resource value: 0x7f0e023f
+			public const int ThemeOverlay_MaterialComponents_TextInputEditText = 2131624511;
+			
+			// aapt resource value: 0x7f0e0240
+			public const int ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox = 2131624512;
+			
+			// aapt resource value: 0x7f0e0241
+			public const int ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox_Dense = 2131624513;
+			
+			// aapt resource value: 0x7f0e0242
+			public const int ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox = 2131624514;
+			
+			// aapt resource value: 0x7f0e0243
+			public const int ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox_Dense = 2131624515;
+			
+			// aapt resource value: 0x7f0e0012
+			public const int ThemeOverlay_MediaRouter_Dark = 2131623954;
+			
+			// aapt resource value: 0x7f0e0013
+			public const int ThemeOverlay_MediaRouter_Light = 2131623955;
+			
+			// aapt resource value: 0x7f0e0124
+			public const int Widget_AppCompat_ActionBar = 2131624228;
+			
+			// aapt resource value: 0x7f0e0125
+			public const int Widget_AppCompat_ActionBar_Solid = 2131624229;
+			
+			// aapt resource value: 0x7f0e0126
+			public const int Widget_AppCompat_ActionBar_TabBar = 2131624230;
+			
+			// aapt resource value: 0x7f0e0127
+			public const int Widget_AppCompat_ActionBar_TabText = 2131624231;
+			
+			// aapt resource value: 0x7f0e0128
+			public const int Widget_AppCompat_ActionBar_TabView = 2131624232;
+			
+			// aapt resource value: 0x7f0e0129
+			public const int Widget_AppCompat_ActionButton = 2131624233;
+			
+			// aapt resource value: 0x7f0e012a
+			public const int Widget_AppCompat_ActionButton_CloseMode = 2131624234;
+			
+			// aapt resource value: 0x7f0e012b
+			public const int Widget_AppCompat_ActionButton_Overflow = 2131624235;
+			
+			// aapt resource value: 0x7f0e012c
+			public const int Widget_AppCompat_ActionMode = 2131624236;
+			
+			// aapt resource value: 0x7f0e012d
+			public const int Widget_AppCompat_ActivityChooserView = 2131624237;
+			
+			// aapt resource value: 0x7f0e012e
+			public const int Widget_AppCompat_AutoCompleteTextView = 2131624238;
+			
+			// aapt resource value: 0x7f0e012f
+			public const int Widget_AppCompat_Button = 2131624239;
+			
+			// aapt resource value: 0x7f0e0130
+			public const int Widget_AppCompat_Button_Borderless = 2131624240;
+			
+			// aapt resource value: 0x7f0e0131
+			public const int Widget_AppCompat_Button_Borderless_Colored = 2131624241;
+			
+			// aapt resource value: 0x7f0e0132
+			public const int Widget_AppCompat_Button_ButtonBar_AlertDialog = 2131624242;
+			
+			// aapt resource value: 0x7f0e0133
+			public const int Widget_AppCompat_Button_Colored = 2131624243;
+			
+			// aapt resource value: 0x7f0e0134
+			public const int Widget_AppCompat_Button_Small = 2131624244;
+			
+			// aapt resource value: 0x7f0e0135
+			public const int Widget_AppCompat_ButtonBar = 2131624245;
+			
+			// aapt resource value: 0x7f0e0136
+			public const int Widget_AppCompat_ButtonBar_AlertDialog = 2131624246;
+			
+			// aapt resource value: 0x7f0e0137
+			public const int Widget_AppCompat_CompoundButton_CheckBox = 2131624247;
+			
+			// aapt resource value: 0x7f0e0138
+			public const int Widget_AppCompat_CompoundButton_RadioButton = 2131624248;
+			
+			// aapt resource value: 0x7f0e0139
+			public const int Widget_AppCompat_CompoundButton_Switch = 2131624249;
+			
+			// aapt resource value: 0x7f0e013a
+			public const int Widget_AppCompat_DrawerArrowToggle = 2131624250;
+			
+			// aapt resource value: 0x7f0e013b
+			public const int Widget_AppCompat_DropDownItem_Spinner = 2131624251;
+			
+			// aapt resource value: 0x7f0e013c
+			public const int Widget_AppCompat_EditText = 2131624252;
+			
+			// aapt resource value: 0x7f0e013d
+			public const int Widget_AppCompat_ImageButton = 2131624253;
+			
+			// aapt resource value: 0x7f0e013e
+			public const int Widget_AppCompat_Light_ActionBar = 2131624254;
+			
+			// aapt resource value: 0x7f0e013f
+			public const int Widget_AppCompat_Light_ActionBar_Solid = 2131624255;
+			
+			// aapt resource value: 0x7f0e0140
+			public const int Widget_AppCompat_Light_ActionBar_Solid_Inverse = 2131624256;
+			
+			// aapt resource value: 0x7f0e0141
+			public const int Widget_AppCompat_Light_ActionBar_TabBar = 2131624257;
+			
+			// aapt resource value: 0x7f0e0142
+			public const int Widget_AppCompat_Light_ActionBar_TabBar_Inverse = 2131624258;
+			
+			// aapt resource value: 0x7f0e0143
+			public const int Widget_AppCompat_Light_ActionBar_TabText = 2131624259;
+			
+			// aapt resource value: 0x7f0e0144
+			public const int Widget_AppCompat_Light_ActionBar_TabText_Inverse = 2131624260;
+			
+			// aapt resource value: 0x7f0e0145
+			public const int Widget_AppCompat_Light_ActionBar_TabView = 2131624261;
+			
+			// aapt resource value: 0x7f0e0146
+			public const int Widget_AppCompat_Light_ActionBar_TabView_Inverse = 2131624262;
+			
+			// aapt resource value: 0x7f0e0147
+			public const int Widget_AppCompat_Light_ActionButton = 2131624263;
+			
+			// aapt resource value: 0x7f0e0148
+			public const int Widget_AppCompat_Light_ActionButton_CloseMode = 2131624264;
+			
+			// aapt resource value: 0x7f0e0149
+			public const int Widget_AppCompat_Light_ActionButton_Overflow = 2131624265;
+			
+			// aapt resource value: 0x7f0e014a
+			public const int Widget_AppCompat_Light_ActionMode_Inverse = 2131624266;
+			
+			// aapt resource value: 0x7f0e014b
+			public const int Widget_AppCompat_Light_ActivityChooserView = 2131624267;
+			
+			// aapt resource value: 0x7f0e014c
+			public const int Widget_AppCompat_Light_AutoCompleteTextView = 2131624268;
+			
+			// aapt resource value: 0x7f0e014d
+			public const int Widget_AppCompat_Light_DropDownItem_Spinner = 2131624269;
+			
+			// aapt resource value: 0x7f0e014e
+			public const int Widget_AppCompat_Light_ListPopupWindow = 2131624270;
+			
+			// aapt resource value: 0x7f0e014f
+			public const int Widget_AppCompat_Light_ListView_DropDown = 2131624271;
+			
+			// aapt resource value: 0x7f0e0150
+			public const int Widget_AppCompat_Light_PopupMenu = 2131624272;
+			
+			// aapt resource value: 0x7f0e0151
+			public const int Widget_AppCompat_Light_PopupMenu_Overflow = 2131624273;
+			
+			// aapt resource value: 0x7f0e0152
+			public const int Widget_AppCompat_Light_SearchView = 2131624274;
+			
+			// aapt resource value: 0x7f0e0153
+			public const int Widget_AppCompat_Light_Spinner_DropDown_ActionBar = 2131624275;
+			
+			// aapt resource value: 0x7f0e0154
+			public const int Widget_AppCompat_ListMenuView = 2131624276;
+			
+			// aapt resource value: 0x7f0e0155
+			public const int Widget_AppCompat_ListPopupWindow = 2131624277;
+			
+			// aapt resource value: 0x7f0e0156
+			public const int Widget_AppCompat_ListView = 2131624278;
+			
+			// aapt resource value: 0x7f0e0157
+			public const int Widget_AppCompat_ListView_DropDown = 2131624279;
+			
+			// aapt resource value: 0x7f0e0158
+			public const int Widget_AppCompat_ListView_Menu = 2131624280;
+			
+			// aapt resource value: 0x7f0e0159
+			public const int Widget_AppCompat_PopupMenu = 2131624281;
+			
+			// aapt resource value: 0x7f0e015a
+			public const int Widget_AppCompat_PopupMenu_Overflow = 2131624282;
+			
+			// aapt resource value: 0x7f0e015b
+			public const int Widget_AppCompat_PopupWindow = 2131624283;
+			
+			// aapt resource value: 0x7f0e015c
+			public const int Widget_AppCompat_ProgressBar = 2131624284;
+			
+			// aapt resource value: 0x7f0e015d
+			public const int Widget_AppCompat_ProgressBar_Horizontal = 2131624285;
+			
+			// aapt resource value: 0x7f0e015e
+			public const int Widget_AppCompat_RatingBar = 2131624286;
+			
+			// aapt resource value: 0x7f0e015f
+			public const int Widget_AppCompat_RatingBar_Indicator = 2131624287;
+			
+			// aapt resource value: 0x7f0e0160
+			public const int Widget_AppCompat_RatingBar_Small = 2131624288;
+			
+			// aapt resource value: 0x7f0e0161
+			public const int Widget_AppCompat_SearchView = 2131624289;
+			
+			// aapt resource value: 0x7f0e0162
+			public const int Widget_AppCompat_SearchView_ActionBar = 2131624290;
+			
+			// aapt resource value: 0x7f0e0163
+			public const int Widget_AppCompat_SeekBar = 2131624291;
+			
+			// aapt resource value: 0x7f0e0164
+			public const int Widget_AppCompat_SeekBar_Discrete = 2131624292;
+			
+			// aapt resource value: 0x7f0e0165
+			public const int Widget_AppCompat_Spinner = 2131624293;
+			
+			// aapt resource value: 0x7f0e0166
+			public const int Widget_AppCompat_Spinner_DropDown = 2131624294;
+			
+			// aapt resource value: 0x7f0e0167
+			public const int Widget_AppCompat_Spinner_DropDown_ActionBar = 2131624295;
+			
+			// aapt resource value: 0x7f0e0168
+			public const int Widget_AppCompat_Spinner_Underlined = 2131624296;
+			
+			// aapt resource value: 0x7f0e0169
+			public const int Widget_AppCompat_TextView_SpinnerItem = 2131624297;
+			
+			// aapt resource value: 0x7f0e016a
+			public const int Widget_AppCompat_Toolbar = 2131624298;
+			
+			// aapt resource value: 0x7f0e016b
+			public const int Widget_AppCompat_Toolbar_Button_Navigation = 2131624299;
+			
+			// aapt resource value: 0x7f0e0276
+			public const int Widget_Compat_NotificationActionContainer = 2131624566;
+			
+			// aapt resource value: 0x7f0e0277
+			public const int Widget_Compat_NotificationActionText = 2131624567;
+			
+			// aapt resource value: 0x7f0e0244
+			public const int Widget_Design_AppBarLayout = 2131624516;
+			
+			// aapt resource value: 0x7f0e0245
+			public const int Widget_Design_BottomNavigationView = 2131624517;
+			
+			// aapt resource value: 0x7f0e0246
+			public const int Widget_Design_BottomSheet_Modal = 2131624518;
+			
+			// aapt resource value: 0x7f0e0247
+			public const int Widget_Design_CollapsingToolbar = 2131624519;
+			
+			// aapt resource value: 0x7f0e0248
+			public const int Widget_Design_FloatingActionButton = 2131624520;
+			
+			// aapt resource value: 0x7f0e0249
+			public const int Widget_Design_NavigationView = 2131624521;
+			
+			// aapt resource value: 0x7f0e024a
+			public const int Widget_Design_ScrimInsetsFrameLayout = 2131624522;
+			
+			// aapt resource value: 0x7f0e024b
+			public const int Widget_Design_Snackbar = 2131624523;
+			
+			// aapt resource value: 0x7f0e01e0
+			public const int Widget_Design_TabLayout = 2131624416;
+			
+			// aapt resource value: 0x7f0e024c
+			public const int Widget_Design_TextInputLayout = 2131624524;
+			
+			// aapt resource value: 0x7f0e0192
+			public const int Widget_Leanback = 2131624338;
+			
+			// aapt resource value: 0x7f0e0193
+			public const int Widget_Leanback_BaseCardViewStyle = 2131624339;
+			
+			// aapt resource value: 0x7f0e0194
+			public const int Widget_Leanback_DetailsActionButtonStyle = 2131624340;
+			
+			// aapt resource value: 0x7f0e0174
+			public const int Widget_Leanback_DetailsActionButtonStyleBase = 2131624308;
+			
+			// aapt resource value: 0x7f0e0195
+			public const int Widget_Leanback_DetailsDescriptionBodyStyle = 2131624341;
+			
+			// aapt resource value: 0x7f0e0196
+			public const int Widget_Leanback_DetailsDescriptionSubtitleStyle = 2131624342;
+			
+			// aapt resource value: 0x7f0e0197
+			public const int Widget_Leanback_DetailsDescriptionTitleStyle = 2131624343;
+			
+			// aapt resource value: 0x7f0e0198
+			public const int Widget_Leanback_ErrorMessageStyle = 2131624344;
+			
+			// aapt resource value: 0x7f0e0199
+			public const int Widget_Leanback_GridItems = 2131624345;
+			
+			// aapt resource value: 0x7f0e019a
+			public const int Widget_Leanback_GridItems_VerticalGridView = 2131624346;
+			
+			// aapt resource value: 0x7f0e019b
+			public const int Widget_Leanback_GuidanceBreadcrumbStyle = 2131624347;
+			
+			// aapt resource value: 0x7f0e019c
+			public const int Widget_Leanback_GuidanceContainerStyle = 2131624348;
+			
+			// aapt resource value: 0x7f0e019d
+			public const int Widget_Leanback_GuidanceDescriptionStyle = 2131624349;
+			
+			// aapt resource value: 0x7f0e019e
+			public const int Widget_Leanback_GuidanceIconStyle = 2131624350;
+			
+			// aapt resource value: 0x7f0e019f
+			public const int Widget_Leanback_GuidanceTitleStyle = 2131624351;
+			
+			// aapt resource value: 0x7f0e01a0
+			public const int Widget_Leanback_GuidedActionItemCheckmarkStyle = 2131624352;
+			
+			// aapt resource value: 0x7f0e01a1
+			public const int Widget_Leanback_GuidedActionItemChevronStyle = 2131624353;
+			
+			// aapt resource value: 0x7f0e01a2
+			public const int Widget_Leanback_GuidedActionItemContainerStyle = 2131624354;
+			
+			// aapt resource value: 0x7f0e01a3
+			public const int Widget_Leanback_GuidedActionItemContentStyle = 2131624355;
+			
+			// aapt resource value: 0x7f0e01a4
+			public const int Widget_Leanback_GuidedActionItemDescriptionStyle = 2131624356;
+			
+			// aapt resource value: 0x7f0e01a5
+			public const int Widget_Leanback_GuidedActionItemIconStyle = 2131624357;
+			
+			// aapt resource value: 0x7f0e01a6
+			public const int Widget_Leanback_GuidedActionItemTitleStyle = 2131624358;
+			
+			// aapt resource value: 0x7f0e01a7
+			public const int Widget_Leanback_GuidedActionsContainerStyle = 2131624359;
+			
+			// aapt resource value: 0x7f0e01a8
+			public const int Widget_Leanback_GuidedActionsListStyle = 2131624360;
+			
+			// aapt resource value: 0x7f0e01a9
+			public const int Widget_Leanback_GuidedActionsSelectorStyle = 2131624361;
+			
+			// aapt resource value: 0x7f0e01aa
+			public const int Widget_Leanback_GuidedButtonActionsListStyle = 2131624362;
+			
+			// aapt resource value: 0x7f0e01ab
+			public const int Widget_Leanback_GuidedSubActionsListStyle = 2131624363;
+			
+			// aapt resource value: 0x7f0e01ac
+			public const int Widget_Leanback_Header = 2131624364;
+			
+			// aapt resource value: 0x7f0e01ad
+			public const int Widget_Leanback_Header_Section = 2131624365;
+			
+			// aapt resource value: 0x7f0e01ae
+			public const int Widget_Leanback_Headers = 2131624366;
+			
+			// aapt resource value: 0x7f0e01af
+			public const int Widget_Leanback_Headers_VerticalGridView = 2131624367;
+			
+			// aapt resource value: 0x7f0e01b0
+			public const int Widget_Leanback_ImageCardView = 2131624368;
+			
+			// aapt resource value: 0x7f0e01b1
+			public const int Widget_Leanback_ImageCardView_BadgeStyle = 2131624369;
+			
+			// aapt resource value: 0x7f0e01b2
+			public const int Widget_Leanback_ImageCardView_ContentStyle = 2131624370;
+			
+			// aapt resource value: 0x7f0e01b3
+			public const int Widget_Leanback_ImageCardView_ImageStyle = 2131624371;
+			
+			// aapt resource value: 0x7f0e01b4
+			public const int Widget_Leanback_ImageCardView_InfoAreaStyle = 2131624372;
+			
+			// aapt resource value: 0x7f0e01b5
+			public const int Widget_Leanback_ImageCardView_TitleStyle = 2131624373;
+			
+			// aapt resource value: 0x7f0e01b6
+			public const int Widget_Leanback_ImageCardViewStyle = 2131624374;
+			
+			// aapt resource value: 0x7f0e01b7
+			public const int Widget_Leanback_OnboardingDescriptionStyle = 2131624375;
+			
+			// aapt resource value: 0x7f0e01b8
+			public const int Widget_Leanback_OnboardingHeaderStyle = 2131624376;
+			
+			// aapt resource value: 0x7f0e01b9
+			public const int Widget_Leanback_OnboardingLogoStyle = 2131624377;
+			
+			// aapt resource value: 0x7f0e01ba
+			public const int Widget_Leanback_OnboardingMainIconStyle = 2131624378;
+			
+			// aapt resource value: 0x7f0e01bb
+			public const int Widget_Leanback_OnboardingNavigatorContainerStyle = 2131624379;
+			
+			// aapt resource value: 0x7f0e01bc
+			public const int Widget_Leanback_OnboardingPageIndicatorStyle = 2131624380;
+			
+			// aapt resource value: 0x7f0e01bd
+			public const int Widget_Leanback_OnboardingStartButtonStyle = 2131624381;
+			
+			// aapt resource value: 0x7f0e0175
+			public const int Widget_Leanback_OnboardingStartButtonStyleBase = 2131624309;
+			
+			// aapt resource value: 0x7f0e01be
+			public const int Widget_Leanback_OnboardingTitleStyle = 2131624382;
+			
+			// aapt resource value: 0x7f0e01bf
+			public const int Widget_Leanback_PlaybackControlLabelStyle = 2131624383;
+			
+			// aapt resource value: 0x7f0e01c0
+			public const int Widget_Leanback_PlaybackControlsActionIconsStyle = 2131624384;
+			
+			// aapt resource value: 0x7f0e01c1
+			public const int Widget_Leanback_PlaybackControlsButtonStyle = 2131624385;
+			
+			// aapt resource value: 0x7f0e01c2
+			public const int Widget_Leanback_PlaybackControlsTimeStyle = 2131624386;
+			
+			// aapt resource value: 0x7f0e01c3
+			public const int Widget_Leanback_PlaybackMediaItemDetailsStyle = 2131624387;
+			
+			// aapt resource value: 0x7f0e01c4
+			public const int Widget_Leanback_PlaybackMediaItemDurationStyle = 2131624388;
+			
+			// aapt resource value: 0x7f0e01c5
+			public const int Widget_Leanback_PlaybackMediaItemNameStyle = 2131624389;
+			
+			// aapt resource value: 0x7f0e01c6
+			public const int Widget_Leanback_PlaybackMediaItemNumberStyle = 2131624390;
+			
+			// aapt resource value: 0x7f0e01c7
+			public const int Widget_Leanback_PlaybackMediaItemNumberViewFlipperStyle = 2131624391;
+			
+			// aapt resource value: 0x7f0e01c8
+			public const int Widget_Leanback_PlaybackMediaItemRowStyle = 2131624392;
+			
+			// aapt resource value: 0x7f0e01c9
+			public const int Widget_Leanback_PlaybackMediaItemSeparatorStyle = 2131624393;
+			
+			// aapt resource value: 0x7f0e01ca
+			public const int Widget_Leanback_PlaybackMediaListHeaderStyle = 2131624394;
+			
+			// aapt resource value: 0x7f0e01cb
+			public const int Widget_Leanback_PlaybackMediaListHeaderTitleStyle = 2131624395;
+			
+			// aapt resource value: 0x7f0e01cc
+			public const int Widget_Leanback_PlaybackRow = 2131624396;
+			
+			// aapt resource value: 0x7f0e01cd
+			public const int Widget_Leanback_Row = 2131624397;
+			
+			// aapt resource value: 0x7f0e01ce
+			public const int Widget_Leanback_Row_Header = 2131624398;
+			
+			// aapt resource value: 0x7f0e01cf
+			public const int Widget_Leanback_Row_Header_Description = 2131624399;
+			
+			// aapt resource value: 0x7f0e01d0
+			public const int Widget_Leanback_Row_HeaderDock = 2131624400;
+			
+			// aapt resource value: 0x7f0e01d1
+			public const int Widget_Leanback_Row_HorizontalGridView = 2131624401;
+			
+			// aapt resource value: 0x7f0e01d2
+			public const int Widget_Leanback_Row_HoverCardDescription = 2131624402;
+			
+			// aapt resource value: 0x7f0e01d3
+			public const int Widget_Leanback_Row_HoverCardTitle = 2131624403;
+			
+			// aapt resource value: 0x7f0e01d4
+			public const int Widget_Leanback_Rows = 2131624404;
+			
+			// aapt resource value: 0x7f0e01d5
+			public const int Widget_Leanback_Rows_VerticalGridView = 2131624405;
+			
+			// aapt resource value: 0x7f0e01d6
+			public const int Widget_Leanback_SearchOrbViewStyle = 2131624406;
+			
+			// aapt resource value: 0x7f0e01d7
+			public const int Widget_Leanback_Title = 2131624407;
+			
+			// aapt resource value: 0x7f0e01d8
+			public const int Widget_Leanback_Title_Icon = 2131624408;
+			
+			// aapt resource value: 0x7f0e01d9
+			public const int Widget_Leanback_Title_Text = 2131624409;
+			
+			// aapt resource value: 0x7f0e01da
+			public const int Widget_Leanback_TitleView = 2131624410;
+			
+			// aapt resource value: 0x7f0e0176
+			public const int Widget_LeanbackBase = 2131624310;
+			
+			// aapt resource value: 0x7f0e024d
+			public const int Widget_MaterialComponents_BottomAppBar = 2131624525;
+			
+			// aapt resource value: 0x7f0e024e
+			public const int Widget_MaterialComponents_BottomAppBar_Colored = 2131624526;
+			
+			// aapt resource value: 0x7f0e024f
+			public const int Widget_MaterialComponents_BottomNavigationView = 2131624527;
+			
+			// aapt resource value: 0x7f0e0250
+			public const int Widget_MaterialComponents_BottomNavigationView_Colored = 2131624528;
+			
+			// aapt resource value: 0x7f0e0251
+			public const int Widget_MaterialComponents_BottomSheet_Modal = 2131624529;
+			
+			// aapt resource value: 0x7f0e0252
+			public const int Widget_MaterialComponents_Button = 2131624530;
+			
+			// aapt resource value: 0x7f0e0253
+			public const int Widget_MaterialComponents_Button_Icon = 2131624531;
+			
+			// aapt resource value: 0x7f0e0254
+			public const int Widget_MaterialComponents_Button_OutlinedButton = 2131624532;
+			
+			// aapt resource value: 0x7f0e0255
+			public const int Widget_MaterialComponents_Button_OutlinedButton_Icon = 2131624533;
+			
+			// aapt resource value: 0x7f0e0256
+			public const int Widget_MaterialComponents_Button_TextButton = 2131624534;
+			
+			// aapt resource value: 0x7f0e0257
+			public const int Widget_MaterialComponents_Button_TextButton_Dialog = 2131624535;
+			
+			// aapt resource value: 0x7f0e0258
+			public const int Widget_MaterialComponents_Button_TextButton_Dialog_Icon = 2131624536;
+			
+			// aapt resource value: 0x7f0e0259
+			public const int Widget_MaterialComponents_Button_TextButton_Icon = 2131624537;
+			
+			// aapt resource value: 0x7f0e025a
+			public const int Widget_MaterialComponents_Button_UnelevatedButton = 2131624538;
+			
+			// aapt resource value: 0x7f0e025b
+			public const int Widget_MaterialComponents_Button_UnelevatedButton_Icon = 2131624539;
+			
+			// aapt resource value: 0x7f0e025c
+			public const int Widget_MaterialComponents_CardView = 2131624540;
+			
+			// aapt resource value: 0x7f0e025d
+			public const int Widget_MaterialComponents_Chip_Action = 2131624541;
+			
+			// aapt resource value: 0x7f0e025e
+			public const int Widget_MaterialComponents_Chip_Choice = 2131624542;
+			
+			// aapt resource value: 0x7f0e025f
+			public const int Widget_MaterialComponents_Chip_Entry = 2131624543;
+			
+			// aapt resource value: 0x7f0e0260
+			public const int Widget_MaterialComponents_Chip_Filter = 2131624544;
+			
+			// aapt resource value: 0x7f0e0261
+			public const int Widget_MaterialComponents_ChipGroup = 2131624545;
+			
+			// aapt resource value: 0x7f0e0009
+			public const int Widget_MaterialComponents_CompoundButton_CheckBox = 2131623945;
+			
+			// aapt resource value: 0x7f0e0262
+			public const int Widget_MaterialComponents_FloatingActionButton = 2131624546;
+			
+			// aapt resource value: 0x7f0e0263
+			public const int Widget_MaterialComponents_NavigationView = 2131624547;
+			
+			// aapt resource value: 0x7f0e0264
+			public const int Widget_MaterialComponents_Snackbar = 2131624548;
+			
+			// aapt resource value: 0x7f0e0265
+			public const int Widget_MaterialComponents_Snackbar_FullWidth = 2131624549;
+			
+			// aapt resource value: 0x7f0e0266
+			public const int Widget_MaterialComponents_TabLayout = 2131624550;
+			
+			// aapt resource value: 0x7f0e0267
+			public const int Widget_MaterialComponents_TabLayout_Colored = 2131624551;
+			
+			// aapt resource value: 0x7f0e0268
+			public const int Widget_MaterialComponents_TextInputEditText_FilledBox = 2131624552;
+			
+			// aapt resource value: 0x7f0e0269
+			public const int Widget_MaterialComponents_TextInputEditText_FilledBox_Dense = 2131624553;
+			
+			// aapt resource value: 0x7f0e026a
+			public const int Widget_MaterialComponents_TextInputEditText_OutlinedBox = 2131624554;
+			
+			// aapt resource value: 0x7f0e026b
+			public const int Widget_MaterialComponents_TextInputEditText_OutlinedBox_Dense = 2131624555;
+			
+			// aapt resource value: 0x7f0e026c
+			public const int Widget_MaterialComponents_TextInputLayout_FilledBox = 2131624556;
+			
+			// aapt resource value: 0x7f0e026d
+			public const int Widget_MaterialComponents_TextInputLayout_FilledBox_Dense = 2131624557;
+			
+			// aapt resource value: 0x7f0e026e
+			public const int Widget_MaterialComponents_TextInputLayout_OutlinedBox = 2131624558;
+			
+			// aapt resource value: 0x7f0e026f
+			public const int Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense = 2131624559;
+			
+			// aapt resource value: 0x7f0e0270
+			public const int Widget_MaterialComponents_Toolbar = 2131624560;
+			
+			// aapt resource value: 0x7f0e0014
+			public const int Widget_MediaRouter_Light_MediaRouteButton = 2131623956;
+			
+			// aapt resource value: 0x7f0e0015
+			public const int Widget_MediaRouter_MediaRouteButton = 2131623957;
+			
+			// aapt resource value: 0x7f0e0271
+			public const int Widget_Support_CoordinatorLayout = 2131624561;
+			
+			// aapt resource value: 0x7f0e0006
+			public const int XamarinFormsMaterialButton = 2131623942;
+			
+			// aapt resource value: 0x7f0e0007
+			public const int XamarinFormsMaterialButtonOutlined = 2131623943;
+			
+			// aapt resource value: 0x7f0e000a
+			public const int XamarinFormsMaterialCheckBox = 2131623946;
+			
+			// aapt resource value: 0x7f0e0008
+			public const int XamarinFormsMaterialEntryFilled = 2131623944;
+			
+			// aapt resource value: 0x7f0e0005
+			public const int XamarinFormsMaterialProgressBarCircular = 2131623941;
+			
+			// aapt resource value: 0x7f0e0004
+			public const int XamarinFormsMaterialProgressBarHorizontal = 2131623940;
+			
+			// aapt resource value: 0x7f0e0003
+			public const int XamarinFormsMaterialSlider = 2131623939;
+			
+			// aapt resource value: 0x7f0e0002
+			public const int XamarinFormsMaterialTheme = 2131623938;
 			
 			// aapt resource value: 0x7f0e0000
 			public const int collectionViewStyle = 2131623936;
