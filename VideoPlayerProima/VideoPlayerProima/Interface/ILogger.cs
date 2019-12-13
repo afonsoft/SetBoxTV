@@ -1,7 +1,5 @@
-﻿using Microsoft.AppCenter.Crashes;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SetBoxTV.VideoPlayer.Interface
 {
@@ -18,7 +16,7 @@ namespace SetBoxTV.VideoPlayer.Interface
         string LogFileContent { get; }
 
         void Debug(string text);
-        void Debug(string text, Dictionary<string, string> property);
+        void Debug(string text, Dictionary<string, string> prop);
         void Debug(string text, Exception ex);
         void Error(string text, Exception ex);
         void Error(Exception ex);

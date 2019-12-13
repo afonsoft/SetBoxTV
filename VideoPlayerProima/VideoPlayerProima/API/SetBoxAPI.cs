@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Runtime.Serialization;
-using System.Text;
 using System.Threading.Tasks;
 using SetBoxTV.VideoPlayer.Helpers;
 using SetBoxTV.VideoPlayer.Model;
@@ -91,7 +90,7 @@ namespace SetBoxTV.VideoPlayer.API
                     {
                         License = CriptoHelpers.Base64Decode(CriptoHelpers.Base64Decode(Session).Split('|')[1]);
                     }
-                    catch(Exception)
+                    catch
                     {
                         License = "";
                     }

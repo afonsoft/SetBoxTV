@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SetBoxTV.VideoPlayer.Helpers
+﻿namespace SetBoxTV.VideoPlayer.Helpers
 {
     public static class CriptoHelpers
     {

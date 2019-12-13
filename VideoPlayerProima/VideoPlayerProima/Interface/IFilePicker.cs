@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using SetBoxTV.VideoPlayer.Model;
 
 namespace SetBoxTV.VideoPlayer.Interface

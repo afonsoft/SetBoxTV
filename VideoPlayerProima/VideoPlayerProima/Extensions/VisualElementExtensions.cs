@@ -8,7 +8,7 @@ namespace SetBoxTV.VideoPlayer.Extensions
         {
             Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
             {
-                await element.FadeTo(0, duration, easing);
+                await element.FadeTo(0, duration, easing).ConfigureAwait(true);
                 element.IsVisible = false;
             });
         }
@@ -18,7 +18,7 @@ namespace SetBoxTV.VideoPlayer.Extensions
             Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
             {
                 element.IsVisible = true;
-                await element.FadeTo(1, duration, easing);
+                await element.FadeTo(1, duration, easing).ConfigureAwait(true);
             });
         }
     }
