@@ -197,8 +197,12 @@
     <GoogleServicesJson Include="google-services.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </GoogleServicesJson>
-    <ProguardConfiguration Include="proguard.cfg" />
-    <AndroidEnvironment Include="AndroidEnvironment.cfg" />
+    <ProguardConfiguration Include="proguard.cfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </ProguardConfiguration>
+    <AndroidEnvironment Include="AndroidEnvironment.cfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidEnvironment>
     <None Include="ProimaVideo.keystore" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
