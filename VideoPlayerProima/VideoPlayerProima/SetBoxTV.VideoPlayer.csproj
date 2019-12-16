@@ -7,6 +7,7 @@
     <Version>2.0.0</Version>
     <NeutralLanguage></NeutralLanguage>
     <ApplicationIcon>LOGO.ico</ApplicationIcon>
+    <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
