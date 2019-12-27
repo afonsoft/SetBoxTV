@@ -13,6 +13,7 @@ using Xamarin.Essentials;
 using System.Collections.Generic;
 using System.Linq;
 using SetBoxTV.VideoPlayer.Extensions;
+using System.Diagnostics;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace SetBoxTV.VideoPlayer
@@ -26,6 +27,7 @@ namespace SetBoxTV.VideoPlayer
 
         const string androidKey = "35661827-5555-4b62-b333-145f0456c75d";
         private readonly ILogger Log;
+
 
         public App()
         {
@@ -80,28 +82,31 @@ namespace SetBoxTV.VideoPlayer
             Log.Debug("OnStart");
             MessagingCenter.Send(new LifecycleMessage(), nameof(OnStart));
             base.OnStart();
+
         }
 
         protected override void OnSleep()
         {
             // Handle when your app sleeps
-            base.OnSleep();
             MessagingCenter.Send(new LifecycleMessage(), nameof(OnSleep));
             Log.Debug("OnSleep");
-
+            base.OnSleep();
         }
 
         protected override void OnResume()
         {
-            base.OnResume();
+            
             MessagingCenter.Send(new LifecycleMessage(), nameof(OnResume));
-
             Log.Debug("OnResume");
-
             //restart
+            
             SetBoxTV.VideoPlayer.ConstVars.IsInProcess = false;
-            MainPage = new MainPage();
+            base.OnResume();
 
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() => {
+                // If you need to do anything with your UI, you need to wrap it in this.
+                MainPage = new MainPage();
+            });
         }
 
         public static IEnumerable<ErrorAttachmentLog> OnGetErrorAttachments(ErrorReport report)

@@ -21,6 +21,7 @@ namespace SetBoxTV.VideoPlayer.Droid
                     ConstVars.IsBootProcess = true;
                     if (!ConstVars.IsStartProcess)
                     {
+                        ConstVars.IsStartProcess = true;
                         LoggerService.Instance.Debug($"BootReceiver: Iniciando o SetBoxTV");
                         Intent serviceStart = new Intent(context, typeof(MainActivity));
                         serviceStart.AddFlags(ActivityFlags.NewTask);
