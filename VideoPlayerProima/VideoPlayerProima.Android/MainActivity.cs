@@ -6,20 +6,14 @@ using Android.OS;
 using Android.Content;
 using Android.Database;
 using Android.Provider;
-using Android;
 using Xamarin.Forms;
 using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
 using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Views;
-using Android.Widget;
 using SetBoxTV.VideoPlayer.Droid.Controls;
 using LibVLCSharp.Forms.Shared;
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
-using Microsoft.AppCenter.Distribute;
 using Microsoft.AppCenter.Push;
 using Android.Hardware.Input;
 using System.Collections.Generic;
@@ -27,12 +21,12 @@ using System.Collections.Generic;
 [assembly: Dependency(typeof(SetBoxTV.VideoPlayer.Droid.MainActivity))]
 namespace SetBoxTV.VideoPlayer.Droid
 {
-    [Activity(Label = "SetBoxTV Outdoor Media", Name = "SetBoxTV.VideoPlayer.Droid.MainActivity", Icon = "@mipmap/launcher_foreground", Banner = "@mipmap/banner", Theme = "@style/MainTheme", MainLauncher = true, HardwareAccelerated = true, Exported = true, NoHistory = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.KeyboardHidden | ConfigChanges.Keyboard | ConfigChanges.Navigation, ScreenOrientation = ScreenOrientation.Landscape)]
+    [Activity(Label = "SetBoxTV Outdoor Media", Name = "SetBoxTV.VideoPlayer.Droid.MainActivity", Icon = "@mipmap/launcher_foreground", Banner = "@mipmap/banner", Theme = "@style/MainTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleInstance, HardwareAccelerated = true, Exported = true, NoHistory = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.KeyboardHidden | ConfigChanges.Keyboard | ConfigChanges.Navigation, ScreenOrientation = ScreenOrientation.Landscape)]
     [IntentFilter(actions: new string[] { "android.intent.action.MAIN" }, Categories = new string[] { "android.intent.category.LEANBACK_LAUNCHER" })]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, InputManager.IInputDeviceListener
     {
 
-        private List<int> ConnectedDevices = new List<int>();
+        private readonly List<int> ConnectedDevices = new List<int>();
         private int currentDeviceId = -1;
        
         protected override void OnResume()
@@ -101,17 +95,23 @@ namespace SetBoxTV.VideoPlayer.Droid
         {
             string[] PERMISSIONS =
             {
-                "android.permission.READ_EXTERNAL_STORAGE" ,
-                "android.permission.WRITE_EXTERNAL_STORAGE" ,
-                "android.permission.ACCESS_NOTIFICATION_POLICY" ,
-                "android.permission.INTERNET" ,
-                "android.permission.ACCESS_NETWORK_STATE" ,
-                "android.permission.WAKE_LOCK" ,
-                "android.permission.RECEIVE_BOOT_COMPLETED" ,
-                "android.permission.RESTART_PACKAGES" ,
-                "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" ,
-                "com.google.android.c2dm.permission.RECEIVE" ,
-                "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"
+               "android.permission.READ_EXTERNAL_STORAGE",
+                "android.permission.WRITE_EXTERNAL_STORAGE",
+                "android.permission.ACCESS_NOTIFICATION_POLICY",
+                "android.permission.INTERNET",
+                "android.permission.ACCESS_NETWORK_STATE",
+                "android.permission.WAKE_LOCK",
+                "android.permission.RECEIVE_BOOT_COMPLETED",
+                "android.permission.RESTART_PACKAGES",
+                "android.permission.C2D_MESSAGE",
+                "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION",
+                "android.permission.ACCESS_WIFI_STATE",
+                "android.permission.BIND_DEVICE_ADMIN",
+                "android.permission.MEDIA_CONTENT_CONTROL",
+                "android.permission.READ_LOGS",
+                "android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS",
+                "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE",
+                "com.google.android.c2dm.permission.RECEIVE"
             };
 
             int requestCode = 100;
