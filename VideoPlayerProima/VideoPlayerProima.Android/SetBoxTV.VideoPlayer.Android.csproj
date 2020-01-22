@@ -77,7 +77,7 @@
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <AndroidEnablePreloadAssemblies>true</AndroidEnablePreloadAssemblies>
     <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <AndroidLinkMode>Full</AndroidLinkMode>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <AndroidDexTool>dx</AndroidDexTool>
     <AndroidLinkTool>proguard</AndroidLinkTool>
@@ -109,7 +109,7 @@
       <Version>2019.10.14</Version>
     </PackageReference>
     <PackageReference Include="LibVLCSharp">
-      <Version>3.4.1</Version>
+      <Version>3.4.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter">
       <Version>2.6.4</Version>
