@@ -138,7 +138,7 @@ namespace SetBoxTV.VideoPlayer
                     {
                         model.IsLoading = false;
                         // Connection to internet is not available
-                        await this.DisplayAlertOnUi( "Internet", "Sem acesso a internet! Favor conectar na internet para configurar a SetBoX", "OK").ConfigureAwait(true);
+                        await this.DisplayAlertOnUi( "Internet", "Sem acesso a internet! Favor conectar na internet para configurar a SetBox TV", "OK").ConfigureAwait(true);
                     }
 
                     model.IsLoading = true;
@@ -154,7 +154,7 @@ namespace SetBoxTV.VideoPlayer
                     }
                     else
                     {
-                        if (PlayerSettings.DateTimeInstall < DateTime.UtcNow.AddDays(-5) && PlayerSettings.License == "1111")
+                        if (PlayerSettings.DateTimeInstall < DateTime.UtcNow.AddDays(-60) && PlayerSettings.License == "1111")
                         {
                             Log.Debug("Expirou a instalação");
                             Log.Debug($"Data UTC Install: {PlayerSettings.DateTimeInstall}");
