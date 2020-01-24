@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
-using System.Linq;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -160,7 +157,7 @@ namespace SetBoxWebUI.Controllers
                     if (device.Platform != platform)
                         log.Message += $"Platform: {platform} ({device.Platform}) ";
 
-                    if (device.License != deviceLicense)
+                    if (device.License != deviceLicense && deviceLicense != DefaultLicense)
                         log.Message += $"License: {deviceLicense} ({device.License}) ";
 
                     if (device.Version != version)
@@ -183,7 +180,10 @@ namespace SetBoxWebUI.Controllers
 
                     device.Platform = platform;
                     device.Version = version;
-                    device.License = deviceLicense;
+
+                    if(deviceLicense != DefaultLicense)
+                        device.License = deviceLicense;
+
                     device.ApkVersion = apkVersion;
                     device.Model = model;
                     device.Manufacturer = manufacturer;
@@ -239,7 +239,7 @@ namespace SetBoxWebUI.Controllers
             try
             {
                 if (string.IsNullOrEmpty(license))
-                    license = "";
+                    license = DefaultLicense;
 
                 if (string.IsNullOrEmpty(identifier))
                 {
@@ -280,10 +280,10 @@ namespace SetBoxWebUI.Controllers
                         await _devices.AddAsync(device);
                     }
 
-                    if (license == "")
+                    if (license == "" || license == DefaultLicense)
                         license = device.License;
 
-                    if (license != device.License)
+                    if (license != device.License && license != DefaultLicense)
                         device.License = license;
 
                     device.Active = license != DefaultLicense;
@@ -297,6 +297,7 @@ namespace SetBoxWebUI.Controllers
                         IpAcessed = HttpContext.GetClientIpAddress(),
                         Message = license != "" ? "Logged" : "Logged Not License"
                     });
+
                     await _devices.UpdateAsync(device);
 
                     if (license == "")
