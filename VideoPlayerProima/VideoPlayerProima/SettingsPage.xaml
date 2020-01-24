@@ -62,9 +62,14 @@
                     </TableSection>
                     <TableSection Title="" x:Name="TableSection7">
                         <ViewCell>
-                            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" TabIndex="3">
-                                <Button Text="Salvar" x:Name="SaveButton" TabIndex="3" AutomationId="SaveButton" Clicked="OnButtonSalvarClicked" AutomationProperties.IsInAccessibleTree="True" />
-                            </StackLayout>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Text="Fechar SetBox" x:Name="ExitButton" TabIndex="4" AutomationId="ExitButton" Clicked="OnButtonExitClicked" AutomationProperties.IsInAccessibleTree="True" Grid.Column="1"/>
+                                <Button Text="Salvar" x:Name="SaveButton" TabIndex="4" AutomationId="SaveButton" Clicked="OnButtonSalvarClicked" AutomationProperties.IsInAccessibleTree="True" Grid.Column="1"/>
+                            </Grid>
                         </ViewCell>
                     </TableSection>
                 </TableRoot>

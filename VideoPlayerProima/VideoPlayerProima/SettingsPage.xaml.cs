@@ -156,6 +156,11 @@ namespace SetBoxTV.VideoPlayer
             }
 
         }
+        public void OnButtonExitClicked(object sender, EventArgs e)
+        {
+            var closer = DependencyService.Get<ICloseApplication>();
+            closer?.closeApplication();
+        }
 
         public async void OnButtonSelectClicked(object sender, EventArgs e)
         {

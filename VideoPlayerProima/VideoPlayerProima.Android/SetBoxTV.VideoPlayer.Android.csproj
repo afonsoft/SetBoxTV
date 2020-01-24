@@ -194,6 +194,7 @@
     <Compile Include="BootReceiver.cs" />
     <Compile Include="Controls\CheckPermission.cs" />
     <Compile Include="Controls\ClipboardService.cs" />
+    <Compile Include="Controls\CloseApplication.cs" />
     <Compile Include="Controls\DevicePicker.cs" />
     <Compile Include="Controls\DirectoyPicker.cs" />
     <Compile Include="Controls\FilePicker.cs" />
