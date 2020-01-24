@@ -55,11 +55,12 @@ namespace SetBoxTV.VideoPlayer
                 if (!string.IsNullOrEmpty(deviceIdentifier))
                 {
                     var api = new API.SetBoxApi(deviceIdentifier, PlayerSettings.License, PlayerSettings.Url);
+                    model.License = api.License;
+                    PlayerSettings.License = api.License;
 
                     var config = await api.GetConfig().ConfigureAwait(true);
                     if (config != null)
                     {
-                        model.License = api.License;
                         model.ShowVideo = config.enableVideo;
                         model.ShowPhoto = config.enablePhoto;
                         model.ShowWebImage = config.enableWebImage;
