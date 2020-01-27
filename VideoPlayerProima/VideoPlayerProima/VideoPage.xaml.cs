@@ -12,7 +12,6 @@ using System.Windows.Input;
 using System.Linq;
 using System.Globalization;
 using LibVLCSharp.Shared;
-using System.Threading;
 
 namespace SetBoxTV.VideoPlayer
 {
@@ -64,11 +63,14 @@ namespace SetBoxTV.VideoPlayer
         }
         protected override void OnAppearing()
         {
-            base.OnAppearing();
-            NavigationPage.SetHasNavigationBar(this, false);
-            Core.Initialize();
+            Device.BeginInvokeOnMainThread(() =>
+            {
 
-            log?.Debug("VideoPage: OnAppearing", new Dictionary<string, string>() {
+                base.OnAppearing();
+                NavigationPage.SetHasNavigationBar(this, false);
+                Core.Initialize();
+
+                log?.Debug("VideoPage: OnAppearing", new Dictionary<string, string>() {
                 { "License",PlayerSettings.License},
                 { "PathFiles",PlayerSettings.PathFiles},
                 { "ShowVideo",PlayerSettings.ShowVideo.ToString(CultureInfo.InvariantCulture)},
@@ -79,26 +81,27 @@ namespace SetBoxTV.VideoPlayer
                 { "TransactionTime",PlayerSettings.TransactionTime.ToString(CultureInfo.InvariantCulture)},
             });
 
-            // instanciate the main libvlc object
-            _libVLC = new LibVLC(PlayerSettings.LibVLCArguments);
-            _libVLC.Log += LibVLC_Log;
+                // instanciate the main libvlc object
+                _libVLC = new LibVLC(PlayerSettings.LibVLCArguments);
+                _libVLC.Log += LibVLC_Log;
 
-            _videoView = new VideoView() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, AutomationId = "VideoLVC", TabIndex = 1 };
-            _videoView.TabIndex = 1;
-            _videoView.GestureRecognizers.Add(new TapGestureRecognizer() { NumberOfTapsRequired = 2, Command = Tapped });
-            MainGrid.Children.Add(_videoView);
+                _videoView = new VideoView() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, AutomationId = "VideoLVC", TabIndex = 1 };
+                _videoView.TabIndex = 1;
+                _videoView.GestureRecognizers.Add(new TapGestureRecognizer() { NumberOfTapsRequired = 2, Command = Tapped });
+                MainGrid.Children.Add(_videoView);
 
-            _videoView.MediaPlayer = new MediaPlayer(_libVLC)
-            {
-                EnableHardwareDecoding = true,
-                Fullscreen = true,
-                Mute = false,
-                Volume = 100,
-                AspectRatio = "Fit screen",
-                FileCaching = 5000
-            };
+                _videoView.MediaPlayer = new MediaPlayer(_libVLC)
+                {
+                    EnableHardwareDecoding = true,
+                    Fullscreen = true,
+                    Mute = false,
+                    Volume = 100,
+                    AspectRatio = "Fit screen",
+                    FileCaching = 5000
+                };
 
-            WhileFilesToPlayer();
+                WhileFilesToPlayer();
+            });
         }
 
         private Task<bool> WhileFilesToPlayer()
