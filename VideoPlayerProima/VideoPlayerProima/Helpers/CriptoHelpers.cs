@@ -1,4 +1,8 @@
-﻿namespace SetBoxTV.VideoPlayer.Helpers
+﻿using System;
+using System.Security.Cryptography;
+using System.Text;
+
+namespace SetBoxTV.VideoPlayer.Helpers
 {
     public static class CriptoHelpers
     {
@@ -14,6 +18,14 @@
         {
             var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
             return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+        }
+        public static string MD5HashString(string input)
+        {
+            using (var md5 = MD5.Create())
+            {
+                var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
+                return BitConverter.ToString(hash).Replace("-", "").ToUpperInvariant();
+            }
         }
     }
 }

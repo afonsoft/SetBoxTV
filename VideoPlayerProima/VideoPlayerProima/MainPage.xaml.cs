@@ -134,7 +134,7 @@ namespace SetBoxTV.VideoPlayer
 
                     Log.TAG = "OnAppearing";
 
-                    if (Connectivity.NetworkAccess != NetworkAccess.Internet && PlayerSettings.ReportNotConnection)
+                    if (Connectivity.NetworkAccess != NetworkAccess.Internet && PlayerSettings.ReportNotConnection && PlayerSettings.FirstInsall)
                     {
                         model.IsLoading = false;
                         // Connection to internet is not available
@@ -248,7 +248,7 @@ namespace SetBoxTV.VideoPlayer
 
                         if (config != null)
                         {
-                            PlayerSettings.License = api.License;
+                            PlayerSettings.License = api.License.Trim();
                             PlayerSettings.ShowVideo = config.enableVideo;
                             PlayerSettings.ShowPhoto = config.enablePhoto;
                             PlayerSettings.ShowWebImage = config.enableWebImage;
@@ -271,10 +271,12 @@ namespace SetBoxTV.VideoPlayer
                         Log.Debug($"deviceIdentifier: {deviceIdentifier}");
                         Log.Debug($"deviceIdentifier64: {CriptoHelpers.Base64Encode(deviceIdentifier)}");
 
-                        string deviceIdentifier64 = CriptoHelpers.Base64Encode(deviceIdentifier);
-
-                        if (license == deviceIdentifier64 || license == "1111")
+                        if (license.Trim().ToUpperInvariant() == CriptoHelpers.MD5HashString(deviceIdentifier)
+                        || license.Trim().ToUpperInvariant() == CriptoHelpers.Base64Encode(deviceIdentifier)
+                        || license == "1111")
+                        {
                             isLicensed = true;
+                        }
                     }
 
                     if (!isLicensed)
