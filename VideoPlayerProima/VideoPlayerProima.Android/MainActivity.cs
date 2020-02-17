@@ -133,7 +133,7 @@ namespace SetBoxTV.VideoPlayer.Droid
             }
         }
 
-        private TaskCompletionSource<bool> taskGrantPermission { get; set; }
+        TaskCompletionSource<bool> taskGrantPermission { get; set; }
 
         public Task<bool> RequestPermission(int requestCode, string permission)
         {
@@ -154,22 +154,27 @@ namespace SetBoxTV.VideoPlayer.Droid
         {
             try
             {
+                if (permissions.Length <= 0)
+                    return;
+
                 Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
                 base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
                 if (grantResults[0] == Permission.Denied)
-                {
-                    taskGrantPermission.SetResult(false);
+                {   
                     LoggerService.Instance.Debug($"Permissions Denied : {permissions[0]}");
+                    taskGrantPermission.SetResult(false);
                 }
                 else
-                {
-                    taskGrantPermission.SetResult(true);
+                {       
                     LoggerService.Instance.Debug($"Permissions Granted: {permissions[0]}");
+                    taskGrantPermission.SetResult(true);
                 }
             }
             catch
             {
+                LoggerService.Instance.Debug($"Permissions Granted: {Permission.Denied}");
+                taskGrantPermission.SetResult(false);
                 //Ignore
             }
         }

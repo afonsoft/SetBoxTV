@@ -21,8 +21,8 @@ namespace SetBoxTV.VideoPlayer
         private readonly List<FileDetails> fileDetails;
         private readonly ILogger log;
         private VideoView _videoView;
-        private bool isFinishingLoading = false;
         private bool isPlayerFinishing = true;
+        private bool isFinishingLonding = false;
 
         #region VLC
         private LibVLC _libVLC;
@@ -33,6 +33,7 @@ namespace SetBoxTV.VideoPlayer
         {
             InitializeComponent();
             ConstVars.IsInProcess = false;
+            isFinishingLonding = false;
 
             log = DependencyService.Get<ILogger>();
             if (log != null)
@@ -62,7 +63,7 @@ namespace SetBoxTV.VideoPlayer
             );
 
             log?.Debug($"VideoPage Total Files {fileDetails?.Count}");
-            isFinishingLoading = false;
+            isFinishingLonding = false;
 
         }
         protected override void OnAppearing()
@@ -96,8 +97,7 @@ namespace SetBoxTV.VideoPlayer
             mediaList = new MediaList(_libVLC);
 
             WhileFilesToPlayer();
-
-            isFinishingLoading = true;
+            isFinishingLonding = true;
         }
 
         private void WhileFilesToPlayer()
@@ -106,24 +106,21 @@ namespace SetBoxTV.VideoPlayer
             {
                 try
                 {
-                    while (!isFinishingLoading)
-                        await Task.Delay(500).ConfigureAwait(true);
-
                     int idx = 0;
+
+                    while (!isFinishingLonding)
+                        await Task.Delay(500).ConfigureAwait(true);
 
                     while (!ConstVars.EventHandlerCalled)
                     {
                         if (isPlayerFinishing)
                         {
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                FilesToPlayer(idx);
-                                idx++;
-                                if (idx >= fileDetails.Count)
-                                    idx = 0;
-                            });
+                            FilesToPlayer(idx);
+                            idx++;
+                            if (idx >= fileDetails.Count)
+                                idx = 0;
                         }
-                        await Task.Delay(500).ConfigureAwait(true);
+                        await Task.Delay(1000).ConfigureAwait(true);
                     }
                 }
                 catch (Exception ex)
@@ -139,57 +136,60 @@ namespace SetBoxTV.VideoPlayer
 
         private void FilesToPlayer(int index)
         {
-
-            try
+            isPlayerFinishing = false;
+            Device.BeginInvokeOnMainThread(() =>
             {
-                _videoView.MediaPlayer = new MediaPlayer(_libVLC)
-                {
-                    EnableHardwareDecoding = true,
-                    Fullscreen = true,
-                    Mute = false,
-                    Volume = 100,
-                    AspectRatio = "Fit screen",
-                    FileCaching = 5000
-                };
-
-                _videoView.MediaPlayer.EndReached += async (sender, args) =>
-                {
-                    await Task.Delay(500).ConfigureAwait(true);
-                    log?.Debug($"Finalizando (EndReached) o video");
-                    isPlayerFinishing = true;
-                };
-                _videoView.MediaPlayer.EncounteredError += async (sender, args) =>
-                {
-                    await Task.Delay(500).ConfigureAwait(true);
-                    log?.Debug($"Error (EncounteredError) no video");
-                    isPlayerFinishing = true;
-                };
-
-                log?.Debug($"Preparando o video { fileDetails[index].path}");
-
-                var m = new Media(_libVLC, (new FileVideoSource { File = fileDetails[index].path }).File, FromType.FromPath);
-                m.AddOption(new MediaConfiguration() { EnableHardwareDecoding = true, FileCaching = 5000 });
-                m.AddOption(":fullscreen");
-                mediaList.SetMedia(m);
-
                 try
                 {
-                    log?.Debug($"Iniciando o Play { fileDetails[index].path}");
-                    isPlayerFinishing = false;
-                    _videoView.MediaPlayer.Play(new Media(mediaList));
+                    _videoView.MediaPlayer = new MediaPlayer(_libVLC)
+                    {
+                        EnableHardwareDecoding = false,
+                        Fullscreen = true,
+                        Mute = false,
+                        Volume = 100,
+                        AspectRatio = "Fit screen",
+                        FileCaching = 1000
+                    };
+
+                    _videoView.MediaPlayer.EndReached += async (sender, args) =>
+                    {
+                        await Task.Delay(500).ConfigureAwait(true);
+                        log?.Debug($"Finalizando (EndReached) o video");
+                        isPlayerFinishing = true;
+                    };
+                    _videoView.MediaPlayer.EncounteredError += async (sender, args) =>
+                    {
+                        await Task.Delay(500).ConfigureAwait(true);
+                        log?.Debug($"Error (EncounteredError) no video");
+                        isPlayerFinishing = true;
+                    };
+
+                    log?.Debug($"Preparando o video { fileDetails[index].path}");
+
+                    var m = new Media(_libVLC, (new FileVideoSource { File = fileDetails[index].path }).File, FromType.FromPath);
+                    m.AddOption(new MediaConfiguration() { EnableHardwareDecoding = false, FileCaching = 1000 });
+                    m.AddOption(":fullscreen");
+                    mediaList.SetMedia(m);
+
+                    try
+                    {
+                        log?.Debug($"Iniciando o Play { fileDetails[index].path}");
+                        _videoView.MediaPlayer.Play(new Media(mediaList));
+                    }
+                    catch (Exception ex)
+                    {
+                        log?.Error($"Error {ex.Message} no video { fileDetails[index].path}", ex);
+                        isPlayerFinishing = true;
+                    }
                 }
                 catch (Exception ex)
                 {
                     log?.Error($"Error {ex.Message} no video { fileDetails[index].path}", ex);
+                    ConstVars.EventHandlerCalled = true;
+                    isPlayerFinishing = true;
                     throw;
                 }
-            }
-            catch (Exception ex)
-            {
-                log?.Error($"Error {ex.Message} no video { fileDetails[index].path}", ex);
-                ConstVars.EventHandlerCalled = true;
-                throw;
-            }
+            });
         }
 
         private void LibVLC_Log(object sender, LogEventArgs e)
