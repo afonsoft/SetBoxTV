@@ -254,10 +254,17 @@ namespace SetBoxTV.VideoPlayer
 
         public void OnButtonPrintScreenClicked(object sender, EventArgs e)
         {
-            var arrBytes = DependencyService.Get<IScreenshotService>().CaptureScreen();
-            string imageName = $"Screenshot{DateTime.Now:yyyyMMddHHmmss}.png";
-            File.WriteAllBytes(imageName, arrBytes);
-            DependencyService.Get<IMessage>().Alert($"{imageName} salvo na pasta {PlayerSettings.PathFiles}");
+            try
+            {
+                var arrBytes = DependencyService.Get<IScreenshotService>().CaptureScreen();
+                string imageName = $"Screenshot{DateTime.Now:yyyyMMddHHmmss}.png";
+                File.WriteAllBytes(imageName, arrBytes);
+                DependencyService.Get<IMessage>().Alert($"{imageName} salvo na pasta {PlayerSettings.PathFiles}");
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex);
+            }
         }
 
         private void LicenseID_Tapped(object sender, EventArgs e)
