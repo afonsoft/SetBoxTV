@@ -85,6 +85,7 @@ namespace SetBoxTV.VideoPlayer.API
                 throw new ArgumentNullException(nameof(identifier), $"identifier {identifier} is null or invalid!");
 
             rest = new Afonsoft.Http.Rest(endPoint);
+            rest.Timeout = 5000;
             GetSessionLogin();
         }
 

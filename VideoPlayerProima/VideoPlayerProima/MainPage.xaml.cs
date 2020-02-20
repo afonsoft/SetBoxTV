@@ -135,17 +135,24 @@ namespace SetBoxTV.VideoPlayer
 
                     Log.TAG = "OnAppearing";
 
-                    if ((Connectivity.NetworkAccess != NetworkAccess.Internet || !SetBoxApi.CheckConnectionPing(PlayerSettings.Url)) && PlayerSettings.ReportNotConnection )
+                    if ((Connectivity.NetworkAccess != NetworkAccess.Internet || !SetBoxApi.CheckConnectionPing(PlayerSettings.Url)) )
                     {
-                        model.IsLoading = false;
-                        // Connection to internet is not available
-                        await this.DisplayAlertOnUiAndClose( "Internet", "Sem acesso a internet! Favor conectar na internet para configurar a SetBox TV", "OK", 5000).ConfigureAwait(true);
+                        PlayerSettings.HaveConnection = false;
+
+                        if (PlayerSettings.ReportNotConnection)
+                        {
+                            model.IsLoading = false;
+                            await this.DisplayAlertOnUiAndClose("Internet", "Sem acesso a internet! Favor conectar na internet para configurar a SetBox TV", "OK", 5000).ConfigureAwait(true);
+                        }
+                    }
+                    else
+                    {
+                        PlayerSettings.HaveConnection = true;
                     }
 
                     model.IsLoading = true;
                     if (PlayerSettings.FirstInsall || string.IsNullOrEmpty(PlayerSettings.License))
                     {
-                        PlayerSettings.ClearAllData();
                         PlayerSettings.License = CriptoHelpers.MD5HashString(DependencyService.Get<IDevicePicker>().GetIdentifier());
                         PlayerSettings.DateTimeInstall = DateTime.Now;
                         Log.Debug("First Install");
@@ -162,8 +169,7 @@ namespace SetBoxTV.VideoPlayer
                             Log.Debug($"Data UTC Install: {PlayerSettings.DateTimeInstall}");
                             model.IsLoading = false;
                             ConstVars.IsInProcess = false;
-                            await this.DisplayAlertOnUi("Licença", "A licença Temporária da SetBoxTV Expirou!\nFavor colocar a nova licença!\n\nOu acesse o site e coloque a licença!", "OK",
-                              () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
+                            await this.DisplayAlertOnUiAndClose("Licença", "A licença Temporária da SetBoxTV Expirou!\nFavor colocar a nova licença!\n\nOu acesse o site e coloque a licença!", "OK", 5000).ConfigureAwait(true);
                         }
                         else
                         {
@@ -230,34 +236,37 @@ namespace SetBoxTV.VideoPlayer
                         ShowText("Conectando no servidor", new Dictionary<string, string>() {
                         {"deviceIdentifier", deviceIdentifier},
                         {"license",license },
-                        {"Url", PlayerSettings.Url}
-                    });
+                        {"Url", PlayerSettings.Url} });
 
-                        api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
-
-                        await api.UpdateInfo(DevicePicker.GetPlatform().ToString(),
-                            $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}",
-                            $"{device.GetApkVersion()}.{device.GetApkBuild()}",
-                            DevicePicker.GetModel(),
-                            DevicePicker.GetManufacturer(),
-                            DevicePicker.GetName(),
-                            PlayerSettings.DeviceName).ConfigureAwait(true);
-
-
-                        ShowText("Recuperando as configurações do servidor", new Dictionary<string, string>() { { "DeviceName", PlayerSettings.DeviceName } });
-
-                        var config = await api.GetConfig().ConfigureAwait(true);
-
-                        if (config != null)
+                        if (PlayerSettings.HaveConnection)
                         {
-                            PlayerSettings.License = api.License.Trim();
-                            PlayerSettings.ShowVideo = config.enableVideo;
-                            PlayerSettings.ShowPhoto = config.enablePhoto;
-                            PlayerSettings.ShowWebImage = config.enableWebImage;
-                            PlayerSettings.ShowWebVideo = config.enableWebVideo;
-                            PlayerSettings.EnableTransactionTime = config.enableTransaction;
-                            PlayerSettings.TransactionTime = config.transactionTime;
-                            PlayerSettings.DeviceName = config.DeviceName;
+
+                            api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
+
+                            await api.UpdateInfo(DevicePicker.GetPlatform().ToString(),
+                                $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}",
+                                $"{device.GetApkVersion()}.{device.GetApkBuild()}",
+                                DevicePicker.GetModel(),
+                                DevicePicker.GetManufacturer(),
+                                DevicePicker.GetName(),
+                                PlayerSettings.DeviceName).ConfigureAwait(true);
+
+
+                            ShowText("Recuperando as configurações do servidor", new Dictionary<string, string>() { { "DeviceName", PlayerSettings.DeviceName } });
+
+                            var config = await api.GetConfig().ConfigureAwait(true);
+
+                            if (config != null)
+                            {
+                                PlayerSettings.License = api.License.Trim();
+                                PlayerSettings.ShowVideo = config.enableVideo;
+                                PlayerSettings.ShowPhoto = config.enablePhoto;
+                                PlayerSettings.ShowWebImage = config.enableWebImage;
+                                PlayerSettings.ShowWebVideo = config.enableWebVideo;
+                                PlayerSettings.EnableTransactionTime = config.enableTransaction;
+                                PlayerSettings.TransactionTime = config.transactionTime;
+                                PlayerSettings.DeviceName = config.DeviceName;
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -265,6 +274,7 @@ namespace SetBoxTV.VideoPlayer
                         Log.Error("UpdateInfo: " + ex.Message, ex);
                         ShowText("Erro ao conectar no servidor", new Dictionary<string, string>() { { "Error", ex.Message } });
                     }
+                    
 
                     ShowText("Verificando a Licença de uso da SetBoxTV", new Dictionary<string, string>() { { "license", license } });
 
@@ -299,11 +309,15 @@ namespace SetBoxTV.VideoPlayer
                         {
 
                             ShowText("Recuperando a lista de arquivos", new Dictionary<string, string>() { { "GetFilesCheckSums", "GetFilesCheckSums" } });
-                            api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
-                            var serverFiles1 = await api.GetFilesCheckSums().ConfigureAwait(true);
-                            serverFiles = serverFiles1.ToList();
 
-                            Log.Debug($"Total de arquivos no servidor: {serverFiles.Count}", new Dictionary<string, string>() { { "Count File", serverFiles.Count.ToString(CultureInfo.InvariantCulture) } });
+                            if (PlayerSettings.HaveConnection)
+                            {
+                                api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
+                                var serverFiles1 = await api.GetFilesCheckSums().ConfigureAwait(true);
+                                serverFiles = serverFiles1.ToList();
+
+                                Log.Debug($"Total de arquivos no servidor: {serverFiles.Count}", new Dictionary<string, string>() { { "Count File", serverFiles.Count.ToString(CultureInfo.InvariantCulture) } });
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -339,6 +353,7 @@ namespace SetBoxTV.VideoPlayer
                                     Log.Error($"Download {fi.name}: {ex.Message}", ex);
                                 }
                             }
+
                             GetFilesInFolder(filePicker);
                         }
 
@@ -433,6 +448,7 @@ namespace SetBoxTV.VideoPlayer
 
                                 GetFilesInOrder(arquivos, serverFiles);
                             }
+
                             ShowText("Iniciando o Player", new Dictionary<string, string>() { { "Count Files", arquivos.Count.ToString(CultureInfo.InvariantCulture) } });
 
                             labelLoadingId.IsVisible = false;
