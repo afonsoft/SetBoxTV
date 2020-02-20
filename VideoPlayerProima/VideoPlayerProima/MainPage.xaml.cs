@@ -144,7 +144,8 @@ namespace SetBoxTV.VideoPlayer
                     model.IsLoading = true;
                     if (PlayerSettings.FirstInsall || string.IsNullOrEmpty(PlayerSettings.License))
                     {
-                        PlayerSettings.License = "1111";
+                        PlayerSettings.ClearAllData();
+                        PlayerSettings.License = CriptoHelpers.MD5HashString(DependencyService.Get<IDevicePicker>().GetIdentifier());
                         PlayerSettings.DateTimeInstall = DateTime.Now;
                         Log.Debug("First Install");
                         model.IsLoading = false;
@@ -154,7 +155,7 @@ namespace SetBoxTV.VideoPlayer
                     }
                     else
                     {
-                        if (PlayerSettings.DateTimeInstall < DateTime.UtcNow.AddDays(-60) && PlayerSettings.License == "1111")
+                        if (PlayerSettings.DateTimeInstall < DateTime.UtcNow.AddYears(2) && PlayerSettings.License == "1111")
                         {
                             Log.Debug("Expirou a instalação");
                             Log.Debug($"Data UTC Install: {PlayerSettings.DateTimeInstall}");
