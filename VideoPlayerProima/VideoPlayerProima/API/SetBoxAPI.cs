@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Net;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using SetBoxTV.VideoPlayer.Helpers;
@@ -45,6 +46,25 @@ namespace SetBoxTV.VideoPlayer.API
         {
             get => _session;
             private set { _session = value; }
+        }
+
+        public static bool CheckConnectionPing(string url)
+        {
+            string CheckUrl = url;
+
+            try
+            {
+                HttpWebRequest iNetRequest = (HttpWebRequest)WebRequest.Create(CheckUrl);
+                iNetRequest.Timeout = 5000;
+                WebResponse iNetResponse = iNetRequest.GetResponse();
+                iNetResponse.Close();
+                return true;
+
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         /// <summary>

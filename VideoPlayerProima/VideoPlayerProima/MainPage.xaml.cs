@@ -14,6 +14,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SetBoxTV.VideoPlayer.Extensions;
+using SetBoxTV.VideoPlayer.API;
 
 namespace SetBoxTV.VideoPlayer
 {
@@ -134,11 +135,11 @@ namespace SetBoxTV.VideoPlayer
 
                     Log.TAG = "OnAppearing";
 
-                    if (Connectivity.NetworkAccess != NetworkAccess.Internet && PlayerSettings.ReportNotConnection && PlayerSettings.FirstInsall)
+                    if ((Connectivity.NetworkAccess != NetworkAccess.Internet || !SetBoxApi.CheckConnectionPing(PlayerSettings.Url)) && PlayerSettings.ReportNotConnection )
                     {
                         model.IsLoading = false;
                         // Connection to internet is not available
-                        await this.DisplayAlertOnUi( "Internet", "Sem acesso a internet! Favor conectar na internet para configurar a SetBox TV", "OK").ConfigureAwait(true);
+                        await this.DisplayAlertOnUiAndClose( "Internet", "Sem acesso a internet! Favor conectar na internet para configurar a SetBox TV", "OK", 5000).ConfigureAwait(true);
                     }
 
                     model.IsLoading = true;
