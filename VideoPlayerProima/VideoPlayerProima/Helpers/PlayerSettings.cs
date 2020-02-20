@@ -30,7 +30,7 @@ namespace SetBoxTV.VideoPlayer.Helpers
         }
         public static bool HaveConnection
         {
-            get => AppSettings.GetValueOrDefault(nameof(HaveConnection), true);
+            get => AppSettings.GetValueOrDefault(nameof(HaveConnection), false);
             set => AppSettings.AddOrUpdateValue(nameof(HaveConnection), value);
         }
 

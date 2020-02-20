@@ -134,8 +134,11 @@ namespace SetBoxTV.VideoPlayer
                     await GetLastError();
 
                     Log.TAG = "OnAppearing";
+                    Log.Debug($"Connectivity.NetworkAccess: {Connectivity.NetworkAccess}");
+                    bool pingTest = SetBoxApi.CheckConnectionPing(PlayerSettings.Url);
+                    Log.Debug($"Connectivity.Ping: {pingTest}");
 
-                    if ((Connectivity.NetworkAccess != NetworkAccess.Internet || !SetBoxApi.CheckConnectionPing(PlayerSettings.Url)) )
+                    if (Connectivity.NetworkAccess != NetworkAccess.Internet || !pingTest)
                     {
                         PlayerSettings.HaveConnection = false;
 
