@@ -135,14 +135,17 @@ namespace SetBoxTV.VideoPlayer
 
                     Log.TAG = "OnAppearing";
                     Log.Debug($"Connectivity.NetworkAccess: {Connectivity.NetworkAccess}");
-                    bool pingTest = SetBoxApi.CheckConnectionPing(PlayerSettings.Url);
-                    Log.Debug($"Connectivity.Ping: {pingTest}");
-
-                    if (Connectivity.NetworkAccess != NetworkAccess.Internet || !pingTest)
+                    ShowText("Verificando a conexão com a internet", new Dictionary<string, string>() { { "NetworkAccess", Connectivity.NetworkAccess.ToString() } });
+                    if (Connectivity.NetworkAccess != NetworkAccess.Internet)
                     {
+                        bool pingTest = SetBoxApi.CheckConnectionPing("https://www.google.com.br/");
                         PlayerSettings.HaveConnection = false;
+                        if (pingTest)
+                            PlayerSettings.HaveConnection = true;
 
-                        if (PlayerSettings.ReportNotConnection)
+                        Log.Debug($"Connectivity.Ping: {pingTest}");
+
+                        if (PlayerSettings.ReportNotConnection && !PlayerSettings.HaveConnection)
                         {
                             model.IsLoading = false;
                             await this.DisplayAlertOnUiAndClose("Internet", "Sem acesso a internet! Favor conectar na internet para configurar a SetBox TV", "OK", 5000).ConfigureAwait(true);
