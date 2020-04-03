@@ -140,12 +140,12 @@ namespace SetBoxTV.VideoPlayer
                     ShowText("Verificando a conexão com a internet", new Dictionary<string, string>() { { "NetworkAccess", Connectivity.NetworkAccess.ToString() } });
                     if (Connectivity.NetworkAccess != NetworkAccess.Internet)
                     {
-                        bool pingTest = SetBoxApi.CheckConnectionPing("https://www.google.com.br/");
+                        //bool pingTest = SetBoxApi.CheckConnectionPing("https://www.google.com.br/");
                         PlayerSettings.HaveConnection = false;
-                        if (pingTest)
-                            PlayerSettings.HaveConnection = true;
+                        //if (pingTest)
+                        //    PlayerSettings.HaveConnection = true;
 
-                        Log.Debug($"Connectivity.Ping: {pingTest}");
+                        //Log.Debug($"Connectivity.Ping: {pingTest}");
 
                         if (PlayerSettings.ReportNotConnection && !PlayerSettings.HaveConnection)
                         {
@@ -157,6 +157,12 @@ namespace SetBoxTV.VideoPlayer
                     {
                         PlayerSettings.HaveConnection = true;
                     }
+
+                    ShowText("Verificando a licença de uso", new Dictionary<string, string>()
+                    {
+                        { "License", PlayerSettings.License },
+                        { "FirstInsall", PlayerSettings.FirstInsall.ToString() }
+                    });
 
                     model.IsLoading = true;
                     if (PlayerSettings.FirstInsall || string.IsNullOrEmpty(PlayerSettings.License))
@@ -181,6 +187,11 @@ namespace SetBoxTV.VideoPlayer
                         }
                         else
                         {
+                            ShowText("Verificando os arquivos", new Dictionary<string, string>()
+                            {
+                                { "License", PlayerSettings.License },
+                                { "FirstInsall", PlayerSettings.FirstInsall.ToString() }
+                            });
                             Loading();
                             model.IsLoading = false;
                             ConstVars.IsInProcess = false;
