@@ -15,9 +15,11 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SetBoxTV.VideoPlayer.Extensions;
 using SetBoxTV.VideoPlayer.API;
+using System.ComponentModel;
 
 namespace SetBoxTV.VideoPlayer
 {
+    [DesignTimeVisible(false)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {

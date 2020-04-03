@@ -17,6 +17,7 @@ using LibVLCSharp.Forms.Shared;
 using Microsoft.AppCenter.Push;
 using Android.Hardware.Input;
 using System.Collections.Generic;
+using Android.Support.V4.Content;
 
 [assembly: Dependency(typeof(SetBoxTV.VideoPlayer.Droid.MainActivity))]
 namespace SetBoxTV.VideoPlayer.Droid
@@ -74,7 +75,7 @@ namespace SetBoxTV.VideoPlayer.Droid
             base.OnCreate(savedInstanceState);
             LibVLCSharpFormsRenderer.Init();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            Forms.Init(this, savedInstanceState);
+            global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
             //====================================
             int uiOptions = (int)Window.DecorView.SystemUiVisibility;
@@ -114,13 +115,13 @@ namespace SetBoxTV.VideoPlayer.Droid
                 "com.google.android.c2dm.permission.RECEIVE"
             };
 
-            int requestCode = 100;
+            int requestCode = 630;
             foreach (string permission in PERMISSIONS)
             {
                 requestCode++;
                 try
                 {
-                    if (Android.Support.V4.Content.ContextCompat.CheckSelfPermission(Instance, permission) != Permission.Granted)
+                    if (ContextCompat.CheckSelfPermission(this, permission) != Permission.Granted)
                     {
                         LoggerService.Instance.Debug("Permission: " + permission);
                         await RequestPermission(requestCode, permission);
