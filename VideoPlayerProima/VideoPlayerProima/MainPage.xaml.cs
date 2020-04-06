@@ -150,7 +150,7 @@ namespace SetBoxTV.VideoPlayer
                         if (PlayerSettings.ReportNotConnection && !PlayerSettings.HaveConnection)
                         {
                             model.IsLoading = false;
-                            await this.DisplayAlertOnUiAndClose("Internet", "Sem acesso a internet! Favor conectar na internet para configurar a SetBox TV", "OK", 5000).ConfigureAwait(true);
+                            DisplayAlertOnUiAndClose("Sem acesso a internet! Favor conectar na internet para configurar a SetBox TV");
                         }
                     }
                     else
@@ -183,19 +183,17 @@ namespace SetBoxTV.VideoPlayer
                             Log.Debug($"Data UTC Install: {PlayerSettings.DateTimeInstall}");
                             model.IsLoading = false;
                             ConstVars.IsInProcess = false;
-                            await this.DisplayAlertOnUiAndClose("Licença", "A licença Temporária da SetBoxTV Expirou!\nFavor colocar a nova licença!\n\nOu acesse o site e coloque a licença!", "OK", 5000).ConfigureAwait(true);
+                            this.DisplayAlertOnUiAndClose("A licença Temporária da SetBoxTV Expirou!\nFavor colocar a nova licença!\n\nOu acesse o site e coloque a licença!");
                         }
-                        else
-                        {
-                            ShowText("Verificando os arquivos", new Dictionary<string, string>()
+
+                        ShowText("Verificando os arquivos", new Dictionary<string, string>()
                             {
                                 { "License", PlayerSettings.License },
                                 { "FirstInsall", PlayerSettings.FirstInsall.ToString() }
                             });
-                            Loading();
-                            model.IsLoading = false;
-                            ConstVars.IsInProcess = false;
-                        }
+                        Loading();
+                        model.IsLoading = false;
+                        ConstVars.IsInProcess = false;
                     }
                 }
                 catch (Exception ex)
@@ -203,6 +201,16 @@ namespace SetBoxTV.VideoPlayer
                     Log.Error(ex);
                     throw;
                 }
+            });
+        }
+
+        private void DisplayAlertOnUiAndClose(string msg)
+        {
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                var msgService = DependencyService.Get<IMessage>();
+                if (msgService != null)
+                    msgService.Alert(msg);
             });
         }
 
