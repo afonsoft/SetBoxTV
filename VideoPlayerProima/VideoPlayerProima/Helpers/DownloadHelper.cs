@@ -21,16 +21,16 @@ namespace SetBoxTV.VideoPlayer.Helpers
         /// <summary>
         /// DownloadTask
         /// </summary>
-        /// <param name="url"></param>
+        /// <param name="requestUri"></param>
         /// <param name="pathToSave"></param>
         /// <param name="progessReporter"></param>
         /// <returns></returns>
-        public static async Task CreateDownloadTask(string url, string pathToSave, string name, IProgress<DownloadBytesProgress> progessReporter, CancellationToken token)
+        public static async Task CreateDownloadTask(string requestUri, string pathToSave, string name, IProgress<DownloadBytesProgress> progessReporter, CancellationToken token)
         {
             using (HttpClient _client = new HttpClient())
             {
                 // Step 1 : Get call
-                var response = await _client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, token).ConfigureAwait(true);
+                var response = await _client.GetAsync(requestUri, HttpCompletionOption.ResponseHeadersRead, token).ConfigureAwait(true);
 
                 if (!response.IsSuccessStatusCode)
                 {

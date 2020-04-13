@@ -48,21 +48,22 @@ namespace SetBoxTV.VideoPlayer.API
             private set { _session = value; }
         }
 
-        public static bool CheckConnectionPing(string checkUrl)
+        public static bool CheckConnectionPing(string path)
         {
             for (int i = 0; i <= 3; i++)
             {
                 try
                 {
-                    HttpWebRequest iNetRequest = (HttpWebRequest)WebRequest.Create(checkUrl);
-                    iNetRequest.Timeout = 30000;
+                    HttpWebRequest iNetRequest = (HttpWebRequest)WebRequest.Create(new Uri(path));
+                    iNetRequest.Timeout = 3000;
                     WebResponse iNetResponse = iNetRequest.GetResponse();
                     iNetResponse.Close();
                     return true;
                 }
                 catch
                 {
-                    //Ignore
+                    if (i >= 3)
+                        return false;
                 }
             }
             return false;

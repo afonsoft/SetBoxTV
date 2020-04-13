@@ -556,6 +556,7 @@ namespace SetBoxTV.VideoPlayer
             finally
             {
                 model.IsDownloading = false;
+                cts.Dispose();
             }
         }
 

@@ -29,7 +29,7 @@
                HeightRequest ="188"
                WidthRequest="344"
                HorizontalOptions="Center"
-               Grid.Column="0"/>
+               Grid.Column="0" x:Name="ImgLogo"/>
 
         <ActivityIndicator  IsRunning="True"
                             IsVisible="{Binding IsLoading}"
