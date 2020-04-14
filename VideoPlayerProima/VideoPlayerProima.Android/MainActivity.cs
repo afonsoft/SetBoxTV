@@ -96,23 +96,24 @@ namespace SetBoxTV.VideoPlayer.Droid
         {
             string[] PERMISSIONS =
             {
-               "android.permission.READ_EXTERNAL_STORAGE",
+                "android.permission.READ_EXTERNAL_STORAGE",
                 "android.permission.WRITE_EXTERNAL_STORAGE",
-                "android.permission.ACCESS_NOTIFICATION_POLICY",
                 "android.permission.INTERNET",
                 "android.permission.ACCESS_NETWORK_STATE",
-                "android.permission.WAKE_LOCK",
                 "android.permission.RECEIVE_BOOT_COMPLETED",
-                "android.permission.RESTART_PACKAGES",
+                "android.permission.WAKE_LOCK",
+                "android.permission.ACCESS_WIFI_STATE",
+                "android.permission.ACCESS_NOTIFICATION_POLICY",
+                "android.permission.MEDIA_CONTENT_CONTROL",
                 "android.permission.C2D_MESSAGE",
                 "android.permission.DOWNLOAD_WITHOUT_NOTIFICATION",
-                "android.permission.ACCESS_WIFI_STATE",
-                "android.permission.BIND_DEVICE_ADMIN",
-                "android.permission.MEDIA_CONTENT_CONTROL",
                 "android.permission.READ_LOGS",
                 "android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS",
                 "com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE",
-                "com.google.android.c2dm.permission.RECEIVE"
+                "com.google.android.c2dm.permission.RECEIVE",
+                "android.permission.RESTART_PACKAGES",
+                "android.permission.BIND_DEVICE_ADMIN",
+                "android.permission.ACCESS_FINE_LOCATION",
             };
 
             int requestCode = 630;

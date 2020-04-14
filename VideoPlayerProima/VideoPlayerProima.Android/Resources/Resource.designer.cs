@@ -2498,39 +2498,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Plugin.Permissions.Resource.Drawable.notification_template_icon_low_bg = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.notification_template_icon_low_bg;
 			global::Plugin.Permissions.Resource.Drawable.notification_tile_bg = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.notification_tile_bg;
 			global::Plugin.Permissions.Resource.Drawable.notify_panel_notification_icon_bg = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
-			global::Plugin.Permissions.Resource.Id.accessibility_action_clickable_span = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_action_clickable_span;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_0 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_0;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_1 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_1;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_10 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_10;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_11 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_11;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_12 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_12;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_13 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_13;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_14 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_14;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_15 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_15;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_16 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_16;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_17 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_17;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_18 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_18;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_19 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_19;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_2 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_2;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_20 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_20;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_21 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_21;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_22 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_22;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_23 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_23;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_24 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_24;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_25 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_25;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_26 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_26;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_27 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_27;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_28 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_28;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_29 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_29;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_3 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_3;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_30 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_30;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_31 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_31;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_4 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_4;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_5 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_5;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_6 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_6;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_7 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_7;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_8 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_8;
-			global::Plugin.Permissions.Resource.Id.accessibility_custom_action_9 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_9;
 			global::Plugin.Permissions.Resource.Id.actions = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.actions;
 			global::Plugin.Permissions.Resource.Id.action_container = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_container;
 			global::Plugin.Permissions.Resource.Id.action_divider = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_divider;
@@ -2551,7 +2518,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Plugin.Permissions.Resource.Id.chronometer = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.chronometer;
 			global::Plugin.Permissions.Resource.Id.clip_horizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.clip_horizontal;
 			global::Plugin.Permissions.Resource.Id.clip_vertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.clip_vertical;
-			global::Plugin.Permissions.Resource.Id.dialog_button = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.dialog_button;
 			global::Plugin.Permissions.Resource.Id.end = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.end;
 			global::Plugin.Permissions.Resource.Id.fill = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.fill;
 			global::Plugin.Permissions.Resource.Id.fill_horizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.fill_horizontal;
@@ -2573,11 +2539,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Plugin.Permissions.Resource.Id.right_icon = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.right_icon;
 			global::Plugin.Permissions.Resource.Id.right_side = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.right_side;
 			global::Plugin.Permissions.Resource.Id.start = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.start;
-			global::Plugin.Permissions.Resource.Id.tag_accessibility_actions = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_accessibility_actions;
-			global::Plugin.Permissions.Resource.Id.tag_accessibility_clickable_spans = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_accessibility_clickable_spans;
-			global::Plugin.Permissions.Resource.Id.tag_accessibility_heading = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_accessibility_heading;
-			global::Plugin.Permissions.Resource.Id.tag_accessibility_pane_title = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_accessibility_pane_title;
-			global::Plugin.Permissions.Resource.Id.tag_screen_reader_focusable = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_screen_reader_focusable;
 			global::Plugin.Permissions.Resource.Id.tag_transition_group = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_transition_group;
 			global::Plugin.Permissions.Resource.Id.tag_unhandled_key_event_manager = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_unhandled_key_event_manager;
 			global::Plugin.Permissions.Resource.Id.tag_unhandled_key_listeners = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_unhandled_key_listeners;
@@ -2589,7 +2550,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Plugin.Permissions.Resource.Integer.status_bar_notification_info_maxnum = global::SetBoxTV.VideoPlayer.Droid.Resource.Integer.status_bar_notification_info_maxnum;
 			global::Plugin.Permissions.Resource.Layout.browser_actions_context_menu_page = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.browser_actions_context_menu_page;
 			global::Plugin.Permissions.Resource.Layout.browser_actions_context_menu_row = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.browser_actions_context_menu_row;
-			global::Plugin.Permissions.Resource.Layout.custom_dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.custom_dialog;
 			global::Plugin.Permissions.Resource.Layout.notification_action = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.notification_action;
 			global::Plugin.Permissions.Resource.Layout.notification_action_tombstone = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.notification_action_tombstone;
 			global::Plugin.Permissions.Resource.Layout.notification_template_custom_big = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.notification_template_custom_big;
@@ -2720,39 +2680,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Essentials.Resource.Drawable.notification_template_icon_low_bg = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.notification_template_icon_low_bg;
 			global::Xamarin.Essentials.Resource.Drawable.notification_tile_bg = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.notification_tile_bg;
 			global::Xamarin.Essentials.Resource.Drawable.notify_panel_notification_icon_bg = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
-			global::Xamarin.Essentials.Resource.Id.accessibility_action_clickable_span = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_action_clickable_span;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_0 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_0;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_1 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_1;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_10 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_10;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_11 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_11;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_12 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_12;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_13 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_13;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_14 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_14;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_15 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_15;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_16 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_16;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_17 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_17;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_18 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_18;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_19 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_19;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_2 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_2;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_20 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_20;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_21 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_21;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_22 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_22;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_23 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_23;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_24 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_24;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_25 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_25;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_26 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_26;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_27 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_27;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_28 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_28;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_29 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_29;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_3 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_3;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_30 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_30;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_31 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_31;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_4 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_4;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_5 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_5;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_6 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_6;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_7 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_7;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_8 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_8;
-			global::Xamarin.Essentials.Resource.Id.accessibility_custom_action_9 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_9;
 			global::Xamarin.Essentials.Resource.Id.actions = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.actions;
 			global::Xamarin.Essentials.Resource.Id.action_container = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_container;
 			global::Xamarin.Essentials.Resource.Id.action_divider = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_divider;
@@ -2773,7 +2700,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Essentials.Resource.Id.chronometer = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.chronometer;
 			global::Xamarin.Essentials.Resource.Id.clip_horizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.clip_horizontal;
 			global::Xamarin.Essentials.Resource.Id.clip_vertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.clip_vertical;
-			global::Xamarin.Essentials.Resource.Id.dialog_button = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.dialog_button;
 			global::Xamarin.Essentials.Resource.Id.end = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.end;
 			global::Xamarin.Essentials.Resource.Id.fill = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.fill;
 			global::Xamarin.Essentials.Resource.Id.fill_horizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.fill_horizontal;
@@ -2795,11 +2721,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Essentials.Resource.Id.right_icon = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.right_icon;
 			global::Xamarin.Essentials.Resource.Id.right_side = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.right_side;
 			global::Xamarin.Essentials.Resource.Id.start = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.start;
-			global::Xamarin.Essentials.Resource.Id.tag_accessibility_actions = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_accessibility_actions;
-			global::Xamarin.Essentials.Resource.Id.tag_accessibility_clickable_spans = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_accessibility_clickable_spans;
-			global::Xamarin.Essentials.Resource.Id.tag_accessibility_heading = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_accessibility_heading;
-			global::Xamarin.Essentials.Resource.Id.tag_accessibility_pane_title = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_accessibility_pane_title;
-			global::Xamarin.Essentials.Resource.Id.tag_screen_reader_focusable = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_screen_reader_focusable;
 			global::Xamarin.Essentials.Resource.Id.tag_transition_group = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_transition_group;
 			global::Xamarin.Essentials.Resource.Id.tag_unhandled_key_event_manager = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_unhandled_key_event_manager;
 			global::Xamarin.Essentials.Resource.Id.tag_unhandled_key_listeners = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_unhandled_key_listeners;
@@ -2811,7 +2732,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Essentials.Resource.Integer.status_bar_notification_info_maxnum = global::SetBoxTV.VideoPlayer.Droid.Resource.Integer.status_bar_notification_info_maxnum;
 			global::Xamarin.Essentials.Resource.Layout.browser_actions_context_menu_page = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.browser_actions_context_menu_page;
 			global::Xamarin.Essentials.Resource.Layout.browser_actions_context_menu_row = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.browser_actions_context_menu_row;
-			global::Xamarin.Essentials.Resource.Layout.custom_dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.custom_dialog;
 			global::Xamarin.Essentials.Resource.Layout.notification_action = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.notification_action;
 			global::Xamarin.Essentials.Resource.Layout.notification_action_tombstone = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.notification_action_tombstone;
 			global::Xamarin.Essentials.Resource.Layout.notification_template_custom_big = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.notification_template_custom_big;
@@ -2889,18 +2809,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_slide_out_top = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.abc_slide_out_top;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_tooltip_enter = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.abc_tooltip_enter;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.abc_tooltip_exit = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.abc_tooltip_exit;
-			global::Xamarin.Forms.Platform.Android.Resource.Animation.btn_checkbox_to_checked_box_inner_merged_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_checkbox_to_checked_box_inner_merged_animation;
-			global::Xamarin.Forms.Platform.Android.Resource.Animation.btn_checkbox_to_checked_box_outer_merged_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_checkbox_to_checked_box_outer_merged_animation;
-			global::Xamarin.Forms.Platform.Android.Resource.Animation.btn_checkbox_to_checked_icon_null_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_checkbox_to_checked_icon_null_animation;
-			global::Xamarin.Forms.Platform.Android.Resource.Animation.btn_checkbox_to_unchecked_box_inner_merged_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_checkbox_to_unchecked_box_inner_merged_animation;
-			global::Xamarin.Forms.Platform.Android.Resource.Animation.btn_checkbox_to_unchecked_check_path_merged_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_checkbox_to_unchecked_check_path_merged_animation;
-			global::Xamarin.Forms.Platform.Android.Resource.Animation.btn_checkbox_to_unchecked_icon_null_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_checkbox_to_unchecked_icon_null_animation;
-			global::Xamarin.Forms.Platform.Android.Resource.Animation.btn_radio_to_off_mtrl_dot_group_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_radio_to_off_mtrl_dot_group_animation;
-			global::Xamarin.Forms.Platform.Android.Resource.Animation.btn_radio_to_off_mtrl_ring_outer_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_radio_to_off_mtrl_ring_outer_animation;
-			global::Xamarin.Forms.Platform.Android.Resource.Animation.btn_radio_to_off_mtrl_ring_outer_path_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_radio_to_off_mtrl_ring_outer_path_animation;
-			global::Xamarin.Forms.Platform.Android.Resource.Animation.btn_radio_to_on_mtrl_dot_group_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_radio_to_on_mtrl_dot_group_animation;
-			global::Xamarin.Forms.Platform.Android.Resource.Animation.btn_radio_to_on_mtrl_ring_outer_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_radio_to_on_mtrl_ring_outer_animation;
-			global::Xamarin.Forms.Platform.Android.Resource.Animation.btn_radio_to_on_mtrl_ring_outer_path_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_radio_to_on_mtrl_ring_outer_path_animation;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.design_bottom_sheet_slide_in = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.design_bottom_sheet_slide_in;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.design_bottom_sheet_slide_out = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.design_bottom_sheet_slide_out;
 			global::Xamarin.Forms.Platform.Android.Resource.Animation.design_snackbar_in = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.design_snackbar_in;
@@ -3000,7 +2908,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.buttonBarNeutralButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.buttonBarPositiveButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.buttonBarStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.buttonBarStyle;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.buttonCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.buttonCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.buttonGravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.buttonGravity;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.buttonIconDimen = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.buttonIconDimen;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.buttonPanelSideLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.buttonPanelSideLayout;
@@ -3094,15 +3001,7 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.dividerHorizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dividerHorizontal;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.dividerPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dividerPadding;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.dividerVertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dividerVertical;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.drawableBottomCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableBottomCompat;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.drawableEndCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableEndCompat;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.drawableLeftCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableLeftCompat;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.drawableRightCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableRightCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.drawableSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableSize;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.drawableStartCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableStartCompat;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.drawableTint = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableTint;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.drawableTintMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableTintMode;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.drawableTopCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableTopCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.drawerArrowStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawerArrowStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.dropdownListPreferredItemHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.dropDownListViewStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dropDownListViewStyle;
@@ -3209,8 +3108,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.lineHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.lineHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.lineSpacing = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.lineSpacing;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.listChoiceBackgroundIndicator = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.listChoiceIndicatorMultipleAnimated = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listChoiceIndicatorMultipleAnimated;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.listChoiceIndicatorSingleAnimated = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listChoiceIndicatorSingleAnimated;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.listDividerAlertDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listDividerAlertDialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.listItemLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listItemLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.listLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listLayout;
@@ -3219,10 +3116,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.listPreferredItemHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listPreferredItemHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.listPreferredItemHeightLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listPreferredItemHeightLarge;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.listPreferredItemHeightSmall = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listPreferredItemHeightSmall;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.listPreferredItemPaddingEnd = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listPreferredItemPaddingEnd;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.listPreferredItemPaddingLeft = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listPreferredItemPaddingLeft;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.listPreferredItemPaddingRight = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listPreferredItemPaddingRight;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.listPreferredItemPaddingStart = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listPreferredItemPaddingStart;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.logo = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.logo;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.logoDescription = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.logoDescription;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.materialButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.materialButtonStyle;
@@ -3264,7 +3159,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.ratingBarStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.ratingBarStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.ratingBarStyleIndicator = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.ratingBarStyleIndicator;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.ratingBarStyleSmall = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.ratingBarStyleSmall;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.recyclerViewStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.recyclerViewStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.reverseLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.reverseLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.rippleColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.rippleColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.scrimAnimationDuration = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.scrimAnimationDuration;
@@ -3365,7 +3259,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.textColorSearchUrl = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.textColorSearchUrl;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.textEndPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.textEndPadding;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.textInputStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.textInputStyle;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.textLocale = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.textLocale;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.textStartPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.textStartPadding;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.theme = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.theme;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.thickness = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.thickness;
@@ -3591,9 +3484,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.abc_edit_text_inset_top_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_edit_text_inset_top_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.abc_floating_window_z = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_floating_window_z;
-			global::Xamarin.Forms.Platform.Android.Resource.Dimension.abc_list_item_height_large_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_list_item_height_large_material;
-			global::Xamarin.Forms.Platform.Android.Resource.Dimension.abc_list_item_height_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_list_item_height_material;
-			global::Xamarin.Forms.Platform.Android.Resource.Dimension.abc_list_item_height_small_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_list_item_height_small_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.abc_list_item_padding_horizontal_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.abc_panel_menu_list_width = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_panel_menu_list_width;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.abc_progress_bar_height_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_progress_bar_height_material;
@@ -3769,13 +3659,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_action_bar_item_background_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_action_bar_item_background_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_btn_borderless_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_borderless_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_btn_check_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_check_material;
-			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_btn_check_material_anim = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_check_material_anim;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_btn_colored_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_colored_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_btn_default_mtrl_shape = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_default_mtrl_shape;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_btn_radio_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_radio_material;
-			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_btn_radio_material_anim = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_radio_material_anim;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
@@ -3853,14 +3741,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.abc_vector_test = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_vector_test;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.avd_hide_password = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_hide_password;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.avd_show_password = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_show_password;
-			global::Xamarin.Forms.Platform.Android.Resource.Drawable.btn_checkbox_checked_mtrl = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.btn_checkbox_checked_mtrl;
-			global::Xamarin.Forms.Platform.Android.Resource.Drawable.btn_checkbox_checked_to_unchecked_mtrl_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.btn_checkbox_checked_to_unchecked_mtrl_animation;
-			global::Xamarin.Forms.Platform.Android.Resource.Drawable.btn_checkbox_unchecked_mtrl = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.btn_checkbox_unchecked_mtrl;
-			global::Xamarin.Forms.Platform.Android.Resource.Drawable.btn_checkbox_unchecked_to_checked_mtrl_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.btn_checkbox_unchecked_to_checked_mtrl_animation;
-			global::Xamarin.Forms.Platform.Android.Resource.Drawable.btn_radio_off_mtrl = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.btn_radio_off_mtrl;
-			global::Xamarin.Forms.Platform.Android.Resource.Drawable.btn_radio_off_to_on_mtrl_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.btn_radio_off_to_on_mtrl_animation;
-			global::Xamarin.Forms.Platform.Android.Resource.Drawable.btn_radio_on_mtrl = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.btn_radio_on_mtrl;
-			global::Xamarin.Forms.Platform.Android.Resource.Drawable.btn_radio_on_to_off_mtrl_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.btn_radio_on_to_off_mtrl_animation;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.design_bottom_navigation_item_background = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.design_bottom_navigation_item_background;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.design_fab_background = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.design_fab_background;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.design_ic_visibility = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.design_ic_visibility;
@@ -3887,39 +3767,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.notify_panel_notification_icon_bg = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.tooltip_frame_dark = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.tooltip_frame_dark;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.tooltip_frame_light = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.tooltip_frame_light;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_action_clickable_span = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_action_clickable_span;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_0 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_0;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_1 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_1;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_10 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_10;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_11 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_11;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_12 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_12;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_13 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_13;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_14 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_14;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_15 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_15;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_16 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_16;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_17 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_17;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_18 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_18;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_19 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_19;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_2 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_2;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_20 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_20;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_21 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_21;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_22 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_22;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_23 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_23;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_24 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_24;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_25 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_25;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_26 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_26;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_27 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_27;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_28 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_28;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_29 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_29;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_3 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_3;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_30 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_30;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_31 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_31;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_4 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_4;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_5 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_5;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_6 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_6;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_7 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_7;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_8 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_8;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.accessibility_custom_action_9 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_9;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.action0 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action0;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.actions = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.actions;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.action_bar = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_bar;
@@ -3958,7 +3805,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.center_horizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.center_horizontal;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.center_vertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.center_vertical;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.checkbox = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.checkbox;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.@checked = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.@checked;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.chronometer = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.chronometer;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.clip_horizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.clip_horizontal;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.clip_vertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.clip_vertical;
@@ -3977,7 +3823,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.design_menu_item_action_area_stub = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.design_menu_item_action_area_stub;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.design_menu_item_text = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.design_menu_item_text;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.design_navigation_view = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.design_navigation_view;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.dialog_button = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.dialog_button;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.disableHome = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.disableHome;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.edit_query = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.edit_query;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.end = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.end;
@@ -3997,7 +3842,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.forever = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.forever;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.FUNCTION = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.FUNCTION;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.ghost_view = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.ghost_view;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.ghost_view_holder = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.ghost_view_holder;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.group_divider = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.group_divider;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.home = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.home;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.homeAsUp = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.homeAsUp;
@@ -4035,8 +3879,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.notification_background = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.notification_background;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.notification_main_column = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.notification_main_column;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.notification_main_column_container = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.notification_main_column_container;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.off = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.off;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.on = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.on;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.outline = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.outline;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.parallax = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.parallax;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.parentPanel = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.parentPanel;
@@ -4049,7 +3891,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.right_icon = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.right_icon;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.right_side = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.right_side;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.save_non_transition_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.save_non_transition_alpha;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.save_overlay_view = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.save_overlay_view;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.screen = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.screen;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.scroll = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.scroll;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.scrollable = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.scrollable;
@@ -4075,7 +3916,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.showCustom = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.showCustom;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.showHome = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.showHome;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.showTitle = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.showTitle;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.sliding_tabs = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.sliding_tabs;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.smallLabel = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.smallLabel;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.snackbar_action = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.snackbar_action;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.snackbar_text = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.snackbar_text;
@@ -4093,11 +3933,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.submit_area = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.submit_area;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.SYM = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.SYM;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.tabMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tabMode;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.tag_accessibility_actions = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_accessibility_actions;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.tag_accessibility_clickable_spans = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_accessibility_clickable_spans;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.tag_accessibility_heading = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_accessibility_heading;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.tag_accessibility_pane_title = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_accessibility_pane_title;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.tag_screen_reader_focusable = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_screen_reader_focusable;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.tag_transition_group = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_transition_group;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.tag_unhandled_key_event_manager = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_unhandled_key_event_manager;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.tag_unhandled_key_listeners = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_unhandled_key_listeners;
@@ -4114,7 +3949,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.title = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.title;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.titleDividerNoCustom = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.titleDividerNoCustom;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.title_template = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.title_template;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.toolbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.toolbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.top = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.top;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.topPanel = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.topPanel;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.touch_outside = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.touch_outside;
@@ -4123,7 +3957,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Id.transition_position = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.transition_position;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.transition_scene_layoutid_cache = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.transition_scene_layoutid_cache;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.transition_transform = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.transition_transform;
-			global::Xamarin.Forms.Platform.Android.Resource.Id.@unchecked = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.@unchecked;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.uniform = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.uniform;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.unlabeled = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.unlabeled;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.up = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.up;
@@ -4147,13 +3980,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Integer.mtrl_tab_indicator_anim_duration_ms = global::SetBoxTV.VideoPlayer.Droid.Resource.Integer.mtrl_tab_indicator_anim_duration_ms;
 			global::Xamarin.Forms.Platform.Android.Resource.Integer.show_password_duration = global::SetBoxTV.VideoPlayer.Droid.Resource.Integer.show_password_duration;
 			global::Xamarin.Forms.Platform.Android.Resource.Integer.status_bar_notification_info_maxnum = global::SetBoxTV.VideoPlayer.Droid.Resource.Integer.status_bar_notification_info_maxnum;
-			global::Xamarin.Forms.Platform.Android.Resource.Interpolator.btn_checkbox_checked_mtrl_animation_interpolator_0 = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.btn_checkbox_checked_mtrl_animation_interpolator_0;
-			global::Xamarin.Forms.Platform.Android.Resource.Interpolator.btn_checkbox_checked_mtrl_animation_interpolator_1 = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.btn_checkbox_checked_mtrl_animation_interpolator_1;
-			global::Xamarin.Forms.Platform.Android.Resource.Interpolator.btn_checkbox_unchecked_mtrl_animation_interpolator_0 = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.btn_checkbox_unchecked_mtrl_animation_interpolator_0;
-			global::Xamarin.Forms.Platform.Android.Resource.Interpolator.btn_checkbox_unchecked_mtrl_animation_interpolator_1 = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.btn_checkbox_unchecked_mtrl_animation_interpolator_1;
-			global::Xamarin.Forms.Platform.Android.Resource.Interpolator.btn_radio_to_off_mtrl_animation_interpolator_0 = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.btn_radio_to_off_mtrl_animation_interpolator_0;
-			global::Xamarin.Forms.Platform.Android.Resource.Interpolator.btn_radio_to_on_mtrl_animation_interpolator_0 = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.btn_radio_to_on_mtrl_animation_interpolator_0;
-			global::Xamarin.Forms.Platform.Android.Resource.Interpolator.fast_out_slow_in = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.fast_out_slow_in;
 			global::Xamarin.Forms.Platform.Android.Resource.Interpolator.mtrl_fast_out_linear_in = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.mtrl_fast_out_linear_in;
 			global::Xamarin.Forms.Platform.Android.Resource.Interpolator.mtrl_fast_out_slow_in = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.mtrl_fast_out_slow_in;
 			global::Xamarin.Forms.Platform.Android.Resource.Interpolator.mtrl_linear = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.mtrl_linear;
@@ -4187,7 +4013,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.abc_select_dialog_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.abc_select_dialog_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.abc_tooltip = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.abc_tooltip;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.BottomTabLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.BottomTabLayout;
-			global::Xamarin.Forms.Platform.Android.Resource.Layout.custom_dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.custom_dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_bottom_navigation_item = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.design_bottom_navigation_item;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_bottom_sheet_dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.design_bottom_sheet_dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_layout_snackbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.design_layout_snackbar;
@@ -4202,8 +4027,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_navigation_menu = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.design_navigation_menu;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_navigation_menu_item = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.design_navigation_menu_item;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.design_text_input_password_icon = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.design_text_input_password_icon;
-			global::Xamarin.Forms.Platform.Android.Resource.Layout.FallbackTabbarDoNotUse = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.FallbackTabbarDoNotUse;
-			global::Xamarin.Forms.Platform.Android.Resource.Layout.FallbackToolbarDoNotUse = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.FallbackToolbarDoNotUse;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.FlyoutContent = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.FlyoutContent;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.mtrl_layout_snackbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.mtrl_layout_snackbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.mtrl_layout_snackbar_include = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.mtrl_layout_snackbar_include;
@@ -4228,8 +4051,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.select_dialog_singlechoice_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.select_dialog_singlechoice_material;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.ShellContent = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.ShellContent;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.support_simple_spinner_dropdown_item = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::Xamarin.Forms.Platform.Android.Resource.Layout.Tabbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.Tabbar;
-			global::Xamarin.Forms.Platform.Android.Resource.Layout.Toolbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.Toolbar;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_action_bar_home_description = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_action_bar_home_description;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_action_bar_up_description = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_action_bar_up_description;
 			global::Xamarin.Forms.Platform.Android.Resource.String.abc_action_menu_overflow_description = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_action_menu_overflow_description;
@@ -4459,7 +4280,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_Spinner = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Spinner;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_TextView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_TextView;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_Toolbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
@@ -4591,8 +4411,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_AppCompat_Dark = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_AppCompat_DayNight = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_DayNight;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_AppCompat_DayNight_ActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_DayNight_ActionBar;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
@@ -4725,7 +4543,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
-			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_TextView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_TextView;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_Toolbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Toolbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
@@ -4887,21 +4704,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_autoSizePresetSizes = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_autoSizePresetSizes;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_autoSizeTextType = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_autoSizeTextType;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_drawableBottomCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_drawableBottomCompat;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_drawableEndCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_drawableEndCompat;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_drawableLeftCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_drawableLeftCompat;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_drawableRightCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_drawableRightCompat;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_drawableStartCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_drawableStartCompat;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_drawableTint = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_drawableTint;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_drawableTintMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_drawableTintMode;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_drawableTopCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_drawableTopCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_fontFamily = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_fontFamily;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_fontVariationSettings = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_fontVariationSettings;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_lineHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_lineHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_textAllCaps = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTextView_textLocale = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_textLocale;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_actionBarDivider = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
@@ -4975,18 +4782,14 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_listChoiceIndicatorMultipleAnimated = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listChoiceIndicatorMultipleAnimated;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_listChoiceIndicatorSingleAnimated = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listChoiceIndicatorSingleAnimated;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_listMenuViewStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listMenuViewStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingEnd = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingEnd;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingStart = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingStart;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_panelBackground = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_panelBackground;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
@@ -5135,7 +4938,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ColorStateListItem_android_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ColorStateListItem_android_color;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CompoundButton = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CompoundButton;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CompoundButton_android_button = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CompoundButton_android_button;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CompoundButton_buttonCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CompoundButton_buttonCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CompoundButton_buttonTint = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CompoundButton_buttonTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CompoundButton_buttonTintMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CoordinatorLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout;
@@ -5353,7 +5155,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecycleListView_paddingTopNoTitle;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.RecyclerView = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecyclerView;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.RecyclerView_android_clipToPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecyclerView_android_clipToPadding;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.RecyclerView_android_descendantFocusability = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.RecyclerView_android_orientation = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecyclerView_android_orientation;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.RecyclerView_fastScrollEnabled = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecyclerView_fastScrollEnabled;
@@ -5463,14 +5264,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextAppearance_android_textColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_android_textColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextAppearance_android_textColorHint = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_android_textColorHint;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextAppearance_android_textColorLink = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_android_textColorLink;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextAppearance_android_textFontWeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_android_textFontWeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextAppearance_android_textSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_android_textSize;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextAppearance_android_textStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_android_textStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextAppearance_android_typeface = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_android_typeface;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextAppearance_fontFamily = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_fontFamily;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextAppearance_fontVariationSettings = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_fontVariationSettings;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextAppearance_textAllCaps = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_textAllCaps;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextAppearance_textLocale = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_textLocale;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextInputLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_android_hint = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextInputLayout_android_hint;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_android_textColorHint = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextInputLayout_android_textColorHint;
@@ -5519,7 +5317,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_logo = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_logo;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_logoDescription = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_logoDescription;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_maxButtonHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_maxButtonHeight;
-			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_menu = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_menu;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_navigationContentDescription = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_navigationContentDescription;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_navigationIcon = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_navigationIcon;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_popupTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_popupTheme;
@@ -5561,18 +5358,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_slide_out_top = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.abc_slide_out_top;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_tooltip_enter = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.abc_tooltip_enter;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_tooltip_exit = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.abc_tooltip_exit;
-			global::Xamarin.Forms.Platform.Resource.Animation.btn_checkbox_to_checked_box_inner_merged_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_checkbox_to_checked_box_inner_merged_animation;
-			global::Xamarin.Forms.Platform.Resource.Animation.btn_checkbox_to_checked_box_outer_merged_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_checkbox_to_checked_box_outer_merged_animation;
-			global::Xamarin.Forms.Platform.Resource.Animation.btn_checkbox_to_checked_icon_null_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_checkbox_to_checked_icon_null_animation;
-			global::Xamarin.Forms.Platform.Resource.Animation.btn_checkbox_to_unchecked_box_inner_merged_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_checkbox_to_unchecked_box_inner_merged_animation;
-			global::Xamarin.Forms.Platform.Resource.Animation.btn_checkbox_to_unchecked_check_path_merged_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_checkbox_to_unchecked_check_path_merged_animation;
-			global::Xamarin.Forms.Platform.Resource.Animation.btn_checkbox_to_unchecked_icon_null_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_checkbox_to_unchecked_icon_null_animation;
-			global::Xamarin.Forms.Platform.Resource.Animation.btn_radio_to_off_mtrl_dot_group_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_radio_to_off_mtrl_dot_group_animation;
-			global::Xamarin.Forms.Platform.Resource.Animation.btn_radio_to_off_mtrl_ring_outer_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_radio_to_off_mtrl_ring_outer_animation;
-			global::Xamarin.Forms.Platform.Resource.Animation.btn_radio_to_off_mtrl_ring_outer_path_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_radio_to_off_mtrl_ring_outer_path_animation;
-			global::Xamarin.Forms.Platform.Resource.Animation.btn_radio_to_on_mtrl_dot_group_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_radio_to_on_mtrl_dot_group_animation;
-			global::Xamarin.Forms.Platform.Resource.Animation.btn_radio_to_on_mtrl_ring_outer_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_radio_to_on_mtrl_ring_outer_animation;
-			global::Xamarin.Forms.Platform.Resource.Animation.btn_radio_to_on_mtrl_ring_outer_path_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.btn_radio_to_on_mtrl_ring_outer_path_animation;
 			global::Xamarin.Forms.Platform.Resource.Animation.design_bottom_sheet_slide_in = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.design_bottom_sheet_slide_in;
 			global::Xamarin.Forms.Platform.Resource.Animation.design_bottom_sheet_slide_out = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.design_bottom_sheet_slide_out;
 			global::Xamarin.Forms.Platform.Resource.Animation.design_snackbar_in = global::SetBoxTV.VideoPlayer.Droid.Resource.Animation.design_snackbar_in;
@@ -5672,7 +5457,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Attribute.buttonBarNeutralButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
 			global::Xamarin.Forms.Platform.Resource.Attribute.buttonBarPositiveButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
 			global::Xamarin.Forms.Platform.Resource.Attribute.buttonBarStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.buttonBarStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.buttonCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.buttonCompat;
 			global::Xamarin.Forms.Platform.Resource.Attribute.buttonGravity = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.buttonGravity;
 			global::Xamarin.Forms.Platform.Resource.Attribute.buttonIconDimen = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.buttonIconDimen;
 			global::Xamarin.Forms.Platform.Resource.Attribute.buttonPanelSideLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.buttonPanelSideLayout;
@@ -5766,15 +5550,7 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Attribute.dividerHorizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dividerHorizontal;
 			global::Xamarin.Forms.Platform.Resource.Attribute.dividerPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dividerPadding;
 			global::Xamarin.Forms.Platform.Resource.Attribute.dividerVertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dividerVertical;
-			global::Xamarin.Forms.Platform.Resource.Attribute.drawableBottomCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableBottomCompat;
-			global::Xamarin.Forms.Platform.Resource.Attribute.drawableEndCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableEndCompat;
-			global::Xamarin.Forms.Platform.Resource.Attribute.drawableLeftCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableLeftCompat;
-			global::Xamarin.Forms.Platform.Resource.Attribute.drawableRightCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableRightCompat;
 			global::Xamarin.Forms.Platform.Resource.Attribute.drawableSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableSize;
-			global::Xamarin.Forms.Platform.Resource.Attribute.drawableStartCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableStartCompat;
-			global::Xamarin.Forms.Platform.Resource.Attribute.drawableTint = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableTint;
-			global::Xamarin.Forms.Platform.Resource.Attribute.drawableTintMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableTintMode;
-			global::Xamarin.Forms.Platform.Resource.Attribute.drawableTopCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawableTopCompat;
 			global::Xamarin.Forms.Platform.Resource.Attribute.drawerArrowStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.drawerArrowStyle;
 			global::Xamarin.Forms.Platform.Resource.Attribute.dropdownListPreferredItemHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
 			global::Xamarin.Forms.Platform.Resource.Attribute.dropDownListViewStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.dropDownListViewStyle;
@@ -5881,8 +5657,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Attribute.lineHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.lineHeight;
 			global::Xamarin.Forms.Platform.Resource.Attribute.lineSpacing = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.lineSpacing;
 			global::Xamarin.Forms.Platform.Resource.Attribute.listChoiceBackgroundIndicator = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
-			global::Xamarin.Forms.Platform.Resource.Attribute.listChoiceIndicatorMultipleAnimated = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listChoiceIndicatorMultipleAnimated;
-			global::Xamarin.Forms.Platform.Resource.Attribute.listChoiceIndicatorSingleAnimated = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listChoiceIndicatorSingleAnimated;
 			global::Xamarin.Forms.Platform.Resource.Attribute.listDividerAlertDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listDividerAlertDialog;
 			global::Xamarin.Forms.Platform.Resource.Attribute.listItemLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listItemLayout;
 			global::Xamarin.Forms.Platform.Resource.Attribute.listLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listLayout;
@@ -5891,10 +5665,8 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Attribute.listPreferredItemHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listPreferredItemHeight;
 			global::Xamarin.Forms.Platform.Resource.Attribute.listPreferredItemHeightLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listPreferredItemHeightLarge;
 			global::Xamarin.Forms.Platform.Resource.Attribute.listPreferredItemHeightSmall = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listPreferredItemHeightSmall;
-			global::Xamarin.Forms.Platform.Resource.Attribute.listPreferredItemPaddingEnd = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listPreferredItemPaddingEnd;
 			global::Xamarin.Forms.Platform.Resource.Attribute.listPreferredItemPaddingLeft = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listPreferredItemPaddingLeft;
 			global::Xamarin.Forms.Platform.Resource.Attribute.listPreferredItemPaddingRight = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listPreferredItemPaddingRight;
-			global::Xamarin.Forms.Platform.Resource.Attribute.listPreferredItemPaddingStart = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.listPreferredItemPaddingStart;
 			global::Xamarin.Forms.Platform.Resource.Attribute.logo = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.logo;
 			global::Xamarin.Forms.Platform.Resource.Attribute.logoDescription = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.logoDescription;
 			global::Xamarin.Forms.Platform.Resource.Attribute.materialButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.materialButtonStyle;
@@ -5936,7 +5708,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Attribute.ratingBarStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.ratingBarStyle;
 			global::Xamarin.Forms.Platform.Resource.Attribute.ratingBarStyleIndicator = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.ratingBarStyleIndicator;
 			global::Xamarin.Forms.Platform.Resource.Attribute.ratingBarStyleSmall = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.ratingBarStyleSmall;
-			global::Xamarin.Forms.Platform.Resource.Attribute.recyclerViewStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.recyclerViewStyle;
 			global::Xamarin.Forms.Platform.Resource.Attribute.reverseLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.reverseLayout;
 			global::Xamarin.Forms.Platform.Resource.Attribute.rippleColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.rippleColor;
 			global::Xamarin.Forms.Platform.Resource.Attribute.scrimAnimationDuration = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.scrimAnimationDuration;
@@ -6037,7 +5808,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Attribute.textColorSearchUrl = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.textColorSearchUrl;
 			global::Xamarin.Forms.Platform.Resource.Attribute.textEndPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.textEndPadding;
 			global::Xamarin.Forms.Platform.Resource.Attribute.textInputStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.textInputStyle;
-			global::Xamarin.Forms.Platform.Resource.Attribute.textLocale = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.textLocale;
 			global::Xamarin.Forms.Platform.Resource.Attribute.textStartPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.textStartPadding;
 			global::Xamarin.Forms.Platform.Resource.Attribute.theme = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.theme;
 			global::Xamarin.Forms.Platform.Resource.Attribute.thickness = global::SetBoxTV.VideoPlayer.Droid.Resource.Attribute.thickness;
@@ -6263,9 +6033,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
 			global::Xamarin.Forms.Platform.Resource.Dimension.abc_edit_text_inset_top_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_edit_text_inset_top_material;
 			global::Xamarin.Forms.Platform.Resource.Dimension.abc_floating_window_z = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_floating_window_z;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_list_item_height_large_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_list_item_height_large_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_list_item_height_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_list_item_height_material;
-			global::Xamarin.Forms.Platform.Resource.Dimension.abc_list_item_height_small_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_list_item_height_small_material;
 			global::Xamarin.Forms.Platform.Resource.Dimension.abc_list_item_padding_horizontal_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
 			global::Xamarin.Forms.Platform.Resource.Dimension.abc_panel_menu_list_width = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_panel_menu_list_width;
 			global::Xamarin.Forms.Platform.Resource.Dimension.abc_progress_bar_height_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Dimension.abc_progress_bar_height_material;
@@ -6441,13 +6208,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_action_bar_item_background_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_action_bar_item_background_material;
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_borderless_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_borderless_material;
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_check_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_check_material;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_check_material_anim = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_check_material_anim;
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_colored_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_colored_material;
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_default_mtrl_shape = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_default_mtrl_shape;
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_radio_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_radio_material;
-			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_radio_material_anim = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_radio_material_anim;
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
@@ -6525,14 +6290,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Drawable.abc_vector_test = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.abc_vector_test;
 			global::Xamarin.Forms.Platform.Resource.Drawable.avd_hide_password = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_hide_password;
 			global::Xamarin.Forms.Platform.Resource.Drawable.avd_show_password = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.avd_show_password;
-			global::Xamarin.Forms.Platform.Resource.Drawable.btn_checkbox_checked_mtrl = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.btn_checkbox_checked_mtrl;
-			global::Xamarin.Forms.Platform.Resource.Drawable.btn_checkbox_checked_to_unchecked_mtrl_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.btn_checkbox_checked_to_unchecked_mtrl_animation;
-			global::Xamarin.Forms.Platform.Resource.Drawable.btn_checkbox_unchecked_mtrl = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.btn_checkbox_unchecked_mtrl;
-			global::Xamarin.Forms.Platform.Resource.Drawable.btn_checkbox_unchecked_to_checked_mtrl_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.btn_checkbox_unchecked_to_checked_mtrl_animation;
-			global::Xamarin.Forms.Platform.Resource.Drawable.btn_radio_off_mtrl = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.btn_radio_off_mtrl;
-			global::Xamarin.Forms.Platform.Resource.Drawable.btn_radio_off_to_on_mtrl_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.btn_radio_off_to_on_mtrl_animation;
-			global::Xamarin.Forms.Platform.Resource.Drawable.btn_radio_on_mtrl = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.btn_radio_on_mtrl;
-			global::Xamarin.Forms.Platform.Resource.Drawable.btn_radio_on_to_off_mtrl_animation = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.btn_radio_on_to_off_mtrl_animation;
 			global::Xamarin.Forms.Platform.Resource.Drawable.design_bottom_navigation_item_background = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.design_bottom_navigation_item_background;
 			global::Xamarin.Forms.Platform.Resource.Drawable.design_fab_background = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.design_fab_background;
 			global::Xamarin.Forms.Platform.Resource.Drawable.design_ic_visibility = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.design_ic_visibility;
@@ -6559,39 +6316,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Drawable.notify_panel_notification_icon_bg = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
 			global::Xamarin.Forms.Platform.Resource.Drawable.tooltip_frame_dark = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.tooltip_frame_dark;
 			global::Xamarin.Forms.Platform.Resource.Drawable.tooltip_frame_light = global::SetBoxTV.VideoPlayer.Droid.Resource.Drawable.tooltip_frame_light;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_action_clickable_span = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_action_clickable_span;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_0 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_0;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_1 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_1;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_10 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_10;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_11 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_11;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_12 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_12;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_13 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_13;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_14 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_14;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_15 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_15;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_16 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_16;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_17 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_17;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_18 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_18;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_19 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_19;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_2 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_2;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_20 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_20;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_21 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_21;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_22 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_22;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_23 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_23;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_24 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_24;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_25 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_25;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_26 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_26;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_27 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_27;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_28 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_28;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_29 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_29;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_3 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_3;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_30 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_30;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_31 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_31;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_4 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_4;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_5 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_5;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_6 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_6;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_7 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_7;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_8 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_8;
-			global::Xamarin.Forms.Platform.Resource.Id.accessibility_custom_action_9 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.accessibility_custom_action_9;
 			global::Xamarin.Forms.Platform.Resource.Id.action0 = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action0;
 			global::Xamarin.Forms.Platform.Resource.Id.actions = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.actions;
 			global::Xamarin.Forms.Platform.Resource.Id.action_bar = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.action_bar;
@@ -6630,7 +6354,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Id.center_horizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.center_horizontal;
 			global::Xamarin.Forms.Platform.Resource.Id.center_vertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.center_vertical;
 			global::Xamarin.Forms.Platform.Resource.Id.checkbox = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.checkbox;
-			global::Xamarin.Forms.Platform.Resource.Id.@checked = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.@checked;
 			global::Xamarin.Forms.Platform.Resource.Id.chronometer = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.chronometer;
 			global::Xamarin.Forms.Platform.Resource.Id.clip_horizontal = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.clip_horizontal;
 			global::Xamarin.Forms.Platform.Resource.Id.clip_vertical = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.clip_vertical;
@@ -6649,7 +6372,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Id.design_menu_item_action_area_stub = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.design_menu_item_action_area_stub;
 			global::Xamarin.Forms.Platform.Resource.Id.design_menu_item_text = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.design_menu_item_text;
 			global::Xamarin.Forms.Platform.Resource.Id.design_navigation_view = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.design_navigation_view;
-			global::Xamarin.Forms.Platform.Resource.Id.dialog_button = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.dialog_button;
 			global::Xamarin.Forms.Platform.Resource.Id.disableHome = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.disableHome;
 			global::Xamarin.Forms.Platform.Resource.Id.edit_query = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.edit_query;
 			global::Xamarin.Forms.Platform.Resource.Id.end = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.end;
@@ -6669,7 +6391,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Id.forever = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.forever;
 			global::Xamarin.Forms.Platform.Resource.Id.FUNCTION = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.FUNCTION;
 			global::Xamarin.Forms.Platform.Resource.Id.ghost_view = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.ghost_view;
-			global::Xamarin.Forms.Platform.Resource.Id.ghost_view_holder = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.ghost_view_holder;
 			global::Xamarin.Forms.Platform.Resource.Id.group_divider = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.group_divider;
 			global::Xamarin.Forms.Platform.Resource.Id.home = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.home;
 			global::Xamarin.Forms.Platform.Resource.Id.homeAsUp = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.homeAsUp;
@@ -6707,8 +6428,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Id.notification_background = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.notification_background;
 			global::Xamarin.Forms.Platform.Resource.Id.notification_main_column = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.notification_main_column;
 			global::Xamarin.Forms.Platform.Resource.Id.notification_main_column_container = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.notification_main_column_container;
-			global::Xamarin.Forms.Platform.Resource.Id.off = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.off;
-			global::Xamarin.Forms.Platform.Resource.Id.on = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.on;
 			global::Xamarin.Forms.Platform.Resource.Id.outline = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.outline;
 			global::Xamarin.Forms.Platform.Resource.Id.parallax = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.parallax;
 			global::Xamarin.Forms.Platform.Resource.Id.parentPanel = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.parentPanel;
@@ -6721,7 +6440,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Id.right_icon = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.right_icon;
 			global::Xamarin.Forms.Platform.Resource.Id.right_side = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.right_side;
 			global::Xamarin.Forms.Platform.Resource.Id.save_non_transition_alpha = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.save_non_transition_alpha;
-			global::Xamarin.Forms.Platform.Resource.Id.save_overlay_view = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.save_overlay_view;
 			global::Xamarin.Forms.Platform.Resource.Id.screen = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.screen;
 			global::Xamarin.Forms.Platform.Resource.Id.scroll = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.scroll;
 			global::Xamarin.Forms.Platform.Resource.Id.scrollable = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.scrollable;
@@ -6747,7 +6465,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Id.showCustom = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.showCustom;
 			global::Xamarin.Forms.Platform.Resource.Id.showHome = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.showHome;
 			global::Xamarin.Forms.Platform.Resource.Id.showTitle = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.showTitle;
-			global::Xamarin.Forms.Platform.Resource.Id.sliding_tabs = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.sliding_tabs;
 			global::Xamarin.Forms.Platform.Resource.Id.smallLabel = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.smallLabel;
 			global::Xamarin.Forms.Platform.Resource.Id.snackbar_action = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.snackbar_action;
 			global::Xamarin.Forms.Platform.Resource.Id.snackbar_text = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.snackbar_text;
@@ -6765,11 +6482,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Id.submit_area = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.submit_area;
 			global::Xamarin.Forms.Platform.Resource.Id.SYM = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.SYM;
 			global::Xamarin.Forms.Platform.Resource.Id.tabMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tabMode;
-			global::Xamarin.Forms.Platform.Resource.Id.tag_accessibility_actions = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_accessibility_actions;
-			global::Xamarin.Forms.Platform.Resource.Id.tag_accessibility_clickable_spans = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_accessibility_clickable_spans;
-			global::Xamarin.Forms.Platform.Resource.Id.tag_accessibility_heading = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_accessibility_heading;
-			global::Xamarin.Forms.Platform.Resource.Id.tag_accessibility_pane_title = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_accessibility_pane_title;
-			global::Xamarin.Forms.Platform.Resource.Id.tag_screen_reader_focusable = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_screen_reader_focusable;
 			global::Xamarin.Forms.Platform.Resource.Id.tag_transition_group = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_transition_group;
 			global::Xamarin.Forms.Platform.Resource.Id.tag_unhandled_key_event_manager = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_unhandled_key_event_manager;
 			global::Xamarin.Forms.Platform.Resource.Id.tag_unhandled_key_listeners = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.tag_unhandled_key_listeners;
@@ -6786,7 +6498,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Id.title = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.title;
 			global::Xamarin.Forms.Platform.Resource.Id.titleDividerNoCustom = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.titleDividerNoCustom;
 			global::Xamarin.Forms.Platform.Resource.Id.title_template = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.title_template;
-			global::Xamarin.Forms.Platform.Resource.Id.toolbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.toolbar;
 			global::Xamarin.Forms.Platform.Resource.Id.top = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.top;
 			global::Xamarin.Forms.Platform.Resource.Id.topPanel = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.topPanel;
 			global::Xamarin.Forms.Platform.Resource.Id.touch_outside = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.touch_outside;
@@ -6795,7 +6506,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Id.transition_position = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.transition_position;
 			global::Xamarin.Forms.Platform.Resource.Id.transition_scene_layoutid_cache = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.transition_scene_layoutid_cache;
 			global::Xamarin.Forms.Platform.Resource.Id.transition_transform = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.transition_transform;
-			global::Xamarin.Forms.Platform.Resource.Id.@unchecked = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.@unchecked;
 			global::Xamarin.Forms.Platform.Resource.Id.uniform = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.uniform;
 			global::Xamarin.Forms.Platform.Resource.Id.unlabeled = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.unlabeled;
 			global::Xamarin.Forms.Platform.Resource.Id.up = global::SetBoxTV.VideoPlayer.Droid.Resource.Id.up;
@@ -6819,13 +6529,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Integer.mtrl_tab_indicator_anim_duration_ms = global::SetBoxTV.VideoPlayer.Droid.Resource.Integer.mtrl_tab_indicator_anim_duration_ms;
 			global::Xamarin.Forms.Platform.Resource.Integer.show_password_duration = global::SetBoxTV.VideoPlayer.Droid.Resource.Integer.show_password_duration;
 			global::Xamarin.Forms.Platform.Resource.Integer.status_bar_notification_info_maxnum = global::SetBoxTV.VideoPlayer.Droid.Resource.Integer.status_bar_notification_info_maxnum;
-			global::Xamarin.Forms.Platform.Resource.Interpolator.btn_checkbox_checked_mtrl_animation_interpolator_0 = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.btn_checkbox_checked_mtrl_animation_interpolator_0;
-			global::Xamarin.Forms.Platform.Resource.Interpolator.btn_checkbox_checked_mtrl_animation_interpolator_1 = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.btn_checkbox_checked_mtrl_animation_interpolator_1;
-			global::Xamarin.Forms.Platform.Resource.Interpolator.btn_checkbox_unchecked_mtrl_animation_interpolator_0 = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.btn_checkbox_unchecked_mtrl_animation_interpolator_0;
-			global::Xamarin.Forms.Platform.Resource.Interpolator.btn_checkbox_unchecked_mtrl_animation_interpolator_1 = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.btn_checkbox_unchecked_mtrl_animation_interpolator_1;
-			global::Xamarin.Forms.Platform.Resource.Interpolator.btn_radio_to_off_mtrl_animation_interpolator_0 = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.btn_radio_to_off_mtrl_animation_interpolator_0;
-			global::Xamarin.Forms.Platform.Resource.Interpolator.btn_radio_to_on_mtrl_animation_interpolator_0 = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.btn_radio_to_on_mtrl_animation_interpolator_0;
-			global::Xamarin.Forms.Platform.Resource.Interpolator.fast_out_slow_in = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.fast_out_slow_in;
 			global::Xamarin.Forms.Platform.Resource.Interpolator.mtrl_fast_out_linear_in = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.mtrl_fast_out_linear_in;
 			global::Xamarin.Forms.Platform.Resource.Interpolator.mtrl_fast_out_slow_in = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.mtrl_fast_out_slow_in;
 			global::Xamarin.Forms.Platform.Resource.Interpolator.mtrl_linear = global::SetBoxTV.VideoPlayer.Droid.Resource.Interpolator.mtrl_linear;
@@ -6859,7 +6562,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Layout.abc_select_dialog_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.abc_select_dialog_material;
 			global::Xamarin.Forms.Platform.Resource.Layout.abc_tooltip = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.abc_tooltip;
 			global::Xamarin.Forms.Platform.Resource.Layout.BottomTabLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.BottomTabLayout;
-			global::Xamarin.Forms.Platform.Resource.Layout.custom_dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.custom_dialog;
 			global::Xamarin.Forms.Platform.Resource.Layout.design_bottom_navigation_item = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.design_bottom_navigation_item;
 			global::Xamarin.Forms.Platform.Resource.Layout.design_bottom_sheet_dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.design_bottom_sheet_dialog;
 			global::Xamarin.Forms.Platform.Resource.Layout.design_layout_snackbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.design_layout_snackbar;
@@ -6874,8 +6576,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Layout.design_navigation_menu = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.design_navigation_menu;
 			global::Xamarin.Forms.Platform.Resource.Layout.design_navigation_menu_item = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.design_navigation_menu_item;
 			global::Xamarin.Forms.Platform.Resource.Layout.design_text_input_password_icon = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.design_text_input_password_icon;
-			global::Xamarin.Forms.Platform.Resource.Layout.FallbackTabbarDoNotUse = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.FallbackTabbarDoNotUse;
-			global::Xamarin.Forms.Platform.Resource.Layout.FallbackToolbarDoNotUse = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.FallbackToolbarDoNotUse;
 			global::Xamarin.Forms.Platform.Resource.Layout.FlyoutContent = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.FlyoutContent;
 			global::Xamarin.Forms.Platform.Resource.Layout.mtrl_layout_snackbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.mtrl_layout_snackbar;
 			global::Xamarin.Forms.Platform.Resource.Layout.mtrl_layout_snackbar_include = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.mtrl_layout_snackbar_include;
@@ -6900,8 +6600,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Layout.select_dialog_singlechoice_material = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.select_dialog_singlechoice_material;
 			global::Xamarin.Forms.Platform.Resource.Layout.ShellContent = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.ShellContent;
 			global::Xamarin.Forms.Platform.Resource.Layout.support_simple_spinner_dropdown_item = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::Xamarin.Forms.Platform.Resource.Layout.Tabbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.Tabbar;
-			global::Xamarin.Forms.Platform.Resource.Layout.Toolbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Layout.Toolbar;
 			global::Xamarin.Forms.Platform.Resource.String.abc_action_bar_home_description = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_action_bar_home_description;
 			global::Xamarin.Forms.Platform.Resource.String.abc_action_bar_up_description = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_action_bar_up_description;
 			global::Xamarin.Forms.Platform.Resource.String.abc_action_menu_overflow_description = global::SetBoxTV.VideoPlayer.Droid.Resource.String.abc_action_menu_overflow_description;
@@ -7131,7 +6829,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Spinner = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Spinner;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
-			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_TextView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_TextView;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Toolbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
@@ -7263,8 +6960,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_AppCompat_Dark = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_AppCompat_DayNight = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_DayNight;
-			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_AppCompat_DayNight_ActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_DayNight_ActionBar;
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_AppCompat_Dialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog;
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert;
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_AppCompat_Light = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
@@ -7397,7 +7092,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
-			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_TextView = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_TextView;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Toolbar = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Toolbar;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::SetBoxTV.VideoPlayer.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
@@ -7559,21 +7253,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_autoSizePresetSizes = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_autoSizePresetSizes;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_autoSizeTextType = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_autoSizeTextType;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_drawableBottomCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_drawableBottomCompat;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_drawableEndCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_drawableEndCompat;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_drawableLeftCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_drawableLeftCompat;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_drawableRightCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_drawableRightCompat;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_drawableStartCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_drawableStartCompat;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_drawableTint = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_drawableTint;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_drawableTintMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_drawableTintMode;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_drawableTopCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_drawableTopCompat;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_fontFamily = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_fontFamily;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_fontVariationSettings = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_fontVariationSettings;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_lineHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_lineHeight;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_textAllCaps = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTextView_textLocale = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTextView_textLocale;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_actionBarDivider = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
@@ -7647,18 +7331,14 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_listChoiceIndicatorMultipleAnimated = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listChoiceIndicatorMultipleAnimated;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_listChoiceIndicatorSingleAnimated = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listChoiceIndicatorSingleAnimated;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_listMenuViewStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listMenuViewStyle;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingEnd = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingEnd;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
-			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingStart = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingStart;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_panelBackground = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_panelBackground;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
 			global::Xamarin.Forms.Platform.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
@@ -7807,7 +7487,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Styleable.ColorStateListItem_android_color = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.ColorStateListItem_android_color;
 			global::Xamarin.Forms.Platform.Resource.Styleable.CompoundButton = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CompoundButton;
 			global::Xamarin.Forms.Platform.Resource.Styleable.CompoundButton_android_button = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CompoundButton_android_button;
-			global::Xamarin.Forms.Platform.Resource.Styleable.CompoundButton_buttonCompat = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CompoundButton_buttonCompat;
 			global::Xamarin.Forms.Platform.Resource.Styleable.CompoundButton_buttonTint = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CompoundButton_buttonTint;
 			global::Xamarin.Forms.Platform.Resource.Styleable.CompoundButton_buttonTintMode = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
 			global::Xamarin.Forms.Platform.Resource.Styleable.CoordinatorLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.CoordinatorLayout;
@@ -8025,7 +7704,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
 			global::Xamarin.Forms.Platform.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecycleListView_paddingTopNoTitle;
 			global::Xamarin.Forms.Platform.Resource.Styleable.RecyclerView = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecyclerView;
-			global::Xamarin.Forms.Platform.Resource.Styleable.RecyclerView_android_clipToPadding = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecyclerView_android_clipToPadding;
 			global::Xamarin.Forms.Platform.Resource.Styleable.RecyclerView_android_descendantFocusability = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability;
 			global::Xamarin.Forms.Platform.Resource.Styleable.RecyclerView_android_orientation = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecyclerView_android_orientation;
 			global::Xamarin.Forms.Platform.Resource.Styleable.RecyclerView_fastScrollEnabled = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.RecyclerView_fastScrollEnabled;
@@ -8135,14 +7813,11 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_android_textColor = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_android_textColor;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_android_textColorHint = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_android_textColorHint;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_android_textColorLink = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_android_textColorLink;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_android_textFontWeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_android_textFontWeight;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_android_textSize = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_android_textSize;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_android_textStyle = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_android_textStyle;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_android_typeface = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_android_typeface;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_fontFamily = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_fontFamily;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_fontVariationSettings = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_fontVariationSettings;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_textAllCaps = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_textAllCaps;
-			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_textLocale = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextAppearance_textLocale;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextInputLayout;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_android_hint = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextInputLayout_android_hint;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_android_textColorHint = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.TextInputLayout_android_textColorHint;
@@ -8191,7 +7866,6 @@ namespace SetBoxTV.VideoPlayer.Droid
 			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_logo = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_logo;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_logoDescription = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_logoDescription;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_maxButtonHeight = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_maxButtonHeight;
-			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_menu = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_menu;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_navigationContentDescription = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_navigationContentDescription;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_navigationIcon = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_navigationIcon;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_popupTheme = global::SetBoxTV.VideoPlayer.Droid.Resource.Styleable.Toolbar_popupTheme;
@@ -16149,394 +15823,388 @@ namespace SetBoxTV.VideoPlayer.Droid
 			public const int expand_button = 2131492910;
 			
 			// aapt resource value: 0x7F0C002F
-			public const int FallbackTabbarDoNotUse = 2131492911;
+			public const int FlyoutContent = 2131492911;
 			
 			// aapt resource value: 0x7F0C0030
-			public const int FallbackToolbarDoNotUse = 2131492912;
+			public const int image_frame = 2131492912;
 			
 			// aapt resource value: 0x7F0C0031
-			public const int FlyoutContent = 2131492913;
+			public const int lb_action_1_line = 2131492913;
 			
 			// aapt resource value: 0x7F0C0032
-			public const int image_frame = 2131492914;
+			public const int lb_action_2_lines = 2131492914;
 			
 			// aapt resource value: 0x7F0C0033
-			public const int lb_action_1_line = 2131492915;
+			public const int lb_background_window = 2131492915;
 			
 			// aapt resource value: 0x7F0C0034
-			public const int lb_action_2_lines = 2131492916;
+			public const int lb_browse_fragment = 2131492916;
 			
 			// aapt resource value: 0x7F0C0035
-			public const int lb_background_window = 2131492917;
+			public const int lb_browse_title = 2131492917;
 			
 			// aapt resource value: 0x7F0C0036
-			public const int lb_browse_fragment = 2131492918;
+			public const int lb_control_bar = 2131492918;
 			
 			// aapt resource value: 0x7F0C0037
-			public const int lb_browse_title = 2131492919;
+			public const int lb_control_button_primary = 2131492919;
 			
 			// aapt resource value: 0x7F0C0038
-			public const int lb_control_bar = 2131492920;
+			public const int lb_control_button_secondary = 2131492920;
 			
 			// aapt resource value: 0x7F0C0039
-			public const int lb_control_button_primary = 2131492921;
+			public const int lb_details_description = 2131492921;
 			
 			// aapt resource value: 0x7F0C003A
-			public const int lb_control_button_secondary = 2131492922;
+			public const int lb_details_fragment = 2131492922;
 			
 			// aapt resource value: 0x7F0C003B
-			public const int lb_details_description = 2131492923;
+			public const int lb_details_overview = 2131492923;
 			
 			// aapt resource value: 0x7F0C003C
-			public const int lb_details_fragment = 2131492924;
+			public const int lb_divider = 2131492924;
 			
 			// aapt resource value: 0x7F0C003D
-			public const int lb_details_overview = 2131492925;
+			public const int lb_error_fragment = 2131492925;
 			
 			// aapt resource value: 0x7F0C003E
-			public const int lb_divider = 2131492926;
+			public const int lb_fullwidth_details_overview = 2131492926;
 			
 			// aapt resource value: 0x7F0C003F
-			public const int lb_error_fragment = 2131492927;
+			public const int lb_fullwidth_details_overview_logo = 2131492927;
 			
 			// aapt resource value: 0x7F0C0040
-			public const int lb_fullwidth_details_overview = 2131492928;
+			public const int lb_guidance = 2131492928;
 			
 			// aapt resource value: 0x7F0C0041
-			public const int lb_fullwidth_details_overview_logo = 2131492929;
+			public const int lb_guidedactions = 2131492929;
 			
 			// aapt resource value: 0x7F0C0042
-			public const int lb_guidance = 2131492930;
+			public const int lb_guidedactions_datepicker_item = 2131492930;
 			
 			// aapt resource value: 0x7F0C0043
-			public const int lb_guidedactions = 2131492931;
+			public const int lb_guidedactions_item = 2131492931;
 			
 			// aapt resource value: 0x7F0C0044
-			public const int lb_guidedactions_datepicker_item = 2131492932;
+			public const int lb_guidedbuttonactions = 2131492932;
 			
 			// aapt resource value: 0x7F0C0045
-			public const int lb_guidedactions_item = 2131492933;
+			public const int lb_guidedstep_background = 2131492933;
 			
 			// aapt resource value: 0x7F0C0046
-			public const int lb_guidedbuttonactions = 2131492934;
+			public const int lb_guidedstep_fragment = 2131492934;
 			
 			// aapt resource value: 0x7F0C0047
-			public const int lb_guidedstep_background = 2131492935;
+			public const int lb_header = 2131492935;
 			
 			// aapt resource value: 0x7F0C0048
-			public const int lb_guidedstep_fragment = 2131492936;
+			public const int lb_headers_fragment = 2131492936;
 			
 			// aapt resource value: 0x7F0C0049
-			public const int lb_header = 2131492937;
+			public const int lb_image_card_view = 2131492937;
 			
 			// aapt resource value: 0x7F0C004A
-			public const int lb_headers_fragment = 2131492938;
+			public const int lb_image_card_view_themed_badge_left = 2131492938;
 			
 			// aapt resource value: 0x7F0C004B
-			public const int lb_image_card_view = 2131492939;
+			public const int lb_image_card_view_themed_badge_right = 2131492939;
 			
 			// aapt resource value: 0x7F0C004C
-			public const int lb_image_card_view_themed_badge_left = 2131492940;
+			public const int lb_image_card_view_themed_content = 2131492940;
 			
 			// aapt resource value: 0x7F0C004D
-			public const int lb_image_card_view_themed_badge_right = 2131492941;
+			public const int lb_image_card_view_themed_title = 2131492941;
 			
 			// aapt resource value: 0x7F0C004E
-			public const int lb_image_card_view_themed_content = 2131492942;
+			public const int lb_list_row = 2131492942;
 			
 			// aapt resource value: 0x7F0C004F
-			public const int lb_image_card_view_themed_title = 2131492943;
+			public const int lb_list_row_hovercard = 2131492943;
 			
 			// aapt resource value: 0x7F0C0050
-			public const int lb_list_row = 2131492944;
+			public const int lb_media_item_number_view_flipper = 2131492944;
 			
 			// aapt resource value: 0x7F0C0051
-			public const int lb_list_row_hovercard = 2131492945;
+			public const int lb_media_list_header = 2131492945;
 			
 			// aapt resource value: 0x7F0C0052
-			public const int lb_media_item_number_view_flipper = 2131492946;
+			public const int lb_onboarding_fragment = 2131492946;
 			
 			// aapt resource value: 0x7F0C0053
-			public const int lb_media_list_header = 2131492947;
+			public const int lb_picker = 2131492947;
 			
 			// aapt resource value: 0x7F0C0054
-			public const int lb_onboarding_fragment = 2131492948;
+			public const int lb_picker_column = 2131492948;
 			
 			// aapt resource value: 0x7F0C0055
-			public const int lb_picker = 2131492949;
+			public const int lb_picker_item = 2131492949;
 			
 			// aapt resource value: 0x7F0C0056
-			public const int lb_picker_column = 2131492950;
+			public const int lb_picker_separator = 2131492950;
 			
 			// aapt resource value: 0x7F0C0057
-			public const int lb_picker_item = 2131492951;
+			public const int lb_playback_controls = 2131492951;
 			
 			// aapt resource value: 0x7F0C0058
-			public const int lb_picker_separator = 2131492952;
+			public const int lb_playback_controls_row = 2131492952;
 			
 			// aapt resource value: 0x7F0C0059
-			public const int lb_playback_controls = 2131492953;
+			public const int lb_playback_fragment = 2131492953;
 			
 			// aapt resource value: 0x7F0C005A
-			public const int lb_playback_controls_row = 2131492954;
+			public const int lb_playback_now_playing_bars = 2131492954;
 			
 			// aapt resource value: 0x7F0C005B
-			public const int lb_playback_fragment = 2131492955;
+			public const int lb_playback_transport_controls = 2131492955;
 			
 			// aapt resource value: 0x7F0C005C
-			public const int lb_playback_now_playing_bars = 2131492956;
-			
-			// aapt resource value: 0x7F0C005D
-			public const int lb_playback_transport_controls = 2131492957;
-			
-			// aapt resource value: 0x7F0C005E
-			public const int lb_playback_transport_controls_row = 2131492958;
-			
-			// aapt resource value: 0x7F0C0063
-			public const int lb_rows_fragment = 2131492963;
-			
-			// aapt resource value: 0x7F0C005F
-			public const int lb_row_container = 2131492959;
-			
-			// aapt resource value: 0x7F0C0060
-			public const int lb_row_header = 2131492960;
+			public const int lb_playback_transport_controls_row = 2131492956;
 			
 			// aapt resource value: 0x7F0C0061
-			public const int lb_row_media_item = 2131492961;
+			public const int lb_rows_fragment = 2131492961;
+			
+			// aapt resource value: 0x7F0C005D
+			public const int lb_row_container = 2131492957;
+			
+			// aapt resource value: 0x7F0C005E
+			public const int lb_row_header = 2131492958;
+			
+			// aapt resource value: 0x7F0C005F
+			public const int lb_row_media_item = 2131492959;
+			
+			// aapt resource value: 0x7F0C0060
+			public const int lb_row_media_item_action = 2131492960;
 			
 			// aapt resource value: 0x7F0C0062
-			public const int lb_row_media_item_action = 2131492962;
+			public const int lb_search_bar = 2131492962;
+			
+			// aapt resource value: 0x7F0C0063
+			public const int lb_search_fragment = 2131492963;
 			
 			// aapt resource value: 0x7F0C0064
-			public const int lb_search_bar = 2131492964;
+			public const int lb_search_orb = 2131492964;
 			
 			// aapt resource value: 0x7F0C0065
-			public const int lb_search_fragment = 2131492965;
+			public const int lb_section_header = 2131492965;
 			
 			// aapt resource value: 0x7F0C0066
-			public const int lb_search_orb = 2131492966;
+			public const int lb_shadow = 2131492966;
 			
 			// aapt resource value: 0x7F0C0067
-			public const int lb_section_header = 2131492967;
+			public const int lb_speech_orb = 2131492967;
 			
 			// aapt resource value: 0x7F0C0068
-			public const int lb_shadow = 2131492968;
+			public const int lb_title_view = 2131492968;
 			
 			// aapt resource value: 0x7F0C0069
-			public const int lb_speech_orb = 2131492969;
+			public const int lb_vertical_grid = 2131492969;
 			
 			// aapt resource value: 0x7F0C006A
-			public const int lb_title_view = 2131492970;
+			public const int lb_vertical_grid_fragment = 2131492970;
 			
 			// aapt resource value: 0x7F0C006B
-			public const int lb_vertical_grid = 2131492971;
+			public const int lb_video_surface = 2131492971;
 			
 			// aapt resource value: 0x7F0C006C
-			public const int lb_vertical_grid_fragment = 2131492972;
+			public const int leanback_list_preference_fragment = 2131492972;
 			
 			// aapt resource value: 0x7F0C006D
-			public const int lb_video_surface = 2131492973;
+			public const int leanback_list_preference_item_multi = 2131492973;
 			
 			// aapt resource value: 0x7F0C006E
-			public const int leanback_list_preference_fragment = 2131492974;
+			public const int leanback_list_preference_item_single = 2131492974;
 			
 			// aapt resource value: 0x7F0C006F
-			public const int leanback_list_preference_item_multi = 2131492975;
-			
-			// aapt resource value: 0x7F0C0070
-			public const int leanback_list_preference_item_single = 2131492976;
-			
-			// aapt resource value: 0x7F0C0071
-			public const int leanback_preference = 2131492977;
-			
-			// aapt resource value: 0x7F0C0076
-			public const int leanback_preferences_list = 2131492982;
-			
-			// aapt resource value: 0x7F0C0072
-			public const int leanback_preference_category = 2131492978;
-			
-			// aapt resource value: 0x7F0C0073
-			public const int leanback_preference_fragment = 2131492979;
+			public const int leanback_preference = 2131492975;
 			
 			// aapt resource value: 0x7F0C0074
-			public const int leanback_preference_information = 2131492980;
+			public const int leanback_preferences_list = 2131492980;
+			
+			// aapt resource value: 0x7F0C0070
+			public const int leanback_preference_category = 2131492976;
+			
+			// aapt resource value: 0x7F0C0071
+			public const int leanback_preference_fragment = 2131492977;
+			
+			// aapt resource value: 0x7F0C0072
+			public const int leanback_preference_information = 2131492978;
+			
+			// aapt resource value: 0x7F0C0073
+			public const int leanback_preference_widget_seekbar = 2131492979;
 			
 			// aapt resource value: 0x7F0C0075
-			public const int leanback_preference_widget_seekbar = 2131492981;
+			public const int leanback_settings_fragment = 2131492981;
+			
+			// aapt resource value: 0x7F0C0076
+			public const int mr_cast_dialog = 2131492982;
 			
 			// aapt resource value: 0x7F0C0077
-			public const int leanback_settings_fragment = 2131492983;
+			public const int mr_cast_group_item = 2131492983;
 			
 			// aapt resource value: 0x7F0C0078
-			public const int mr_cast_dialog = 2131492984;
+			public const int mr_cast_group_volume_item = 2131492984;
 			
 			// aapt resource value: 0x7F0C0079
-			public const int mr_cast_group_item = 2131492985;
+			public const int mr_cast_header_item = 2131492985;
 			
 			// aapt resource value: 0x7F0C007A
-			public const int mr_cast_group_volume_item = 2131492986;
+			public const int mr_cast_media_metadata = 2131492986;
 			
 			// aapt resource value: 0x7F0C007B
-			public const int mr_cast_header_item = 2131492987;
+			public const int mr_cast_route_item = 2131492987;
 			
 			// aapt resource value: 0x7F0C007C
-			public const int mr_cast_media_metadata = 2131492988;
+			public const int mr_chooser_dialog = 2131492988;
 			
 			// aapt resource value: 0x7F0C007D
-			public const int mr_cast_route_item = 2131492989;
+			public const int mr_chooser_list_item = 2131492989;
 			
 			// aapt resource value: 0x7F0C007E
-			public const int mr_chooser_dialog = 2131492990;
+			public const int mr_controller_material_dialog_b = 2131492990;
 			
 			// aapt resource value: 0x7F0C007F
-			public const int mr_chooser_list_item = 2131492991;
+			public const int mr_controller_volume_item = 2131492991;
 			
 			// aapt resource value: 0x7F0C0080
-			public const int mr_controller_material_dialog_b = 2131492992;
+			public const int mr_picker_dialog = 2131492992;
 			
 			// aapt resource value: 0x7F0C0081
-			public const int mr_controller_volume_item = 2131492993;
+			public const int mr_picker_header_item = 2131492993;
 			
 			// aapt resource value: 0x7F0C0082
-			public const int mr_picker_dialog = 2131492994;
+			public const int mr_picker_route_item = 2131492994;
 			
 			// aapt resource value: 0x7F0C0083
-			public const int mr_picker_header_item = 2131492995;
+			public const int mr_playback_control = 2131492995;
 			
 			// aapt resource value: 0x7F0C0084
-			public const int mr_picker_route_item = 2131492996;
+			public const int mr_volume_control = 2131492996;
 			
 			// aapt resource value: 0x7F0C0085
-			public const int mr_playback_control = 2131492997;
+			public const int mtrl_layout_snackbar = 2131492997;
 			
 			// aapt resource value: 0x7F0C0086
-			public const int mr_volume_control = 2131492998;
+			public const int mtrl_layout_snackbar_include = 2131492998;
 			
 			// aapt resource value: 0x7F0C0087
-			public const int mtrl_layout_snackbar = 2131492999;
+			public const int notification_action = 2131492999;
 			
 			// aapt resource value: 0x7F0C0088
-			public const int mtrl_layout_snackbar_include = 2131493000;
+			public const int notification_action_tombstone = 2131493000;
 			
 			// aapt resource value: 0x7F0C0089
-			public const int notification_action = 2131493001;
+			public const int notification_media_action = 2131493001;
 			
 			// aapt resource value: 0x7F0C008A
-			public const int notification_action_tombstone = 2131493002;
+			public const int notification_media_cancel_action = 2131493002;
 			
 			// aapt resource value: 0x7F0C008B
-			public const int notification_media_action = 2131493003;
+			public const int notification_template_big_media = 2131493003;
 			
 			// aapt resource value: 0x7F0C008C
-			public const int notification_media_cancel_action = 2131493004;
+			public const int notification_template_big_media_custom = 2131493004;
 			
 			// aapt resource value: 0x7F0C008D
-			public const int notification_template_big_media = 2131493005;
+			public const int notification_template_big_media_narrow = 2131493005;
 			
 			// aapt resource value: 0x7F0C008E
-			public const int notification_template_big_media_custom = 2131493006;
+			public const int notification_template_big_media_narrow_custom = 2131493006;
 			
 			// aapt resource value: 0x7F0C008F
-			public const int notification_template_big_media_narrow = 2131493007;
+			public const int notification_template_custom_big = 2131493007;
 			
 			// aapt resource value: 0x7F0C0090
-			public const int notification_template_big_media_narrow_custom = 2131493008;
+			public const int notification_template_icon_group = 2131493008;
 			
 			// aapt resource value: 0x7F0C0091
-			public const int notification_template_custom_big = 2131493009;
+			public const int notification_template_lines_media = 2131493009;
 			
 			// aapt resource value: 0x7F0C0092
-			public const int notification_template_icon_group = 2131493010;
+			public const int notification_template_media = 2131493010;
 			
 			// aapt resource value: 0x7F0C0093
-			public const int notification_template_lines_media = 2131493011;
+			public const int notification_template_media_custom = 2131493011;
 			
 			// aapt resource value: 0x7F0C0094
-			public const int notification_template_media = 2131493012;
+			public const int notification_template_part_chronometer = 2131493012;
 			
 			// aapt resource value: 0x7F0C0095
-			public const int notification_template_media_custom = 2131493013;
+			public const int notification_template_part_time = 2131493013;
 			
 			// aapt resource value: 0x7F0C0096
-			public const int notification_template_part_chronometer = 2131493014;
+			public const int preference = 2131493014;
 			
 			// aapt resource value: 0x7F0C0097
-			public const int notification_template_part_time = 2131493015;
+			public const int preference_category = 2131493015;
 			
 			// aapt resource value: 0x7F0C0098
-			public const int preference = 2131493016;
+			public const int preference_category_material = 2131493016;
 			
 			// aapt resource value: 0x7F0C0099
-			public const int preference_category = 2131493017;
+			public const int preference_dialog_edittext = 2131493017;
 			
 			// aapt resource value: 0x7F0C009A
-			public const int preference_category_material = 2131493018;
+			public const int preference_dropdown = 2131493018;
 			
 			// aapt resource value: 0x7F0C009B
-			public const int preference_dialog_edittext = 2131493019;
+			public const int preference_dropdown_material = 2131493019;
 			
 			// aapt resource value: 0x7F0C009C
-			public const int preference_dropdown = 2131493020;
+			public const int preference_information = 2131493020;
 			
 			// aapt resource value: 0x7F0C009D
-			public const int preference_dropdown_material = 2131493021;
+			public const int preference_information_material = 2131493021;
 			
 			// aapt resource value: 0x7F0C009E
-			public const int preference_information = 2131493022;
+			public const int preference_list_fragment = 2131493022;
 			
 			// aapt resource value: 0x7F0C009F
-			public const int preference_information_material = 2131493023;
+			public const int preference_material = 2131493023;
 			
 			// aapt resource value: 0x7F0C00A0
-			public const int preference_list_fragment = 2131493024;
+			public const int preference_recyclerview = 2131493024;
 			
 			// aapt resource value: 0x7F0C00A1
-			public const int preference_material = 2131493025;
+			public const int preference_widget_checkbox = 2131493025;
 			
 			// aapt resource value: 0x7F0C00A2
-			public const int preference_recyclerview = 2131493026;
+			public const int preference_widget_seekbar = 2131493026;
 			
 			// aapt resource value: 0x7F0C00A3
-			public const int preference_widget_checkbox = 2131493027;
+			public const int preference_widget_seekbar_material = 2131493027;
 			
 			// aapt resource value: 0x7F0C00A4
-			public const int preference_widget_seekbar = 2131493028;
+			public const int preference_widget_switch = 2131493028;
 			
 			// aapt resource value: 0x7F0C00A5
-			public const int preference_widget_seekbar_material = 2131493029;
+			public const int preference_widget_switch_compat = 2131493029;
 			
 			// aapt resource value: 0x7F0C00A6
-			public const int preference_widget_switch = 2131493030;
+			public const int RootLayout = 2131493030;
 			
 			// aapt resource value: 0x7F0C00A7
-			public const int preference_widget_switch_compat = 2131493031;
+			public const int select_dialog_item_material = 2131493031;
 			
 			// aapt resource value: 0x7F0C00A8
-			public const int RootLayout = 2131493032;
+			public const int select_dialog_multichoice_material = 2131493032;
 			
 			// aapt resource value: 0x7F0C00A9
-			public const int select_dialog_item_material = 2131493033;
+			public const int select_dialog_singlechoice_material = 2131493033;
 			
 			// aapt resource value: 0x7F0C00AA
-			public const int select_dialog_multichoice_material = 2131493034;
+			public const int ShellContent = 2131493034;
 			
 			// aapt resource value: 0x7F0C00AB
-			public const int select_dialog_singlechoice_material = 2131493035;
+			public const int support_simple_spinner_dropdown_item = 2131493035;
 			
 			// aapt resource value: 0x7F0C00AC
-			public const int ShellContent = 2131493036;
+			public const int Tabbar = 2131493036;
 			
 			// aapt resource value: 0x7F0C00AD
-			public const int support_simple_spinner_dropdown_item = 2131493037;
+			public const int Toolbar = 2131493037;
 			
 			// aapt resource value: 0x7F0C00AE
-			public const int Tabbar = 2131493038;
-			
-			// aapt resource value: 0x7F0C00AF
-			public const int Toolbar = 2131493039;
-			
-			// aapt resource value: 0x7F0C00B0
-			public const int video_surface_fragment = 2131493040;
+			public const int video_surface_fragment = 2131493038;
 			
 			static Layout()
 			{
