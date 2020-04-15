@@ -37,9 +37,10 @@
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <AndroidPackageFormat>apk</AndroidPackageFormat>
-    <AndroidLinkTool>proguard</AndroidLinkTool>
+    <AndroidLinkTool>r8</AndroidLinkTool>
     <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+    <AndroidDexTool>d8</AndroidDexTool>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,9 +57,12 @@
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <AndroidPackageFormat>apk</AndroidPackageFormat>
-    <AndroidLinkTool>proguard</AndroidLinkTool>
+    <AndroidLinkTool>r8</AndroidLinkTool>
     <AndroidLinkMode>Full</AndroidLinkMode>
     <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
+    <AndroidDexTool>d8</AndroidDexTool>
+    <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Java.Interop" />
@@ -198,16 +202,9 @@
     <GoogleServicesJson Include="google-services.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </GoogleServicesJson>
-    <ProguardConfiguration Include="proguard.cfg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </ProguardConfiguration>
     <AndroidEnvironment Include="AndroidEnvironment.cfg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AndroidEnvironment>
-    <Content Include="Monikers.imagemanifest">
-      <IncludeInVSIX>true</IncludeInVSIX>
-    </Content>
-    <None Include="ProimaVideo.keystore" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml">
