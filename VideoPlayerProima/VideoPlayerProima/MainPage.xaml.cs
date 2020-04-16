@@ -27,6 +27,18 @@ namespace SetBoxTV.VideoPlayer
         private MainViewModel model;
         private readonly ILogger Log;
 
+        private SetBoxApi _api;
+        private SetBoxApi Api
+        {
+            get
+            {
+                if (_api == null)
+                {
+                    _api = new API.SetBoxApi(DependencyService.Get<IDevicePicker>().GetIdentifier(), PlayerSettings.License, PlayerSettings.Url);
+                }
+                return _api;
+            }
+        }
 
         private async Task GetLastError()
         {
@@ -123,246 +135,249 @@ namespace SetBoxTV.VideoPlayer
         {
             base.OnAppearing();
             NavigationPage.SetHasNavigationBar(this, false);
+            Log.TAG = "OnAppearing";
+            model.IsLoading = true;
 
+            AppCenter.SetUserId(DependencyService.Get<IDevicePicker>().GetIdentifier());
+            Log.Debug("DateTime Installed: " + PlayerSettings.DateTimeInstall.ToString("dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture));
 
-            Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+            StartCheck();
+        }
+
+        private void StartCheck()
+        {
+            var uiScheduler = TaskScheduler.FromCurrentSynchronizationContext();
+
+            var task = Task.Run(() =>
             {
-                try
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await DependencyService.Get<ICheckPermission>()?.CheckSelfPermission();
-                    Log.Debug("CheckSelfPermission");
-                    Log.Debug($"SetBox Name {PlayerSettings.DeviceName}", new Dictionary<string, string>() { { "DeviceName", PlayerSettings.DeviceName } });
-
-                    await GetLastError();
-
-                    Log.TAG = "OnAppearing";
-                    Log.Debug($"Connectivity.NetworkAccess: {Connectivity.NetworkAccess}");
-                    ShowText("Verificando a conexão com a internet", new Dictionary<string, string>() { { "NetworkAccess", Connectivity.NetworkAccess.ToString() } });
-                    if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+                    try
                     {
-                        //bool pingTest = SetBoxApi.CheckConnectionPing("https://www.google.com.br/");
-                        PlayerSettings.HaveConnection = false;
-                        //if (pingTest)
-                        //    PlayerSettings.HaveConnection = true;
+                        if (ConstVars.IsInProcess)
+                            return;
 
-                        //Log.Debug($"Connectivity.Ping: {pingTest}");
+                        ConstVars.IsInProcess = true;
+                        CheckSelfPermission();
+                        await GetLastError().ConfigureAwait(true);
+                        CheckNetworkAccess();
+                        await CheckFirstInstall().ConfigureAwait(true);
+                        CheckPath();
+                        await CheckService().ConfigureAwait(true);
+                        await CheckFiles().ConfigureAwait(true);
 
-                        if (PlayerSettings.ReportNotConnection && !PlayerSettings.HaveConnection)
+                        ConstVars.IsInProcess = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error(ex);
+                        ConstVars.IsInProcess = false;
+                        model.IsLoading = false;
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            model.IsLoading = false;
-                            DisplayAlertOnUiAndClose("Sem acesso a internet! Favor conectar na internet para configurar a SetBox TV");
-                        }
+                            Application.Current.MainPage = new MainPage();
+                        });
                     }
-                    else
-                    {
-                        PlayerSettings.HaveConnection = true;
-                    }
+                });
+            });
 
-                    ShowText("Verificando a licença de uso", new Dictionary<string, string>()
+            task.ContinueWith(t =>
+            {
+                if (ConstVars.IsInProcess || !t.IsCompleted)
+                    return;
+
+                ShowText("Iniciando o Player", new Dictionary<string, string>() { { "Count Files", arquivos.Count.ToString(CultureInfo.InvariantCulture) } });
+
+                labelLoadingId.IsVisible = false;
+                progressBarId.IsVisible = false;
+
+                model.IsLoading = false;
+                ConstVars.IsInProcess = false;
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    Application.Current.MainPage = new VideoPage(arquivos);
+                });
+            }, uiScheduler);
+        }
+
+        private void CheckSelfPermission()
+        {
+            try
+            {
+                DependencyService.Get<ICheckPermission>()?.CheckSelfPermission();
+                Log.Debug("CheckSelfPermission");
+                Log.Debug($"SetBox Name {PlayerSettings.DeviceName}", new Dictionary<string, string>() { { "DeviceName", PlayerSettings.DeviceName } });
+            }
+            catch (Exception ex)
+            {
+                Log.Error("CheckSelfPermission", ex);
+                DisplayAlertOnUiAndClose(ex.Message);
+            }
+        }
+
+        private void CheckNetworkAccess()
+        {
+            try
+            {
+                Log.Debug($"Connectivity.NetworkAccess: {Connectivity.NetworkAccess}");
+                ShowText("Verificando a conexão com a internet", new Dictionary<string, string>() { { "NetworkAccess", Connectivity.NetworkAccess.ToString() } });
+                if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+                {
+                    PlayerSettings.HaveConnection = false;
+                    if (PlayerSettings.ReportNotConnection && !PlayerSettings.HaveConnection)
+                    {
+                        model.IsLoading = false;
+                        DisplayAlertOnUiAndClose("Sem acesso a internet! Favor conectar na internet para configurar a SetBox TV");
+                    }
+                }
+                else
+                {
+                    PlayerSettings.HaveConnection = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("CheckNetworkAccess", ex);
+                DisplayAlertOnUiAndClose(ex.Message);
+            }
+        }
+
+        private async Task CheckFirstInstall()
+        {
+            try
+            {
+                ShowText("Verificando a Licença de uso da SetBoxTV", new Dictionary<string, string>()
                     {
                         { "License", PlayerSettings.License },
                         { "FirstInsall", PlayerSettings.FirstInsall.ToString() }
                     });
 
-                    model.IsLoading = true;
-                    if (PlayerSettings.FirstInsall || string.IsNullOrEmpty(PlayerSettings.License))
-                    {
-                        PlayerSettings.License = CriptoHelpers.MD5HashString(DependencyService.Get<IDevicePicker>().GetIdentifier());
-                        PlayerSettings.DateTimeInstall = DateTime.Now;
-                        Log.Debug("First Install");
-                        model.IsLoading = false;
-                        ConstVars.IsInProcess = false;
-                        await this.DisplayAlertOnUi("Instalação", "Favor efetuar as configurações de instação do SetBoxTV", "OK",
-                          () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
-                    }
-                    else
-                    {
-                        if (PlayerSettings.DateTimeInstall < DateTime.UtcNow.AddYears(2) && PlayerSettings.License == "1111")
-                        {
-                            Log.Debug("Expirou a instalação");
-                            Log.Debug($"Data UTC Install: {PlayerSettings.DateTimeInstall}");
-                            model.IsLoading = false;
-                            ConstVars.IsInProcess = false;
-                            this.DisplayAlertOnUiAndClose("A licença Temporária da SetBoxTV Expirou!\nFavor colocar a nova licença!\n\nOu acesse o site e coloque a licença!");
-                        }
-
-                        ShowText("Verificando os arquivos", new Dictionary<string, string>()
-                            {
-                                { "License", PlayerSettings.License },
-                                { "FirstInsall", PlayerSettings.FirstInsall.ToString() }
-                            });
-                        Loading();
-                        model.IsLoading = false;
-                        ConstVars.IsInProcess = false;
-                    }
-                }
-                catch (Exception ex)
+                if (PlayerSettings.FirstInsall || string.IsNullOrEmpty(PlayerSettings.License))
                 {
-                    Log.Error(ex);
-                    throw;
+                    PlayerSettings.License = CriptoHelpers.MD5HashString(DependencyService.Get<IDevicePicker>().GetIdentifier());
+                    PlayerSettings.DateTimeInstall = DateTime.Now;
+                    Log.Debug("First Install");
+                    await this.DisplayAlertOnUi("Instalação", "Favor efetuar as configurações de instação do SetBoxTV", "OK",
+                      () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
                 }
-            });
+            }
+            catch (Exception ex)
+            {
+                Log.Error("CheckFirstInstall", ex);
+                DisplayAlertOnUiAndClose(ex.Message);
+            }
         }
 
-        private void DisplayAlertOnUiAndClose(string msg)
+        private void CheckPath()
         {
-            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            try
             {
-                var msgService = DependencyService.Get<IMessage>();
-                if (msgService != null)
-                    msgService.Alert(msg);
-            });
-        }
+                if (!string.IsNullOrEmpty(PlayerSettings.PathFiles) && !Directory.Exists(PlayerSettings.PathFiles))
+                    PlayerSettings.PathFiles = "";
 
-        public void Loading()
-        {
-            Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-            {
-                try
+                if (string.IsNullOrEmpty(PlayerSettings.PathFiles))
                 {
-                    if (ConstVars.IsInProcess)
-                        return;
-
-                    ConstVars.IsInProcess = true;
-                    API.SetBoxApi api;
-                    model.IsLoading = true;
-                    IDevicePicker device = DependencyService.Get<IDevicePicker>();
-
-                    string license = PlayerSettings.License;
-                    string deviceIdentifier = device.GetIdentifier();
-                    bool isLicensed = false;
-
-                    AppCenter.SetUserId(deviceIdentifier);
-                    Log.Debug("DateTime Installed: " + PlayerSettings.DateTimeInstall.ToString("dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture));
-
-                    if (!string.IsNullOrEmpty(PlayerSettings.PathFiles) && !Directory.Exists(PlayerSettings.PathFiles))
-                        PlayerSettings.PathFiles = "";
-
+                    PlayerSettings.PathFiles = DependencyService.Get<IDirectoyPicker>().GetStorageFolderPath();
                     if (string.IsNullOrEmpty(PlayerSettings.PathFiles))
-                    {
-                        PlayerSettings.PathFiles = DependencyService.Get<IDirectoyPicker>().GetStorageFolderPath();
-                        if (string.IsNullOrEmpty(PlayerSettings.PathFiles))
-                            PlayerSettings.PathFiles = "/storage/emulated/0/Movies";
-                    }
+                        PlayerSettings.PathFiles = "/storage/emulated/0/Movies";
+                }
 
-                    if (!Directory.Exists(PlayerSettings.PathFiles))
-                    {
-                        try
-                        {
-                            Log.Debug("Criando o diretorio de videos", new Dictionary<string, string>() { { "PathFiles", PlayerSettings.PathFiles } });
-                            Directory.CreateDirectory(PlayerSettings.PathFiles);
-                        }
-                        catch (Exception ex)
-                        {
-                            Log.Error("Directory: " + ex.Message, ex);
-                        }
-                    }
-
+                if (!Directory.Exists(PlayerSettings.PathFiles))
+                {
                     try
                     {
-                        ShowText("Conectando no servidor", new Dictionary<string, string>() {
-                        {"deviceIdentifier", deviceIdentifier},
-                        {"license",license },
-                        {"Url", PlayerSettings.Url} });
-
-                        if (PlayerSettings.HaveConnection)
-                        {
-
-                            api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
-
-                            await api.UpdateInfo(DevicePicker.GetPlatform().ToString(),
-                                $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}",
-                                $"{device.GetApkVersion()}.{device.GetApkBuild()}",
-                                DevicePicker.GetModel(),
-                                DevicePicker.GetManufacturer(),
-                                DevicePicker.GetName(),
-                                PlayerSettings.DeviceName).ConfigureAwait(true);
-
-
-                            ShowText("Recuperando as configurações do servidor", new Dictionary<string, string>() { { "DeviceName", PlayerSettings.DeviceName } });
-
-                            var config = await api.GetConfig().ConfigureAwait(true);
-
-                            if (config != null)
-                            {
-                                PlayerSettings.License = api.License.Trim();
-                                PlayerSettings.ShowVideo = config.enableVideo;
-                                PlayerSettings.ShowPhoto = config.enablePhoto;
-                                PlayerSettings.ShowWebImage = config.enableWebImage;
-                                PlayerSettings.ShowWebVideo = config.enableWebVideo;
-                                PlayerSettings.EnableTransactionTime = config.enableTransaction;
-                                PlayerSettings.TransactionTime = config.transactionTime;
-                                PlayerSettings.DeviceName = config.DeviceName;
-                            }
-                        }
+                        Log.Debug("Criando o diretorio de videos", new Dictionary<string, string>() { { "PathFiles", PlayerSettings.PathFiles } });
+                        Directory.CreateDirectory(PlayerSettings.PathFiles);
                     }
                     catch (Exception ex)
                     {
-                        Log.Error("UpdateInfo: " + ex.Message, ex);
-                        ShowText("Erro ao conectar no servidor", new Dictionary<string, string>() { { "Error", ex.Message } });
+                        Log.Error("Directory: " + ex.Message, ex);
                     }
-                    
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("CheckPath", ex);
+                DisplayAlertOnUiAndClose(ex.Message);
+            }
+        }
 
-                    ShowText("Verificando a Licença de uso da SetBoxTV", new Dictionary<string, string>() { { "license", license } });
+        private async Task CheckService()
+        {
+            try
+            {
+                var device = DependencyService.Get<IDevicePicker>();
+                ShowText("Conectando no servidor", new Dictionary<string, string>() {
+                        {"deviceIdentifier", device.GetIdentifier()},
+                        {"license",PlayerSettings.License },
+                        {"Url", PlayerSettings.Url} });
 
-                    if (!string.IsNullOrEmpty(license))
+                if (PlayerSettings.HaveConnection)
+                {
+
+                    await Api.UpdateInfo(DevicePicker.GetPlatform().ToString(),
+                        $"{DevicePicker.GetVersion().Major}.{DevicePicker.GetVersion().Minor}.{DevicePicker.GetVersion().Revision}.{DevicePicker.GetVersion().Build}",
+                        $"{device.GetApkVersion()}.{device.GetApkBuild()}",
+                        DevicePicker.GetModel(),
+                        DevicePicker.GetManufacturer(),
+                        DevicePicker.GetName(),
+                        PlayerSettings.DeviceName).ConfigureAwait(true);
+
+
+                    ShowText("Recuperando as configurações do servidor", new Dictionary<string, string>() { { "DeviceName", PlayerSettings.DeviceName } });
+
+                    var config = await Api.GetConfig().ConfigureAwait(true);
+
+                    if (config != null)
                     {
-                        Log.Debug($"deviceIdentifier: {deviceIdentifier}");
-                        Log.Debug($"deviceIdentifier64: {CriptoHelpers.Base64Encode(deviceIdentifier)}");
-
-                        if (license.Trim().ToUpperInvariant() == CriptoHelpers.MD5HashString(deviceIdentifier)
-                        || license.Trim().ToUpperInvariant() == CriptoHelpers.Base64Encode(deviceIdentifier)
-                        || license == "1111")
-                        {
-                            isLicensed = true;
-                        }
+                        PlayerSettings.License = Api.License.Trim();
+                        PlayerSettings.ShowVideo = config.enableVideo;
+                        PlayerSettings.ShowPhoto = config.enablePhoto;
+                        PlayerSettings.ShowWebImage = config.enableWebImage;
+                        PlayerSettings.ShowWebVideo = config.enableWebVideo;
+                        PlayerSettings.EnableTransactionTime = config.enableTransaction;
+                        PlayerSettings.TransactionTime = config.transactionTime;
+                        PlayerSettings.DeviceName = config.DeviceName;
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("CheckService", ex);
+                DisplayAlertOnUiAndClose(ex.Message);
+            }
+        }
+                   
+        private async Task CheckFiles()
+        {
+            Log.Debug("Atualizar as informações pelo Serivdor");
+            IList<FileCheckSum> serverFiles = new List<FileCheckSum>();
 
-                    if (!isLicensed)
-                    {
-                        Log.Debug("Licença: Licença inválida: " + license);
-                        model.IsLoading = false;
-                        ConstVars.IsInProcess = false;
-                        await this.DisplayAlertOnUi("Licença", "Licença inválida!", "OK",
-                        () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
-                    }
-                    else
-                    {
+            try
+            {
 
-                        Log.Debug("Licença: Válida");
-                        Log.Debug("Atualizar as informações pelo Serivdor");
-                        IList<FileCheckSum> serverFiles = new List<FileCheckSum>();
+                ShowText("Recuperando a lista de arquivos", new Dictionary<string, string>() { { "GetFilesCheckSums", "GetFilesCheckSums" } });
+                
+                IFilePicker filePicker = DependencyService.Get<IFilePicker>();
+                Log.Debug($"Directory: {PlayerSettings.PathFiles}");
+
+                GetFilesInFolder(filePicker);
+                if (PlayerSettings.HaveConnection)
+                {
+                    var serverFiles1 = await Api.GetFilesCheckSums().ConfigureAwait(true);
+                    serverFiles = serverFiles1.ToList();
+
+                    Log.Debug($"Total de arquivos no servidor: {serverFiles.Count}", new Dictionary<string, string>() { { "Count File", serverFiles.Count.ToString(CultureInfo.InvariantCulture) } });
+                }
+
+                if (!arquivos.Any() && PlayerSettings.HaveConnection)
+                {
+                    foreach (var fi in serverFiles)
+                    {
                         try
                         {
-
-                            ShowText("Recuperando a lista de arquivos", new Dictionary<string, string>() { { "GetFilesCheckSums", "GetFilesCheckSums" } });
-
-                            if (PlayerSettings.HaveConnection)
-                            {
-                                api = new API.SetBoxApi(deviceIdentifier, license, PlayerSettings.Url);
-                                var serverFiles1 = await api.GetFilesCheckSums().ConfigureAwait(true);
-                                serverFiles = serverFiles1.ToList();
-
-                                Log.Debug($"Total de arquivos no servidor: {serverFiles.Count}", new Dictionary<string, string>() { { "Count File", serverFiles.Count.ToString(CultureInfo.InvariantCulture) } });
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Log.Error("GetFilesCheckSums: " + ex.Message, ex);
-                        }
-
-                        IFilePicker filePicker = DependencyService.Get<IFilePicker>();
-                        Log.Debug($"Directory: {PlayerSettings.PathFiles}");
-
-                        GetFilesInFolder(filePicker);
-
-                        if (!arquivos.Any())
-                        {
-                            foreach (var fi in serverFiles)
-                            {
-                                try
-                                {
-                                    ShowText($"Download da midia {fi.name}", new Dictionary<string, string>()
+                            ShowText($"Download da midia {fi.name}", new Dictionary<string, string>()
                                 {
                                      { "size", fi.size.ToString(CultureInfo.InvariantCulture) } ,
                                      { "order", fi.order?.ToString(CultureInfo.InvariantCulture) } ,
@@ -373,48 +388,47 @@ namespace SetBoxTV.VideoPlayer
                                      { "checkSum", fi.checkSum } ,
                                      { "url", fi.url }
                                 });
-                                    await StartDownloadHandler(fi.url, PlayerSettings.PathFiles, fi.name).ConfigureAwait(false);
-                                }
-                                catch (Exception ex)
-                                {
-                                    Log.Error($"Download {fi.name}: {ex.Message}", ex);
-                                }
-                            }
-
-                            GetFilesInFolder(filePicker);
+                            await StartDownloadHandler(fi.url, PlayerSettings.PathFiles, fi.name).ConfigureAwait(false);
                         }
-
-
-                        if (!arquivos.Any())
+                        catch (Exception ex)
                         {
-                            Log.Debug("Directory: Nenhum arquivo localizado na pasta especifica.");
-                            model.IsLoading = false;
-                            ConstVars.IsInProcess = false;
-                            await this.DisplayAlertOnUi("Arquivo", "Nenhum arquivo localizado na pasta especifica", "OK",
-                                () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
+                            Log.Error($"Download {fi.name}: {ex.Message}", ex);
                         }
-                        else
-                        {
-                            Log.Debug($"Directory: Arquivos localizados {arquivos.Count}");
+                    }
 
-                            if (serverFiles.Any())
+                    GetFilesInFolder(filePicker);
+                }
+
+                if (!arquivos.Any())
+                {
+                    Log.Debug("Directory: Nenhum arquivo localizado na pasta especifica.");
+                    model.IsLoading = false;
+                    ConstVars.IsInProcess = false;
+                    await this.DisplayAlertOnUi("Arquivo", "Nenhum arquivo localizado na pasta especifica", "OK",
+                        () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
+                }
+                else
+                {
+                    Log.Debug($"Directory: Arquivos localizados {arquivos.Count}");
+
+                    if (serverFiles.Any())
+                    {
+                        string[] arqs = arquivos.Select(x => x.name).ToArray();
+                        var fiServierToDown = serverFiles.Where(x => !arqs.Contains(x.name));
+
+                        Log.Debug($"Validar os arquivos com o do servidor");
+                        foreach (var fi in arquivos)
+                        {
+                            var fiServier = serverFiles.FirstOrDefault(x => x.name == fi.name);
+                            //verificar o checksum
+                            if (fiServier != null && !CheckSumHelpers.CheckMD5Hash(fiServier.checkSum, fi.checkSum))
                             {
-                                string[] arqs = arquivos.Select(x => x.name).ToArray();
-                                var fiServierToDown = serverFiles.Where(x => !arqs.Contains(x.name));
-
-                                Log.Debug($"Validar os arquivos com o do servidor");
-                                foreach (var fi in arquivos)
+                                Log.Debug($"Deletando o arquivo {fi.name} CheckSum {fi.checkSum} != {fiServier.checkSum} Diferentes");
+                                filePicker.DeleteFile(fi.path);
+                                try
                                 {
-                                    var fiServier = serverFiles.FirstOrDefault(x => x.name == fi.name);
-                                    //verificar o checksum
-                                    if (fiServier != null && !CheckSumHelpers.CheckMD5Hash(fiServier.checkSum, fi.checkSum))
-                                    {
-                                        Log.Debug($"Deletando o arquivo {fi.name} CheckSum {fi.checkSum} != {fiServier.checkSum} Diferentes");
-                                        filePicker.DeleteFile(fi.path);
-                                        try
-                                        {
-                                            Log.Debug($"Download do arquivo: {fiServier.url}");
-                                            ShowText($"Download da midia {fiServier.name}", new Dictionary<string, string>()
+                                    Log.Debug($"Download do arquivo: {fiServier.url}");
+                                    ShowText($"Download da midia {fiServier.name}", new Dictionary<string, string>()
                                         {
                                              { "size", fiServier.size.ToString(CultureInfo.InvariantCulture) } ,
                                              { "order", fiServier.order?.ToString(CultureInfo.InvariantCulture) } ,
@@ -425,34 +439,34 @@ namespace SetBoxTV.VideoPlayer
                                              { "checkSum", fiServier.checkSum } ,
                                              { "url", fiServier.url }
                                         });
-                                            await StartDownloadHandler(fiServier.url, PlayerSettings.PathFiles, fiServier.name).ConfigureAwait(false);
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            Log.Error($"Download {fiServier.name}: {ex.Message}", ex);
-                                        }
-                                    }
-                                    else
-                                    {
-                                        if (fiServier == null)
-                                        {
-                                            Log.Debug($"Deletando o arquivo {fi.name} pois não tem no servidor");
-                                            filePicker.DeleteFile(fi.path);
-                                        }
-                                    }
+                                    await StartDownloadHandler(fiServier.url, PlayerSettings.PathFiles, fiServier.name).ConfigureAwait(false);
                                 }
-
-                                if (fiServierToDown.Any())
+                                catch (Exception ex)
                                 {
-                                    Log.Debug($"Fazendo downloads dos arquivos faltandos ou novos");
-                                    Log.Debug($"Total de arquivos novos: {fiServierToDown.Count()}");
+                                    Log.Error($"Download {fiServier.name}: {ex.Message}", ex);
+                                }
+                            }
+                            else
+                            {
+                                if (fiServier == null)
+                                {
+                                    Log.Debug($"Deletando o arquivo {fi.name} pois não tem no servidor");
+                                    filePicker.DeleteFile(fi.path);
+                                }
+                            }
+                        }
 
-                                    foreach (var fi in fiServierToDown)
-                                    {
-                                        try
-                                        {
-                                            Log.Debug($"Download do arquivo: {fi.url}");
-                                            ShowText($"Download da midia {fi.name}", new Dictionary<string, string>()
+                        if (fiServierToDown.Any())
+                        {
+                            Log.Debug($"Fazendo downloads dos arquivos faltandos ou novos");
+                            Log.Debug($"Total de arquivos novos: {fiServierToDown.Count()}");
+
+                            foreach (var fi in fiServierToDown)
+                            {
+                                try
+                                {
+                                    Log.Debug($"Download do arquivo: {fi.url}");
+                                    ShowText($"Download da midia {fi.name}", new Dictionary<string, string>()
                                         {
                                                 { "size", fi.size.ToString(CultureInfo.InvariantCulture) } ,
                                                 { "order", fi.order?.ToString(CultureInfo.InvariantCulture) } ,
@@ -463,49 +477,35 @@ namespace SetBoxTV.VideoPlayer
                                                 { "checkSum", fi.checkSum } ,
                                                 { "url", fi.url }
                                         });
-                                            await StartDownloadHandler(fi.url, PlayerSettings.PathFiles, fi.name).ConfigureAwait(false);
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            Log.Error($"Download {fi.name}: {ex.Message}", ex);
-                                        }
-                                    }
-                                    GetFilesInFolder(filePicker);
+                                    await StartDownloadHandler(fi.url, PlayerSettings.PathFiles, fi.name).ConfigureAwait(false);
                                 }
-
-                                GetFilesInOrder(arquivos, serverFiles);
+                                catch (Exception ex)
+                                {
+                                    Log.Error($"Download {fi.name}: {ex.Message}", ex);
+                                }
                             }
-
-                            ShowText("Iniciando o Player", new Dictionary<string, string>() { { "Count Files", arquivos.Count.ToString(CultureInfo.InvariantCulture) } });
-
-                            labelLoadingId.IsVisible = false;
-                            progressBarId.IsVisible = false;
-
-                            model.IsLoading = false;
-                            ConstVars.IsInProcess = false;
-                            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                            {
-                                Application.Current.MainPage = new VideoPage(arquivos);
-                            });
+                            GetFilesInFolder(filePicker);
                         }
-                    }
 
+                        GetFilesInOrder(arquivos, serverFiles);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    Log.Error(ex);
-                    ConstVars.IsInProcess = false;
-                    model.IsLoading = false;
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                    {
-                        Application.Current.MainPage = new MainPage();
-                    });
-                }
-                finally
-                {
-                    ConstVars.IsInProcess = false;
-                    model.IsLoading = false;
-                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("CheckFiles", ex);
+                DisplayAlertOnUiAndClose(ex.Message);
+            }
+        }
+        
+                    
+        private void DisplayAlertOnUiAndClose(string msg)
+        {
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                var msgService = DependencyService.Get<IMessage>();
+                if (msgService != null)
+                    msgService.Alert(msg);
             });
         }
 
@@ -542,28 +542,31 @@ namespace SetBoxTV.VideoPlayer
         {
             model.ProgressValue = 0;
             model.IsDownloading = true;
-            var cts = new CancellationTokenSource(5*60*1000); //5 minutos de timeout
-            try
+
+            Progress<DownloadBytesProgress> progressReporter = new Progress<DownloadBytesProgress>();
+            progressReporter.ProgressChanged += ProgressReporter_ProgressChanged;
+            await Task.Run(async () =>
             {
-                Progress<DownloadBytesProgress> progressReporter = new Progress<DownloadBytesProgress>();
-                progressReporter.ProgressChanged += ProgressReporter_ProgressChanged;
-                await Task.Run(async () => await DownloadHelper.CreateDownloadTask(urlToDownload, pathToSave, fileName, progressReporter, cts.Token).ConfigureAwait(false)).ConfigureAwait(false);
-            }
-            catch (OperationCanceledException ex)
-            {
-                Log.Error(ex);
-            }
-            finally
-            {
-                model.IsDownloading = false;
-                cts.Dispose();
-            }
+                try
+                {
+                    await DownloadHelper.CreateDownloadTask(urlToDownload, pathToSave, fileName, progressReporter, new CancellationTokenSource(5 * 60 * 1000).Token).ConfigureAwait(false);
+                    model.IsDownloading = false;
+                }
+                catch (Exception ex)
+                {
+                    Log.Error("DownloadHelper", ex);
+                }
+            }).ConfigureAwait(false);
         }
 
         private void ProgressReporter_ProgressChanged(object sender, DownloadBytesProgress e)
         {
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
+                progressBarId.IsVisible = true;
+                labelLoadingId.IsVisible = true;
+                model.IsDownloading = true;
+
                 model.LoadingText = $"Download da midia {e.Filename}"; 
                 model.ProgressValue = e.PercentComplete;
 

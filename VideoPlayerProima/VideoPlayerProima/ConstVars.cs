@@ -2,9 +2,9 @@
 {
     public static class ConstVars
     {
-        public static bool IsInProcess = false;
-        public static bool IsStartProcess = false;
-        public static bool IsBootProcess = false;
-        public static bool EventHandlerCalled = false;
+        public static bool IsInProcess { get; set; } = false;
+        public static bool IsStartProcess { get; set; } = false;
+        public static bool IsBootProcess { get; set; } = false;
+        public static bool EventHandlerCalled { get; set; } = false;
     }
 }

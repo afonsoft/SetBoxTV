@@ -92,7 +92,7 @@ namespace SetBoxTV.VideoPlayer.Droid
 
         }
 
-        public async Task CheckSelfPermission()
+        public void CheckSelfPermission()
         {
             string[] PERMISSIONS =
             {
@@ -116,23 +116,26 @@ namespace SetBoxTV.VideoPlayer.Droid
                 "android.permission.ACCESS_FINE_LOCATION",
             };
 
-            int requestCode = 630;
-            foreach (string permission in PERMISSIONS)
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
             {
-                requestCode++;
-                try
+                int requestCode = 630;
+                foreach (string permission in PERMISSIONS)
                 {
-                    if (ContextCompat.CheckSelfPermission(this, permission) != Permission.Granted)
+                    requestCode++;
+                    try
                     {
-                        LoggerService.Instance.Debug("Permission: " + permission);
-                        await RequestPermission(requestCode, permission);
+                        if (ContextCompat.CheckSelfPermission(this, permission) != Permission.Granted)
+                        {
+                            LoggerService.Instance.Debug("Permission: " + permission);
+                            await RequestPermission(requestCode, permission);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        LoggerService.Instance.Error("CheckSelfPermission: " + ex.Message, ex);
                     }
                 }
-                catch (Exception ex)
-                {
-                    LoggerService.Instance.Error("CheckSelfPermission: " + ex.Message, ex);
-                }
-            }
+            });
         }
 
         TaskCompletionSource<bool> taskGrantPermission { get; set; }

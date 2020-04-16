@@ -4,6 +4,6 @@ namespace SetBoxTV.VideoPlayer.Interface
 {
     public interface ICheckPermission
     {
-        Task CheckSelfPermission();
+        void CheckSelfPermission();
     }
 }
