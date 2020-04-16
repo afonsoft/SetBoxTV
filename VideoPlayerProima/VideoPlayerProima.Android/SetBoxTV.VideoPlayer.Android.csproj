@@ -20,7 +20,7 @@
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
-    <JavaMaximumHeapSize>2G</JavaMaximumHeapSize>
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,10 +37,11 @@
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <AndroidPackageFormat>apk</AndroidPackageFormat>
-    <AndroidLinkTool>r8</AndroidLinkTool>
+    <AndroidLinkTool>proguard</AndroidLinkTool>
     <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
-    <AndroidDexTool>d8</AndroidDexTool>
+    <AndroidDexTool>dx</AndroidDexTool>
+    <AndroidLinkSkip>Xamarin.Android.Support.v7.AppCompat;Xamarin.Android.Support.Core.UI;Microsoft.AppCenter.Crashes</AndroidLinkSkip>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,12 +58,13 @@
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <AndroidPackageFormat>apk</AndroidPackageFormat>
-    <AndroidLinkTool>r8</AndroidLinkTool>
-    <AndroidLinkMode>Full</AndroidLinkMode>
+    <AndroidLinkTool>proguard</AndroidLinkTool>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
-    <AndroidDexTool>d8</AndroidDexTool>
+    <AndroidDexTool>dx</AndroidDexTool>
     <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+    <AndroidLinkSkip>Xamarin.Android.Support.v7.AppCompat;Xamarin.Android.Support.Core.UI;Microsoft.AppCenter.Crashes</AndroidLinkSkip>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Java.Interop" />
@@ -205,6 +207,9 @@
     <AndroidEnvironment Include="AndroidEnvironment.cfg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </AndroidEnvironment>
+    <ProguardConfiguration Include="proguard.cfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </ProguardConfiguration>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml">
