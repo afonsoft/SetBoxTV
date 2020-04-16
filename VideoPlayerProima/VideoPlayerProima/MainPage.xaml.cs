@@ -212,7 +212,7 @@ namespace SetBoxTV.VideoPlayer
             catch (Exception ex)
             {
                 Log.Error("CheckSelfPermission", ex);
-                DisplayAlertOnUiAndClose(ex.Message);
+                this.DisplayAlertOnUiAndClose(ex.Message);
             }
         }
 
@@ -228,7 +228,7 @@ namespace SetBoxTV.VideoPlayer
                     if (PlayerSettings.ReportNotConnection && !PlayerSettings.HaveConnection)
                     {
                         model.IsLoading = false;
-                        DisplayAlertOnUiAndClose("Sem acesso a internet! Favor conectar na internet para configurar a SetBox TV");
+                        this.DisplayAlertOnUiAndClose("Sem acesso a internet! Favor conectar na internet para configurar a SetBox TV");
                     }
                 }
                 else
@@ -239,7 +239,7 @@ namespace SetBoxTV.VideoPlayer
             catch (Exception ex)
             {
                 Log.Error("CheckNetworkAccess", ex);
-                DisplayAlertOnUiAndClose(ex.Message);
+                this.DisplayAlertOnUiAndClose(ex.Message);
             }
         }
 
@@ -265,7 +265,7 @@ namespace SetBoxTV.VideoPlayer
             catch (Exception ex)
             {
                 Log.Error("CheckFirstInstall", ex);
-                DisplayAlertOnUiAndClose(ex.Message);
+                this.DisplayAlertOnUiAndClose(ex.Message);
             }
         }
 
@@ -299,7 +299,7 @@ namespace SetBoxTV.VideoPlayer
             catch (Exception ex)
             {
                 Log.Error("CheckPath", ex);
-                DisplayAlertOnUiAndClose(ex.Message);
+                this.DisplayAlertOnUiAndClose(ex.Message);
             }
         }
 
@@ -345,7 +345,7 @@ namespace SetBoxTV.VideoPlayer
             catch (Exception ex)
             {
                 Log.Error("CheckService", ex);
-                DisplayAlertOnUiAndClose(ex.Message);
+                this.DisplayAlertOnUiAndClose(ex.Message);
             }
         }
                    
@@ -363,6 +363,7 @@ namespace SetBoxTV.VideoPlayer
                 Log.Debug($"Directory: {PlayerSettings.PathFiles}");
 
                 GetFilesInFolder(filePicker);
+
                 if (PlayerSettings.HaveConnection)
                 {
                     var serverFiles1 = await Api.GetFilesCheckSums().ConfigureAwait(true);
@@ -494,20 +495,10 @@ namespace SetBoxTV.VideoPlayer
             catch (Exception ex)
             {
                 Log.Error("CheckFiles", ex);
-                DisplayAlertOnUiAndClose(ex.Message);
+                this.DisplayAlertOnUiAndClose(ex.Message);
             }
         }
         
-                    
-        private void DisplayAlertOnUiAndClose(string msg)
-        {
-            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-            {
-                var msgService = DependencyService.Get<IMessage>();
-                if (msgService != null)
-                    msgService.Alert(msg);
-            });
-        }
 
         private  void GetFilesInOrder(List<FileDetails> arquivos, IList<FileCheckSum> serverFiles)
         {

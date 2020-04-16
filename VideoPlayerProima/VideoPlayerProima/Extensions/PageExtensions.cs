@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SetBoxTV.VideoPlayer.Interface;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -66,6 +67,16 @@ namespace SetBoxTV.VideoPlayer.Extensions
 
             return doneSource.Task;
         }
+        public static void  DisplayAlertOnUiAndClose(this Page source, string msg)
+        {
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                var msgService = DependencyService.Get<IMessage>();
+                if (msgService != null)
+                    msgService.Alert(msg);
+            });
+        }
+
         public static Task<bool> DisplayAlertOnUi(this Page source, string title, string message, string cancel, Action afterHideCallback)
         {
             TaskCompletionSource<bool> doneSource = new TaskCompletionSource<bool>();
