@@ -3,7 +3,7 @@
     public class MainViewModel : BaseViewModel
     {
 
-        private string _loadingText = "Loading";
+        private string _loadingText = "Carregando";
 
         /// <summary>
         /// Texto no Loading
