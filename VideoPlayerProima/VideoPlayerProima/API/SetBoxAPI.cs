@@ -112,7 +112,7 @@ namespace SetBoxTV.VideoPlayer.API
                     Session = resp.result;
                     try
                     {
-                        License = "1111"; //CriptoHelpers.Base64Decode(CriptoHelpers.Base64Decode(Session).Split('|')[1]);
+                        License = "1111"; 
                     }
                     catch(Exception ex)
                     {

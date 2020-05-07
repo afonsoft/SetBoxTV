@@ -146,9 +146,7 @@ namespace SetBoxTV.VideoPlayer
 
         private void StartCheck()
         {
-            var uiScheduler = TaskScheduler.FromCurrentSynchronizationContext();
-
-            var task = Task.Run(() =>
+            Task.Run(() =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -166,7 +164,22 @@ namespace SetBoxTV.VideoPlayer
                         await CheckService().ConfigureAwait(true);
                         await CheckFiles().ConfigureAwait(true);
 
-                        ConstVars.IsInProcess = false;
+
+                        if (!ConstVars.IsInProcess)
+                        {
+                            ShowText("Iniciando o Player", new Dictionary<string, string>() { { "Count Files", arquivos.Count.ToString(CultureInfo.InvariantCulture) } });
+
+                            labelLoadingId.IsVisible = false;
+                            progressBarId.IsVisible = false;
+
+                            model.IsLoading = false;
+                            ConstVars.IsInProcess = false;
+
+                            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                            {
+                                Application.Current.MainPage = new VideoPage(arquivos);
+                            });
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -180,25 +193,6 @@ namespace SetBoxTV.VideoPlayer
                     }
                 });
             });
-
-            task.ContinueWith(t =>
-            {
-                if (ConstVars.IsInProcess || !t.IsCompleted)
-                    return;
-
-                ShowText("Iniciando o Player", new Dictionary<string, string>() { { "Count Files", arquivos.Count.ToString(CultureInfo.InvariantCulture) } });
-
-                labelLoadingId.IsVisible = false;
-                progressBarId.IsVisible = false;
-
-                model.IsLoading = false;
-                ConstVars.IsInProcess = false;
-
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                {
-                    Application.Current.MainPage = new VideoPage(arquivos);
-                });
-            }, uiScheduler);
         }
 
         private void CheckSelfPermission()
@@ -348,7 +342,7 @@ namespace SetBoxTV.VideoPlayer
                 this.DisplayAlertOnUiAndClose(ex.Message);
             }
         }
-                   
+
         private async Task CheckFiles()
         {
             Log.Debug("Atualizar as informações pelo Serivdor");
@@ -358,7 +352,7 @@ namespace SetBoxTV.VideoPlayer
             {
 
                 ShowText("Recuperando a lista de arquivos", new Dictionary<string, string>() { { "GetFilesCheckSums", "GetFilesCheckSums" } });
-                
+
                 IFilePicker filePicker = DependencyService.Get<IFilePicker>();
                 Log.Debug($"Directory: {PlayerSettings.PathFiles}");
 
@@ -400,36 +394,26 @@ namespace SetBoxTV.VideoPlayer
                     GetFilesInFolder(filePicker);
                 }
 
-                if (!arquivos.Any())
-                {
-                    Log.Debug("Directory: Nenhum arquivo localizado na pasta especifica.");
-                    model.IsLoading = false;
-                    ConstVars.IsInProcess = false;
-                    await this.DisplayAlertOnUi("Arquivo", "Nenhum arquivo localizado na pasta especifica", "OK",
-                        () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
-                }
-                else
-                {
-                    Log.Debug($"Directory: Arquivos localizados {arquivos.Count}");
+                Log.Debug($"Directory: Arquivos localizados {arquivos.Count}");
 
-                    if (serverFiles.Any())
+                if (serverFiles.Any())
+                {
+                    string[] arqs = arquivos.Select(x => x.name).ToArray();
+                    var fiServierToDown = serverFiles.Where(x => !arqs.Contains(x.name));
+
+                    Log.Debug($"Validar os arquivos com o do servidor");
+                    foreach (var fi in arquivos)
                     {
-                        string[] arqs = arquivos.Select(x => x.name).ToArray();
-                        var fiServierToDown = serverFiles.Where(x => !arqs.Contains(x.name));
-
-                        Log.Debug($"Validar os arquivos com o do servidor");
-                        foreach (var fi in arquivos)
+                        var fiServier = serverFiles.FirstOrDefault(x => x.name == fi.name);
+                        //verificar o checksum
+                        if (fiServier != null && !CheckSumHelpers.CheckMD5Hash(fiServier.checkSum, fi.checkSum))
                         {
-                            var fiServier = serverFiles.FirstOrDefault(x => x.name == fi.name);
-                            //verificar o checksum
-                            if (fiServier != null && !CheckSumHelpers.CheckMD5Hash(fiServier.checkSum, fi.checkSum))
+                            Log.Debug($"Deletando o arquivo {fi.name} CheckSum {fi.checkSum} != {fiServier.checkSum} Diferentes");
+                            filePicker.DeleteFile(fi.path);
+                            try
                             {
-                                Log.Debug($"Deletando o arquivo {fi.name} CheckSum {fi.checkSum} != {fiServier.checkSum} Diferentes");
-                                filePicker.DeleteFile(fi.path);
-                                try
-                                {
-                                    Log.Debug($"Download do arquivo: {fiServier.url}");
-                                    ShowText($"Download da midia {fiServier.name}", new Dictionary<string, string>()
+                                Log.Debug($"Download do arquivo: {fiServier.url}");
+                                ShowText($"Download da midia {fiServier.name}", new Dictionary<string, string>()
                                         {
                                              { "size", fiServier.size.ToString(CultureInfo.InvariantCulture) } ,
                                              { "order", fiServier.order?.ToString(CultureInfo.InvariantCulture) } ,
@@ -440,34 +424,34 @@ namespace SetBoxTV.VideoPlayer
                                              { "checkSum", fiServier.checkSum } ,
                                              { "url", fiServier.url }
                                         });
-                                    await StartDownloadHandler(fiServier.url, PlayerSettings.PathFiles, fiServier.name).ConfigureAwait(false);
-                                }
-                                catch (Exception ex)
-                                {
-                                    Log.Error($"Download {fiServier.name}: {ex.Message}", ex);
-                                }
+                                await StartDownloadHandler(fiServier.url, PlayerSettings.PathFiles, fiServier.name).ConfigureAwait(false);
                             }
-                            else
+                            catch (Exception ex)
                             {
-                                if (fiServier == null)
-                                {
-                                    Log.Debug($"Deletando o arquivo {fi.name} pois não tem no servidor");
-                                    filePicker.DeleteFile(fi.path);
-                                }
+                                Log.Error($"Download {fiServier.name}: {ex.Message}", ex);
                             }
                         }
-
-                        if (fiServierToDown.Any())
+                        else
                         {
-                            Log.Debug($"Fazendo downloads dos arquivos faltandos ou novos");
-                            Log.Debug($"Total de arquivos novos: {fiServierToDown.Count()}");
-
-                            foreach (var fi in fiServierToDown)
+                            if (fiServier == null)
                             {
-                                try
-                                {
-                                    Log.Debug($"Download do arquivo: {fi.url}");
-                                    ShowText($"Download da midia {fi.name}", new Dictionary<string, string>()
+                                Log.Debug($"Deletando o arquivo {fi.name} pois não tem no servidor");
+                                filePicker.DeleteFile(fi.path);
+                            }
+                        }
+                    }
+
+                    if (fiServierToDown.Any())
+                    {
+                        Log.Debug($"Fazendo downloads dos arquivos faltandos ou novos");
+                        Log.Debug($"Total de arquivos novos: {fiServierToDown.Count()}");
+
+                        foreach (var fi in fiServierToDown)
+                        {
+                            try
+                            {
+                                Log.Debug($"Download do arquivo: {fi.url}");
+                                ShowText($"Download da midia {fi.name}", new Dictionary<string, string>()
                                         {
                                                 { "size", fi.size.ToString(CultureInfo.InvariantCulture) } ,
                                                 { "order", fi.order?.ToString(CultureInfo.InvariantCulture) } ,
@@ -478,18 +462,30 @@ namespace SetBoxTV.VideoPlayer
                                                 { "checkSum", fi.checkSum } ,
                                                 { "url", fi.url }
                                         });
-                                    await StartDownloadHandler(fi.url, PlayerSettings.PathFiles, fi.name).ConfigureAwait(false);
-                                }
-                                catch (Exception ex)
-                                {
-                                    Log.Error($"Download {fi.name}: {ex.Message}", ex);
-                                }
+                                await StartDownloadHandler(fi.url, PlayerSettings.PathFiles, fi.name).ConfigureAwait(false);
                             }
-                            GetFilesInFolder(filePicker);
+                            catch (Exception ex)
+                            {
+                                Log.Error($"Download {fi.name}: {ex.Message}", ex);
+                            }
                         }
-
-                        GetFilesInOrder(arquivos, serverFiles);
+                        GetFilesInFolder(filePicker);
                     }
+
+                    GetFilesInOrder(arquivos, serverFiles);
+                }
+
+                if (!arquivos.Any())
+                {
+                    Log.Debug("Directory: Nenhum arquivo localizado na pasta especifica.");
+                    model.IsLoading = false;
+                    ConstVars.IsInProcess = false;
+                    await this.DisplayAlertOnUi("Arquivo", "Nenhum arquivo localizado na pasta especifica", "OK",
+                        () => { Application.Current.MainPage = new NavigationPage(new SettingsPage()); }).ConfigureAwait(true);
+                }
+                else
+                {
+                    ConstVars.IsInProcess = false;
                 }
             }
             catch (Exception ex)
@@ -517,10 +513,7 @@ namespace SetBoxTV.VideoPlayer
         {
             arquivos = new List<FileDetails>();
 
-            if (PlayerSettings.ShowVideo)
-            {
-                arquivos.AddRange(filePicker.GetFiles(PlayerSettings.PathFiles, EnumFileType.Video, ".MP4", ".mp4", ".avi", ".AVI"));
-            }
+            arquivos.AddRange(filePicker.GetFiles(PlayerSettings.PathFiles, EnumFileType.Video, ".MP4", ".mp4", ".avi", ".AVI"));
 
             if (PlayerSettings.ShowPhoto)
             {

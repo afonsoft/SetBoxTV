@@ -68,36 +68,38 @@ namespace SetBoxTV.VideoPlayer
         }
         protected override void OnAppearing()
         {
+            if (!isFinishingLonding)
+            {
+                base.OnAppearing();
+                NavigationPage.SetHasNavigationBar(this, false);
+                Core.Initialize();
 
-            base.OnAppearing();
-            NavigationPage.SetHasNavigationBar(this, false);
-            Core.Initialize();
+                log?.Debug("VideoPage: OnAppearing", new Dictionary<string, string>() {
+                    { "License",PlayerSettings.License},
+                    { "PathFiles",PlayerSettings.PathFiles},
+                    { "ShowVideo",PlayerSettings.ShowVideo.ToString(CultureInfo.InvariantCulture)},
+                    { "ShowPhoto",PlayerSettings.ShowPhoto.ToString(CultureInfo.InvariantCulture)},
+                    { "ShowWebImage",PlayerSettings.ShowWebImage.ToString(CultureInfo.InvariantCulture)},
+                    { "ShowWebVideo",PlayerSettings.ShowWebVideo.ToString(CultureInfo.InvariantCulture)},
+                    { "EnableTransactionTime",PlayerSettings.EnableTransactionTime.ToString(CultureInfo.InvariantCulture)},
+                    { "TransactionTime",PlayerSettings.TransactionTime.ToString(CultureInfo.InvariantCulture)},
+                });
 
-            log?.Debug("VideoPage: OnAppearing", new Dictionary<string, string>() {
-                { "License",PlayerSettings.License},
-                { "PathFiles",PlayerSettings.PathFiles},
-                { "ShowVideo",PlayerSettings.ShowVideo.ToString(CultureInfo.InvariantCulture)},
-                { "ShowPhoto",PlayerSettings.ShowPhoto.ToString(CultureInfo.InvariantCulture)},
-                { "ShowWebImage",PlayerSettings.ShowWebImage.ToString(CultureInfo.InvariantCulture)},
-                { "ShowWebVideo",PlayerSettings.ShowWebVideo.ToString(CultureInfo.InvariantCulture)},
-                { "EnableTransactionTime",PlayerSettings.EnableTransactionTime.ToString(CultureInfo.InvariantCulture)},
-                { "TransactionTime",PlayerSettings.TransactionTime.ToString(CultureInfo.InvariantCulture)},
-            });
+                // instanciate the main libvlc object
+                _libVLC = new LibVLC(PlayerSettings.LibVLCArguments);
+                _libVLC.Log += LibVLC_Log;
 
-            // instanciate the main libvlc object
-            _libVLC = new LibVLC(PlayerSettings.LibVLCArguments);
-            _libVLC.Log += LibVLC_Log;
+                _videoView = new VideoView() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, AutomationId = "VideoLVC", TabIndex = 1 };
+                _videoView.TabIndex = 1;
+                _videoView.GestureRecognizers.Add(new TapGestureRecognizer() { NumberOfTapsRequired = 2, Command = Tapped });
+                MainGrid.Children.Add(_videoView);
 
-            _videoView = new VideoView() { HorizontalOptions = LayoutOptions.FillAndExpand, VerticalOptions = LayoutOptions.FillAndExpand, AutomationId = "VideoLVC", TabIndex = 1 };
-            _videoView.TabIndex = 1;
-            _videoView.GestureRecognizers.Add(new TapGestureRecognizer() { NumberOfTapsRequired = 2, Command = Tapped });
-            MainGrid.Children.Add(_videoView);
+                //Criar a PlayList
+                mediaList = new MediaList(_libVLC);
 
-            //Criar a PlayList
-            mediaList = new MediaList(_libVLC);
-
-            WhileFilesToPlayer();
-            isFinishingLonding = true;
+                WhileFilesToPlayer();
+                isFinishingLonding = true;
+            }
         }
 
         private void WhileFilesToPlayer()
