@@ -62,27 +62,6 @@ namespace SetBoxTV.VideoPlayer
 
             log?.Debug($"VideoPage Total Files {fileDetails?.Count}");
 
-            _videoView.MediaPlayer = new MediaPlayer(_libVLC)
-            {
-                EnableHardwareDecoding = false,
-                Fullscreen = true,
-                Mute = false,
-                Volume = 100,
-                AspectRatio = "Fit screen",
-                FileCaching = 1000
-            };
-
-            _videoView.MediaPlayer.EndReached += (sender, args) =>
-            {
-                log?.Debug($"Finalizando (EndReached) o video");
-                NextFilesToPlayer();
-            };
-            _videoView.MediaPlayer.EncounteredError += (sender, args) =>
-            {
-                log?.Debug($"Error (EncounteredError) no video");
-                NextFilesToPlayer();
-            };
-
             isFinishingLonding = false;
         }
 
@@ -114,6 +93,28 @@ namespace SetBoxTV.VideoPlayer
                 _videoView.GestureRecognizers.Add(new TapGestureRecognizer() { NumberOfTapsRequired = 2, Command = Tapped });
                 MainGrid.Children.Add(_videoView);
                 isFinishingLonding = true;
+
+                _videoView.MediaPlayer = new MediaPlayer(_libVLC)
+                {
+                    EnableHardwareDecoding = false,
+                    Fullscreen = true,
+                    Mute = false,
+                    Volume = 100,
+                    AspectRatio = "Fit screen",
+                    FileCaching = 1000
+                };
+
+                _videoView.MediaPlayer.EndReached += (sender, args) =>
+                {
+                    log?.Debug($"Finalizando (EndReached) o video");
+                    NextFilesToPlayer();
+                };
+                _videoView.MediaPlayer.EncounteredError += (sender, args) =>
+                {
+                    log?.Debug($"Error (EncounteredError) no video");
+                    NextFilesToPlayer();
+                };
+
 
                 NextFilesToPlayer();
             }
