@@ -167,7 +167,7 @@ namespace SetBoxTV.VideoPlayer
 
                         if (!ConstVars.IsInProcess)
                         {
-                            ShowText("Iniciando o Player", new Dictionary<string, string>() { { "Count Files", arquivos.Count.ToString(CultureInfo.InvariantCulture) } });
+                          ShowText("Iniciando o Player", new Dictionary<string, string>() { { "Count Files", arquivos.Count.ToString(CultureInfo.InvariantCulture) } });
 
                             labelLoadingId.IsVisible = false;
                             progressBarId.IsVisible = false;
@@ -305,7 +305,7 @@ namespace SetBoxTV.VideoPlayer
                 ShowText("Conectando no servidor", new Dictionary<string, string>() {
                         {"deviceIdentifier", device.GetIdentifier()},
                         {"license",PlayerSettings.License },
-                        {"HaveConnection",PlayerSettings.HaveConnection },
+                        {"HaveConnection",PlayerSettings.HaveConnection.ToString() },
                         {"Url", PlayerSettings.Url} });
 
                 if (PlayerSettings.HaveConnection)
