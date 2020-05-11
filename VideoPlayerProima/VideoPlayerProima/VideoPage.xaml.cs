@@ -123,21 +123,10 @@ namespace SetBoxTV.VideoPlayer
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                try
-                {
-                    FilesToPlayer(idx);
-                    idx++;
-                    if (idx >= fileDetails.Count)
-                        idx = 0;
-                }
-                catch (Exception ex)
-                {
-                    log?.Error(ex);
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        Application.Current.MainPage = new MainPage();
-                    });
-                }
+                FilesToPlayer(idx);
+                idx++;
+                if (idx >= fileDetails.Count)
+                    idx = 0;
             });
         }
 
