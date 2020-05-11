@@ -305,6 +305,7 @@ namespace SetBoxTV.VideoPlayer
                 ShowText("Conectando no servidor", new Dictionary<string, string>() {
                         {"deviceIdentifier", device.GetIdentifier()},
                         {"license",PlayerSettings.License },
+                        {"HaveConnection",PlayerSettings.HaveConnection },
                         {"Url", PlayerSettings.Url} });
 
                 if (PlayerSettings.HaveConnection)
@@ -317,7 +318,6 @@ namespace SetBoxTV.VideoPlayer
                         DevicePicker.GetManufacturer(),
                         DevicePicker.GetName(),
                         PlayerSettings.DeviceName).ConfigureAwait(true);
-
 
                     ShowText("Recuperando as configurações do servidor", new Dictionary<string, string>() { { "DeviceName", PlayerSettings.DeviceName } });
 

@@ -21,7 +21,6 @@ namespace SetBoxTV.VideoPlayer
         private readonly List<FileDetails> fileDetails;
         private readonly ILogger log;
         private VideoView _videoView;
-        private bool isPlayerFinishing = true;
         private bool isFinishingLonding = false;
 
         #region VLC
@@ -94,9 +93,6 @@ namespace SetBoxTV.VideoPlayer
                 _videoView.GestureRecognizers.Add(new TapGestureRecognizer() { NumberOfTapsRequired = 2, Command = Tapped });
                 MainGrid.Children.Add(_videoView);
 
-                //Criar a PlayList
-                mediaList = new MediaList(_libVLC);
-
                 WhileFilesToPlayer();
                 isFinishingLonding = true;
             }
@@ -115,14 +111,13 @@ namespace SetBoxTV.VideoPlayer
 
                     while (!ConstVars.EventHandlerCalled)
                     {
-                        if (isPlayerFinishing)
+                        Device.BeginInvokeOnMainThread(async () =>
                         {
-                            FilesToPlayer(idx);
+                            await FilesToPlayer(idx).ConfigureAwait(true);
                             idx++;
                             if (idx >= fileDetails.Count)
                                 idx = 0;
-                        }
-                        await Task.Delay(1000).ConfigureAwait(true);
+                        });
                     }
                 }
                 catch (Exception ex)
@@ -136,62 +131,56 @@ namespace SetBoxTV.VideoPlayer
             });
         }
 
-        private void FilesToPlayer(int index)
+        private Task<bool> FilesToPlayer(int index)
         {
-            isPlayerFinishing = false;
-            Device.BeginInvokeOnMainThread(() =>
+            TaskCompletionSource<bool> playerTaskFinishing = new TaskCompletionSource<bool>();
+
+            log?.Debug($"Preparando o video { fileDetails[index].path}");
+
+            try
             {
-                try
+
+                //Criar a PlayList
+                mediaList = new MediaList(_libVLC);
+
+                _videoView.MediaPlayer = new MediaPlayer(_libVLC)
                 {
-                    _videoView.MediaPlayer = new MediaPlayer(_libVLC)
-                    {
-                        EnableHardwareDecoding = false,
-                        Fullscreen = true,
-                        Mute = false,
-                        Volume = 100,
-                        AspectRatio = "Fit screen",
-                        FileCaching = 1000
-                    };
+                    EnableHardwareDecoding = false,
+                    Fullscreen = true,
+                    Mute = false,
+                    Volume = 100,
+                    AspectRatio = "Fit screen",
+                    FileCaching = 1000
+                };
 
-                    _videoView.MediaPlayer.EndReached += async (sender, args) =>
-                    {
-                        await Task.Delay(500).ConfigureAwait(true);
-                        log?.Debug($"Finalizando (EndReached) o video");
-                        isPlayerFinishing = true;
-                    };
-                    _videoView.MediaPlayer.EncounteredError += async (sender, args) =>
-                    {
-                        await Task.Delay(500).ConfigureAwait(true);
-                        log?.Debug($"Error (EncounteredError) no video");
-                        isPlayerFinishing = true;
-                    };
-
-                    log?.Debug($"Preparando o video { fileDetails[index].path}");
-
-                    var m = new Media(_libVLC, (new FileVideoSource { File = fileDetails[index].path }).File, FromType.FromPath);
-                    m.AddOption(new MediaConfiguration() { EnableHardwareDecoding = false, FileCaching = 1000 });
-                    m.AddOption(":fullscreen");
-                    mediaList.SetMedia(m);
-
-                    try
-                    {
-                        log?.Debug($"Iniciando o Play { fileDetails[index].path}");
-                        _videoView.MediaPlayer.Play(new Media(mediaList));
-                    }
-                    catch (Exception ex)
-                    {
-                        log?.Error($"Error {ex.Message} no video { fileDetails[index].path}", ex);
-                        isPlayerFinishing = true;
-                    }
-                }
-                catch (Exception ex)
+                _videoView.MediaPlayer.EndReached += async (sender, args) =>
                 {
-                    log?.Error($"Error {ex.Message} no video { fileDetails[index].path}", ex);
-                    ConstVars.EventHandlerCalled = true;
-                    isPlayerFinishing = true;
-                    throw;
-                }
-            });
+                    await Task.Delay(100).ConfigureAwait(true);
+                    log?.Debug($"Finalizando (EndReached) o video");
+                    playerTaskFinishing.SetResult(true);
+                };
+                _videoView.MediaPlayer.EncounteredError += async (sender, args) =>
+                {
+                    await Task.Delay(100).ConfigureAwait(true);
+                    log?.Debug($"Error (EncounteredError) no video");
+                    playerTaskFinishing.SetResult(true);
+                };
+
+                var m = new Media(_libVLC, (new FileVideoSource { File = fileDetails[index].path }).File, FromType.FromPath);
+                m.AddOption(new MediaConfiguration() { EnableHardwareDecoding = false, FileCaching = 1000 });
+                m.AddOption(":fullscreen");
+                mediaList.SetMedia(m);
+
+                log?.Debug($"Iniciando o Play { fileDetails[index].path}");
+                _videoView.MediaPlayer.Play(new Media(mediaList));
+            }
+            catch (Exception ex)
+            {
+                log?.Error($"Error {ex.Message} no video { fileDetails[index].path}", ex);
+                playerTaskFinishing.SetResult(true);
+            }
+
+            return playerTaskFinishing.Task;
         }
 
         private void LibVLC_Log(object sender, LogEventArgs e)
