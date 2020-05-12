@@ -59,7 +59,7 @@
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <AndroidPackageFormat>apk</AndroidPackageFormat>
     <AndroidLinkTool>proguard</AndroidLinkTool>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <AndroidLinkMode>Full</AndroidLinkMode>
     <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
     <AndroidDexTool>d8</AndroidDexTool>
     <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
