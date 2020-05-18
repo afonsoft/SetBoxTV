@@ -286,12 +286,16 @@ namespace SetBoxTV.VideoPlayer
                     }
                     catch (Exception ex)
                     {
+                        Log.Debug($"Erro para criar o Diretorio {PlayerSettings.PathFiles}");
+                        Log.Debug($"Utilizando o novo Diretório {FileSystem.AppDataDirectory}");
+                        PlayerSettings.PathFiles = FileSystem.AppDataDirectory;
                         Log.Error("Directory: " + ex.Message, ex);
                     }
                 }
             }
             catch (Exception ex)
             {
+                PlayerSettings.PathFiles = FileSystem.AppDataDirectory;
                 Log.Error("CheckPath", ex);
                 this.DisplayAlertOnUiAndClose(ex.Message);
             }

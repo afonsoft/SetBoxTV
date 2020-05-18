@@ -14,6 +14,9 @@ namespace SetBoxTV.VideoPlayer.Helpers
         /// <returns></returns>
         public static string MD5HashFile(string input)
         {
+            if (string.IsNullOrEmpty(input))
+                return "42102f065ee333ba93e57fb329ff060c";
+
             using (var md5 = MD5.Create())
             {
                 using (var stream = File.OpenRead(input))
@@ -26,6 +29,9 @@ namespace SetBoxTV.VideoPlayer.Helpers
 
         public static string MD5HashString(string input)
         {
+            if (string.IsNullOrEmpty(input))
+                return "42102f065ee333ba93e57fb329ff060c";
+
             using (var md5 = MD5.Create())
             {
                 var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(input));
