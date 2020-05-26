@@ -61,7 +61,7 @@
     <AndroidLinkTool>proguard</AndroidLinkTool>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
-    <AndroidDexTool>d8</AndroidDexTool>
+    <AndroidDexTool>dx</AndroidDexTool>
     <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <AndroidLinkSkip>
