@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props"></Import>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <AssemblyName>Afonsoft.SetBox.Application</AssemblyName>
+    <PackageId>Afonsoft.SetBox.Application</PackageId>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace>Afonsoft.SetBox</RootNamespace>
+    <LangVersion>7.2</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="5.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Afonsoft.SetBox.Application.Shared\Afonsoft.SetBox.Application.Shared.csproj" />
+    <ProjectReference Include="..\Afonsoft.SetBox.Core\Afonsoft.SetBox.Core.csproj" />
+    <ProjectReference Include="..\Afonsoft.SetBox.EntityFrameworkCore\Afonsoft.SetBox.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+</Project>
