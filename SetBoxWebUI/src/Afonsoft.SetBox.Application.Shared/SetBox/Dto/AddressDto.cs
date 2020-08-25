@@ -3,7 +3,7 @@ using System;
 
 namespace Afonsoft.SetBox.SetBox.Dto
 {
-    public class AddressDto: Entity<long>
+    public class AddressDto : Entity<long>
     {
         public bool IsDeleted { get; set; }
         public DateTime CreationTime { get; set; }

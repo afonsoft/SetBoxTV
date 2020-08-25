@@ -22,7 +22,6 @@ namespace Afonsoft.SetBox.SetBox.Dto
         public long? LastModifierUserId { get; set; }
         public long? DeleterUserId { get; set; }
         public DateTime? DeletionTime { get; set; }
-
         public CompanyDto Company { get; set; }
         public ICollection<DeviceFileDto> Files { get; set; }
     }
