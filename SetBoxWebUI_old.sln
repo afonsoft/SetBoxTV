@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SetBoxWebUI", "SetBoxWebUI\SetBoxWebUI.csproj", "{392636A8-3C6F-4F1F-8CE6-EDEE36181E22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SetBoxWebUI", "SetBoxWebUI_OLD\SetBoxWebUI.csproj", "{392636A8-3C6F-4F1F-8CE6-EDEE36181E22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
