@@ -26,14 +26,10 @@ using Afonsoft.SetBox.Web.IdentityServer;
 using Afonsoft.SetBox.Web.Swagger;
 using Stripe;
 using ILoggerFactory = Microsoft.Extensions.Logging.ILoggerFactory;
-using GraphQL.Server;
-using GraphQL.Server.Ui.Playground;
 using IdentityServer4.Configuration;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Afonsoft.SetBox.Configure;
-using Afonsoft.SetBox.Schemas;
 using Afonsoft.SetBox.Web.HealthCheck;
 using HealthChecksUISettings = HealthChecks.UI.Configuration.Settings;
 using Microsoft.Extensions.Logging;
@@ -129,11 +125,6 @@ namespace Afonsoft.SetBox.Web.Startup
                 });
             }
 
-            if (WebConsts.GraphQL.Enabled)
-            {
-                services.AddAndConfigureGraphQL();
-            }
-
             if (bool.Parse(_appConfiguration["HealthChecks:HealthChecksEnabled"]))
             {
                 services.AddAbpZeroHealthCheck();
@@ -223,16 +214,6 @@ namespace Afonsoft.SetBox.Web.Startup
             if (bool.Parse(_appConfiguration["Payment:Stripe:IsActive"]))
             {
                 StripeConfiguration.ApiKey = _appConfiguration["Payment:Stripe:SecretKey"];
-            }
-
-            if (WebConsts.GraphQL.Enabled)
-            {
-                app.UseGraphQL<MainSchema>();
-                if (WebConsts.GraphQL.PlaygroundEnabled)
-                {
-                    app.UseGraphQLPlayground(
-                        new GraphQLPlaygroundOptions()); //to explorer API navigate https://*DOMAIN*/ui/playground
-                }
             }
 
             app.UseEndpoints(endpoints =>

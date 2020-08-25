@@ -7,8 +7,6 @@ using Abp.Castle.Logging.Log4Net;
 using Abp.Hangfire;
 using Abp.PlugIns;
 using Castle.Facilities.Logging;
-using GraphQL.Server;
-using GraphQL.Server.Ui.Playground;
 using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -18,10 +16,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Afonsoft.SetBox.Authorization;
 using Afonsoft.SetBox.Configuration;
-using Afonsoft.SetBox.Configure;
 using Afonsoft.SetBox.EntityFrameworkCore;
 using Afonsoft.SetBox.Identity;
-using Afonsoft.SetBox.Schemas;
 using Afonsoft.SetBox.Web.Chat.SignalR;
 using Afonsoft.SetBox.Web.Common;
 using Afonsoft.SetBox.Web.Resources;
@@ -114,11 +110,6 @@ namespace Afonsoft.SetBox.Web.Startup
             }
 
             services.AddScoped<IWebResourceManager, WebResourceManager>();
-            
-            if (WebConsts.GraphQL.Enabled)
-            {
-                services.AddAndConfigureGraphQL();
-            }
 
             services.Configure<SecurityStampValidatorOptions>(options =>
             {
@@ -244,16 +235,6 @@ namespace Afonsoft.SetBox.Web.Startup
             if (bool.Parse(_appConfiguration["Payment:Stripe:IsActive"]))
             {
                 StripeConfiguration.ApiKey = _appConfiguration["Payment:Stripe:SecretKey"];
-            }
-
-            if (WebConsts.GraphQL.Enabled)
-            {
-                app.UseGraphQL<MainSchema>();
-                if (WebConsts.GraphQL.PlaygroundEnabled)
-                {
-                    app.UseGraphQLPlayground(
-                        new GraphQLPlaygroundOptions()); //to explorer API navigate https://*DOMAIN*/ui/playground
-                }
             }
 
             app.UseEndpoints(endpoints =>

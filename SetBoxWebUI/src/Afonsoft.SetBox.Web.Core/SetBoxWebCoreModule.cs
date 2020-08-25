@@ -18,7 +18,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Afonsoft.SetBox.Configuration;
 using Afonsoft.SetBox.EntityFrameworkCore;
-using Afonsoft.SetBox.Startup;
 using Afonsoft.SetBox.Web.Authentication.JwtBearer;
 using Afonsoft.SetBox.Web.Authentication.TwoFactor;
 using Afonsoft.SetBox.Web.Configuration;
@@ -31,7 +30,6 @@ namespace Afonsoft.SetBox.Web
         typeof(SetBoxEntityFrameworkCoreModule),
         typeof(AbpAspNetZeroCoreWebModule),
         typeof(AbpAspNetCoreSignalRModule),
-        typeof(SetBoxGraphQLModule),
         typeof(AbpRedisCacheModule), //AbpRedisCacheModule dependency (and Abp.RedisCache nuget package) can be removed if not using Redis cache
         typeof(AbpHangfireAspNetCoreModule) //AbpHangfireModule dependency (and Abp.Hangfire.AspNetCore nuget package) can be removed if not using Hangfire
     )]
