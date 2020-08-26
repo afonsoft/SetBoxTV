@@ -89,7 +89,6 @@ namespace Afonsoft.SetBox.Web.Startup
                     options.SchemaFilter<SwaggerEnumSchemaFilter>();
                     options.OperationFilter<SwaggerOperationIdFilter>();
                     options.OperationFilter<SwaggerOperationFilter>();
-                    options.CustomDefaultSchemaIdSelector();
                 });
             }
 
@@ -274,8 +273,8 @@ namespace Afonsoft.SetBox.Web.Startup
                 app.UseSwaggerUI(options =>
                 {
                     options.SwaggerEndpoint(_appConfiguration["App:SwaggerEndPoint"], "SetBox API V1");
-                    //options.IndexStream = () => Assembly.GetExecutingAssembly()
-                    //    .GetManifestResourceStream("Afonsoft.SetBox.Web.wwwroot.swagger.ui.index.html");
+                    options.IndexStream = () => Assembly.GetExecutingAssembly()
+                        .GetManifestResourceStream("Afonsoft.SetBox.Web.wwwroot.swagger.ui.index.html");
                     options.InjectBaseUrl(_appConfiguration["App:WebSiteRootAddress"]);
                 }); //URL: /swagger
             }
