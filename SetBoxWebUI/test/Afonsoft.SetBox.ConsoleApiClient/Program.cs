@@ -19,7 +19,7 @@ namespace Afonsoft.SetBox.ConsoleApiClient
 
     class Program
     {
-        private const string ServerUrlBase = "https://portal.afonsoft.com.br/";
+        private const string ServerUrlBase = "https://setbox.afonsoft.com.br/";
         
         // If you have changed "Configuration.MultiTenancy.TenantIdResolveKey" in your web app, use the same value here. 
         private const string TenantIdResolveKey = "Abp.TenantId";

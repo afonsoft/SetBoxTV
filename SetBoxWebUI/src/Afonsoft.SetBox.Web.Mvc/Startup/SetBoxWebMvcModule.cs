@@ -27,7 +27,7 @@ namespace Afonsoft.SetBox.Web.Startup
 
         public override void PreInitialize()
         {
-            Configuration.Modules.AbpWebCommon().MultiTenancy.DomainFormat = _appConfiguration["App:WebSiteRootAddress"] ?? "https://portal.afonsoft.com.br/";
+            Configuration.Modules.AbpWebCommon().MultiTenancy.DomainFormat = _appConfiguration["App:WebSiteRootAddress"] ?? "https://setbox.afonsoft.com.br/";
             Configuration.Modules.AspNetZero().LicenseCode = _appConfiguration["AbpZeroLicenseCode"];
             Configuration.Navigation.Providers.Add<AppNavigationProvider>();
         }
