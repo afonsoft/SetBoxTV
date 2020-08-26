@@ -6,5 +6,6 @@ namespace Afonsoft.SetBox.SetBox.Dto
     {
         public string IpAcessed { get; set; }
         public string Message { get; set; }
+        public string DeviceIdentifier { get; set; }
     }
 }

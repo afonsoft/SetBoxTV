@@ -34,6 +34,10 @@ using Afonsoft.SetBox.MultiTenancy.Payments.Dto;
 using Afonsoft.SetBox.Notifications.Dto;
 using Afonsoft.SetBox.Organizations.Dto;
 using Afonsoft.SetBox.Sessions.Dto;
+using Afonsoft.SetBox.SetBox.Dto;
+using Afonsoft.SetBox.SetBox.Model;
+using Afonsoft.SetBox.SetBox.Model.Companies;
+using Afonsoft.SetBox.SetBox.Model.Files;
 
 namespace Afonsoft.SetBox
 {
@@ -133,6 +137,17 @@ namespace Afonsoft.SetBox
             configuration.CreateMap<OrganizationUnit, OrganizationUnitDto>();
 
             /* ADD YOUR OWN CUSTOM AUTOMAPPER MAPPINGS HERE */
+            //SetBox
+            configuration.CreateMap<Support, SupportDto>().ReverseMap();
+            configuration.CreateMap<Company, CompanyDto>().ReverseMap();
+            configuration.CreateMap<Address, AddressDto>().ReverseMap();
+            configuration.CreateMap<Contact, ContactDto>().ReverseMap();
+            configuration.CreateMap<Device, DeviceDto>().ReverseMap();
+            configuration.CreateMap<Config, ConfigDto>().ReverseMap();
+            configuration.CreateMap<File, FileDto>().ReverseMap();
+            configuration.CreateMap<DeviceFile, DeviceFileDto>().ReverseMap();
+            configuration.CreateMap<DeviceLogAccesses, LogAccessesDto>().ReverseMap();
+            configuration.CreateMap<DeviceLogError, LogErrorDto>().ReverseMap();
         }
     }
 }

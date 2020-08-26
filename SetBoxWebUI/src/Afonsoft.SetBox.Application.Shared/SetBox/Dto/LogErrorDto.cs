@@ -4,6 +4,7 @@ namespace Afonsoft.SetBox.SetBox.Dto
 {
     public class LogErrorDto : EntityDto<long>
     {
+        public string DeviceIdentifier { get; set; }
         public string IpAcessed { get; set; }
         public string Message { get; set; }
         public string Exception { get; set; }
