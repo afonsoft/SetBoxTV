@@ -22,21 +22,17 @@ using Afonsoft.SetBox.Web.Chat.SignalR;
 using Afonsoft.SetBox.Web.Common;
 using Afonsoft.SetBox.Web.Resources;
 using PaulMiami.AspNetCore.Mvc.Recaptcha;
-using Afonsoft.SetBox.Web.IdentityServer;
 using Afonsoft.SetBox.Web.Swagger;
-using Stripe;
 using System.Reflection;
-using IdentityServer4.Configuration;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Afonsoft.SetBox.Web.HealthCheck;
-using HealthChecksUISettings = HealthChecks.UI.Configuration.Settings;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.ResponseCompression;
 using System.IO.Compression;
 using WebMarkupMin.AspNetCore3;
-using HealthChecks.UI.Client;
+using System.Linq;
+using Abp.Extensions;
+using Afonsoft.SetBox.EntityFrameworkCore;
 
 namespace Afonsoft.SetBox.Web.Startup
 {
@@ -60,35 +56,45 @@ namespace Afonsoft.SetBox.Web.Startup
 #if DEBUG
                 .AddRazorRuntimeCompilation()
 #endif
-                .AddNewtonsoftJson(x=>x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+                .AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-			services.AddSignalR(options => { options.EnableDetailedErrors = true; });
+            //Configure CORS for angular2 UI
+            services.AddCors(options =>
+            {
+                options.AddPolicy(DefaultCorsPolicyName, builder =>
+                {
+                    //App:CorsOrigins in appsettings.json can contain more than one address with splitted by comma.
+                    builder
+                        .WithOrigins(
+                            // App:CorsOrigins in appsettings.json can contain more than one address separated by comma.
+                            _appConfiguration["App:CorsOrigins"]
+                                .Split(",", StringSplitOptions.RemoveEmptyEntries)
+                                .Select(o => o.RemovePostFix("/"))
+                                .ToArray()
+                        )
+                        .SetIsOriginAllowedToAllowWildcardSubdomains()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials();
+                });
+            });
+
+            services.AddSignalR(options => { options.EnableDetailedErrors = true; });
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
-
-            //Identity server
-            if (bool.Parse(_appConfiguration["IdentityServer:IsEnabled"]))
-            {
-                IdentityServerRegistrar.Register(services, _appConfiguration, options =>
-                    options.UserInteraction = new UserInteractionOptions()
-                    {
-                        LoginUrl = "/Account/Login",
-                        LogoutUrl = "/Account/LogOut",
-                        ErrorUrl = "/Error"
-                    });
-            }
 
             if (WebConsts.SwaggerUiEnabled)
             {
                 //Swagger - Enable this line and the related lines in Configure method to enable swagger UI
                 services.AddSwaggerGen(options =>
                 {
-                    options.SwaggerDoc("v1", new OpenApiInfo() { Title = "SetBox API", Version = "v1" });
+                    options.SwaggerDoc("v1", new OpenApiInfo() { Title = "Portal API", Version = "v1" });
                     options.DocInclusionPredicate((docName, description) => true);
                     options.ParameterFilter<SwaggerEnumParameterFilter>();
                     options.SchemaFilter<SwaggerEnumSchemaFilter>();
                     options.OperationFilter<SwaggerOperationIdFilter>();
                     options.OperationFilter<SwaggerOperationFilter>();
+                    options.CustomDefaultSchemaIdSelector();
                 });
             }
 
@@ -104,6 +110,7 @@ namespace Afonsoft.SetBox.Web.Startup
                 //Hangfire(Enable to use Hangfire instead of default job manager)
                 services.AddHangfire(config =>
                 {
+                    config.UseLog4NetLogProvider();
                     config.UseSqlServerStorage(_appConfiguration.GetConnectionString("Default"));
                 });
             }
@@ -115,26 +122,15 @@ namespace Afonsoft.SetBox.Web.Startup
                 options.ValidationInterval = TimeSpan.FromMinutes(30);
             });
 
-            if (bool.Parse(_appConfiguration["HealthChecks:HealthChecksEnabled"]))
-            {
-                services.AddAbpZeroHealthCheck();
-
-                var healthCheckUISection = _appConfiguration.GetSection("HealthChecks")?.GetSection("HealthChecksUI");
-
-                if (bool.Parse(healthCheckUISection["HealthChecksUIEnabled"]))
-                {
-                    services.Configure<HealthChecksUISettings>(settings =>
-                    {
-                        healthCheckUISection.Bind(settings, c => c.BindNonPublicProperties = true);
-                    });
-                    services.AddHealthChecksUI();
-                }
-            }
+            services.AddAntiforgery();
+            services.AddHttpClient();
+            services.AddDistributedMemoryCache();
+            services.AddSwaggerGenNewtonsoftSupport();
 
             services.AddDataProtection()
-                .PersistKeysToFileSystem(new DirectoryInfo(Path.Combine(_hostingEnvironment.WebRootPath, "Data")))
-                .SetDefaultKeyLifetime(TimeSpan.FromDays(365))
-                .SetApplicationName(_hostingEnvironment.ApplicationName);
+            .PersistKeysToFileSystem(new DirectoryInfo(Path.Combine(_hostingEnvironment.WebRootPath, "Data")))
+            .SetDefaultKeyLifetime(TimeSpan.FromDays(365))
+            .SetApplicationName(_hostingEnvironment.ApplicationName);
 
             services.AddResponseCompression(options =>
             {
@@ -179,6 +175,7 @@ namespace Afonsoft.SetBox.Web.Startup
             app.UseAbp(options =>
             {
                 options.UseAbpRequestLocalization = false; //used below: UseAbpRequestLocalization
+                options.UseCastleLoggerFactory = true;
             });
 
             if (env.IsDevelopment())
@@ -187,6 +184,7 @@ namespace Afonsoft.SetBox.Web.Startup
             }
             else
             {
+                app.UseHsts();
                 app.UseStatusCodePagesWithRedirects("~/Error?statusCode={0}");
                 app.UseExceptionHandler("/Error");
             }
@@ -195,23 +193,44 @@ namespace Afonsoft.SetBox.Web.Startup
 
             app.UseStaticFiles();
             app.UseRouting();
-            
+
             app.UseCors(DefaultCorsPolicyName); //Enable CORS!
 
+            // Enable middleware to serve generated Swagger as a JSON endpoint
+            app.UseSwagger();
+            // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
+
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint(_appConfiguration["App:SwaggerEndPoint"], "Portal API V1");
+                options.IndexStream = () => Assembly.GetExecutingAssembly()
+                    .GetManifestResourceStream("Afonsoft.SetBox.Web.wwwroot.swagger.ui.index.html");
+                options.InjectBaseUrl(_appConfiguration["App:WebSiteRootAddress"]);
+            }); //URL: /swagger
+
+
             app.UseAuthentication();
-
-            if (bool.Parse(_appConfiguration["Authentication:JwtBearer:IsEnabled"]))
-            {
-                app.UseJwtTokenMiddleware();
-            }
-
-            if (bool.Parse(_appConfiguration["IdentityServer:IsEnabled"]))
-            {
-                app.UseJwtTokenMiddleware("IdentityBearer");
-                app.UseIdentityServer();
-            }
-
+            app.UseJwtTokenMiddleware();
             app.UseAuthorization();
+
+
+            //Hangfire dashboard &server(Enable to use Hangfire instead of default job manager)
+            app.UseHangfireDashboard(WebConsts.HangfireDashboardEndPoint, new DashboardOptions
+            {
+                Authorization = new[] {
+                        new AbpHangfireAuthorizationFilter(AppPermissions.Pages_Administration_HangfireDashboard),
+                        new AbpHangfireAuthorizationFilter(AppPermissions.Pages_Administration),
+                        new AbpHangfireAuthorizationFilter(AppPermissions.Pages)
+                    },
+                IgnoreAntiforgeryToken = true,
+            });
+            app.UseHangfireServer();
+
+
+            app.UseHttpsRedirection();
+            app.UseWebSockets();
+            app.UseResponseCompression();
+            app.UseWebMarkupMin();
 
             using (var scope = app.ApplicationServices.CreateScope())
             {
@@ -221,21 +240,6 @@ namespace Afonsoft.SetBox.Web.Startup
                 }
             }
 
-            if (WebConsts.HangfireDashboardEnabled)
-            {
-                //Hangfire dashboard &server(Enable to use Hangfire instead of default job manager)
-                app.UseHangfireDashboard(WebConsts.HangfireDashboardEndPoint, new DashboardOptions
-                {
-                    Authorization = new[] { new AbpHangfireAuthorizationFilter(AppPermissions.Pages_Administration_HangfireDashboard) }
-                });
-                app.UseHangfireServer();
-            }
-
-            if (bool.Parse(_appConfiguration["Payment:Stripe:IsActive"]))
-            {
-                StripeConfiguration.ApiKey = _appConfiguration["Payment:Stripe:SecretKey"];
-            }
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<AbpCommonHub>("/signalr");
@@ -243,41 +247,7 @@ namespace Afonsoft.SetBox.Web.Startup
 
                 endpoints.MapControllerRoute("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
-
-                if (bool.Parse(_appConfiguration["HealthChecks:HealthChecksEnabled"]))
-                {
-                    endpoints.MapHealthChecks("/healthz", new HealthCheckOptions()
-                    {
-                        Predicate = _ => true,
-                        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-                    });
-                }
             });
-
-            if (bool.Parse(_appConfiguration["HealthChecks:HealthChecksEnabled"]) 
-                && bool.Parse(_appConfiguration["HealthChecks:HealthChecksUI:HealthChecksUIEnabled"]))
-            {
-                    app.UseHealthChecksUI();
-            }
-
-            app.UseResponseCompression();
-
-            app.UseWebMarkupMin();
-
-            if (WebConsts.SwaggerUiEnabled)
-            {
-                // Enable middleware to serve generated Swagger as a JSON endpoint
-                app.UseSwagger();
-                // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
-
-                app.UseSwaggerUI(options =>
-                {
-                    options.SwaggerEndpoint(_appConfiguration["App:SwaggerEndPoint"], "SetBox API V1");
-                    options.IndexStream = () => Assembly.GetExecutingAssembly()
-                        .GetManifestResourceStream("Afonsoft.SetBox.Web.wwwroot.swagger.ui.index.html");
-                    options.InjectBaseUrl(_appConfiguration["App:WebSiteRootAddress"]);
-                }); //URL: /swagger
-            }
         }
     }
 }

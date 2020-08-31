@@ -19,8 +19,8 @@ namespace Afonsoft.SetBox.SetBox
         Task DeleteDevice(string DeviceIdentifier);
         Task<PagedResultDto<DeviceFileDto>> GetDeviceFiles(DeviceInput input);
 
-        Task<PagedResultDto<FileDto>> GetFiles(DeviceInput input);
-        Task PutFile(FileDto input);
+        Task<PagedResultDto<SBFileDto>> GetFiles(DeviceInput input);
+        Task PutFile(SBFileDto input);
         Task DeleteFile(long id);
   
         Task<PagedResultDto<CompanyDto>> GetCompany(CompanyInput input);

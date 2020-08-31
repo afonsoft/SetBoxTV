@@ -8,6 +8,7 @@ using Afonsoft.SetBox.SetBox.Model;
 using Afonsoft.SetBox.SetBox.Model.Companies;
 using Afonsoft.SetBox.SetBox.Model.Files;
 using System;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -75,7 +76,7 @@ namespace Afonsoft.SetBox.SetBox
             throw new NotImplementedException();
         }
 
-        public Task<PagedResultDto<FileDto>> GetFiles(DeviceInput input)
+        public Task<PagedResultDto<SBFileDto>> GetFiles(DeviceInput input)
         {
             throw new NotImplementedException();
         }
@@ -96,7 +97,7 @@ namespace Afonsoft.SetBox.SetBox
             throw new NotImplementedException();
         }
 
-        public Task PutFile(FileDto input)
+        public Task PutFile(SBFileDto input)
         {
             throw new NotImplementedException();
         }
@@ -116,9 +117,25 @@ namespace Afonsoft.SetBox.SetBox
             throw new NotImplementedException();
         }
 
-        public Task SetSupport(SupportDto input)
+        public async Task SetSupport(SupportDto input)
         {
-            throw new NotImplementedException();
+            var supports = await _supportRepository.GetAllListAsync();
+            var support = supports.FirstOrDefault();
+
+            if (support != null)
+            {
+                support.Email = input.Email;
+                support.Name = input.Name;
+                support.Telephone = input.Telephone;
+                support.UrlLogo = input.UrlLogo;
+                support.UrlApk = input.UrlApk;
+                support.VersionApk = input.VersionApk;
+                await _supportRepository.UpdateAsync(support);
+            }
+            else
+            {
+                await _supportRepository.InsertAsync(ObjectMapper.Map<Support>(input));
+            }
         }
     }
 }

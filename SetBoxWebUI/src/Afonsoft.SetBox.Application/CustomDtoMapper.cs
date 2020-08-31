@@ -144,7 +144,7 @@ namespace Afonsoft.SetBox
             configuration.CreateMap<Contact, ContactDto>().ReverseMap();
             configuration.CreateMap<Device, DeviceDto>().ReverseMap();
             configuration.CreateMap<Config, ConfigDto>().ReverseMap();
-            configuration.CreateMap<File, FileDto>().ReverseMap();
+            configuration.CreateMap<File, SBFileDto>().ReverseMap();
             configuration.CreateMap<DeviceFile, DeviceFileDto>().ReverseMap();
             configuration.CreateMap<DeviceLogAccesses, LogAccessesDto>().ReverseMap();
             configuration.CreateMap<DeviceLogError, LogErrorDto>().ReverseMap();
