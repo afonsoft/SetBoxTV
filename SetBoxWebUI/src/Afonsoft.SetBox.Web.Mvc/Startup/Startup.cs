@@ -88,14 +88,25 @@ namespace Afonsoft.SetBox.Web.Startup
                 //Swagger - Enable this line and the related lines in Configure method to enable swagger UI
                 services.AddSwaggerGen(options =>
                 {
-                    options.SwaggerDoc("v1", new OpenApiInfo() { Title = "Portal API", Version = "v1" });
+                    options.SwaggerDoc("v1", new OpenApiInfo()
+                    {
+                        Title = "SetBox API",
+                        Version = "v1",
+                        Contact = new OpenApiContact
+                        {
+                            Email = "afonso.nogueira@outlook.com.br",
+                            Name = "Afonso Dutra Nogueira Filho"
+                        }, 
+                        Description = "API do SetBoxTV"
+                    });
                     options.DocInclusionPredicate((docName, description) => true);
                     options.ParameterFilter<SwaggerEnumParameterFilter>();
                     options.SchemaFilter<SwaggerEnumSchemaFilter>();
                     options.OperationFilter<SwaggerOperationIdFilter>();
                     options.OperationFilter<SwaggerOperationFilter>();
-                    options.CustomDefaultSchemaIdSelector();
-                });
+                    options.IgnoreObsoleteActions();
+                    options.IgnoreObsoleteProperties();
+            });
             }
 
             //Recaptcha
@@ -203,9 +214,6 @@ namespace Afonsoft.SetBox.Web.Startup
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint(_appConfiguration["App:SwaggerEndPoint"], "Portal API V1");
-                options.IndexStream = () => Assembly.GetExecutingAssembly()
-                    .GetManifestResourceStream("Afonsoft.SetBox.Web.wwwroot.swagger.ui.index.html");
-                options.InjectBaseUrl(_appConfiguration["App:WebSiteRootAddress"]);
             }); //URL: /swagger
 
 
