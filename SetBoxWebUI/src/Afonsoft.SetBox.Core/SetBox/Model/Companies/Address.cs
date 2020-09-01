@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using Abp.Domain.Entities.Auditing;
+using Abp.Domain.Entities;
 
 namespace Afonsoft.SetBox.SetBox.Model.Companies
 {
     [Table("AppSetBoxAddress")]
-    public class Address : FullAuditedEntity<long>
+    public class Address : Entity<long>
     {
         public string City { get; set; }
         public string State { get; set; }

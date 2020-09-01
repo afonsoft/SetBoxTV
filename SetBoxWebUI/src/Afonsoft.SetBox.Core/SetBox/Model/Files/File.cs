@@ -1,13 +1,11 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
-using Abp.Domain.Entities.Auditing;
 
 namespace Afonsoft.SetBox.SetBox.Model.Files
 {
     [Table("AppSetBoxFile")]
-    public class File : FullAuditedEntity<long>
+    public class File : Entity<long>
     {
         [Required]
         public string Name { get; set; }

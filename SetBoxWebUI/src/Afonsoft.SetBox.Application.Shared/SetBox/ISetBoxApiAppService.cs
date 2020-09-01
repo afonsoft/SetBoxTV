@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Afonsoft.SetBox.SetBox
 {
-    public interface ISetBoxAppService : IApplicationService
+    public interface ISetBoxApiAppService : IApplicationService
     {
         Task<PagedResultDto<LogErrorDto>> GetDeviceLogsErros(LogInput input);
         Task SetDeviceLogsErros(LogErrorDto input);

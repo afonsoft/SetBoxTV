@@ -2,15 +2,22 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Abp.Domain.Entities.Auditing;
+using Abp.Domain.Entities;
 using Afonsoft.SetBox.SetBox.Model.Companies;
 using Afonsoft.SetBox.SetBox.Model.Files;
 
 namespace Afonsoft.SetBox.SetBox.Model
 {
     [Table("AppSetBoxDevice")]
-    public class Device : FullAuditedEntity<long>
+    public class Device : Entity<long>
     {
+        public Device()
+        {
+            this.Files = new List<DeviceFile>();
+            this.LogAccesses = new List<DeviceLogAccesses>();
+            this.Logs = new List<DeviceLogError>();
+        }
+
         [Required]
         public string DeviceIdentifier { get; set; }
         [Required]
@@ -25,8 +32,8 @@ namespace Afonsoft.SetBox.SetBox.Model
         public string DeviceName { get; set; }
 
         public virtual Company Company { get; set; }
-        public virtual ICollection<DeviceFile> Files { get; set; }
-        public virtual ICollection<DeviceLogAccesses> LogAccesses { get; set; }
-        public virtual ICollection<DeviceLogError> Logs { get; set; }
+        public virtual List<DeviceFile> Files { get; set; }
+        public virtual List<DeviceLogAccesses> LogAccesses { get; set; }
+        public virtual List<DeviceLogError> Logs { get; set; }
     }
 }

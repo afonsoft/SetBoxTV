@@ -1,13 +1,11 @@
 ﻿using Abp.Domain.Entities;
-using Abp.Domain.Entities.Auditing;
-using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Afonsoft.SetBox.SetBox.Model
 {
     [Table("AppSetBoxSupport")]
-    public class Support : FullAuditedEntity<long>
+    public class Support : Entity<long>
     {
         [Required]
         public string Company { get; set; }

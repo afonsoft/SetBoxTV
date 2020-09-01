@@ -70,5 +70,8 @@
         public const string Pages_Administration_Host_Settings = "Pages.Administration.Host.Settings";
         public const string Pages_Administration_Host_Dashboard = "Pages.Administration.Host.Dashboard";
 
+        //SetBox Permission
+        public const string Pages_Administration_SetBox = "Pages.Administration.SetBox";
+
     }
 }
