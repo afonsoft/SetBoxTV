@@ -3,6 +3,8 @@ using Abp.Auditing;
 using Abp.Authorization;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
+using Abp.Domain.Uow;
+using Abp.Json;
 using Abp.Linq.Extensions;
 using Afonsoft.SetBox.Authorization;
 using Afonsoft.SetBox.SetBox.Dto;
@@ -88,31 +90,107 @@ namespace Afonsoft.SetBox.SetBox
             return new PagedResultDto<CompanyDto>(total, itemsQuery);
         }
 
-        public Task<PagedResultDto<DeviceFileDto>> GetDeviceFiles(DeviceInput input)
+        public async Task<PagedResultDto<DeviceFileDto>> GetDeviceFiles(DeviceInput input)
         {
-            throw new NotImplementedException();
+            var query = _deviceFileRepository.GetAll()
+                .Include(x => x.File)
+                .Include(x => x.Device)
+                .Where(x => (string.IsNullOrWhiteSpace(input.DeviceIdentifier) || x.Device.DeviceIdentifier == input.DeviceIdentifier)
+                    && (string.IsNullOrWhiteSpace(input.DeviceName) || x.Device.DeviceName == input.DeviceName)
+                    && (string.IsNullOrWhiteSpace(input.Manufacturer) || x.Device.Name == input.Manufacturer)
+                    && (string.IsNullOrWhiteSpace(input.Model) || x.Device.Model == input.Model)
+                    && (string.IsNullOrWhiteSpace(input.Platform) || x.Device.Platform == input.Platform));
+
+
+            var items = await query.PageBy(input)
+                                   .ToListAsync();
+
+            var itemsQuery = ObjectMapper.Map<List<DeviceFileDto>>(items);
+
+            var total = await query.CountAsync();
+
+            return new PagedResultDto<DeviceFileDto>(total, itemsQuery);
         }
 
         [DisableAuditing]
-        public Task<PagedResultDto<LogAccessesDto>> GetDeviceLogsAccesses(LogInput input)
+        public async Task<PagedResultDto<LogAccessesDto>> GetDeviceLogsAccesses(LogInput input)
         {
-            throw new NotImplementedException();
+            var query = _deviceLogAcessesRepository.GetAll()
+              .Include(x => x.Device)
+              .Where(x => (string.IsNullOrWhiteSpace(input.DeviceIdentifier) || x.Device.DeviceIdentifier == input.DeviceIdentifier));
+
+            var items = await query.PageBy(input)
+                                   .ToListAsync();
+
+            var itemsQuery = ObjectMapper.Map<List<LogAccessesDto>>(items);
+
+            var total = await query.CountAsync();
+
+            return new PagedResultDto<LogAccessesDto>(total, itemsQuery);
         }
 
         [DisableAuditing]
-        public Task<PagedResultDto<LogErrorDto>> GetDeviceLogsErros(LogInput input)
+        public async Task<PagedResultDto<LogErrorDto>> GetDeviceLogsErros(LogInput input)
         {
-            throw new NotImplementedException();
+            var query = _deviceLogErrorRepository.GetAll()
+            .Include(x => x.Device)
+            .Where(x => (string.IsNullOrWhiteSpace(input.DeviceIdentifier) || x.Device.DeviceIdentifier == input.DeviceIdentifier));
+
+            var items = await query.PageBy(input)
+                                   .ToListAsync();
+
+            var itemsQuery = ObjectMapper.Map<List<LogErrorDto>>(items);
+
+            var total = await query.CountAsync();
+
+            return new PagedResultDto<LogErrorDto>(total, itemsQuery);
         }
 
-        public Task<PagedResultDto<DeviceDto>> GetDevices(DeviceInput input)
+        public async Task<PagedResultDto<DeviceDto>> GetDevices(DeviceInput input)
         {
-            throw new NotImplementedException();
+            var query = _deviceRepository.GetAll()
+           .Include(x => x.Files)
+           .Include(x => x.Configuration)
+           .Include(x => x.Company)
+           .Include(x => x.Company.Address)
+           .Include(x => x.Company.Contacts)
+           .Where(x => (string.IsNullOrWhiteSpace(input.DeviceIdentifier) || x.DeviceIdentifier == input.DeviceIdentifier)
+                    && (string.IsNullOrWhiteSpace(input.DeviceName) || x.DeviceName == input.DeviceName)
+                    && (string.IsNullOrWhiteSpace(input.Manufacturer) || x.Name == input.Manufacturer)
+                    && (string.IsNullOrWhiteSpace(input.Model) || x.Model == input.Model)
+                    && (string.IsNullOrWhiteSpace(input.Platform) || x.Platform == input.Platform));
+
+            var items = await query.PageBy(input)
+                                   .ToListAsync();
+
+            var itemsQuery = ObjectMapper.Map<List<DeviceDto>>(items);
+
+            var total = await query.CountAsync();
+
+            return new PagedResultDto<DeviceDto>(total, itemsQuery);
         }
 
-        public Task<PagedResultDto<SBFileDto>> GetFiles(DeviceInput input)
+        public async Task<PagedResultDto<SBFileDto>> GetFiles(DeviceInput input)
         {
-            throw new NotImplementedException();
+            var query1 = _deviceFileRepository.GetAll()
+                .Include(x => x.File)
+                .Include(x => x.Device)
+                .Where(x => (string.IsNullOrWhiteSpace(input.DeviceIdentifier) || x.Device.DeviceIdentifier == input.DeviceIdentifier)
+                    && (string.IsNullOrWhiteSpace(input.DeviceName) || x.Device.DeviceName == input.DeviceName)
+                    && (string.IsNullOrWhiteSpace(input.Manufacturer) || x.Device.Name == input.Manufacturer)
+                    && (string.IsNullOrWhiteSpace(input.Model) || x.Device.Model == input.Model)
+                    && (string.IsNullOrWhiteSpace(input.Platform) || x.Device.Platform == input.Platform));
+            
+            var query = query1.Select(x => x.File);
+
+            var items = await query.PageBy(input)
+                                   .ToListAsync();
+
+            var itemsQuery = ObjectMapper.Map<List<SBFileDto>>(items);
+
+            var total = await query.CountAsync();
+
+            return new PagedResultDto<SBFileDto>(total, itemsQuery);
         }
 
         public async Task<SupportDto> GetSupport()
@@ -121,41 +199,47 @@ namespace Afonsoft.SetBox.SetBox
             return ObjectMapper.Map<SupportDto>(support.FirstOrDefault());
         }
 
+        [UnitOfWork]
         [AbpAuthorize(AppPermissions.Pages_Administration_SetBox)]
-        public Task PutCompany(CompanyDto input)
+        public async Task<long> PutCompany(CompanyDto input)
         {
-            throw new NotImplementedException();
+            return await _companyRepository.InsertAndGetIdAsync(ObjectMapper.Map<Company>(input));
         }
 
-        public Task PutDevices(DeviceDto input)
+        public async Task<long> PutDevices(DeviceDto input)
         {
-            throw new NotImplementedException();
+            return await _deviceRepository.InsertAndGetIdAsync(ObjectMapper.Map<Device>(input));
         }
 
+        [UnitOfWork]
         [AbpAuthorize(AppPermissions.Pages_Administration_SetBox)]
-        public Task PutFile(SBFileDto input)
+        public async Task<long> PutFile(SBFileDto input)
         {
-            throw new NotImplementedException();
+            return await _fileRepository.InsertAndGetIdAsync(ObjectMapper.Map<File>(input));
         }
 
+        [UnitOfWork]
         [AbpAuthorize(AppPermissions.Pages_Administration_SetBox)]
         public Task SetCompany(CompanyDto input)
         {
             throw new NotImplementedException();
         }
 
+        [UnitOfWork]
         [DisableAuditing]
-        public Task SetDeviceLogsAccesses(LogAccessesDto input)
+        public async Task<long> PutDeviceLogsAccesses(LogAccessesDto input)
         {
-            throw new NotImplementedException();
+            return await _deviceLogAcessesRepository.InsertAndGetIdAsync(ObjectMapper.Map<DeviceLogAccesses>(input));
         }
 
+        [UnitOfWork]
         [DisableAuditing]
-        public Task SetDeviceLogsErros(LogErrorDto input)
+        public async Task<long> PutDeviceLogsErros(LogErrorDto input)
         {
-            throw new NotImplementedException();
+            return await _deviceLogErrorRepository.InsertAndGetIdAsync(ObjectMapper.Map<DeviceLogError>(input));
         }
 
+        [UnitOfWork]
         [AbpAuthorize(AppPermissions.Pages_Administration_SetBox)]
         public async Task SetSupport(SupportDto input)
         {

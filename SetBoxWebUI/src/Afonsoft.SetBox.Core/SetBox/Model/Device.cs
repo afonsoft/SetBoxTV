@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 using Afonsoft.SetBox.SetBox.Model.Companies;
 using Afonsoft.SetBox.SetBox.Model.Files;
@@ -32,6 +31,7 @@ namespace Afonsoft.SetBox.SetBox.Model
         public string Manufacturer { get; set; }
         public string DeviceName { get; set; }
 
+        public virtual Config Configuration { get; set; }
         public virtual Company Company { get; set; }
         public virtual List<DeviceFile> Files { get; set; }
         public virtual List<DeviceLogAccesses> LogAccesses { get; set; }

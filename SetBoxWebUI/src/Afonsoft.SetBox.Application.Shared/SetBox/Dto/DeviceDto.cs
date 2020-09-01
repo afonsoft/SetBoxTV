@@ -4,8 +4,12 @@ using System.Collections.Generic;
 
 namespace Afonsoft.SetBox.SetBox.Dto
 {
-    public class DeviceDto: EntityDto<long>
+    public class DeviceDto : EntityDto<long>
     {
+        public DeviceDto()
+        {
+            this.Files = new List<DeviceFileDto>();
+        }
         public string DeviceIdentifier { get; set; }
         public string Platform { get; set; }
         public string Version { get; set; }
@@ -23,6 +27,7 @@ namespace Afonsoft.SetBox.SetBox.Dto
         public long? DeleterUserId { get; set; }
         public DateTime? DeletionTime { get; set; }
         public CompanyDto Company { get; set; }
-        public ICollection<DeviceFileDto> Files { get; set; }
+        public ConfigDto Configuration { get; set; }
+        public List<DeviceFileDto> Files { get; set; }
     }
 }

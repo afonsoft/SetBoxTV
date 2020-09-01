@@ -13,7 +13,6 @@ namespace Afonsoft.SetBox.SetBox.Dto
         public long? LastModifierUserId { get; set; }
         public long? DeleterUserId { get; set; }
         public DateTime? DeletionTime { get; set; }
-        public long DeviceId { get; set; }
         public bool EnableVideo { get; set; }
     }
 }

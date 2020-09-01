@@ -9,23 +9,23 @@ namespace Afonsoft.SetBox.SetBox
     public interface ISetBoxApiAppService : IApplicationService
     {
         Task<PagedResultDto<LogErrorDto>> GetDeviceLogsErros(LogInput input);
-        Task SetDeviceLogsErros(LogErrorDto input);
+        Task<long> PutDeviceLogsErros(LogErrorDto input);
 
         Task<PagedResultDto<LogAccessesDto>> GetDeviceLogsAccesses(LogInput input);
-        Task SetDeviceLogsAccesses(LogAccessesDto input);
+        Task<long> PutDeviceLogsAccesses(LogAccessesDto input);
 
         Task<PagedResultDto<DeviceDto>> GetDevices(DeviceInput input);
-        Task PutDevices(DeviceDto input);
+        Task<long> PutDevices(DeviceDto input);
         Task DeleteDevice(string DeviceIdentifier);
         Task<PagedResultDto<DeviceFileDto>> GetDeviceFiles(DeviceInput input);
 
         Task<PagedResultDto<SBFileDto>> GetFiles(DeviceInput input);
-        Task PutFile(SBFileDto input);
+        Task<long> PutFile(SBFileDto input);
         Task DeleteFile(long id);
   
         Task<PagedResultDto<CompanyDto>> GetCompany(CompanyInput input);
         Task SetCompany(CompanyDto input);
-        Task PutCompany(CompanyDto input);
+        Task<long> PutCompany(CompanyDto input);
 
         Task<SupportDto> GetSupport();
         Task SetSupport(SupportDto input);
