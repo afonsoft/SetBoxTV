@@ -1,7 +1,6 @@
 ﻿using Abp.IdentityServer4;
 using Abp.Zero.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using Afonsoft.SetBox.Authorization.Roles;
 using Afonsoft.SetBox.Authorization.Users;
 using Afonsoft.SetBox.Chat;
@@ -11,6 +10,9 @@ using Afonsoft.SetBox.MultiTenancy;
 using Afonsoft.SetBox.MultiTenancy.Accounting;
 using Afonsoft.SetBox.MultiTenancy.Payments;
 using Afonsoft.SetBox.Storage;
+using Afonsoft.SetBox.SetBox.Model;
+using Afonsoft.SetBox.SetBox.Model.Files;
+using Afonsoft.SetBox.SetBox.Model.Companies;
 
 namespace Afonsoft.SetBox.EntityFrameworkCore
 {
@@ -33,6 +35,18 @@ namespace Afonsoft.SetBox.EntityFrameworkCore
         public virtual DbSet<PersistedGrantEntity> PersistedGrants { get; set; }
 
         public virtual DbSet<SubscriptionPaymentExtensionData> SubscriptionPaymentExtensionDatas { get; set; }
+
+        //SetBox
+        public virtual DbSet<Support> Supports { get; set; }
+        public virtual DbSet<DeviceLogError> DeviceLogErrors { get; set; }
+        public virtual DbSet<DeviceLogAccesses> DeviceLogAccesses { get; set; }
+        public virtual DbSet<Device> Devices { get; set; }
+        public virtual DbSet<Config> Configs { get; set; }
+        public virtual DbSet<File> Files { get; set; }
+        public virtual DbSet<DeviceFile> DeviceFiles { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Company> Companies { get; set; }
+        public virtual DbSet<Address> Address { get; set; }
 
         public SetBoxDbContext(DbContextOptions<SetBoxDbContext> options)
             : base(options)

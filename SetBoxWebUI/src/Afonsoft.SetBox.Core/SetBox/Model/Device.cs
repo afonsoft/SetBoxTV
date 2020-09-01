@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using Afonsoft.SetBox.SetBox.Model.Companies;
 using Afonsoft.SetBox.SetBox.Model.Files;
 
 namespace Afonsoft.SetBox.SetBox.Model
 {
     [Table("AppSetBoxDevice")]
-    public class Device : Entity<long>
+    public class Device : FullAuditedEntity<long>
     {
         public Device()
         {

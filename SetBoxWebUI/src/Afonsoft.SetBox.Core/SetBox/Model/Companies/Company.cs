@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 
 namespace Afonsoft.SetBox.SetBox.Model.Companies
 {
     [Table("AppSetBoxCompany")]
-    public class Company : Entity<long>
+    public class Company : FullAuditedEntity<long>
     {
         public Company()
         {
