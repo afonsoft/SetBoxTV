@@ -29,29 +29,36 @@ namespace Afonsoft.SetBox.Web.Areas.App.Startup
                             permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_SetBox)
                         ).AddItem(new MenuItemDefinition(
                             AppPageNames.SetBoxMenu.Device,
+                            L("Dashboard"),
+                            url: "App/SetBox",
+                            icon: "flaticon-line-graph",
+                            permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_SetBox)
+                            )
+                        ).AddItem(new MenuItemDefinition(
+                            AppPageNames.SetBoxMenu.Device,
                             L("Device"),
-                            url: "App/SetBoxDevices",
+                            url: "App/SetBox/Devices",
                             icon: "flaticon-feed",
                             permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_SetBox)
                             )
                         ).AddItem(new MenuItemDefinition(
                             AppPageNames.SetBoxMenu.File,
                             L("File"),
-                            url: "App/SetBoxFiles",
+                            url: "App/SetBox/Files",
                             icon: "flaticon-lock",
                             permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_SetBox)
                             )
                         ).AddItem(new MenuItemDefinition(
                             AppPageNames.SetBoxMenu.Support,
                             L("Support"),
-                            url: "App/SetBoxSupport",
-                            icon: "flaticon-information",
+                            url: "App/SetBox/Support",
+                            icon: "flaticon-app",
                             permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_SetBox)
                             )
                         ).AddItem(new MenuItemDefinition(
                             AppPageNames.SetBoxMenu.Company,
                             L("Company"),
-                            url: "App/SetBoxCompany",
+                            url: "App/SetBox/Company",
                             icon: "flaticon-information",
                             permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_SetBox)
                             )
