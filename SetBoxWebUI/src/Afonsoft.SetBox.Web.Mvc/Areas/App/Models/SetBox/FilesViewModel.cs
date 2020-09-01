@@ -7,8 +7,12 @@ using System.Collections.Generic;
 namespace Afonsoft.SetBox.Web.Areas.App.Models.SetBox
 
 {
-    public class FilesViewModel : BaseViewModel<FileDto, long>
+    public class FilesViewModel : BaseViewModel
     {
+
+        public FileDto Selected { get; set; }
+        public IReadOnlyList<FileDto> Itens { get; set; }
+
         public FilesViewModel(string messageError) : base(messageError)
         {
 

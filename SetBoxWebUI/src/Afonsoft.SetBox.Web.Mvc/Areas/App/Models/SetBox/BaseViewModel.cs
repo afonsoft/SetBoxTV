@@ -1,17 +1,12 @@
-﻿using Abp.Application.Services.Dto;
-using System;
-using System.Collections.Generic;
+﻿using System;
 
 namespace Afonsoft.SetBox.Web.Areas.App.Models.SetBox
 
 {
-    public abstract class BaseViewModel<T, TPrimaryKey> where T : IEntityDto<TPrimaryKey>
+    public abstract class BaseViewModel
     {
         public string Mensage { get; set; }
         public string Title { get; set; }
-
-        public T Selected { get; set; }
-        public List<T> Itens { get; set; }
 
         protected BaseViewModel(string messageError)
         {

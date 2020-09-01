@@ -1,11 +1,16 @@
 ﻿using Afonsoft.SetBox.SetBox.Dto;
 using System;
+using System.Collections.Generic;
 
 namespace Afonsoft.SetBox.Web.Areas.App.Models.SetBox
 
 {
-    public class DeviceViewModel : BaseViewModel<DeviceDto, long>
+    public class DeviceViewModel : BaseViewModel
     {
+
+        public DeviceDto Selected { get; set; }
+        public IReadOnlyList<DeviceDto> Itens { get; set; }
+
         public DeviceViewModel(string messageError) : base(messageError)
         {
             
