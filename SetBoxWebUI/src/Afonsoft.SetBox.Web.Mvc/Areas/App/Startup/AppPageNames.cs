@@ -22,7 +22,6 @@
             public const string Settings = "Administration.Settings.Host";
             public const string Dashboard = "Dashboard";
             public const string Hangfire = "Hangfire";
-            public const string GraphQL = "GraphQL";
             public const string Swagger = "Swagger";
             
         }
@@ -32,6 +31,15 @@
             public const string Dashboard = "Dashboard.Tenant";
             public const string Settings = "Administration.Settings.Tenant";
             public const string SubscriptionManagement = "Administration.SubscriptionManagement.Tenant";
+        }
+
+        public static class SetBoxMenu
+        {
+            public const string Home = "SetBox.Home";
+            public const string Company = "SetBox.Company";
+            public const string Device = "SetBox.Device";
+            public const string File = "SetBox.File";
+            public const string Support = "SetBox.Support";
         }
     }
 }

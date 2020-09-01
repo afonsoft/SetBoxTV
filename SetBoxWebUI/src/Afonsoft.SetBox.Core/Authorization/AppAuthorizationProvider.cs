@@ -89,7 +89,7 @@ namespace Afonsoft.SetBox.Authorization
             administration.CreateChildPermission(AppPermissions.Pages_Administration_Host_Dashboard, L("Dashboard"), multiTenancySides: MultiTenancySides.Host);
 
             //SETBOX PERMISSIONS
-            pages.CreateChildPermission(AppPermissions.Pages_Administration_SetBox, L("SetBox"), multiTenancySides: MultiTenancySides.Host);
+            pages.CreateChildPermission(AppPermissions.Pages_Administration_SetBox, L("SetBox"));
 
         }
 

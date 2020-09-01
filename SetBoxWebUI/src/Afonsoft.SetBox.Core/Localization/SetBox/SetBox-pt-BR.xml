@@ -680,7 +680,7 @@
     </text>
     <text name="DemoUiComponents_Info_Metronic_Link_Text">Check Metronic theme for more UI components</text>
     <text name="Image">Image</text>
-    <text name="File">File</text>
+    <text name="File">Arquivo</text>
     <text name="Link">Link</text>
     <text name="Billing">Billing</text>
     <text name="LegalName">Legal Name</text>
@@ -967,5 +967,9 @@
     <text name="Swagger">Swagger</text>
     <text name="Hangfire">Hangfire</text>
     <text name="GraphQL">GraphQL</text>
+	<text name="SetBox">SetBox</text>
+	<text name="Support">Suporte</text>
+	<text name="Device">Device</text>
+	<text name="Company">Company</text>
   </texts>
 </localizationDictionary>

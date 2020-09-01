@@ -967,5 +967,9 @@
     <text name="Swagger">Swagger</text>
     <text name="Hangfire">Hangfire</text>
     <text name="GraphQL">GraphQL</text>
+	  <text name="SetBox">SetBox</text>
+	  <text name="Support">Support</text>
+	  <text name="Device">Device</text>
+	  <text name="Company">Company</text>
   </texts>
 </localizationDictionary>

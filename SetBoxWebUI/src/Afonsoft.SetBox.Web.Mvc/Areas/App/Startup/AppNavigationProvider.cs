@@ -21,7 +21,43 @@ namespace Afonsoft.SetBox.Web.Areas.App.Startup
                         icon: "flaticon-line-graph",
                         permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_Host_Dashboard)
                     )
-                ).AddItem(new MenuItemDefinition(
+                )
+                .AddItem(new MenuItemDefinition(
+                            AppPageNames.SetBoxMenu.Home,
+                            L("SetBox"),
+                            icon: "flaticon-line-graph",
+                            permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_SetBox)
+                        ).AddItem(new MenuItemDefinition(
+                            AppPageNames.SetBoxMenu.Device,
+                            L("Device"),
+                            url: "App/SetBoxDevices",
+                            icon: "flaticon-feed",
+                            permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_SetBox)
+                            )
+                        ).AddItem(new MenuItemDefinition(
+                            AppPageNames.SetBoxMenu.File,
+                            L("File"),
+                            url: "App/SetBoxFiles",
+                            icon: "flaticon-lock",
+                            permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_SetBox)
+                            )
+                        ).AddItem(new MenuItemDefinition(
+                            AppPageNames.SetBoxMenu.Support,
+                            L("Support"),
+                            url: "App/SetBoxSupport",
+                            icon: "flaticon-information",
+                            permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_SetBox)
+                            )
+                        ).AddItem(new MenuItemDefinition(
+                            AppPageNames.SetBoxMenu.Company,
+                            L("Company"),
+                            url: "App/SetBoxCompany",
+                            icon: "flaticon-information",
+                            permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_SetBox)
+                            )
+                        )
+                )
+                .AddItem(new MenuItemDefinition(
                     AppPageNames.Host.Tenants,
                     L("Tenants"),
                     url: "App/Tenants",
@@ -143,16 +179,9 @@ namespace Afonsoft.SetBox.Web.Areas.App.Startup
                             icon: "flaticon-feed",
                             permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_HangfireDashboard)
                         )
-                    )
-                .AddItem(new MenuItemDefinition(
-                            AppPageNames.Host.GraphQL,
-                            L("GraphQL"),
-                            url: "ui/playground",
-                            icon: "flaticon-settings",
-                            permissionDependency: new SimplePermissionDependency(AppPermissions.Pages_Administration_HangfireDashboard),
-                            target: "_blank"
-                        )
                     );
+
+
         }
 
         private static ILocalizableString L(string name)

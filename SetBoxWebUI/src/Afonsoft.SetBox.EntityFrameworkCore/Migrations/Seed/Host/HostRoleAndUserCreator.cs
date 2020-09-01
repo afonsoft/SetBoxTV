@@ -50,7 +50,7 @@ namespace Afonsoft.SetBox.Migrations.Seed.Host
                     UserName = AbpUserBase.AdminUserName,
                     Name = "admin",
                     Surname = "admin",
-                    EmailAddress = "admin@aspnetzero.com",
+                    EmailAddress = "afonso.nogueira@afonsoft.com.br",
                     IsEmailConfirmed = true,
                     ShouldChangePasswordOnNextLogin = false,
                     IsActive = true,

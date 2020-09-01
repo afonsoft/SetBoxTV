@@ -220,9 +220,9 @@ namespace Afonsoft.SetBox.SetBox
 
         [UnitOfWork]
         [AbpAuthorize(AppPermissions.Pages_Administration_SetBox)]
-        public Task SetCompany(CompanyDto input)
+        public async Task SetCompany(CompanyDto input)
         {
-            throw new NotImplementedException();
+            await _companyRepository.UpdateAsync(ObjectMapper.Map<Company>(input));
         }
 
         [UnitOfWork]
