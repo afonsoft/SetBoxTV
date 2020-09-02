@@ -261,5 +261,26 @@ namespace Afonsoft.SetBox.SetBox
                 await _supportRepository.InsertAsync(ObjectMapper.Map<Support>(input));
             }
         }
+
+        [UnitOfWork]
+        [AbpAuthorize(AppPermissions.Pages_Administration_SetBox)]
+        public async Task SetOrderDeviceFile(OrderDto input)
+        {
+            var devicefiles = await _deviceFileRepository.GetAll()
+                                                .Include(x => x.Device)
+                                                .Include(x => x.File)
+                                                .Where(x => x.Device.Id == input.DeviceId)
+                                                .ToListAsync();
+
+            foreach (var fi in input.fileOrders)
+            {
+                var deviceFile = devicefiles.FirstOrDefault(x => x.File.Id == fi.FileId);
+                if (deviceFile != null)
+                {
+                    deviceFile.Order = fi.Order;
+                    await _deviceFileRepository.UpdateAsync(deviceFile);
+                }
+            }
+        }
     }
 }

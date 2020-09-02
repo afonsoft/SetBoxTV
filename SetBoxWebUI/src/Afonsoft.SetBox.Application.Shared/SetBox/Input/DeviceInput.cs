@@ -4,6 +4,7 @@ namespace Afonsoft.SetBox.SetBox.Input
 {
     public class DeviceInput : PagedAndSortedInputDto
     {
+        public long Id { get; set; }
         public string DeviceIdentifier { get; set; }
         public string Platform { get; set; }
         public string Model { get; set; }

@@ -29,5 +29,7 @@ namespace Afonsoft.SetBox.SetBox
 
         Task<SupportDto> GetSupport();
         Task SetSupport(SupportDto input);
+
+        Task SetOrderDeviceFile(OrderDto input);
     }
 }

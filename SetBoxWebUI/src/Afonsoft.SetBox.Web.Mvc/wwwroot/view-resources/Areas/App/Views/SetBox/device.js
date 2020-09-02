@@ -18,7 +18,7 @@ function openModal(action, id) {
                         id: id
                     };
                 },
-                url: '/Devices/ListLogError',
+                url: '/SetBox/ListLogError',
                 labels: translate,
                 searchSettings: {
                     delay: 100,
@@ -41,7 +41,7 @@ function openModal(action, id) {
                         id: id
                     };
                 },
-                url: '/Devices/ListLog',
+                url: '/SetBox/ListLog',
                 labels: translate,
                 searchSettings: {
                     delay: 100,
