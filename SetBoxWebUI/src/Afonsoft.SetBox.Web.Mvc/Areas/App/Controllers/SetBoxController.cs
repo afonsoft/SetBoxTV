@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
 using Afonsoft.SetBox.Authorization;
 using Afonsoft.SetBox.SetBox;
+using Afonsoft.SetBox.Web.Areas.App.Models.SetBox;
 using Afonsoft.SetBox.Web.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,23 +24,23 @@ namespace Afonsoft.SetBox.Web.Areas.App.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(new DeviceViewModel());
         }
         public ActionResult Company()
         {
-            return View();
+            return View(new CompanyViewModel());
         }
         public ActionResult Devices()
         {
-            return View();
+            return View(new DeviceViewModel());
         }
         public ActionResult Files()
         {
-            return View();
+            return View(new FilesViewModel());
         }
         public ActionResult Support()
         {
-            return View();
+            return View(new SupportViewModel());
         }
     }
 }

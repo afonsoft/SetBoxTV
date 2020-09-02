@@ -44,6 +44,31 @@
 
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="wwwroot\lib\bootbox\bootbox.all.js" />
+    <None Include="wwwroot\lib\bootbox\bootbox.all.min.js" />
+    <None Include="wwwroot\lib\bootbox\bootbox.js" />
+    <None Include="wwwroot\lib\bootbox\bootbox.locales.js" />
+    <None Include="wwwroot\lib\bootbox\bootbox.locales.min.js" />
+    <None Include="wwwroot\lib\bootbox\bootbox.min.js" />
+    <None Include="wwwroot\lib\bootstrap-slider\bootstrap-slider.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-bootgrid\jquery.bootgrid.fa.min.js" />
+    <None Include="wwwroot\lib\jquery-bootgrid\jquery.bootgrid.min.js" />
+    <None Include="wwwroot\lib\jquery-ui\jquery-ui.min.js" />
     <None Include="wwwroot\Plugins\.gitkeep" />
     <None Update="Dockerfile">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -76,5 +101,13 @@
   <ItemGroup>
     <Folder Include="LOGS\" />
   </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="npm install" />
+  </Target>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="gulp build" />
+  </Target>
 
 </Project>
