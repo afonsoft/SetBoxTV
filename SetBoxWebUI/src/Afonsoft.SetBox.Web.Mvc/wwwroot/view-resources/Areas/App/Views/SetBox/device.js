@@ -18,7 +18,7 @@ function openModal(action, id) {
                         id: id
                     };
                 },
-                url: '/SetBox/ListLogError',
+                url: '/App/SetBox/ListLogError',
                 labels: translate,
                 searchSettings: {
                     delay: 100,
@@ -41,7 +41,7 @@ function openModal(action, id) {
                         id: id
                     };
                 },
-                url: '/SetBox/ListLog',
+                url: '/App/SetBox/ListLog',
                 labels: translate,
                 searchSettings: {
                     delay: 100,
@@ -61,7 +61,7 @@ function openModal(action, id) {
             axis: 'y',
             update: function (event, ui) {
                 var data = $(this).sortable('serialize');
-                $.post('/Devices/UpdateOrderFiles', { id: id, order: data });
+                $.post('/App/SetBox/UpdateOrderFiles', { id: id, order: data });
             }
         });
         $("#sortable").disableSelection();
@@ -90,13 +90,12 @@ $(document).ready(function () {
     var grid = $("#grid-data-device").bootgrid(
         {
             ajax: true,
-            url: '/Devices/List',
+            url: '/App/SetBox/ListDevices',
             labels: translate,
             searchSettings: {
                 delay: 100,
                 characters: 3
             },
-
             formatters: {
                 "actions": function (column, row) {
                     return "<div class='btn-group btn-group-sm' role='group'>" +
@@ -137,7 +136,7 @@ $(document).ready(function () {
                         callback: function (result) {
                             if (result) {
                                 $.ajax({
-                                    url: '/Devices/Delete?id=' + id,
+                                    url: '/App/Devices/DeleteDevice?id=' + id,
                                     cache: false,
                                     success: function (result) {
                                         PleaseWaitHide();

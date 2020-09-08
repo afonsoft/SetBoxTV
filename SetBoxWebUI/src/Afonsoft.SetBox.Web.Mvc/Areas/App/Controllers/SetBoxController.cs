@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Abp.AspNetCore.Mvc.Authorization;
 using Afonsoft.SetBox.Authorization;
+using Afonsoft.SetBox.Dto;
 using Afonsoft.SetBox.SetBox;
 using Afonsoft.SetBox.SetBox.Dto;
 using Afonsoft.SetBox.SetBox.Input;
@@ -41,7 +42,7 @@ namespace Afonsoft.SetBox.Web.Areas.App.Controllers
                         var device = await _setBoxApiAppService.GetDevices(new SetBox.Input.DeviceInput() { Id = long.Parse(id) });
                         if (device != null)
                         {
-                            
+                            //_setBoxApiAppService.SetOrderDeviceFile(new OrderDto() { DeviceId = long.Parse(id), fileOrders = new List<FileOrder> { new FileOrder { } } })
                         }
                     }
                 }
@@ -54,7 +55,8 @@ namespace Afonsoft.SetBox.Web.Areas.App.Controllers
             return true;
         }
 
-        public async Task<PagedResultDto<LogErrorDto>> ListLogError(LogInput input)
+        [HttpPost]
+        public async Task<GridPagedOutput<LogErrorDto>> ListLogError(GridPagedInput input)
         {
             try
             {
@@ -62,32 +64,33 @@ namespace Afonsoft.SetBox.Web.Areas.App.Controllers
                     input.SearchPhrase = "";
 
                 if (string.IsNullOrEmpty(input.Id))
-                    throw new KeyNotFoundException($"DeviceId: {input.Id} not found.");
+                    throw new KeyNotFoundException($"DeviceIdentifier: {input.Id} not found.");
 
-                var devices = await _devices.GetAsync(f => f.DeviceId.ToString() == input.Id);
+                var devices = await _setBoxApiAppService.GetDevices(new DeviceInput { DeviceIdentifier = input.Id });
 
-                if (devices.Count <= 0)
-                    throw new KeyNotFoundException($"DeviceId: {input.Id} not found.");
+                if (devices.Items.Count <= 0)
+                    throw new KeyNotFoundException($"DeviceIdentifier: {input.Id} not found.");
 
-                var logs = devices[0].Logs.Where(l => l.DeviceLogId.ToString() == input.Id
-                                                        || l.CreationDateTime.ToString("dd/MM/yyyy").Contains(input.SearchPhrase)
-                                                        || l.IpAcessed.Contains(input.SearchPhrase)
-                                                        || l.Message.Contains(input.SearchPhrase))
-                                                 .Skip((input.Current - 1) * input.RowCount)
-                                                 .Take(input.RowCount)
-                                                 .ToList();
+                var logs = await _setBoxApiAppService.GetDeviceLogsErros(new LogInput
+                {
+                    DeviceIdentifier = input.Id,
+                    Filter = input.SearchPhrase,
+                    MaxResultCount = input.RowCount,
+                    SkipCount = input.Current,
+                    Sorting = string.Join(",", input.Sort.Select(x => x.Key + " " + x.Value).ToArray())
+                });
 
-                var item = new GridPagedOutput<DeviceLogError>(logs) { Current = input.Current, RowCount = input.RowCount, Total = devices[0].Logs.Count };
-                return item;
+                return new GridPagedOutput<LogErrorDto>(logs.Items) { Total = logs.TotalCount, RowCount = input.RowCount, Current = input.Current };
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, ex.Message);
+                _logger.Error( ex.Message, ex);
                 return null;
             }
         }
 
-        public async Task<PagedResultDto<LogAccessesDto>> ListLog(LogInput input)
+        [HttpPost]
+        public async Task<GridPagedOutput<LogAccessesDto>> ListLog(GridPagedInput input)
         {
             try
             {
@@ -95,27 +98,27 @@ namespace Afonsoft.SetBox.Web.Areas.App.Controllers
                     input.SearchPhrase = "";
 
                 if (string.IsNullOrEmpty(input.Id))
-                    throw new KeyNotFoundException($"DeviceId: {input.Id} not found.");
+                    throw new KeyNotFoundException($"DeviceIdentifier: {input.Id} not found.");
 
-                var devices = await _devices.GetAsync(f => f.DeviceId.ToString() == input.Id);
+                var devices = await _setBoxApiAppService.GetDevices(new DeviceInput { DeviceIdentifier = input.Id });
 
-                if (devices.Count <= 0)
-                    throw new KeyNotFoundException($"DeviceId: {input.Id} not found.");
+                if (devices.Items.Count <= 0)
+                    throw new KeyNotFoundException($"DeviceIdentifier: {input.Id} not found.");
 
-                var logs = devices[0].LogAccesses.Where(l => l.DeviceLogAccessesId.ToString() == input.Id
-                                                        || l.CreationDateTime.ToString("dd/MM/yyyy").Contains(input.SearchPhrase)
-                                                        || l.IpAcessed.Contains(input.SearchPhrase)
-                                                        || l.Message.Contains(input.SearchPhrase))
-                                                 .Skip((input.Current - 1) * input.RowCount)
-                                                 .Take(input.RowCount)
-                                                 .ToList();
+                var logs = await _setBoxApiAppService.GetDeviceLogsAccesses(new LogInput
+                {
+                    DeviceIdentifier = input.Id,
+                    Filter = input.SearchPhrase,
+                    MaxResultCount = input.RowCount,
+                    SkipCount = input.Current,
+                    Sorting = string.Join(",", input.Sort.Select(x => x.Key + " " + x.Value).ToArray())
+                });
 
-                var item = new GridPagedOutput<DeviceLogAccesses>(logs) { Current = input.Current, RowCount = input.RowCount, Total = devices[0].LogAccesses.Count };
-                return item;
+                return new GridPagedOutput<LogAccessesDto>(logs.Items) { Total = logs.TotalCount, RowCount = input.RowCount, Current = input.Current };
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, ex.Message);
+                _logger.Error(ex.Message, ex);
                 return null;
             }
         }
@@ -139,6 +142,33 @@ namespace Afonsoft.SetBox.Web.Areas.App.Controllers
         {
             return View(new DeviceViewModel());
         }
+
+        [HttpPost]
+        public async Task<GridPagedOutput<DeviceDto>> ListDevices(GridPagedInput input)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(input.SearchPhrase))
+                    input.SearchPhrase = "";
+
+                var logs = await _setBoxApiAppService.GetDevices(new DeviceInput
+                {
+                    DeviceIdentifier = input.Id,
+                    Filter = input.SearchPhrase,
+                    MaxResultCount = input.RowCount,
+                    SkipCount = input.Current,
+                    Sorting = string.Join(",", input.Sort.Select(x => x.Key + " " + x.Value).ToArray())
+                });
+
+                return new GridPagedOutput<DeviceDto>(logs.Items) { Total = logs.TotalCount, RowCount = input.RowCount, Current = input.Current };
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex.Message, ex);
+                return null;
+            }
+        }
+
 
         #endregion
 
