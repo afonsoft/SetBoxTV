@@ -7,10 +7,11 @@
     <AspNetCoreModuleName>AspNetCoreModule</AspNetCoreModuleName>
     <OutputType>Exe</OutputType>
     <RuntimeFrameworkVersion>2.2.3</RuntimeFrameworkVersion>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>8.0</LangVersion>
     <RuntimeIdentifiers>win7-x64;win7-x86;win81-x64;win81-x86;win10-x64;win10-x86;win-x64;win-x86</RuntimeIdentifiers>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <UserSecretsId>1fc178a2-f23a-477b-92f4-0359903b703c</UserSecretsId>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile></DocumentationFile>
