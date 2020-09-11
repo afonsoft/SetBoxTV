@@ -18,9 +18,6 @@
         "wwwroot/Common/Scripts/Chat/chat.js",
         "wwwroot/Common/Scripts/consts.js",
         "wwwroot/Common/Scripts/cookieConsent.js",
-        "wwwroot/Common/Scripts/Datatables/datatables.ajax.js",
-        "wwwroot/Common/Scripts/Datatables/datatables.defaults.js",
-        "wwwroot/Common/Scripts/Datatables/datatables.record-actions.js",
         "wwwroot/Common/Scripts/helpers.js",
         "wwwroot/Common/Scripts/jquery-custom.js",
         "wwwroot/Common/Scripts/jquery-validation-custom.js",
@@ -118,11 +115,6 @@
         "node_modules/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js",
         "node_modules/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js",
         "node_modules/abp-web-resources/Abp/Framework/scripts/libs/abp.moment.js",
-        "node_modules/datatables.net/js/jquery.dataTables.js",
-        "node_modules/datatables.net-bs4/js/dataTables.bootstrap4.js",
-        "node_modules/datatables.net-select/js/dataTables.select.js",
-        "node_modules/datatables.net-responsive/js/dataTables.responsive.js",
-        "node_modules/datatables.net-responsive-bs4/js/responsive.bootstrap4.js",
         "node_modules/select2/dist/js/select2.js",
         "node_modules/bootstrap-notify/bootstrap-notify.min.js",
         "node_modules/chart.js/dist/Chart.bundle.min.js",
@@ -142,10 +134,10 @@
         "node_modules/tooltip.js/dist/umd/tooltip.min.js",
         "node_modules/sticky-js/dist/sticky.min.js",
         "wwwroot/lib/jquery-ui/jquery-ui.min.js",
-        "wwwroot/lib/bootstrap/dist/js/bootstrap.js",
         "wwwroot/lib/bootbox/bootbox.js",
         "wwwroot/lib/bootstrap-slider/bootstrap-slider.min.js",
-        "wwwroot/lib/jquery-bootgrid/jquery.bootgrid.min.js"
+        "wwwroot/lib/jquery-bootgrid/jquery.bootgrid.min.js",
+        "wwwroot/lib/jquery-bootgrid/jquery.bootgrid.fa.min.js"
       ]
     },
     {
@@ -371,8 +363,6 @@
     {
       "output": "view-resources/Areas/App/Views/_Bundles/app-layout-libs.min.css",
       "input": [
-        "node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css",
-        "node_modules/datatables.net-responsive-bs4/css/responsive.bootstrap4.css",
         "node_modules/famfamfam-flags/dist/sprite/famfamfam-flags.css",
         "wwwroot/assets/Jcrop/css/Jcrop.css",
         "node_modules/blueimp-file-upload/css/jquery.fileupload.css",

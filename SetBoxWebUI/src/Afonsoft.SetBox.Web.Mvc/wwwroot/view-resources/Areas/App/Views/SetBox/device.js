@@ -96,6 +96,12 @@ $(document).ready(function () {
                 delay: 100,
                 characters: 3
             },
+            responseHandler: function (response)
+            {
+                console.info("responseHandler");
+                console.debug(response);
+                return response;
+            },
             formatters: {
                 "actions": function (column, row) {
                     return "<div class='btn-group btn-group-sm' role='group'>" +

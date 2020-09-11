@@ -22,9 +22,6 @@ namespace SetBoxWebUI.Models
         [JsonProperty("rows")]
         public IEnumerable<T> Rows { get; set; }
 
-        //[JsonIgnore]
-        //public JsonResult Output { get { return new JsonResult(this); } }
-
     }
     public class GridPagedInput
     {
