@@ -16,6 +16,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using SetBoxWebUI.Interfaces;
 using Microsoft.AspNetCore.Http.Features;
+using Hangfire;
+using Hangfire.Console;
 
 namespace SetBoxWebUI
 {
@@ -61,7 +63,17 @@ namespace SetBoxWebUI
             services.AddDistributedMemoryCache();
             services.AddEntityFrameworkSqlServer();
 
+           
+
             string connectionString = Configuration.GetConnectionString("Default");
+
+            services.AddHangfire(x =>
+            {
+                x.UseSqlServerStorage(connectionString);
+                x.UseConsole();
+            });
+
+            services.AddHangfireServer();
 
             services.AddSingleton(typeof(IRepository<,>), typeof(Repository<,>));
 
@@ -196,7 +208,7 @@ namespace SetBoxWebUI
             app.UseSession();
             app.UseAuthentication();
             app.UseCors("CorsPolicy");
-
+            app.UseHangfireDashboard();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
