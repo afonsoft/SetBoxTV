@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1054377096371",
+    "firebase_url": "https://setboxtv-38c67.firebaseio.com",
+    "project_id": "setboxtv-38c67",
+    "storage_bucket": "setboxtv-38c67.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054377096371:android:ff14dc6ce08d15bb322cc6",
+        "android_client_info": {
+          "package_name": "br.com.Afonsoft.SetBoxTVApp.Android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1054377096371-v9k5jod7bjbdcdqfbt4896n7a5d2ojql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkV-mokhTGgCXlGiUfWOW2DxFI0N6HmhM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1054377096371-v9k5jod7bjbdcdqfbt4896n7a5d2ojql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

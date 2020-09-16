@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SetBoxTVApp.SettingsPage"
+             xmlns:local="clr-namespace:SetBoxTVApp.Model"
+             Title="Configurações do Player">
+    <ContentPage.Content>
+        <Grid x:Name="MainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ActivityIndicator  IsRunning="{Binding IsLoading}"
+                            IsVisible="{Binding IsLoading}"
+                            Color="Red"
+                            Grid.Row="0"
+                            Grid.Column="0"/>
+
+            <TableView Intent="Settings" x:Name="SwiCell" HasUnevenRows="True" Grid.Row="0" Grid.Column="0"  TabIndex="0">
+                <TableRoot>
+                    <TableSection Title="Exibir" x:Name="TableSection1">
+                        <SwitchCell x:Name="SwitchVideo" Text="Videos" AutomationId="SwitchVideo" On="{Binding ShowVideo, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True"/>
+                        <SwitchCell x:Name="SwitchPhoto" Text="Fotos" AutomationId="SwitchPhoto" On="{Binding ShowPhoto, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True"/>
+                        <SwitchCell x:Name="SwitchWebImage" Text="Web Image" AutomationId="SwitchWebImage" On="{Binding ShowWebImage, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True"/>
+                        <SwitchCell x:Name="SwitchWebVideo" Text="Web Video" AutomationId="SwitchWebVideo" On="{Binding ShowWebVideo, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True"/>
+                    </TableSection>
+                    <TableSection Title="Configuração" x:Name="TableSection2">
+                        <EntryCell x:Name="SwitchTransactionTime" AutomationId="SwitchTransactionTime" Label="Tempo de Exibição" Placeholder="20" Keyboard="Numeric" HorizontalTextAlignment="End" Text="{Binding TransactionTime, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True" />
+                        <SwitchCell x:Name="SwitchTransaction" AutomationId="SwitchTransaction" Text="Transição (Fade)" On="{Binding EnableTransactionTime , Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True"/>
+                    </TableSection>
+                    <TableSection Title="Pasta" x:Name="TableSection3">
+                        <TextCell Text="Pasta Selecionada" Detail="{Binding PathFiles}" x:Name="FolderSeleted" />
+                        <ViewCell>
+                            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" TabIndex="1">
+                                <Button Text="Selecionar" Clicked="OnButtonSelectClicked" AutomationProperties.IsInAccessibleTree="True" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Licença" x:Name="TableSection4">
+                        <TextCell Text="Licença" x:Name="LicenseID" Detail="ID: " AutomationId="LicenseID" Tapped="LicenseID_Tapped"/>
+                        <EntryCell Label="Key" x:Name="LabelKey" AutomationId="LabelKey" Placeholder=""  Keyboard="Default" Text="{Binding License, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True" />
+                        <ViewCell>
+                            <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" TabIndex="2">
+                                <Button Text="PrintScreen" x:Name="PrintScreenButton" TabIndex="3" AutomationId="PrintScreenButton" Clicked="OnButtonPrintScreenClicked" AutomationProperties.IsInAccessibleTree="True" />
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Debug Mode" x:Name="TableSection5">
+                        <SwitchCell x:Name="SwitchDebugMode" AutomationId="SwitchDebugMode" Text="Enable Debug Mode" On="{Binding DebugMode, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True"/>
+                        <SwitchCell x:Name="SwitchConecction" AutomationId="SwitchConecction" Text="Enable Check Conecction" On="{Binding ReportNotConnection, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True"/>
+                    </TableSection>
+                    <TableSection Title="Suporte" x:Name="TableSection6">
+                        <TextCell Text="Empresa" Detail="{Binding Company}" AutomationId="Company" x:Name="Company" DetailColor="Black" AutomationProperties.IsInAccessibleTree="True"/>
+                        <TextCell Text="Telefone" Detail="{Binding Telephone}" AutomationId="Telephone" x:Name="Telephone" DetailColor="Black" AutomationProperties.IsInAccessibleTree="True"/>
+                        <TextCell Text="E-Mail" Detail="{Binding Email}" AutomationId="Email" x:Name="Email" DetailColor="Black" AutomationProperties.IsInAccessibleTree="True"/>
+                        <EntryCell Label="SetBox Name" AutomationId="SetBoxName" x:Name="SetBoxName" Placeholder=""  Keyboard="Default" Text="{Binding DeviceName, Mode=TwoWay}" AutomationProperties.IsInAccessibleTree="True" />
+                    </TableSection>
+                    <TableSection Title="" x:Name="TableSection7">
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Text="Fechar SetBox" x:Name="ExitButton" TabIndex="4" AutomationId="ExitButton" Clicked="OnButtonExitClicked" AutomationProperties.IsInAccessibleTree="True" Grid.Column="1"/>
+                                <Button Text="Salvar" x:Name="SaveButton" TabIndex="4" AutomationId="SaveButton" Clicked="OnButtonSalvarClicked" AutomationProperties.IsInAccessibleTree="True" Grid.Column="1"/>
+                            </Grid>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

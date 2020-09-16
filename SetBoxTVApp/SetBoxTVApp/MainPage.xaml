@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SetBoxTVApp.Model" 
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="SetBoxTVApp.MainPage">
+
+    <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1" BackgroundColor="White" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.BindingContext>
+            <local:MainViewModel/>
+        </Grid.BindingContext>
+
+
+        <Image Source="https://setbox.afonsoft.com.br/logos/LOGO.jpg" 
+               Grid.Row="0"
+               Aspect="AspectFit"
+               HeightRequest ="188"
+               WidthRequest="344"
+               HorizontalOptions="Center"
+               Grid.Column="0" x:Name="ImgLogo"/>
+
+        <ActivityIndicator  IsRunning="True"
+                            IsVisible="{Binding IsLoading}"
+                            Color="Red"
+                            Grid.Row="1"
+                            Grid.Column="0"/>
+
+        <Label x:Name="labelId"
+                FontSize="Small"
+                TextColor="Black" 
+                BackgroundColor="White"
+                Text="{Binding LoadingText}"
+                IsVisible="{Binding IsLoading}"
+                HorizontalTextAlignment="Center"
+                Grid.Row="2"
+                Grid.Column="0" 
+                HeightRequest="20"/>
+
+
+        <ProgressBar x:Name="progressBarId" 
+                    Progress="{Binding ProgressValue}" 
+                    IsVisible="{Binding IsDownloading}" 
+                    BackgroundColor="Gray"
+                    VerticalOptions="End"
+                    ProgressColor="Blue"
+                    HeightRequest="10"
+                    HorizontalOptions="FillAndExpand"
+                    Grid.Row="3"
+                    Grid.Column="0"/>
+
+        <Label x:Name="labelLoadingId" 
+                TextColor="Black" 
+                BackgroundColor="White"
+                FontSize="Small"
+                Text="{Binding ProgressValue, StringFormat='{0:F2}%'}" 
+                IsVisible="{Binding IsDownloading}" 
+                HorizontalTextAlignment="Center"
+                Grid.Row="4"
+                Grid.Column="0"
+                HeightRequest="20"/>
+    </Grid>
+
+</ContentPage>
