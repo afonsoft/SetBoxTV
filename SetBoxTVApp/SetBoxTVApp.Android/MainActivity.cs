@@ -35,6 +35,9 @@ namespace SetBoxTVApp.Droid
         public static readonly int PickFileStreamId = 1001;
         public static readonly int PickFilePathId = 1001;
 
+        public int ScreenWidth { get; set; }
+        public int ScreenHeight { get; set; }
+
         private Action<int, Result, Intent> _resultCallback;
 
         protected override void OnResume()
@@ -79,6 +82,9 @@ namespace SetBoxTVApp.Droid
             App.ScreenDensity = Resources.DisplayMetrics.Density;
             App.ScreenWidth = Resources.DisplayMetrics.WidthPixels;
             App.ScreenHeight = Resources.DisplayMetrics.HeightPixels;
+
+            this.ScreenHeight = App.ScreenHeight;
+            this.ScreenWidth = App.ScreenWidth;
 
             base.OnCreate(savedInstanceState);
             LibVLCSharpFormsRenderer.Init();

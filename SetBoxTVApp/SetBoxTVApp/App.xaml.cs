@@ -105,13 +105,21 @@ namespace SetBoxTVApp
         public static IEnumerable<ErrorAttachmentLog> OnGetErrorAttachments(ErrorReport report)
         {
             ILogger log = DependencyService.Get<ILogger>();
-            return new ErrorAttachmentLog[]
+            List<ErrorAttachmentLog> attachmentLogs = new List<ErrorAttachmentLog>();
+            try
             {
-                ErrorAttachmentLog.AttachmentWithText($"Id: {report.Id} {Environment.NewLine} AppStartTime: {report.AppStartTime} {Environment.NewLine} AppErrorTime: {report.AppErrorTime} {Environment.NewLine} StackTrace: {report.StackTrace}", "StackTrace.txt"),
-                ErrorAttachmentLog.AttachmentWithText($"Id: {report.Id} {Environment.NewLine} AppStartTime: {report.AppStartTime} {Environment.NewLine} AppErrorTime: {report.AppErrorTime} {Environment.NewLine} StackTrace: {report.AndroidDetails.StackTrace} {Environment.NewLine} ThreadName: {report.AndroidDetails.ThreadName}" , "AndroidDetails.txt"),
-                ErrorAttachmentLog.AttachmentWithText(log.LogFileContent, log.LogFileName),
-                ErrorAttachmentLog.AttachmentWithBinary(DependencyService.Get<IScreenshotService>().CaptureScreen(), $"Screenshot{DateTime.Now:yyyyMMddHHmmss}.png", "image/png")
-            };
+                attachmentLogs.Add(ErrorAttachmentLog.AttachmentWithText($"Id: {report.Id} {Environment.NewLine} AppStartTime: {report.AppStartTime} {Environment.NewLine} AppErrorTime: {report.AppErrorTime} {Environment.NewLine} StackTrace: {report.StackTrace}", "StackTrace.txt"));
+                attachmentLogs.Add(ErrorAttachmentLog.AttachmentWithText($"Id: {report.Id} {Environment.NewLine} AppStartTime: {report.AppStartTime} {Environment.NewLine} AppErrorTime: {report.AppErrorTime} {Environment.NewLine} StackTrace: {report.AndroidDetails.StackTrace} {Environment.NewLine} ThreadName: {report.AndroidDetails.ThreadName}", "AndroidDetails.txt"));
+                attachmentLogs.Add(ErrorAttachmentLog.AttachmentWithText(log.LogFileContent, log.LogFileName));
+                var img = DependencyService.Get<IScreenshotService>().CaptureScreen();
+                if (img != null && img.Any())
+                    attachmentLogs.Add(ErrorAttachmentLog.AttachmentWithBinary(img, $"Screenshot{DateTime.Now:yyyyMMddHHmmss}.png", "image/png"));
+                return attachmentLogs.ToArray();
+            }
+            catch
+            {
+                return attachmentLogs.ToArray();
+            }
         }
 
         static bool OnReleaseAvailable(ReleaseDetails releaseDetails)

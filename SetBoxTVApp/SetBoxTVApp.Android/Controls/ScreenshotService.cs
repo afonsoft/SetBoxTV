@@ -10,22 +10,29 @@ namespace SetBoxTVApp.Droid.Controls
     {
         public byte[] CaptureScreen()
         {
-            var activity = MainActivity.Instance;
-            var rootView = activity.Window.DecorView.RootView;
-
-            using (var screenshot = Bitmap.CreateBitmap(
-                                    rootView.Width,
-                                    rootView.Height,
-                                    Bitmap.Config.Argb8888))
+            try
             {
-                var canvas = new Canvas(screenshot);
-                rootView.Draw(canvas);
+                var activity = MainActivity.Instance;
+                var rootView = activity.Window.DecorView.RootView;
 
-                using (var stream = new MemoryStream())
+                using (var screenshot = Bitmap.CreateBitmap(
+                                        (rootView.Width <= 0 ? activity.ScreenWidth : rootView.Width),
+                                        (rootView.Height <= 0 ? activity.ScreenHeight : rootView.Height),
+                                        Bitmap.Config.Argb8888))
                 {
-                    screenshot.Compress(Bitmap.CompressFormat.Png, 90, stream);
-                    return stream.ToArray();
+                    var canvas = new Canvas(screenshot);
+                    rootView.Draw(canvas);
+
+                    using (var stream = new MemoryStream())
+                    {
+                        screenshot.Compress(Bitmap.CompressFormat.Png, 90, stream);
+                        return stream.ToArray();
+                    }
                 }
+            }
+            catch
+            {
+                return new byte[0];
             }
         }
     }

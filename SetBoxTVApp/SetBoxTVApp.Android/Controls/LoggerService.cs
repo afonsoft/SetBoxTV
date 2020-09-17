@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using Xamarin.Essentials;
 using SetBoxTVApp.Extensions;
+using System.Linq;
 
 [assembly: Dependency(typeof(SetBoxTVApp.Droid.Controls.LoggerService))]
 namespace SetBoxTVApp.Droid.Controls
@@ -214,13 +215,15 @@ namespace SetBoxTVApp.Droid.Controls
         {
             try
             {
-                return new ErrorAttachmentLog[]
-                {
-                    ErrorAttachmentLog.AttachmentWithText(LogFileContent, LogFileName),
-                    ErrorAttachmentLog.AttachmentWithBinary(new ScreenshotService().CaptureScreen(), $"Screenshot{DateTime.Now:yyyyMMddHHmmss}.png", "image/png")
-                };
+                List<ErrorAttachmentLog> list = new List<ErrorAttachmentLog>();
+                list.Add(ErrorAttachmentLog.AttachmentWithText(LogFileContent, LogFileName));
+                var img = new ScreenshotService().CaptureScreen();
+                if (img != null && img.Any())
+                    list.Add(ErrorAttachmentLog.AttachmentWithBinary(img, $"Screenshot{DateTime.Now:yyyyMMddHHmmss}.png", "image/png"));
+
+                return list.ToArray();
             }
-            catch(System.Exception ex)
+            catch (System.Exception ex)
             {
                 logMemory.Add($"GetErrorAttachments: {ex.Message}");
                 SaveFile("GetErrorAttachments", "ERRO  ", ex.Message, ex);
