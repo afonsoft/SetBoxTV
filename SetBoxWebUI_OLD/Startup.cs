@@ -18,6 +18,7 @@ using SetBoxWebUI.Interfaces;
 using Microsoft.AspNetCore.Http.Features;
 using Hangfire;
 using Hangfire.Console;
+using SetBoxWebUI.Jobs;
 
 namespace SetBoxWebUI
 {
@@ -63,8 +64,6 @@ namespace SetBoxWebUI
             services.AddDistributedMemoryCache();
             services.AddEntityFrameworkSqlServer();
 
-           
-
             string connectionString = Configuration.GetConnectionString("Default");
 
             services.AddHangfire(x =>
@@ -83,7 +82,7 @@ namespace SetBoxWebUI
             services.AddIdentity<ApplicationIdentityUser, ApplicationIdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
-          
+
 
             services.AddCors(options =>
             {
@@ -97,14 +96,12 @@ namespace SetBoxWebUI
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromHours(2);
-                options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
 
             services.ConfigureApplicationCookie(options =>
             {
                 // Cookie settings
-                options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
                 options.ExpireTimeSpan = TimeSpan.FromHours(24);
                 options.LoginPath = new PathString("/Auth/Login");
@@ -119,11 +116,11 @@ namespace SetBoxWebUI
                         options.LoginPath = new PathString("/Auth/Login");
                         options.AccessDeniedPath = new PathString("/Auth/Denied");
                         options.SlidingExpiration = true;
-                        options.Cookie.HttpOnly = true;
                         options.Cookie.IsEssential = true;
                         options.ExpireTimeSpan = TimeSpan.FromHours(24);
                     })
-                 .AddJwtBearer(options => {
+                 .AddJwtBearer(options =>
+                 {
                      options.Audience = "https://setbox.afonsoft.com.br/";
                      options.Authority = "https://setbox.afonsoft.com.br/";
                      options.RequireHttpsMetadata = false;
@@ -175,6 +172,7 @@ namespace SetBoxWebUI
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
 
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1",
@@ -191,7 +189,11 @@ namespace SetBoxWebUI
                         }
                     });
                 c.EnableAnnotations();
+                c.DocInclusionPredicate((docName, description) => true);
+                c.AddSecurityDefinition("Bearer", new BasicAuthScheme());
             });
+
+            services.AddTransient<IHangfireJob, HangfireJob>();
         }
         /// <summary>
         /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -222,6 +224,13 @@ namespace SetBoxWebUI
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "SetBox API");
             });
+
+            InitializeHangfire(new HangfireJob());
+        }
+
+        private void InitializeHangfire(HangfireJob job)
+        {
+            job.Initialize();
         }
     }
 }
