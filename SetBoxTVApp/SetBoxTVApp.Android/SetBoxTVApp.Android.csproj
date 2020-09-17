@@ -34,9 +34,9 @@
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <AotAssemblies>false</AotAssemblies>
-    <EnableLLVM>true</EnableLLVM>
+    <EnableLLVM>false</EnableLLVM>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
-    <BundleAssemblies>true</BundleAssemblies>
+    <BundleAssemblies>false</BundleAssemblies>
     <AndroidPackageFormat>apk</AndroidPackageFormat>
     <AndroidLinkTool>r8</AndroidLinkTool>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
@@ -54,9 +54,9 @@
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AotAssemblies>false</AotAssemblies>
-    <EnableLLVM>true</EnableLLVM>
+    <EnableLLVM>false</EnableLLVM>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
-    <BundleAssemblies>true</BundleAssemblies>
+    <BundleAssemblies>false</BundleAssemblies>
     <AndroidLinkTool>r8</AndroidLinkTool>
     <AndroidPackageFormat>apk</AndroidPackageFormat>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
@@ -64,6 +64,7 @@
     <AndroidDexTool>d8</AndroidDexTool>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <AndroidSupportedAbis />
+    <AndroidLinkSkip>Microsoft.AppCenter.Crashes</AndroidLinkSkip>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
