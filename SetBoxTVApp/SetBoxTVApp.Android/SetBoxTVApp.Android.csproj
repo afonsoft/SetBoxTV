@@ -43,6 +43,9 @@
     <AndroidDexTool>d8</AndroidDexTool>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <AndroidSupportedAbis />
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
+    <AndroidLinkSkip>Microsoft.AppCenter.Crashes</AndroidLinkSkip>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -65,6 +68,7 @@
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <AndroidSupportedAbis />
     <AndroidLinkSkip>Microsoft.AppCenter.Crashes</AndroidLinkSkip>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />

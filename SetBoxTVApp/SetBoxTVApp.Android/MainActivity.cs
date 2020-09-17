@@ -22,7 +22,7 @@ using Android.Support.V4.Content;
 [assembly: Dependency(typeof(SetBoxTVApp.Droid.MainActivity))]
 namespace SetBoxTVApp.Droid
 {
-    [Activity(Label = "SetBoxTV Outdoor Media", Name = "SetBoxTV.VideoPlayer.Droid.MainActivity", Icon = "@mipmap/launcher_foreground", Banner = "@mipmap/banner", Theme = "@style/MainTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleInstance, HardwareAccelerated = true, Exported = true, NoHistory = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.KeyboardHidden | ConfigChanges.Keyboard | ConfigChanges.Navigation, ScreenOrientation = ScreenOrientation.Landscape)]
+    [Activity(Label = "SetBoxTV Outdoor Media", Name = "SetBoxTVApp.Droid.MainActivity", Icon = "@mipmap/launcher_foreground", Banner = "@mipmap/banner", Theme = "@style/MainTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleInstance, HardwareAccelerated = true, Exported = true, NoHistory = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.KeyboardHidden | ConfigChanges.Keyboard | ConfigChanges.Navigation, ScreenOrientation = ScreenOrientation.Landscape)]
     [IntentFilter(actions: new string[] { "android.intent.action.MAIN" }, Categories = new string[] { "android.intent.category.LEANBACK_LAUNCHER" })]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, InputManager.IInputDeviceListener
     {
