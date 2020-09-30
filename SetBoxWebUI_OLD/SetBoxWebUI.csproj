@@ -26,6 +26,7 @@
     <None Include="wwwroot\UploadedFiles\psy_gangnam_style_360p.mp4" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Afonsoft.Extensions" Version="2019.8.26" />
     <PackageReference Include="Afonsoft.Logger" Version="2019.8.26" />
     <PackageReference Include="BundlerMinifier.Core" Version="3.2.435" />
