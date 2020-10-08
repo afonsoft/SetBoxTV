@@ -80,7 +80,6 @@ namespace SetBoxWebUI
             .SetDefaultKeyLifetime(TimeSpan.FromDays(365));
 
             string connectionString = Configuration.GetConnectionString("Default");
-            services.AddScoped<ApplicationDbContext>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
             {
@@ -93,7 +92,7 @@ namespace SetBoxWebUI
                     .AddDefaultTokenProviders();
 
             services.AddSingleton(typeof(IRepository<,>), typeof(Repository<,>));
-            services.AddSingleton<IHangfireJob, HangfireJob>();
+            services.TryAddScoped<IHangfireJob, HangfireJob>();
 
             services.AddHangfire(configuration => configuration
             .UseSimpleAssemblyNameTypeSerializer()
