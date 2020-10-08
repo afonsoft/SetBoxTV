@@ -238,9 +238,6 @@ namespace SetBoxWebUI.Controllers
             var r = new Models.Response<string>();
             try
             {
-                if (string.IsNullOrEmpty(license))
-                    license = DefaultLicense;
-
                 if (string.IsNullOrEmpty(identifier))
                 {
                     r.Message = $"Device {identifier} is null";
@@ -251,66 +248,58 @@ namespace SetBoxWebUI.Controllers
                 string deviceIdentifier64 = CriptoHelpers.Base64Encode(identifier);
 
                 if (string.IsNullOrEmpty(license))
-                    license = DefaultLicense;
+                    license = deviceIdentifier64;
 
-                if (license == deviceIdentifier64 || license == DefaultLicense )
+                var device = await _devices.FirstOrDefaultAsync(x => x.DeviceIdentifier == identifier);
+                if (device == null)
                 {
-
-                    var device = await _devices.FirstOrDefaultAsync(x => x.DeviceIdentifier == identifier);
-                    if (device == null)
+                    device = new Device()
                     {
-                        device = new Device()
-                        {
-                            CreationDateTime = DateTime.Now,
-                            DeviceIdentifier = identifier,
-                            License = license,
-                            Platform = "unknown",
-                            Version = "unknown",
-                            DeviceId = Guid.NewGuid(),
-                            Active = license != DefaultLicense
-                        };
-                        device.LogAccesses = new List<DeviceLogAccesses>();
-                        device.LogAccesses.Add(new DeviceLogAccesses()
-                        {
-                            CreationDateTime = DateTime.Now,
-                            DeviceLogAccessesId = Guid.NewGuid(),
-                            IpAcessed = HttpContext.GetClientIpAddress(),
-                            Message = license != DefaultLicense ? "Created" : "Created Not License"
-                        });
-                        await _devices.AddAsync(device);
-                    }
-
-                    if (license == "" || license == DefaultLicense)
-                        license = device.License;
-
-                    if (license != device.License && license != DefaultLicense)
-                        device.License = license;
-
-                    device.Active = license != DefaultLicense;
-
-                    device.LastAccessDateTime = DateTime.Now;
-
+                        CreationDateTime = DateTime.Now,
+                        DeviceIdentifier = identifier,
+                        License = license,
+                        Platform = "unknown",
+                        Version = "unknown",
+                        DeviceId = Guid.NewGuid(),
+                        Active = true
+                    };
+                    device.LogAccesses = new List<DeviceLogAccesses>();
                     device.LogAccesses.Add(new DeviceLogAccesses()
                     {
                         CreationDateTime = DateTime.Now,
                         DeviceLogAccessesId = Guid.NewGuid(),
                         IpAcessed = HttpContext.GetClientIpAddress(),
-                        Message = license != "" ? "Logged" : "Logged Not License"
+                        Message = license != DefaultLicense ? "Created" : "Created Not License"
                     });
-
-                    await _devices.UpdateAsync(device);
-
-                    if (license == "")
-                        license = DefaultLicense;
-
-                    r.Result = CriptoHelpers.Base64Encode($"{identifier}|{CriptoHelpers.Base64Encode(license)}|{HttpContext.GetClientIpAddress()}|{DateTime.Now.AddMinutes(30):yyyyMMddHHmmss}|{device.DeviceId}");
-
-                    return Ok(r);
+                    await _devices.AddAsync(device);
                 }
-                r.Message = $"Unauthorized Device {identifier} or license {license} is invalid!";
-                r.Status = false;
 
-                return Unauthorized(r);
+                if (license == "" || license == DefaultLicense)
+                    license = device.License;
+
+                if (license != device.License && license != DefaultLicense)
+                    device.License = license;
+
+                device.Active = license != DefaultLicense;
+
+                device.LastAccessDateTime = DateTime.Now;
+
+                device.LogAccesses.Add(new DeviceLogAccesses()
+                {
+                    CreationDateTime = DateTime.Now,
+                    DeviceLogAccessesId = Guid.NewGuid(),
+                    IpAcessed = HttpContext.GetClientIpAddress(),
+                    Message = license != "" ? "Logged" : "Logged Not License"
+                });
+
+                await _devices.UpdateAsync(device);
+
+                if (license == "")
+                    license = DefaultLicense;
+
+                r.Result = CriptoHelpers.Base64Encode($"{identifier}|{CriptoHelpers.Base64Encode(license)}|{HttpContext.GetClientIpAddress()}|{DateTime.Now.AddMinutes(30):yyyyMMddHHmmss}|{device.DeviceId}");
+
+                return Ok(r);
             }
             catch (Exception ex)
             {
@@ -630,41 +619,41 @@ namespace SetBoxWebUI.Controllers
 
         private void ValidaSession(string session)
         {
-            //try
-            //{
-            //    string[] sessions;
-            //    string deviceIdentifier64;
-            //    string ip;
-            //    string license;
-            //    DateTime dt;
-            //    try
-            //    {
-            //        sessions = CriptoHelpers.Base64Decode(session).Split("|");
-            //        deviceIdentifier64 = CriptoHelpers.Base64Encode(sessions[0]);
-            //        license = CriptoHelpers.Base64Decode(sessions[1]);
-            //        ip = sessions[2];
-            //        dt = DateTime.ParseExact(sessions[3], "yyyyMMddHHmmss", CultureInfo.InvariantCulture);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        throw new SessionException($"Erro para descriptografar a session {session} Erro : {ex.Message}");
-            //    }
+            try
+            {
+                string[] sessions;
+                string deviceIdentifier64;
+                string ip;
+                string license;
+                DateTime dt;
+                try
+                {
+                    sessions = CriptoHelpers.Base64Decode(session).Split("|");
+                    deviceIdentifier64 = CriptoHelpers.Base64Encode(sessions[0]);
+                    license = CriptoHelpers.Base64Decode(sessions[1]);
+                    ip = sessions[2];
+                    dt = DateTime.ParseExact(sessions[3], "yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+                }
+                catch (Exception ex)
+                {
+                    throw new SessionException($"Erro para descriptografar a session {session} Erro : {ex.Message}");
+                }
 
-            //    if (license != deviceIdentifier64 && license != DefaultLicense)
-            //        throw new SessionException($"A Licença {license} não confere com o Device!");
+                //if (license != deviceIdentifier64 && license != DefaultLicense)
+                //    throw new SessionException($"A Licença {license} não confere com o Device!");
 
-            //    if (dt <= DateTime.Now)
-            //        throw new SessionException($"A data da session expirou! data: {dt.ToString("yyyyMMddHHmmss")}");
+                //if (dt <= DateTime.Now)
+                //    throw new SessionException($"A data da session expirou! data: {dt.ToString("yyyyMMddHHmmss")}");
 
-            //    if (ip != HttpContext.GetClientIpAddress())
-            //        throw new SessionException($"O Ip da Session {ip} é diferente do Ip da Request {HttpContext.GetClientIpAddress()}!");
+                //if (ip != HttpContext.GetClientIpAddress())
+                //    throw new SessionException($"O Ip da Session {ip} é diferente do Ip da Request {HttpContext.GetClientIpAddress()}!");
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    _logger.LogError(ex, $"Session: {session} : {ex.Message}");
-            //    throw;
-            //}
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Session: {session} : {ex.Message}");
+                throw;
+            }
         }
 
         private string GetDeviceIdFromSession(string session)
