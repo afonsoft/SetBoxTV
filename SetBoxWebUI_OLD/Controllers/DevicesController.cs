@@ -78,6 +78,9 @@ namespace SetBoxWebUI.Controllers
                     model.EnableWebImage = item.Configuration.EnableWebImage;
                     model.EnableWebVideo = item.Configuration.EnableWebVideo;
                     model.ConfigId = item.Configuration.ConfigId;
+                    model.GoogleDrivePassword = item.Configuration.GoogleDrivePassword;
+                    model.GoogleDriveUrl = item.Configuration.GoogleDriveUrl;
+                    model.GoogleDriveUserName = item.Configuration.GoogleDriveUserName;
                 }
                 return View("Index", model);
             }
@@ -147,6 +150,9 @@ namespace SetBoxWebUI.Controllers
                         updItem.Configuration.EnableWebImage = m.EnableWebImage;
                         updItem.Configuration.EnableWebVideo = m.EnableWebVideo;
                         updItem.Configuration.TransactionTime = m.TransactionTime;
+                        updItem.Configuration.GoogleDriveUserName = m.GoogleDriveUserName;
+                        updItem.Configuration.GoogleDrivePassword = m.GoogleDrivePassword;
+                        updItem.Configuration.GoogleDriveUrl = m.GoogleDriveUrl;
 
                         await _devices.UpdateAsync(updItem);
 

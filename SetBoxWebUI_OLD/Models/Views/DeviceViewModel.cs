@@ -70,5 +70,9 @@ namespace SetBoxWebUI.Models.Views
         /// Tempo da transação
         /// </summary>
         public int TransactionTime { get; set; } = 0;
+
+        public string GoogleDriveUrl { get; set; }
+        public string GoogleDriveUserName { get; set; }
+        public string GoogleDrivePassword { get; set; }
     }
 }

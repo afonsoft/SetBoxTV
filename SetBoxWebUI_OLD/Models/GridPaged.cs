@@ -3,11 +3,19 @@ using System.Collections.Generic;
 
 namespace SetBoxWebUI.Models
 {
-    public class GridPagedOutput<T>  where T : class
+    public class GridPagedOutput<T>  where T : class, new()
     {
-        public GridPagedOutput(IEnumerable<T> value) 
+        public GridPagedOutput()
         {
-            this.Rows = value;
+            this.Rows = new List<T>();
+        }
+
+        public GridPagedOutput(IEnumerable<T> value)
+        {
+            if (value != null)
+                this.Rows = value;
+            else
+                this.Rows = new List<T>();
         }
 
         [JsonProperty("current")]

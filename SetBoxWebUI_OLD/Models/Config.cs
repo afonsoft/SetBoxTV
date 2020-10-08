@@ -69,5 +69,8 @@ namespace SetBoxWebUI.Models
         [NotMapped]
         public string DeviceName { get; set; }
 
+        public string GoogleDriveUrl { get; set; }
+        public string GoogleDriveUserName { get; set; }
+        public string GoogleDrivePassword { get; set; }
     }
 }

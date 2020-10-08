@@ -21,6 +21,9 @@ namespace SetBoxWebUI.Repository.Mapping
             builder.Property(c => c.EnableVideo).HasColumnName("EnableVideo");
             builder.Property(c => c.EnableWebImage).HasColumnName("EnableWebImage");
             builder.Property(c => c.EnableWebVideo).HasColumnName("EnableWebVideo");
+            builder.Property(c => c.GoogleDriveUrl).HasColumnName("GoogleDriveUrl").HasMaxLength(1000);
+            builder.Property(c => c.GoogleDriveUserName).HasColumnName("GoogleDriveUserName").HasMaxLength(500);
+            builder.Property(c => c.GoogleDrivePassword).HasColumnName("GoogleDrivePassword").HasMaxLength(500);
             builder.Property(c => c.CreationDateTime).HasColumnName("CreationDateTime").HasDefaultValueSql("getdate()");
         }
     }

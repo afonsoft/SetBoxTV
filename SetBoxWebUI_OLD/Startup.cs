@@ -92,7 +92,7 @@ namespace SetBoxWebUI
                     .AddDefaultTokenProviders();
 
             services.AddSingleton(typeof(IRepository<,>), typeof(Repository<,>));
-            services.TryAddScoped<IHangfireJob, HangfireJob>();
+            services.AddSingleton<IHangfireJob, HangfireJob>();
 
             services.AddHangfire(configuration => configuration
             .UseSimpleAssemblyNameTypeSerializer()
@@ -238,7 +238,7 @@ namespace SetBoxWebUI
         /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         /// </summary>
         /// <param name="app"></param>
-        public void Configure(IApplicationBuilder app, IServiceProvider serviceProvider)
+        public void Configure(IApplicationBuilder app, IServiceProvider serviceProvider, ApplicationDbContext context, IHostingEnvironment hostingEnvironment)
         {
             app.UseDeveloperExceptionPage();
             app.UseDatabaseErrorPage();
@@ -275,10 +275,10 @@ namespace SetBoxWebUI
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "SetBox API");
             });
 
-            InitializeHangfire(serviceProvider.GetService<IHangfireJob>());
+            InitializeHangfire(new HangfireJob(context,hostingEnvironment));
         }
 
-        private void InitializeHangfire(IHangfireJob job)
+        private void InitializeHangfire(HangfireJob job)
         {
             job.Initialize();
         }

@@ -17,22 +17,19 @@ namespace SetBoxWebUI.Jobs
 {
     public class HangfireJob : IHangfireJob
     {
-
-        private readonly ILogger<HangfireJob> _logger;
         private readonly IHostingEnvironment _hostingEnvironment;
-        private readonly IServiceProvider _serviceProvider;
+        private readonly IRepository<FileCheckSum, Guid> _files;
 
-        public HangfireJob(ILogger<HangfireJob> logger, IServiceProvider serviceProvider, IHostingEnvironment hostingEnvironment)
+        public HangfireJob(ApplicationDbContext context,  IHostingEnvironment hostingEnvironment)
         {
-            _logger = logger;
             _hostingEnvironment = hostingEnvironment;
-            _serviceProvider = serviceProvider;
+            _files = new Repository<FileCheckSum, Guid>(context);
         }
 
         public void Initialize()
         {
-            RecurringJob.AddOrUpdate<IHangfireJob>("Delete Files In Db", x => x.JobDeleteOldFiles(null), "*/15 * * * *", TimeZoneInfo.Local);
-            RecurringJob.AddOrUpdate<IHangfireJob>("Create Files In Db", x => x.JobGetNewFiles(null), "*/5 * * * *", TimeZoneInfo.Local);
+            RecurringJob.AddOrUpdate<IHangfireJob>("Delete Files In Db", x => x.JobDeleteOldFiles(null), Cron.Daily, TimeZoneInfo.Local);
+            RecurringJob.AddOrUpdate<IHangfireJob>("Create Files In Db", x => x.JobGetNewFiles(null), Cron.Hourly, TimeZoneInfo.Local);
         }
 
         public void JobDeleteOldFiles(PerformContext context)
@@ -55,18 +52,15 @@ namespace SetBoxWebUI.Jobs
             {
                 context.WriteLine("Job Inicializado");
                 //Do
-
-                IRepository<FileCheckSum, Guid> _files = new Repository<FileCheckSum, Guid>(_serviceProvider.GetService<ApplicationDbContext>());
-
                 var files = GetFilesInPath();
+                context.WriteLine($"Total de arquivos na pasta {files.Count()}");
 
                 foreach (var file in files)
                 {
                     var fileInDb = await _files.GetAsync(x => x.Name == file);
                     if (fileInDb == null)
                     {
-
-                    await  _files.AddAsync(new FileCheckSum()
+                        await _files.AddAsync(new FileCheckSum()
                         {
                             Name = file,
                             CreationDateTime = DateTime.Now,
@@ -95,10 +89,8 @@ namespace SetBoxWebUI.Jobs
 
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
-            string[] exts = new[] { ".mpg", ".mp4", ".avi" };
           
             return  Directory.GetFiles(path)
-                            .Where(x => exts.Contains(x))
                             .Select(x => x.Split("\\").Last())
                             .ToArray();
         }
