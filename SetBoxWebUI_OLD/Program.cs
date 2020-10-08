@@ -3,6 +3,7 @@ using System.IO;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection;
 using SetBoxWebUI.Repository;
 
@@ -89,15 +90,21 @@ namespace SetBoxWebUI
         /// <returns></returns>
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-            .CaptureStartupErrors(true)
-            .UseKestrel(options =>
-            {
-                options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(120);
-                options.Limits.RequestHeadersTimeout = TimeSpan.FromMinutes(120);
-              
-            })
-            .UseContentRoot(Directory.GetCurrentDirectory())
-            .UseIISIntegration()
-            .UseStartup<Startup>();
+             .CaptureStartupErrors(true)
+                .UseKestrel(options =>
+                {
+                    options.AddServerHeader = false;
+                    options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(120);
+
+                    options.Limits.MaxRequestBodySize = 6000000000;
+                    options.Limits.MinRequestBodyDataRate = new MinDataRate(100, TimeSpan.FromSeconds(10));
+                    options.Limits.MinResponseDataRate = new MinDataRate(100, TimeSpan.FromSeconds(10));
+                    options.Limits.RequestHeadersTimeout = TimeSpan.FromMinutes(60);
+
+                })
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIIS()
+                .UseIISIntegration()
+                .UseStartup<Startup>();
     }
 }

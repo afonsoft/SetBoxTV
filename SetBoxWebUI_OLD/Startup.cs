@@ -19,6 +19,13 @@ using Microsoft.AspNetCore.Http.Features;
 using Hangfire;
 using Hangfire.Console;
 using SetBoxWebUI.Jobs;
+using Hangfire.SqlServer;
+using Microsoft.AspNetCore.ResponseCompression;
+using System.IO.Compression;
+using Hangfire.Dashboard;
+using SetBoxWebUI.Helpers;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace SetBoxWebUI
 {
@@ -66,13 +73,18 @@ namespace SetBoxWebUI
 
             string connectionString = Configuration.GetConnectionString("Default");
 
-            services.AddHangfire(x =>
+            services.AddHangfire(configuration => configuration
+            .UseSimpleAssemblyNameTypeSerializer()
+            .UseRecommendedSerializerSettings()
+            .UseConsole()
+            .UseSqlServerStorage(connectionString, new SqlServerStorageOptions
             {
-                x.UseSqlServerStorage(connectionString);
-                x.UseConsole();
-            });
-
-            services.AddHangfireServer();
+                CommandBatchMaxTimeout = TimeSpan.FromMinutes(5),
+                SlidingInvisibilityTimeout = TimeSpan.FromMinutes(5),
+                QueuePollInterval = TimeSpan.Zero,
+                UseRecommendedIsolationLevel = true,
+                DisableGlobalLocks = true
+            }));
 
             services.AddSingleton(typeof(IRepository<,>), typeof(Repository<,>));
 
@@ -83,6 +95,7 @@ namespace SetBoxWebUI
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
 
+            services.TryAddSingleton<IHangfireJob, HangfireJob>();
 
             services.AddCors(options =>
             {
@@ -151,7 +164,7 @@ namespace SetBoxWebUI
                 options.Lockout.AllowedForNewUsers = true;
 
                 // User settings.
-                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+#";
+                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+#!$";
                 options.User.RequireUniqueEmail = true;
             });
 
@@ -159,7 +172,7 @@ namespace SetBoxWebUI
             {
                 options.ValueLengthLimit = int.MaxValue;
                 options.MultipartBodyLengthLimit = int.MaxValue;
-                options.MultipartBoundaryLengthLimit = 256;
+                options.MultipartBoundaryLengthLimit = 512;
                 options.MultipartHeadersLengthLimit = int.MaxValue;
             });
 
@@ -172,6 +185,22 @@ namespace SetBoxWebUI
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
 
+            services.AddResponseCompression(options =>
+            {
+                options.Providers.Add<GzipCompressionProvider>();
+                options.Providers.Add<BrotliCompressionProvider>();
+                options.EnableForHttps = true;
+            });
+
+            services.Configure<BrotliCompressionProviderOptions>(options => { options.Level = CompressionLevel.Fastest; });
+            services.Configure<GzipCompressionProviderOptions>(options => { options.Level = CompressionLevel.Fastest; });
+
+            services.AddHangfireServer(options => {
+                options.WorkerCount = 1;
+                options.SchedulePollingInterval = TimeSpan.FromSeconds(30);
+                options.ServerCheckInterval = TimeSpan.FromSeconds(30);
+                options.HeartbeatInterval = TimeSpan.FromSeconds(30);
+            });
 
             services.AddSwaggerGen(c =>
             {
@@ -193,13 +222,13 @@ namespace SetBoxWebUI
                 c.AddSecurityDefinition("Bearer", new BasicAuthScheme());
             });
 
-            services.AddTransient<IHangfireJob, HangfireJob>();
+           
         }
         /// <summary>
         /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         /// </summary>
         /// <param name="app"></param>
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, IServiceProvider serviceProvider)
         {
             app.UseDeveloperExceptionPage();
             app.UseDatabaseErrorPage();
@@ -210,7 +239,18 @@ namespace SetBoxWebUI
             app.UseSession();
             app.UseAuthentication();
             app.UseCors("CorsPolicy");
-            app.UseHangfireDashboard();
+
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                DisplayStorageConnectionString = false,
+                Authorization = new[] { new AllowAllDashboardAuthorizationFilter() }
+            });
+
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -225,10 +265,10 @@ namespace SetBoxWebUI
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "SetBox API");
             });
 
-            InitializeHangfire(new HangfireJob());
+            InitializeHangfire(serviceProvider.GetService<IHangfireJob>());
         }
 
-        private void InitializeHangfire(HangfireJob job)
+        private void InitializeHangfire(IHangfireJob job)
         {
             job.Initialize();
         }

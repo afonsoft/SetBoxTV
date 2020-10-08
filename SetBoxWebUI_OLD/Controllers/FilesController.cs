@@ -352,7 +352,6 @@ namespace SetBoxWebUI.Controllers
                         totalReadBytes += readBytes;
                     }
                 }
-
             }
             var add = new FileCheckSum()
             {
@@ -385,7 +384,7 @@ namespace SetBoxWebUI.Controllers
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
 
-            return path + filename;
+            return Path.Combine(path, filename);
         }
 
         public async Task ProcessFilesInDirectory(IServiceScopeFactory serviceScopeFactory)
