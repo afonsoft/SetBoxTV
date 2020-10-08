@@ -19,16 +19,14 @@ namespace SetBoxWebUI.Jobs
     {
 
         private readonly ILogger<HangfireJob> _logger;
-        private readonly IRepository<FileCheckSum, Guid> _files;
         private readonly IHostingEnvironment _hostingEnvironment;
-        private readonly IServiceScopeFactory _serviceScopeFactory;
+        private readonly IServiceProvider _serviceProvider;
 
-        public HangfireJob(ILogger<HangfireJob> logger, ApplicationDbContext context, IHostingEnvironment hostingEnvironment, IServiceScopeFactory serviceScopeFactory)
+        public HangfireJob(ILogger<HangfireJob> logger, IServiceProvider serviceProvider, IHostingEnvironment hostingEnvironment)
         {
             _logger = logger;
-            _files = new Repository<FileCheckSum, Guid>(context);
             _hostingEnvironment = hostingEnvironment;
-            _serviceScopeFactory = serviceScopeFactory;
+            _serviceProvider = serviceProvider;
         }
 
         public void Initialize()
@@ -57,6 +55,9 @@ namespace SetBoxWebUI.Jobs
             {
                 context.WriteLine("Job Inicializado");
                 //Do
+
+                IRepository<FileCheckSum, Guid> _files = new Repository<FileCheckSum, Guid>(_serviceProvider.GetService<ApplicationDbContext>());
+
                 var files = GetFilesInPath();
 
                 foreach (var file in files)

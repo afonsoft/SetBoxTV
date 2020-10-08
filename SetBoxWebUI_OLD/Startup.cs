@@ -26,6 +26,8 @@ using Hangfire.Dashboard;
 using SetBoxWebUI.Helpers;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.DataProtection;
 
 namespace SetBoxWebUI
 {
@@ -71,7 +73,27 @@ namespace SetBoxWebUI
             services.AddDistributedMemoryCache();
             services.AddEntityFrameworkSqlServer();
 
+            services.AddHttpContextAccessor();
+            services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
+
+            services.AddDataProtection()
+            .SetDefaultKeyLifetime(TimeSpan.FromDays(365));
+
             string connectionString = Configuration.GetConnectionString("Default");
+            services.AddScoped<ApplicationDbContext>();
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseLazyLoadingProxies(true);
+                options.UseSqlServer(connectionString);
+            }, ServiceLifetime.Transient);
+
+            services.AddIdentity<ApplicationIdentityUser, ApplicationIdentityRole>()
+                    .AddEntityFrameworkStores<ApplicationDbContext>()
+                    .AddDefaultTokenProviders();
+
+            services.AddSingleton(typeof(IRepository<,>), typeof(Repository<,>));
+            services.AddSingleton<IHangfireJob, HangfireJob>();
 
             services.AddHangfire(configuration => configuration
             .UseSimpleAssemblyNameTypeSerializer()
@@ -85,17 +107,6 @@ namespace SetBoxWebUI
                 UseRecommendedIsolationLevel = true,
                 DisableGlobalLocks = true
             }));
-
-            services.AddSingleton(typeof(IRepository<,>), typeof(Repository<,>));
-
-            services.AddDbContext<ApplicationDbContext>(options => options.UseLazyLoadingProxies(true)
-                                                                    .UseSqlServer(connectionString));
-
-            services.AddIdentity<ApplicationIdentityUser, ApplicationIdentityRole>()
-                    .AddEntityFrameworkStores<ApplicationDbContext>()
-                    .AddDefaultTokenProviders();
-
-            services.TryAddSingleton<IHangfireJob, HangfireJob>();
 
             services.AddCors(options =>
             {
