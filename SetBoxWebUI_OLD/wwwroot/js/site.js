@@ -121,3 +121,7 @@ function UploadSubimit(id) {
 function FixFileIds() {
     $("#FilesIds").val($("#fileId1").text() + ',' + $("#fileId2").text() + ',' + $("#fileId3").text());
 }
+
+function UpdateFilesFolder() {
+
+}
