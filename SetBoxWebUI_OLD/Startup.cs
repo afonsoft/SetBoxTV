@@ -242,7 +242,7 @@ namespace SetBoxWebUI
         /// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         /// </summary>
         /// <param name="app"></param>
-        public void Configure(IApplicationBuilder app, IServiceProvider serviceProvider, ApplicationDbContext context, IHostingEnvironment hostingEnvironment)
+        public void Configure(IApplicationBuilder app, IServiceProvider serviceProvider)
         {
             app.UseDeveloperExceptionPage();
             app.UseDatabaseErrorPage();
@@ -279,10 +279,10 @@ namespace SetBoxWebUI
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "SetBox API");
             });
 
-            InitializeHangfire(new HangfireJob(context,hostingEnvironment));
+            InitializeHangfire(serviceProvider.GetService<IHangfireJob>());
         }
 
-        private void InitializeHangfire(HangfireJob job)
+        private void InitializeHangfire(IHangfireJob job)
         {
             job.Initialize();
         }

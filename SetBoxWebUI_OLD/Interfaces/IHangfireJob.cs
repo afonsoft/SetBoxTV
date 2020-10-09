@@ -1,11 +1,12 @@
 ﻿using Hangfire.Server;
+using System.Threading.Tasks;
 
 namespace SetBoxWebUI.Interfaces
 {
     public interface IHangfireJob
     {
         void Initialize();
-        void JobGetNewFiles(PerformContext context);
-        void JobDeleteFilesNotExist(PerformContext context);
+        Task JobGetNewFiles(PerformContext context);
+        Task JobDeleteFilesNotExist(PerformContext context);
     }
 }

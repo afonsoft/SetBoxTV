@@ -32,7 +32,7 @@ namespace SetBoxWebUI.Jobs
             RecurringJob.AddOrUpdate<IHangfireJob>("Create Files", x => x.JobGetNewFiles(null), Cron.Hourly, TimeZoneInfo.Local);
         }
 
-        public async void JobDeleteFilesNotExist(PerformContext context)
+        public async Task JobDeleteFilesNotExist(PerformContext context)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace SetBoxWebUI.Jobs
             }
         }
 
-        public async void JobGetNewFiles(PerformContext context)
+        public async Task JobGetNewFiles(PerformContext context)
         {
             try
             {
