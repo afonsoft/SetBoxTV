@@ -96,7 +96,7 @@ namespace SetBoxWebUI
                     .AddDefaultTokenProviders();
 
             services.AddSingleton(typeof(IRepository<,>), typeof(Repository<,>));
-            services.AddScoped<IHangfireJob, HangfireJob>();
+            services.AddSingleton<IHangfireJob, HangfireJob>();
 
             services.AddHangfire(configuration => configuration
             .UseSimpleAssemblyNameTypeSerializer()

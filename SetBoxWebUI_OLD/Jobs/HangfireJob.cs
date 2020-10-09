@@ -18,26 +18,36 @@ namespace SetBoxWebUI.Jobs
     public class HangfireJob : IHangfireJob
     {
         private readonly IHostingEnvironment _hostingEnvironment;
-        private readonly IRepository<FileCheckSum, Guid> _files;
+        private readonly IServiceScopeFactory _serviceScopeFactory;
 
-        public HangfireJob(ApplicationDbContext context,  IHostingEnvironment hostingEnvironment)
+        public HangfireJob(IHostingEnvironment hostingEnvironment, IServiceScopeFactory serviceScopeFactory)
         {
             _hostingEnvironment = hostingEnvironment;
-            _files = new Repository<FileCheckSum, Guid>(context);
+            _serviceScopeFactory = serviceScopeFactory;
         }
 
         public void Initialize()
         {
-            RecurringJob.AddOrUpdate<IHangfireJob>("Delete Files In Db", x => x.JobDeleteOldFiles(null), Cron.Daily, TimeZoneInfo.Local);
-            RecurringJob.AddOrUpdate<IHangfireJob>("Create Files In Db", x => x.JobGetNewFiles(null), Cron.Hourly, TimeZoneInfo.Local);
+            RecurringJob.AddOrUpdate<IHangfireJob>("Delete Files", x => x.JobDeleteFilesNotExist(null), Cron.Daily, TimeZoneInfo.Local);
+            RecurringJob.AddOrUpdate<IHangfireJob>("Create Files", x => x.JobGetNewFiles(null), Cron.Hourly, TimeZoneInfo.Local);
         }
 
-        public void JobDeleteOldFiles(PerformContext context)
+        public async void JobDeleteFilesNotExist(PerformContext context)
         {
             try
             {
                 context.WriteLine("Job Inicializado");
-                //Do
+                using (var scope = _serviceScopeFactory.CreateScope())
+                {
+                    var dbContext = scope.ServiceProvider.GetService<ApplicationDbContext>();
+                    IRepository<FileCheckSum, Guid> _files = new Repository<FileCheckSum, Guid>(dbContext);
+
+                    var fileInDb = await _files.GetAsync();
+                    context.WriteLine($"Total de arquivos no banco de dados {fileInDb.Count}");
+
+                    var fileInDrive = GetFilesInPath();
+                    context.WriteLine($"Total de arquivos no diretorio {fileInDrive.Count()}");
+                }
                 context.WriteLine("Job Finalizado");
             }
             catch (Exception ex)
@@ -55,23 +65,32 @@ namespace SetBoxWebUI.Jobs
                 var files = GetFilesInPath();
                 context.WriteLine($"Total de arquivos na pasta {files.Count()}");
 
-                foreach (var file in files)
+                using (var scope = _serviceScopeFactory.CreateScope())
                 {
-                    var fileInDb = await _files.GetAsync(x => x.Name == file);
-                    if (fileInDb == null)
+                    var dbContext = scope.ServiceProvider.GetService<ApplicationDbContext>();
+
+                    IRepository<FileCheckSum, Guid> _files = new Repository<FileCheckSum, Guid>(dbContext);
+
+                    var filesInDb = await _files.GetAsync();
+                    string[] NameInDb = filesInDb.Select(x => x.Name).ToArray();
+
+                    files = files.Where(x => !NameInDb.Contains(x.Name)).ToArray();
+
+                    context.WriteLine($"Total de arquivos não importados {files.Count()}");
+
+                    foreach (var file in files)
                     {
-                        await _files.AddAsync(new FileCheckSum()
+                        try
                         {
-                            Name = file,
-                            CreationDateTime = DateTime.Now,
-                            Description = "",
-                            Size = 0,
-                            Extension = "video/mpeg",
-                            Path = GetPathAndFilename(file),
-                            CheckSum = CriptoHelpers.MD5HashFile(GetPathAndFilename(file)),
-                            Url = "https://setbox.afonsoft.com.br/UploadedFiles/" + file,
-                            FileId = Guid.NewGuid()
-                        });
+                            var fileInDb = await _files.GetAsync(x => x.Name == file.Name);
+                            if (fileInDb == null)
+                            {
+                                await _files.AddAsync(file);
+                            }
+                        }catch(Exception ex)
+                        {
+                            context.WriteLine($"Erro no arquivo {file.Name} : {ex}");
+                        }
                     }
                 }
 
@@ -83,21 +102,33 @@ namespace SetBoxWebUI.Jobs
             }
         }
 
-        private string[] GetFilesInPath()
+        private FileCheckSum[] GetFilesInPath()
         {
-            string path = _hostingEnvironment.WebRootPath + "\\UploadedFiles\\";
+            string path = Path.Combine(_hostingEnvironment.WebRootPath, "UploadedFiles");
 
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
-          
-            return  Directory.GetFiles(path)
-                            .Select(x => x.Split("\\").Last())
-                            .ToArray();
+
+            DirectoryInfo di = new DirectoryInfo(path);
+            return di.EnumerateFiles()
+                       .AsParallel()
+                       .Select(x => new FileCheckSum()
+                       {
+                           Description = "",
+                           FileId = Guid.NewGuid(),
+                           Name = x.Name,
+                           CreationDateTime = DateTime.Now,
+                           Size = x.Length,
+                           Extension = x.Extension,
+                           Path = GetPathAndFilename(x.Name),
+                           CheckSum = CriptoHelpers.MD5HashFile(GetPathAndFilename(x.Name)),
+                           Url = "https://setbox.afonsoft.com.br/UploadedFiles/" + x.Name
+                       }).ToArray();
         }
 
         private string GetPathAndFilename(string filename)
         {
-            string path = _hostingEnvironment.WebRootPath + "\\UploadedFiles\\";
+            string path = Path.Combine(_hostingEnvironment.WebRootPath, "UploadedFiles");
 
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);

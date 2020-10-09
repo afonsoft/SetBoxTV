@@ -6,6 +6,6 @@ namespace SetBoxWebUI.Interfaces
     {
         void Initialize();
         void JobGetNewFiles(PerformContext context);
-        void JobDeleteOldFiles(PerformContext context);
+        void JobDeleteFilesNotExist(PerformContext context);
     }
 }
