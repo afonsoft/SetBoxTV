@@ -283,13 +283,6 @@ namespace SetBoxWebUI.Controllers
         }
 
 
-
-        public async Task<ActionResult> UpdateFilesFolder(FilesViewModel u = null)
-        {
-            await ProcessFilesInDirectory(_serviceScopeFactory);
-            return View("Index", u ?? new FilesViewModel());
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(FilesViewModel u)
@@ -358,17 +351,18 @@ namespace SetBoxWebUI.Controllers
             return Path.Combine(path, filename);
         }
 
-        public async Task ProcessFilesInDirectory(IServiceScopeFactory serviceScopeFactory)
+        [HttpPost]
+        public async Task<string> ProcessFilesInDirectory()
         {
 
             try
             {
-                string path = _hostingEnvironment.WebRootPath + "\\UploadedFiles\\";
+                string path = Path.Combine(_hostingEnvironment.WebRootPath, "UploadedFiles");
 
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
 
-                using (var scope = serviceScopeFactory.CreateScope())
+                using (var scope = _serviceScopeFactory.CreateScope())
                 {
                     var dbContext = scope.ServiceProvider.GetService<ApplicationDbContext>();
 
@@ -393,16 +387,20 @@ namespace SetBoxWebUI.Controllers
                            Path = GetPathAndFilename(x.Name),
                            CheckSum = CriptoHelpers.MD5HashFile(GetPathAndFilename(x.Name)),
                            Url = "https://setbox.afonsoft.com.br/UploadedFiles/" + x.Name
-                       })
-                       .ToArray();
+                       }).ToArray();
 
                     if (filesInDir.Length > 0)
+                    {
                         await _fileDb.AddRangeAsync(filesInDir);
+                        return $"Find {filesInDir.Length} files in directory, please update a grid!";
+                    }
                 }
+                return "Not found any file in directory";
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, ex.Message);
+                return $"Error: {ex.Message}";
             }
         }
     }

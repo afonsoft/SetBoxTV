@@ -123,5 +123,26 @@ function FixFileIds() {
 }
 
 function UpdateFilesFolder() {
-
+    $.ajax({
+        url: '/Files/ProcessFilesInDirectory',
+        type: 'POST',
+        cache: false,
+        contentType: false,
+        processData: false,
+        timeout: 5 * 60 * 1000,
+        success: function (data) {
+            PleaseWaitHide();
+            bootbox.alert(data);
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            PleaseWaitHide();
+            console.log(xhr.status + ' - ' + xhr.statusText + ' - ' + xhr.responseText);
+            console.log(thrownError);
+            var output = '';
+            for (var entry in xhr.responseJSON) {
+                output += entry + ' - ' + xhr.responseJSON[entry] + '<br/>';
+            }
+            console.log(output);
+            bootbox.alert(xhr.status + ' - ' + xhr.statusText + '<br/>' + output);}
+    });
 }
