@@ -59,3 +59,65 @@ var translate = {
     refresh: "Atualizar",
     search: "Pesquisar"
 };
+
+function ShowName(id) {
+    $("#File_Name" + id).text($("#fileToUpload" + id).val());
+    $("#FileSelected" + id).val($("#fileToUpload" + id).val());
+    return UploadSubimit(id);
+}
+
+function UploadSubimit(id) {
+    var formData = new FormData(document.getElementById('uploadForm' + id));
+    $("#progress" + id).show();
+    $("#progressbar" + id).css("width", "0%");
+    $("#progressbar" + id).html("0%");
+    $.ajax({
+        url: '/Streaming/UploadFileStream',
+        type: 'POST',
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
+        enctype: 'multipart/form-data',
+        timeout: 5 * 60 * 1000,
+        xhr: function () {
+            //upload Progress
+            var xhr = $.ajaxSettings.xhr();
+
+            xhr.upload.onprogress = function (event) {
+                var percent = 0;
+                var position = event.loaded || event.position;
+                var total = event.total;
+                if (event.lengthComputable) {
+                    percent = Math.ceil(position / total * 100);
+                }
+                //update progressbar
+                $("#progressbar" + id).css("width", + percent + "%");
+                $("#progressbar" + id).html(percent + "%");
+            }
+            return xhr;
+        },
+        success: function (data) {
+            $("#progress" + id).hide();
+            $("#fileToUpload" + id).hide();
+            $("#fileId" + id).text(data);
+            FixFileIds();
+        }, 
+        error: function (xhr, ajaxOptions, thrownError) {
+            $("#progress" + id).hide();
+            console.log(xhr.status + ' - ' + xhr.statusText + ' - ' + xhr.responseText);
+            console.log(thrownError);
+            var output = '';
+            for (var entry in xhr.responseJSON) {
+                output += entry + ' - ' + xhr.responseJSON[entry] + '<br/>';
+            }
+            console.log(output);
+            bootbox.alert(xhr.status + ' - ' + xhr.statusText + '<br/>' + output);
+        }
+    });
+    return false;
+};
+
+function FixFileIds() {
+    $("#FilesIds").val($("#fileId1").text() + ',' + $("#fileId2").text() + ',' + $("#fileId3").text());
+}

@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SetBoxWebUI.Models.Views
 
@@ -28,8 +26,6 @@ namespace SetBoxWebUI.Models.Views
 
         }
 
-        public FileCheckSum File { get; set; }
-
         public bool IsEdited { get; set; }
 
         public bool IsNew { get; set; }
@@ -42,7 +38,21 @@ namespace SetBoxWebUI.Models.Views
         public string DeviceIds { get; set; } 
         public string AllDeviceIds { get; set; } 
 
-        public IFormFile fileToUpload { get; set; }
+        public List<FileUploadViewModel> Files { get; set; }
+
+        public string FilesIds { get; set; }
+
+        public Guid? FileId { get; set; }
+        public string CheckSum { get; set; }
+        public string FileName { get; set; }
+    }
+
+    public class FileUploadViewModel
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public IFormFile FileToUpload { get; set; }
     }
 
     public class FileDeviceViewModel
@@ -50,6 +60,8 @@ namespace SetBoxWebUI.Models.Views
         public Guid Id { get; set; }
         public string DeviceIdentifier { get; set; }
         public string DeviceName { get; set; }
+        public string Manufacturer { get; set; }
+        public string Device { get; set; }
         public string CompanyName { get; set; }
     }
 }

@@ -116,10 +116,15 @@ namespace SetBoxWebUI.Controllers
                             CompanyName = x.Company?.Name,
                             Id = x.DeviceId,
                             DeviceIdentifier = x.DeviceIdentifier,
-                            DeviceName = x.Name
+                            DeviceName = x.Name,
+                            Manufacturer = x.Manufacturer,
+                            Device = x.DeviceName
                         }).ToList(),
                         AllDeviceIds = string.Join(",", devices.Select(x => x.DeviceId.ToString()).ToList()),
                         IsNew = true,
+                        FilesIds = "",
+                        CheckSum = "",
+                        FileName = ""
                     });
                 }
                 var item = await _files.FirstOrDefaultAsync(x => x.FileId.ToString() == id);
@@ -136,13 +141,18 @@ namespace SetBoxWebUI.Controllers
                 {
                     IsEdited = command == "Edit",
                     IsNew = command == "New",
-                    File = item,
+                    FileId = item.FileId,
+                    CheckSum = item.CheckSum,
+                    FileName = item.Name,
+                    Files = new List<FileUploadViewModel>() { new FileUploadViewModel { Id = item.FileId.ToString(), Name = item.Name } },
                     Devices = devicesFile.Select(x => new FileDeviceViewModel()
                     {
                         CompanyName = x.Company?.Name,
                         Id = x.DeviceId,
                         DeviceIdentifier = x.DeviceIdentifier,
-                        DeviceName = x.Name
+                        DeviceName = x.Name,
+                        Manufacturer = x.Manufacturer,
+                        Device = x.DeviceName
                     }).ToList(),
                     DeviceIds = string.Join(",", devicesFile.Select(x => x.DeviceId.ToString()).ToList()),
                     AllDeviceIds = string.Join(",", devices.Where(x => !idsRemove.Contains(x.DeviceId))
@@ -153,7 +163,9 @@ namespace SetBoxWebUI.Controllers
                                             CompanyName = x.Company?.Name,
                                             Id = x.DeviceId,
                                             DeviceIdentifier = x.DeviceIdentifier,
-                                            DeviceName = x.Name
+                                            DeviceName = x.Name,
+                                            Manufacturer = x.Manufacturer,
+                                            Device = x.DeviceName
                                         }).ToList()
                 };
 
@@ -169,99 +181,57 @@ namespace SetBoxWebUI.Controllers
         }
 
         [HttpPost]
-        [DisableFormValueModelBinding]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SaveStream()
-        {
-            if (!MultipartRequestHelper.IsMultipartContentType(Request.ContentType))
-            {
-                ModelState.AddModelError("File",
-                    $"The request couldn't be processed (Error 1).");
-                // Log error
-
-                return BadRequest(ModelState);
-            }
-
-            string _targetFilePath = Path.Combine(_hostingEnvironment.WebRootPath, "UploadedFiles", Path.GetTempFileName());
-
-
-            FormValueProvider formModel;
-            using (var targetStream = System.IO.File.Create(_targetFilePath))
-            {
-                formModel = await Request.StreamFile(targetStream);
-            }
-
-            if (formModel != null)
-            {
-                return Created(nameof(FilesController), null);
-            }
-            else
-            {
-                ModelState.AddModelError("File",
-                  $"The request couldn't be processed (Error 1).");
-                // Log error
-
-                return BadRequest(ModelState);
-            }
-           
-        }
-
-        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Save(FilesViewModel u)
         {
             try
             {
+                if (string.IsNullOrEmpty(u.FilesIds))
+                    u.FilesIds = "";
 
-                if (u.IsNew)
-                {
-                    if (u.fileToUpload == null)
-                        u.fileToUpload = Request.Form.Files.FirstOrDefault();
-
-                    if (u.fileToUpload == null)
-                        throw new Exception("Favor selecionar um arquivo para upload.");
-
-                    u.File.FileId = await Uploader(u.fileToUpload);
-                }
-
+                string[] fids = u.FilesIds.Split(',');
                 var ids = u.DeviceIds.Split(',');
 
-                var file = await _files.FirstOrDefaultAsync(x => x.FileId == u.File.FileId);
-                var devices = await _devices.GetAsync(x => ids.Contains(x.DeviceId.ToString()));
-
-                if (file.Description != u.File.Description)
+                if (u.FileId != null && !u.IsNew)
                 {
-                    file.Description = u.File.Description;
-                    await _files.UpdateAsync(file);
+                    fids = new[] { u.FileId.ToString() };
                 }
 
-                var delsOld1 = await _fileDevice.GetAsync(x => x.FileId == u.File.FileId);
-                await _fileDevice.DeleteRangeAsync(delsOld1);
-
-                IList<FilesDevices> DevicesInFile = new List<FilesDevices>();
-
-                foreach (var device in devices)
+                foreach (var id in fids)
                 {
-                    DevicesInFile.Add(new FilesDevices()
-                    {
-                        FileId = file.FileId,
-                        File = file,
-                        Device = device,
-                        DeviceId = device.DeviceId
-                    });
+                    if (string.IsNullOrEmpty(id))
+                        continue;
 
-                    device.LogAccesses.Add(new DeviceLogAccesses()
-                    {
-                        CreationDateTime = DateTime.Now,
-                        Message = $"File {file.Name} Added",
-                        IpAcessed = HttpContext.GetClientIpAddress()
-                    });
-                    await _devices.UpdateAsync(device);
-                }
+                    var file = await _files.FirstOrDefaultAsync(x => x.FileId.ToString() == id);
+                    var devices = await _devices.GetAsync(x => ids.Contains(x.DeviceId.ToString()));
+                    var delsOld1 = await _fileDevice.GetAsync(x => x.FileId.ToString() == id);
+                    await _fileDevice.DeleteRangeAsync(delsOld1);
 
-                if (DevicesInFile.Count > 0)
-                {
-                    await _fileDevice.AddRangeAsync(DevicesInFile);
+                    IList<FilesDevices> DevicesInFile = new List<FilesDevices>();
+
+                    foreach (var device in devices)
+                    {
+                        DevicesInFile.Add(new FilesDevices()
+                        {
+                            FileId = file.FileId,
+                            File = file,
+                            Device = device,
+                            DeviceId = device.DeviceId
+                        });
+
+                        device.LogAccesses.Add(new DeviceLogAccesses()
+                        {
+                            CreationDateTime = DateTime.Now,
+                            Message = $"File {file.Name} Added",
+                            IpAcessed = HttpContext.GetClientIpAddress()
+                        });
+                        await _devices.UpdateAsync(device);
+                    }
+
+                    if (DevicesInFile.Count > 0)
+                    {
+                        await _fileDevice.AddRangeAsync(DevicesInFile);
+                    }
                 }
 
                 return View("Index", new FilesViewModel("Data Updated successfully."));
@@ -312,10 +282,7 @@ namespace SetBoxWebUI.Controllers
             }
         }
 
-        public ActionResult Index()
-        {  
-            return View(new FilesViewModel(""));
-        }
+
 
         public async Task<ActionResult> UpdateFilesFolder(FilesViewModel u = null)
         {
@@ -328,6 +295,10 @@ namespace SetBoxWebUI.Controllers
         public ActionResult Index(FilesViewModel u)
         {
             return View(u);
+        }
+        public ActionResult Index()
+        {
+            return View(new FilesViewModel(""));
         }
 
         public async Task<Guid> Uploader(IFormFile fileToUpload)

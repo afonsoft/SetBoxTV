@@ -84,7 +84,11 @@ namespace SetBoxWebUI
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseLazyLoadingProxies(true);
-                options.UseSqlServer(connectionString);
+                options.UseSqlServer(connectionString, options =>
+                {
+                    options.CommandTimeout(300);
+                    options.EnableRetryOnFailure(10, TimeSpan.FromSeconds(15), null);
+                });
             }, ServiceLifetime.Transient);
 
             services.AddIdentity<ApplicationIdentityUser, ApplicationIdentityRole>()
